@@ -1,23 +1,32 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
+#if UNITY_EDITOR
 using UnityEditor;
+#endif
 
 namespace TeamMAsTD
 {
+    [DisallowMultipleComponent]
     public class Grid : MonoBehaviour
     {
-        [field: SerializeField] public int gridWidth { get; private set; } = 10;//number of columns
-        [field: SerializeField] public int gridHeight { get; private set; } = 5;//number of rows
-        [field: SerializeField] public float tileSize { get; private set; } = 1.0f;//size of a square tile in the grid (e.g 1x1)
+        [field: SerializeField] [field: Min(1)]
+        public int gridWidth { get; private set; } = 10;//number of columns
+
+        [field: SerializeField] [field: Min(0)] 
+        public int gridHeight { get; private set; } = 5;//number of rows
+
+        [field: SerializeField] [field: Min(0)] 
+        public float tileSize { get; private set; } = 1.0f;//size of a square tile in the grid (e.g 1x1)
 
         [SerializeField] private Tile tilePrefabToPopulate;//prefab with tile script attached
 
         private Tile[] gridArray;//the 2D array representing the grid that has been flattened into a 1D array
 
-        private void Awake()
+        public Tile[] GetGridFlattened2DArray()
         {
-
+            return gridArray;
         }
 
         private bool CanGenerateGrid()//check for all neccessary requirements before generating the grid
@@ -25,6 +34,16 @@ namespace TeamMAsTD
             if (tilePrefabToPopulate == null)
             {
                 Debug.LogError("Tile Prefab is missing on Grid object: " + name + ". Disabling grid!");
+                return false;
+            }
+            if(gridWidth < 1 && gridHeight <= 0)
+            {
+                Debug.LogError("Please provide a valid row and column number input!");
+                return false;
+            }
+            if(tileSize <= 0)
+            {
+                Debug.LogError("Tile size cannot be smaller or equal 0!");
                 return false;
             }
 
@@ -71,22 +90,28 @@ namespace TeamMAsTD
         //so that the grid can be regenerated in CreateGrid() function.
         private void ResetGrid()
         {
-            //cancel reset if no grid has been generated
-            if (gridArray == null || gridArray.Length < 1) return;
-            
             //if a grid was generated and is housing children tiles -> destroy all the children tiles 
             if(transform.childCount > 0)
             {
-                for (int i = 0; i < gridArray.Length; i++)
+                //have to bring all the children tile game object into a temp array because for some reasons,
+                //Unity doesn't destroy all the children objects in edit mode unless it is in a new array
+                var tempArray = new GameObject[transform.childCount];
+
+                for (int i = 0; i < tempArray.Length; i++)
                 {
-                    DestroyImmediate(gridArray[i].gameObject);
+                    tempArray[i] = transform.GetChild(i).gameObject;
+                }
+
+                foreach (var child in tempArray)
+                {
+                    DestroyImmediate(child);
                 }
             }
 
             gridArray = null;//set grid to null so that it can be re-initialized and re-generated in CreateGrid() function.
         }
     
-    //UNITY EDITOR class and function for this grid
+    //UNITY EDITOR only class and function for Grid
     #if UNITY_EDITOR
         [CustomEditor(typeof(Grid))]
         private class GridEditor : Editor
@@ -95,13 +120,19 @@ namespace TeamMAsTD
             {
                 DrawDefaultInspector();
 
+                EditorGUILayout.HelpBox(
+                    "Generating the grid removes all of its current children Tiles and makes new ones based on the current grid's settings. " +
+                    "New children tiles have default Tile settings", MessageType.Info);
+
                 Grid grid = target as Grid;
 
                 //Create a button to execute the generation of the grid in the editor.
                 //Clicking the button regenerates the grid based on current grid settings.
                 //Regenerate grid deletes old tiles and create new children tiles with default values.
-                if(GUILayout.Button("Generate Grid"))
+                if(GUILayout.Button("Generate Grid"))//On Generate Grid button pressed:...
                 {
+                    if (!grid.CanGenerateGrid()) return;//if can not generate grid->do nothing
+                    //else
                     grid.ResetGrid();
                     grid.CreateGrid();
                 }

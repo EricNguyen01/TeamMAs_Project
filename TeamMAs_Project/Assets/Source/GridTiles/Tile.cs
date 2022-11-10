@@ -8,8 +8,8 @@ namespace TeamMAsTD
     public class Tile : MonoBehaviour
     {
         [field: Header("Tile Properties")]
-        [field: SerializeField] private bool isOccupied { get; set; } = false;
-        [field: SerializeField] private bool is_AI_Path { get; set; } = false;
+        [field: SerializeField] public bool isOccupied { get; set; } = false;
+        [field: SerializeField] public bool is_AI_Path { get; set; } = false;
 
         [Header("Tile Debug Config")]
         [SerializeField] private bool drawTileDebug = true;
