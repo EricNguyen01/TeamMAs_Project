@@ -9,6 +9,7 @@ using UnityEditor;
 namespace TeamMAsTD
 {
     [DisallowMultipleComponent]
+    [ExecuteInEditMode]
     public class Grid : MonoBehaviour
     {
         [field: SerializeField] [field: Min(1)]

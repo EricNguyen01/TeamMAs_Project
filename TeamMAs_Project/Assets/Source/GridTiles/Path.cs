@@ -9,6 +9,7 @@ using UnityEditor;
 namespace TeamMAsTD
 {
     [DisallowMultipleComponent]
+    [ExecuteInEditMode]
     public class Path : MonoBehaviour
     {
         [field: SerializeField] public List<Tile> orderedPathTiles { get; private set; } = new List<Tile>();
