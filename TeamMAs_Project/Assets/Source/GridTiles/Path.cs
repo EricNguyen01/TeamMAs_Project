@@ -15,15 +15,6 @@ namespace TeamMAsTD
 
         [SerializeField] [HideInInspector] private List<Tile> oldOrderedPathTiles = new List<Tile>();
 
-        /*private void Awake()
-        {
-            //On awake in editor only, gets a snapshot of the current ordered path tiles immediately and stores in oldOrderedPathTiles.
-            if (Application.isEditor)
-            {
-                oldOrderedPathTiles = orderedPathTiles;
-            }
-        }*/
-
         private bool CanUpdatePath()
         {
             if (orderedPathTiles == null)
@@ -129,10 +120,15 @@ namespace TeamMAsTD
         [CustomEditor(typeof(Path))]
         private class PathEditor : Editor
         {
+            Path path;
+
+            private void OnEnable()
+            {
+                path = target as Path;
+            }
+
             public override void OnInspectorGUI()
             {
-                Path path = target as Path;
-
                 DrawDefaultInspector();
 
                 //Path script inspector text message box for what the path tiles list is and how it operates
@@ -148,6 +144,8 @@ namespace TeamMAsTD
                     "Please update path manually after making changes! " +
                     "Changes may take a while to reflect in Scene view.", 
                     MessageType.Warning);
+
+                EditorGUILayout.Space();
 
                 //Draw update path button
                 if(GUILayout.Button("Update Path"))

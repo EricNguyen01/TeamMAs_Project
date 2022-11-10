@@ -116,6 +116,12 @@ namespace TeamMAsTD
         [CustomEditor(typeof(Grid))]
         private class GridEditor : Editor
         {
+            Grid grid;
+            private void OnEnable()
+            {
+                grid = target as Grid;
+            }
+
             public override void OnInspectorGUI()
             {
                 DrawDefaultInspector();
@@ -123,8 +129,6 @@ namespace TeamMAsTD
                 EditorGUILayout.HelpBox(
                     "Generating the grid removes all of its current children Tiles and makes new ones based on the current grid's settings. " +
                     "New children tiles have default Tile settings", MessageType.Info);
-
-                Grid grid = target as Grid;
 
                 //Create a button to execute the generation of the grid in the editor.
                 //Clicking the button regenerates the grid based on current grid settings.
