@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f04e3d0adf1c69949bc6bd1b45397d53, type: 3}
+  m_Name: Grass
+  m_EditorClassIdentifier: 
+  <unitID>k__BackingField: 13858672-e190-4f63-a6c7-64410cf80c21
+  <displayName>k__BackingField: Grass
+  <unitDescription>k__BackingField: 
+  <unitThumbnail>k__BackingField: {fileID: 0}
+  <unitPrefab>k__BackingField: {fileID: 0}
+  <waterBars>k__BackingField: 0
+  <damage>k__BackingField: 0
+  <attackSpeed>k__BackingField: 0
+  <attackRangeInTiles>k__BackingField: 1
+  <humanMultiplier>k__BackingField: 0
+  <pollinatorMultiplier>k__BackingField: 0
+  <isPlacableOnPath>k__BackingField: 0
+  <plantingCoinCost>k__BackingField: 0
+  <waterUse>k__BackingField: 0

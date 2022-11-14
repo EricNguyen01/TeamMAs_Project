@@ -10,7 +10,7 @@ namespace TeamMAsTD
 {
     [DisallowMultipleComponent]
     [ExecuteInEditMode]
-    public class Grid : MonoBehaviour
+    public class TDGrid : MonoBehaviour
     {
         [field: SerializeField] [field: Min(1)]
         public int gridWidth { get; private set; } = 10;//number of columns
@@ -25,10 +25,21 @@ namespace TeamMAsTD
 
         private Tile[] gridArray;//the 2D array representing the grid that has been flattened into a 1D array
 
+        //PUBLICS...........................................................
+
         public Tile[] GetGridFlattened2DArray()
         {
             return gridArray;
         }
+
+        //the method below returns the grid array index correspond to the provided tile coordinate in the grid.
+        public int GetGridArrayIndexFromTileCoordinate(int tileGrid_X, int tileGrid_Y)
+        {
+            return tileGrid_X * gridHeight/*the array height*/ + tileGrid_Y;
+        }
+
+
+        //PRIVATES...................................................................
 
         private bool CanGenerateGrid()//check for all neccessary requirements before generating the grid
         {
@@ -56,12 +67,6 @@ namespace TeamMAsTD
             float x = transform.position.x + (tileGridPosX * tileSize);
             float y = transform.position.y + (tileGridPosY * tileSize);
             return new Vector2(x, y);
-        }
-
-        //the method below returns the grid array index correspond to the provided tile coordinate in the grid.
-        public int GetGridArrayIndexFromTileCoordinate(int tileGrid_X, int tileGrid_Y)
-        {
-            return tileGrid_X * gridHeight/*the array height*/ + tileGrid_Y;
         }
 
         private void CreateGrid()//grid-generation method
@@ -114,13 +119,13 @@ namespace TeamMAsTD
     
     //UNITY EDITOR only class and function for Grid
     #if UNITY_EDITOR
-        [CustomEditor(typeof(Grid))]
+        [CustomEditor(typeof(TDGrid))]
         private class GridEditor : Editor
         {
-            Grid grid;
+            TDGrid grid;
             private void OnEnable()
             {
-                grid = target as Grid;
+                grid = target as TDGrid;
             }
 
             public override void OnInspectorGUI()

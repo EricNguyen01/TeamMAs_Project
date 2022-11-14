@@ -16,6 +16,8 @@ namespace TeamMAsTD
 
         [SerializeField] [HideInInspector] private List<Tile> oldOrderedPathTiles = new List<Tile>();
 
+        //PRIVATES................................................................................
+
         private bool CanUpdatePath()
         {
             if (orderedPathTiles == null)
@@ -116,7 +118,9 @@ namespace TeamMAsTD
             oldOrderedPathTiles.Clear();
         }
 
-        //UNITY EDITOR only functions and class
+    //EDITOR.............................................................................
+
+    //UNITY EDITOR only functions and class
     #if UNITY_EDITOR
         [CustomEditor(typeof(Path))]
         private class PathEditor : Editor
