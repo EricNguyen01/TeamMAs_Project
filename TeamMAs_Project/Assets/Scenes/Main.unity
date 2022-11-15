@@ -159,12 +159,6 @@ MonoBehaviour:
   <is_AI_Path>k__BackingField: 0
   <unitOnTile>k__BackingField: {fileID: 0}
   <disableUprootOnTile>k__BackingField: 0
-  validForUnitPlacementColor:
-    serializedVersion: 2
-    rgba: 0
-  invalidForUnitPlacementColor:
-    serializedVersion: 2
-    rgba: 0
   drawTileDebug: 1
   drawDebugRuntime: 1
   <tileNumInRow>k__BackingField: 3
@@ -307,12 +301,6 @@ MonoBehaviour:
   <is_AI_Path>k__BackingField: 0
   <unitOnTile>k__BackingField: {fileID: 0}
   <disableUprootOnTile>k__BackingField: 0
-  validForUnitPlacementColor:
-    serializedVersion: 2
-    rgba: 0
-  invalidForUnitPlacementColor:
-    serializedVersion: 2
-    rgba: 0
   drawTileDebug: 1
   drawDebugRuntime: 1
   <tileNumInRow>k__BackingField: 1
@@ -455,12 +443,6 @@ MonoBehaviour:
   <is_AI_Path>k__BackingField: 1
   <unitOnTile>k__BackingField: {fileID: 0}
   <disableUprootOnTile>k__BackingField: 0
-  validForUnitPlacementColor:
-    serializedVersion: 2
-    rgba: 0
-  invalidForUnitPlacementColor:
-    serializedVersion: 2
-    rgba: 0
   drawTileDebug: 1
   drawDebugRuntime: 1
   <tileNumInRow>k__BackingField: 4
@@ -603,12 +585,6 @@ MonoBehaviour:
   <is_AI_Path>k__BackingField: 0
   <unitOnTile>k__BackingField: {fileID: 0}
   <disableUprootOnTile>k__BackingField: 0
-  validForUnitPlacementColor:
-    serializedVersion: 2
-    rgba: 0
-  invalidForUnitPlacementColor:
-    serializedVersion: 2
-    rgba: 0
   drawTileDebug: 1
   drawDebugRuntime: 1
   <tileNumInRow>k__BackingField: 6
@@ -751,12 +727,6 @@ MonoBehaviour:
   <is_AI_Path>k__BackingField: 0
   <unitOnTile>k__BackingField: {fileID: 0}
   <disableUprootOnTile>k__BackingField: 0
-  validForUnitPlacementColor:
-    serializedVersion: 2
-    rgba: 0
-  invalidForUnitPlacementColor:
-    serializedVersion: 2
-    rgba: 0
   drawTileDebug: 1
   drawDebugRuntime: 1
   <tileNumInRow>k__BackingField: 0
@@ -989,12 +959,6 @@ MonoBehaviour:
   <is_AI_Path>k__BackingField: 0
   <unitOnTile>k__BackingField: {fileID: 0}
   <disableUprootOnTile>k__BackingField: 0
-  validForUnitPlacementColor:
-    serializedVersion: 2
-    rgba: 0
-  invalidForUnitPlacementColor:
-    serializedVersion: 2
-    rgba: 0
   drawTileDebug: 1
   drawDebugRuntime: 1
   <tileNumInRow>k__BackingField: 4
@@ -1137,12 +1101,6 @@ MonoBehaviour:
   <is_AI_Path>k__BackingField: 1
   <unitOnTile>k__BackingField: {fileID: 0}
   <disableUprootOnTile>k__BackingField: 0
-  validForUnitPlacementColor:
-    serializedVersion: 2
-    rgba: 0
-  invalidForUnitPlacementColor:
-    serializedVersion: 2
-    rgba: 0
   drawTileDebug: 1
   drawDebugRuntime: 1
   <tileNumInRow>k__BackingField: 5
@@ -1285,12 +1243,6 @@ MonoBehaviour:
   <is_AI_Path>k__BackingField: 1
   <unitOnTile>k__BackingField: {fileID: 0}
   <disableUprootOnTile>k__BackingField: 0
-  validForUnitPlacementColor:
-    serializedVersion: 2
-    rgba: 0
-  invalidForUnitPlacementColor:
-    serializedVersion: 2
-    rgba: 0
   drawTileDebug: 1
   drawDebugRuntime: 1
   <tileNumInRow>k__BackingField: 6
@@ -1454,12 +1406,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Padding:
-    m_Left: 39
-    m_Right: 184
-    m_Top: 8
-    m_Bottom: 8
+    m_Left: 46
+    m_Right: 176
+    m_Top: 13
+    m_Bottom: 13
   m_ChildAlignment: 0
-  m_Spacing: 6
+  m_Spacing: 13
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
   m_ChildControlWidth: 1
@@ -1525,12 +1477,6 @@ MonoBehaviour:
   <is_AI_Path>k__BackingField: 0
   <unitOnTile>k__BackingField: {fileID: 0}
   <disableUprootOnTile>k__BackingField: 0
-  validForUnitPlacementColor:
-    serializedVersion: 2
-    rgba: 0
-  invalidForUnitPlacementColor:
-    serializedVersion: 2
-    rgba: 0
   drawTileDebug: 1
   drawDebugRuntime: 1
   <tileNumInRow>k__BackingField: 4
@@ -1673,12 +1619,6 @@ MonoBehaviour:
   <is_AI_Path>k__BackingField: 1
   <unitOnTile>k__BackingField: {fileID: 0}
   <disableUprootOnTile>k__BackingField: 0
-  validForUnitPlacementColor:
-    serializedVersion: 2
-    rgba: 0
-  invalidForUnitPlacementColor:
-    serializedVersion: 2
-    rgba: 0
   drawTileDebug: 1
   drawDebugRuntime: 1
   <tileNumInRow>k__BackingField: 9
@@ -1821,12 +1761,6 @@ MonoBehaviour:
   <is_AI_Path>k__BackingField: 0
   <unitOnTile>k__BackingField: {fileID: 0}
   <disableUprootOnTile>k__BackingField: 0
-  validForUnitPlacementColor:
-    serializedVersion: 2
-    rgba: 0
-  invalidForUnitPlacementColor:
-    serializedVersion: 2
-    rgba: 0
   drawTileDebug: 1
   drawDebugRuntime: 1
   <tileNumInRow>k__BackingField: 9
@@ -2070,12 +2004,6 @@ MonoBehaviour:
   <is_AI_Path>k__BackingField: 0
   <unitOnTile>k__BackingField: {fileID: 0}
   <disableUprootOnTile>k__BackingField: 0
-  validForUnitPlacementColor:
-    serializedVersion: 2
-    rgba: 0
-  invalidForUnitPlacementColor:
-    serializedVersion: 2
-    rgba: 0
   drawTileDebug: 1
   drawDebugRuntime: 1
   <tileNumInRow>k__BackingField: 6
@@ -2218,12 +2146,6 @@ MonoBehaviour:
   <is_AI_Path>k__BackingField: 0
   <unitOnTile>k__BackingField: {fileID: 0}
   <disableUprootOnTile>k__BackingField: 0
-  validForUnitPlacementColor:
-    serializedVersion: 2
-    rgba: 0
-  invalidForUnitPlacementColor:
-    serializedVersion: 2
-    rgba: 0
   drawTileDebug: 1
   drawDebugRuntime: 1
   <tileNumInRow>k__BackingField: 2
@@ -2366,12 +2288,6 @@ MonoBehaviour:
   <is_AI_Path>k__BackingField: 0
   <unitOnTile>k__BackingField: {fileID: 0}
   <disableUprootOnTile>k__BackingField: 0
-  validForUnitPlacementColor:
-    serializedVersion: 2
-    rgba: 0
-  invalidForUnitPlacementColor:
-    serializedVersion: 2
-    rgba: 0
   drawTileDebug: 1
   drawDebugRuntime: 1
   <tileNumInRow>k__BackingField: 3
@@ -2514,12 +2430,6 @@ MonoBehaviour:
   <is_AI_Path>k__BackingField: 0
   <unitOnTile>k__BackingField: {fileID: 0}
   <disableUprootOnTile>k__BackingField: 0
-  validForUnitPlacementColor:
-    serializedVersion: 2
-    rgba: 0
-  invalidForUnitPlacementColor:
-    serializedVersion: 2
-    rgba: 0
   drawTileDebug: 1
   drawDebugRuntime: 1
   <tileNumInRow>k__BackingField: 3
@@ -2729,6 +2639,10 @@ PrefabInstance:
       propertyPath: slotUnitScriptableObject
       value: 
       objectReference: {fileID: 11400000, guid: 462832fdbbb9cc34d8a23db6909e48c7, type: 2}
+    - target: {fileID: 8336062919121141092, guid: be51dee99d5dc4942855546c15466bf0, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -0.050964355
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: be51dee99d5dc4942855546c15466bf0, type: 3}
 --- !u!224 &760064902 stripped
@@ -2772,12 +2686,6 @@ MonoBehaviour:
   <is_AI_Path>k__BackingField: 1
   <unitOnTile>k__BackingField: {fileID: 0}
   <disableUprootOnTile>k__BackingField: 0
-  validForUnitPlacementColor:
-    serializedVersion: 2
-    rgba: 0
-  invalidForUnitPlacementColor:
-    serializedVersion: 2
-    rgba: 0
   drawTileDebug: 1
   drawDebugRuntime: 1
   <tileNumInRow>k__BackingField: 2
@@ -3069,12 +2977,6 @@ MonoBehaviour:
   <is_AI_Path>k__BackingField: 0
   <unitOnTile>k__BackingField: {fileID: 0}
   <disableUprootOnTile>k__BackingField: 0
-  validForUnitPlacementColor:
-    serializedVersion: 2
-    rgba: 0
-  invalidForUnitPlacementColor:
-    serializedVersion: 2
-    rgba: 0
   drawTileDebug: 1
   drawDebugRuntime: 1
   <tileNumInRow>k__BackingField: 6
@@ -3217,12 +3119,6 @@ MonoBehaviour:
   <is_AI_Path>k__BackingField: 0
   <unitOnTile>k__BackingField: {fileID: 0}
   <disableUprootOnTile>k__BackingField: 0
-  validForUnitPlacementColor:
-    serializedVersion: 2
-    rgba: 0
-  invalidForUnitPlacementColor:
-    serializedVersion: 2
-    rgba: 0
   drawTileDebug: 1
   drawDebugRuntime: 1
   <tileNumInRow>k__BackingField: 7
@@ -3365,12 +3261,6 @@ MonoBehaviour:
   <is_AI_Path>k__BackingField: 1
   <unitOnTile>k__BackingField: {fileID: 0}
   <disableUprootOnTile>k__BackingField: 0
-  validForUnitPlacementColor:
-    serializedVersion: 2
-    rgba: 0
-  invalidForUnitPlacementColor:
-    serializedVersion: 2
-    rgba: 0
   drawTileDebug: 1
   drawDebugRuntime: 1
   <tileNumInRow>k__BackingField: 3
@@ -3513,12 +3403,6 @@ MonoBehaviour:
   <is_AI_Path>k__BackingField: 0
   <unitOnTile>k__BackingField: {fileID: 0}
   <disableUprootOnTile>k__BackingField: 0
-  validForUnitPlacementColor:
-    serializedVersion: 2
-    rgba: 0
-  invalidForUnitPlacementColor:
-    serializedVersion: 2
-    rgba: 0
   drawTileDebug: 1
   drawDebugRuntime: 1
   <tileNumInRow>k__BackingField: 8
@@ -3661,12 +3545,6 @@ MonoBehaviour:
   <is_AI_Path>k__BackingField: 0
   <unitOnTile>k__BackingField: {fileID: 0}
   <disableUprootOnTile>k__BackingField: 0
-  validForUnitPlacementColor:
-    serializedVersion: 2
-    rgba: 0
-  invalidForUnitPlacementColor:
-    serializedVersion: 2
-    rgba: 0
   drawTileDebug: 1
   drawDebugRuntime: 1
   <tileNumInRow>k__BackingField: 4
@@ -3809,12 +3687,6 @@ MonoBehaviour:
   <is_AI_Path>k__BackingField: 0
   <unitOnTile>k__BackingField: {fileID: 0}
   <disableUprootOnTile>k__BackingField: 0
-  validForUnitPlacementColor:
-    serializedVersion: 2
-    rgba: 0
-  invalidForUnitPlacementColor:
-    serializedVersion: 2
-    rgba: 0
   drawTileDebug: 1
   drawDebugRuntime: 1
   <tileNumInRow>k__BackingField: 1
@@ -3962,12 +3834,6 @@ MonoBehaviour:
   <is_AI_Path>k__BackingField: 0
   <unitOnTile>k__BackingField: {fileID: 0}
   <disableUprootOnTile>k__BackingField: 0
-  validForUnitPlacementColor:
-    serializedVersion: 2
-    rgba: 0
-  invalidForUnitPlacementColor:
-    serializedVersion: 2
-    rgba: 0
   drawTileDebug: 1
   drawDebugRuntime: 1
   <tileNumInRow>k__BackingField: 1
@@ -4110,12 +3976,6 @@ MonoBehaviour:
   <is_AI_Path>k__BackingField: 0
   <unitOnTile>k__BackingField: {fileID: 0}
   <disableUprootOnTile>k__BackingField: 0
-  validForUnitPlacementColor:
-    serializedVersion: 2
-    rgba: 0
-  invalidForUnitPlacementColor:
-    serializedVersion: 2
-    rgba: 0
   drawTileDebug: 1
   drawDebugRuntime: 1
   <tileNumInRow>k__BackingField: 1
@@ -4258,12 +4118,6 @@ MonoBehaviour:
   <is_AI_Path>k__BackingField: 1
   <unitOnTile>k__BackingField: {fileID: 0}
   <disableUprootOnTile>k__BackingField: 0
-  validForUnitPlacementColor:
-    serializedVersion: 2
-    rgba: 0
-  invalidForUnitPlacementColor:
-    serializedVersion: 2
-    rgba: 0
   drawTileDebug: 1
   drawDebugRuntime: 1
   <tileNumInRow>k__BackingField: 7
@@ -4490,12 +4344,6 @@ MonoBehaviour:
   <is_AI_Path>k__BackingField: 1
   <unitOnTile>k__BackingField: {fileID: 0}
   <disableUprootOnTile>k__BackingField: 0
-  validForUnitPlacementColor:
-    serializedVersion: 2
-    rgba: 0
-  invalidForUnitPlacementColor:
-    serializedVersion: 2
-    rgba: 0
   drawTileDebug: 1
   drawDebugRuntime: 1
   <tileNumInRow>k__BackingField: 2
@@ -4638,12 +4486,6 @@ MonoBehaviour:
   <is_AI_Path>k__BackingField: 1
   <unitOnTile>k__BackingField: {fileID: 0}
   <disableUprootOnTile>k__BackingField: 0
-  validForUnitPlacementColor:
-    serializedVersion: 2
-    rgba: 0
-  invalidForUnitPlacementColor:
-    serializedVersion: 2
-    rgba: 0
   drawTileDebug: 1
   drawDebugRuntime: 1
   <tileNumInRow>k__BackingField: 1
@@ -4786,12 +4628,6 @@ MonoBehaviour:
   <is_AI_Path>k__BackingField: 0
   <unitOnTile>k__BackingField: {fileID: 0}
   <disableUprootOnTile>k__BackingField: 0
-  validForUnitPlacementColor:
-    serializedVersion: 2
-    rgba: 0
-  invalidForUnitPlacementColor:
-    serializedVersion: 2
-    rgba: 0
   drawTileDebug: 1
   drawDebugRuntime: 1
   <tileNumInRow>k__BackingField: 8
@@ -4934,12 +4770,6 @@ MonoBehaviour:
   <is_AI_Path>k__BackingField: 0
   <unitOnTile>k__BackingField: {fileID: 0}
   <disableUprootOnTile>k__BackingField: 0
-  validForUnitPlacementColor:
-    serializedVersion: 2
-    rgba: 0
-  invalidForUnitPlacementColor:
-    serializedVersion: 2
-    rgba: 0
   drawTileDebug: 1
   drawDebugRuntime: 1
   <tileNumInRow>k__BackingField: 7
@@ -5082,12 +4912,6 @@ MonoBehaviour:
   <is_AI_Path>k__BackingField: 1
   <unitOnTile>k__BackingField: {fileID: 0}
   <disableUprootOnTile>k__BackingField: 0
-  validForUnitPlacementColor:
-    serializedVersion: 2
-    rgba: 0
-  invalidForUnitPlacementColor:
-    serializedVersion: 2
-    rgba: 0
   drawTileDebug: 1
   drawDebugRuntime: 1
   <tileNumInRow>k__BackingField: 0
@@ -5230,12 +5054,6 @@ MonoBehaviour:
   <is_AI_Path>k__BackingField: 0
   <unitOnTile>k__BackingField: {fileID: 0}
   <disableUprootOnTile>k__BackingField: 0
-  validForUnitPlacementColor:
-    serializedVersion: 2
-    rgba: 0
-  invalidForUnitPlacementColor:
-    serializedVersion: 2
-    rgba: 0
   drawTileDebug: 1
   drawDebugRuntime: 1
   <tileNumInRow>k__BackingField: 9
@@ -5378,12 +5196,6 @@ MonoBehaviour:
   <is_AI_Path>k__BackingField: 0
   <unitOnTile>k__BackingField: {fileID: 0}
   <disableUprootOnTile>k__BackingField: 0
-  validForUnitPlacementColor:
-    serializedVersion: 2
-    rgba: 0
-  invalidForUnitPlacementColor:
-    serializedVersion: 2
-    rgba: 0
   drawTileDebug: 1
   drawDebugRuntime: 1
   <tileNumInRow>k__BackingField: 3
@@ -5526,12 +5338,6 @@ MonoBehaviour:
   <is_AI_Path>k__BackingField: 0
   <unitOnTile>k__BackingField: {fileID: 0}
   <disableUprootOnTile>k__BackingField: 0
-  validForUnitPlacementColor:
-    serializedVersion: 2
-    rgba: 0
-  invalidForUnitPlacementColor:
-    serializedVersion: 2
-    rgba: 0
   drawTileDebug: 1
   drawDebugRuntime: 1
   <tileNumInRow>k__BackingField: 8
@@ -5674,12 +5480,6 @@ MonoBehaviour:
   <is_AI_Path>k__BackingField: 0
   <unitOnTile>k__BackingField: {fileID: 0}
   <disableUprootOnTile>k__BackingField: 0
-  validForUnitPlacementColor:
-    serializedVersion: 2
-    rgba: 0
-  invalidForUnitPlacementColor:
-    serializedVersion: 2
-    rgba: 0
   drawTileDebug: 1
   drawDebugRuntime: 1
   <tileNumInRow>k__BackingField: 7
@@ -5822,12 +5622,6 @@ MonoBehaviour:
   <is_AI_Path>k__BackingField: 0
   <unitOnTile>k__BackingField: {fileID: 0}
   <disableUprootOnTile>k__BackingField: 0
-  validForUnitPlacementColor:
-    serializedVersion: 2
-    rgba: 0
-  invalidForUnitPlacementColor:
-    serializedVersion: 2
-    rgba: 0
   drawTileDebug: 1
   drawDebugRuntime: 1
   <tileNumInRow>k__BackingField: 9
@@ -5970,12 +5764,6 @@ MonoBehaviour:
   <is_AI_Path>k__BackingField: 0
   <unitOnTile>k__BackingField: {fileID: 0}
   <disableUprootOnTile>k__BackingField: 0
-  validForUnitPlacementColor:
-    serializedVersion: 2
-    rgba: 0
-  invalidForUnitPlacementColor:
-    serializedVersion: 2
-    rgba: 0
   drawTileDebug: 1
   drawDebugRuntime: 1
   <tileNumInRow>k__BackingField: 0
@@ -6186,12 +5974,6 @@ MonoBehaviour:
   <is_AI_Path>k__BackingField: 1
   <unitOnTile>k__BackingField: {fileID: 0}
   <disableUprootOnTile>k__BackingField: 0
-  validForUnitPlacementColor:
-    serializedVersion: 2
-    rgba: 0
-  invalidForUnitPlacementColor:
-    serializedVersion: 2
-    rgba: 0
   drawTileDebug: 1
   drawDebugRuntime: 1
   <tileNumInRow>k__BackingField: 0
@@ -6334,12 +6116,6 @@ MonoBehaviour:
   <is_AI_Path>k__BackingField: 0
   <unitOnTile>k__BackingField: {fileID: 0}
   <disableUprootOnTile>k__BackingField: 0
-  validForUnitPlacementColor:
-    serializedVersion: 2
-    rgba: 0
-  invalidForUnitPlacementColor:
-    serializedVersion: 2
-    rgba: 0
   drawTileDebug: 1
   drawDebugRuntime: 1
   <tileNumInRow>k__BackingField: 5
@@ -6482,12 +6258,6 @@ MonoBehaviour:
   <is_AI_Path>k__BackingField: 0
   <unitOnTile>k__BackingField: {fileID: 0}
   <disableUprootOnTile>k__BackingField: 0
-  validForUnitPlacementColor:
-    serializedVersion: 2
-    rgba: 0
-  invalidForUnitPlacementColor:
-    serializedVersion: 2
-    rgba: 0
   drawTileDebug: 1
   drawDebugRuntime: 1
   <tileNumInRow>k__BackingField: 6
@@ -6630,12 +6400,6 @@ MonoBehaviour:
   <is_AI_Path>k__BackingField: 0
   <unitOnTile>k__BackingField: {fileID: 0}
   <disableUprootOnTile>k__BackingField: 0
-  validForUnitPlacementColor:
-    serializedVersion: 2
-    rgba: 0
-  invalidForUnitPlacementColor:
-    serializedVersion: 2
-    rgba: 0
   drawTileDebug: 1
   drawDebugRuntime: 1
   <tileNumInRow>k__BackingField: 7
@@ -6845,6 +6609,10 @@ PrefabInstance:
       propertyPath: slotUnitScriptableObject
       value: 
       objectReference: {fileID: 11400000, guid: ebe49aa0d994d7d488c580c1a9bccd35, type: 2}
+    - target: {fileID: 8336062919121141092, guid: be51dee99d5dc4942855546c15466bf0, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -0.050964355
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: be51dee99d5dc4942855546c15466bf0, type: 3}
 --- !u!224 &1680956084 stripped
@@ -6955,6 +6723,10 @@ PrefabInstance:
       propertyPath: slotUnitScriptableObject
       value: 
       objectReference: {fileID: 11400000, guid: fc94d0fdc5f03f84f9a5e5adc012486b, type: 2}
+    - target: {fileID: 8336062919121141092, guid: be51dee99d5dc4942855546c15466bf0, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -0.050964355
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: be51dee99d5dc4942855546c15466bf0, type: 3}
 --- !u!224 &1693266775 stripped
@@ -6998,12 +6770,6 @@ MonoBehaviour:
   <is_AI_Path>k__BackingField: 0
   <unitOnTile>k__BackingField: {fileID: 0}
   <disableUprootOnTile>k__BackingField: 0
-  validForUnitPlacementColor:
-    serializedVersion: 2
-    rgba: 0
-  invalidForUnitPlacementColor:
-    serializedVersion: 2
-    rgba: 0
   drawTileDebug: 1
   drawDebugRuntime: 1
   <tileNumInRow>k__BackingField: 2
@@ -7146,12 +6912,6 @@ MonoBehaviour:
   <is_AI_Path>k__BackingField: 1
   <unitOnTile>k__BackingField: {fileID: 0}
   <disableUprootOnTile>k__BackingField: 0
-  validForUnitPlacementColor:
-    serializedVersion: 2
-    rgba: 0
-  invalidForUnitPlacementColor:
-    serializedVersion: 2
-    rgba: 0
   drawTileDebug: 1
   drawDebugRuntime: 1
   <tileNumInRow>k__BackingField: 8
@@ -7327,7 +7087,7 @@ Canvas:
   m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 0
-  m_Camera: {fileID: 0}
+  m_Camera: {fileID: 519420031}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
@@ -7395,12 +7155,6 @@ MonoBehaviour:
   <is_AI_Path>k__BackingField: 1
   <unitOnTile>k__BackingField: {fileID: 0}
   <disableUprootOnTile>k__BackingField: 0
-  validForUnitPlacementColor:
-    serializedVersion: 2
-    rgba: 0
-  invalidForUnitPlacementColor:
-    serializedVersion: 2
-    rgba: 0
   drawTileDebug: 1
   drawDebugRuntime: 1
   <tileNumInRow>k__BackingField: 5
@@ -7543,12 +7297,6 @@ MonoBehaviour:
   <is_AI_Path>k__BackingField: 0
   <unitOnTile>k__BackingField: {fileID: 0}
   <disableUprootOnTile>k__BackingField: 0
-  validForUnitPlacementColor:
-    serializedVersion: 2
-    rgba: 0
-  invalidForUnitPlacementColor:
-    serializedVersion: 2
-    rgba: 0
   drawTileDebug: 1
   drawDebugRuntime: 1
   <tileNumInRow>k__BackingField: 4
@@ -7691,12 +7439,6 @@ MonoBehaviour:
   <is_AI_Path>k__BackingField: 1
   <unitOnTile>k__BackingField: {fileID: 0}
   <disableUprootOnTile>k__BackingField: 0
-  validForUnitPlacementColor:
-    serializedVersion: 2
-    rgba: 0
-  invalidForUnitPlacementColor:
-    serializedVersion: 2
-    rgba: 0
   drawTileDebug: 1
   drawDebugRuntime: 1
   <tileNumInRow>k__BackingField: 8
@@ -7839,12 +7581,6 @@ MonoBehaviour:
   <is_AI_Path>k__BackingField: 1
   <unitOnTile>k__BackingField: {fileID: 0}
   <disableUprootOnTile>k__BackingField: 0
-  validForUnitPlacementColor:
-    serializedVersion: 2
-    rgba: 0
-  invalidForUnitPlacementColor:
-    serializedVersion: 2
-    rgba: 0
   drawTileDebug: 1
   drawDebugRuntime: 1
   <tileNumInRow>k__BackingField: 5
@@ -8054,6 +7790,10 @@ PrefabInstance:
       propertyPath: slotUnitScriptableObject
       value: 
       objectReference: {fileID: 11400000, guid: ca3a624e41d0f4943b68363d2452017e, type: 2}
+    - target: {fileID: 8336062919121141092, guid: be51dee99d5dc4942855546c15466bf0, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -0.050964355
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: be51dee99d5dc4942855546c15466bf0, type: 3}
 --- !u!224 &2021938062 stripped
@@ -8097,12 +7837,6 @@ MonoBehaviour:
   <is_AI_Path>k__BackingField: 1
   <unitOnTile>k__BackingField: {fileID: 0}
   <disableUprootOnTile>k__BackingField: 0
-  validForUnitPlacementColor:
-    serializedVersion: 2
-    rgba: 0
-  invalidForUnitPlacementColor:
-    serializedVersion: 2
-    rgba: 0
   drawTileDebug: 1
   drawDebugRuntime: 1
   <tileNumInRow>k__BackingField: 2
@@ -8245,12 +7979,6 @@ MonoBehaviour:
   <is_AI_Path>k__BackingField: 0
   <unitOnTile>k__BackingField: {fileID: 0}
   <disableUprootOnTile>k__BackingField: 0
-  validForUnitPlacementColor:
-    serializedVersion: 2
-    rgba: 0
-  invalidForUnitPlacementColor:
-    serializedVersion: 2
-    rgba: 0
   drawTileDebug: 1
   drawDebugRuntime: 1
   <tileNumInRow>k__BackingField: 0
@@ -8473,12 +8201,6 @@ MonoBehaviour:
   <is_AI_Path>k__BackingField: 0
   <unitOnTile>k__BackingField: {fileID: 0}
   <disableUprootOnTile>k__BackingField: 0
-  validForUnitPlacementColor:
-    serializedVersion: 2
-    rgba: 0
-  invalidForUnitPlacementColor:
-    serializedVersion: 2
-    rgba: 0
   drawTileDebug: 1
   drawDebugRuntime: 1
   <tileNumInRow>k__BackingField: 5
@@ -8621,12 +8343,6 @@ MonoBehaviour:
   <is_AI_Path>k__BackingField: 0
   <unitOnTile>k__BackingField: {fileID: 0}
   <disableUprootOnTile>k__BackingField: 0
-  validForUnitPlacementColor:
-    serializedVersion: 2
-    rgba: 0
-  invalidForUnitPlacementColor:
-    serializedVersion: 2
-    rgba: 0
   drawTileDebug: 1
   drawDebugRuntime: 1
   <tileNumInRow>k__BackingField: 9
@@ -8836,5 +8552,9 @@ PrefabInstance:
       propertyPath: slotUnitScriptableObject
       value: 
       objectReference: {fileID: 11400000, guid: b027c0987efb0b34bada201c95f907f2, type: 2}
+    - target: {fileID: 8336062919121141092, guid: be51dee99d5dc4942855546c15466bf0, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -0.050964355
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: be51dee99d5dc4942855546c15466bf0, type: 3}
