@@ -16,7 +16,7 @@ MonoBehaviour:
   <displayName>k__BackingField: Clover
   <unitDescription>k__BackingField: 
   <unitThumbnail>k__BackingField: {fileID: 0}
-  <unitPrefab>k__BackingField: {fileID: 0}
+  <unitPrefab>k__BackingField: {fileID: 3455637724528575129, guid: 529170a0d02545c4dabc3484d23cc29f, type: 3}
   <waterBars>k__BackingField: 0
   <damage>k__BackingField: 0
   <attackSpeed>k__BackingField: 0
@@ -25,4 +25,5 @@ MonoBehaviour:
   <pollinatorMultiplier>k__BackingField: 0
   <isPlacableOnPath>k__BackingField: 0
   <plantingCoinCost>k__BackingField: 0
+  <uprootRefundAmount>k__BackingField: 0
   <waterUse>k__BackingField: 0

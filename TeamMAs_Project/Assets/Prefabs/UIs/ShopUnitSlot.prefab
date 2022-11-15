@@ -146,6 +146,7 @@ GameObject:
   - component: {fileID: 8730419436182369114}
   - component: {fileID: 6212412136482552788}
   - component: {fileID: 6717963996802540151}
+  - component: {fileID: 1661851329695442543}
   m_Layer: 5
   m_Name: IconUseForDragDrop
   m_TagString: Untagged
@@ -211,6 +212,18 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!225 &1661851329695442543
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3114686657344851435}
+  m_Enabled: 1
+  m_Alpha: 0.4
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
+  m_IgnoreParentGroups: 0
 --- !u!1 &3715392631093969825
 GameObject:
   m_ObjectHideFlags: 0
@@ -451,5 +464,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 650a2032a62aba841bea791f79d228d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  slotUnitScriptableObject: {fileID: 0}
+  unitNameDisplay: {fileID: 3715392631093969831}
+  unitCostDisplay: {fileID: 4703558203936099925}
   dragDropUIImageObject: {fileID: 6717963996802540151}
+  useUnitThumbnailFromScriptableObject: 1
   dragDropVisualSameAsShopSlots: 1

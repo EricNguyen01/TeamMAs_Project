@@ -16,7 +16,7 @@ MonoBehaviour:
   <displayName>k__BackingField: AH
   <unitDescription>k__BackingField: 
   <unitThumbnail>k__BackingField: {fileID: 0}
-  <unitPrefab>k__BackingField: {fileID: 0}
+  <unitPrefab>k__BackingField: {fileID: 2090201727753816829, guid: 7413616505f05f64fa85280265c954c2, type: 3}
   <waterBars>k__BackingField: 0
   <damage>k__BackingField: 0
   <attackSpeed>k__BackingField: 0
@@ -25,4 +25,5 @@ MonoBehaviour:
   <pollinatorMultiplier>k__BackingField: 0
   <isPlacableOnPath>k__BackingField: 0
   <plantingCoinCost>k__BackingField: 0
+  <uprootRefundAmount>k__BackingField: 0
   <waterUse>k__BackingField: 0

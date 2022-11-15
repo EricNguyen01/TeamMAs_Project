@@ -9,7 +9,7 @@ using UnityEditor;
 
 namespace TeamMAsTD
 {
-    [ExecuteInEditMode]
+    //[ExecuteInEditMode]
     public class Tile : MonoBehaviour
     {
         [field: Header("Tile Properties")]
@@ -18,11 +18,13 @@ namespace TeamMAsTD
         [field: SerializeField] public Unit unitOnTile { get; private set; }
         [field: SerializeField] public bool disableUprootOnTile { get; private set; } = false;
 
-        [SerializeField] private Color32 validForUnitPlacementColor;
-        [SerializeField] private Color32 invalidForUnitPlacementColor;
-
         [Header("Tile Debug Config")]
         [SerializeField] private bool drawTileDebug = true;
+
+        [SerializeField]
+        [Tooltip("Draw the tile color debug (e.g: green for plantable, grey for rocks, etc). " +
+        "Dont forget to turn this to false if we have an actual tile with its own color on the tile sprite renderer.")]
+        private bool drawDebugRuntime = true;
 
         //Internal........................................................
         [field: SerializeField] [field: HideInInspector]
@@ -44,6 +46,14 @@ namespace TeamMAsTD
             if(spriteRenderer == null)
             {
                 spriteRenderer = gameObject.AddComponent<SpriteRenderer>();
+            }
+
+            if (drawDebugRuntime)
+            {
+                if (isOccupied) spriteRenderer.color = Color.grey;
+                else spriteRenderer.color = Color.green;
+
+                if (is_AI_Path) spriteRenderer.color = Color.red;
             }
         }
 
@@ -74,26 +84,18 @@ namespace TeamMAsTD
             gameObject.name = "Tile" + tileNumInRow.ToString() + "." + tileNumInColumn.ToString();
         }
 
-        public void DisplayUnitPlaceableIndicatorAndColor(UnitSO unitSO)
-        {
-            if (CanPlaceUnit(unitSO))
-            {
-                //placeable -> change tile overlay color to valid color
-                spriteRenderer.color = validForUnitPlacementColor;
-                //if we want to have other color/effects/anim for this indicator->place them here
-                return;
-            }
-
-            //unplaceable->change tile overlay color to invalid color
-            spriteRenderer.color = invalidForUnitPlacementColor;
-            //if we want to have other color/effects/anim for this indicator->place them here
-        }
-
         //This function place a unit on this tile using the provided Unit scriptable object
-        public void PlaceUnit(UnitSO unitSO)//take in the unit scriptable object as an argument
+        public bool PlaceUnit(UnitSO unitSO)//take in the unit scriptable object as an argument
         {
             //if can't place unit on this tile->do nothing
-            if (!CanPlaceUnit(unitSO)) return;
+            if (!CanPlaceUnit(unitSO)) return false;
+
+            if(unitSO.unitPrefab == null)
+            {
+                Debug.LogError("A unit: " + unitSO.displayName + "is being planted on tile: " + name + 
+                " without a unit prefab data assigned in the unit scriptable object! Unit placement failed!");
+                return false;
+            }
 
             //if can place unit on this tile:
             //make new unit on center of this tile and make this unit children of this tile
@@ -109,6 +111,7 @@ namespace TeamMAsTD
             }
 
             unitOnTile = unit;
+            return true;
         }
 
         public void UprootUnit()

@@ -166,6 +166,7 @@ MonoBehaviour:
     serializedVersion: 2
     rgba: 0
   drawTileDebug: 1
+  drawDebugRuntime: 1
   <tileNumInRow>k__BackingField: 3
   <tileNumInColumn>k__BackingField: 0
   <gridParent>k__BackingField: {fileID: 830625743}
@@ -302,7 +303,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ec1b4549928bf346962b093309ae319, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <isOccupied>k__BackingField: 0
+  <isOccupied>k__BackingField: 1
   <is_AI_Path>k__BackingField: 0
   <unitOnTile>k__BackingField: {fileID: 0}
   <disableUprootOnTile>k__BackingField: 0
@@ -313,6 +314,7 @@ MonoBehaviour:
     serializedVersion: 2
     rgba: 0
   drawTileDebug: 1
+  drawDebugRuntime: 1
   <tileNumInRow>k__BackingField: 1
   <tileNumInColumn>k__BackingField: 0
   <gridParent>k__BackingField: {fileID: 830625743}
@@ -450,7 +452,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <isOccupied>k__BackingField: 0
-  <is_AI_Path>k__BackingField: 0
+  <is_AI_Path>k__BackingField: 1
   <unitOnTile>k__BackingField: {fileID: 0}
   <disableUprootOnTile>k__BackingField: 0
   validForUnitPlacementColor:
@@ -460,6 +462,7 @@ MonoBehaviour:
     serializedVersion: 2
     rgba: 0
   drawTileDebug: 1
+  drawDebugRuntime: 1
   <tileNumInRow>k__BackingField: 4
   <tileNumInColumn>k__BackingField: 3
   <gridParent>k__BackingField: {fileID: 830625743}
@@ -596,7 +599,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ec1b4549928bf346962b093309ae319, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <isOccupied>k__BackingField: 0
+  <isOccupied>k__BackingField: 1
   <is_AI_Path>k__BackingField: 0
   <unitOnTile>k__BackingField: {fileID: 0}
   <disableUprootOnTile>k__BackingField: 0
@@ -607,6 +610,7 @@ MonoBehaviour:
     serializedVersion: 2
     rgba: 0
   drawTileDebug: 1
+  drawDebugRuntime: 1
   <tileNumInRow>k__BackingField: 6
   <tileNumInColumn>k__BackingField: 0
   <gridParent>k__BackingField: {fileID: 830625743}
@@ -754,6 +758,7 @@ MonoBehaviour:
     serializedVersion: 2
     rgba: 0
   drawTileDebug: 1
+  drawDebugRuntime: 1
   <tileNumInRow>k__BackingField: 0
   <tileNumInColumn>k__BackingField: 4
   <gridParent>k__BackingField: {fileID: 830625743}
@@ -991,6 +996,7 @@ MonoBehaviour:
     serializedVersion: 2
     rgba: 0
   drawTileDebug: 1
+  drawDebugRuntime: 1
   <tileNumInRow>k__BackingField: 4
   <tileNumInColumn>k__BackingField: 0
   <gridParent>k__BackingField: {fileID: 830625743}
@@ -1128,7 +1134,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <isOccupied>k__BackingField: 0
-  <is_AI_Path>k__BackingField: 0
+  <is_AI_Path>k__BackingField: 1
   <unitOnTile>k__BackingField: {fileID: 0}
   <disableUprootOnTile>k__BackingField: 0
   validForUnitPlacementColor:
@@ -1138,6 +1144,7 @@ MonoBehaviour:
     serializedVersion: 2
     rgba: 0
   drawTileDebug: 1
+  drawDebugRuntime: 1
   <tileNumInRow>k__BackingField: 5
   <tileNumInColumn>k__BackingField: 1
   <gridParent>k__BackingField: {fileID: 830625743}
@@ -1275,7 +1282,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <isOccupied>k__BackingField: 0
-  <is_AI_Path>k__BackingField: 0
+  <is_AI_Path>k__BackingField: 1
   <unitOnTile>k__BackingField: {fileID: 0}
   <disableUprootOnTile>k__BackingField: 0
   validForUnitPlacementColor:
@@ -1285,6 +1292,7 @@ MonoBehaviour:
     serializedVersion: 2
     rgba: 0
   drawTileDebug: 1
+  drawDebugRuntime: 1
   <tileNumInRow>k__BackingField: 6
   <tileNumInColumn>k__BackingField: 1
   <gridParent>k__BackingField: {fileID: 830625743}
@@ -1430,7 +1438,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.039978027, y: -0.66000366}
+  m_AnchoredPosition: {x: 0.039978027, y: -0.6600342}
   m_SizeDelta: {x: 0.07998657, y: 1.3099976}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &456450629
@@ -1513,7 +1521,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ec1b4549928bf346962b093309ae319, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <isOccupied>k__BackingField: 0
+  <isOccupied>k__BackingField: 1
   <is_AI_Path>k__BackingField: 0
   <unitOnTile>k__BackingField: {fileID: 0}
   <disableUprootOnTile>k__BackingField: 0
@@ -1524,6 +1532,7 @@ MonoBehaviour:
     serializedVersion: 2
     rgba: 0
   drawTileDebug: 1
+  drawDebugRuntime: 1
   <tileNumInRow>k__BackingField: 4
   <tileNumInColumn>k__BackingField: 4
   <gridParent>k__BackingField: {fileID: 830625743}
@@ -1661,7 +1670,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <isOccupied>k__BackingField: 0
-  <is_AI_Path>k__BackingField: 0
+  <is_AI_Path>k__BackingField: 1
   <unitOnTile>k__BackingField: {fileID: 0}
   <disableUprootOnTile>k__BackingField: 0
   validForUnitPlacementColor:
@@ -1671,6 +1680,7 @@ MonoBehaviour:
     serializedVersion: 2
     rgba: 0
   drawTileDebug: 1
+  drawDebugRuntime: 1
   <tileNumInRow>k__BackingField: 9
   <tileNumInColumn>k__BackingField: 2
   <gridParent>k__BackingField: {fileID: 830625743}
@@ -1818,6 +1828,7 @@ MonoBehaviour:
     serializedVersion: 2
     rgba: 0
   drawTileDebug: 1
+  drawDebugRuntime: 1
   <tileNumInRow>k__BackingField: 9
   <tileNumInColumn>k__BackingField: 0
   <gridParent>k__BackingField: {fileID: 830625743}
@@ -2066,6 +2077,7 @@ MonoBehaviour:
     serializedVersion: 2
     rgba: 0
   drawTileDebug: 1
+  drawDebugRuntime: 1
   <tileNumInRow>k__BackingField: 6
   <tileNumInColumn>k__BackingField: 3
   <gridParent>k__BackingField: {fileID: 830625743}
@@ -2213,6 +2225,7 @@ MonoBehaviour:
     serializedVersion: 2
     rgba: 0
   drawTileDebug: 1
+  drawDebugRuntime: 1
   <tileNumInRow>k__BackingField: 2
   <tileNumInColumn>k__BackingField: 0
   <gridParent>k__BackingField: {fileID: 830625743}
@@ -2360,6 +2373,7 @@ MonoBehaviour:
     serializedVersion: 2
     rgba: 0
   drawTileDebug: 1
+  drawDebugRuntime: 1
   <tileNumInRow>k__BackingField: 3
   <tileNumInColumn>k__BackingField: 1
   <gridParent>k__BackingField: {fileID: 830625743}
@@ -2507,6 +2521,7 @@ MonoBehaviour:
     serializedVersion: 2
     rgba: 0
   drawTileDebug: 1
+  drawDebugRuntime: 1
   <tileNumInRow>k__BackingField: 3
   <tileNumInColumn>k__BackingField: 2
   <gridParent>k__BackingField: {fileID: 830625743}
@@ -2754,7 +2769,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <isOccupied>k__BackingField: 0
-  <is_AI_Path>k__BackingField: 0
+  <is_AI_Path>k__BackingField: 1
   <unitOnTile>k__BackingField: {fileID: 0}
   <disableUprootOnTile>k__BackingField: 0
   validForUnitPlacementColor:
@@ -2764,6 +2779,7 @@ MonoBehaviour:
     serializedVersion: 2
     rgba: 0
   drawTileDebug: 1
+  drawDebugRuntime: 1
   <tileNumInRow>k__BackingField: 2
   <tileNumInColumn>k__BackingField: 2
   <gridParent>k__BackingField: {fileID: 830625743}
@@ -3060,6 +3076,7 @@ MonoBehaviour:
     serializedVersion: 2
     rgba: 0
   drawTileDebug: 1
+  drawDebugRuntime: 1
   <tileNumInRow>k__BackingField: 6
   <tileNumInColumn>k__BackingField: 2
   <gridParent>k__BackingField: {fileID: 830625743}
@@ -3207,6 +3224,7 @@ MonoBehaviour:
     serializedVersion: 2
     rgba: 0
   drawTileDebug: 1
+  drawDebugRuntime: 1
   <tileNumInRow>k__BackingField: 7
   <tileNumInColumn>k__BackingField: 3
   <gridParent>k__BackingField: {fileID: 830625743}
@@ -3344,7 +3362,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <isOccupied>k__BackingField: 0
-  <is_AI_Path>k__BackingField: 0
+  <is_AI_Path>k__BackingField: 1
   <unitOnTile>k__BackingField: {fileID: 0}
   <disableUprootOnTile>k__BackingField: 0
   validForUnitPlacementColor:
@@ -3354,6 +3372,7 @@ MonoBehaviour:
     serializedVersion: 2
     rgba: 0
   drawTileDebug: 1
+  drawDebugRuntime: 1
   <tileNumInRow>k__BackingField: 3
   <tileNumInColumn>k__BackingField: 3
   <gridParent>k__BackingField: {fileID: 830625743}
@@ -3501,6 +3520,7 @@ MonoBehaviour:
     serializedVersion: 2
     rgba: 0
   drawTileDebug: 1
+  drawDebugRuntime: 1
   <tileNumInRow>k__BackingField: 8
   <tileNumInColumn>k__BackingField: 0
   <gridParent>k__BackingField: {fileID: 830625743}
@@ -3648,6 +3668,7 @@ MonoBehaviour:
     serializedVersion: 2
     rgba: 0
   drawTileDebug: 1
+  drawDebugRuntime: 1
   <tileNumInRow>k__BackingField: 4
   <tileNumInColumn>k__BackingField: 1
   <gridParent>k__BackingField: {fileID: 830625743}
@@ -3795,6 +3816,7 @@ MonoBehaviour:
     serializedVersion: 2
     rgba: 0
   drawTileDebug: 1
+  drawDebugRuntime: 1
   <tileNumInRow>k__BackingField: 1
   <tileNumInColumn>k__BackingField: 3
   <gridParent>k__BackingField: {fileID: 830625743}
@@ -3947,6 +3969,7 @@ MonoBehaviour:
     serializedVersion: 2
     rgba: 0
   drawTileDebug: 1
+  drawDebugRuntime: 1
   <tileNumInRow>k__BackingField: 1
   <tileNumInColumn>k__BackingField: 2
   <gridParent>k__BackingField: {fileID: 830625743}
@@ -4083,7 +4106,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ec1b4549928bf346962b093309ae319, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <isOccupied>k__BackingField: 0
+  <isOccupied>k__BackingField: 1
   <is_AI_Path>k__BackingField: 0
   <unitOnTile>k__BackingField: {fileID: 0}
   <disableUprootOnTile>k__BackingField: 0
@@ -4094,6 +4117,7 @@ MonoBehaviour:
     serializedVersion: 2
     rgba: 0
   drawTileDebug: 1
+  drawDebugRuntime: 1
   <tileNumInRow>k__BackingField: 1
   <tileNumInColumn>k__BackingField: 4
   <gridParent>k__BackingField: {fileID: 830625743}
@@ -4231,7 +4255,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <isOccupied>k__BackingField: 0
-  <is_AI_Path>k__BackingField: 0
+  <is_AI_Path>k__BackingField: 1
   <unitOnTile>k__BackingField: {fileID: 0}
   <disableUprootOnTile>k__BackingField: 0
   validForUnitPlacementColor:
@@ -4241,6 +4265,7 @@ MonoBehaviour:
     serializedVersion: 2
     rgba: 0
   drawTileDebug: 1
+  drawDebugRuntime: 1
   <tileNumInRow>k__BackingField: 7
   <tileNumInColumn>k__BackingField: 1
   <gridParent>k__BackingField: {fileID: 830625743}
@@ -4462,7 +4487,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <isOccupied>k__BackingField: 0
-  <is_AI_Path>k__BackingField: 0
+  <is_AI_Path>k__BackingField: 1
   <unitOnTile>k__BackingField: {fileID: 0}
   <disableUprootOnTile>k__BackingField: 0
   validForUnitPlacementColor:
@@ -4472,6 +4497,7 @@ MonoBehaviour:
     serializedVersion: 2
     rgba: 0
   drawTileDebug: 1
+  drawDebugRuntime: 1
   <tileNumInRow>k__BackingField: 2
   <tileNumInColumn>k__BackingField: 3
   <gridParent>k__BackingField: {fileID: 830625743}
@@ -4609,7 +4635,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <isOccupied>k__BackingField: 0
-  <is_AI_Path>k__BackingField: 0
+  <is_AI_Path>k__BackingField: 1
   <unitOnTile>k__BackingField: {fileID: 0}
   <disableUprootOnTile>k__BackingField: 0
   validForUnitPlacementColor:
@@ -4619,6 +4645,7 @@ MonoBehaviour:
     serializedVersion: 2
     rgba: 0
   drawTileDebug: 1
+  drawDebugRuntime: 1
   <tileNumInRow>k__BackingField: 1
   <tileNumInColumn>k__BackingField: 1
   <gridParent>k__BackingField: {fileID: 830625743}
@@ -4766,6 +4793,7 @@ MonoBehaviour:
     serializedVersion: 2
     rgba: 0
   drawTileDebug: 1
+  drawDebugRuntime: 1
   <tileNumInRow>k__BackingField: 8
   <tileNumInColumn>k__BackingField: 4
   <gridParent>k__BackingField: {fileID: 830625743}
@@ -4902,7 +4930,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ec1b4549928bf346962b093309ae319, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <isOccupied>k__BackingField: 0
+  <isOccupied>k__BackingField: 1
   <is_AI_Path>k__BackingField: 0
   <unitOnTile>k__BackingField: {fileID: 0}
   <disableUprootOnTile>k__BackingField: 0
@@ -4913,6 +4941,7 @@ MonoBehaviour:
     serializedVersion: 2
     rgba: 0
   drawTileDebug: 1
+  drawDebugRuntime: 1
   <tileNumInRow>k__BackingField: 7
   <tileNumInColumn>k__BackingField: 2
   <gridParent>k__BackingField: {fileID: 830625743}
@@ -5050,7 +5079,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <isOccupied>k__BackingField: 0
-  <is_AI_Path>k__BackingField: 0
+  <is_AI_Path>k__BackingField: 1
   <unitOnTile>k__BackingField: {fileID: 0}
   <disableUprootOnTile>k__BackingField: 0
   validForUnitPlacementColor:
@@ -5060,6 +5089,7 @@ MonoBehaviour:
     serializedVersion: 2
     rgba: 0
   drawTileDebug: 1
+  drawDebugRuntime: 1
   <tileNumInRow>k__BackingField: 0
   <tileNumInColumn>k__BackingField: 1
   <gridParent>k__BackingField: {fileID: 830625743}
@@ -5207,6 +5237,7 @@ MonoBehaviour:
     serializedVersion: 2
     rgba: 0
   drawTileDebug: 1
+  drawDebugRuntime: 1
   <tileNumInRow>k__BackingField: 9
   <tileNumInColumn>k__BackingField: 3
   <gridParent>k__BackingField: {fileID: 830625743}
@@ -5354,6 +5385,7 @@ MonoBehaviour:
     serializedVersion: 2
     rgba: 0
   drawTileDebug: 1
+  drawDebugRuntime: 1
   <tileNumInRow>k__BackingField: 3
   <tileNumInColumn>k__BackingField: 4
   <gridParent>k__BackingField: {fileID: 830625743}
@@ -5501,6 +5533,7 @@ MonoBehaviour:
     serializedVersion: 2
     rgba: 0
   drawTileDebug: 1
+  drawDebugRuntime: 1
   <tileNumInRow>k__BackingField: 8
   <tileNumInColumn>k__BackingField: 3
   <gridParent>k__BackingField: {fileID: 830625743}
@@ -5648,6 +5681,7 @@ MonoBehaviour:
     serializedVersion: 2
     rgba: 0
   drawTileDebug: 1
+  drawDebugRuntime: 1
   <tileNumInRow>k__BackingField: 7
   <tileNumInColumn>k__BackingField: 0
   <gridParent>k__BackingField: {fileID: 830625743}
@@ -5795,6 +5829,7 @@ MonoBehaviour:
     serializedVersion: 2
     rgba: 0
   drawTileDebug: 1
+  drawDebugRuntime: 1
   <tileNumInRow>k__BackingField: 9
   <tileNumInColumn>k__BackingField: 1
   <gridParent>k__BackingField: {fileID: 830625743}
@@ -5942,6 +5977,7 @@ MonoBehaviour:
     serializedVersion: 2
     rgba: 0
   drawTileDebug: 1
+  drawDebugRuntime: 1
   <tileNumInRow>k__BackingField: 0
   <tileNumInColumn>k__BackingField: 3
   <gridParent>k__BackingField: {fileID: 830625743}
@@ -6147,7 +6183,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <isOccupied>k__BackingField: 0
-  <is_AI_Path>k__BackingField: 0
+  <is_AI_Path>k__BackingField: 1
   <unitOnTile>k__BackingField: {fileID: 0}
   <disableUprootOnTile>k__BackingField: 0
   validForUnitPlacementColor:
@@ -6157,6 +6193,7 @@ MonoBehaviour:
     serializedVersion: 2
     rgba: 0
   drawTileDebug: 1
+  drawDebugRuntime: 1
   <tileNumInRow>k__BackingField: 0
   <tileNumInColumn>k__BackingField: 2
   <gridParent>k__BackingField: {fileID: 830625743}
@@ -6293,7 +6330,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ec1b4549928bf346962b093309ae319, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <isOccupied>k__BackingField: 0
+  <isOccupied>k__BackingField: 1
   <is_AI_Path>k__BackingField: 0
   <unitOnTile>k__BackingField: {fileID: 0}
   <disableUprootOnTile>k__BackingField: 0
@@ -6304,6 +6341,7 @@ MonoBehaviour:
     serializedVersion: 2
     rgba: 0
   drawTileDebug: 1
+  drawDebugRuntime: 1
   <tileNumInRow>k__BackingField: 5
   <tileNumInColumn>k__BackingField: 0
   <gridParent>k__BackingField: {fileID: 830625743}
@@ -6451,6 +6489,7 @@ MonoBehaviour:
     serializedVersion: 2
     rgba: 0
   drawTileDebug: 1
+  drawDebugRuntime: 1
   <tileNumInRow>k__BackingField: 6
   <tileNumInColumn>k__BackingField: 4
   <gridParent>k__BackingField: {fileID: 830625743}
@@ -6598,6 +6637,7 @@ MonoBehaviour:
     serializedVersion: 2
     rgba: 0
   drawTileDebug: 1
+  drawDebugRuntime: 1
   <tileNumInRow>k__BackingField: 7
   <tileNumInColumn>k__BackingField: 4
   <gridParent>k__BackingField: {fileID: 830625743}
@@ -6965,6 +7005,7 @@ MonoBehaviour:
     serializedVersion: 2
     rgba: 0
   drawTileDebug: 1
+  drawDebugRuntime: 1
   <tileNumInRow>k__BackingField: 2
   <tileNumInColumn>k__BackingField: 4
   <gridParent>k__BackingField: {fileID: 830625743}
@@ -7102,7 +7143,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <isOccupied>k__BackingField: 0
-  <is_AI_Path>k__BackingField: 0
+  <is_AI_Path>k__BackingField: 1
   <unitOnTile>k__BackingField: {fileID: 0}
   <disableUprootOnTile>k__BackingField: 0
   validForUnitPlacementColor:
@@ -7112,6 +7153,7 @@ MonoBehaviour:
     serializedVersion: 2
     rgba: 0
   drawTileDebug: 1
+  drawDebugRuntime: 1
   <tileNumInRow>k__BackingField: 8
   <tileNumInColumn>k__BackingField: 1
   <gridParent>k__BackingField: {fileID: 830625743}
@@ -7310,7 +7352,7 @@ RectTransform:
   m_Children:
   - {fileID: 328431934}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -7350,7 +7392,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <isOccupied>k__BackingField: 0
-  <is_AI_Path>k__BackingField: 0
+  <is_AI_Path>k__BackingField: 1
   <unitOnTile>k__BackingField: {fileID: 0}
   <disableUprootOnTile>k__BackingField: 0
   validForUnitPlacementColor:
@@ -7360,6 +7402,7 @@ MonoBehaviour:
     serializedVersion: 2
     rgba: 0
   drawTileDebug: 1
+  drawDebugRuntime: 1
   <tileNumInRow>k__BackingField: 5
   <tileNumInColumn>k__BackingField: 2
   <gridParent>k__BackingField: {fileID: 830625743}
@@ -7496,7 +7539,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ec1b4549928bf346962b093309ae319, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <isOccupied>k__BackingField: 0
+  <isOccupied>k__BackingField: 1
   <is_AI_Path>k__BackingField: 0
   <unitOnTile>k__BackingField: {fileID: 0}
   <disableUprootOnTile>k__BackingField: 0
@@ -7507,6 +7550,7 @@ MonoBehaviour:
     serializedVersion: 2
     rgba: 0
   drawTileDebug: 1
+  drawDebugRuntime: 1
   <tileNumInRow>k__BackingField: 4
   <tileNumInColumn>k__BackingField: 2
   <gridParent>k__BackingField: {fileID: 830625743}
@@ -7644,7 +7688,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <isOccupied>k__BackingField: 0
-  <is_AI_Path>k__BackingField: 0
+  <is_AI_Path>k__BackingField: 1
   <unitOnTile>k__BackingField: {fileID: 0}
   <disableUprootOnTile>k__BackingField: 0
   validForUnitPlacementColor:
@@ -7654,6 +7698,7 @@ MonoBehaviour:
     serializedVersion: 2
     rgba: 0
   drawTileDebug: 1
+  drawDebugRuntime: 1
   <tileNumInRow>k__BackingField: 8
   <tileNumInColumn>k__BackingField: 2
   <gridParent>k__BackingField: {fileID: 830625743}
@@ -7791,7 +7836,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <isOccupied>k__BackingField: 0
-  <is_AI_Path>k__BackingField: 0
+  <is_AI_Path>k__BackingField: 1
   <unitOnTile>k__BackingField: {fileID: 0}
   <disableUprootOnTile>k__BackingField: 0
   validForUnitPlacementColor:
@@ -7801,6 +7846,7 @@ MonoBehaviour:
     serializedVersion: 2
     rgba: 0
   drawTileDebug: 1
+  drawDebugRuntime: 1
   <tileNumInRow>k__BackingField: 5
   <tileNumInColumn>k__BackingField: 3
   <gridParent>k__BackingField: {fileID: 830625743}
@@ -8048,7 +8094,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <isOccupied>k__BackingField: 0
-  <is_AI_Path>k__BackingField: 0
+  <is_AI_Path>k__BackingField: 1
   <unitOnTile>k__BackingField: {fileID: 0}
   <disableUprootOnTile>k__BackingField: 0
   validForUnitPlacementColor:
@@ -8058,6 +8104,7 @@ MonoBehaviour:
     serializedVersion: 2
     rgba: 0
   drawTileDebug: 1
+  drawDebugRuntime: 1
   <tileNumInRow>k__BackingField: 2
   <tileNumInColumn>k__BackingField: 1
   <gridParent>k__BackingField: {fileID: 830625743}
@@ -8194,7 +8241,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ec1b4549928bf346962b093309ae319, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <isOccupied>k__BackingField: 0
+  <isOccupied>k__BackingField: 1
   <is_AI_Path>k__BackingField: 0
   <unitOnTile>k__BackingField: {fileID: 0}
   <disableUprootOnTile>k__BackingField: 0
@@ -8205,6 +8252,7 @@ MonoBehaviour:
     serializedVersion: 2
     rgba: 0
   drawTileDebug: 1
+  drawDebugRuntime: 1
   <tileNumInRow>k__BackingField: 0
   <tileNumInColumn>k__BackingField: 0
   <gridParent>k__BackingField: {fileID: 830625743}
@@ -8338,8 +8386,42 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66088f4c0842cf8429662d2a65468faa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <orderedPathTiles>k__BackingField: []
-  oldOrderedPathTiles: []
+  <orderedPathTiles>k__BackingField:
+  - {fileID: 1531212390}
+  - {fileID: 1309689489}
+  - {fileID: 1207516858}
+  - {fileID: 2033167409}
+  - {fileID: 764768054}
+  - {fileID: 1197188781}
+  - {fileID: 1197188781}
+  - {fileID: 931901346}
+  - {fileID: 207226113}
+  - {fileID: 2016898585}
+  - {fileID: 1995241508}
+  - {fileID: 362664359}
+  - {fileID: 418567394}
+  - {fileID: 1153251173}
+  - {fileID: 1820461854}
+  - {fileID: 2015729126}
+  - {fileID: 496019292}
+  oldOrderedPathTiles:
+  - {fileID: 1531212390}
+  - {fileID: 1309689489}
+  - {fileID: 1207516858}
+  - {fileID: 2033167409}
+  - {fileID: 764768054}
+  - {fileID: 1197188781}
+  - {fileID: 1197188781}
+  - {fileID: 931901346}
+  - {fileID: 207226113}
+  - {fileID: 2016898585}
+  - {fileID: 1995241508}
+  - {fileID: 362664359}
+  - {fileID: 418567394}
+  - {fileID: 1153251173}
+  - {fileID: 1820461854}
+  - {fileID: 2015729126}
+  - {fileID: 496019292}
 --- !u!4 &2057019669
 Transform:
   m_ObjectHideFlags: 0
@@ -8398,6 +8480,7 @@ MonoBehaviour:
     serializedVersion: 2
     rgba: 0
   drawTileDebug: 1
+  drawDebugRuntime: 1
   <tileNumInRow>k__BackingField: 5
   <tileNumInColumn>k__BackingField: 4
   <gridParent>k__BackingField: {fileID: 830625743}
@@ -8545,6 +8628,7 @@ MonoBehaviour:
     serializedVersion: 2
     rgba: 0
   drawTileDebug: 1
+  drawDebugRuntime: 1
   <tileNumInRow>k__BackingField: 9
   <tileNumInColumn>k__BackingField: 4
   <gridParent>k__BackingField: {fileID: 830625743}
@@ -8649,128 +8733,6 @@ Transform:
   m_Father: {fileID: 830625744}
   m_RootOrder: 49
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &155572260666003862
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 6665266570364330543, guid: b0b60826dc70be04c8d3b348b621c600, type: 3}
-      propertyPath: m_RootOrder
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6665266570364330543, guid: b0b60826dc70be04c8d3b348b621c600, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -8.26
-      objectReference: {fileID: 0}
-    - target: {fileID: 6665266570364330543, guid: b0b60826dc70be04c8d3b348b621c600, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.27999693
-      objectReference: {fileID: 0}
-    - target: {fileID: 6665266570364330543, guid: b0b60826dc70be04c8d3b348b621c600, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6665266570364330543, guid: b0b60826dc70be04c8d3b348b621c600, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6665266570364330543, guid: b0b60826dc70be04c8d3b348b621c600, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6665266570364330543, guid: b0b60826dc70be04c8d3b348b621c600, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6665266570364330543, guid: b0b60826dc70be04c8d3b348b621c600, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6665266570364330543, guid: b0b60826dc70be04c8d3b348b621c600, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6665266570364330543, guid: b0b60826dc70be04c8d3b348b621c600, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6665266570364330543, guid: b0b60826dc70be04c8d3b348b621c600, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7198574875345707434, guid: b0b60826dc70be04c8d3b348b621c600, type: 3}
-      propertyPath: m_Name
-      value: Dandy
-      objectReference: {fileID: 0}
-    - target: {fileID: 7198574875345707434, guid: b0b60826dc70be04c8d3b348b621c600, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: b0b60826dc70be04c8d3b348b621c600, type: 3}
---- !u!1001 &1945425957804088517
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 2090201727753816829, guid: 7413616505f05f64fa85280265c954c2, type: 3}
-      propertyPath: m_Name
-      value: AH
-      objectReference: {fileID: 0}
-    - target: {fileID: 2090201727753816829, guid: 7413616505f05f64fa85280265c954c2, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4713855104851165792, guid: 7413616505f05f64fa85280265c954c2, type: 3}
-      propertyPath: m_RootOrder
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 4713855104851165792, guid: 7413616505f05f64fa85280265c954c2, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -6.99
-      objectReference: {fileID: 0}
-    - target: {fileID: 4713855104851165792, guid: 7413616505f05f64fa85280265c954c2, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1.06
-      objectReference: {fileID: 0}
-    - target: {fileID: 4713855104851165792, guid: 7413616505f05f64fa85280265c954c2, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4713855104851165792, guid: 7413616505f05f64fa85280265c954c2, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4713855104851165792, guid: 7413616505f05f64fa85280265c954c2, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4713855104851165792, guid: 7413616505f05f64fa85280265c954c2, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4713855104851165792, guid: 7413616505f05f64fa85280265c954c2, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4713855104851165792, guid: 7413616505f05f64fa85280265c954c2, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4713855104851165792, guid: 7413616505f05f64fa85280265c954c2, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4713855104851165792, guid: 7413616505f05f64fa85280265c954c2, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 7413616505f05f64fa85280265c954c2, type: 3}
 --- !u!1001 &3715392631663472674
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8778,6 +8740,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 456450628}
     m_Modifications:
+    - target: {fileID: 3114686657344851435, guid: be51dee99d5dc4942855546c15466bf0, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3715392631770610074, guid: be51dee99d5dc4942855546c15466bf0, type: 3}
       propertyPath: m_Name
       value: GrassShopUnitSlot
@@ -8872,186 +8838,3 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: b027c0987efb0b34bada201c95f907f2, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: be51dee99d5dc4942855546c15466bf0, type: 3}
---- !u!1001 &5851640308229668322
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 3455637724528575129, guid: 529170a0d02545c4dabc3484d23cc29f, type: 3}
-      propertyPath: m_Name
-      value: Clover
-      objectReference: {fileID: 0}
-    - target: {fileID: 3455637724528575129, guid: 529170a0d02545c4dabc3484d23cc29f, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4208598482002305464, guid: 529170a0d02545c4dabc3484d23cc29f, type: 3}
-      propertyPath: m_RootOrder
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 4208598482002305464, guid: 529170a0d02545c4dabc3484d23cc29f, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -8.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 4208598482002305464, guid: 529170a0d02545c4dabc3484d23cc29f, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1.02
-      objectReference: {fileID: 0}
-    - target: {fileID: 4208598482002305464, guid: 529170a0d02545c4dabc3484d23cc29f, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4208598482002305464, guid: 529170a0d02545c4dabc3484d23cc29f, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4208598482002305464, guid: 529170a0d02545c4dabc3484d23cc29f, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4208598482002305464, guid: 529170a0d02545c4dabc3484d23cc29f, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4208598482002305464, guid: 529170a0d02545c4dabc3484d23cc29f, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4208598482002305464, guid: 529170a0d02545c4dabc3484d23cc29f, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4208598482002305464, guid: 529170a0d02545c4dabc3484d23cc29f, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4208598482002305464, guid: 529170a0d02545c4dabc3484d23cc29f, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 529170a0d02545c4dabc3484d23cc29f, type: 3}
---- !u!1001 &6383332325184484970
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4818493569168229228, guid: 2e9d9fb45f7651749958cad9c82a386f, type: 3}
-      propertyPath: m_RootOrder
-      value: 9
-      objectReference: {fileID: 0}
-    - target: {fileID: 4818493569168229228, guid: 2e9d9fb45f7651749958cad9c82a386f, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -8.29
-      objectReference: {fileID: 0}
-    - target: {fileID: 4818493569168229228, guid: 2e9d9fb45f7651749958cad9c82a386f, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -1.59
-      objectReference: {fileID: 0}
-    - target: {fileID: 4818493569168229228, guid: 2e9d9fb45f7651749958cad9c82a386f, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4818493569168229228, guid: 2e9d9fb45f7651749958cad9c82a386f, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4818493569168229228, guid: 2e9d9fb45f7651749958cad9c82a386f, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4818493569168229228, guid: 2e9d9fb45f7651749958cad9c82a386f, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4818493569168229228, guid: 2e9d9fb45f7651749958cad9c82a386f, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4818493569168229228, guid: 2e9d9fb45f7651749958cad9c82a386f, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4818493569168229228, guid: 2e9d9fb45f7651749958cad9c82a386f, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4818493569168229228, guid: 2e9d9fb45f7651749958cad9c82a386f, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7171100457624758856, guid: 2e9d9fb45f7651749958cad9c82a386f, type: 3}
-      propertyPath: m_Name
-      value: Milkweed
-      objectReference: {fileID: 0}
-    - target: {fileID: 7171100457624758856, guid: 2e9d9fb45f7651749958cad9c82a386f, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 2e9d9fb45f7651749958cad9c82a386f, type: 3}
---- !u!1001 &7370050751775043401
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 7428981930192502170, guid: d4b98eb2b04cf42468f355c48bdcc27c, type: 3}
-      propertyPath: m_Name
-      value: Grass
-      objectReference: {fileID: 0}
-    - target: {fileID: 7428981930192502170, guid: d4b98eb2b04cf42468f355c48bdcc27c, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8733665606186341281, guid: d4b98eb2b04cf42468f355c48bdcc27c, type: 3}
-      propertyPath: m_RootOrder
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 8733665606186341281, guid: d4b98eb2b04cf42468f355c48bdcc27c, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -7.03
-      objectReference: {fileID: 0}
-    - target: {fileID: 8733665606186341281, guid: d4b98eb2b04cf42468f355c48bdcc27c, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.27999693
-      objectReference: {fileID: 0}
-    - target: {fileID: 8733665606186341281, guid: d4b98eb2b04cf42468f355c48bdcc27c, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8733665606186341281, guid: d4b98eb2b04cf42468f355c48bdcc27c, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8733665606186341281, guid: d4b98eb2b04cf42468f355c48bdcc27c, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8733665606186341281, guid: d4b98eb2b04cf42468f355c48bdcc27c, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8733665606186341281, guid: d4b98eb2b04cf42468f355c48bdcc27c, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8733665606186341281, guid: d4b98eb2b04cf42468f355c48bdcc27c, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8733665606186341281, guid: d4b98eb2b04cf42468f355c48bdcc27c, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8733665606186341281, guid: d4b98eb2b04cf42468f355c48bdcc27c, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: d4b98eb2b04cf42468f355c48bdcc27c, type: 3}

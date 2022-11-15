@@ -16,7 +16,7 @@ MonoBehaviour:
   <displayName>k__BackingField: Grass
   <unitDescription>k__BackingField: 
   <unitThumbnail>k__BackingField: {fileID: 0}
-  <unitPrefab>k__BackingField: {fileID: 0}
+  <unitPrefab>k__BackingField: {fileID: 7428981930192502170, guid: d4b98eb2b04cf42468f355c48bdcc27c, type: 3}
   <waterBars>k__BackingField: 0
   <damage>k__BackingField: 0
   <attackSpeed>k__BackingField: 0
@@ -25,4 +25,5 @@ MonoBehaviour:
   <pollinatorMultiplier>k__BackingField: 0
   <isPlacableOnPath>k__BackingField: 0
   <plantingCoinCost>k__BackingField: 0
+  <uprootRefundAmount>k__BackingField: 0
   <waterUse>k__BackingField: 0
