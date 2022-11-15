@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f04e3d0adf1c69949bc6bd1b45397d53, type: 3}
+  m_Name: Clover
+  m_EditorClassIdentifier: 
+  <unitID>k__BackingField: 44e3801e-11fe-4044-aff8-3a289343bfe3
+  <displayName>k__BackingField: Clover
+  <unitDescription>k__BackingField: 
+  <unitThumbnail>k__BackingField: {fileID: 0}
+  <unitPrefab>k__BackingField: {fileID: 3455637724528575129, guid: 529170a0d02545c4dabc3484d23cc29f, type: 3}
+  <waterBars>k__BackingField: 0
+  <damage>k__BackingField: 0
+  <attackSpeed>k__BackingField: 0
+  <attackRangeInTiles>k__BackingField: 1
+  <humanMultiplier>k__BackingField: 0
+  <pollinatorMultiplier>k__BackingField: 0
+  <isPlacableOnPath>k__BackingField: 0
+  <plantingCoinCost>k__BackingField: 0
+  <uprootRefundAmount>k__BackingField: 0
+  <waterUse>k__BackingField: 0
