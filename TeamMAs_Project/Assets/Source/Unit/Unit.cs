@@ -26,6 +26,7 @@ namespace TeamMAsTD
 
         private void InitializeUnitUsingDataFromUnitSO()
         {
+            if (unitScriptableObject == null) return;
 
         }
 

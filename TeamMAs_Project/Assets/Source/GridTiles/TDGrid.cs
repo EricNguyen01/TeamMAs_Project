@@ -23,7 +23,7 @@ namespace TeamMAsTD
 
         [SerializeField] private Tile tilePrefabToPopulate;//prefab with tile script attached
 
-        private Tile[] gridArray;//the 2D array representing the grid that has been flattened into a 1D array
+        [SerializeField] [HideInInspector] private Tile[] gridArray;//the 2D array representing the grid that has been flattened into a 1D array
 
         //PUBLICS...........................................................
 
@@ -85,6 +85,12 @@ namespace TeamMAsTD
                 {
                     Vector2 currentTileWorldPos = GetTileWorldPos(x, y);
                     gridArray[index] = Instantiate(tilePrefabToPopulate, currentTileWorldPos, Quaternion.identity, transform);
+
+                    if (!gridArray[index].GetComponent<BoxCollider2D>())
+                    {
+                        gridArray[index].gameObject.AddComponent<BoxCollider2D>();
+                    }
+
                     gridArray[index].InitializeTile(this, x, y);
                     gridArray[index].transform.localScale = new Vector2(tileSize, tileSize);
                     index++;

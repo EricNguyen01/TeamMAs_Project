@@ -29,6 +29,7 @@ namespace TeamMAsTD
 
         [field: Header("Unit Costs")]
         [field: SerializeField] [field: Min(0)] public int plantingCoinCost { get; private set; }
+        [field: SerializeField] [field: Min(0)] public int uprootRefundAmount { get; private set; }
         [field: SerializeField] [field: Min(0)] public int waterUse { get; private set; }
 
         //INTERNAL.........................................................
