@@ -23,7 +23,7 @@ MonoBehaviour:
   <attackRangeInTiles>k__BackingField: 1
   <humanMultiplier>k__BackingField: 0
   <pollinatorMultiplier>k__BackingField: 0
-  <isPlacableOnPath>k__BackingField: 0
+  <isPlacableOnPath>k__BackingField: 1
   <plantingCoinCost>k__BackingField: 0
   <uprootRefundAmount>k__BackingField: 0
   <waterUse>k__BackingField: 0
