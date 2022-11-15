@@ -19,6 +19,8 @@ namespace TeamMAsTD
         "Dropping returns the object to its original position.")]
         private Image dragDropUIImageObject;
 
+        [SerializeField] [Range(0.0f, 1.0f)] private float dragDropBlurAmount = 0.6f;
+
         [SerializeField]
         [Tooltip("Are we using the unit shop slot thumbnail sprite from the unit scriptable object " +
         "or placing a different one directly to the UI Image component attached to the same UI object as this script? " +
@@ -36,8 +38,6 @@ namespace TeamMAsTD
 
         //the original position of the dragDropUIImageObject (obj with UI Image that moves with mouse when dragging)
         private Vector3 originalDragDropPos;
-
-        private RectTransform dragDropUIImageRectTransform;
 
         //the top most UI Canvas component that houses the rest of the children UI elements
         private Canvas parentCanva;
@@ -111,12 +111,13 @@ namespace TeamMAsTD
                 enabled = false;
                 return;
             }
-            if(dragDropUIImageObject.GetComponent<CanvasGroup>() == null)
-            {
-                dragDropUIImageObject.gameObject.AddComponent<CanvasGroup>().alpha = 0.4f;
-            }
 
-            dragDropUIImageRectTransform = dragDropUIImageObject.GetComponent<RectTransform>();
+            CanvasGroup dragDropImageUICanvasGroup = dragDropUIImageObject.GetComponent<CanvasGroup>();
+            if (dragDropImageUICanvasGroup == null)
+            {
+                dragDropUIImageObject.gameObject.AddComponent<CanvasGroup>();
+            }
+            dragDropImageUICanvasGroup.alpha = dragDropBlurAmount;
 
             SetDragDropSameVisualAsShopSlot();
 
