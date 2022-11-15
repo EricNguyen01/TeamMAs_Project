@@ -1406,12 +1406,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Padding:
-    m_Left: 46
-    m_Right: 176
-    m_Top: 13
-    m_Bottom: 13
+    m_Left: 39
+    m_Right: 184
+    m_Top: 8
+    m_Bottom: 8
   m_ChildAlignment: 0
-  m_Spacing: 13
+  m_Spacing: 6
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
   m_ChildControlWidth: 1
@@ -2549,7 +2549,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3715392631770610074, guid: be51dee99d5dc4942855546c15466bf0, type: 3}
       propertyPath: m_Name
-      value: AHShopUnitSlot
+      value: CloverShopUnitSlot
       objectReference: {fileID: 0}
     - target: {fileID: 3715392631770610075, guid: be51dee99d5dc4942855546c15466bf0, type: 3}
       propertyPath: m_Pivot.x
@@ -2638,7 +2638,7 @@ PrefabInstance:
     - target: {fileID: 6658701522767471769, guid: be51dee99d5dc4942855546c15466bf0, type: 3}
       propertyPath: slotUnitScriptableObject
       value: 
-      objectReference: {fileID: 11400000, guid: 462832fdbbb9cc34d8a23db6909e48c7, type: 2}
+      objectReference: {fileID: 11400000, guid: ca3a624e41d0f4943b68363d2452017e, type: 2}
     - target: {fileID: 8336062919121141092, guid: be51dee99d5dc4942855546c15466bf0, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -0.050964355
@@ -7087,7 +7087,7 @@ Canvas:
   m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 0
-  m_Camera: {fileID: 519420031}
+  m_Camera: {fileID: 0}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
@@ -7700,7 +7700,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3715392631770610074, guid: be51dee99d5dc4942855546c15466bf0, type: 3}
       propertyPath: m_Name
-      value: CloverShopUnitSlot
+      value: AHShopUnitSlot
       objectReference: {fileID: 0}
     - target: {fileID: 3715392631770610075, guid: be51dee99d5dc4942855546c15466bf0, type: 3}
       propertyPath: m_Pivot.x
@@ -7789,7 +7789,7 @@ PrefabInstance:
     - target: {fileID: 6658701522767471769, guid: be51dee99d5dc4942855546c15466bf0, type: 3}
       propertyPath: slotUnitScriptableObject
       value: 
-      objectReference: {fileID: 11400000, guid: ca3a624e41d0f4943b68363d2452017e, type: 2}
+      objectReference: {fileID: 11400000, guid: 462832fdbbb9cc34d8a23db6909e48c7, type: 2}
     - target: {fileID: 8336062919121141092, guid: be51dee99d5dc4942855546c15466bf0, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -0.050964355
