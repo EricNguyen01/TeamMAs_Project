@@ -15,7 +15,7 @@ TextureImporter:
       213: 2877471580529523173
     second: 
   externalObjects: {}
-  serializedVersion: 12
+  serializedVersion: 11
   mipmaps:
     mipMapMode: 0
     enableMipMap: 1
@@ -75,7 +75,6 @@ TextureImporter:
   textureFormatSet: 0
   ignorePngGamma: 0
   applyGammaDecoding: 1
-  cookieLightType: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -226,8 +225,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Button_3x1_2: 21300004
-      : 2877471580529523173
+      Button_3x1_2: 1
       Button_3x1_1: 21300002
   spritePackingTag: 
   pSDRemoveMatte: 0
