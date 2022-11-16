@@ -9,7 +9,8 @@ using UnityEditor;
 
 namespace TeamMAsTD
 {
-    //[ExecuteInEditMode]
+    [CanEditMultipleObjects]
+    [DisallowMultipleComponent]
     public class Tile : MonoBehaviour
     {
         [field: Header("Tile Properties")]
@@ -55,6 +56,8 @@ namespace TeamMAsTD
 
                 if (is_AI_Path) spriteRenderer.color = Color.red;
             }
+
+            AttachUprootOnTileUIScriptComponentIfNull();
         }
 
         private bool CanPlaceUnit(UnitSO unitSO)
@@ -69,6 +72,16 @@ namespace TeamMAsTD
             }
 
             return true;
+        }
+
+        //This func checks if there is an UprootOnTileUI script attached to this game object. If not, attach one
+        //then, get the attached script component
+        private void AttachUprootOnTileUIScriptComponentIfNull()
+        {
+            if (GetComponent<UprootOnTileUI>() == null)
+            {
+                gameObject.AddComponent<UprootOnTileUI>();
+            }
         }
 
         //PUBLICS........................................................................
@@ -156,6 +169,7 @@ namespace TeamMAsTD
         }
 
         [CustomEditor(typeof(Tile))]
+        [CanEditMultipleObjects]
         private class TileEditor : Editor
         {
             Tile tile;

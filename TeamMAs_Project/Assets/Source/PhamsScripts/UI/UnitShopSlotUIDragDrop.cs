@@ -7,6 +7,7 @@ using TMPro;
 
 namespace TeamMAsTD
 {
+    [DisallowMultipleComponent]
     public class UnitShopSlotUIDragDrop : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
     {
         [SerializeField] [Tooltip("The Unit Scriptable Object of this slot.")] private UnitSO slotUnitScriptableObject;

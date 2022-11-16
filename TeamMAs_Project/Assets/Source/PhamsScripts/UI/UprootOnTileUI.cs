@@ -6,32 +6,121 @@ using UnityEngine.EventSystems;
 
 namespace TeamMAsTD
 {
-    public class UprootOnTileUI : MonoBehaviour
+    [DisallowMultipleComponent]
+    public class UprootOnTileUI : MonoBehaviour, IPointerDownHandler, IDeselectHandler
     {
-        private Canvas tileWorldCanvas;
+        [SerializeField] private Canvas tileWorldCanvas;
+
+        //INTERNALS...........................................................................................
+        private Tile tile;
         private Camera mainCam;
 
         //PRIVATES.............................................................................................
-        private void Awake()
+        private void OnEnable()
         {
-            tileWorldCanvas = GetComponentInChildren<Canvas>();
-
-            if(tileWorldCanvas == null)
+            //check for an existing EventSystem and disble script if null
+            if (FindObjectOfType<EventSystem>() == null)
             {
-                Debug.LogError("Tile World Canvas children component not found on tile: " + name + ". Plant uprooting won't work!");
+                Debug.LogError("Cannot find an EventSystem in the scene. " +
+                "An EventSystem is required for tile interaction to function. Disabling shop slot object!");
                 enabled = false;
                 return;
             }
 
-            mainCam = Camera.main;
+            if (tileWorldCanvas == null)
+            {
+                tileWorldCanvas = GetComponentInChildren<Canvas>();
 
-            tileWorldCanvas.worldCamera = mainCam;
+                if (tileWorldCanvas == null)
+                {
+                    Debug.LogError("Tile World Canvas children component not found on tile: " + name + ". Plant uprooting won't work!");
+                    enabled = false;
+                    return;
+                }
+            }
+
+            tile = GetComponent<Tile>();
+            if(tile == null)
+            {
+                Debug.LogError("Tile script component not found. Plant uprooting won't work!");
+                enabled = false;
+                return;
+            }
+
+            if(mainCam == null) mainCam = Camera.main;
+
+            if(tileWorldCanvas.worldCamera == null) tileWorldCanvas.worldCamera = mainCam;
+        }
+
+        private void OnDisable()
+        {
+            StopAllCoroutines();
+        }
+
+        //PRIVATES..............................................................................
+
+        private void OpenTileInteractionMenu(bool opened)
+        {
+            //if there is no tile script component reference->show error and stop executing
+            if(tile == null)
+            {
+                Debug.LogError("Trying to interact with tile: " + name + " but the Tile script component can't be found!");
+                return;
+            }
+
+            //do nothing if tile doesnt have plant unit placed on
+            if(tile.unitOnTile == null)
+            {
+                return;
+            }
+
+            //if a plant exists on this tile->process open/close tile menu
+            if (opened)
+            {
+                if(!tileWorldCanvas.gameObject.activeInHierarchy) tileWorldCanvas.gameObject.SetActive(true);
+                else tileWorldCanvas.gameObject.SetActive(false);
+                return;
+            }
+
+            if(tileWorldCanvas.gameObject.activeInHierarchy) tileWorldCanvas.gameObject.SetActive(false);
         }
 
         //PUBLICS..............................................................................................
         public void OnUprootOptionClicked()
         {
             //spawn uproot prompt
+        }
+
+        //Unity EventSystem OnPointerDownHandler interface function.............................................
+
+        public void OnPointerDown(PointerEventData eventData)
+        {
+            OpenTileInteractionMenu(true);
+
+            //set the selected game object in the current event system so that
+            //when the event system detects a newly selected game obj whether null or not,
+            //it will trigger OnDeselect() on this script which can be used to close the tile menu.
+            EventSystem.current.SetSelectedGameObject(gameObject);
+        }
+
+        //This func is triggere by the EventSystem when user clicks on nothing or another obj, causing this class to be deselected
+        public void OnDeselect(BaseEventData eventData)
+        {
+            //cast base event data to pointer event data
+            PointerEventData pEventData = (PointerEventData)eventData;
+            
+            //Only close if pointer is not over anything, not over an object, or over an object that is not the same as this obj.
+            //This is done so that when clicking again on the same tile after opening the tile menu of that tile,
+            //we don't want to close the menu in this OnDeselect function (which gets called even on selecting the same obj again)
+            //just so we can open it again in OnPointerDown (OnPointerDown happens after OnDeselect).
+            //We want to close the menu instead of keeping it open after re-clicking on the same tile.
+
+            if (pEventData.pointerEnter == null || pEventData.pointerEnter.gameObject == null || pEventData.pointerEnter.gameObject != gameObject)
+            {
+                OpenTileInteractionMenu(false);
+            }
+
+            //after OnDeselect is called, EventSystem's selected object is set to null again so we don't have to reset it manually.
         }
     }
 }
