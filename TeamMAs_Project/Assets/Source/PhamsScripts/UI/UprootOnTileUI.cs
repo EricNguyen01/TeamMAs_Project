@@ -12,8 +12,11 @@ namespace TeamMAsTD
         [SerializeField] private Canvas tileWorldCanvas;
 
         //INTERNALS...........................................................................................
-        private Tile tile;
+
+        private Tile tileSelectedForUprootConfirmation;
         private Camera mainCam;
+
+        private PointerEventData pEventData;//Unity's EventSystem pointer event data
 
         //PRIVATES.............................................................................................
         private void OnEnable()
@@ -22,7 +25,7 @@ namespace TeamMAsTD
             if (FindObjectOfType<EventSystem>() == null)
             {
                 Debug.LogError("Cannot find an EventSystem in the scene. " +
-                "An EventSystem is required for tile interaction to function. Disabling shop slot object!");
+                "An EventSystem is required for tile interaction menu to function. Disabling tile interaction menu!");
                 enabled = false;
                 return;
             }
@@ -39,8 +42,8 @@ namespace TeamMAsTD
                 }
             }
 
-            tile = GetComponent<Tile>();
-            if(tile == null)
+            tileSelectedForUprootConfirmation = GetComponent<Tile>();
+            if(tileSelectedForUprootConfirmation == null)
             {
                 Debug.LogError("Tile script component not found. Plant uprooting won't work!");
                 enabled = false;
@@ -52,24 +55,19 @@ namespace TeamMAsTD
             if(tileWorldCanvas.worldCamera == null) tileWorldCanvas.worldCamera = mainCam;
         }
 
-        private void OnDisable()
-        {
-            StopAllCoroutines();
-        }
-
         //PRIVATES..............................................................................
 
         private void OpenTileInteractionMenu(bool opened)
         {
             //if there is no tile script component reference->show error and stop executing
-            if(tile == null)
+            if(tileSelectedForUprootConfirmation == null)
             {
                 Debug.LogError("Trying to interact with tile: " + name + " but the Tile script component can't be found!");
                 return;
             }
 
             //do nothing if tile doesnt have plant unit placed on
-            if(tile.unitOnTile == null)
+            if(tileSelectedForUprootConfirmation.unitOnTile == null)
             {
                 return;
             }
@@ -89,12 +87,26 @@ namespace TeamMAsTD
         public void OnUprootOptionClicked()
         {
             //spawn uproot prompt
+            UprootConfirmationPopupUI uprootConfirmationPopupUI = FindObjectOfType<UprootConfirmationPopupUI>();
+
+            if(uprootConfirmationPopupUI == null)
+            {
+                Debug.LogWarning("Uproot option is selected but no UprootConfirmationPopupUI object is found in scene! Uproot confirmation failed!");
+                return;
+            }
+
+            EventSystem.current.SetSelectedGameObject(null);
+
+            uprootConfirmationPopupUI.ActivateUprootConfirmationPopupForTile(tileSelectedForUprootConfirmation, true);
         }
 
         //Unity EventSystem OnPointerDownHandler interface function.............................................
 
         public void OnPointerDown(PointerEventData eventData)
         {
+            //cache pointer event data to use later in OnDeselect()
+            pEventData = eventData;
+
             OpenTileInteractionMenu(true);
 
             //set the selected game object in the current event system so that
@@ -106,9 +118,6 @@ namespace TeamMAsTD
         //This func is triggere by the EventSystem when user clicks on nothing or another obj, causing this class to be deselected
         public void OnDeselect(BaseEventData eventData)
         {
-            //cast base event data to pointer event data
-            PointerEventData pEventData = (PointerEventData)eventData;
-            
             //Only close if pointer is not over anything, not over an object, or over an object that is not the same as this obj.
             //This is done so that when clicking again on the same tile after opening the tile menu of that tile,
             //we don't want to close the menu in this OnDeselect function (which gets called even on selecting the same obj again)

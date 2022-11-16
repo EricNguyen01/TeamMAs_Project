@@ -124,6 +124,9 @@ namespace TeamMAsTD
             }
 
             unitOnTile = unit;
+
+            //TODO: Send OnUnitPlacementSuccessful event
+
             return true;
         }
 
@@ -134,6 +137,8 @@ namespace TeamMAsTD
 
             Destroy(unitOnTile.gameObject);
             unitOnTile = null;
+
+            //TODO: Send OnUprootSuccessful event
 
             if(unitOnTile != null)
             {

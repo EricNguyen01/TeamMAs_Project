@@ -49,15 +49,6 @@ namespace TeamMAsTD
 
         private void Awake()
         {
-            //check for an existing EventSystem and disble script if null
-            if (FindObjectOfType<EventSystem>() == null)
-            {
-                Debug.LogError("Cannot find an EventSystem in the scene. " +
-                "An EventSystem is required for shop unit slot UI drag/drop to function. Disabling shop slot object!");
-                gameObject.SetActive(false);
-                return;
-            }
-
             //check for unit scriptable object data
             if (slotUnitScriptableObject == null)
             {
@@ -69,6 +60,18 @@ namespace TeamMAsTD
             SetUnitShopSlotImageFromUnitSO();
             CheckAndGetDragDropRequirements();
             SetNameAndCostForUnitShopSlot();
+        }
+
+        private void OnEnable()
+        {
+            //check for an existing EventSystem and disble script if null
+            if (FindObjectOfType<EventSystem>() == null)
+            {
+                Debug.LogError("Cannot find an EventSystem in the scene. " +
+                "An EventSystem is required for shop unit slot UI drag/drop to function. Disabling shop slot object!");
+                gameObject.SetActive(false);
+                return;
+            }
         }
 
         private void Start()
@@ -195,12 +198,8 @@ namespace TeamMAsTD
             Tile destinationTile = eventData.pointerEnter.GetComponent<Tile>();
             if (destinationTile == null) return;
 
-            //Place the unit on the destination tile (placeable conditions are checked within the PlaceUnit function below).
-            //if place unit is a success->deduct coin
-            if (destinationTile.PlaceUnit(slotUnitScriptableObject))
-            {
-                //TODO: Process coins cost here:
-            }
+            //Place the unit on the destination tile (placeable conditions are checked within the PlaceUnit function below)
+            destinationTile.PlaceUnit(slotUnitScriptableObject);
         }
     }
 }
