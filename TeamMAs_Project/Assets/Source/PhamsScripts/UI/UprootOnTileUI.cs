@@ -95,8 +95,6 @@ namespace TeamMAsTD
                 return;
             }
 
-            EventSystem.current.SetSelectedGameObject(null);
-
             uprootConfirmationPopupUI.ActivateUprootConfirmationPopupForTile(tileSelectedForUprootConfirmation, true);
         }
 

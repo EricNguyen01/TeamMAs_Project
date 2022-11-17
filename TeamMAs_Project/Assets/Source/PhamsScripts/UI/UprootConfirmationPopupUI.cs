@@ -8,7 +8,7 @@ using TMPro;
 namespace TeamMAsTD
 {
     [DisallowMultipleComponent]
-    public class UprootConfirmationPopupUI : MonoBehaviour, IPointerEnterHandler, IDeselectHandler
+    public class UprootConfirmationPopupUI : MonoBehaviour
     {
         [SerializeField] private CanvasGroup uprootPopupCanvasGroup;
 
@@ -19,8 +19,6 @@ namespace TeamMAsTD
         //INTERNALS.....................................................................................
 
         private Tile tileWithUnitToUproot;
-
-        private PointerEventData pEventData;
 
         //PRIVATES......................................................................................
 
@@ -116,62 +114,6 @@ namespace TeamMAsTD
             //if the player chooses to keep the unit instead, do nothing and
             //stop showing popup after button pressed
             ShowUprootConfirmationPopup(false);
-        }
-
-        //EventSystem interface functions..................................................................
-
-        public void OnPointerEnter(PointerEventData eventData)
-        {
-            pEventData = eventData;
-        }
-
-        public void OnDeselect(BaseEventData eventData)
-        {
-            //if pEventData is null or click on nothing -> close popup
-            if(pEventData == null || pEventData.pointerEnter == null || pEventData.pointerEnter.gameObject == null)
-            {
-                ShowUprootConfirmationPopup(false);
-                return;
-            }
-
-            bool canClose = true;
-
-            //if click on a child obj that is a UI Button -> don't close popup
-            //here, a recursive function is executed that goes through all children of children starting from this obj to check for the above
-            if (IsChildButtonObjectSelected(gameObject))
-            {
-                //if a child of this obj is selected that is also a button, can't close popup
-                canClose = false;
-            }
-
-            //else close popup
-            if (canClose) ShowUprootConfirmationPopup(false);
-        }
-
-        //A recursive function that goes through all children of children starting from a provided obj
-        //to check for if any of its children is selected and is also a UI button.
-        private bool IsChildButtonObjectSelected(GameObject child)
-        {
-            if(child == null) return false;
-
-            //check the current input obj first 
-            if (pEventData.pointerEnter.gameObject == child)//if this is the obj the pointer is on
-            {
-                if (child.GetComponent<Button>()) return true;//if also a button->return true and no need to execute any further
-            }
-
-            //if above if not return->continue to check if this is the last child (no other children below this obj)
-            if (child.transform.childCount == 0) return false;//if true->and since the above if alr failed-> return false
-
-            //if there are still children below this obj->continue recursively checking
-            for (int i = 0; i < child.transform.childCount; i++)
-            {
-                //if during the check of one of the children returned a true->stop looping and return true
-                if (IsChildButtonObjectSelected(child.transform.GetChild(i).gameObject)) return true;
-                else continue;
-            }
-
-            return false;//if all the above did not return true->obviously return a false
         }
     }
 }
