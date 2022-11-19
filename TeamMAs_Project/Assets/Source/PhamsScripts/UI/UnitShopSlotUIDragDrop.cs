@@ -12,6 +12,7 @@ namespace TeamMAsTD
     {
         [SerializeField] [Tooltip("The Unit Scriptable Object of this slot.")] private UnitSO slotUnitScriptableObject;
 
+        [SerializeField] private Image unitThumbnailImage;
         [SerializeField] private TextMeshProUGUI unitNameDisplay;
         [SerializeField] private TextMeshProUGUI unitCostDisplay;
 
@@ -35,7 +36,9 @@ namespace TeamMAsTD
 
         //INTERNALS....................................................................................
 
-        private Image unitShopSlotImageUIComponent;
+        //The Image UI component with empty sprite and 0 alpha to use for EventSystem raycast detection
+        //Must be attached to the same obj as this script.
+        private Image unitShopSlotImageRaycastComponent;
 
         //the original position of the dragDropUIImageObject (obj with UI Image that moves with mouse when dragging)
         private Vector3 originalDragDropPos;
@@ -57,6 +60,7 @@ namespace TeamMAsTD
                 return;
             }
 
+            SetImageUIRaycastComponent();
             SetUnitShopSlotImageFromUnitSO();
             CheckAndGetDragDropRequirements();
             SetNameAndCostForUnitShopSlot();
@@ -79,31 +83,45 @@ namespace TeamMAsTD
             originalDragDropPos = dragDropUIImageObject.transform.localPosition;
         }
 
+        private void SetImageUIRaycastComponent()
+        {
+            unitShopSlotImageRaycastComponent = GetComponent<Image>();
+
+            if (unitShopSlotImageRaycastComponent == null)
+            {
+                unitShopSlotImageRaycastComponent = gameObject.AddComponent<Image>();
+                var color = unitShopSlotImageRaycastComponent.color;
+                color.a = 0.0f;
+                unitShopSlotImageRaycastComponent.color = color;
+            }
+        }
+
         private void SetUnitShopSlotImageFromUnitSO()
         {
-            if (!useUnitThumbnailFromScriptableObject || slotUnitScriptableObject == null) return;
-
-            unitShopSlotImageUIComponent = GetComponent<Image>();
-            
-            if(unitShopSlotImageUIComponent == null)
+            if (unitThumbnailImage == null)
             {
-                unitShopSlotImageUIComponent = gameObject.AddComponent<Image>();
+                Debug.LogError("Unit thumbnail on shop slot UI obj: " + name + " is not assigned! Unit thumbnail for slot will not be displayed!");
+                return;
             }
+
+            if (!useUnitThumbnailFromScriptableObject || slotUnitScriptableObject == null) return;
 
             //if a unit thumbnail is assigned in the unit SO
             if (slotUnitScriptableObject.unitThumbnail != null)
             {
-                unitShopSlotImageUIComponent.sprite = slotUnitScriptableObject.unitThumbnail;
-                return;
+                unitThumbnailImage.sprite = slotUnitScriptableObject.unitThumbnail;
             }
-            //else if theres no unit thumbnail because we are still in placeholder phase->only use the sprite and color from unit prefab
-            //if a unit prefab is also not assigned in the unit SO->do nothing and exit
-            if (slotUnitScriptableObject.unitPrefab == null) return;
-            //else get the sprite and color from prefab 
-            SpriteRenderer unitPrefabSpriteRenderer = slotUnitScriptableObject.unitPrefab.GetComponent<SpriteRenderer>();
-            unitShopSlotImageUIComponent.sprite = unitPrefabSpriteRenderer.sprite;
-            unitShopSlotImageUIComponent.color = unitPrefabSpriteRenderer.color;
-            
+            else
+            {
+                //else if theres no unit thumbnail because we are still in placeholder phase->only use the sprite and color from unit prefab
+                //if a unit prefab is also not assigned in the unit SO->do nothing and exit
+                if (slotUnitScriptableObject.unitPrefab == null) return;
+                //else get the sprite and color from prefab 
+                SpriteRenderer unitPrefabSpriteRenderer = slotUnitScriptableObject.unitPrefab.GetComponent<SpriteRenderer>();
+
+                unitThumbnailImage.sprite = unitPrefabSpriteRenderer.sprite;
+                unitThumbnailImage.color = unitPrefabSpriteRenderer.color;
+            }
         }
 
         private void CheckAndGetDragDropRequirements()
@@ -133,8 +151,14 @@ namespace TeamMAsTD
         private void SetDragDropSameVisualAsShopSlot()
         {
             if (!dragDropVisualSameAsShopSlots) return;
-            dragDropUIImageObject.sprite = unitShopSlotImageUIComponent.sprite;
-            dragDropUIImageObject.color = unitShopSlotImageUIComponent.color;
+            if(unitThumbnailImage == null)
+            {
+                Debug.LogError("The Image UI obj to drag/drop is set to use the same image as the unit thumbnail Image obj but unit thumbnail image obj is not assigned!");
+                return;
+            }
+
+            dragDropUIImageObject.sprite = unitThumbnailImage.sprite;
+            dragDropUIImageObject.color = unitThumbnailImage.color;
         }
 
         private void SetNameAndCostForUnitShopSlot()
@@ -166,7 +190,7 @@ namespace TeamMAsTD
 
             if(!dragDropUIImageObject.gameObject.activeInHierarchy) dragDropUIImageObject.gameObject.SetActive(true);
             dragDropUIImageObject.transform.SetParent(parentCanva.transform);
-            unitShopSlotImageUIComponent.raycastTarget = false;
+            unitShopSlotImageRaycastComponent.raycastTarget = false;
             EventSystem.current.SetSelectedGameObject(null);
         }
 
@@ -189,7 +213,7 @@ namespace TeamMAsTD
             dragDropUIImageObject.transform.localPosition = originalDragDropPos;
             dragDropUIImageObject.gameObject.SetActive(false);
             //reset to prepare for next drag/drop
-            unitShopSlotImageUIComponent.raycastTarget = true;
+            unitShopSlotImageRaycastComponent.raycastTarget = true;
 
             //Check if the mouse is hovered upon anything that is recognized by the EventSystem
             if (eventData.pointerEnter == null) return;
