@@ -245,7 +245,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 30
+  m_fontSize: 12
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -469,7 +469,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 30
+  m_fontSize: 12
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -618,7 +618,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 650a2032a62aba841bea791f79d228d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slotUnitScriptableObject: {fileID: 11400000, guid: 462832fdbbb9cc34d8a23db6909e48c7, type: 2}
+  slotUnitScriptableObject: {fileID: 0}
   unitThumbnailImage: {fileID: 1685142354845520744}
   unitNameDisplay: {fileID: 3715392631093969831}
   unitCostDisplay: {fileID: 4703558203936099925}

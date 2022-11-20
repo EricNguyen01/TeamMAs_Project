@@ -10,6 +10,8 @@ namespace TeamMAsTD
 
         //INTERNAL....................................................................
 
+        private SpriteRenderer unitSpriteRenderer;
+
         //PRIVATES....................................................................
 
         private void Awake()
@@ -28,6 +30,20 @@ namespace TeamMAsTD
         {
             if (unitScriptableObject == null) return;
 
+            GetAndSetUnitSprite();
+
+        }
+
+        private void GetAndSetUnitSprite()
+        {
+            unitSpriteRenderer = GetComponent<SpriteRenderer>();
+
+            if(unitSpriteRenderer == null)
+            {
+                unitSpriteRenderer = gameObject.AddComponent<SpriteRenderer>();
+            }
+
+            if (unitSpriteRenderer.sprite == null) unitSpriteRenderer.sprite = unitScriptableObject.unitThumbnail;
         }
 
         //PUBLICS........................................................................
