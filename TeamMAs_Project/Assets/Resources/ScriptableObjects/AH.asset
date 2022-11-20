@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: AH
   m_EditorClassIdentifier: 
   <unitID>k__BackingField: 651ab286-029d-44dc-8d57-fef73369dd06
-  <displayName>k__BackingField: AH
+  <displayName>k__BackingField: Hyssop
   <unitDescription>k__BackingField: 
-  <unitThumbnail>k__BackingField: {fileID: 0}
+  <unitThumbnail>k__BackingField: {fileID: 21300000, guid: 920785767db06334798a1622309722b2, type: 3}
   <unitPrefab>k__BackingField: {fileID: 2090201727753816829, guid: 7413616505f05f64fa85280265c954c2, type: 3}
   <waterBars>k__BackingField: 0
   <damage>k__BackingField: 0
