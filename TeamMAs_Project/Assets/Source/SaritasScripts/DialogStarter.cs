@@ -8,7 +8,7 @@ public class DialogStarter : MonoBehaviour
   
   void Start()
   {
-    //StartCoroutine(DialogTest(1f));
+    StartCoroutine(DialogTest(1f));
   }
   
   IEnumerator DialogTest(float delayTime) {
