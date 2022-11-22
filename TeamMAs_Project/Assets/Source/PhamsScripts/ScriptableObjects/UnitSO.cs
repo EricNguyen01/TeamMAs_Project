@@ -5,7 +5,7 @@ using UnityEngine;
 namespace TeamMAsTD
 {
     [System.Serializable]
-    [CreateAssetMenu(menuName = "Unit Asset/New Unit")]
+    [CreateAssetMenu(menuName = "Unit Data Asset/New Unit")]
     public class UnitSO : ScriptableObject, ISerializationCallbackReceiver
     {
         [field: Header("Unit Data")]
@@ -43,7 +43,7 @@ namespace TeamMAsTD
 
             unitLookupCache = new Dictionary<string, UnitSO>();//create one
             
-            var unitList = Resources.LoadAll<UnitSO>("");//get all scriptable objects under the resource folder
+            var unitList = Resources.LoadAll<UnitSO>("ScriptableObjects/UnitSO");//get all scriptable objects under the resource folder
 
             foreach (var unit in unitList)
             {
