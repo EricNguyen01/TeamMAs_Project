@@ -6,7 +6,7 @@ namespace TeamMAsTD
 {
     public class VisitorPool : MonoBehaviour
     {
-        public VisitorSO visitorTypeToPool { get; private set; }
+        public VisitorSO visitorTypeInPool { get; private set; }
 
         private List<Visitor> visitorPool = new List<Visitor>();
 
@@ -50,22 +50,22 @@ namespace TeamMAsTD
                 return;
             }
 
-            visitorTypeToPool = visitorSO;
+            visitorTypeInPool = visitorSO;
 
             CreateAndAddVisitorsToPool(visitorSO, numberToPool, true);
         }
 
-        public GameObject GetInactiveVisitorObjectFromPool()
+        private GameObject GetInactiveVisitorObjectFromPool()
         {
             if (visitorPool == null) return null;
 
-            if (visitorTypeToPool == null) return null;
+            if (visitorTypeInPool == null) return null;
 
             //if there is no visitor in pool
             if(visitorPool.Count == 0)
             {
                 //creates one visitor, adds it to the pool, sets it to inactive, and then returns it
-                CreateAndAddVisitorsToPool(visitorTypeToPool, 1, true);
+                CreateAndAddVisitorsToPool(visitorTypeInPool, 1, true);
                 return visitorPool[0].gameObject;
             }
             
@@ -83,11 +83,27 @@ namespace TeamMAsTD
 
             //if none of the visitors in the current pool is valid
             //creates a new visitor, adds to and sets inactive in pool
-            CreateAndAddVisitorsToPool(visitorTypeToPool, 1, true);
+            CreateAndAddVisitorsToPool(visitorTypeInPool, 1, true);
             //returns the newly added visitor (the last element of the updated visitor list)
             return visitorPool[visitorPool.Count - 1].gameObject;
         }
 
+        public GameObject EnableVisitorFromPool()
+        {
+            GameObject visitorObj = GetInactiveVisitorObjectFromPool();
+            if (!visitorObj.activeInHierarchy) visitorObj.SetActive(true);
+            return visitorObj;
+        }
+
+        public GameObject EnableVisitorFromPool(Vector2 spawnPosWorld)
+        {
+            GameObject visitorObj = EnableVisitorFromPool();
+            visitorObj.transform.position = spawnPosWorld;
+            return visitorObj;
+        }
+
+        //This function will be called directly by the Visitor GameObject with Visitor script attached 
+        //When a Visitor GameObject wants to return to pool (e.g on dead or reached destination) -> call this function inside it.
         public void ReturnVisitorToPool(Visitor visitor)
         {
             if(visitor == null) return;

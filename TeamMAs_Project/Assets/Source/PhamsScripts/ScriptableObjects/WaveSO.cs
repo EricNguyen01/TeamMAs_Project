@@ -4,6 +4,9 @@ using UnityEngine;
 
 namespace TeamMAsTD
 {
+    /*
+     * WaveSO stores data for a single wave
+     */
     [System.Serializable]
     [CreateAssetMenu(menuName = "Wave Data Asset/New Wave")]
     public class WaveSO : ScriptableObject
@@ -33,5 +36,45 @@ namespace TeamMAsTD
         [field: Header("This Wave Visitor Health Scaling Data")]
         [field: SerializeField] public bool applyVisitorHealthScalingThisWave { get; private set; } = true;
         [field: SerializeField][field: Min(1.0f)] public float visitorHealthScalingMultiplier { get; private set; } = 1.0f;
+
+        [field: Header("Wave GameObject Prefab")]
+        [field: SerializeField]
+        [field: Tooltip("The GameObject prefab with the Wave script component attached that is to be spawned by WaveSpawner." +
+        "Check WaveSpawner.cs script.")]
+        public GameObject wavePrefab { get; private set; }
+
+        public int GetSpawnNumberOfVisitorType(VisitorSO visitorSO)
+        {
+            if (visitorSO == null) return 0;
+
+            if(visitorTypesToSpawnThisWave == null || visitorTypesToSpawnThisWave.Length == 0) return 0;
+
+            for(int i = 0; i < visitorTypesToSpawnThisWave.Length; i++)
+            {
+                if (visitorTypesToSpawnThisWave[i].visitorType == visitorSO)
+                {
+                    return visitorTypesToSpawnThisWave[i].spawnNumbers;
+                }
+            }
+
+            return 0;
+        }
+
+        public int GetSpawnChanceOfVisitorType(VisitorSO visitorSO)
+        {
+            if (visitorSO == null) return 0;
+
+            if (visitorTypesToSpawnThisWave == null || visitorTypesToSpawnThisWave.Length == 0) return 0;
+
+            for (int i = 0; i < visitorTypesToSpawnThisWave.Length; i++)
+            {
+                if (visitorTypesToSpawnThisWave[i].visitorType == visitorSO)
+                {
+                    return visitorTypesToSpawnThisWave[i].spawnChance;
+                }
+            }
+
+            return 0;
+        }
     }
 }
