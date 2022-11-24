@@ -49,15 +49,17 @@ namespace TeamMAsTD
 
             if(visitorTypesToSpawnThisWave == null || visitorTypesToSpawnThisWave.Length == 0) return 0;
 
+            int visitorNum = 0;
+
             for(int i = 0; i < visitorTypesToSpawnThisWave.Length; i++)
             {
                 if (visitorTypesToSpawnThisWave[i].visitorType == visitorSO)
                 {
-                    return visitorTypesToSpawnThisWave[i].spawnNumbers;
+                    visitorNum += visitorTypesToSpawnThisWave[i].spawnNumbers;
                 }
             }
 
-            return 0;
+            return visitorNum;
         }
 
         public int GetSpawnChanceOfVisitorType(VisitorSO visitorSO)
@@ -66,15 +68,17 @@ namespace TeamMAsTD
 
             if (visitorTypesToSpawnThisWave == null || visitorTypesToSpawnThisWave.Length == 0) return 0;
 
+            int visitorSpawnChance = 0;
+
             for (int i = 0; i < visitorTypesToSpawnThisWave.Length; i++)
             {
                 if (visitorTypesToSpawnThisWave[i].visitorType == visitorSO)
                 {
-                    return visitorTypesToSpawnThisWave[i].spawnChance;
+                    visitorSpawnChance += visitorTypesToSpawnThisWave[i].spawnChance;
                 }
             }
 
-            return 0;
+            return visitorSpawnChance;
         }
     }
 }

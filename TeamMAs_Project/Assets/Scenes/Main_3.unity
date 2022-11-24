@@ -38354,6 +38354,67 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2146711855}
   m_CullTransparentMesh: 1
+--- !u!1001 &1018928624431643075
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2664338853412353054, guid: 1c8e65037b948a34fb8f5efb93aca94d, type: 3}
+      propertyPath: m_Name
+      value: VisitorPrefab
+      objectReference: {fileID: 0}
+    - target: {fileID: 2664338853412353054, guid: 1c8e65037b948a34fb8f5efb93aca94d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4062420015516626225, guid: 1c8e65037b948a34fb8f5efb93aca94d, type: 3}
+      propertyPath: m_RootOrder
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 4062420015516626225, guid: 1c8e65037b948a34fb8f5efb93aca94d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -5.99
+      objectReference: {fileID: 0}
+    - target: {fileID: 4062420015516626225, guid: 1c8e65037b948a34fb8f5efb93aca94d, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4062420015516626225, guid: 1c8e65037b948a34fb8f5efb93aca94d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4062420015516626225, guid: 1c8e65037b948a34fb8f5efb93aca94d, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4062420015516626225, guid: 1c8e65037b948a34fb8f5efb93aca94d, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4062420015516626225, guid: 1c8e65037b948a34fb8f5efb93aca94d, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4062420015516626225, guid: 1c8e65037b948a34fb8f5efb93aca94d, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4062420015516626225, guid: 1c8e65037b948a34fb8f5efb93aca94d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4062420015516626225, guid: 1c8e65037b948a34fb8f5efb93aca94d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4062420015516626225, guid: 1c8e65037b948a34fb8f5efb93aca94d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 1c8e65037b948a34fb8f5efb93aca94d, type: 3}
 --- !u!1001 &1634471411808605010
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -38458,6 +38519,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 910096186279003502, guid: 6e63e86c283224240aea3258256ba6a3, type: 3}
+      propertyPath: waveSOList.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 910096186279003502, guid: 6e63e86c283224240aea3258256ba6a3, type: 3}
+      propertyPath: waveSOList.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 2cd58fb9ac307fb45b06e9101d3658ed, type: 2}
+    - target: {fileID: 910096186279003502, guid: 6e63e86c283224240aea3258256ba6a3, type: 3}
+      propertyPath: waveSOList.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: b16765a0bcc07c8478164ec1436adee3, type: 2}
+    - target: {fileID: 910096186279003502, guid: 6e63e86c283224240aea3258256ba6a3, type: 3}
+      propertyPath: waveSOList.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: 103d75cf90e1a594c8b06458addf1c97, type: 2}
     - target: {fileID: 2262348578732048999, guid: 6e63e86c283224240aea3258256ba6a3, type: 3}
       propertyPath: m_RootOrder
       value: 8
