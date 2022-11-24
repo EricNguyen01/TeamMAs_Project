@@ -38,6 +38,8 @@ namespace TeamMAsTD
 
         public int currentWave { get; private set; } = 0;
 
+        //PRIVATES...............................................................................
+
         private void Awake()
         {
             if(waveSOList.Count == 0)
@@ -47,8 +49,11 @@ namespace TeamMAsTD
                 return;
             }
 
+            float startInitTime = Time.realtimeSinceStartup;
             SetupVisitorPools();
             SpawnChildWaveObjects();
+            float endInitTime = Time.realtimeSinceStartup - startInitTime;
+            Debug.Log("WaveSpawner Finished Initializing VisitorPools and Child Wave Objects. Took: " + endInitTime * 1000.0f + "ms.");
 
             if (enableDebug)
             {
@@ -119,15 +124,15 @@ namespace TeamMAsTD
             }
         }
 
-        public void StartWave(int waveNum)
+        private void StartWave(int waveNum)
         {
-            if(waveNum < 0 || waveNum >= wavesList.Count)
+            if (waveNum < 0 || waveNum >= wavesList.Count)
             {
                 Debug.LogWarning("Trying to start an invalid wave!");
                 return;
             }
 
-            if(wavesList == null || wavesList.Count == 0)
+            if (wavesList == null || wavesList.Count == 0)
             {
                 Debug.LogWarning("Trying to start a wave but there is no Wave Game Object spawned by WaveSpawner: " + name + "!");
                 return;
@@ -141,7 +146,7 @@ namespace TeamMAsTD
                 return;
             }
 
-            for(int i = 0; i < wavesList.Count; i++)
+            for (int i = 0; i < wavesList.Count; i++)
             {
                 if (wavesList[i] == null) continue;
 
@@ -150,21 +155,40 @@ namespace TeamMAsTD
 
             wavesList[waveNum].gameObject.SetActive(true);
             //Call the spawn function in Wave.cs
-            wavesList[waveNum].WaveStartsSpawningVisitors();
+            wavesList[waveNum].ProcessWaveStarts();
         }
 
-        private void IncrementWave()
+        private void IncrementWaveNumber()
         {
             if (currentWave + 1 < 0 || currentWave + 1 >= wavesList.Count) return;
 
             currentWave++;
         }
 
-        public void JumpToWave(int waveNum)
+        //PUBLICS..........................................................................
+
+        //This function is to be called by WaveStart UI Button event to start a wave from current wave number.
+        public void StartCurrentWave()
+        {
+            StartWave(currentWave);
+        }
+
+        public void ProcessWaveFinished(int waveNum, bool incrementWaveOnFinished)
+        {
+            if (wavesList[waveNum] == null) return;
+
+            wavesList[waveNum].gameObject.SetActive(false);
+
+            if(incrementWaveOnFinished) IncrementWaveNumber();
+        }
+
+        public void JumpToWave(int waveNum, bool startWaveAfterJump)
         {
             if (waveNum < 0 || waveNum >= wavesList.Count) return;
 
             currentWave = waveNum;
+
+            if (startWaveAfterJump) StartWave(waveNum);
         }
 
         public VisitorPool AddVisitorPoolForNewVisitorType(VisitorSO visitorSO, int visitorNumbersToPool)

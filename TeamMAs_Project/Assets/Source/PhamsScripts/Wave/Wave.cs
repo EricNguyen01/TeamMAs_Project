@@ -25,6 +25,8 @@ namespace TeamMAsTD
 
         private int waveNum;
 
+        //Wave events declarations
+        private static event System.Action<int> OnWaveStarted;
         private static event System.Action<int> OnWaveFinished;
 
         private void OnDisable()
@@ -62,7 +64,8 @@ namespace TeamMAsTD
         {
             RemoveVisitorTypeIfAllSpawned();
 
-            //TODO: Calculate chance for any remaining types 
+            //Calculate chance for any remaining types 
+
 
             return null;
         }
@@ -83,47 +86,89 @@ namespace TeamMAsTD
 
         private void SpawnAVisitor(VisitorSO visitorSO)
         {
+            if(visitorSO == null) return;
+
+            if (!totalVisitorsToSpawnList.Contains(visitorSO))
+            {
+                Debug.LogWarning("Wave " + waveSO.name + ": Current visitor type: " + visitorSO.name + " spawn numbers exceeded its preset spawn numbers!");
+                return;
+            }
+
             if(waveSpawnerOfThisWave.visitorPools == null)
             {
-                Debug.LogError("Trying to spawn a visitor in wave: " + name + " but no visitor pools to spawn visitor from. " +
+                Debug.LogError("Trying to spawn a visitor in wave: " + waveSO.name + " but no visitor pools to spawn visitor from. " +
                 "Check WaveSpawner.cs!");
 
                 return;
             }
 
-            for(int i = 0; i < waveSpawnerOfThisWave.visitorPools.Count; i++)
+            VisitorPool pool = null;
+
+            //get the pool for this type of visitor from WaveSpawner pools list
+            for (int i = 0; i < waveSpawnerOfThisWave.visitorPools.Count; i++)
             {
                 if (waveSpawnerOfThisWave.visitorPools[i].visitorTypeInPool == visitorSO)
                 {
-                    waveSpawnerOfThisWave.visitorPools[i].EnableVisitorFromPool();
-                    return;
+                    pool = waveSpawnerOfThisWave.visitorPools[i];
+                    break;
                 }
             }
 
             //if, for some reasons, there's no pool for the current visitorSO that we are trying to spawn -> make one:
-            if (visitorSO.isBoss)
+            if (pool == null)
             {
-                VisitorPool pool = waveSpawnerOfThisWave.AddVisitorPoolForNewVisitorType(visitorSO, waveSO.GetSpawnNumberOfVisitorType(visitorSO));
-                
-                if(pool != null)
+                if (visitorSO.isBoss)
                 {
-                    pool.EnableVisitorFromPool();
+                    pool = waveSpawnerOfThisWave.AddVisitorPoolForNewVisitorType(visitorSO, waveSO.GetSpawnNumberOfVisitorType(visitorSO));
+                }
+                else
+                {
+                    pool = waveSpawnerOfThisWave.AddVisitorPoolForNewVisitorType(visitorSO, waveSO.GetSpawnNumberOfVisitorType(visitorSO) * 2);
                 }
             }
-            else
+
+            //if the correct pool for this visitorSO is found -> spawn from that pool (active a current inactive and unused visitor)
+            if (pool != null)
             {
-                VisitorPool pool = waveSpawnerOfThisWave.AddVisitorPoolForNewVisitorType(visitorSO, waveSO.GetSpawnNumberOfVisitorType(visitorSO) * 2);
-                
-                if (pool != null)
-                {
-                    pool.EnableVisitorFromPool();
-                }
+                pool.EnableVisitorFromPool();
+
+                //if totalVisitorsToSpawn list contains this type of visitor, removes the first occurence of this type of visitor
+                if(totalVisitorsToSpawnList.Contains(visitorSO)) totalVisitorsToSpawnList.Remove(visitorSO);
             }
         }
 
         private IEnumerator VisitorSpawnCoroutine()
         {
-            yield return null;
+            OnWaveStarted?.Invoke(waveNum);
+
+            yield return new WaitForSeconds(waveSO.waitTimeToFirstSpawn);
+
+            while(totalVisitorsToSpawnList.Count > 0)
+            {
+                SpawnAVisitor(GetVisitorTypeToSpawnBasedOnChance());
+
+                yield return new WaitForSeconds(waveSO.waitTimeBetweenSpawn);
+            }
+
+            OnWaveFinished?.Invoke(waveNum);
+
+            waveSpawnerOfThisWave.ProcessWaveFinished(waveNum, true);
+        }
+
+        private bool WaveStoppedWithNoVisitorLeft()
+        {
+            if (totalVisitorsToSpawnList == null || totalVisitorsToSpawnList.Count == 0)
+            {
+                Debug.LogWarning("Wave: " + waveSO.name + " is started but there's no visitors left to spawn so it has been stopped!");
+
+                OnWaveFinished?.Invoke(waveNum);
+
+                waveSpawnerOfThisWave.ProcessWaveFinished(waveNum, true);
+
+                return true;
+            }
+
+            return false;
         }
 
         public void InitializeWave(WaveSpawner waveSpawner, WaveSO waveSO, int waveNum)
@@ -135,8 +180,12 @@ namespace TeamMAsTD
             LoadTotalVisitorAndVisitorTypesListForThisWave(waveSO);
         }
 
-        public void WaveStartsSpawningVisitors()
+        public void ProcessWaveStarts()
         {
+            bool waveHasStopped = WaveStoppedWithNoVisitorLeft();
+
+            if (waveHasStopped) return;
+
             StartCoroutine(VisitorSpawnCoroutine());
         }
     }
