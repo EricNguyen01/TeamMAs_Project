@@ -38,6 +38,8 @@ namespace TeamMAsTD
 
         public int currentWave { get; private set; } = 0;
 
+        private bool waveAlreadyStarted = false;
+
         //PRIVATES...............................................................................
 
         private void Awake()
@@ -146,6 +148,12 @@ namespace TeamMAsTD
                 return;
             }
 
+            if (waveAlreadyStarted)
+            {
+                Debug.LogWarning("Trying to start a wave but a wave has already started and is in process!");
+                return;
+            }
+
             for (int i = 0; i < wavesList.Count; i++)
             {
                 if (wavesList[i] == null) continue;
@@ -156,6 +164,8 @@ namespace TeamMAsTD
             wavesList[waveNum].gameObject.SetActive(true);
             //Call the spawn function in Wave.cs
             wavesList[waveNum].ProcessWaveStarts();
+
+            waveAlreadyStarted = true;
         }
 
         private void IncrementWaveNumber()
@@ -180,6 +190,8 @@ namespace TeamMAsTD
             wavesList[waveNum].gameObject.SetActive(false);
 
             if(incrementWaveOnFinished) IncrementWaveNumber();
+
+            waveAlreadyStarted = false;
         }
 
         public void JumpToWave(int waveNum, bool startWaveAfterJump)

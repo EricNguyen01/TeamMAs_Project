@@ -37,6 +37,8 @@ namespace TeamMAsTD
         private int currentSpawnRandomNumber = 0;
         private int previousSpawnRandomNumber = -1;
 
+        private bool waveHasAlreadyStarted = false;//to avoid overlapping wave start process
+
         //Wave events declarations
         private static event System.Action<int> OnWaveStarted;
         private static event System.Action<int> OnWaveFinished;
@@ -302,6 +304,8 @@ namespace TeamMAsTD
 
         private IEnumerator VisitorSpawnCoroutine()
         {
+            waveHasAlreadyStarted = true;
+
             OnWaveStarted?.Invoke(waveNum);
 
             //wait time until 1st visitor spawns
@@ -311,7 +315,6 @@ namespace TeamMAsTD
             if (totalVisitorsToSpawnList == null || totalVisitorsToSpawnList.Count == 0)
             {
                 WaveStoppedWithNoVisitorLeft();
-
                 yield break;
             }
             //else
@@ -339,6 +342,8 @@ namespace TeamMAsTD
 
                 waveSpawnerOfThisWave.ProcessWaveFinished(waveNum, true);
 
+                waveHasAlreadyStarted = false;
+
                 return true;
             }
 
@@ -360,6 +365,9 @@ namespace TeamMAsTD
 
         public void ProcessWaveStarts()
         {
+            //cant call visitor spawn coroutine multiple times if wave's been already started and running
+            if (waveHasAlreadyStarted) return;
+
             //check if all visitors in wave has been spawned -> if yes, stop wave
             bool waveHasStopped = WaveStoppedWithNoVisitorLeft();
 
