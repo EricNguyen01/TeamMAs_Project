@@ -14,6 +14,7 @@ namespace TeamMAsTD
     {
         [field: SerializeField] public List<Tile> orderedPathTiles { get; private set; } = new List<Tile>();
 
+        //This list is used for when the user updating the path tiles list in the editor
         [SerializeField] [HideInInspector] private List<Tile> oldOrderedPathTiles = new List<Tile>();
 
         //PRIVATES................................................................................

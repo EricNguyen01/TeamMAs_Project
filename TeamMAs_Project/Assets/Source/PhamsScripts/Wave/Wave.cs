@@ -143,6 +143,7 @@ namespace TeamMAsTD
                     }
                 }
             }
+            //if the above chunk is finished and the function is not returned yet:
 
             //check for whether a visitor type has all been spawned up is done in RemoveVisitorTypeIfDepleted() in SpawnAVisitor
             //any type that has been spawned up will also be removed from spawnChance lists (normal + boss) in RemoveVisitorTypeIfDepleted().
@@ -158,29 +159,9 @@ namespace TeamMAsTD
             //For spawnBossLast option if set to true in WaveSO
             if (waveSO.spawnBossLast)
             {
-                if (visitorTypes.Count == 0) return null;
-
-                //check if all normal visitor types have been spawned up and only bosses remained
-                bool spawnBoss = true;
-
-                //loop through visitor types to check if there are other normal units to spawn
-                for (int i = 0; i < visitorTypes.Count; i++)
-                {
-                    //if there are still normal units not spawned up -> break out of this for loop
-                    if (!visitorTypes[i].isBoss)
-                    {
-                        spawnBoss = false;
-                        break;
-                    }
-
-                    //if at last element and we are still seeing all bosses without any normal visitor left
-                    //set previous random num to -1 for the switch to spawn boss only
-                    if (i == visitorTypes.Count - 1 && visitorTypes[i].isBoss) previousSpawnRandomNumber = -1;
-                }
-
                 while (true)
                 {
-                    if (spawnBoss)
+                    if (visitorSpawnChanceList.Count == 0)
                     {
                         if (visitorBossSpawnChanceList.Count == 0) return null;
 
@@ -192,8 +173,6 @@ namespace TeamMAsTD
                     }
                     else
                     {
-                        if(visitorSpawnChanceList.Count == 0) return null;
-
                         visitorType = GetVisitorTypeFromSpawnChanceList(visitorSpawnChanceList);
 
                         if (visitorType == null) continue;

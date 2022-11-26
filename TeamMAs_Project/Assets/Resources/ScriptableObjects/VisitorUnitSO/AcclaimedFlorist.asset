@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <displayName>k__BackingField: Acclaimed Florist (5 out of 5 stars for the 10th
     consecutive year)
-  <unitPrefab>k__BackingField: {fileID: 0}
+  <unitPrefab>k__BackingField: {fileID: 2664338853412353054, guid: 471d44336dcb8fe45b481eba247454de, type: 3}
   <visitorType>k__BackingField: 0
   <happinessAsHealth>k__BackingField: 100
   <moveSpeed>k__BackingField: 1

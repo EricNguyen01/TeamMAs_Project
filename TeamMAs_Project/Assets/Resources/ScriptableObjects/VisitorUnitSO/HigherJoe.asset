@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: HigherJoe
   m_EditorClassIdentifier: 
   <displayName>k__BackingField: Higher-than-Average Joe
-  <unitPrefab>k__BackingField: {fileID: 0}
+  <unitPrefab>k__BackingField: {fileID: 2664338853412353054, guid: 9f49a4db8cf4c424a86e3bde720b5a50, type: 3}
   <visitorType>k__BackingField: 0
   <happinessAsHealth>k__BackingField: 100
   <moveSpeed>k__BackingField: 1

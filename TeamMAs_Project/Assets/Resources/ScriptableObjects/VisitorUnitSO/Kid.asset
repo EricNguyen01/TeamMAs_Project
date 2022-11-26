@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Kid
   m_EditorClassIdentifier: 
   <displayName>k__BackingField: Kid
-  <unitPrefab>k__BackingField: {fileID: 0}
+  <unitPrefab>k__BackingField: {fileID: 2664338853412353054, guid: ce5b50caa9719704ca8565ddba7f8051, type: 3}
   <visitorType>k__BackingField: 0
   <happinessAsHealth>k__BackingField: 60
   <moveSpeed>k__BackingField: 1

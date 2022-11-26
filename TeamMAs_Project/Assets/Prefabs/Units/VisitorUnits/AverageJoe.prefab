@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2541358654680153799}
   - component: {fileID: -9081863570021092993}
   m_Layer: 0
-  m_Name: VisitorPrefab
+  m_Name: AverageJoe
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -99,7 +99,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db07652560a766142ade56c50fa71482, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <visitorUnitSO>k__BackingField: {fileID: 0}
+  <visitorUnitSO>k__BackingField: {fileID: 11400000, guid: 5d9daf08272e8754a8584dfa26f65ed1, type: 2}
 --- !u!114 &-9081863570021092993
 MonoBehaviour:
   m_ObjectHideFlags: 0

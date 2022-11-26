@@ -15,7 +15,7 @@ MonoBehaviour:
   <displayName>k__BackingField: Animalia Arthropoda Insecta Hymenoptera Apocrita
     Apoidea Anthopila Apidae Bombini Bombus (Bee2) (Unhappy) (1/16,000 (Shiny)) (Genetically
     Enhanced) (Wasp Type) (disambiguation)
-  <unitPrefab>k__BackingField: {fileID: 0}
+  <unitPrefab>k__BackingField: {fileID: 2664338853412353054, guid: 1c8e65037b948a34fb8f5efb93aca94d, type: 3}
   <visitorType>k__BackingField: 0
   <happinessAsHealth>k__BackingField: 100
   <moveSpeed>k__BackingField: 1
