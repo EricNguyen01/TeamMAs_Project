@@ -39,10 +39,6 @@ namespace TeamMAsTD
 
         private bool waveHasAlreadyStarted = false;//to avoid overlapping wave start process
 
-        //Wave events declarations
-        private static event System.Action<int> OnWaveStarted;
-        private static event System.Action<int> OnWaveFinished;
-
         private void OnDisable()
         {
             StopAllCoroutines();
@@ -306,8 +302,6 @@ namespace TeamMAsTD
         {
             waveHasAlreadyStarted = true;
 
-            OnWaveStarted?.Invoke(waveNum);
-
             //wait time until 1st visitor spawns
             yield return new WaitForSeconds(waveSO.waitTimeToFirstSpawn);
 
@@ -338,8 +332,6 @@ namespace TeamMAsTD
         {
             if (totalVisitorsToSpawnList == null || totalVisitorsToSpawnList.Count == 0)
             {
-                OnWaveFinished?.Invoke(waveNum);
-
                 waveSpawnerOfThisWave.ProcessWaveFinished(waveNum, true);
 
                 waveHasAlreadyStarted = false;

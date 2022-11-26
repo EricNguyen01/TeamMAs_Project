@@ -40,6 +40,10 @@ namespace TeamMAsTD
 
         private bool waveAlreadyStarted = false;
 
+        //Wave events declarations
+        private static event System.Action<WaveSpawner, int> OnWaveStarted;
+        private static event System.Action<WaveSpawner, int> OnWaveFinished;
+
         //PRIVATES...............................................................................
 
         private void Awake()
@@ -162,10 +166,14 @@ namespace TeamMAsTD
             }
 
             wavesList[waveNum].gameObject.SetActive(true);
+
             //Call the spawn function in Wave.cs
             wavesList[waveNum].ProcessWaveStarts();
 
             waveAlreadyStarted = true;
+
+            //invoke wave started event
+            OnWaveStarted?.Invoke(this, waveNum);
         }
 
         private void IncrementWaveNumber()
@@ -192,6 +200,9 @@ namespace TeamMAsTD
             if(incrementWaveOnFinished) IncrementWaveNumber();
 
             waveAlreadyStarted = false;
+
+            //invoke wave ended event
+            OnWaveFinished?.Invoke(this, waveNum);
         }
 
         public void JumpToWave(int waveNum, bool startWaveAfterJump)
