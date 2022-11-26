@@ -15,16 +15,16 @@ MonoBehaviour:
   <visitorTypesToSpawnThisWave>k__BackingField:
   - visitorType: {fileID: 11400000, guid: 5d9daf08272e8754a8584dfa26f65ed1, type: 2}
     spawnNumbers: 20
-    spawnChance: 0
+    spawnChance: 50
   - visitorType: {fileID: 11400000, guid: 723776edbdfb7a54b9cba63847482b4d, type: 2}
     spawnNumbers: 10
-    spawnChance: 0
+    spawnChance: 50
   - visitorType: {fileID: 11400000, guid: ea6738d80b42a744e95a53fa235cddaa, type: 2}
     spawnNumbers: 5
-    spawnChance: 0
+    spawnChance: 25
   - visitorType: {fileID: 11400000, guid: 3720b70d819e4a84e8fca558771e56b4, type: 2}
     spawnNumbers: 1
-    spawnChance: 0
+    spawnChance: 1
   <waitTimeToFirstSpawn>k__BackingField: 1
   <waitTimeBetweenSpawn>k__BackingField: 1
   <spawnBossLast>k__BackingField: 1

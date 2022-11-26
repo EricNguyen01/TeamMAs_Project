@@ -6,25 +6,25 @@ namespace TeamMAsTD
 {
     public class VisitorPool : MonoBehaviour
     {
-        public VisitorSO visitorTypeInPool { get; private set; }
+        public VisitorUnitSO visitorTypeInPool { get; private set; }
 
-        private List<Visitor> visitorPool = new List<Visitor>();
+        private List<VisitorUnit> visitorPool = new List<VisitorUnit>();
 
-        private void CreateAndAddVisitorsToPool(VisitorSO visitorSO, int numberToPool, bool setInactive)
+        private void CreateAndAddVisitorsToPool(VisitorUnitSO visitorSO, int numberToPool, bool setInactive)
         {
-            if (visitorSO == null || visitorSO.visitorPrefab) return;
+            if (visitorSO == null || visitorSO.unitPrefab == null) return;
 
             if (numberToPool <= 0) return;
 
             for (int i = 0; i < numberToPool; i++)
             {
-                GameObject visitorGO = Instantiate(visitorSO.visitorPrefab, transform);
-                Visitor visitorScriptComp = visitorGO.GetComponent<Visitor>();
+                GameObject visitorGO = Instantiate(visitorSO.unitPrefab, transform);
+                VisitorUnit visitorScriptComp = visitorGO.GetComponent<VisitorUnit>();
 
                 if (visitorScriptComp == null)
                 {
                     Debug.LogError("Visitor GameObject prefab of VisitorSO: " + visitorSO.name +
-                    " has no Visitor script component attached! Pooling of this visitor failed!");
+                    " has no Visitor script component attached! Pooling of this visitor obj failed!");
                     continue;
                 }
 
@@ -36,14 +36,14 @@ namespace TeamMAsTD
             }
         }
 
-        public void InitializeVisitorPool(VisitorSO visitorSO, int numberToPool)
+        public void InitializeVisitorPool(VisitorUnitSO visitorSO, int numberToPool)
         {
             if(visitorSO == null)
             {
                 enabled = false;
                 return;
             }
-            if(visitorSO.visitorPrefab == null)
+            if(visitorSO.unitPrefab == null)
             {
                 Debug.LogError("Trying to pool: " + visitorSO.displayName + " but found no visitor prefab of this visitor ScriptableObject!");
                 enabled = false;
@@ -104,7 +104,7 @@ namespace TeamMAsTD
 
         //This function will be called directly by the Visitor GameObject with Visitor script attached 
         //When a Visitor GameObject wants to return to pool (e.g on dead or reached destination) -> call this function inside it.
-        public void ReturnVisitorToPool(Visitor visitor)
+        public void ReturnVisitorToPool(VisitorUnit visitor)
         {
             if(visitor == null) return;
 

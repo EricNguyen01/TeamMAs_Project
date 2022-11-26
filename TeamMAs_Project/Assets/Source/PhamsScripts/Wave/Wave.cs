@@ -17,13 +17,25 @@ namespace TeamMAsTD
         //E.g: if there are 10 visitors of type X, there will be 10 type X VisitorSO elements in this list
         //this list does not containt visitor game objects or prefabs (only SO data)
         //this list is merely a representation of what visitors have been spawned, of what type, and how many are left
-        private List<VisitorSO> totalVisitorsToSpawnList = new List<VisitorSO>();
+        private List<VisitorUnitSO> totalVisitorsToSpawnList = new List<VisitorUnitSO>();
 
         //This list stores the total visitorSO types in this wave
         //E.g: If this wave has VisitorSO of type X, Y, and Z (all have spawn nums > 0), there will be 3 elements of X,Y,Z in this list.
-        private List<VisitorSO> visitorTypes = new List<VisitorSO>();
+        private List<VisitorUnitSO> visitorTypes = new List<VisitorUnitSO>();
+
+        //This list stores the number of VisitorSO based on their chance
+        //For example visitorX has 50 spawn chance -> 50 visitorX goes into this list and visitorY has 25 spawn chance -> 25 visitorY goes into list
+        //Then when spawn based on chance, get a random non-repeat number in the range of this list
+        //The list element that was randomly landed on will be the Visitor for spawning.
+        private List<VisitorUnitSO> visitorSpawnChanceList = new List<VisitorUnitSO>();
+        
+        //same with above list but for bosses (for use with spawnBossLast option in WaveSO.cs)
+        private List<VisitorUnitSO> visitorBossSpawnChanceList = new List<VisitorUnitSO>();
 
         private int waveNum;
+
+        private int currentSpawnRandomNumber = 0;
+        private int previousSpawnRandomNumber = -1;
 
         //Wave events declarations
         private static event System.Action<int> OnWaveStarted;
@@ -36,6 +48,8 @@ namespace TeamMAsTD
 
         private void LoadTotalVisitorAndVisitorTypesListForThisWave(WaveSO waveSO)
         {
+            if (waveSO == null) return;
+
             if (waveSO.visitorTypesToSpawnThisWave == null || waveSO.visitorTypesToSpawnThisWave.Length == 0)
             {
                 Debug.LogError("Wave: " + waveSO.name + " ScriptableObject doesnt have any visitor types to spawn! Spawning stopped!");
@@ -60,33 +74,171 @@ namespace TeamMAsTD
             }
         }
 
-        private VisitorSO GetVisitorTypeToSpawnBasedOnChance()
+        private void LoadVisitorSpawnChanceListForThisWave(WaveSO waveSO)
         {
-            RemoveVisitorTypeIfAllSpawned();
+            if (waveSO == null) return;
 
-            //Calculate chance for any remaining types 
+            if (waveSO.visitorTypesToSpawnThisWave == null || waveSO.visitorTypesToSpawnThisWave.Length == 0) return;
 
-
-            return null;
-        }
-
-        //Removes any VisitorSO elements in the visitorTypes list if there's no more visitors of that corresponding type to spawn.
-        private void RemoveVisitorTypeIfAllSpawned()
-        {
-            if (visitorTypes == null || visitorTypes.Count == 0) return;
-
-            for(int i = 0; i < visitorTypes.Count; i++)
+            //do not load spawn chance list if there's only 1 type of visitor in wave (always 100% chance to spawn this type)
+            if (waveSO.visitorTypesToSpawnThisWave.Length == 1)
             {
-                if (!totalVisitorsToSpawnList.Contains(visitorTypes[i]))
+                Debug.Log("Wave " + waveSO.name + " only has 1 type of visitor!");
+                return;
+            }
+
+            for (int i = 0; i < waveSO.visitorTypesToSpawnThisWave.Length; i++)
+            {
+                if (waveSO.visitorTypesToSpawnThisWave[i].visitorType == null) continue;
+
+                //if a type has spawn chance of 0 -> count it as a spawn chance of 1 -> continue loop
+                if (waveSO.visitorTypesToSpawnThisWave[i].spawnChance == 0)
                 {
-                    visitorTypes.RemoveAt(i);
+                    AddVisitorTypesToSpawnChanceList(waveSO.visitorTypesToSpawnThisWave[i].visitorType);
+                    
+                    continue;
+                }
+
+                //if higher than 1 spawn chance -> add based on total spawn chance of current visitor type
+                for(int j = 0; j < waveSO.visitorTypesToSpawnThisWave[i].spawnChance; j++)
+                {
+                    AddVisitorTypesToSpawnChanceList(waveSO.visitorTypesToSpawnThisWave[i].visitorType);
                 }
             }
         }
 
-        private void SpawnAVisitor(VisitorSO visitorSO)
+        private void AddVisitorTypesToSpawnChanceList(VisitorUnitSO visitorSO)
         {
-            if(visitorSO == null) return;
+            //if in case of spawnBossLast = true
+            if (waveSO.spawnBossLast)
+            {
+                //check if visitor type is boss -> if yes set to boss list
+                if (visitorSO.isBoss)
+                {
+                    visitorBossSpawnChanceList.Add(visitorSO);
+                    return;
+                }
+            }
+            
+            //if none of the above
+            visitorSpawnChanceList.Add(visitorSO);
+        }
+
+        private VisitorUnitSO GetVisitorTypeToSpawnBasedOnChance()
+        {
+            //if normal visitors spawn chance list count is 0, it means that there's only 1 type of visitor in this wave (100% spawn chance)
+            //OR it could mean that this wave contains all boss types
+            if(visitorSpawnChanceList.Count == 0)
+            {
+                //if visitorBossSpawnChance list is also 0 in length -> we can be sure that there is only exactly 1 type of normal visitor in wave
+                if (visitorBossSpawnChanceList.Count == 0)
+                {
+                    //check for null value
+                    if (totalVisitorsToSpawnList == null || totalVisitorsToSpawnList.Count == 0) return null;
+
+                    //in case of 1 type only with 100% chance, return that type everytime
+                    for (int i = 0; i < totalVisitorsToSpawnList.Count; i++)
+                    {
+                        if (totalVisitorsToSpawnList[i] != null) return totalVisitorsToSpawnList[i];
+                    }
+                }
+            }
+
+            //check for whether a visitor type has all been spawned up is done in RemoveVisitorTypeIfDepleted() in SpawnAVisitor
+            //any type that has been spawned up will also be removed from spawnChance lists (normal + boss) in RemoveVisitorTypeIfDepleted().
+            //we don't have to do that again here.
+
+            //The below remaining chunk processes getting random visitor types based on chance for more than 1 type
+            //and for whether spawnBossLast is enabled or disabled.
+
+            currentSpawnRandomNumber = 0;
+
+            VisitorUnitSO visitorType;
+
+            //For spawnBossLast option if set to true in WaveSO
+            if (waveSO.spawnBossLast)
+            {
+                if (visitorTypes.Count == 0) return null;
+
+                //check if all normal visitor types have been spawned up and only bosses remained
+                bool spawnBoss = true;
+
+                //loop through visitor types to check if there are other normal units to spawn
+                for (int i = 0; i < visitorTypes.Count; i++)
+                {
+                    //if there are still normal units not spawned up -> break out of this for loop
+                    if (!visitorTypes[i].isBoss)
+                    {
+                        spawnBoss = false;
+                        break;
+                    }
+
+                    //if at last element and we are still seeing all bosses without any normal visitor left
+                    //set previous random num to -1 for the switch to spawn boss only
+                    if (i == visitorTypes.Count - 1 && visitorTypes[i].isBoss) previousSpawnRandomNumber = -1;
+                }
+
+                while (true)
+                {
+                    if (spawnBoss)
+                    {
+                        if (visitorBossSpawnChanceList.Count == 0) return null;
+
+                        visitorType = GetVisitorTypeFromSpawnChanceList(visitorBossSpawnChanceList);
+
+                        if (visitorType == null) continue;
+
+                        return visitorType;
+                    }
+                    else
+                    {
+                        if(visitorSpawnChanceList.Count == 0) return null;
+
+                        visitorType = GetVisitorTypeFromSpawnChanceList(visitorSpawnChanceList);
+
+                        if (visitorType == null) continue;
+
+                        return visitorType;
+                    }
+
+                }
+            }
+            else
+            {
+                while (true)
+                {
+                    if (visitorSpawnChanceList.Count == 0) return null;
+
+                    visitorType = GetVisitorTypeFromSpawnChanceList(visitorSpawnChanceList);
+
+                    if (visitorType == null) continue;
+
+                    return visitorType;
+                }
+            }
+        }
+
+        private VisitorUnitSO GetVisitorTypeFromSpawnChanceList(List<VisitorUnitSO> spawnChanceList)
+        {
+            currentSpawnRandomNumber = Random.Range(0, spawnChanceList.Count);
+
+            //make sure rand is not a repeat 
+            if (currentSpawnRandomNumber == previousSpawnRandomNumber) return null;
+
+            previousSpawnRandomNumber = currentSpawnRandomNumber;
+
+            if (spawnChanceList[currentSpawnRandomNumber] == null) return null;
+
+            return spawnChanceList[currentSpawnRandomNumber];
+        }
+
+        private void SpawnAVisitor(VisitorUnitSO visitorSO)
+        {
+            if(visitorSO == null)
+            {
+                Debug.LogError("Trying to spawn a null visitor in wave: " + waveSO.name + ".");
+                return;
+            }
 
             if (!totalVisitorsToSpawnList.Contains(visitorSO))
             {
@@ -134,6 +286,38 @@ namespace TeamMAsTD
 
                 //if totalVisitorsToSpawn list contains this type of visitor, removes the first occurence of this type of visitor
                 if(totalVisitorsToSpawnList.Contains(visitorSO)) totalVisitorsToSpawnList.Remove(visitorSO);
+
+                //Removes any VisitorSO elements in the visitorTypes and spawn chance list
+                //if there's no more visitors of that corresponding type to spawn.
+                RemoveVisitorTypeIfDepleted(visitorSO);
+
+                Debug.Log("Visitor: " + visitorSO.displayName + " successfully spawned in wave " + waveSO.name + 
+                ". Remaining Visitors: " + (totalVisitorsToSpawnList.Count - 1));
+            }
+        }
+
+        //This function removes any VisitorSO elements in the visitorTypes and spawn chance list
+        //if there's no more visitors of that corresponding type to spawn.
+        private void RemoveVisitorTypeIfDepleted(VisitorUnitSO visitorSO)
+        {
+            //if the current visitor types list has this visitorSO type
+            if (visitorTypes.Contains(visitorSO))
+            {
+                //if this visitor type has been spawned up and no longer exists in total visitors to spawn list -> removes this visitor type
+                if (!totalVisitorsToSpawnList.Contains(visitorSO)) visitorTypes.Remove(visitorSO);
+            }
+
+            //if the current normal visitor type spawn chance list contains this visitor type
+            if (visitorSpawnChanceList.Contains(visitorSO))
+            {
+                //if this visitor type has spawned up -> also removes all of this visitor type instances in spawn chance list
+                if (!totalVisitorsToSpawnList.Contains(visitorSO)) visitorSpawnChanceList.RemoveAll(visitorType => visitorType == visitorSO);
+            }
+
+            //same as above if but for boss type
+            if (visitorBossSpawnChanceList.Contains(visitorSO))
+            {
+                if (!totalVisitorsToSpawnList.Contains(visitorSO)) visitorBossSpawnChanceList.RemoveAll(visitorType => visitorType == visitorSO);
             }
         }
 
@@ -141,7 +325,19 @@ namespace TeamMAsTD
         {
             OnWaveStarted?.Invoke(waveNum);
 
+            //wait time until 1st visitor spawns
             yield return new WaitForSeconds(waveSO.waitTimeToFirstSpawn);
+
+            //if was supposed to spawn but no visitor to spawn -> stop wave and break from spawn coroutine
+            if (totalVisitorsToSpawnList == null || totalVisitorsToSpawnList.Count == 0)
+            {
+                WaveStoppedWithNoVisitorLeft();
+
+                yield break;
+            }
+            //else
+            //spawn visitors based on their chance with wait time in between until all visitor types and their numbers are spawned up
+            Debug.Log("Wave " + waveSO.name + " Successfully Started! Total visitors: " + totalVisitorsToSpawnList.Count);
 
             while(totalVisitorsToSpawnList.Count > 0)
             {
@@ -150,17 +346,16 @@ namespace TeamMAsTD
                 yield return new WaitForSeconds(waveSO.waitTimeBetweenSpawn);
             }
 
-            OnWaveFinished?.Invoke(waveNum);
+            //process wave stopped
+            WaveStoppedWithNoVisitorLeft();
 
-            waveSpawnerOfThisWave.ProcessWaveFinished(waveNum, true);
+            Debug.Log("Wave " + waveSO.name + " Successfully Stopped! Total visitors: " + totalVisitorsToSpawnList.Count);
         }
 
         private bool WaveStoppedWithNoVisitorLeft()
         {
             if (totalVisitorsToSpawnList == null || totalVisitorsToSpawnList.Count == 0)
             {
-                Debug.LogWarning("Wave: " + waveSO.name + " is started but there's no visitors left to spawn so it has been stopped!");
-
                 OnWaveFinished?.Invoke(waveNum);
 
                 waveSpawnerOfThisWave.ProcessWaveFinished(waveNum, true);
@@ -177,15 +372,25 @@ namespace TeamMAsTD
             this.waveSO = waveSO;
             this.waveNum = waveNum;
 
+            float startInitTime = Time.realtimeSinceStartup;
             LoadTotalVisitorAndVisitorTypesListForThisWave(waveSO);
+            LoadVisitorSpawnChanceListForThisWave(waveSO);
+            float endInitTime = Time.realtimeSinceStartup - startInitTime;
+            Debug.Log("Wave: " + waveSO.name + " finished initializing. Took: " + endInitTime * 1000.0f + "ms.");
         }
 
         public void ProcessWaveStarts()
         {
+            //check if all visitors in wave has been spawned -> if yes, stop wave
             bool waveHasStopped = WaveStoppedWithNoVisitorLeft();
 
-            if (waveHasStopped) return;
+            if (waveHasStopped)
+            {
+                Debug.LogWarning("Wave: " + waveSO.name + " is started but there's no visitors left to spawn so it has been stopped!");
+                return;
+            }
 
+            //if there are still visitors to spawn -> start wave coroutine
             StartCoroutine(VisitorSpawnCoroutine());
         }
     }

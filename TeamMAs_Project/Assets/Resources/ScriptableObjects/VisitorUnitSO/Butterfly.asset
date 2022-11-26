@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Butterfly
   m_EditorClassIdentifier: 
   <displayName>k__BackingField: Butterfly
+  <unitPrefab>k__BackingField: {fileID: 0}
   <visitorType>k__BackingField: 1
   <happinessAsHealth>k__BackingField: 110
   <moveSpeed>k__BackingField: 1
   <emotionalAttackDamage>k__BackingField: 1
   <isBoss>k__BackingField: 0
-  <visitorPrefab>k__BackingField: {fileID: 0}

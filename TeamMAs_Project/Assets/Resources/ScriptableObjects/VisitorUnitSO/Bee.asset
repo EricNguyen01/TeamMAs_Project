@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5d7ce314808d10d41b4abd2687275500, type: 3}
-  m_Name: AverageJoe
+  m_Name: Bee
   m_EditorClassIdentifier: 
-  <displayName>k__BackingField: AverageJoe
-  <visitorType>k__BackingField: 0
-  <happinessAsHealth>k__BackingField: 100
-  <moveSpeed>k__BackingField: 1
+  <displayName>k__BackingField: Bee
+  <unitPrefab>k__BackingField: {fileID: 0}
+  <visitorType>k__BackingField: 1
+  <happinessAsHealth>k__BackingField: 70
+  <moveSpeed>k__BackingField: 1.5
   <emotionalAttackDamage>k__BackingField: 1
   <isBoss>k__BackingField: 0
-  <visitorPrefab>k__BackingField: {fileID: 0}

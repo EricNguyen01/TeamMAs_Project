@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4062420015516626225}
   - component: {fileID: 7552244346061551099}
   - component: {fileID: 2541358654680153799}
+  - component: {fileID: -9081863570021092993}
   m_Layer: 0
   m_Name: VisitorPrefab
   m_TagString: Untagged
@@ -98,6 +99,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db07652560a766142ade56c50fa71482, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <visitorUnitSO>k__BackingField: {fileID: 0}
+--- !u!114 &-9081863570021092993
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2664338853412353054}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02d42652a8b1ee443b21e8d5ce669135, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unitWorldCanvas: {fileID: 6002797163402936112}
+  nameTextMeshProComponent: {fileID: 1824957415631162759}
 --- !u!1 &4502868416843065576
 GameObject:
   m_ObjectHideFlags: 0
@@ -131,10 +147,10 @@ RectTransform:
   m_Father: {fileID: 5631884636994372409}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.17069313, y: 0.36382967}
-  m_AnchorMax: {x: 0.8318546, y: 0.5658889}
-  m_AnchoredPosition: {x: -0.008009672, y: 0.013563812}
-  m_SizeDelta: {x: 0.05039456, y: -0.008112862}
+  m_AnchorMin: {x: 0, y: 0.32126644}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0.0002272129, y: 0.0002462864}
+  m_SizeDelta: {x: 0.000081166625, y: -0.0014443174}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &270609938986997814
 CanvasRenderer:
@@ -191,15 +207,15 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 0.6
+  m_fontSize: 0.7
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
-  m_fontSizeMin: 0.5
-  m_fontSizeMax: 5
+  m_fontSizeMin: 0.1
+  m_fontSizeMax: 0.7
   m_fontStyle: 0
   m_HorizontalAlignment: 2
-  m_VerticalAlignment: 512
+  m_VerticalAlignment: 1024
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0

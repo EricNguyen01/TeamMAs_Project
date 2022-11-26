@@ -14,9 +14,9 @@ namespace TeamMAsTD
         [System.Serializable]
         public struct VisitorTypeStruct
         {
-            public VisitorSO visitorType;
-            public int spawnNumbers;
-            public int spawnChance;
+            public VisitorUnitSO visitorType;
+            [Min(1)] public int spawnNumbers;
+            [Min(1)] public int spawnChance;
         }
 
         [field: Header("This Wave Data")]
@@ -43,7 +43,7 @@ namespace TeamMAsTD
         "Check WaveSpawner.cs script.")]
         public GameObject wavePrefab { get; private set; }
 
-        public int GetSpawnNumberOfVisitorType(VisitorSO visitorSO)
+        public int GetSpawnNumberOfVisitorType(VisitorUnitSO visitorSO)
         {
             if (visitorSO == null) return 0;
 
@@ -62,7 +62,7 @@ namespace TeamMAsTD
             return visitorNum;
         }
 
-        public int GetSpawnChanceOfVisitorType(VisitorSO visitorSO)
+        public int GetSpawnChanceOfVisitorType(VisitorUnitSO visitorSO)
         {
             if (visitorSO == null) return 0;
 

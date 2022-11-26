@@ -28,7 +28,7 @@ namespace TeamMAsTD
         //Each type of visitor will have their own visitor pool in which all the pools are stored in this list
         public List<VisitorPool> visitorPools { get; private set; } = new List<VisitorPool>();
 
-        private List<VisitorSO> visitorTypesWithPoolExisted = new List<VisitorSO>();
+        private List<VisitorUnitSO> visitorTypesWithPoolExisted = new List<VisitorUnitSO>();
 
         //WavesList is the children Wave gameobject list with Wave script component attached spawned from waveSOList
         //when a wave in this list is active -> it is in-use
@@ -96,7 +96,7 @@ namespace TeamMAsTD
 
         private void SetupVisitorPools()
         {
-            List<VisitorSO> visitorsList = new List<VisitorSO>();
+            List<VisitorUnitSO> visitorsList = new List<VisitorUnitSO>();
 
             for(int i = 0; i < waveSOList.Count; i++)
             {
@@ -191,7 +191,7 @@ namespace TeamMAsTD
             if (startWaveAfterJump) StartWave(waveNum);
         }
 
-        public VisitorPool AddVisitorPoolForNewVisitorType(VisitorSO visitorSO, int visitorNumbersToPool)
+        public VisitorPool AddVisitorPoolForNewVisitorType(VisitorUnitSO visitorSO, int visitorNumbersToPool)
         {
             if (visitorSO == null) return null;
 

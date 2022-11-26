@@ -16,7 +16,7 @@ namespace TeamMAsTD
         [field: Header("Tile Properties")]
         [field: SerializeField] public bool isOccupied { get; set; } = false;
         [field: SerializeField] public bool is_AI_Path { get; set; } = false;
-        [field: SerializeField] public Unit unitOnTile { get; private set; }
+        [field: SerializeField] public PlantUnit plantUnitOnTile { get; private set; }
         [field: SerializeField] public bool disableUprootOnTile { get; private set; } = false;
 
         [Header("Tile Debug Config")]
@@ -60,9 +60,9 @@ namespace TeamMAsTD
             AttachUprootOnTileUIScriptComponentIfNull();
         }
 
-        private bool CanPlaceUnit(UnitSO unitSO)
+        private bool CanPlaceUnit(PlantUnitSO unitSO)
         {
-            if (unitOnTile != null || isOccupied)
+            if (plantUnitOnTile != null || isOccupied)
             {
                 return false;
             }
@@ -98,49 +98,52 @@ namespace TeamMAsTD
         }
 
         //This function place a unit on this tile using the provided Unit scriptable object
-        public bool PlaceUnit(UnitSO unitSO)//take in the unit scriptable object as an argument
+        public bool PlaceUnit(PlantUnitSO plantUnitSO)//take in the unit scriptable object as an argument
         {
             //if can't place unit on this tile->do nothing
-            if (!CanPlaceUnit(unitSO)) return false;
+            if (!CanPlaceUnit(plantUnitSO)) return false;
 
-            if(unitSO.unitPrefab == null)
+            if(plantUnitSO.unitPrefab == null)
             {
-                Debug.LogError("A unit: " + unitSO.displayName + "is being planted on tile: " + name + 
+                Debug.LogError("A plant unit: " + plantUnitSO.displayName + "is being planted on tile: " + name + 
                 " without a unit prefab data assigned in the unit scriptable object! Unit placement failed!");
                 return false;
             }
 
             //if can place unit on this tile:
             //make new unit on center of this tile and make this unit children of this tile
-            GameObject unitObj = Instantiate(unitSO.unitPrefab, transform.position, Quaternion.identity, transform);
+            GameObject unitObj = Instantiate(plantUnitSO.unitPrefab, transform.position, Quaternion.identity, transform);
             //get the Unit script component from the instantiated Unit obj
-            Unit unit = unitObj.GetComponent<Unit>();
+            PlantUnit unit = unitObj.GetComponent<PlantUnit>();
 
-            //attach a new Unit script component on the Unit obj being placed if null
             if(unit == null)
             {
-                unit = unitObj.AddComponent<Unit>();
-                unit.SetUnitScriptableObject(unitSO);
+                Debug.LogError("A plant unit prefab is placed on tile: " + name + " but it has no PlantUnit script attached." +
+                "This results in no plant unit being placed!");
+
+                Destroy(unitObj);
+            }
+            else
+            {
+                //TODO: Send OnUnitPlacementSuccessful event
             }
 
-            unitOnTile = unit;
-
-            //TODO: Send OnUnitPlacementSuccessful event
+            plantUnitOnTile = unit;
 
             return true;
         }
 
         public void UprootUnit()
         {
-            if (unitOnTile == null) return;
+            if (plantUnitOnTile == null) return;
             if (disableUprootOnTile) return;
 
-            Destroy(unitOnTile.gameObject);
-            unitOnTile = null;
+            Destroy(plantUnitOnTile.gameObject);
+            plantUnitOnTile = null;
 
             //TODO: Send OnUprootSuccessful event
 
-            if(unitOnTile != null)
+            if(plantUnitOnTile != null)
             {
                 Debug.LogWarning("A unit is uprooted but tile: " + name + " is still referencing it!");
             }

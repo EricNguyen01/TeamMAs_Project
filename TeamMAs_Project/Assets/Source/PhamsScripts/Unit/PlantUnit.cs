@@ -4,9 +4,9 @@ using UnityEngine;
 
 namespace TeamMAsTD
 {
-    public class Unit : MonoBehaviour
+    public class PlantUnit : MonoBehaviour, IUnit
     {
-        [field: SerializeField] public UnitSO unitScriptableObject { get; private set; }
+        [field: SerializeField] public PlantUnitSO plantUnitScriptableObject { get; private set; }
 
         //INTERNAL....................................................................
 
@@ -16,7 +16,7 @@ namespace TeamMAsTD
 
         private void Awake()
         {
-            if(unitScriptableObject == null)
+            if(plantUnitScriptableObject == null)
             {
                 Debug.LogError("Unit Scriptable Object data is not assigned on Unit: " + name + ". Disabling Unit!");
                 gameObject.SetActive(false);
@@ -28,7 +28,7 @@ namespace TeamMAsTD
 
         private void InitializeUnitUsingDataFromUnitSO()
         {
-            if (unitScriptableObject == null) return;
+            if (plantUnitScriptableObject == null) return;
 
             GetAndSetUnitSprite();
 
@@ -43,7 +43,7 @@ namespace TeamMAsTD
                 unitSpriteRenderer = gameObject.AddComponent<SpriteRenderer>();
             }
 
-            if (unitSpriteRenderer.sprite == null) unitSpriteRenderer.sprite = unitScriptableObject.unitThumbnail;
+            if (unitSpriteRenderer.sprite == null) unitSpriteRenderer.sprite = plantUnitScriptableObject.unitThumbnail;
         }
 
         //PUBLICS........................................................................
@@ -58,10 +58,17 @@ namespace TeamMAsTD
 
         }
 
-        public void SetUnitScriptableObject(UnitSO unitSO)
+        public void SetUnitScriptableObject(PlantUnitSO plantUnitSO)
         {
-            unitScriptableObject = unitSO;
+            plantUnitScriptableObject = plantUnitSO;
+
             InitializeUnitUsingDataFromUnitSO();
+        }
+
+        //IUnit Interfact functions...............................................................
+        public UnitSO GetUnitScriptableObjectData()
+        {
+            return plantUnitScriptableObject;
         }
     }
 }

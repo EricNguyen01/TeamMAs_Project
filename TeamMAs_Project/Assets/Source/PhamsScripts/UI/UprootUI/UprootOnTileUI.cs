@@ -67,7 +67,7 @@ namespace TeamMAsTD
             }
 
             //do nothing if tile doesnt have plant unit placed on
-            if(tileSelectedForUprootConfirmation.unitOnTile == null)
+            if(tileSelectedForUprootConfirmation.plantUnitOnTile == null)
             {
                 return;
             }
