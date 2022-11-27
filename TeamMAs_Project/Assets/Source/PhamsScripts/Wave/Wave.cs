@@ -32,6 +32,10 @@ namespace TeamMAsTD
         //same with above list but for bosses (for use with spawnBossLast option in WaveSO.cs)
         private List<VisitorUnitSO> visitorBossSpawnChanceList = new List<VisitorUnitSO>();
 
+        //this list keeps track of all the currently active visitor gameobjects spawned by this wave
+        //wave will not end until this list is empty.
+        private List<VisitorUnit> activeVisitorsInScene = new List<VisitorUnit>();
+
         private int waveNum;
 
         private int currentSpawnRandomNumber = 0;
@@ -154,44 +158,25 @@ namespace TeamMAsTD
 
             VisitorUnitSO visitorType;
 
-            //For spawnBossLast option if set to true in WaveSO
+            List<VisitorUnitSO> spawnChanceList = visitorSpawnChanceList;
+
+            //if spawnBossLast option is set to true
             if (waveSO.spawnBossLast)
             {
-                while (true)
-                {
-                    if (visitorSpawnChanceList.Count == 0)
-                    {
-                        if (visitorBossSpawnChanceList.Count == 0) return null;
-
-                        visitorType = GetVisitorTypeFromSpawnChanceList(visitorBossSpawnChanceList);
-
-                        if (visitorType == null) continue;
-
-                        return visitorType;
-                    }
-                    else
-                    {
-                        visitorType = GetVisitorTypeFromSpawnChanceList(visitorSpawnChanceList);
-
-                        if (visitorType == null) continue;
-
-                        return visitorType;
-                    }
-
-                }
+                //if all normal visitor types have been spawned up -> switch to use bosses spawn chance list and start spawn bosses only
+                if (visitorSpawnChanceList.Count == 0) spawnChanceList = visitorBossSpawnChanceList;
             }
-            else
+
+            //process looking for a valid random visitor type to spawn based on current selected spawn chance list
+            while (true)
             {
-                while (true)
-                {
-                    if (visitorSpawnChanceList.Count == 0) return null;
+                if (spawnChanceList.Count == 0) return null;
 
-                    visitorType = GetVisitorTypeFromSpawnChanceList(visitorSpawnChanceList);
+                visitorType = GetVisitorTypeFromSpawnChanceList(spawnChanceList);
 
-                    if (visitorType == null) continue;
+                if (visitorType == null) continue;
 
-                    return visitorType;
-                }
+                return visitorType;
             }
         }
 
@@ -259,7 +244,16 @@ namespace TeamMAsTD
             //if the correct pool for this visitorSO is found -> spawn from that pool (active a current inactive and unused visitor)
             if (pool != null)
             {
-                pool.EnableVisitorFromPool();
+                GameObject visitorGO = pool.EnableVisitorFromPool();
+
+                VisitorUnit visitorUnitScriptComp = visitorGO.GetComponent<VisitorUnit>();
+
+                if (visitorUnitScriptComp != null)
+                {
+                    visitorUnitScriptComp.SetWaveSpawnedThisVisitor(this);
+
+                    activeVisitorsInScene.Add(visitorUnitScriptComp);
+                }
 
                 //if totalVisitorsToSpawn list contains this type of visitor, removes the first occurence of this type of visitor
                 if(totalVisitorsToSpawnList.Contains(visitorSO)) totalVisitorsToSpawnList.Remove(visitorSO);
@@ -269,7 +263,7 @@ namespace TeamMAsTD
                 RemoveVisitorTypeIfDepleted(visitorSO);
 
                 Debug.Log("Visitor: " + visitorSO.displayName + " successfully spawned in wave " + waveSO.name + 
-                ". Remaining Visitors: " + (totalVisitorsToSpawnList.Count - 1));
+                ". Remaining Visitors: " + totalVisitorsToSpawnList.Count);
             }
         }
 
@@ -322,6 +316,9 @@ namespace TeamMAsTD
                 yield return new WaitForSeconds(waveSO.waitTimeBetweenSpawn);
             }
 
+            //if all visitors have been spawned -> wait for them to all become inactive to end wave
+            yield return new WaitUntil(() => activeVisitorsInScene.Count == 0);
+
             //process wave stopped
             WaveStoppedWithNoVisitorLeft();
 
@@ -371,6 +368,14 @@ namespace TeamMAsTD
 
             //if there are still visitors to spawn -> start wave coroutine
             StartCoroutine(VisitorSpawnCoroutine());
+        }
+
+        public void RemoveInactiveVisitorsFromActiveList(VisitorUnit inactiveVisitorGO)
+        {
+            if (activeVisitorsInScene.Contains(inactiveVisitorGO))
+            {
+                activeVisitorsInScene.Remove(inactiveVisitorGO);
+            }
         }
     }
 }

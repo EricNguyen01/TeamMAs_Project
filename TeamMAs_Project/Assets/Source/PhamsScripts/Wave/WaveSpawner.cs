@@ -41,8 +41,9 @@ namespace TeamMAsTD
         private bool waveAlreadyStarted = false;
 
         //Wave events declarations
-        private static event System.Action<WaveSpawner, int> OnWaveStarted;
-        private static event System.Action<WaveSpawner, int> OnWaveFinished;
+        //StartWaveUI.cs receives these 2 events to enable/disable start wave Button UI.
+        public static event System.Action<WaveSpawner, int> OnWaveStarted;
+        public static event System.Action<WaveSpawner, int> OnWaveFinished;
 
         //PRIVATES...............................................................................
 

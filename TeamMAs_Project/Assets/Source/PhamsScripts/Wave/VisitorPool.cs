@@ -91,14 +91,13 @@ namespace TeamMAsTD
         public GameObject EnableVisitorFromPool()
         {
             GameObject visitorObj = GetInactiveVisitorObjectFromPool();
-            if (!visitorObj.activeInHierarchy) visitorObj.SetActive(true);
-            return visitorObj;
-        }
 
-        public GameObject EnableVisitorFromPool(Vector2 spawnPosWorld)
-        {
-            GameObject visitorObj = EnableVisitorFromPool();
-            visitorObj.transform.position = spawnPosWorld;
+            if (visitorObj == null) return null;
+
+            visitorObj.transform.SetParent(null);
+
+            if (!visitorObj.activeInHierarchy) visitorObj.SetActive(true);
+
             return visitorObj;
         }
 
@@ -111,6 +110,7 @@ namespace TeamMAsTD
             if (visitor.gameObject.activeInHierarchy) visitor.gameObject.SetActive(false);
 
             visitor.transform.SetParent(transform);
+
             visitor.transform.position = Vector2.zero;
         }
     }

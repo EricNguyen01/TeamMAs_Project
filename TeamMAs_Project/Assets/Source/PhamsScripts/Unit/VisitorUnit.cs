@@ -8,7 +8,7 @@ namespace TeamMAsTD
     {
         [field: SerializeField] public VisitorUnitSO visitorUnitSO { get; private set; }
 
-        [SerializeField] private Rigidbody2D visitorRigidbody2D;
+        private Wave waveSpawnedThisVisitor;
 
         private VisitorPool poolContainsThisVisitor;
 
@@ -38,12 +38,22 @@ namespace TeamMAsTD
 
         private void OnEnable()
         {
-            //set visitor's pos to 1st tile's pos in chosen path
-            SetVisitorToStartTileOnPath(GetChosenPath());
+            ProcessVisitorBecomesActive();
+        }
 
-            if(chosenPath == null)
+        private void Update()
+        {
+            WalkOnPath();
+        }
+
+        private void ProcessVisitorBecomesActive()
+        {
+            //set visitor's pos to 1st tile's pos in chosen path
+            SetVisitorToFirstTileOnPath(GetChosenPath());
+
+            if (chosenPath == null)
             {
-                DespawnAndReturnToPool();
+                ProcessVisitorDespawns();
                 return;
             }
 
@@ -56,33 +66,6 @@ namespace TeamMAsTD
 
             //start following path
             startFollowingPath = true;
-        }
-
-        private void OnDisable()
-        {
-            
-        }
-
-        private void Update()
-        {
-            WalkOnPath();
-        }
-
-        private void SetupRigidbodyIfNull(bool simulateRigidbody)
-        {
-            if(visitorRigidbody2D == null)
-            {
-                visitorRigidbody2D = GetComponent<Rigidbody2D>();
-
-                if (visitorRigidbody2D == null)
-                {
-                    visitorRigidbody2D = gameObject.AddComponent<Rigidbody2D>();
-                }
-            }
-
-            visitorRigidbody2D.freezeRotation = true;
-            if (simulateRigidbody) visitorRigidbody2D.simulated = true;
-            else visitorRigidbody2D.simulated = false;
         }
 
         private void GetVisitorPathsOnAwake()
@@ -113,7 +96,7 @@ namespace TeamMAsTD
             return chosenPath;
         }
 
-        private void SetVisitorToStartTileOnPath(Path chosenPath)
+        private void SetVisitorToFirstTileOnPath(Path chosenPath)
         {
             if (chosenPath == null || chosenPath.orderedPathTiles.Count == 0) return;
 
@@ -129,7 +112,7 @@ namespace TeamMAsTD
             //if reached last tile pos in path
             if(Vector2.Distance((Vector2)transform.position, lastTilePos) <= 0.1f)
             {
-                DespawnAndReturnToPool();
+                ProcessVisitorDespawns();
                 startFollowingPath = false;
                 return;
             }
@@ -144,19 +127,25 @@ namespace TeamMAsTD
             transform.position = Vector2.MoveTowards(transform.position, currentTileWaypointPos, visitorUnitSO.moveSpeed * Time.deltaTime);
         }
 
-        private void LookTowardTileWaypointOnPath(Vector2 waypoint)
+        //This function returns visitor to pool and deregister it from active visitor list in the wave that spawned it.
+        private void ProcessVisitorDespawns()
         {
+            //TODO: Later if there are any appeasement effects/animations need to play before despawning
+            //do them here and makes this function a coroutine if needed.
 
-        }
+            poolContainsThisVisitor.ReturnVisitorToPool(this);
 
-        private void DespawnAndReturnToPool()
-        {
-
+            waveSpawnedThisVisitor.RemoveInactiveVisitorsFromActiveList(this);
         }
 
         public void SetPoolContainsThisVisitor(VisitorPool visitorPool)
         {
             poolContainsThisVisitor = visitorPool;
+        }
+
+        public void SetWaveSpawnedThisVisitor(Wave wave)
+        {
+            waveSpawnedThisVisitor = wave;
         }
 
         //IUnit Interface functions....................................................
