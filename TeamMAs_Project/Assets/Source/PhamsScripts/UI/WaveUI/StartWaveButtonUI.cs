@@ -44,12 +44,14 @@ namespace TeamMAsTD
         {
             WaveSpawner.OnWaveStarted += OnWaveStarted;
             WaveSpawner.OnWaveFinished += OnWaveFinished;
+            WaveSpawner.OnAllWaveSpawned += OnAllWaveSpawned;
         }
 
         private void OnDisable()
         {
             WaveSpawner.OnWaveStarted -= OnWaveStarted;
             WaveSpawner.OnWaveFinished -= OnWaveFinished;
+            WaveSpawner.OnAllWaveSpawned -= OnAllWaveSpawned;
         }
 
         private void SetStartWaveButtonWaveText()
@@ -116,6 +118,14 @@ namespace TeamMAsTD
 
             //re-enable button
             EnableButton(true);
+        }
+
+        public void OnAllWaveSpawned(WaveSpawner waveSpawnerThatStartedWave)
+        {
+            //if not the same wave spawner as this button's linked wave spawner -> do nothing
+            if (waveSpawnerThatStartedWave != waveSpawnerLinkedToButton) return;
+
+            EnableButton(false);
         }
     }
 }

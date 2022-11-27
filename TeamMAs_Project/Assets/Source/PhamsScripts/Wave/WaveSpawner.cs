@@ -15,13 +15,13 @@ namespace TeamMAsTD
     {
         [SerializeField] private List<WaveSO> waveSOList = new List<WaveSO>();
 
-        [Header("Debug Only!")]
+        //[Header("Debug Only!")]
 
-        [SerializeField] private bool enableDebug = false;
+        //[SerializeField] private bool enableDebug = false;
 
-        [SerializeField]
-        [Tooltip("For fast-forwarding to a specific wave. Set to 0 to disable this debug setting.")]
-        private int waveNumberToStartAt = 0;
+        //[SerializeField]
+        //[Tooltip("For fast-forwarding to a specific wave. Set to 0 to disable this debug setting.")]
+        //private int waveNumberToStartAt = 0;
 
         //INTERNALS............................................................................
 
@@ -44,6 +44,7 @@ namespace TeamMAsTD
         //StartWaveUI.cs receives these 2 events to enable/disable start wave Button UI.
         public static event System.Action<WaveSpawner, int> OnWaveStarted;
         public static event System.Action<WaveSpawner, int> OnWaveFinished;
+        public static event System.Action<WaveSpawner> OnAllWaveSpawned;
 
         //PRIVATES...............................................................................
 
@@ -62,7 +63,7 @@ namespace TeamMAsTD
             float endInitTime = Time.realtimeSinceStartup - startInitTime;
             Debug.Log("WaveSpawner Finished Initializing VisitorPools and Child Wave Objects. Took: " + endInitTime * 1000.0f + "ms.");
 
-            if (enableDebug)
+            /*if (enableDebug)
             {
                 if(waveNumberToStartAt < 0 || waveNumberToStartAt >= wavesList.Count)
                 {
@@ -72,7 +73,7 @@ namespace TeamMAsTD
                 }
 
                 currentWave = waveNumberToStartAt;
-            }
+            }*/
         }
 
         private void SpawnChildWaveObjects()
@@ -177,13 +178,6 @@ namespace TeamMAsTD
             OnWaveStarted?.Invoke(this, waveNum);
         }
 
-        private void IncrementWaveNumber()
-        {
-            if (currentWave + 1 < 0 || currentWave + 1 >= wavesList.Count) return;
-
-            currentWave++;
-        }
-
         //PUBLICS..........................................................................
 
         //This function is to be called by WaveStart UI Button event to start a wave from current wave number.
@@ -198,12 +192,22 @@ namespace TeamMAsTD
 
             wavesList[waveNum].gameObject.SetActive(false);
 
-            if(incrementWaveOnFinished) IncrementWaveNumber();
-
             waveAlreadyStarted = false;
 
-            //invoke wave ended event
-            OnWaveFinished?.Invoke(this, waveNum);
+            //invoke wave ended events that different depend on whether the last wave has spawned or not
+            if (currentWave < wavesList.Count - 1)
+            {
+                Debug.Log("OnWaveFinished Invoked!");
+
+                OnWaveFinished?.Invoke(this, waveNum);
+
+                if (incrementWaveOnFinished) currentWave++;
+            }
+            else
+            {
+                Debug.Log("OnAllWaveSpawned Invoked!");
+                OnAllWaveSpawned?.Invoke(this);
+            }
         }
 
         public void JumpToWave(int waveNum, bool startWaveAfterJump)

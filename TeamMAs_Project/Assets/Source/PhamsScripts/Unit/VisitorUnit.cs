@@ -110,7 +110,7 @@ namespace TeamMAsTD
             if (!startFollowingPath) return;
 
             //if reached last tile pos in path
-            if(Vector2.Distance((Vector2)transform.position, lastTilePos) <= 0.1f)
+            if(Vector2.Distance((Vector2)transform.position, lastTilePos) <= 0.05f)
             {
                 ProcessVisitorDespawns();
                 startFollowingPath = false;
@@ -118,7 +118,7 @@ namespace TeamMAsTD
             }
 
             //if reached target tile's pos in chosen path -> set next tile element in chosen path as target waypoint
-            if(Vector2.Distance((Vector2)transform.position, currentTileWaypointPos) <= 0.1f)
+            if(Vector2.Distance((Vector2)transform.position, currentTileWaypointPos) <= 0.05f)
             {
                 currentPathElement++;
                 currentTileWaypointPos = (Vector2)chosenPath.orderedPathTiles[currentPathElement].transform.position;
