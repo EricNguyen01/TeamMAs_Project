@@ -41,6 +41,9 @@ namespace TeamMAsTD
         private int currentSpawnRandomNumber = 0;
         private int previousSpawnRandomNumber = -1;
 
+        //for 1st time switching to boss spawn chance list
+        private bool justSwitchedToBossSpawnChanceList = false;
+
         private bool waveHasAlreadyStarted = false;//to avoid overlapping wave start process
 
         private void OnDisable()
@@ -164,7 +167,16 @@ namespace TeamMAsTD
             if (waveSO.spawnBossLast)
             {
                 //if all normal visitor types have been spawned up -> switch to use bosses spawn chance list and start spawn bosses only
-                if (visitorSpawnChanceList.Count == 0) spawnChanceList = visitorBossSpawnChanceList;
+                if (visitorSpawnChanceList.Count == 0)
+                {
+                    if (!justSwitchedToBossSpawnChanceList)
+                    {
+                        previousSpawnRandomNumber = -1;
+                        justSwitchedToBossSpawnChanceList = true;
+                    }
+
+                    spawnChanceList = visitorBossSpawnChanceList;
+                }
             }
 
             //process looking for a valid random visitor type to spawn based on current selected spawn chance list
