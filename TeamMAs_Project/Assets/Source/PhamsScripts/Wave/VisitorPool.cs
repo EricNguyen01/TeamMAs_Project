@@ -113,5 +113,14 @@ namespace TeamMAsTD
 
             visitor.transform.position = Vector2.zero;
         }
+
+        public void RemoveVisitorFromPool(VisitorUnit visitor)
+        {
+            if(visitorPool.Count == 0) return;
+
+            if (!visitorPool.Contains(visitor)) return;
+
+            visitorPool.Remove(visitor);
+        }
     }
 }

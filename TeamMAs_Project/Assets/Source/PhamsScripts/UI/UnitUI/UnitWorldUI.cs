@@ -10,6 +10,7 @@ namespace TeamMAsTD
     {
         [SerializeField] private Canvas unitWorldCanvas;
         [SerializeField] private TextMeshProUGUI nameTextMeshProComponent;
+        [SerializeField] private Slider healthBarSlider;
 
         private IUnit unitLinkedToUI;
         private UnitSO unitSO;
@@ -30,6 +31,7 @@ namespace TeamMAsTD
             }
 
             unitLinkedToUI = GetComponent<IUnit>();
+
             if (unitLinkedToUI == null)
             {
                 Debug.LogError("No Unit script component found in :" + name + ". Unit UI disabled!");
@@ -38,6 +40,7 @@ namespace TeamMAsTD
             }
 
             unitSO = unitLinkedToUI.GetUnitScriptableObjectData();
+
             if (unitSO == null)
             {
                 Debug.LogError("Unit ScriptableObject data on unit script attached to obj: " + name + " is null! Disabling Unit UI!");
@@ -50,6 +53,11 @@ namespace TeamMAsTD
                 Debug.LogWarning("Unit name text UI component is not assigned on Unit World UI script on obj: " + name + ".");
             }
 
+            if(healthBarSlider == null)
+            {
+                Debug.LogWarning("Unit health bar slider UI component is not assigned on Unit World UI script on obj: " + name + ".");
+            }
+
             unitWorldCanvas.worldCamera = Camera.main;
         }
 
@@ -59,7 +67,41 @@ namespace TeamMAsTD
             if (nameTextMeshProComponent == null) return;
 
             nameTextMeshProComponent.text = unitSO.displayName;
+        }
 
+        public void EnableUnitNameTextUI(bool enabled)
+        {
+            if (nameTextMeshProComponent == null) return;
+
+            if (enabled)
+            {
+                if(!nameTextMeshProComponent.enabled) nameTextMeshProComponent.enabled = true;
+                return;
+            }
+
+            if (nameTextMeshProComponent.enabled) nameTextMeshProComponent.enabled = false;
+        }
+
+        public void EnableUnitHealthBarSlider(bool enabled)
+        {
+            if (healthBarSlider == null) return;
+
+            if (enabled)
+            {
+                if (!healthBarSlider.enabled) healthBarSlider.enabled = true;
+                return;
+            }
+
+            if (healthBarSlider.enabled) healthBarSlider.enabled = false;
+        }
+
+        public void SetHealthBarSliderValue(float currentVal, float maxVal)
+        {
+            if (healthBarSlider == null) return;
+
+            healthBarSlider.value = Mathf.Round(currentVal / maxVal);
+
+            if (healthBarSlider.value <= 0.0f) healthBarSlider.value = 0.0f;
         }
     }
 }

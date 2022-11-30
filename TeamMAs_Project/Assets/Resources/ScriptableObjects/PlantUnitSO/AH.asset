@@ -12,18 +12,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f04e3d0adf1c69949bc6bd1b45397d53, type: 3}
   m_Name: AH
   m_EditorClassIdentifier: 
-  <unitID>k__BackingField: 651ab286-029d-44dc-8d57-fef73369dd06
   <displayName>k__BackingField: Hyssop
+  <unitPrefab>k__BackingField: {fileID: 2090201727753816829, guid: 7413616505f05f64fa85280265c954c2, type: 3}
+  <unitID>k__BackingField: 651ab286-029d-44dc-8d57-fef73369dd06
   <unitDescription>k__BackingField: 
   <unitThumbnail>k__BackingField: {fileID: 21300000, guid: 920785767db06334798a1622309722b2, type: 3}
-  <unitPrefab>k__BackingField: {fileID: 2090201727753816829, guid: 7413616505f05f64fa85280265c954c2, type: 3}
   <waterBars>k__BackingField: 0
-  <damage>k__BackingField: 0
-  <attackSpeed>k__BackingField: 0
-  <attackRangeInTiles>k__BackingField: 1
-  <humanMultiplier>k__BackingField: 0
-  <pollinatorMultiplier>k__BackingField: 0
+  <damage>k__BackingField: 20
+  <attackSpeed>k__BackingField: 1
+  <attackRangeInTiles>k__BackingField: 5
+  <humanMultiplier>k__BackingField: 1
+  <pollinatorMultiplier>k__BackingField: 1
   <isPlacableOnPath>k__BackingField: 0
-  <plantingCoinCost>k__BackingField: 0
+  <plantingCoinCost>k__BackingField: 16
   <uprootRefundAmount>k__BackingField: 0
-  <waterUse>k__BackingField: 0
+  <uprootCost>k__BackingField: 0
+  <waterUse>k__BackingField: 1

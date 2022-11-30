@@ -4,11 +4,15 @@ using UnityEngine;
 
 namespace TeamMAsTD
 {
+    [DisallowMultipleComponent]
+    [RequireComponent(typeof(PlantAimShootSystem))]
     public class PlantUnit : MonoBehaviour, IUnit
     {
         [field: SerializeField] public PlantUnitSO plantUnitScriptableObject { get; private set; }
 
         //INTERNAL....................................................................
+
+        private PlantAimShootSystem plantAimShootSystem;
 
         private SpriteRenderer unitSpriteRenderer;
 
@@ -18,20 +22,31 @@ namespace TeamMAsTD
         {
             if(plantUnitScriptableObject == null)
             {
-                Debug.LogError("Unit Scriptable Object data is not assigned on Unit: " + name + ". Disabling Unit!");
-                gameObject.SetActive(false);
+                Debug.LogError("Plant Unit Scriptable Object data is not assigned on Plant Unit: " + name + ". Disabling Unit!");
+                enabled = false;
                 return;
             }
 
-            InitializeUnitUsingDataFromUnitSO();
-        }
+            if(plantUnitScriptableObject.plantProjectileSO == null)
+            {
+                Debug.LogError("Plant Unit Projectile Scriptable Object data is not assigned on Plant Unit: " + name + ". Disabling Unit!");
+                enabled = false;
+                return;
+            }
 
-        private void InitializeUnitUsingDataFromUnitSO()
-        {
-            if (plantUnitScriptableObject == null) return;
+            if(plantUnitScriptableObject.plantProjectileSO.plantProjectilePrefab == null)
+            {
+                Debug.LogError("Plant Unit Projectile Prefab data is not assigned on Plant Unit: " + name + ". Disabling Unit!");
+                enabled = false;
+                return;
+            }
+
+            //no need to check for null data for this component as this script has a require attribute for it.
+            plantAimShootSystem = GetComponent<PlantAimShootSystem>();
+
+            plantAimShootSystem.InitializePlantAimShootSystem(this, plantUnitScriptableObject.plantProjectileSO);
 
             GetAndSetUnitSprite();
-
         }
 
         private void GetAndSetUnitSprite()
@@ -56,13 +71,6 @@ namespace TeamMAsTD
         public void OnReceivedFertilizerBuff()
         {
 
-        }
-
-        public void SetUnitScriptableObject(PlantUnitSO plantUnitSO)
-        {
-            plantUnitScriptableObject = plantUnitSO;
-
-            InitializeUnitUsingDataFromUnitSO();
         }
 
         //IUnit Interfact functions...............................................................
