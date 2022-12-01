@@ -12,9 +12,13 @@ namespace TeamMAsTD
 
         //INTERNAL....................................................................
 
-        private PlantAimShootSystem plantAimShootSystem;
+        public PlantAimShootSystem plantAimShootSystem { get; private set; }
+
+        public Tile tilePlacedOn { get; private set; }
 
         private SpriteRenderer unitSpriteRenderer;
+
+        public float plantMaxAttackRange { get; private set; } = 1.0f;
 
         //PRIVATES....................................................................
 
@@ -39,6 +43,13 @@ namespace TeamMAsTD
                 Debug.LogError("Plant Unit Projectile Prefab data is not assigned on Plant Unit: " + name + ". Disabling Unit!");
                 enabled = false;
                 return;
+            }
+
+            tilePlacedOn = GetComponentInParent<Tile>();
+            if(tilePlacedOn != null)
+            {
+                //max atk range = (tileSize * atk range in tiles) + half of a tileSize (so that we can reach the end border of the final tile for max range)
+                plantMaxAttackRange = (tilePlacedOn.gridParent.tileSize * plantUnitScriptableObject.attackRangeInTiles) + (tilePlacedOn.gridParent.tileSize / 2.0f);
             }
 
             //no need to check for null data for this component as this script has a require attribute for it.
@@ -71,6 +82,11 @@ namespace TeamMAsTD
         public void OnReceivedFertilizerBuff()
         {
 
+        }
+
+        public void ReturnProjectileToPool(PlantProjectile projectile)
+        {
+            plantAimShootSystem.ReturnProjectileToPool(projectile);
         }
 
         //IUnit Interfact functions...............................................................

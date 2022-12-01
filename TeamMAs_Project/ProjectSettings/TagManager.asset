@@ -13,7 +13,7 @@ TagManager:
   - UI
   - Tile
   - PlantProjectile
-  - 
+  - Visitors
   - 
   - 
   - 
@@ -47,7 +47,7 @@ TagManager:
   - name: Tile
     uniqueID: 3198476769
     locked: 0
-  - name: Unit
+  - name: Plant
     uniqueID: 2314798829
     locked: 0
   - name: Visitor

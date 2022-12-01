@@ -38,10 +38,11 @@ namespace TeamMAsTD
 
         public int currentWave { get; private set; } = 0;
 
-        private bool waveAlreadyStarted = false;
+        public bool waveAlreadyStarted { get; private set; } = false;
 
         //Wave events declarations
-        //StartWaveUI.cs receives these 2 events to enable/disable start wave Button UI.
+        //StartWaveUI.cs receives these events to enable/disable start wave Button UI.
+        //PlantAimShootSystem.cs receives these events to enable/disable plant targetting/shooting
         public static event System.Action<WaveSpawner, int> OnWaveStarted;
         public static event System.Action<WaveSpawner, int> OnWaveFinished;
         public static event System.Action<WaveSpawner> OnAllWaveSpawned;

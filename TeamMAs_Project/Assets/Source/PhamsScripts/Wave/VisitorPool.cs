@@ -111,7 +111,7 @@ namespace TeamMAsTD
 
             visitor.transform.SetParent(transform);
 
-            visitor.transform.position = Vector2.zero;
+            visitor.transform.localPosition = Vector2.zero;
         }
 
         public void RemoveVisitorFromPool(VisitorUnit visitor)

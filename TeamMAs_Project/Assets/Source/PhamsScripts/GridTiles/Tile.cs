@@ -122,11 +122,10 @@ namespace TeamMAsTD
                 "This results in no plant unit being placed!");
 
                 Destroy(unitObj);
+                return false;
             }
-            else
-            {
-                //TODO: Send OnUnitPlacementSuccessful event
-            }
+
+            //TODO: Send OnUnitPlacementSuccessful event
 
             plantUnitOnTile = unit;
 

@@ -18,7 +18,7 @@ namespace TeamMAsTD
         [field: SerializeField] [field: Min(0)] 
         public int gridHeight { get; private set; } = 5;//number of rows
 
-        [field: SerializeField] [field: Min(0)] 
+        [field: SerializeField] [field: Min(1.0f)] 
         public float tileSize { get; private set; } = 1.0f;//size of a square tile in the grid (e.g 1x1)
 
         [SerializeField] private Tile tilePrefabToPopulate;//prefab with tile script attached

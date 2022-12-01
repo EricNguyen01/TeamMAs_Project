@@ -6,6 +6,6 @@ namespace TeamMAsTD
 {
     public interface IDamageable
     {
-        public void TakeDamageFrom(object damageCauser, float damage);
+        public VisitorUnit TakeDamageFrom(object damageCauser, float damage);
     }
 }

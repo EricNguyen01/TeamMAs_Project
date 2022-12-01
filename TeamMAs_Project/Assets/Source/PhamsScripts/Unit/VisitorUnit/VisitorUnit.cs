@@ -9,7 +9,7 @@ namespace TeamMAsTD
     {
         [field: SerializeField] public VisitorUnitSO visitorUnitSO { get; private set; }
 
-        private float currentVisitorHealth = 0.0f;
+        public float currentVisitorHealth { get; private set; } = 0.0f;
 
         private Wave waveSpawnedThisVisitor;
 
@@ -27,6 +27,8 @@ namespace TeamMAsTD
 
         private bool startFollowingPath = false;
 
+        private float baseAppeasementTime;
+
         private float currentAppeasementTime = 0.0f;
 
         private float baseDamageVisualTime = 0.5f;
@@ -35,15 +37,29 @@ namespace TeamMAsTD
 
         private SpriteRenderer visitorSpriteRenderer;
 
+        private Color visitorOriginalSpriteColor = Color.white;
+
         private UnitWorldUI visitorWorldUIComponent;
 
         private Animation visitorAnimation;
+
+        private Collider2D visitorCollider2D;
 
         private void Awake()
         {
             if(visitorUnitSO == null)
             {
                 Debug.LogError("Visitor ScriptableObject data on visitor: " + name + " is missing! Visitor won't work. Destroying Visitor!");
+                
+                if (poolContainsThisVisitor != null)
+                {
+                    poolContainsThisVisitor.RemoveVisitorFromPool(this);
+                    Destroy(gameObject);
+                    return;
+                }
+
+                enabled = false;
+                gameObject.SetActive(false);
                 return;
             }
 
@@ -55,45 +71,37 @@ namespace TeamMAsTD
                 //need to have an animation component to play appeasenemt anim clip
                 visitorAnimation = GetComponent<Animation>();
 
-                if(visitorAnimation == null)
+                if (visitorAnimation == null)
                 {
                     visitorAnimation = gameObject.AddComponent<Animation>();
                 }
 
+                baseAppeasementTime = visitorUnitSO.visitorAppeasementAnimClip.length;
                 currentAppeasementTime = visitorUnitSO.visitorAppeasementAnimClip.length;
 
                 visitorAnimation.AddClip(visitorUnitSO.visitorAppeasementAnimClip, "Appease");
             }
             //else set current appeasement time to visitor appeasement time in visitorUnitSO.
-            else currentAppeasementTime = visitorUnitSO.visitorAppeasementTime;
+            else
+            {
+                baseAppeasementTime = visitorUnitSO.visitorAppeasementTime;
+                currentAppeasementTime = visitorUnitSO.visitorAppeasementTime;
+            }
 
             GetVisitorPathsOnAwake();
 
             visitorSpriteRenderer = GetComponent<SpriteRenderer>();
 
+            if (visitorSpriteRenderer != null) visitorOriginalSpriteColor = visitorSpriteRenderer.color;
+
             visitorWorldUIComponent = GetComponent<UnitWorldUI>();
+
+            visitorCollider2D = GetComponent<Collider2D>();
         }
 
         private void OnEnable()
         {
-            ProcessVisitorBecomesActive();
-        }
-
-        private void Start()
-        {
-            if (visitorUnitSO == null)
-            {
-                if(poolContainsThisVisitor != null)
-                {
-                    poolContainsThisVisitor.RemoveVisitorFromPool(this);
-                    Destroy(gameObject);
-                    return;
-                }
-
-                enabled = false;
-                gameObject.SetActive(false);
-                return;
-            }
+            ProcessVisitorBecomesActiveFromPool();
         }
 
         private void Update()
@@ -112,7 +120,7 @@ namespace TeamMAsTD
             WalkOnPath();
         }
 
-        private void ProcessVisitorBecomesActive()
+        private void ProcessVisitorBecomesActiveFromPool()
         {
             //set visitor's pos to 1st tile's pos in chosen path
             SetVisitorToFirstTileOnPath(GetChosenPath());
@@ -129,6 +137,9 @@ namespace TeamMAsTD
             //reset to start tile
             currentPathElement = 0;
             currentTileWaypointPos = (Vector2)chosenPath.orderedPathTiles[currentPathElement].transform.position;
+
+            //reset visitors health, various timers, collider, UI elements, and colors to their original values
+            ResetVisitorStatsAndLooks();
 
             //start following path
             startFollowingPath = true;
@@ -196,7 +207,7 @@ namespace TeamMAsTD
         //This function returns visitor to pool and deregister it from active visitor list in the wave that spawned it.
         private void ProcessVisitorDespawns()
         {
-            visitorAnimation.Stop();
+            if(visitorAnimation != null) visitorAnimation.Stop();
 
             //if either of these are null -> destroy visitor instead
             if(poolContainsThisVisitor == null || waveSpawnedThisVisitor == null)
@@ -205,47 +216,84 @@ namespace TeamMAsTD
                 return;
             }
 
+            //else return to this visitor's correct pool
             poolContainsThisVisitor.ReturnVisitorToPool(this);
-
+            //remove from active visitors list in wave that spawned this visitor
             waveSpawnedThisVisitor.RemoveInactiveVisitorsFromActiveList(this);
+        }
+
+        private void ResetVisitorStatsAndLooks()
+        {
+            currentVisitorHealth = visitorUnitSO.happinessAsHealth;
+
+            currentAppeasementTime = baseAppeasementTime;
+
+            currentDamageVisualTime = baseDamageVisualTime;
+
+            visitorCollider2D.enabled = true;
+
+            if (visitorWorldUIComponent != null)
+            {
+                visitorWorldUIComponent.EnableUnitNameTextUI(true);
+
+                visitorWorldUIComponent.EnableUnitHealthBarSlider(true);
+            }
+
+            if (visitorSpriteRenderer != null)
+            {
+                visitorOriginalSpriteColor.a = 255.0f;
+                visitorSpriteRenderer.color = visitorOriginalSpriteColor;
+            }
         }
 
         private void ProcessVisitorDamageVisual()
         {
-            if(currentDamageVisualTime <= 0.0f)
-            {
-                currentDamageVisualTime = 0.0f;
-                if (visitorSpriteRenderer != null && visitorSpriteRenderer.color != Color.white) visitorSpriteRenderer.color = Color.white;
-                return;
-            }
+            if (currentDamageVisualTime <= 0.0f) return;
 
             currentDamageVisualTime -= Time.deltaTime;
 
-            Color white = Color.white;
             Color red = Color.red;
-            Color color = Color.Lerp(red, white, currentDamageVisualTime / baseDamageVisualTime);
+            Color color = Color.Lerp(red, visitorOriginalSpriteColor, currentDamageVisualTime / baseDamageVisualTime);
+            color.a = 255.0f;
+
             if (visitorSpriteRenderer != null) visitorSpriteRenderer.color = color;
+
+            if (currentDamageVisualTime <= 0.0f)
+            {
+                currentDamageVisualTime = 0.0f;
+
+                if (visitorSpriteRenderer != null && visitorSpriteRenderer.color != visitorOriginalSpriteColor)
+                {
+                    visitorOriginalSpriteColor.a = 255.0f;
+                    visitorSpriteRenderer.color = visitorOriginalSpriteColor;
+                }
+            }
         }
 
         private void ProcessVisitorAppeased()
         {
+            if (currentAppeasementTime <= 0.0f)
+            {
+                if (gameObject.activeInHierarchy) ProcessVisitorDespawns();
+                return;
+            }
+
             currentAppeasementTime -= Time.deltaTime;
+
+            //if during appeasement time...
+            //if there's an appease anim clip, it is triggered in TakeDamageFrom() function below...
+            //else process procedural appeasment visual only if there's no provided appeasement anim clip in visitorUnitSO.
+            if (visitorUnitSO.visitorAppeasementAnimClip == null) ProcessProceduralAppeasementVisual();
 
             //return visitor to pool when appeasement time is up
             if (currentAppeasementTime <= 0.0f)
             {
                 currentAppeasementTime = 0.0f;
                 ProcessVisitorDespawns();
-                return;
             }
-
-            //if during appeasement time...
-            //if there's an appease anim clip, it is triggered in TakeDamageFrom() function below...
-            //else process procedural appeasment visual only if there's no provided appeasement anim clip in visitorUnitSO.
-            if (visitorUnitSO.visitorAppeasementAnimClip == null) ProcessProceduralAppeasingVisual();
         }
 
-        private void ProcessProceduralAppeasingVisual()
+        private void ProcessProceduralAppeasementVisual()
         {
             //hide name and happiness bar on being appeased
             if(visitorWorldUIComponent != null)
@@ -282,13 +330,15 @@ namespace TeamMAsTD
         }
 
         //IDamageable Interface functions..............................................
-        public void TakeDamageFrom(object damageCauser, float damage)
+        public VisitorUnit TakeDamageFrom(object damageCauser, float damage)
         {
             if(damageCauser.GetType() == typeof(PlantProjectile))
             {
-                currentVisitorHealth -= damage;
+                PlantProjectile projectile = (PlantProjectile)damageCauser;
 
-                Debug.Log("Visitor: " + name + " took: " + damage + " damage.");
+                currentVisitorHealth -= damage * DamageMultiplier(projectile);
+
+                Debug.Log("Visitor: " + name + " took: " + damage + " damage from projectile: " + projectile.name);
 
                 //set health bar slider UI component value if not null
                 if (visitorWorldUIComponent != null)
@@ -302,12 +352,27 @@ namespace TeamMAsTD
                 //play appease anim clip when happiness dropped below 0.0f.
                 if(currentVisitorHealth <= 0.0f)
                 {
+                    if (visitorCollider2D != null) visitorCollider2D.enabled = false;
+
                     if(visitorAnimation != null)
                     {
                         visitorAnimation.Play("Appease");
                     }
                 }
             }
+
+            return this;
+        }
+
+        private float DamageMultiplier(PlantProjectile projectile)
+        {
+            float damageMultiplier = 0.0f;
+
+            if (visitorUnitSO.visitorType == VisitorUnitSO.VisitorType.Human) damageMultiplier += projectile.plantUnitSO.humanMultiplier;
+
+            if (visitorUnitSO.visitorType == VisitorUnitSO.VisitorType.Pollinator) damageMultiplier += projectile.plantUnitSO.pollinatorMultiplier;
+
+            return damageMultiplier;
         }
     }
 }

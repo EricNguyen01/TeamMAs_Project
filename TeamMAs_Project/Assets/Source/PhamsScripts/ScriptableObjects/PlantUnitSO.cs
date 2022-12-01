@@ -30,6 +30,7 @@ namespace TeamMAsTD
         [field: SerializeField] [field: Min(0.0f)] public float humanMultiplier { get; private set; }
         [field: SerializeField] [field: Min(0.0f)] public float pollinatorMultiplier { get; private set; }
         [field: SerializeField] public bool isPlacableOnPath { get; private set; } = false;
+        [field: SerializeField] public string[] plantTargetsLayerNames;
 
         [field: Header("Plant Unit Costs")]
         [field: SerializeField] [field: Min(0)] public int plantingCoinCost { get; private set; }
