@@ -13,7 +13,7 @@ namespace TeamMAsTD
 
         private PlantProjectileSO plantProjectileSO;
 
-        private List<PlantProjectile> plantProjectilesPool = new List<PlantProjectile>();
+        private TD_GameObjectPool plantProjectilePool;
 
         private List<VisitorUnit> visitorTargetsList = new List<VisitorUnit>();
 
@@ -65,16 +65,13 @@ namespace TeamMAsTD
             }
         }
 
-        private void AddPlantProjectileToPool(int numberToAdd, bool setInactive)
+        private void InitializePlantProjectileInPool()
         {
-            if (plantProjectileSO == null || plantProjectileSO.plantProjectilePrefab == null) return;
+            if (plantProjectilePool == null || plantProjectilePool.gameObjectsPool == null) return;
 
-            if (numberToAdd <= 0) return;
-
-            for(int i = 0; i < numberToAdd; i++)
+            for(int i = 0; i < plantProjectilePool.gameObjectsPool.Count; i++)
             {
-                GameObject projectileGO = Instantiate(plantProjectileSO.plantProjectilePrefab, transform.position, Quaternion.Euler(Vector3.zero), transform);
-                PlantProjectile plantProjectileComp = projectileGO.GetComponent<PlantProjectile>();
+                PlantProjectile plantProjectileComp = plantProjectilePool.gameObjectsPool[i].GetComponent<PlantProjectile>();
 
                 if(plantProjectileComp == null)
                 {
@@ -83,34 +80,8 @@ namespace TeamMAsTD
                     continue;
                 }
 
-                plantProjectilesPool.Add(plantProjectileComp);
-
                 plantProjectileComp.InitializePlantProjectile(plantUnitLinked);
-
-                if (setInactive) projectileGO.SetActive(false);
             }
-        }
-
-        private GameObject GetInactiveProjectileObjectFromPool()
-        {
-            if (plantProjectilesPool.Count == 0)
-            {
-                AddPlantProjectileToPool(1, true);
-                return plantProjectilesPool[0].gameObject;
-            }
-
-            for(int i = 0; i < plantProjectilesPool.Count; i++)
-            {
-                if (plantProjectilesPool[i] == null || plantProjectilesPool[i].gameObject == null) continue;
-
-                if (plantProjectilesPool[i].gameObject.activeInHierarchy) continue;
-
-                return plantProjectilesPool[i].gameObject;
-            }
-
-            AddPlantProjectileToPool(1, true);
-
-            return plantProjectilesPool[plantProjectilesPool.Count - 1].gameObject;
         }
 
         private Quaternion CalculateProjectileRotatesTowardsTarget(GameObject projectileObj, VisitorUnit target)
@@ -132,11 +103,7 @@ namespace TeamMAsTD
                 {
                     if (visitorTargetsList[i] == null) continue;
 
-                    GameObject projectileGO = GetInactiveProjectileObjectFromPool();
-
-                    projectileGO.transform.SetParent(null);
-
-                    projectileGO.transform.position = transform.position;
+                    GameObject projectileGO = plantProjectilePool.GetInactiveGameObjectFromPool();
 
                     projectileGO.transform.rotation = CalculateProjectileRotatesTowardsTarget(projectileGO, visitorTargetsList[i]);
 
@@ -264,7 +231,9 @@ namespace TeamMAsTD
 
             this.plantProjectileSO = plantProjectileSO;
 
-            AddPlantProjectileToPool(30, true);
+            plantProjectilePool = new TD_GameObjectPool(this, plantProjectileSO.plantProjectilePrefab, 30, transform, true);
+
+            InitializePlantProjectileInPool();
 
             InitializeNullTargetsList();//no targets at first so target list only contains nulls
         }
@@ -281,15 +250,9 @@ namespace TeamMAsTD
         {
             if (projectile == null) return;
 
-            if(projectile.gameObject.activeInHierarchy) projectile.gameObject.SetActive(false);
+            bool returnSuccessful = plantProjectilePool.ReturnGameObjectToPool(projectile.gameObject);
 
-            projectile.transform.SetParent(transform);
-
-            projectile.transform.localPosition = Vector2.zero;
-
-            projectile.transform.localRotation = Quaternion.Euler(Vector3.zero);
-
-            Debug.Log("Plant projectile successfully returned to pool!");
+            if(returnSuccessful) Debug.Log("Plant projectile successfully returned to pool!");
         }
 
         public void EnablePlantAimShoot(bool enabled)

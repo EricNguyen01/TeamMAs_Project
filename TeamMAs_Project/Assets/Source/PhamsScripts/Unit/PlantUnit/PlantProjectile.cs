@@ -72,7 +72,7 @@ namespace TeamMAsTD
         {
             //use cached start pos and travel dist instead of getting from plant unit and plant unit SO
             //this is done so that even if plant was uprooted, the bullet can still check for current travel distance
-            if(Vector2.Distance(projectileStartPos, transform.position) >= maxTravelDistance)
+            if(Vector2.Distance(projectileStartPos, (Vector2)transform.position) >= maxTravelDistance)
             {
                 DespawnProjectile();
                 Debug.Log("Projectile has despawned from being out of travel dist!");
@@ -129,7 +129,7 @@ namespace TeamMAsTD
             plantUnitOfProjectile = plantUnitSpawnedThisProjectile;
             plantUnitSO = plantUnitSpawnedThisProjectile.plantUnitScriptableObject;
 
-            projectileStartPos = plantUnitOfProjectile.transform.position;
+            projectileStartPos = (Vector2)plantUnitOfProjectile.transform.position;
 
             maxTravelDistance = plantUnitOfProjectile.plantMaxAttackRange;
 
