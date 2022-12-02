@@ -88,18 +88,18 @@ namespace TeamMAsTD
 
             if (enabled)
             {
-                if (!healthBarSlider.enabled) healthBarSlider.enabled = true;
+                if (!healthBarSlider.gameObject.activeInHierarchy) healthBarSlider.gameObject.SetActive(true);
                 return;
             }
 
-            if (healthBarSlider.enabled) healthBarSlider.enabled = false;
+            healthBarSlider.gameObject.SetActive(false);
         }
 
         public void SetHealthBarSliderValue(float currentVal, float maxVal)
         {
             if (healthBarSlider == null) return;
 
-            healthBarSlider.value = Mathf.Round(currentVal / maxVal);
+            healthBarSlider.value = currentVal / maxVal;
 
             if (healthBarSlider.value <= 0.0f) healthBarSlider.value = 0.0f;
         }

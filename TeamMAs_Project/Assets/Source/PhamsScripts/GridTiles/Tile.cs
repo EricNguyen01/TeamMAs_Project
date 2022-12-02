@@ -54,7 +54,7 @@ namespace TeamMAsTD
                 if (isOccupied) spriteRenderer.color = Color.grey;
                 else spriteRenderer.color = Color.green;
 
-                if (is_AI_Path) spriteRenderer.color = Color.red;
+                if (is_AI_Path) spriteRenderer.color = Color.white;
             }
 
             AttachUprootOnTileUIScriptComponentIfNull();
@@ -170,7 +170,7 @@ namespace TeamMAsTD
 
             if (is_AI_Path)//if tile is an AI path tile->tile is red
             {
-                Gizmos.color = Color.red;
+                Gizmos.color = Color.white;
                 Gizmos.DrawCube(transform.position, new Vector2(transform.localScale.x - 0.1f, transform.localScale.y - 0.1f));
             }
         }

@@ -9,11 +9,11 @@ namespace TeamMAsTD
     [RequireComponent(typeof(PlantUnit))]
     public class PlantAimShootSystem : MonoBehaviour
     {
-        private PlantUnit plantUnitLinked;
+        public PlantUnit plantUnitLinked { get; private set; }
 
         private PlantProjectileSO plantProjectileSO;
 
-        private TD_GameObjectPool plantProjectilePool;
+        private PlantProjectilePool plantProjectilePool;
 
         private List<VisitorUnit> visitorTargetsList = new List<VisitorUnit>();
 
@@ -21,7 +21,7 @@ namespace TeamMAsTD
 
         private float currentShootWaitTime = 0.0f;
 
-        private float baseTargetsUpdateWaitTime = 0.03f;
+        private float baseTargetsUpdateWaitTime = 0.1f;
 
         private float currentTargetsUpdateWaitTime = 0.0f;
 
@@ -32,6 +32,8 @@ namespace TeamMAsTD
             WaveSpawner.OnWaveStarted += OnWaveStarted;
             WaveSpawner.OnWaveFinished += OnWaveFinished;
             WaveSpawner.OnAllWaveSpawned += OnAllWaveSpawned;
+
+            VisitorUnit.OnVisitorAppeased += UpdateVisitorTargetsList;
         }
 
         private void OnDisable()
@@ -39,6 +41,8 @@ namespace TeamMAsTD
             WaveSpawner.OnWaveStarted -= OnWaveStarted;
             WaveSpawner.OnWaveFinished -= OnWaveFinished;
             WaveSpawner.OnAllWaveSpawned -= OnAllWaveSpawned;
+
+            VisitorUnit.OnVisitorAppeased -= UpdateVisitorTargetsList;
         }
 
         private void Start()
@@ -60,27 +64,8 @@ namespace TeamMAsTD
         {
             if (enableAimShoot)
             {
-                UpdateVisitorTargetsList();
+                UpdateVisitorTargetsListInUpdate();
                 ProcessPlantAimShoot();
-            }
-        }
-
-        private void InitializePlantProjectileInPool()
-        {
-            if (plantProjectilePool == null || plantProjectilePool.gameObjectsPool == null) return;
-
-            for(int i = 0; i < plantProjectilePool.gameObjectsPool.Count; i++)
-            {
-                PlantProjectile plantProjectileComp = plantProjectilePool.gameObjectsPool[i].GetComponent<PlantProjectile>();
-
-                if(plantProjectileComp == null)
-                {
-                    Debug.LogError("Plant Projectile GameObject prefab of PlantProjectileSO: " + plantProjectileSO.name +
-                    " has no PlantProjectile script component attached! Pooling of this visitor obj failed!");
-                    continue;
-                }
-
-                plantProjectileComp.InitializePlantProjectile(plantUnitLinked);
             }
         }
 
@@ -103,7 +88,7 @@ namespace TeamMAsTD
                 {
                     if (visitorTargetsList[i] == null) continue;
 
-                    GameObject projectileGO = plantProjectilePool.GetInactiveGameObjectFromPool();
+                    GameObject projectileGO = plantProjectilePool.GetInactiveProjectileObjectFromPool();
 
                     projectileGO.transform.rotation = CalculateProjectileRotatesTowardsTarget(projectileGO, visitorTargetsList[i]);
 
@@ -120,16 +105,21 @@ namespace TeamMAsTD
             currentShootWaitTime -= Time.deltaTime;
         }
 
-        private void UpdateVisitorTargetsList()
+        private void UpdateVisitorTargetsListInUpdate()
         {
             if (currentTargetsUpdateWaitTime <= 0.0f)
             {
-                UpdateVisitorTargetsList(GetVisitorsInRange());
-                currentTargetsUpdateWaitTime = baseTargetsUpdateWaitTime;
+                UpdateVisitorTargetsList();
                 return;
             }
 
             currentTargetsUpdateWaitTime -= Time.deltaTime;
+        }
+
+        private void UpdateVisitorTargetsList()
+        {
+            UpdateVisitorTargetsList(GetVisitorsInRange());
+            currentTargetsUpdateWaitTime = baseTargetsUpdateWaitTime;
         }
 
         private List<VisitorUnit> GetVisitorsInRange()
@@ -231,9 +221,9 @@ namespace TeamMAsTD
 
             this.plantProjectileSO = plantProjectileSO;
 
-            plantProjectilePool = new TD_GameObjectPool(this, plantProjectileSO.plantProjectilePrefab, 30, transform, true);
+            plantProjectilePool = new PlantProjectilePool(plantUnit, this, plantProjectileSO, transform);
 
-            InitializePlantProjectileInPool();
+            plantProjectilePool.CreateAndAddInactivePlantProjectileToPool(30);
 
             InitializeNullTargetsList();//no targets at first so target list only contains nulls
         }
@@ -250,7 +240,7 @@ namespace TeamMAsTD
         {
             if (projectile == null) return;
 
-            bool returnSuccessful = plantProjectilePool.ReturnGameObjectToPool(projectile.gameObject);
+            bool returnSuccessful = plantProjectilePool.ReturnProjectileObjectToPool(projectile.gameObject);
 
             if(returnSuccessful) Debug.Log("Plant projectile successfully returned to pool!");
         }
@@ -271,19 +261,19 @@ namespace TeamMAsTD
         }
 
         //WaveSpawner events callback (check WaveSpawner.cs for more info)........................................................
-        public void OnWaveStarted(WaveSpawner waveSpawner, int waveNum)
+        private void OnWaveStarted(WaveSpawner waveSpawner, int waveNum)
         {
             if(!enableAimShoot) EnablePlantAimShoot(true);
         }
 
-        public void OnWaveFinished(WaveSpawner waveSpawner, int waveNum)
+        private void OnWaveFinished(WaveSpawner waveSpawner, int waveNum)
         {
             bool stillHasOtherOngoingWave = FindOnGoingWaves();
 
             if(!stillHasOtherOngoingWave) EnablePlantAimShoot(false);
         }
 
-        public void OnAllWaveSpawned(WaveSpawner waveSpawner)
+        private void OnAllWaveSpawned(WaveSpawner waveSpawner)
         {
             bool stillHasOtherOngoingWave = FindOnGoingWaves();
 

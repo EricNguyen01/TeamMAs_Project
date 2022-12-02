@@ -13,8 +13,11 @@ namespace TeamMAsTD
      *                             
      * This class DOES NOT deal with any attached script or other components to the gameobject being pooled.
      * NOR DOES it deal with the object being pooled functionalities, initialization, behaviours, etc...
+     * 
+     * Inherit from this base object pool class to use it and to add new features depend on what the pool is being used for!
      */
-    public class TD_GameObjectPool
+    [System.Serializable]
+    public class TD_GameObjectPoolBase
     {
         private GameObject gameObjectInPool;
 
@@ -22,26 +25,20 @@ namespace TeamMAsTD
 
         public List<GameObject> gameObjectsPool { get; private set; }
 
-        public TD_GameObjectPool(MonoBehaviour scriptSpawnedPool, GameObject gameObjectToPool, int numberToPool, Transform parentTransformOfPool, bool setInactive)
+        public TD_GameObjectPoolBase(MonoBehaviour scriptSpawnedPool, GameObject gameObjectToPool, Transform parentTransformOfPool)
         {
-            bool poolCreatedSuccessfully = false;
+            this.parentTransformOfPool = parentTransformOfPool;
 
-            if (gameObjectToPool != null)
+            if (gameObjectToPool == null)
             {
-                gameObjectInPool = gameObjectToPool;
-
-                this.parentTransformOfPool = parentTransformOfPool;
-
-                poolCreatedSuccessfully = CreateAndAddToPool(gameObjectToPool, numberToPool, parentTransformOfPool, setInactive);
+                Debug.LogError("TD_ObjectPool spawned by script: " + scriptSpawnedPool.name + " on GameObject: " + parentTransformOfPool.name + " has been provided with a NULL gameobject!");
+                return;
             }
 
-            if (!poolCreatedSuccessfully)
-            {
-                Debug.LogError("TD_ObjectPool spawned by script: " + scriptSpawnedPool.name + " on GameObject: " + parentTransformOfPool.name + " has failed to create its object pool!");
-            }
+            gameObjectInPool = gameObjectToPool;
         }
 
-        private bool CreateAndAddToPool(GameObject objectToPool, int numberToPool, Transform transformCarriesPool, bool setInactive)
+        protected virtual bool CreateAndAddToPool(GameObject objectToPool, int numberToPool, Transform transformCarriesPool, bool setInactive)
         {
             if (objectToPool == null) return false;
 
@@ -61,7 +58,7 @@ namespace TeamMAsTD
             return true;
         }
 
-        public GameObject GetInactiveGameObjectFromPool()
+        protected virtual GameObject GetInactiveGameObjectFromPool()
         {
             //if 
             if (gameObjectsPool == null) return null;
@@ -90,7 +87,11 @@ namespace TeamMAsTD
             return gameObjectsPool[gameObjectsPool.Count - 1];
         }
 
-        public GameObject EnableGameObjectFromPool()
+        /// <summary>
+        /// Gets an inactive object from pool, then sets its parent to null, then sets it to become active, finally returns it.
+        /// </summary>
+        /// <returns></returns>
+        protected virtual GameObject EnableGameObjectFromPool()
         {
             GameObject validObj = GetInactiveGameObjectFromPool();
 
@@ -103,7 +104,7 @@ namespace TeamMAsTD
             return validObj;
         }
 
-        public bool ReturnGameObjectToPool(GameObject gameObject)
+        protected virtual bool ReturnGameObjectToPool(GameObject gameObject)
         {
             if(gameObject == null) return false;
 
@@ -127,7 +128,7 @@ namespace TeamMAsTD
             return true;
         }
 
-        public void RemoveGameObjectFromPool(GameObject gameObject)
+        protected virtual void RemoveGameObjectFromPool(GameObject gameObject)
         {
             if (gameObjectsPool == null || gameObjectsPool.Count == 0) return;
 

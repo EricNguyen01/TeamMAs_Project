@@ -4,36 +4,41 @@ using UnityEngine;
 
 namespace TeamMAsTD
 {
-    public class VisitorPool : MonoBehaviour
+    [System.Serializable]
+    public class VisitorPool : TD_GameObjectPoolBase
     {
         public VisitorUnitSO visitorTypeInPool { get; private set; }
 
-        private TD_GameObjectPool visitorGameObjectPool;
+        private Transform waveSpawnerTransform;
 
-        public void InitializeVisitorPool(VisitorUnitSO visitorSO, int numberToPool)
+        public VisitorPool(WaveSpawner waveSpawner, VisitorUnitSO visitorSO, Transform waveSpawnerTransform) : base(waveSpawner, visitorSO.unitPrefab, waveSpawnerTransform)
         {
             if (visitorSO == null)
             {
-                enabled = false;
+                Debug.LogError("Visitor Pool of WaveSpawner: " + waveSpawner.name + " received no visitor ScriptableObject data!");
                 return;
             }
             if (visitorSO.unitPrefab == null)
             {
                 Debug.LogError("Trying to pool: " + visitorSO.displayName + " but found no visitor prefab of this visitor ScriptableObject!");
-                enabled = false;
+
                 return;
             }
 
             visitorTypeInPool = visitorSO;
 
-            visitorGameObjectPool = new TD_GameObjectPool(this, visitorSO.unitPrefab, numberToPool, transform, true);
+            this.waveSpawnerTransform = waveSpawnerTransform;
+        }
+
+        public bool CreateAndAddInactiveVisitorsToPool(int numberToPool)
+        {
+            //Calls the base function in TD_GameObjectPoolBase
+            return base.CreateAndAddToPool(visitorTypeInPool.unitPrefab, numberToPool, waveSpawnerTransform, true);
         }
 
         public GameObject EnableVisitorFromPool()
         {
-            if (visitorGameObjectPool == null) return null;
-
-            GameObject visitorGO = visitorGameObjectPool.EnableGameObjectFromPool();
+            GameObject visitorGO = base.EnableGameObjectFromPool();
             
             VisitorUnit visitorUnit = visitorGO.GetComponent<VisitorUnit>();
 
@@ -48,16 +53,16 @@ namespace TeamMAsTD
         //When a Visitor GameObject wants to return to pool (e.g on dead or reached destination) -> call this function inside it.
         public void ReturnVisitorToPool(VisitorUnit visitor)
         {
-            if (visitor == null || visitorGameObjectPool == null) return;
+            if (visitor == null) return;
 
-            visitorGameObjectPool.ReturnGameObjectToPool(visitor.gameObject);
+            base.ReturnGameObjectToPool(visitor.gameObject);
         }
 
         public void RemoveVisitorFromPool(VisitorUnit visitor)
         {
-            if (visitor == null || visitorGameObjectPool == null) return;
+            if (visitor == null) return;
 
-            visitorGameObjectPool.RemoveGameObjectFromPool(visitor.gameObject);
+            base.RemoveGameObjectFromPool(visitor.gameObject);
 
             visitor.SetPoolContainsThisVisitor(null);
         }

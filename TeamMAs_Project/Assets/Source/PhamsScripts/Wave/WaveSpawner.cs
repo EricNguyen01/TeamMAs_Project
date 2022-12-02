@@ -15,14 +15,6 @@ namespace TeamMAsTD
     {
         [SerializeField] private List<WaveSO> waveSOList = new List<WaveSO>();
 
-        //[Header("Debug Only!")]
-
-        //[SerializeField] private bool enableDebug = false;
-
-        //[SerializeField]
-        //[Tooltip("For fast-forwarding to a specific wave. Set to 0 to disable this debug setting.")]
-        //private int waveNumberToStartAt = 0;
-
         //INTERNALS............................................................................
 
         //Each type of visitor will have their own visitor pool in which all the pools are stored in this list
@@ -63,18 +55,6 @@ namespace TeamMAsTD
             SpawnChildWaveObjects();
             float endInitTime = Time.realtimeSinceStartup - startInitTime;
             Debug.Log("WaveSpawner Finished Initializing VisitorPools and Child Wave Objects. Took: " + endInitTime * 1000.0f + "ms.");
-
-            /*if (enableDebug)
-            {
-                if(waveNumberToStartAt < 0 || waveNumberToStartAt >= wavesList.Count)
-                {
-                    Debug.LogWarning("Invalid Wave Number To Start At! Value reset to 0!");
-
-                    waveNumberToStartAt = 0;
-                }
-
-                currentWave = waveNumberToStartAt;
-            }*/
         }
 
         private void SpawnChildWaveObjects()
@@ -228,10 +208,14 @@ namespace TeamMAsTD
             if (visitorPools.Count == 0)
             {
                 //add a new pool for this visitorSO then exit function
-                VisitorPool pool = gameObject.AddComponent<VisitorPool>();
-                pool.InitializeVisitorPool(visitorSO, visitorNumbersToPool);
+                VisitorPool pool = new VisitorPool(this, visitorSO, transform);
+
+                pool.CreateAndAddInactiveVisitorsToPool(visitorNumbersToPool);
+
                 visitorPools.Add(pool);
+
                 visitorTypesWithPoolExisted.Add(visitorSO);
+
                 return pool;
             }
 
@@ -240,11 +224,15 @@ namespace TeamMAsTD
             //if existed -> exit function
             if (visitorTypesWithPoolExisted.Contains(visitorSO)) return null;
 
-            //if none existed -> add
-            VisitorPool visitorPool = gameObject.AddComponent<VisitorPool>();
-            visitorPool.InitializeVisitorPool(visitorSO, visitorNumbersToPool);
+            //if no visitor pool of this visitor existed yet -> add
+            VisitorPool visitorPool = new VisitorPool(this, visitorSO, transform);
+
+            visitorPool.CreateAndAddInactiveVisitorsToPool(visitorNumbersToPool);
+
             visitorPools.Add(visitorPool);
+
             visitorTypesWithPoolExisted.Add(visitorSO);
+
             return visitorPool;
         }
     }

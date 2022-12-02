@@ -45,6 +45,10 @@ namespace TeamMAsTD
 
         private Collider2D visitorCollider2D;
 
+        //Invoked on visitor appeased
+        //PlantAimShootSystem.cs sub to this event to update its targets list
+        public static event System.Action OnVisitorAppeased;
+
         private void Awake()
         {
             if(visitorUnitSO == null)
@@ -237,6 +241,8 @@ namespace TeamMAsTD
                 visitorWorldUIComponent.EnableUnitNameTextUI(true);
 
                 visitorWorldUIComponent.EnableUnitHealthBarSlider(true);
+
+                visitorWorldUIComponent.SetHealthBarSliderValue(currentVisitorHealth, visitorUnitSO.happinessAsHealth);
             }
 
             if (visitorSpriteRenderer != null)
@@ -358,6 +364,8 @@ namespace TeamMAsTD
                     {
                         visitorAnimation.Play("Appease");
                     }
+
+                    OnVisitorAppeased?.Invoke();
                 }
             }
 

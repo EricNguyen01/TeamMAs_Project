@@ -99,7 +99,7 @@ namespace TeamMAsTD
 
         //The below 2 functions subscribed to WaveSpawner.cs' wave started/stopped events. Check WaveSpawner.cs for more info!
         //disable button on wave started
-        public void OnWaveStarted(WaveSpawner waveSpawnerThatStartedWave, int waveNum)
+        private void OnWaveStarted(WaveSpawner waveSpawnerThatStartedWave, int waveNum)
         {
             //if not the same wave spawner as this button's linked wave spawner -> do nothing
             if (waveSpawnerThatStartedWave != waveSpawnerLinkedToButton) return;
@@ -108,7 +108,7 @@ namespace TeamMAsTD
         }
 
         //re-enable button on wave finished
-        public void OnWaveFinished(WaveSpawner waveSpawnerThatStartedWave, int waveNum)
+        private void OnWaveFinished(WaveSpawner waveSpawnerThatStartedWave, int waveNum)
         {
             //if not the same wave spawner as this button's linked wave spawner -> do nothing
             if (waveSpawnerThatStartedWave != waveSpawnerLinkedToButton) return;
@@ -120,7 +120,7 @@ namespace TeamMAsTD
             EnableButton(true);
         }
 
-        public void OnAllWaveSpawned(WaveSpawner waveSpawnerThatStartedWave)
+        private void OnAllWaveSpawned(WaveSpawner waveSpawnerThatStartedWave)
         {
             //if not the same wave spawner as this button's linked wave spawner -> do nothing
             if (waveSpawnerThatStartedWave != waveSpawnerLinkedToButton) return;

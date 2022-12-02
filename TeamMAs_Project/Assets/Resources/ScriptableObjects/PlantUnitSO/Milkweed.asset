@@ -21,7 +21,7 @@ MonoBehaviour:
   <waterBars>k__BackingField: 0
   <damage>k__BackingField: 60
   <attackSpeed>k__BackingField: 1.5
-  <attackRangeInTiles>k__BackingField: 999
+  <attackRangeInTiles>k__BackingField: 10
   <targetsPerAttack>k__BackingField: 1
   <humanMultiplier>k__BackingField: 1
   <pollinatorMultiplier>k__BackingField: 1
