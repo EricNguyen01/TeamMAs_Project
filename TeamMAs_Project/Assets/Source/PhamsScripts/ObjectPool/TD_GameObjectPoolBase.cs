@@ -25,6 +25,7 @@ namespace TeamMAsTD
 
         public List<GameObject> gameObjectsPool { get; private set; }
 
+        //TD_GameObjectPoolBase's constructor
         public TD_GameObjectPoolBase(MonoBehaviour scriptSpawnedPool, GameObject gameObjectToPool, Transform parentTransformOfPool)
         {
             this.parentTransformOfPool = parentTransformOfPool;

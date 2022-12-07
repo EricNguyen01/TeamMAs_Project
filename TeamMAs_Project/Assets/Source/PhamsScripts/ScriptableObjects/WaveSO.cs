@@ -37,11 +37,11 @@ namespace TeamMAsTD
         [field: SerializeField] public bool applyVisitorHealthScalingThisWave { get; private set; } = true;
         [field: SerializeField][field: Min(1.0f)] public float visitorHealthScalingMultiplier { get; private set; } = 1.0f;
 
-        [field: Header("Wave GameObject Prefab")]
+        /*[field: Header("Wave GameObject Prefab")]
         [field: SerializeField]
         [field: Tooltip("The GameObject prefab with the Wave script component attached that is to be spawned by WaveSpawner." +
         "Check WaveSpawner.cs script.")]
-        public GameObject wavePrefab { get; private set; }
+        public GameObject wavePrefab { get; private set; }*/
 
         public int GetSpawnNumberOfVisitorType(VisitorUnitSO visitorSO)
         {

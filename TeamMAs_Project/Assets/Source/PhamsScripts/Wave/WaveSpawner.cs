@@ -51,34 +51,30 @@ namespace TeamMAsTD
             }
 
             float startInitTime = Time.realtimeSinceStartup;
+
             SetupVisitorPools();
-            SpawnChildWaveObjects();
+
+            CreateWaveObjects();//Not actual Unity GameObject. Just Wave C# class object in memory. Check Wave.cs
+
             float endInitTime = Time.realtimeSinceStartup - startInitTime;
+
             Debug.Log("WaveSpawner Finished Initializing VisitorPools and Child Wave Objects. Took: " + endInitTime * 1000.0f + "ms.");
         }
 
-        private void SpawnChildWaveObjects()
+        private void CreateWaveObjects()
         {
             for(int i = 0; i < waveSOList.Count; i++)
             {
-                if (waveSOList[i].wavePrefab == null)
+                if (waveSOList[i] == null)
                 {
-                    Debug.LogError("Wave Prefab of WaveSO: " + waveSOList[i].name + " is null. This wave won't work!");
+                    Debug.LogError("Wave ScriptableObject list element: " + i + " in WaveSpawner: " + name + " is null. This wave won't work!");
                     wavesList.Add(null);
                     continue;
                 }
 
-                GameObject waveObj = Instantiate(waveSOList[i].wavePrefab, transform);
-                Wave wave = waveObj.GetComponent<Wave>();
+                //Create wave object by calling its constructor and fills its parameters
+                Wave wave = /*waveObj.GetComponent<Wave>()*/ new Wave(this, waveSOList[i], i);
 
-                if(wave == null)
-                {
-                    Debug.LogError("Wave script component of WaveSO's WavePrefab: " + waveSOList[i].wavePrefab.name + " is null. This wave won't work!");
-                    wavesList.Add(null);
-                    continue;
-                }
-
-                wave.InitializeWave(this, waveSOList[i], i);
                 wavesList.Add(wave);
             }
         }
@@ -131,7 +127,7 @@ namespace TeamMAsTD
             {
                 Debug.LogError("Trying to start wave: " + waveNum + " but it is null! Check WaveSO prefab data of this wave! " +
                 "Starting the next wave instead...");
-                //TODO: set starting next wave here:
+
                 return;
             }
 
@@ -141,17 +137,17 @@ namespace TeamMAsTD
                 return;
             }
 
+            //if any wave is running while we abt to start a new wave -> stop the ongoing waves
             for (int i = 0; i < wavesList.Count; i++)
             {
                 if (wavesList[i] == null) continue;
 
-                if (wavesList[i].gameObject.activeInHierarchy) wavesList[i].gameObject.SetActive(false);
+                //if (wavesList[i].gameObject.activeInHierarchy) wavesList[i].gameObject.SetActive(false);
+                if (wavesList[i].waveHasAlreadyStarted) ProcessWaveFinished(i, false, false);
             }
 
-            wavesList[waveNum].gameObject.SetActive(true);
-
-            //Call the spawn function in Wave.cs
-            wavesList[waveNum].ProcessWaveStarts();
+            //Call the ProcessWaveStarted function in Wave.cs to start a new selected wave based on the provided waveNum parameter
+            wavesList[waveNum].ProcessWaveStarted();
 
             waveAlreadyStarted = true;
 
@@ -167,13 +163,15 @@ namespace TeamMAsTD
             StartWave(currentWave);
         }
 
-        public void ProcessWaveFinished(int waveNum, bool incrementWaveOnFinished)
+        public void ProcessWaveFinished(int waveNum, bool incrementWaveOnFinished, bool broadcastWaveFinishedEvent)
         {
             if (wavesList[waveNum] == null) return;
 
-            wavesList[waveNum].gameObject.SetActive(false);
+            wavesList[waveNum].ProcessWaveStopped();
 
             waveAlreadyStarted = false;
+
+            if (!broadcastWaveFinishedEvent) return;
 
             //invoke wave ended events that different depend on whether the last wave has spawned or not
             if (currentWave < wavesList.Count - 1)

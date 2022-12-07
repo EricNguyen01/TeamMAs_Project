@@ -7,8 +7,8 @@ namespace TeamMAsTD
     /*
      * This class represents a single wave with wave data provided by WaveSO
      */
-    [DisallowMultipleComponent]
-    public class Wave : MonoBehaviour
+    [System.Serializable]
+    public class Wave
     {
         public WaveSO waveSO { get; private set; }
         public WaveSpawner waveSpawnerOfThisWave { get; private set; }
@@ -44,11 +44,24 @@ namespace TeamMAsTD
         //for 1st time switching to boss spawn chance list
         private bool justSwitchedToBossSpawnChanceList = false;
 
-        private bool waveHasAlreadyStarted = false;//to avoid overlapping wave start process
+        public bool waveHasAlreadyStarted { get; private set; } = false;//to avoid overlapping wave start process
 
-        private void OnDisable()
+        //Wave's constructor
+        public Wave(WaveSpawner waveSpawner, WaveSO waveSO, int waveNum)
         {
-            StopAllCoroutines();
+            waveSpawnerOfThisWave = waveSpawner;
+            this.waveSO = waveSO;
+            this.waveNum = waveNum;
+
+            float startInitTime = Time.realtimeSinceStartup;
+
+            LoadTotalVisitorAndVisitorTypesListForThisWave(waveSO);
+
+            LoadVisitorSpawnChanceListForThisWave(waveSO);
+
+            float endInitTime = Time.realtimeSinceStartup - startInitTime;
+
+            Debug.Log("Wave: " + waveSO.name + " finished initializing. Took: " + endInitTime * 1000.0f + "ms.");
         }
 
         private void LoadTotalVisitorAndVisitorTypesListForThisWave(WaveSO waveSO)
@@ -341,9 +354,8 @@ namespace TeamMAsTD
         {
             if (totalVisitorsToSpawnList == null || totalVisitorsToSpawnList.Count == 0)
             {
-                waveSpawnerOfThisWave.ProcessWaveFinished(waveNum, true);
-
-                waveHasAlreadyStarted = false;
+                //calls this Wave's WaveSpawner ProcessWaveFinished function to process wave finished
+                waveSpawnerOfThisWave.ProcessWaveFinished(waveNum, true, true);
 
                 return true;
             }
@@ -351,20 +363,14 @@ namespace TeamMAsTD
             return false;
         }
 
-        public void InitializeWave(WaveSpawner waveSpawner, WaveSO waveSO, int waveNum)
+        public void ProcessWaveStopped()
         {
-            waveSpawnerOfThisWave = waveSpawner;
-            this.waveSO = waveSO;
-            this.waveNum = waveNum;
+            waveHasAlreadyStarted = false;
 
-            float startInitTime = Time.realtimeSinceStartup;
-            LoadTotalVisitorAndVisitorTypesListForThisWave(waveSO);
-            LoadVisitorSpawnChanceListForThisWave(waveSO);
-            float endInitTime = Time.realtimeSinceStartup - startInitTime;
-            Debug.Log("Wave: " + waveSO.name + " finished initializing. Took: " + endInitTime * 1000.0f + "ms.");
+            waveSpawnerOfThisWave.StopCoroutine(VisitorSpawnCoroutine());
         }
 
-        public void ProcessWaveStarts()
+        public void ProcessWaveStarted()
         {
             //cant call visitor spawn coroutine multiple times if wave's been already started and running
             if (waveHasAlreadyStarted) return;
@@ -379,7 +385,7 @@ namespace TeamMAsTD
             }
 
             //if there are still visitors to spawn -> start wave coroutine
-            StartCoroutine(VisitorSpawnCoroutine());
+            waveSpawnerOfThisWave.StartCoroutine(VisitorSpawnCoroutine());
         }
 
         public void RemoveInactiveVisitorsFromActiveList(VisitorUnit inactiveVisitorGO)

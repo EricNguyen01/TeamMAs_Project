@@ -11,6 +11,7 @@ namespace TeamMAsTD
 
         private Transform waveSpawnerTransform;
 
+        //VisitorPool's constructor
         public VisitorPool(WaveSpawner waveSpawner, VisitorUnitSO visitorSO, Transform waveSpawnerTransform) : base(waveSpawner, visitorSO.unitPrefab, waveSpawnerTransform)
         {
             if (visitorSO == null)
