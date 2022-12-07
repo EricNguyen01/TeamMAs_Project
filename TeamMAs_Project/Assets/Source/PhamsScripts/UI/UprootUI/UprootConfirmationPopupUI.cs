@@ -88,7 +88,7 @@ namespace TeamMAsTD
             ShowUprootConfirmationPopup(showPopupStatus);
 
             //set current EventSystem selected object to this obj to use with OnDeselect() later
-            EventSystem.current.SetSelectedGameObject(gameObject);
+            //EventSystem.current.SetSelectedGameObject(gameObject);
         }
 
         //Select Uproot button - Button UI UnityEvent function set manually in the inspector

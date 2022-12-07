@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.Events;
 using UnityEngine.UI;
 using TMPro;
 
@@ -33,6 +34,12 @@ namespace TeamMAsTD
         [Tooltip("Is the UI image when dragging and dropping the same as the UI Image of this shop slot's image? " +
         "If an image is set for the drag drop UI object, setting this option to true will override it. The default setting is true.")] 
         private bool dragDropVisualSameAsShopSlots = true;
+
+        //UnityEvents..................................................................................
+
+        [SerializeField] public UnityEvent OnStartedDragging;
+        [SerializeField] public UnityEvent OnDroppedSuccessful;
+        [SerializeField] public UnityEvent OnDroppedFailed;
 
         //INTERNALS....................................................................................
 
@@ -189,9 +196,14 @@ namespace TeamMAsTD
             //On click and hold the mouse on the unit shop slot UI image:
 
             if(!dragDropUIImageObject.gameObject.activeInHierarchy) dragDropUIImageObject.gameObject.SetActive(true);
+
             dragDropUIImageObject.transform.SetParent(parentCanva.transform);
+
             unitShopSlotImageRaycastComponent.raycastTarget = false;
+
             EventSystem.current.SetSelectedGameObject(null);
+
+            OnStartedDragging?.Invoke();
         }
 
         public void OnDrag(PointerEventData eventData)
@@ -212,18 +224,30 @@ namespace TeamMAsTD
             dragDropUIImageObject.transform.SetParent(transform);
             dragDropUIImageObject.transform.localPosition = originalDragDropPos;
             dragDropUIImageObject.gameObject.SetActive(false);
+
             //reset to prepare for next drag/drop
             unitShopSlotImageRaycastComponent.raycastTarget = true;
 
             //Check if the mouse is hovered upon anything that is recognized by the EventSystem
-            if (eventData.pointerEnter == null) return;
+            if (eventData.pointerEnter == null)
+            {
+                OnDroppedFailed?.Invoke();
+                return;
+            }
 
             //check if the mouse pointer is on an obj with Tile component attached
             Tile destinationTile = eventData.pointerEnter.GetComponent<Tile>();
-            if (destinationTile == null) return;
+
+            if (destinationTile == null)
+            {
+                OnDroppedFailed?.Invoke();
+                return;
+            }
 
             //Place the unit on the destination tile (placeable conditions are checked within the PlaceUnit function below)
             destinationTile.PlaceUnit(slotUnitScriptableObject);
+
+            OnDroppedSuccessful?.Invoke();
         }
     }
 }

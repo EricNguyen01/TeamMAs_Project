@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Events;
 using UnityEngine.EventSystems;
 
 namespace TeamMAsTD
@@ -17,6 +18,10 @@ namespace TeamMAsTD
         private Camera mainCam;
 
         private PointerEventData pEventData;//Unity's EventSystem pointer event data
+
+        //UnityEvent............................................................................................
+
+        [SerializeField] public UnityEvent OnTileMenuOpened;
 
         //PRIVATES.............................................................................................
         private void OnEnable()
@@ -75,8 +80,14 @@ namespace TeamMAsTD
             //if a plant exists on this tile->process open/close tile menu
             if (opened)
             {
-                if(!tileWorldCanvas.gameObject.activeInHierarchy) tileWorldCanvas.gameObject.SetActive(true);
+                if (!tileWorldCanvas.gameObject.activeInHierarchy)
+                {
+                    tileWorldCanvas.gameObject.SetActive(true);
+
+                    OnTileMenuOpened?.Invoke();
+                }
                 else tileWorldCanvas.gameObject.SetActive(false);
+
                 return;
             }
 
@@ -94,6 +105,8 @@ namespace TeamMAsTD
                 Debug.LogWarning("Uproot option is selected but no UprootConfirmationPopupUI object is found in scene! Uproot confirmation failed!");
                 return;
             }
+
+            OpenTileInteractionMenu(false);
 
             uprootConfirmationPopupUI.ActivateUprootConfirmationPopupForTile(tileSelectedForUprootConfirmation, true);
         }

@@ -113,20 +113,26 @@ namespace TeamMAsTD
         {
             if (waveNum < 0 || waveNum >= wavesList.Count)
             {
-                Debug.LogWarning("Trying to start an invalid wave!");
+                Debug.LogWarning("Trying to start a wave that is out of the WaveSpawner: " + name + "'s waveList range! WaveSpawner stopped!");
                 return;
             }
 
             if (wavesList == null || wavesList.Count == 0)
             {
-                Debug.LogWarning("Trying to start a wave but there is no Wave Game Object spawned by WaveSpawner: " + name + "!");
+                Debug.LogWarning("Trying to start a wave but there is no Wave object spawned by WaveSpawner: " + name + "!");
                 return;
             }
 
             if (wavesList[waveNum] == null)
             {
-                Debug.LogError("Trying to start wave: " + waveNum + " but it is null! Check WaveSO prefab data of this wave! " +
+                Debug.LogError("Trying to start wave: " + waveNum + " in waveList but it is null! " +
                 "Starting the next wave instead...");
+
+                //JumpToWave if set startWaveAfterJump to true, will call this StartWave func with the newly provided waveNum para
+                //if next wave is still null,
+                //it will keeps calling JumpToWave with next wave value as para creating a nice recursive loop
+                //until WaveSpawner is stopped from running out of waveList range.
+                JumpToWave(waveNum++, true);
 
                 return;
             }
@@ -191,7 +197,11 @@ namespace TeamMAsTD
 
         public void JumpToWave(int waveNum, bool startWaveAfterJump)
         {
-            if (waveNum < 0 || waveNum >= wavesList.Count) return;
+            if (waveNum < 0 || waveNum >= wavesList.Count)
+            {
+                Debug.LogWarning("Trying to start a wave that is out of the WaveSpawner: " + name + "'s waveList range! WaveSpawner stopped!");
+                return;
+            }
 
             currentWave = waveNum;
 

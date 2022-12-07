@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 #if UNITY_EDITOR
@@ -26,6 +27,10 @@ namespace TeamMAsTD
         [Tooltip("Draw the tile color debug (e.g: green for plantable, grey for rocks, etc). " +
         "Dont forget to turn this to false if we have an actual tile with its own color on the tile sprite renderer.")]
         private bool drawDebugRuntime = true;
+
+        //UnityEvents....................................................
+        [SerializeField] public UnityEvent OnPlantUnitPlantedOnTile;
+        [SerializeField] public UnityEvent OnPlantUnitUprootedOnTile;
 
         //Internal........................................................
         [field: SerializeField] [field: HideInInspector]
@@ -125,9 +130,9 @@ namespace TeamMAsTD
                 return false;
             }
 
-            //TODO: Send OnUnitPlacementSuccessful event
-
             plantUnitOnTile = unit;
+
+            OnPlantUnitPlantedOnTile?.Invoke();
 
             return true;
         }
@@ -135,17 +140,14 @@ namespace TeamMAsTD
         public void UprootUnit()
         {
             if (plantUnitOnTile == null) return;
+
             if (disableUprootOnTile) return;
 
             Destroy(plantUnitOnTile.gameObject);
+
             plantUnitOnTile = null;
 
-            //TODO: Send OnUprootSuccessful event
-
-            if(plantUnitOnTile != null)
-            {
-                Debug.LogWarning("A unit is uprooted but tile: " + name + " is still referencing it!");
-            }
+            OnPlantUnitUprootedOnTile?.Invoke();
         }
 
     //EDITOR...........................................................................
