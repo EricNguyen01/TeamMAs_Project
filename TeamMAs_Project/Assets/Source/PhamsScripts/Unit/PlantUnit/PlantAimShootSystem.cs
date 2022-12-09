@@ -47,9 +47,11 @@ namespace TeamMAsTD
 
         private void Start()
         {
-            if(plantUnitLinked == null)
+            if(plantUnitLinked == null || plantProjectileSO == null)
             {
+                Debug.LogError("PlantUnitAimShootSystem script component on PlantUnit: " + name + " is missing crucial references. Disabling script!");
                 enabled = false;
+
                 return;
             }
 
