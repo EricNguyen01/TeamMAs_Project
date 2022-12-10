@@ -12,22 +12,25 @@ namespace TeamMAsTD
 
         private PlantUnitSO plantUnitSO;
 
+        private Tile tilePlantedOn;
+
         private int totalWaterBars = 0;
 
         private int waterBarsRemaining = 0;
 
-        //PlantWaterUsageSystem events
-        //Sub by Tile.cs to uproot plant using this system whenever all water bars run out
-        public event System.Action<PlantUnit> OnPlantWaterDepleted;
+        private void Awake()
+        {
+            tilePlantedOn = GetComponentInParent<Tile>();
+        }
 
         private void OnEnable()
         {
-            
+            WaveSpawner.OnWaveFinished += ConsumeWaterOnWaveFinished;
         }
 
         private void OnDisable()
         {
-            
+            WaveSpawner.OnWaveFinished -= ConsumeWaterOnWaveFinished;
         }
 
         private void Start()
@@ -58,6 +61,11 @@ namespace TeamMAsTD
             waterBarsRemaining = totalWaterBars;
         }
 
+        private void ConsumeWaterOnWaveFinished(WaveSpawner waveSpawner, int waveNum)
+        {
+            ConsumingWaterBars();
+        }
+
         private void ConsumingWaterBars()
         {
             waterBarsRemaining -= plantUnitSO.waterUse;
@@ -66,8 +74,32 @@ namespace TeamMAsTD
             {
                 waterBarsRemaining = 0;
 
-                OnPlantWaterDepleted?.Invoke(plantUnitLinked);
+                UprootOnWaterDepleted();
             }
+        }
+
+        private void UprootOnWaterDepleted()
+        {
+            //if the parent tile that this plant is planted on is not null:
+            if (tilePlantedOn != null && tilePlantedOn.plantUnitOnTile == plantUnitLinked) 
+            { 
+                tilePlantedOn.UprootUnit();
+                return;
+            }
+
+            //if above is invalid -> find all tiles
+            //if a tile is found to be the one carrying this plant -> process uproot
+            foreach(Tile tile in FindObjectsOfType<Tile>())
+            {
+                if(tile.plantUnitOnTile != null && tile.plantUnitOnTile == plantUnitLinked)
+                {
+                    tile.UprootUnit();
+                    return;
+                }
+            }
+
+            //else if all above failed -> just destroy the plant here
+            Destroy(gameObject);
         }
 
         //sub this function to plant getting watered event with number of water bars refilled as para
