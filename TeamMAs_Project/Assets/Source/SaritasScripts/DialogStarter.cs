@@ -6,6 +6,12 @@ public class DialogStarter : MonoBehaviour
 {
   [SerializeField] string conversation; // the title of the conversation
   
+  /* NOTES
+  Using Names in Dialog Text
+  Player Name: [lua(Actor["Player"].Display_Name)]
+  Actor Name: [var=Actor]
+  */
+  
   void Start()
   {
     StartCoroutine(DialogTest(1f));
