@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 using PixelCrushers.DialogueSystem;
 
-public class DialogStarter : MonoBehaviour
+public class Dialog : MonoBehaviour
 {
   [SerializeField] string conversation; // the title of the conversation
   
@@ -22,5 +22,9 @@ public class DialogStarter : MonoBehaviour
     //DialogueManager.StartConversation(string conversation, Transform actor, Transform conversant); // actor and conversant are optional
     DialogueManager.StartConversation(conversation);
     //GetComponent<DialogueSystemTrigger>().OnUse();  // also works, only if using a DialogueSystemTrigger component set to OnUse
+  }
+  
+  public void SkipDialog(){
+    DialogueManager.StopConversation();
   }
 }
