@@ -55,6 +55,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1756641817382509472, guid: 58ac37417e60e534f91138088a3e6f70, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: ce0d7883bb135254dae4777d585bf468, type: 3}
+    - target: {fileID: 2257155458121000049, guid: 58ac37417e60e534f91138088a3e6f70, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 0c392e20843f9544b92bcfe000902773, type: 3}
+    - target: {fileID: 4947571965539220225, guid: 58ac37417e60e534f91138088a3e6f70, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 3f1fc3bc7f05bb04fb455e181c4ba640, type: 3}
+    - target: {fileID: 7017861071225376532, guid: 58ac37417e60e534f91138088a3e6f70, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 3f1fc3bc7f05bb04fb455e181c4ba640, type: 3}
     - target: {fileID: 7170795282184037745, guid: 58ac37417e60e534f91138088a3e6f70, type: 3}
       propertyPath: m_Text
       value: SLDKFJSDKLFJSDKLFJSKLDJFSKLJKLSJFDLKSJFSKLFFJLSDFJSDKLFJSKLDKLDJFSDLKFJSJDKLFJSDKLFJSLDKFJSLDFK.
@@ -62,6 +78,18 @@ PrefabInstance:
     - target: {fileID: 7170795282184037745, guid: 58ac37417e60e534f91138088a3e6f70, type: 3}
       propertyPath: m_FontData.m_LineSpacing
       value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7367094930279649985, guid: 58ac37417e60e534f91138088a3e6f70, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7367094930279649985, guid: 58ac37417e60e534f91138088a3e6f70, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SkipDialog
+      objectReference: {fileID: 0}
+    - target: {fileID: 7367094930279649985, guid: 58ac37417e60e534f91138088a3e6f70, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: DialogStarter, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 7529639994435376587, guid: 58ac37417e60e534f91138088a3e6f70, type: 3}
       propertyPath: m_Type
