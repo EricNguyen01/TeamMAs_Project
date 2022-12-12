@@ -45,6 +45,11 @@ namespace TeamMAsTD
 
         private Collider2D visitorCollider2D;
 
+        // sarita
+        [SerializeField] Color red;
+        [SerializeField] GameObject heartEffect;
+    
+
         //Invoked on visitor appeased
         //PlantAimShootSystem.cs sub to this event to update its targets list
         public static event System.Action OnVisitorAppeased;
@@ -258,7 +263,7 @@ namespace TeamMAsTD
 
             currentDamageVisualTime -= Time.deltaTime;
 
-            Color red = Color.red;
+            //Color red = Color.red;  // i put it up top instead - sarita
             Color color = Color.Lerp(red, visitorOriginalSpriteColor, currentDamageVisualTime / baseDamageVisualTime);
             color.a = 255.0f;
 
@@ -354,6 +359,10 @@ namespace TeamMAsTD
                 
                 //to trigger damage color change in ProcessDamageVisual() function above
                 currentDamageVisualTime = baseDamageVisualTime;
+
+                // to activate heart effect -sarita
+                heartEffect.transform.position = transform.position;
+                heartEffect.SetActive(true);
 
                 //play appease anim clip when happiness dropped below 0.0f.
                 if(currentVisitorHealth <= 0.0f)
