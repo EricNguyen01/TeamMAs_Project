@@ -72,8 +72,6 @@ namespace TeamMAsTD
                 return;
             }
 
-            currentVisitorHealth = visitorUnitSO.happinessAsHealth;
-
             //if an appeasement anim clip is provided in visitorUnitSO-> set current appeasement time to that clip's length in seconds
             if (visitorUnitSO.visitorAppeasementAnimClip != null)
             {
@@ -233,6 +231,7 @@ namespace TeamMAsTD
 
         private void ResetVisitorStatsAndLooks()
         {
+            //set starting HP
             currentVisitorHealth = visitorUnitSO.happinessAsHealth;
 
             currentAppeasementTime = baseAppeasementTime;
@@ -247,7 +246,7 @@ namespace TeamMAsTD
 
                 visitorWorldUIComponent.EnableUnitHealthBarSlider(true);
 
-                visitorWorldUIComponent.SetHealthBarSliderValue(currentVisitorHealth, visitorUnitSO.happinessAsHealth);
+                visitorWorldUIComponent.SetHealthBarSliderValue(currentVisitorHealth, visitorUnitSO.happinessAsHealth, true);
             }
 
             if (visitorSpriteRenderer != null)
@@ -347,6 +346,7 @@ namespace TeamMAsTD
             {
                 PlantProjectile projectile = (PlantProjectile)damageCauser;
 
+                //set damage to HP
                 currentVisitorHealth -= damage * DamageMultiplier(projectile);
 
                 Debug.Log("Visitor: " + name + " took: " + damage + " damage from projectile: " + projectile.name);
@@ -354,7 +354,7 @@ namespace TeamMAsTD
                 //set health bar slider UI component value if not null
                 if (visitorWorldUIComponent != null)
                 {
-                    visitorWorldUIComponent.SetHealthBarSliderValue(currentVisitorHealth, visitorUnitSO.happinessAsHealth);
+                    visitorWorldUIComponent.SetHealthBarSliderValue(currentVisitorHealth, visitorUnitSO.happinessAsHealth, true);
                 }
                 
                 //to trigger damage color change in ProcessDamageVisual() function above
