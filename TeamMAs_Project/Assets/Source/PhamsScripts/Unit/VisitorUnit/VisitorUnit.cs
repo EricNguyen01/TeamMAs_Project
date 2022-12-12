@@ -232,7 +232,7 @@ namespace TeamMAsTD
 
             currentAppeasementTime = baseAppeasementTime;
 
-            currentDamageVisualTime = baseDamageVisualTime;
+            currentDamageVisualTime = 0.0f;
 
             visitorCollider2D.enabled = true;
 
