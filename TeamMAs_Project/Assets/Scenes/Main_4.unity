@@ -15172,6 +15172,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: f7bce4acd2380cf4f8d1e5e68e1ec19a, type: 3}
+    - target: {fileID: 7620990051765388796, guid: d1cdca22ec4708540aa68019e182a7d8, type: 3}
+      propertyPath: m_Color.a
+      value: 0.29803923
+      objectReference: {fileID: 0}
     - target: {fileID: 8732644743540076669, guid: d1cdca22ec4708540aa68019e182a7d8, type: 3}
       propertyPath: m_RootOrder
       value: 7
@@ -46062,27 +46066,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8532963186734203990, guid: 2279aa78d203d3f4892ed2c75eefc202, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0.94954175
+      value: 0.9543434
       objectReference: {fileID: 0}
     - target: {fileID: 8532963186734203990, guid: 2279aa78d203d3f4892ed2c75eefc202, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0.18844625
+      value: 0.20283313
       objectReference: {fileID: 0}
     - target: {fileID: 8532963186734203990, guid: 2279aa78d203d3f4892ed2c75eefc202, type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0.77900004
+      value: 0.7449434
       objectReference: {fileID: 0}
     - target: {fileID: 8532963186734203990, guid: 2279aa78d203d3f4892ed2c75eefc202, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0.033223122
+      value: 0.11674789
       objectReference: {fileID: 0}
     - target: {fileID: 8532963186734203990, guid: 2279aa78d203d3f4892ed2c75eefc202, type: 3}
       propertyPath: m_SizeDelta.x
-      value: -0.6020508
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8532963186734203990, guid: 2279aa78d203d3f4892ed2c75eefc202, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 3.078003
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8532963186734203990, guid: 2279aa78d203d3f4892ed2c75eefc202, type: 3}
       propertyPath: m_LocalPosition.x
@@ -46114,11 +46118,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8532963186734203990, guid: 2279aa78d203d3f4892ed2c75eefc202, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8532963186734203990, guid: 2279aa78d203d3f4892ed2c75eefc202, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 1.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8532963186734203990, guid: 2279aa78d203d3f4892ed2c75eefc202, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -46135,10 +46139,6 @@ PrefabInstance:
     - target: {fileID: 8532963186734203991, guid: 2279aa78d203d3f4892ed2c75eefc202, type: 3}
       propertyPath: m_Name
       value: StartWaveButtonPanel
-      objectReference: {fileID: 0}
-    - target: {fileID: 8532963187269705841, guid: 2279aa78d203d3f4892ed2c75eefc202, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0.00048828125
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2279aa78d203d3f4892ed2c75eefc202, type: 3}
