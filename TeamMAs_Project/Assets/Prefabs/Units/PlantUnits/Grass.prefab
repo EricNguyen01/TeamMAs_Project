@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8733665606186341281}
   - component: {fileID: 2640074510191088484}
   - component: {fileID: 6366037196960587819}
+  - component: {fileID: 2984172582457731264}
   m_Layer: 0
   m_Name: Grass
   m_TagString: Untagged
@@ -28,7 +29,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -4.07, y: -0.27999693, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -74,8 +75,8 @@ SpriteRenderer:
   m_SortingLayerID: -1980168467
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: db750325989564987a34393247d883b4, type: 3}
-  m_Color: {r: 0.4943396, g: 1, b: 0.717168, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 74ff934ab6aaf624789be8a43ee880b7, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -98,3 +99,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <plantUnitScriptableObject>k__BackingField: {fileID: 11400000, guid: b027c0987efb0b34bada201c95f907f2, type: 2}
+--- !u!114 &2984172582457731264
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7428981930192502170}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bacd51a5ee31f6f4abcc2bc97d9298e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
