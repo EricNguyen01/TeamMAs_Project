@@ -20,6 +20,6 @@ MonoBehaviour:
   <moveSpeed>k__BackingField: 1
   <emotionalAttackDamage>k__BackingField: 1
   <isBoss>k__BackingField: 1
-  <visitorHitColor>k__BackingField: {r: 1, g: 0.6, b: 0.9019608, a: 1}
+  <visitorHitColor>k__BackingField: {r: 1, g: 0.21960784, b: 0.8117647, a: 1}
   <visitorAppeasementAnimClip>k__BackingField: {fileID: 0}
   <visitorAppeasementTime>k__BackingField: 2.5
