@@ -17,6 +17,9 @@ namespace TeamMAsTD
         [field: SerializeField] [field: Min(0.0f)] public float emotionalAttackDamage { get; private set; } = 1.0f;
         [field: SerializeField] public bool isBoss { get; private set; } = false;
 
+        [field: Header("Visitor Taking Hits Settings")]
+        [field: SerializeField] public Color visitorHitColor { get; private set; }
+
         [field: Header("Visitor Appeasement Settings")]
         [field: SerializeField] public AnimationClip visitorAppeasementAnimClip { get; private set; }
         [field: SerializeField] public float visitorAppeasementTime { get; private set; } = 2.5f;
