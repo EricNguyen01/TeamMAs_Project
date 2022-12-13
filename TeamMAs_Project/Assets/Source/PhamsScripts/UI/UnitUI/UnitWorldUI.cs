@@ -103,5 +103,17 @@ namespace TeamMAsTD
 
             if (healthBarSlider.value <= 0.0f) healthBarSlider.value = 0.0f;
         }
+
+        public void SetHealthBarSliderValue(float currentVal, float maxVal, bool reversedSlider)
+        {
+            float newCurrentVal = currentVal;
+
+            if (reversedSlider)
+            {
+               newCurrentVal = maxVal - currentVal;
+            }
+
+            SetHealthBarSliderValue(newCurrentVal, maxVal);
+        }
     }
 }
