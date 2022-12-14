@@ -14,6 +14,8 @@ namespace TeamMAsTD
     {
         [field: SerializeField] public List<Tile> orderedPathTiles { get; private set; } = new List<Tile>();
 
+        [field: SerializeField] public Sprite pathTileSprite { get; private set; }
+
         //This list is used for when the user updating the path tiles list in the editor
         [SerializeField] [HideInInspector] private List<Tile> oldOrderedPathTiles = new List<Tile>();
 
@@ -61,7 +63,22 @@ namespace TeamMAsTD
 
                 //if the current tile element is NOT an AI path -> set it as an AI path tile.
                 orderedPathTiles[i].is_AI_Path = true;
+
+                SpriteRenderer tileSpriteRenderer = orderedPathTiles[i].GetComponent<SpriteRenderer>();
+
+                SetPathTileSprite(orderedPathTiles[i], tileSpriteRenderer);
             }
+        }
+
+        private void SetPathTileSprite(Tile tile, SpriteRenderer tileSpriteRenderer)
+        {
+            if (tile == null || tileSpriteRenderer == null) return;
+
+            if (pathTileSprite == null) return;
+
+            tileSpriteRenderer.sprite = pathTileSprite;
+
+            tile.EnableDrawTileDebug(false);
         }
 
         private void UpdatePath()
@@ -90,7 +107,7 @@ namespace TeamMAsTD
                 //if the current tile element in the oldOrderedPathTiles list still persists in the modified orderedPathTiles list-> continue.
                 if (orderedPathTiles.Contains(oldOrderedPathTiles[i])) continue;
                 
-                //if the current tile element in the old tile list is no longer in the current list -> removes its AI path status.
+                //if the current tile element in the old tile list is no longer in the current list -> removes its Visitor path status.
                 oldOrderedPathTiles[i].is_AI_Path= false;
             }
 

@@ -70,6 +70,20 @@ namespace TeamMAsTD
             }
 
             if (unitSpriteRenderer.sprite == null) unitSpriteRenderer.sprite = plantUnitScriptableObject.unitThumbnail;
+
+            SetPlantSortingOrder();
+        }
+
+        //set this plant sorting order (in "Plant" sort layer) to other plants in the grid
+        private void SetPlantSortingOrder()
+        {
+            if (tilePlacedOn == null) return;
+
+            if (tilePlacedOn.gridParent == null) return;
+
+            if (unitSpriteRenderer == null) return;
+
+            unitSpriteRenderer.sortingOrder = (tilePlacedOn.gridParent.gridHeight - 1) - tilePlacedOn.tileNumInColumn;
         }
 
         //PUBLICS........................................................................

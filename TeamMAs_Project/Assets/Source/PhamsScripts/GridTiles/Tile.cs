@@ -53,11 +53,18 @@ namespace TeamMAsTD
         private void Awake()
         {
             spriteRenderer = GetComponent<SpriteRenderer>();
+
             if(spriteRenderer == null)
             {
                 spriteRenderer = gameObject.AddComponent<SpriteRenderer>();
             }
 
+            //if this tile have a tile sprite and draw debug runtime is disabled
+            if(spriteRenderer != null && spriteRenderer.sprite != null && spriteRenderer.sprite.name != "Square")
+            {
+                EnableDrawTileDebug(false);
+            }
+            //else draw debug runtime status will not change (as set in editor pre-runtime)
             if (drawDebugRuntime)
             {
                 if (isOccupied) spriteRenderer.color = Color.grey;
@@ -154,6 +161,22 @@ namespace TeamMAsTD
             OnPlantUnitUprootedOnTile?.Invoke();
         }
 
+        public void EnableDrawTileDebug(bool enabled)
+        {
+            if (enabled)
+            {
+                drawTileDebug = true;
+
+                drawDebugRuntime = true;
+
+                return;
+            }
+
+            drawTileDebug = false;
+
+            drawDebugRuntime = false;
+        }
+
     //EDITOR...........................................................................
 
     //Tile editor stuff................................................................
@@ -162,7 +185,9 @@ namespace TeamMAsTD
         private void OnDrawGizmos()
         {
             if (!drawTileDebug) return;
-            
+
+            if (spriteRenderer != null && spriteRenderer.sprite != null && spriteRenderer.sprite.name != "Square") return;
+
             if (isOccupied)//if tile is occupied->tile is grey
             {
                 Gizmos.color = Color.grey;
@@ -190,11 +215,19 @@ namespace TeamMAsTD
             private void OnEnable()
             {
                 tile = target as Tile;
+
+                tile.spriteRenderer = tile.GetComponent<SpriteRenderer>();
+
+                if (tile.spriteRenderer != null && tile.spriteRenderer.sprite != null && tile.spriteRenderer.sprite.name != "Square")
+                {
+                    tile.EnableDrawTileDebug(false);
+                }
             }
 
             private void OnSceneGUI()
             {
                 GUI.color = Color.black;
+
                 Handles.Label((Vector2)tile.transform.position + Vector2.right * -0.2f, "" + tile.tileNumInRow + "," + tile.tileNumInColumn);
             }
         }
