@@ -9,6 +9,8 @@ namespace TeamMAsTD
     {
         [field: SerializeField] public VisitorUnitSO visitorUnitSO { get; private set; }
 
+        [SerializeField] HeartEffect heartEffect;
+
         public float currentVisitorHealth { get; private set; } = 0.0f;
 
         private Wave waveSpawnedThisVisitor;
@@ -44,8 +46,6 @@ namespace TeamMAsTD
         private Animation visitorAnimation;
 
         private Collider2D visitorCollider2D;
-
-        [SerializeField] GameObject heartEffect;
     
 
         //Invoked on visitor appeased
@@ -92,6 +92,8 @@ namespace TeamMAsTD
                 baseAppeasementTime = visitorUnitSO.visitorAppeasementTime;
                 currentAppeasementTime = visitorUnitSO.visitorAppeasementTime;
             }
+
+            if (heartEffect == null) heartEffect = GetComponentInChildren<HeartEffect>();
 
             GetVisitorPathsOnAwake();
 
@@ -358,8 +360,12 @@ namespace TeamMAsTD
                 currentDamageVisualTime = baseDamageVisualTime;
 
                 // to activate heart effect -sarita
-                heartEffect.transform.position = transform.position;
-                heartEffect.SetActive(true);
+                if(heartEffect != null)
+                {
+                    heartEffect.transform.position = transform.position;
+
+                    heartEffect.gameObject.SetActive(true);
+                }
 
                 //play appease anim clip when happiness dropped below 0.0f.
                 if(currentVisitorHealth <= 0.0f)

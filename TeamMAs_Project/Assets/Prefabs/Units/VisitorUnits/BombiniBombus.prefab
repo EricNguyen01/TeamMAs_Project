@@ -178,8 +178,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <visitorUnitSO>k__BackingField: {fileID: 11400000, guid: 950d07a7bc4f24c46bd5503a8f9974a3, type: 2}
-  red: {r: 1, g: 0.6, b: 0.9019608, a: 1}
-  heartEffect: {fileID: 5349312506877473172}
+  heartEffect: {fileID: 2041714446470901258}
 --- !u!114 &-9081863570021092993
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -718,11 +717,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 263390f310bec6d4c877c3c9178e8f16, type: 3}
---- !u!1 &5349312506877473172 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4699132452098289127, guid: 263390f310bec6d4c877c3c9178e8f16, type: 3}
+--- !u!114 &2041714446470901258 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1684239658500108921, guid: 263390f310bec6d4c877c3c9178e8f16, type: 3}
   m_PrefabInstance: {fileID: 795518049404345459}
   m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4f62e3db36158a42b9608c6e31c30e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &5349312506877473179 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4699132452098289128, guid: 263390f310bec6d4c877c3c9178e8f16, type: 3}
