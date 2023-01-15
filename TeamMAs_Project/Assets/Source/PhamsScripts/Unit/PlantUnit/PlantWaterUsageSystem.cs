@@ -18,6 +18,10 @@ namespace TeamMAsTD
 
         private int waterBarsRemaining = 0;
 
+        private int roundsCanSurviveWithoutWater = 1;//default, will be changed on initialize (check initialization func).
+
+        private int currentRoundsSurvivedWithoutWater = -1;//doesnt count on the wave that water gets to 0 (start counting from next no water wave)
+
         private void Awake()
         {
             tilePlantedOn = GetComponentInParent<Tile>();
@@ -25,12 +29,12 @@ namespace TeamMAsTD
 
         private void OnEnable()
         {
-            WaveSpawner.OnWaveFinished += ConsumeWaterOnWaveFinished;
+            
         }
 
         private void OnDisable()
         {
-            WaveSpawner.OnWaveFinished -= ConsumeWaterOnWaveFinished;
+            
         }
 
         private void Start()
@@ -59,9 +63,35 @@ namespace TeamMAsTD
             totalWaterBars = plantUnit.plantUnitScriptableObject.waterBars;
 
             waterBarsRemaining = totalWaterBars;
+
+            roundsCanSurviveWithoutWater = plantUnit.plantUnitScriptableObject.roundsSurviveWithoutWater;
         }
 
-        private void ConsumeWaterOnWaveFinished(WaveSpawner waveSpawner, int waveNum)
+        public void RefillingWaterBarsUsingCoins(int barsRefilled, float coinsCost)
+        {
+            //if water is full -> don't refill!
+            if (waterBarsRemaining >= totalWaterBars) return;
+
+            //else
+
+            //refill amount cant be less than 0
+            if (barsRefilled < 0) return;
+
+            //use coins to fill water
+            GameResource.gameResourceInstance.coinResourceSO.RemoveResourceAmount(coinsCost);
+
+            //filling water
+            waterBarsRemaining += barsRefilled;
+
+            currentRoundsSurvivedWithoutWater = -1;//reset current rounds survived without water since plant just received water
+
+            if (waterBarsRemaining >= totalWaterBars)
+            {
+                waterBarsRemaining = totalWaterBars;
+            }
+        }
+
+        private void ConsumeWaterOnRainFinished()
         {
             ConsumingWaterBars();
         }
@@ -74,7 +104,15 @@ namespace TeamMAsTD
             {
                 waterBarsRemaining = 0;
 
-                UprootOnWaterDepleted();
+                //increment rounds survived without water if water is below or = 0
+                //this value is reset in RefillingWaterBarsUsingCoins function above.
+                currentRoundsSurvivedWithoutWater++;
+
+                //uproot if rounds survived without water = rounds can survive without water
+                if(currentRoundsSurvivedWithoutWater >= roundsCanSurviveWithoutWater)
+                {
+                    UprootOnWaterDepleted();
+                }
             }
         }
 
@@ -100,20 +138,6 @@ namespace TeamMAsTD
 
             //else if all above failed -> just destroy the plant here
             Destroy(gameObject);
-        }
-
-        //sub this function to plant getting watered event with number of water bars refilled as para
-        private void RefillingWaterBars(int barsRefilled)
-        {
-            //refill amount cant be less than 0
-            if (barsRefilled < 0) return;
-
-            waterBarsRemaining += barsRefilled;
-
-            if(waterBarsRemaining >= totalWaterBars)
-            {
-                waterBarsRemaining = totalWaterBars;
-            }
         }
     }
 }

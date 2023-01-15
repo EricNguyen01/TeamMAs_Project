@@ -108,8 +108,11 @@ namespace TeamMAsTD
         }
 
         //re-enable button on wave finished
-        private void OnWaveFinished(WaveSpawner waveSpawnerThatStartedWave, int waveNum)
+        private void OnWaveFinished(WaveSpawner waveSpawnerThatStartedWave, int waveNum, bool hasOngoingWave)
         {
+            //if there's a wave that's still running -> do nothing for now
+            if (hasOngoingWave) return;
+
             //if not the same wave spawner as this button's linked wave spawner -> do nothing
             if (waveSpawnerThatStartedWave != waveSpawnerLinkedToButton) return;
 
@@ -120,7 +123,7 @@ namespace TeamMAsTD
             EnableButton(true);
         }
 
-        private void OnAllWaveSpawned(WaveSpawner waveSpawnerThatStartedWave)
+        private void OnAllWaveSpawned(WaveSpawner waveSpawnerThatStartedWave, bool hasOngoingWave)
         {
             //if not the same wave spawner as this button's linked wave spawner -> do nothing
             if (waveSpawnerThatStartedWave != waveSpawnerLinkedToButton) return;

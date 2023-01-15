@@ -57,7 +57,16 @@ namespace TeamMAsTD
 
             //when a plant is planted and this script is enabled -> check if it is enabled after a wave has already started
             //if so, start the targetting and shooting of this plant
-            bool alreadyHasOngoingWave = FindOnGoingWaves();
+            bool alreadyHasOngoingWave = false;
+
+            foreach(WaveSpawner waveSpawner in FindObjectsOfType<WaveSpawner>())
+            {
+                if (waveSpawner.waveAlreadyStarted)
+                {
+                    alreadyHasOngoingWave = true;
+                    break;
+                }
+            }
 
             if (alreadyHasOngoingWave) EnablePlantAimShoot(true);
         }
@@ -268,32 +277,14 @@ namespace TeamMAsTD
             if(!enableAimShoot) EnablePlantAimShoot(true);
         }
 
-        private void OnWaveFinished(WaveSpawner waveSpawner, int waveNum)
+        private void OnWaveFinished(WaveSpawner waveSpawner, int waveNum, bool stillHasOtherOngoingWave)
         {
-            bool stillHasOtherOngoingWave = FindOnGoingWaves();
-
             if(!stillHasOtherOngoingWave) EnablePlantAimShoot(false);
         }
 
-        private void OnAllWaveSpawned(WaveSpawner waveSpawner)
+        private void OnAllWaveSpawned(WaveSpawner waveSpawner, bool stillHasOtherOngoingWave)
         {
-            bool stillHasOtherOngoingWave = FindOnGoingWaves();
-
             if (!stillHasOtherOngoingWave) EnablePlantAimShoot(false);
-        }
-
-        //has looping -> should only call in 1 frame only -> dont use in Update()
-        private bool FindOnGoingWaves()
-        {
-            foreach (WaveSpawner waveSpawner in FindObjectsOfType<WaveSpawner>())
-            {
-                if (waveSpawner.waveAlreadyStarted)
-                {
-                    return true;
-                }
-            }
-
-            return false;
         }
     }
 }

@@ -18,7 +18,8 @@ MonoBehaviour:
   <unitDescription>k__BackingField: 
   <unitThumbnail>k__BackingField: {fileID: 21300000, guid: 8185e193acc5daa4ea20db622a680e96, type: 3}
   <plantProjectileSO>k__BackingField: {fileID: 11400000, guid: 700432d60d0410a4482fe445d643989b, type: 2}
-  <waterBars>k__BackingField: 0
+  <waterBars>k__BackingField: 4
+  <roundsSurviveWithoutWater>k__BackingField: 1
   <damage>k__BackingField: 20
   <attackSpeed>k__BackingField: 1
   <attackRangeInTiles>k__BackingField: 3

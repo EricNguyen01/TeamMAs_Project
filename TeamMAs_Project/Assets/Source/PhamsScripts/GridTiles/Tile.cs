@@ -96,6 +96,16 @@ namespace TeamMAsTD
             {
                 return false;
             }
+            //check coin resource
+            if(GameResource.gameResourceInstance != null)
+            {
+                //if coin resource amount < plant unit coin costs -> can't plant 
+                if (GameResource.gameResourceInstance.coinResourceSO.resourceAmount < unitSO.plantingCoinCost)
+                {
+                    Debug.Log("Insufficient Fund! Not enough coins to plant unit.");
+                    return false;
+                }
+            }
 
             return true;
         }
@@ -154,6 +164,9 @@ namespace TeamMAsTD
             plantUnitOnTile = unit;
 
             OnPlantUnitPlantedOnTile?.Invoke();
+
+            //coin cost on plant unit planted successful
+            GameResource.gameResourceInstance.coinResourceSO.RemoveResourceAmount(plantUnitOnTile.plantUnitScriptableObject.plantingCoinCost);
 
             return true;
         }

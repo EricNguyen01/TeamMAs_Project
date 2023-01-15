@@ -36,8 +36,8 @@ namespace TeamMAsTD
         //StartWaveUI.cs receives these events to enable/disable start wave Button UI.
         //PlantAimShootSystem.cs receives these events to enable/disable plant targetting/shooting
         public static event System.Action<WaveSpawner, int> OnWaveStarted;
-        public static event System.Action<WaveSpawner, int> OnWaveFinished;
-        public static event System.Action<WaveSpawner> OnAllWaveSpawned;
+        public static event System.Action<WaveSpawner, int, bool> OnWaveFinished;
+        public static event System.Action<WaveSpawner, bool> OnAllWaveSpawned;
 
         //PRIVATES...............................................................................
 
@@ -161,6 +161,23 @@ namespace TeamMAsTD
             OnWaveStarted?.Invoke(this, waveNum);
         }
 
+        //find if there's any other ongoing waves started by other wavespawner apart from this wavespawner
+        //has looping -> should only call in 1 frame only -> dont use in Update()
+        private bool FindOtherOnGoingWaves()
+        {
+            foreach (WaveSpawner waveSpawner in FindObjectsOfType<WaveSpawner>())
+            {
+                if (waveSpawner == this) continue;
+
+                if (waveSpawner.waveAlreadyStarted)
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
         //PUBLICS..........................................................................
 
         //This function is to be called by WaveStart UI Button event to start a wave from current wave number.
@@ -179,19 +196,19 @@ namespace TeamMAsTD
 
             if (!broadcastWaveFinishedEvent) return;
 
-            //invoke wave ended events that different depend on whether the last wave has spawned or not
+            //invoke different wave ended events that depend on whether the last wave has spawned or not
             if (currentWave < wavesList.Count - 1)
             {
                 Debug.Log("OnWaveFinished Invoked!");
 
-                OnWaveFinished?.Invoke(this, waveNum);
+                OnWaveFinished?.Invoke(this, waveNum, FindOtherOnGoingWaves());
 
                 if (incrementWaveOnFinished) currentWave++;
             }
             else
             {
                 Debug.Log("OnAllWaveSpawned Invoked!");
-                OnAllWaveSpawned?.Invoke(this);
+                OnAllWaveSpawned?.Invoke(this, FindOtherOnGoingWaves());
             }
         }
 
