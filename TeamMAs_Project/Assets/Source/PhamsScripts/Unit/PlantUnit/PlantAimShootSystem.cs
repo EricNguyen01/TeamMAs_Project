@@ -57,18 +57,7 @@ namespace TeamMAsTD
 
             //when a plant is planted and this script is enabled -> check if it is enabled after a wave has already started
             //if so, start the targetting and shooting of this plant
-            bool alreadyHasOngoingWave = false;
-
-            foreach(WaveSpawner waveSpawner in FindObjectsOfType<WaveSpawner>())
-            {
-                if (waveSpawner.waveAlreadyStarted)
-                {
-                    alreadyHasOngoingWave = true;
-                    break;
-                }
-            }
-
-            if (alreadyHasOngoingWave) EnablePlantAimShoot(true);
+            CheckOngoingWavesExist();
         }
 
         private void Update()
@@ -219,6 +208,29 @@ namespace TeamMAsTD
             }
         }
 
+        private void CheckOngoingWavesExist()
+        {
+            bool alreadyHasOngoingWave = false;
+
+            if (WaveSpawnerManager.waveSpawnerManagerInstance != null)
+            {
+                alreadyHasOngoingWave = WaveSpawnerManager.waveSpawnerManagerInstance.HasActiveWaveSpawnersExcept(null);
+            }
+            else
+            {
+                foreach (WaveSpawner waveSpawner in FindObjectsOfType<WaveSpawner>())
+                {
+                    if (waveSpawner.waveAlreadyStarted)
+                    {
+                        alreadyHasOngoingWave = true;
+                        break;
+                    }
+                }
+            }
+
+            if (alreadyHasOngoingWave) EnablePlantAimShoot(true);
+        }
+
         //This function gets Called in PlantUnit.cs
         public void InitializePlantAimShootSystem(PlantUnit plantUnit, PlantProjectileSO plantProjectileSO)
         {
@@ -277,14 +289,14 @@ namespace TeamMAsTD
             if(!enableAimShoot) EnablePlantAimShoot(true);
         }
 
-        private void OnWaveFinished(WaveSpawner waveSpawner, int waveNum, bool stillHasOtherOngoingWave)
+        private void OnWaveFinished(WaveSpawner waveSpawner, int waveNum, bool stillHasOtherOngoingWaves)
         {
-            if(!stillHasOtherOngoingWave) EnablePlantAimShoot(false);
+            if(!stillHasOtherOngoingWaves) EnablePlantAimShoot(false);
         }
 
-        private void OnAllWaveSpawned(WaveSpawner waveSpawner, bool stillHasOtherOngoingWave)
+        private void OnAllWaveSpawned(WaveSpawner waveSpawner, bool stillHasOtherOngoingWaves)
         {
-            if (!stillHasOtherOngoingWave) EnablePlantAimShoot(false);
+            if (!stillHasOtherOngoingWaves) EnablePlantAimShoot(false);
         }
     }
 }

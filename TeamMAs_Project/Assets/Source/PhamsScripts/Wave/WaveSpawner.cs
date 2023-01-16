@@ -15,6 +15,8 @@ namespace TeamMAsTD
     {
         [SerializeField] private List<WaveSO> waveSOList = new List<WaveSO>();
 
+        [SerializeField] private WaveSpawnerManager waveSpawnerManagerPrefab;//in case WaveSpawner is in use and WaveSpawnerManager is missing
+
         //INTERNALS............................................................................
 
         //Each type of visitor will have their own visitor pool in which all the pools are stored in this list
@@ -34,7 +36,8 @@ namespace TeamMAsTD
 
         //Wave events declarations
         //StartWaveUI.cs receives these events to enable/disable start wave Button UI.
-        //PlantAimShootSystem.cs receives these events to enable/disable plant targetting/shooting
+        //PlantAimShootSystem.cs receives these events to enable/disable plant targetting/shooting.
+        //Rain.cs receives these events to enable, well...rain.
         public static event System.Action<WaveSpawner, int> OnWaveStarted;
         public static event System.Action<WaveSpawner, int, bool> OnWaveFinished;
         public static event System.Action<WaveSpawner, bool> OnAllWaveSpawned;
@@ -59,6 +62,29 @@ namespace TeamMAsTD
             float endInitTime = Time.realtimeSinceStartup - startInitTime;
 
             Debug.Log("WaveSpawner Finished Initializing VisitorPools and Child Wave Objects. Took: " + endInitTime * 1000.0f + "ms.");
+        }
+
+        private void OnEnable()
+        {
+            if(WaveSpawnerManager.waveSpawnerManagerInstance != null)
+            {
+                WaveSpawnerManager.waveSpawnerManagerInstance.AddWaveSpawnerToList(this);
+            }
+            else
+            {
+                if(waveSpawnerManagerPrefab != null)
+                {
+                    Instantiate(waveSpawnerManagerPrefab, Vector3.zero, Quaternion.identity);
+                }
+            }
+        }
+
+        private void OnDisable()
+        {
+            if (WaveSpawnerManager.waveSpawnerManagerInstance != null)
+            {
+                WaveSpawnerManager.waveSpawnerManagerInstance.RemoveWaveSpawnerFromList(this);
+            }
         }
 
         private void CreateWaveObjects()
@@ -165,6 +191,14 @@ namespace TeamMAsTD
         //has looping -> should only call in 1 frame only -> dont use in Update()
         private bool FindOtherOnGoingWaves()
         {
+            //if WaveSpawnerManager exists ->
+            //check for active wave spawners in scene through it instead of running FindObjectsOfType which is expensive
+            if(WaveSpawnerManager.waveSpawnerManagerInstance != null)
+            {
+                return WaveSpawnerManager.waveSpawnerManagerInstance.HasActiveWaveSpawnersExcept(this);
+            }
+
+            //else, run FindObjectsOfType instead lol!
             foreach (WaveSpawner waveSpawner in FindObjectsOfType<WaveSpawner>())
             {
                 if (waveSpawner == this) continue;
@@ -199,7 +233,7 @@ namespace TeamMAsTD
             //invoke different wave ended events that depend on whether the last wave has spawned or not
             if (currentWave < wavesList.Count - 1)
             {
-                Debug.Log("OnWaveFinished Invoked!");
+                //Debug.Log("OnWaveFinished Invoked!");
 
                 OnWaveFinished?.Invoke(this, waveNum, FindOtherOnGoingWaves());
 
@@ -207,7 +241,8 @@ namespace TeamMAsTD
             }
             else
             {
-                Debug.Log("OnAllWaveSpawned Invoked!");
+                //Debug.Log("OnAllWaveSpawned Invoked!");
+
                 OnAllWaveSpawned?.Invoke(this, FindOtherOnGoingWaves());
             }
         }

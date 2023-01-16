@@ -6,6 +6,7 @@ namespace TeamMAsTD
 {
     [DisallowMultipleComponent]
     [RequireComponent(typeof(PlantAimShootSystem))]
+    [RequireComponent(typeof(PlantWaterUsageSystem))]
     public class PlantUnit : MonoBehaviour, IUnit
     {
         [field: SerializeField] public PlantUnitSO plantUnitScriptableObject { get; private set; }
@@ -13,6 +14,8 @@ namespace TeamMAsTD
         //INTERNAL....................................................................
 
         public PlantAimShootSystem plantAimShootSystem { get; private set; }
+
+        public PlantWaterUsageSystem plantWaterUsageSystem { get; private set; }
 
         public Tile tilePlacedOn { get; private set; }
 
@@ -52,10 +55,14 @@ namespace TeamMAsTD
                 plantMaxAttackRange = (tilePlacedOn.gridParent.tileSize * plantUnitScriptableObject.attackRangeInTiles) + (tilePlacedOn.gridParent.tileSize / 2.0f);
             }
 
-            //no need to check for null data for this component as this script has a require attribute for it.
+            //no need to check for null data for the below components as this script has a require attribute for them.
             plantAimShootSystem = GetComponent<PlantAimShootSystem>();
 
+            plantWaterUsageSystem = GetComponent<PlantWaterUsageSystem>();
+
             plantAimShootSystem.InitializePlantAimShootSystem(this, plantUnitScriptableObject.plantProjectileSO);
+
+            plantWaterUsageSystem.InitializePlantWaterUsageSystem(this);
 
             GetAndSetUnitSprite();
         }

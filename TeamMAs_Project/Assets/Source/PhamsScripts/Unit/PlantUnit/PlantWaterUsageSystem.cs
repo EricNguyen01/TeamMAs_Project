@@ -29,19 +29,23 @@ namespace TeamMAsTD
 
         private void OnEnable()
         {
-            
+            WaveSpawner.OnWaveFinished += ConsumeWaterOnWaveFinished;
+
+            Rain.OnRainEnded += RefillWaterOnRainEnded;
         }
 
         private void OnDisable()
         {
-            
+            WaveSpawner.OnWaveFinished -= ConsumeWaterOnWaveFinished;
+
+            Rain.OnRainEnded -= RefillWaterOnRainEnded;
         }
 
         private void Start()
         {
             if(plantUnitLinked == null || plantUnitSO == null)
             {
-                Debug.LogError("PlantUnitWaterUsageSystem script component on Plant Unit: " + name + " is missing crucial components. Disabling script!");
+                Debug.LogError("PlantUnitWaterUsageSystem script component on Plant Unit: " + name + " is not initialized in PlantUnit.cs. Disabling script!");
                 enabled = false;
 
                 return;
@@ -67,7 +71,8 @@ namespace TeamMAsTD
             roundsCanSurviveWithoutWater = plantUnit.plantUnitScriptableObject.roundsSurviveWithoutWater;
         }
 
-        public void RefillingWaterBarsUsingCoins(int barsRefilled, float coinsCost)
+        //Use this func for refilling water using both rain (0 coin cost) and/or the water bucket UI button (coin cost)
+        public void RefillWaterBars(int barsRefilled, float coinsCost)
         {
             //if water is full -> don't refill!
             if (waterBarsRemaining >= totalWaterBars) return;
@@ -83,7 +88,8 @@ namespace TeamMAsTD
             //filling water
             waterBarsRemaining += barsRefilled;
 
-            currentRoundsSurvivedWithoutWater = -1;//reset current rounds survived without water since plant just received water
+            //reset current rounds survived without water if water bars remaining > 0 after being refilled.
+            if (waterBarsRemaining > 0) currentRoundsSurvivedWithoutWater = -1;
 
             if (waterBarsRemaining >= totalWaterBars)
             {
@@ -91,16 +97,23 @@ namespace TeamMAsTD
             }
         }
 
-        private void ConsumeWaterOnRainFinished()
+        //Water is consumed first on wave finished
+        private void ConsumeWaterOnWaveFinished(WaveSpawner waveSpawner, int waveNum, bool stillHasOngoingWaves)
         {
+            if (stillHasOngoingWaves) return;
+
             ConsumingWaterBars();
         }
-
-        private void ConsumingWaterBars()
+        
+        //Then, after consuming from wave finished, rain occurs in which water is refilled on rain ended
+        private void RefillWaterOnRainEnded(Rain rain)
         {
-            waterBarsRemaining -= plantUnitSO.waterUse;
+            RefillWaterBars(rain.plantWaterBarsRefilledAfterRain, 0);
 
-            if(waterBarsRemaining <= 0)
+            //since OnRainEnded indicates the VERY END of a wave/round and...
+            //if even after refilled and water still less than 0 -> set water bars to 0
+            //then increment current rounds survived without water or Uproot if this value is >= rounds can survive without water
+            if (waterBarsRemaining <= 0)
             {
                 waterBarsRemaining = 0;
 
@@ -109,11 +122,16 @@ namespace TeamMAsTD
                 currentRoundsSurvivedWithoutWater++;
 
                 //uproot if rounds survived without water = rounds can survive without water
-                if(currentRoundsSurvivedWithoutWater >= roundsCanSurviveWithoutWater)
+                if (currentRoundsSurvivedWithoutWater >= roundsCanSurviveWithoutWater)
                 {
                     UprootOnWaterDepleted();
                 }
             }
+        }
+
+        private void ConsumingWaterBars()
+        {
+            waterBarsRemaining -= plantUnitSO.waterUse;
         }
 
         private void UprootOnWaterDepleted()

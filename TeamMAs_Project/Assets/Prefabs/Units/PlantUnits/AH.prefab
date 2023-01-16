@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 4713855104851165792}
   - component: {fileID: 3879876524293527552}
   - component: {fileID: 7262379202902211155}
+  - component: {fileID: 6003989832151466817}
+  - component: {fileID: 4233241255924856795}
   m_Layer: 0
   m_Name: AH
   m_TagString: Untagged
@@ -98,3 +100,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <plantUnitScriptableObject>k__BackingField: {fileID: 11400000, guid: 462832fdbbb9cc34d8a23db6909e48c7, type: 2}
+--- !u!114 &6003989832151466817
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2090201727753816829}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bacd51a5ee31f6f4abcc2bc97d9298e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &4233241255924856795
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2090201727753816829}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 12504477573dd9840957d341b05e13eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

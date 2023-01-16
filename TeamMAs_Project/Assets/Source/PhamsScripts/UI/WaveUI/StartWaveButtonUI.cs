@@ -6,6 +6,7 @@ using TMPro;
 
 namespace TeamMAsTD
 {
+    [DisallowMultipleComponent]
     public class StartWaveButtonUI : MonoBehaviour
     {
         [SerializeField]
@@ -20,6 +21,8 @@ namespace TeamMAsTD
         private bool startedAtWave_1 = true;
 
         private CanvasGroup startWaveCanvasGroup;
+
+        private bool isRaining = false;//the raining event after a wave is finished
 
         private void Awake()
         {
@@ -45,6 +48,9 @@ namespace TeamMAsTD
             WaveSpawner.OnWaveStarted += OnWaveStarted;
             WaveSpawner.OnWaveFinished += OnWaveFinished;
             WaveSpawner.OnAllWaveSpawned += OnAllWaveSpawned;
+
+            Rain.OnRainStarted += OnRainStarted;
+            Rain.OnRainEnded += OnRainEnded;
         }
 
         private void OnDisable()
@@ -52,6 +58,9 @@ namespace TeamMAsTD
             WaveSpawner.OnWaveStarted -= OnWaveStarted;
             WaveSpawner.OnWaveFinished -= OnWaveFinished;
             WaveSpawner.OnAllWaveSpawned -= OnAllWaveSpawned;
+
+            Rain.OnRainStarted -= OnRainStarted;
+            Rain.OnRainEnded -= OnRainEnded;
         }
 
         private void SetStartWaveButtonWaveText()
@@ -108,13 +117,15 @@ namespace TeamMAsTD
         }
 
         //re-enable button on wave finished
-        private void OnWaveFinished(WaveSpawner waveSpawnerThatStartedWave, int waveNum, bool hasOngoingWave)
+        private void OnWaveFinished(WaveSpawner waveSpawnerThatStartedWave, int waveNum, bool hasOngoingWaves)
         {
             //if there's a wave that's still running -> do nothing for now
-            if (hasOngoingWave) return;
+            if (hasOngoingWaves) return;
 
             //if not the same wave spawner as this button's linked wave spawner -> do nothing
             if (waveSpawnerThatStartedWave != waveSpawnerLinkedToButton) return;
+
+            if (isRaining) return;
 
             //update wave number UI text
             SetStartWaveButtonWaveText();
@@ -123,12 +134,34 @@ namespace TeamMAsTD
             EnableButton(true);
         }
 
-        private void OnAllWaveSpawned(WaveSpawner waveSpawnerThatStartedWave, bool hasOngoingWave)
+        private void OnAllWaveSpawned(WaveSpawner waveSpawnerThatStartedWave, bool hasOngoingWaves)
         {
             //if not the same wave spawner as this button's linked wave spawner -> do nothing
             if (waveSpawnerThatStartedWave != waveSpawnerLinkedToButton) return;
 
             EnableButton(false);
+        }
+
+        private void OnRainStarted(Rain rain)
+        {
+            isRaining = true;
+
+            EnableButton(true);
+
+            startWaveCanvasGroup.interactable = false;
+            startWaveCanvasGroup.blocksRaycasts = false;
+
+            startWaveButtonText.text = "Raining...";
+        }
+
+        private void OnRainEnded(Rain rain)
+        {
+            isRaining = false;
+
+            startWaveCanvasGroup.interactable = true;
+            startWaveCanvasGroup.blocksRaycasts = true;
+
+            SetStartWaveButtonWaveText();
         }
     }
 }

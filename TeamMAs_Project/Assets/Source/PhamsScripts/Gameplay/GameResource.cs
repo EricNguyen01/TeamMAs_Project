@@ -12,6 +12,7 @@ namespace TeamMAsTD
      * When a new game resource is made which is through making a new game resource scriptable object, the new game resource SO goes here (make a new field for it).
      * To access the game resource instance, call: GameResource.gameResourceInstance...
      */
+    [DisallowMultipleComponent]
     public class GameResource : MonoBehaviour
     {
         [field: SerializeField] public GameResourceSO coinResourceSO { get; private set; }

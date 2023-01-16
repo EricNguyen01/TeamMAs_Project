@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 4818493569168229228}
   - component: {fileID: 7199435351294517585}
   - component: {fileID: 9113023288664823652}
+  - component: {fileID: 7947224080126495533}
+  - component: {fileID: 7743722360249334014}
   m_Layer: 0
   m_Name: Milkweed
   m_TagString: Untagged
@@ -98,3 +100,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <plantUnitScriptableObject>k__BackingField: {fileID: 11400000, guid: fc94d0fdc5f03f84f9a5e5adc012486b, type: 2}
+--- !u!114 &7947224080126495533
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7171100457624758856}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bacd51a5ee31f6f4abcc2bc97d9298e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7743722360249334014
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7171100457624758856}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 12504477573dd9840957d341b05e13eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

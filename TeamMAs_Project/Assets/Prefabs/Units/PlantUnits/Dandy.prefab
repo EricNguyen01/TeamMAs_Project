@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 6665266570364330543}
   - component: {fileID: 7143217192744122063}
   - component: {fileID: 2080974679233304984}
+  - component: {fileID: 8309538057782045391}
+  - component: {fileID: 3700123208251543565}
   m_Layer: 0
   m_Name: Dandy
   m_TagString: Untagged
@@ -98,3 +100,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <plantUnitScriptableObject>k__BackingField: {fileID: 11400000, guid: ebe49aa0d994d7d488c580c1a9bccd35, type: 2}
+--- !u!114 &8309538057782045391
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7198574875345707434}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bacd51a5ee31f6f4abcc2bc97d9298e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &3700123208251543565
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7198574875345707434}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 12504477573dd9840957d341b05e13eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
