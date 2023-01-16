@@ -8,7 +8,8 @@ using UnityEngine.EventSystems;
 namespace TeamMAsTD
 {
     [DisallowMultipleComponent]
-    public class UprootOnTileUI : MonoBehaviour, IPointerDownHandler, IDeselectHandler
+    [RequireComponent(typeof(Tile))]
+    public class TileMenuAndUprootOnTileUI : MonoBehaviour, IPointerDownHandler, IDeselectHandler
     {
         [SerializeField] private Canvas tileWorldCanvas;
 

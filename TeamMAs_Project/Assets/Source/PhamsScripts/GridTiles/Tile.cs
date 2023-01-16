@@ -15,6 +15,7 @@ namespace TeamMAsTD
     [ExecuteAlways]
 #endif
     [DisallowMultipleComponent]
+    [RequireComponent(typeof(TileMenuAndUprootOnTileUI))]
     public class Tile : MonoBehaviour
     {
         [field: Header("Tile Properties")]
@@ -68,7 +69,7 @@ namespace TeamMAsTD
                 if (is_AI_Path) spriteRenderer.color = Color.white;
             }
 
-            AttachUprootOnTileUIScriptComponentIfNull();
+            Attach_TileMenu_And_UprootOnTileUI_ScriptComponentIfNull();
         }
 
 #if UNITY_EDITOR
@@ -112,11 +113,11 @@ namespace TeamMAsTD
 
         //This func checks if there is an UprootOnTileUI script attached to this game object. If not, attach one
         //then, get the attached script component
-        private void AttachUprootOnTileUIScriptComponentIfNull()
+        private void Attach_TileMenu_And_UprootOnTileUI_ScriptComponentIfNull()
         {
-            if (GetComponent<UprootOnTileUI>() == null)
+            if (GetComponent<TileMenuAndUprootOnTileUI>() == null)
             {
-                gameObject.AddComponent<UprootOnTileUI>();
+                gameObject.AddComponent<TileMenuAndUprootOnTileUI>();
             }
         }
 

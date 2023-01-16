@@ -438,7 +438,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1096490527
   m_SortingLayer: 2
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 7482667652216324306, guid: db750325989564987a34393247d883b4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -668,7 +668,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.02, y: 1.02}
+    oldSize: {x: 1, y: 1}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -726,8 +726,8 @@ SpriteRenderer:
   m_SortingLayerID: -1096490527
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 3a2faae39b6a8934da39a5c077523714, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Sprite: {fileID: 7482667652216324306, guid: db750325989564987a34393247d883b4, type: 3}
+  m_Color: {r: 0, g: 1, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -753,8 +753,8 @@ MonoBehaviour:
   <is_AI_Path>k__BackingField: 0
   <plantUnitOnTile>k__BackingField: {fileID: 0}
   <disableUprootOnTile>k__BackingField: 0
-  drawTileDebug: 0
-  drawDebugRuntime: 0
+  drawTileDebug: 1
+  drawDebugRuntime: 1
   OnPlantUnitPlantedOnTile:
     m_PersistentCalls:
       m_Calls:
@@ -1520,7 +1520,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.02, y: 1.02}
+    oldSize: {x: 1, y: 1}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -1577,9 +1577,9 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1096490527
   m_SortingLayer: 2
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 3a2faae39b6a8934da39a5c077523714, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_SortingOrder: 4
+  m_Sprite: {fileID: 7482667652216324306, guid: db750325989564987a34393247d883b4, type: 3}
+  m_Color: {r: 0, g: 1, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -1605,8 +1605,8 @@ MonoBehaviour:
   <is_AI_Path>k__BackingField: 0
   <plantUnitOnTile>k__BackingField: {fileID: 0}
   <disableUprootOnTile>k__BackingField: 0
-  drawTileDebug: 0
-  drawDebugRuntime: 0
+  drawTileDebug: 1
+  drawDebugRuntime: 1
   OnPlantUnitPlantedOnTile:
     m_PersistentCalls:
       m_Calls:
@@ -2041,7 +2041,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.02, y: 1.02}
+    oldSize: {x: 1, y: 1}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -2099,8 +2099,8 @@ SpriteRenderer:
   m_SortingLayerID: -1096490527
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 3a2faae39b6a8934da39a5c077523714, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Sprite: {fileID: 7482667652216324306, guid: db750325989564987a34393247d883b4, type: 3}
+  m_Color: {r: 0, g: 1, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -2126,8 +2126,8 @@ MonoBehaviour:
   <is_AI_Path>k__BackingField: 0
   <plantUnitOnTile>k__BackingField: {fileID: 0}
   <disableUprootOnTile>k__BackingField: 0
-  drawTileDebug: 0
-  drawDebugRuntime: 0
+  drawTileDebug: 1
+  drawDebugRuntime: 1
   OnPlantUnitPlantedOnTile:
     m_PersistentCalls:
       m_Calls:
@@ -3816,7 +3816,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1096490527
   m_SortingLayer: 2
-  m_SortingOrder: 0
+  m_SortingOrder: 4
   m_Sprite: {fileID: 7482667652216324306, guid: db750325989564987a34393247d883b4, type: 3}
   m_Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   m_FlipX: 0
@@ -4046,7 +4046,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.02, y: 1.02}
+    oldSize: {x: 1, y: 1}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -4104,8 +4104,8 @@ SpriteRenderer:
   m_SortingLayerID: -1096490527
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 3a2faae39b6a8934da39a5c077523714, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Sprite: {fileID: 7482667652216324306, guid: db750325989564987a34393247d883b4, type: 3}
+  m_Color: {r: 0, g: 1, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -4131,8 +4131,8 @@ MonoBehaviour:
   <is_AI_Path>k__BackingField: 0
   <plantUnitOnTile>k__BackingField: {fileID: 0}
   <disableUprootOnTile>k__BackingField: 0
-  drawTileDebug: 0
-  drawDebugRuntime: 0
+  drawTileDebug: 1
+  drawDebugRuntime: 1
   OnPlantUnitPlantedOnTile:
     m_PersistentCalls:
       m_Calls:
@@ -5616,7 +5616,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.02, y: 1.02}
+    oldSize: {x: 1, y: 1}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -5673,9 +5673,9 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1096490527
   m_SortingLayer: 2
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 3a2faae39b6a8934da39a5c077523714, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_SortingOrder: 1
+  m_Sprite: {fileID: 7482667652216324306, guid: db750325989564987a34393247d883b4, type: 3}
+  m_Color: {r: 0, g: 1, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -5701,8 +5701,8 @@ MonoBehaviour:
   <is_AI_Path>k__BackingField: 0
   <plantUnitOnTile>k__BackingField: {fileID: 0}
   <disableUprootOnTile>k__BackingField: 0
-  drawTileDebug: 0
-  drawDebugRuntime: 0
+  drawTileDebug: 1
+  drawDebugRuntime: 1
   OnPlantUnitPlantedOnTile:
     m_PersistentCalls:
       m_Calls:
@@ -6111,7 +6111,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.02, y: 1.02}
+    oldSize: {x: 1, y: 1}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -6168,9 +6168,9 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1096490527
   m_SortingLayer: 2
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 3a2faae39b6a8934da39a5c077523714, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_SortingOrder: 4
+  m_Sprite: {fileID: 7482667652216324306, guid: db750325989564987a34393247d883b4, type: 3}
+  m_Color: {r: 0, g: 1, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -6196,8 +6196,8 @@ MonoBehaviour:
   <is_AI_Path>k__BackingField: 0
   <plantUnitOnTile>k__BackingField: {fileID: 0}
   <disableUprootOnTile>k__BackingField: 0
-  drawTileDebug: 0
-  drawDebugRuntime: 0
+  drawTileDebug: 1
+  drawDebugRuntime: 1
   OnPlantUnitPlantedOnTile:
     m_PersistentCalls:
       m_Calls:
@@ -7155,7 +7155,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1096490527
   m_SortingLayer: 2
-  m_SortingOrder: 0
+  m_SortingOrder: 4
   m_Sprite: {fileID: 7482667652216324306, guid: db750325989564987a34393247d883b4, type: 3}
   m_Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   m_FlipX: 0
@@ -8318,7 +8318,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1096490527
   m_SortingLayer: 2
-  m_SortingOrder: 0
+  m_SortingOrder: 3
   m_Sprite: {fileID: 7482667652216324306, guid: db750325989564987a34393247d883b4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -8681,7 +8681,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1096490527
   m_SortingLayer: 2
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: 7482667652216324306, guid: db750325989564987a34393247d883b4, type: 3}
   m_Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   m_FlipX: 0
@@ -9015,7 +9015,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1096490527
   m_SortingLayer: 2
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: 7482667652216324306, guid: db750325989564987a34393247d883b4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -9381,7 +9381,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1096490527
   m_SortingLayer: 2
-  m_SortingOrder: 0
+  m_SortingOrder: 3
   m_Sprite: {fileID: 7482667652216324306, guid: db750325989564987a34393247d883b4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -9840,7 +9840,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.02, y: 1.02}
+    oldSize: {x: 1, y: 1}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -9897,9 +9897,9 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1096490527
   m_SortingLayer: 2
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 3a2faae39b6a8934da39a5c077523714, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_SortingOrder: 4
+  m_Sprite: {fileID: 7482667652216324306, guid: db750325989564987a34393247d883b4, type: 3}
+  m_Color: {r: 0, g: 1, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -9925,8 +9925,8 @@ MonoBehaviour:
   <is_AI_Path>k__BackingField: 0
   <plantUnitOnTile>k__BackingField: {fileID: 0}
   <disableUprootOnTile>k__BackingField: 0
-  drawTileDebug: 0
-  drawDebugRuntime: 0
+  drawTileDebug: 1
+  drawDebugRuntime: 1
   OnPlantUnitPlantedOnTile:
     m_PersistentCalls:
       m_Calls:
@@ -10557,7 +10557,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.02, y: 1.02}
+    oldSize: {x: 1, y: 1}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -10614,9 +10614,9 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1096490527
   m_SortingLayer: 2
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 3a2faae39b6a8934da39a5c077523714, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_SortingOrder: 3
+  m_Sprite: {fileID: 7482667652216324306, guid: db750325989564987a34393247d883b4, type: 3}
+  m_Color: {r: 0, g: 1, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -10642,8 +10642,8 @@ MonoBehaviour:
   <is_AI_Path>k__BackingField: 0
   <plantUnitOnTile>k__BackingField: {fileID: 0}
   <disableUprootOnTile>k__BackingField: 0
-  drawTileDebug: 0
-  drawDebugRuntime: 0
+  drawTileDebug: 1
+  drawDebugRuntime: 1
   OnPlantUnitPlantedOnTile:
     m_PersistentCalls:
       m_Calls:
@@ -11469,7 +11469,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.02, y: 1.02}
+    oldSize: {x: 1, y: 1}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -11527,8 +11527,8 @@ SpriteRenderer:
   m_SortingLayerID: -1096490527
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 3a2faae39b6a8934da39a5c077523714, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Sprite: {fileID: 7482667652216324306, guid: db750325989564987a34393247d883b4, type: 3}
+  m_Color: {r: 0, g: 1, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -11554,8 +11554,8 @@ MonoBehaviour:
   <is_AI_Path>k__BackingField: 0
   <plantUnitOnTile>k__BackingField: {fileID: 0}
   <disableUprootOnTile>k__BackingField: 0
-  drawTileDebug: 0
-  drawDebugRuntime: 0
+  drawTileDebug: 1
+  drawDebugRuntime: 1
   OnPlantUnitPlantedOnTile:
     m_PersistentCalls:
       m_Calls:
@@ -13380,7 +13380,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.02, y: 1.02}
+    oldSize: {x: 1, y: 1}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -13438,8 +13438,8 @@ SpriteRenderer:
   m_SortingLayerID: -1096490527
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 3a2faae39b6a8934da39a5c077523714, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Sprite: {fileID: 7482667652216324306, guid: db750325989564987a34393247d883b4, type: 3}
+  m_Color: {r: 0, g: 1, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -13465,8 +13465,8 @@ MonoBehaviour:
   <is_AI_Path>k__BackingField: 0
   <plantUnitOnTile>k__BackingField: {fileID: 0}
   <disableUprootOnTile>k__BackingField: 0
-  drawTileDebug: 0
-  drawDebugRuntime: 0
+  drawTileDebug: 1
+  drawDebugRuntime: 1
   OnPlantUnitPlantedOnTile:
     m_PersistentCalls:
       m_Calls:
@@ -14007,7 +14007,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.02, y: 1.02}
+    oldSize: {x: 1, y: 1}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -14064,9 +14064,9 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1096490527
   m_SortingLayer: 2
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 3a2faae39b6a8934da39a5c077523714, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_SortingOrder: 1
+  m_Sprite: {fileID: 7482667652216324306, guid: db750325989564987a34393247d883b4, type: 3}
+  m_Color: {r: 0, g: 1, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -14092,8 +14092,8 @@ MonoBehaviour:
   <is_AI_Path>k__BackingField: 0
   <plantUnitOnTile>k__BackingField: {fileID: 0}
   <disableUprootOnTile>k__BackingField: 0
-  drawTileDebug: 0
-  drawDebugRuntime: 0
+  drawTileDebug: 1
+  drawDebugRuntime: 1
   OnPlantUnitPlantedOnTile:
     m_PersistentCalls:
       m_Calls:
@@ -14294,7 +14294,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.02, y: 1.02}
+    oldSize: {x: 1, y: 1}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -14351,9 +14351,9 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1096490527
   m_SortingLayer: 2
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 3a2faae39b6a8934da39a5c077523714, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_SortingOrder: 3
+  m_Sprite: {fileID: 7482667652216324306, guid: db750325989564987a34393247d883b4, type: 3}
+  m_Color: {r: 0, g: 1, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -14379,8 +14379,8 @@ MonoBehaviour:
   <is_AI_Path>k__BackingField: 0
   <plantUnitOnTile>k__BackingField: {fileID: 0}
   <disableUprootOnTile>k__BackingField: 0
-  drawTileDebug: 0
-  drawDebugRuntime: 0
+  drawTileDebug: 1
+  drawDebugRuntime: 1
   OnPlantUnitPlantedOnTile:
     m_PersistentCalls:
       m_Calls:
@@ -15220,6 +15220,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8732644743540172123, guid: d1cdca22ec4708540aa68019e182a7d8, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8732644743540172125, guid: d1cdca22ec4708540aa68019e182a7d8, type: 3}
       propertyPath: m_Name
       value: Dialogue Manager Custom
@@ -15848,7 +15852,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 830625742}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.56, y: -2.03, z: 0}
+  m_LocalPosition: {x: -2.05, y: -2.45, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -16141,7 +16145,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1096490527
   m_SortingLayer: 2
-  m_SortingOrder: 0
+  m_SortingOrder: 3
   m_Sprite: {fileID: 7482667652216324306, guid: db750325989564987a34393247d883b4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -16767,7 +16771,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.02, y: 1.02}
+    oldSize: {x: 1, y: 1}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -16825,8 +16829,8 @@ SpriteRenderer:
   m_SortingLayerID: -1096490527
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 3a2faae39b6a8934da39a5c077523714, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Sprite: {fileID: 7482667652216324306, guid: db750325989564987a34393247d883b4, type: 3}
+  m_Color: {r: 0, g: 1, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -16852,8 +16856,8 @@ MonoBehaviour:
   <is_AI_Path>k__BackingField: 0
   <plantUnitOnTile>k__BackingField: {fileID: 0}
   <disableUprootOnTile>k__BackingField: 0
-  drawTileDebug: 0
-  drawDebugRuntime: 0
+  drawTileDebug: 1
+  drawDebugRuntime: 1
   OnPlantUnitPlantedOnTile:
     m_PersistentCalls:
       m_Calls:
@@ -17910,7 +17914,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1096490527
   m_SortingLayer: 2
-  m_SortingOrder: 0
+  m_SortingOrder: 3
   m_Sprite: {fileID: 7482667652216324306, guid: db750325989564987a34393247d883b4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -19708,7 +19712,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1096490527
   m_SortingLayer: 2
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 7482667652216324306, guid: db750325989564987a34393247d883b4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -20379,7 +20383,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1096490527
   m_SortingLayer: 2
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 7482667652216324306, guid: db750325989564987a34393247d883b4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -20910,7 +20914,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.02, y: 1.02}
+    oldSize: {x: 1, y: 1}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -20967,9 +20971,9 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1096490527
   m_SortingLayer: 2
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 3a2faae39b6a8934da39a5c077523714, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_SortingOrder: 1
+  m_Sprite: {fileID: 7482667652216324306, guid: db750325989564987a34393247d883b4, type: 3}
+  m_Color: {r: 0, g: 1, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -20995,8 +20999,8 @@ MonoBehaviour:
   <is_AI_Path>k__BackingField: 0
   <plantUnitOnTile>k__BackingField: {fileID: 0}
   <disableUprootOnTile>k__BackingField: 0
-  drawTileDebug: 0
-  drawDebugRuntime: 0
+  drawTileDebug: 1
+  drawDebugRuntime: 1
   OnPlantUnitPlantedOnTile:
     m_PersistentCalls:
       m_Calls:
@@ -21933,7 +21937,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1096490527
   m_SortingLayer: 2
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 7482667652216324306, guid: db750325989564987a34393247d883b4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -23085,7 +23089,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.02, y: 1.02}
+    oldSize: {x: 1, y: 1}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -23142,9 +23146,9 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1096490527
   m_SortingLayer: 2
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 3a2faae39b6a8934da39a5c077523714, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_SortingOrder: 2
+  m_Sprite: {fileID: 7482667652216324306, guid: db750325989564987a34393247d883b4, type: 3}
+  m_Color: {r: 0, g: 1, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -23170,8 +23174,8 @@ MonoBehaviour:
   <is_AI_Path>k__BackingField: 0
   <plantUnitOnTile>k__BackingField: {fileID: 0}
   <disableUprootOnTile>k__BackingField: 0
-  drawTileDebug: 0
-  drawDebugRuntime: 0
+  drawTileDebug: 1
+  drawDebugRuntime: 1
   OnPlantUnitPlantedOnTile:
     m_PersistentCalls:
       m_Calls:
@@ -23231,8 +23235,8 @@ MonoBehaviour:
   <is_AI_Path>k__BackingField: 0
   <plantUnitOnTile>k__BackingField: {fileID: 0}
   <disableUprootOnTile>k__BackingField: 0
-  drawTileDebug: 0
-  drawDebugRuntime: 0
+  drawTileDebug: 1
+  drawDebugRuntime: 1
   OnPlantUnitPlantedOnTile:
     m_PersistentCalls:
       m_Calls:
@@ -23395,7 +23399,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.02, y: 1.02}
+    oldSize: {x: 1, y: 1}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -23453,8 +23457,8 @@ SpriteRenderer:
   m_SortingLayerID: -1096490527
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 3a2faae39b6a8934da39a5c077523714, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Sprite: {fileID: 7482667652216324306, guid: db750325989564987a34393247d883b4, type: 3}
+  m_Color: {r: 0, g: 1, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -23877,7 +23881,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1096490527
   m_SortingLayer: 2
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: 7482667652216324306, guid: db750325989564987a34393247d883b4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -24265,7 +24269,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.02, y: 1.02}
+    oldSize: {x: 1, y: 1}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -24322,9 +24326,9 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1096490527
   m_SortingLayer: 2
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 3a2faae39b6a8934da39a5c077523714, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_SortingOrder: 2
+  m_Sprite: {fileID: 7482667652216324306, guid: db750325989564987a34393247d883b4, type: 3}
+  m_Color: {r: 0, g: 1, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -24350,8 +24354,8 @@ MonoBehaviour:
   <is_AI_Path>k__BackingField: 0
   <plantUnitOnTile>k__BackingField: {fileID: 0}
   <disableUprootOnTile>k__BackingField: 0
-  drawTileDebug: 0
-  drawDebugRuntime: 0
+  drawTileDebug: 1
+  drawDebugRuntime: 1
   OnPlantUnitPlantedOnTile:
     m_PersistentCalls:
       m_Calls:
@@ -27023,7 +27027,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.02, y: 1.02}
+    oldSize: {x: 1, y: 1}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -27080,9 +27084,9 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1096490527
   m_SortingLayer: 2
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 3a2faae39b6a8934da39a5c077523714, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_SortingOrder: 1
+  m_Sprite: {fileID: 7482667652216324306, guid: db750325989564987a34393247d883b4, type: 3}
+  m_Color: {r: 0, g: 1, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -27108,8 +27112,8 @@ MonoBehaviour:
   <is_AI_Path>k__BackingField: 0
   <plantUnitOnTile>k__BackingField: {fileID: 0}
   <disableUprootOnTile>k__BackingField: 0
-  drawTileDebug: 0
-  drawDebugRuntime: 0
+  drawTileDebug: 1
+  drawDebugRuntime: 1
   OnPlantUnitPlantedOnTile:
     m_PersistentCalls:
       m_Calls:
@@ -28295,7 +28299,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1096490527
   m_SortingLayer: 2
-  m_SortingOrder: 0
+  m_SortingOrder: 4
   m_Sprite: {fileID: 7482667652216324306, guid: db750325989564987a34393247d883b4, type: 3}
   m_Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   m_FlipX: 0
@@ -31206,7 +31210,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.02, y: 1.02}
+    oldSize: {x: 1, y: 1}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -31263,9 +31267,9 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1096490527
   m_SortingLayer: 2
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 3a2faae39b6a8934da39a5c077523714, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_SortingOrder: 4
+  m_Sprite: {fileID: 7482667652216324306, guid: db750325989564987a34393247d883b4, type: 3}
+  m_Color: {r: 0, g: 1, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -31291,8 +31295,8 @@ MonoBehaviour:
   <is_AI_Path>k__BackingField: 0
   <plantUnitOnTile>k__BackingField: {fileID: 0}
   <disableUprootOnTile>k__BackingField: 0
-  drawTileDebug: 0
-  drawDebugRuntime: 0
+  drawTileDebug: 1
+  drawDebugRuntime: 1
   OnPlantUnitPlantedOnTile:
     m_PersistentCalls:
       m_Calls:
@@ -31878,7 +31882,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1096490527
   m_SortingLayer: 2
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: 7482667652216324306, guid: db750325989564987a34393247d883b4, type: 3}
   m_Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   m_FlipX: 0
@@ -33681,7 +33685,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1096490527
   m_SortingLayer: 2
-  m_SortingOrder: 0
+  m_SortingOrder: 3
   m_Sprite: {fileID: 7482667652216324306, guid: db750325989564987a34393247d883b4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -34371,7 +34375,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.02, y: 1.02}
+    oldSize: {x: 1, y: 1}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -34428,9 +34432,9 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1096490527
   m_SortingLayer: 2
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 3a2faae39b6a8934da39a5c077523714, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_SortingOrder: 1
+  m_Sprite: {fileID: 7482667652216324306, guid: db750325989564987a34393247d883b4, type: 3}
+  m_Color: {r: 0, g: 1, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -34456,8 +34460,8 @@ MonoBehaviour:
   <is_AI_Path>k__BackingField: 0
   <plantUnitOnTile>k__BackingField: {fileID: 0}
   <disableUprootOnTile>k__BackingField: 0
-  drawTileDebug: 0
-  drawDebugRuntime: 0
+  drawTileDebug: 1
+  drawDebugRuntime: 1
   OnPlantUnitPlantedOnTile:
     m_PersistentCalls:
       m_Calls:
@@ -35296,7 +35300,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.02, y: 1.02}
+    oldSize: {x: 1, y: 1}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -35353,9 +35357,9 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1096490527
   m_SortingLayer: 2
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 3a2faae39b6a8934da39a5c077523714, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_SortingOrder: 3
+  m_Sprite: {fileID: 7482667652216324306, guid: db750325989564987a34393247d883b4, type: 3}
+  m_Color: {r: 0, g: 1, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -35381,8 +35385,8 @@ MonoBehaviour:
   <is_AI_Path>k__BackingField: 0
   <plantUnitOnTile>k__BackingField: {fileID: 0}
   <disableUprootOnTile>k__BackingField: 0
-  drawTileDebug: 0
-  drawDebugRuntime: 0
+  drawTileDebug: 1
+  drawDebugRuntime: 1
   OnPlantUnitPlantedOnTile:
     m_PersistentCalls:
       m_Calls:
@@ -35788,7 +35792,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.02, y: 1.02}
+    oldSize: {x: 1, y: 1}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -35845,9 +35849,9 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1096490527
   m_SortingLayer: 2
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 3a2faae39b6a8934da39a5c077523714, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_SortingOrder: 4
+  m_Sprite: {fileID: 7482667652216324306, guid: db750325989564987a34393247d883b4, type: 3}
+  m_Color: {r: 0, g: 1, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -35873,8 +35877,8 @@ MonoBehaviour:
   <is_AI_Path>k__BackingField: 0
   <plantUnitOnTile>k__BackingField: {fileID: 0}
   <disableUprootOnTile>k__BackingField: 0
-  drawTileDebug: 0
-  drawDebugRuntime: 0
+  drawTileDebug: 1
+  drawDebugRuntime: 1
   OnPlantUnitPlantedOnTile:
     m_PersistentCalls:
       m_Calls:
@@ -36981,7 +36985,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1096490527
   m_SortingLayer: 2
-  m_SortingOrder: 0
+  m_SortingOrder: 3
   m_Sprite: {fileID: 7482667652216324306, guid: db750325989564987a34393247d883b4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -37268,7 +37272,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1096490527
   m_SortingLayer: 2
-  m_SortingOrder: 0
+  m_SortingOrder: 3
   m_Sprite: {fileID: 7482667652216324306, guid: db750325989564987a34393247d883b4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -37893,7 +37897,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.02, y: 1.02}
+    oldSize: {x: 1, y: 1}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -37950,9 +37954,9 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1096490527
   m_SortingLayer: 2
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 3a2faae39b6a8934da39a5c077523714, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_SortingOrder: 4
+  m_Sprite: {fileID: 7482667652216324306, guid: db750325989564987a34393247d883b4, type: 3}
+  m_Color: {r: 0, g: 1, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -37978,8 +37982,8 @@ MonoBehaviour:
   <is_AI_Path>k__BackingField: 0
   <plantUnitOnTile>k__BackingField: {fileID: 0}
   <disableUprootOnTile>k__BackingField: 0
-  drawTileDebug: 0
-  drawDebugRuntime: 0
+  drawTileDebug: 1
+  drawDebugRuntime: 1
   OnPlantUnitPlantedOnTile:
     m_PersistentCalls:
       m_Calls:
@@ -39231,7 +39235,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.02, y: 1.02}
+    oldSize: {x: 1, y: 1}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -39289,8 +39293,8 @@ SpriteRenderer:
   m_SortingLayerID: -1096490527
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 3a2faae39b6a8934da39a5c077523714, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Sprite: {fileID: 7482667652216324306, guid: db750325989564987a34393247d883b4, type: 3}
+  m_Color: {r: 0, g: 1, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -39316,8 +39320,8 @@ MonoBehaviour:
   <is_AI_Path>k__BackingField: 0
   <plantUnitOnTile>k__BackingField: {fileID: 0}
   <disableUprootOnTile>k__BackingField: 0
-  drawTileDebug: 0
-  drawDebugRuntime: 0
+  drawTileDebug: 1
+  drawDebugRuntime: 1
   OnPlantUnitPlantedOnTile:
     m_PersistentCalls:
       m_Calls:
@@ -40157,7 +40161,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.02, y: 1.02}
+    oldSize: {x: 1, y: 1}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -40214,9 +40218,9 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1096490527
   m_SortingLayer: 2
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 3a2faae39b6a8934da39a5c077523714, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_SortingOrder: 1
+  m_Sprite: {fileID: 7482667652216324306, guid: db750325989564987a34393247d883b4, type: 3}
+  m_Color: {r: 0, g: 1, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -40242,8 +40246,8 @@ MonoBehaviour:
   <is_AI_Path>k__BackingField: 0
   <plantUnitOnTile>k__BackingField: {fileID: 0}
   <disableUprootOnTile>k__BackingField: 0
-  drawTileDebug: 0
-  drawDebugRuntime: 0
+  drawTileDebug: 1
+  drawDebugRuntime: 1
   OnPlantUnitPlantedOnTile:
     m_PersistentCalls:
       m_Calls:
@@ -41130,7 +41134,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1096490527
   m_SortingLayer: 2
-  m_SortingOrder: 0
+  m_SortingOrder: 4
   m_Sprite: {fileID: 7482667652216324306, guid: db750325989564987a34393247d883b4, type: 3}
   m_Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   m_FlipX: 0
@@ -41417,7 +41421,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1096490527
   m_SortingLayer: 2
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: 7482667652216324306, guid: db750325989564987a34393247d883b4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -42631,7 +42635,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1096490527
   m_SortingLayer: 2
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: 7482667652216324306, guid: db750325989564987a34393247d883b4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -45147,7 +45151,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1096490527
   m_SortingLayer: 2
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: 7482667652216324306, guid: db750325989564987a34393247d883b4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -45570,7 +45574,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.02, y: 1.02}
+    oldSize: {x: 1, y: 1}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -45627,9 +45631,9 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1096490527
   m_SortingLayer: 2
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 3a2faae39b6a8934da39a5c077523714, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_SortingOrder: 2
+  m_Sprite: {fileID: 7482667652216324306, guid: db750325989564987a34393247d883b4, type: 3}
+  m_Color: {r: 0, g: 1, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -45655,8 +45659,8 @@ MonoBehaviour:
   <is_AI_Path>k__BackingField: 0
   <plantUnitOnTile>k__BackingField: {fileID: 0}
   <disableUprootOnTile>k__BackingField: 0
-  drawTileDebug: 0
-  drawDebugRuntime: 0
+  drawTileDebug: 1
+  drawDebugRuntime: 1
   OnPlantUnitPlantedOnTile:
     m_PersistentCalls:
       m_Calls:
@@ -45901,63 +45905,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d22b20e0f2e7a9e45a00cc504a16420d, type: 3}
---- !u!1001 &2522700277819632177
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 1655306892258204304, guid: 7ab7f7b5757ee6a44998073a2c9cd286, type: 3}
-      propertyPath: m_RootOrder
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 1655306892258204304, guid: 7ab7f7b5757ee6a44998073a2c9cd286, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1655306892258204304, guid: 7ab7f7b5757ee6a44998073a2c9cd286, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1655306892258204304, guid: 7ab7f7b5757ee6a44998073a2c9cd286, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1655306892258204304, guid: 7ab7f7b5757ee6a44998073a2c9cd286, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1655306892258204304, guid: 7ab7f7b5757ee6a44998073a2c9cd286, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1655306892258204304, guid: 7ab7f7b5757ee6a44998073a2c9cd286, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1655306892258204304, guid: 7ab7f7b5757ee6a44998073a2c9cd286, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1655306892258204304, guid: 7ab7f7b5757ee6a44998073a2c9cd286, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1655306892258204304, guid: 7ab7f7b5757ee6a44998073a2c9cd286, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1655306892258204304, guid: 7ab7f7b5757ee6a44998073a2c9cd286, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3392323725309167724, guid: 7ab7f7b5757ee6a44998073a2c9cd286, type: 3}
-      propertyPath: m_Name
-      value: WaveSpawnerManager(1InstanceOnly)
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 7ab7f7b5757ee6a44998073a2c9cd286, type: 3}
 --- !u!1001 &3534525221033974258
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -46015,120 +45962,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0bc59feef0503954da13f4b379bfee83, type: 3}
---- !u!1001 &3708474820807496799
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4972164978209539047, guid: 38bc26e58d6581b4f926aa6fe208ddad, type: 3}
-      propertyPath: m_RootOrder
-      value: 11
-      objectReference: {fileID: 0}
-    - target: {fileID: 4972164978209539047, guid: 38bc26e58d6581b4f926aa6fe208ddad, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4972164978209539047, guid: 38bc26e58d6581b4f926aa6fe208ddad, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4972164978209539047, guid: 38bc26e58d6581b4f926aa6fe208ddad, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4972164978209539047, guid: 38bc26e58d6581b4f926aa6fe208ddad, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4972164978209539047, guid: 38bc26e58d6581b4f926aa6fe208ddad, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4972164978209539047, guid: 38bc26e58d6581b4f926aa6fe208ddad, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4972164978209539047, guid: 38bc26e58d6581b4f926aa6fe208ddad, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4972164978209539047, guid: 38bc26e58d6581b4f926aa6fe208ddad, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4972164978209539047, guid: 38bc26e58d6581b4f926aa6fe208ddad, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4972164978209539047, guid: 38bc26e58d6581b4f926aa6fe208ddad, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7761321396890096639, guid: 38bc26e58d6581b4f926aa6fe208ddad, type: 3}
-      propertyPath: m_Name
-      value: Rain
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 38bc26e58d6581b4f926aa6fe208ddad, type: 3}
---- !u!1001 &6779733656380449125
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 1170832716100704013, guid: d6647355261d2d84e9944ca4e6ee200f, type: 3}
-      propertyPath: m_RootOrder
-      value: 9
-      objectReference: {fileID: 0}
-    - target: {fileID: 1170832716100704013, guid: d6647355261d2d84e9944ca4e6ee200f, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1170832716100704013, guid: d6647355261d2d84e9944ca4e6ee200f, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1170832716100704013, guid: d6647355261d2d84e9944ca4e6ee200f, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1170832716100704013, guid: d6647355261d2d84e9944ca4e6ee200f, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1170832716100704013, guid: d6647355261d2d84e9944ca4e6ee200f, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1170832716100704013, guid: d6647355261d2d84e9944ca4e6ee200f, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1170832716100704013, guid: d6647355261d2d84e9944ca4e6ee200f, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1170832716100704013, guid: d6647355261d2d84e9944ca4e6ee200f, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1170832716100704013, guid: d6647355261d2d84e9944ca4e6ee200f, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1170832716100704013, guid: d6647355261d2d84e9944ca4e6ee200f, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3947919269961772322, guid: d6647355261d2d84e9944ca4e6ee200f, type: 3}
-      propertyPath: m_Name
-      value: GameResource(1InstanceOnly)
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: d6647355261d2d84e9944ca4e6ee200f, type: 3}
 --- !u!1001 &7007502426730147583
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -46242,19 +46075,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8532963186734203990, guid: 2279aa78d203d3f4892ed2c75eefc202, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0.9543434
+      value: 0.9255209
       objectReference: {fileID: 0}
     - target: {fileID: 8532963186734203990, guid: 2279aa78d203d3f4892ed2c75eefc202, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0.20283313
+      value: 0.15
       objectReference: {fileID: 0}
     - target: {fileID: 8532963186734203990, guid: 2279aa78d203d3f4892ed2c75eefc202, type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0.7449434
+      value: 0.716
       objectReference: {fileID: 0}
     - target: {fileID: 8532963186734203990, guid: 2279aa78d203d3f4892ed2c75eefc202, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0.11674789
+      value: 0.064
       objectReference: {fileID: 0}
     - target: {fileID: 8532963186734203990, guid: 2279aa78d203d3f4892ed2c75eefc202, type: 3}
       propertyPath: m_SizeDelta.x

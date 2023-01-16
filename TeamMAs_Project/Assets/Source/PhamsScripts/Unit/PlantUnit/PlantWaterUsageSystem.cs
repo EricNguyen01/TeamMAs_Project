@@ -75,7 +75,12 @@ namespace TeamMAsTD
         public void RefillWaterBars(int barsRefilled, float coinsCost)
         {
             //if water is full -> don't refill!
-            if (waterBarsRemaining >= totalWaterBars) return;
+            if (waterBarsRemaining >= totalWaterBars)
+            {
+                //invoke water full event here...any water full indicator objects/effects will pick it up
+
+                return;
+            }
 
             //else
 
@@ -83,7 +88,17 @@ namespace TeamMAsTD
             if (barsRefilled < 0) return;
 
             //use coins to fill water
-            GameResource.gameResourceInstance.coinResourceSO.RemoveResourceAmount(coinsCost);
+            //check for GameResource and Coin Resource references
+            if(GameResource.gameResourceInstance == null || GameResource.gameResourceInstance.coinResourceSO == null)
+            {
+                Debug.LogError("GameResource with Coin Resource is missing. Can't deduct coins from watering plant!");
+            }
+            //if references are not missing -> check for sufficient refilling funds
+            else if(coinsCost > GameResource.gameResourceInstance.coinResourceSO.resourceAmount)
+            {
+                Debug.LogError("Insufficient Funds to Refill Water Bars!");
+            }
+            else GameResource.gameResourceInstance.coinResourceSO.RemoveResourceAmount(coinsCost);
 
             //filling water
             waterBarsRemaining += barsRefilled;

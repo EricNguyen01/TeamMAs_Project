@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7a01806bbf0e9040be35c77dddcd8a5, type: 3}
   m_Name: Coin
   m_EditorClassIdentifier: 
-  <resourceName>k__BackingField: Coin
-  <resourceAmount>k__BackingField: 1000
+  <resourceName>k__BackingField: Coins
+  <resourceAmount>k__BackingField: 996
   <resourceAmountCap>k__BackingField: 2000

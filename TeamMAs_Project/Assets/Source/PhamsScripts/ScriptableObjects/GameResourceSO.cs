@@ -15,6 +15,8 @@ namespace TeamMAsTD
         [field: SerializeField] [field: Min(0)] public float resourceAmount { get; private set; }
         [field: SerializeField] [field: Min(0)] public float resourceAmountCap { get; private set; } = 2000.0f;
 
+        private GameResourceUI gameResourceUI;
+
 #if UNITY_EDITOR
         private void OnValidate()
         {
@@ -27,10 +29,18 @@ namespace TeamMAsTD
             CheckAmountMinMaxReached();
         }
 
+        public void SetGameResourceUIBeingUsedToDisplayResourceData(GameResourceUI gameResourceUI)
+        {
+            this.gameResourceUI = gameResourceUI;
+        }
+
         public void AddResourceAmount(float addedAmount)
         {
             resourceAmount += addedAmount;
+
             CheckAmountMinMaxReached();
+
+            if (gameResourceUI != null) gameResourceUI.DisplayResourceAmountText();
         }
 
         public void RemoveResourceAmount(float removedAmount)
@@ -38,6 +48,8 @@ namespace TeamMAsTD
             resourceAmount -= removedAmount;
 
             CheckAmountMinMaxReached();
+
+            if (gameResourceUI != null) gameResourceUI.DisplayResourceAmountText();
         }
 
         private void CheckAmountMinMaxReached()

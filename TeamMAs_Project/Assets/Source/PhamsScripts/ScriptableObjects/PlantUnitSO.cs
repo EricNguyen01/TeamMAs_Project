@@ -33,11 +33,13 @@ namespace TeamMAsTD
         [field: SerializeField] public bool isPlacableOnPath { get; private set; } = false;
         [field: SerializeField] public string[] plantTargetsLayerNames;
 
-        [field: Header("Plant Unit Costs")]
+        [field: Header("Plant Unit Water Usage and Costs")]
         [field: SerializeField] [field: Min(0)] public int plantingCoinCost { get; private set; }
         [field: SerializeField] [field: Min(0)] public int uprootRefundAmount { get; private set; }
         [field: SerializeField] [field: Min(0)] public int uprootCost { get; private set; }
         [field: SerializeField] [field: Min(0)] public int waterUse { get; private set; }
+        [field: SerializeField] [field: Min(0)] public int waterBarsRefilledPerWatering { get; private set; } = 1;
+        [field: SerializeField][field: Min(0)] public int wateringCoinsCost { get; private set; } = 1;
 
         //INTERNAL.........................................................
         //Saving system related
