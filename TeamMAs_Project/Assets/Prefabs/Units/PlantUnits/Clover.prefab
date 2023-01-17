@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4208598482002305464}
   - component: {fileID: 8728898329256812735}
   - component: {fileID: 7397233973801094999}
+  - component: {fileID: 423954416830755822}
   m_Layer: 0
   m_Name: Clover
   m_TagString: Untagged
@@ -74,8 +75,8 @@ SpriteRenderer:
   m_SortingLayerID: -1980168467
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: db750325989564987a34393247d883b4, type: 3}
-  m_Color: {r: 0.93216854, g: 1, b: 0.20188677, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 0d2f63df68fff6b428946251a1469384, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -98,3 +99,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <plantUnitScriptableObject>k__BackingField: {fileID: 11400000, guid: ca3a624e41d0f4943b68363d2452017e, type: 2}
+--- !u!114 &423954416830755822
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3455637724528575129}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bacd51a5ee31f6f4abcc2bc97d9298e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

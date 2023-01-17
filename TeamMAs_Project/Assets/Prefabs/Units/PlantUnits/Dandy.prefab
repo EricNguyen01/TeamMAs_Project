@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6665266570364330543}
   - component: {fileID: 7143217192744122063}
   - component: {fileID: 2080974679233304984}
+  - component: {fileID: 8309538057782045391}
   m_Layer: 0
   m_Name: Dandy
   m_TagString: Untagged
@@ -74,8 +75,8 @@ SpriteRenderer:
   m_SortingLayerID: -1980168467
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: db750325989564987a34393247d883b4, type: 3}
-  m_Color: {r: 0.45745817, g: 0.9433962, b: 0.8722833, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 3c0011027be0d1946baabf58741f39e4, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -98,3 +99,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <plantUnitScriptableObject>k__BackingField: {fileID: 11400000, guid: ebe49aa0d994d7d488c580c1a9bccd35, type: 2}
+--- !u!114 &8309538057782045391
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7198574875345707434}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bacd51a5ee31f6f4abcc2bc97d9298e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
