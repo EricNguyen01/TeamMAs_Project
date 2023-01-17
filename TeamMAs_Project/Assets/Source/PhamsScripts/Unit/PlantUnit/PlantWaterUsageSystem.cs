@@ -14,31 +14,28 @@ namespace TeamMAsTD
 
         private Tile tilePlantedOn;
 
+        private PlantUnitWorldUI plantUnitWorldUI;
+
         private int totalWaterBars = 0;
 
         private int waterBarsRemaining = 0;
 
-        private int roundsCanSurviveWithoutWater = 1;//default, will be changed on initialize (check initialization func).
+        private int wavesCanSurviveWithoutWater = 1;//default, will be changed on initialize (check initialization func).
 
-        private int currentRoundsSurvivedWithoutWater = -1;//doesnt count on the wave that water gets to 0 (start counting from next no water wave)
-
-        private void Awake()
-        {
-            tilePlantedOn = GetComponentInParent<Tile>();
-        }
+        private int currentWavesSurvivedWithoutWater = -1;//doesnt count on the wave that water gets to 0 (start counting from next no water wave)
 
         private void OnEnable()
         {
             WaveSpawner.OnWaveFinished += ConsumeWaterOnWaveFinished;
 
-            Rain.OnRainEnded += RefillWaterOnRainEnded;
+            Rain.OnRainEnded += RefillWaterOnRainEnded_And_CheckWavesSurvivedWithoutWater;
         }
 
         private void OnDisable()
         {
             WaveSpawner.OnWaveFinished -= ConsumeWaterOnWaveFinished;
 
-            Rain.OnRainEnded -= RefillWaterOnRainEnded;
+            Rain.OnRainEnded -= RefillWaterOnRainEnded_And_CheckWavesSurvivedWithoutWater;
         }
 
         private void Start()
@@ -52,6 +49,7 @@ namespace TeamMAsTD
             }
         }
 
+        //This function is called in the Awake method of the PlantUnit that this script attached to
         public void InitializePlantWaterUsageSystem(PlantUnit plantUnit)
         {
             if(plantUnit == null || plantUnit.plantUnitScriptableObject == null)
@@ -64,11 +62,15 @@ namespace TeamMAsTD
 
             plantUnitSO = plantUnit.plantUnitScriptableObject;
 
+            tilePlantedOn = plantUnitLinked.tilePlacedOn;
+
+            plantUnitWorldUI = plantUnitLinked.plantUnitWorldUI;
+
             totalWaterBars = plantUnit.plantUnitScriptableObject.waterBars;
 
             waterBarsRemaining = totalWaterBars;
 
-            roundsCanSurviveWithoutWater = plantUnit.plantUnitScriptableObject.roundsSurviveWithoutWater;
+            wavesCanSurviveWithoutWater = plantUnit.plantUnitScriptableObject.wavesSurviveWithoutWater;
         }
 
         //Use this func for refilling water using both rain (0 coin cost) and/or the water bucket UI button (coin cost)
@@ -104,12 +106,26 @@ namespace TeamMAsTD
             waterBarsRemaining += barsRefilled;
 
             //reset current rounds survived without water if water bars remaining > 0 after being refilled.
-            if (waterBarsRemaining > 0) currentRoundsSurvivedWithoutWater = -1;
+            if (waterBarsRemaining > 0) 
+            { 
+                currentWavesSurvivedWithoutWater = -1;
+
+                //reset plant degradation value as well
+                plantUnitWorldUI.SetHealthBarSliderValue(0, wavesCanSurviveWithoutWater, true);
+            }
+            
+            if(waterBarsRemaining <= 0)
+            {
+                waterBarsRemaining = 0;
+            }
 
             if (waterBarsRemaining >= totalWaterBars)
             {
                 waterBarsRemaining = totalWaterBars;
             }
+
+            //set water slider UI values
+            plantUnitWorldUI.SetWaterSliderValue(waterBarsRemaining, totalWaterBars);
         }
 
         //Water is consumed first on wave finished
@@ -121,23 +137,25 @@ namespace TeamMAsTD
         }
         
         //Then, after consuming from wave finished, rain occurs in which water is refilled on rain ended
-        private void RefillWaterOnRainEnded(Rain rain)
+        private void RefillWaterOnRainEnded_And_CheckWavesSurvivedWithoutWater(Rain rain)
         {
             RefillWaterBars(rain.plantWaterBarsRefilledAfterRain, 0);
 
-            //since OnRainEnded indicates the VERY END of a wave/round and...
-            //if even after refilled and water still less than 0 -> set water bars to 0
-            //then increment current rounds survived without water or Uproot if this value is >= rounds can survive without water
+            //since OnRainEnded indicates the VERY END of a wave/round (happens even after OnWaveFinished)
+            //and if even after rain water is still below 0, do:
+            //start incrementing waves survived without water or Uproot if this value is >= rounds can survive without water
             if (waterBarsRemaining <= 0)
             {
-                waterBarsRemaining = 0;
-
                 //increment rounds survived without water if water is below or = 0
                 //this value is reset in RefillingWaterBarsUsingCoins function above.
-                currentRoundsSurvivedWithoutWater++;
+                currentWavesSurvivedWithoutWater++;
+
+                //set plant HP (degradation value) on water depleted
+                if (currentWavesSurvivedWithoutWater <= 0) plantUnitWorldUI.SetHealthBarSliderValue(0, wavesCanSurviveWithoutWater, true);
+                else plantUnitWorldUI.SetHealthBarSliderValue(currentWavesSurvivedWithoutWater, wavesCanSurviveWithoutWater, true);
 
                 //uproot if rounds survived without water = rounds can survive without water
-                if (currentRoundsSurvivedWithoutWater >= roundsCanSurviveWithoutWater)
+                if (currentWavesSurvivedWithoutWater >= wavesCanSurviveWithoutWater)
                 {
                     UprootOnWaterDepleted();
                 }
@@ -147,6 +165,10 @@ namespace TeamMAsTD
         private void ConsumingWaterBars()
         {
             waterBarsRemaining -= plantUnitSO.waterUse;
+
+            //set water slider UI values
+            if(waterBarsRemaining > 0) plantUnitWorldUI.SetWaterSliderValue(waterBarsRemaining, totalWaterBars);
+            else plantUnitWorldUI.SetWaterSliderValue(0, totalWaterBars);
         }
 
         private void UprootOnWaterDepleted()

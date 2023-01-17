@@ -231,7 +231,7 @@ namespace TeamMAsTD
             if (alreadyHasOngoingWave) EnablePlantAimShoot(true);
         }
 
-        //This function gets Called in PlantUnit.cs
+        //This function is called in the Awake method of the PlantUnit that this script attached to
         public void InitializePlantAimShootSystem(PlantUnit plantUnit, PlantProjectileSO plantProjectileSO)
         {
             if (plantUnit == null || plantProjectileSO == null || plantProjectileSO.plantProjectilePrefab == null)

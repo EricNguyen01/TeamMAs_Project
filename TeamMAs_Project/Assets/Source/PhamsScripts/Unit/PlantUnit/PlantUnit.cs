@@ -17,6 +17,8 @@ namespace TeamMAsTD
 
         public PlantWaterUsageSystem plantWaterUsageSystem { get; private set; }
 
+        public PlantUnitWorldUI plantUnitWorldUI { get; private set; }
+
         public Tile tilePlacedOn { get; private set; }
 
         private SpriteRenderer unitSpriteRenderer;
@@ -55,6 +57,12 @@ namespace TeamMAsTD
                 plantMaxAttackRange = (tilePlacedOn.gridParent.tileSize * plantUnitScriptableObject.attackRangeInTiles) + (tilePlacedOn.gridParent.tileSize / 2.0f);
             }
 
+            plantUnitWorldUI = GetComponent<PlantUnitWorldUI>();
+
+            if(plantUnitWorldUI == null) plantUnitWorldUI = GetComponentInChildren<PlantUnitWorldUI>();
+
+            //ALL of the plant unit's sub systems must be set below the get/set of plant unit's references such as tilePlacedOn or WorldUI...
+            //to avoid missing references on initializing the systems.
             //no need to check for null data for the below components as this script has a require attribute for them.
             plantAimShootSystem = GetComponent<PlantAimShootSystem>();
 
@@ -65,6 +73,8 @@ namespace TeamMAsTD
             plantWaterUsageSystem.InitializePlantWaterUsageSystem(this);
 
             GetAndSetUnitSprite();
+
+            SetPlantUnitWorldUIElementsValues();
         }
 
         private void GetAndSetUnitSprite()
@@ -93,17 +103,21 @@ namespace TeamMAsTD
             unitSpriteRenderer.sortingOrder = (tilePlacedOn.gridParent.gridHeight - 1) - tilePlacedOn.tileNumInColumn;
         }
 
+        private void SetPlantUnitWorldUIElementsValues()
+        {
+            if (plantUnitWorldUI != null)
+            {
+                plantUnitWorldUI.EnableUnitHealthBarSlider(true);
+
+                plantUnitWorldUI.EnablePlantUnitWaterSlider(true);
+
+                plantUnitWorldUI.SetHealthBarSliderValue(plantUnitScriptableObject.wavesSurviveWithoutWater, plantUnitScriptableObject.wavesSurviveWithoutWater);
+
+                plantUnitWorldUI.SetWaterSliderValue(plantUnitScriptableObject.waterBars, plantUnitScriptableObject.waterBars);
+            }
+        }
+
         //PUBLICS........................................................................
-
-        public void OnWatered()
-        {
-
-        }
-
-        public void OnReceivedFertilizerBuff()
-        {
-
-        }
 
         public void ReturnProjectileToPool(PlantProjectile projectile)
         {

@@ -8,20 +8,20 @@ namespace TeamMAsTD
 {
     public class UnitWorldUI : MonoBehaviour
     {
-        [SerializeField] private Canvas unitWorldCanvas;
-        [SerializeField] private TextMeshProUGUI nameTextMeshProComponent;
-        [SerializeField] private Slider healthBarSlider;
+        [SerializeField] protected Canvas unitWorldCanvas;
+        [SerializeField] protected TextMeshProUGUI nameTextMeshProComponent;
+        [SerializeField] protected Slider healthBarSlider;
 
-        private IUnit unitLinkedToUI;
-        private UnitSO unitSO;
+        protected IUnit unitLinkedToUI;
+        protected UnitSO unitSO;
 
-        private void Awake()
+        protected virtual void Awake()
         {
             SetUpUnitWorldUI();
             TextUIDisplaysUnitName();
         }
 
-        private void SetUpUnitWorldUI()
+        protected virtual void SetUpUnitWorldUI()
         {
             if (unitWorldCanvas == null)
             {
@@ -61,15 +61,16 @@ namespace TeamMAsTD
             unitWorldCanvas.worldCamera = Camera.main;
         }
 
-        private void TextUIDisplaysUnitName()
+        protected virtual void TextUIDisplaysUnitName()
         {
             if (unitSO == null) return;
+
             if (nameTextMeshProComponent == null) return;
 
             nameTextMeshProComponent.text = unitSO.displayName;
         }
 
-        public void EnableUnitNameTextUI(bool enabled)
+        public virtual void EnableUnitNameTextUI(bool enabled)
         {
             if (nameTextMeshProComponent == null) return;
 
@@ -82,20 +83,21 @@ namespace TeamMAsTD
             if (nameTextMeshProComponent.enabled) nameTextMeshProComponent.enabled = false;
         }
 
-        public void EnableUnitHealthBarSlider(bool enabled)
+        public virtual void EnableUnitHealthBarSlider(bool enabled)
         {
             if (healthBarSlider == null) return;
 
             if (enabled)
             {
                 if (!healthBarSlider.gameObject.activeInHierarchy) healthBarSlider.gameObject.SetActive(true);
+
                 return;
             }
 
             healthBarSlider.gameObject.SetActive(false);
         }
 
-        public void SetHealthBarSliderValue(float currentVal, float maxVal)
+        public virtual void SetHealthBarSliderValue(float currentVal, float maxVal)
         {
             if (healthBarSlider == null) return;
 
@@ -104,7 +106,7 @@ namespace TeamMAsTD
             if (healthBarSlider.value <= 0.0f) healthBarSlider.value = 0.0f;
         }
 
-        public void SetHealthBarSliderValue(float currentVal, float maxVal, bool reversedSlider)
+        public virtual void SetHealthBarSliderValue(float currentVal, float maxVal, bool reversedSlider)
         {
             float newCurrentVal = currentVal;
 
