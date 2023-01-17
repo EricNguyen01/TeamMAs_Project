@@ -167,7 +167,11 @@ namespace TeamMAsTD
             OnPlantUnitPlantedOnTile?.Invoke();
 
             //coin cost on plant unit planted successful
-            GameResource.gameResourceInstance.coinResourceSO.RemoveResourceAmount(plantUnitOnTile.plantUnitScriptableObject.plantingCoinCost);
+            if(GameResource.gameResourceInstance == null || GameResource.gameResourceInstance.coinResourceSO == null)
+            {
+                Debug.LogError("GameResource Instance with Coin Resource is missing in scene! Planting coins cost won't function!");
+            }
+            else GameResource.gameResourceInstance.coinResourceSO.RemoveResourceAmount(plantUnitOnTile.plantUnitScriptableObject.plantingCoinCost);
 
             return true;
         }
