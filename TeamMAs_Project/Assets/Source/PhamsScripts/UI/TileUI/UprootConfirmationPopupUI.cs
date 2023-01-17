@@ -96,7 +96,7 @@ namespace TeamMAsTD
         {
             if(tileWithUnitToUproot != null)
             {
-                tileWithUnitToUproot.UprootUnit();
+                tileWithUnitToUproot.UprootUnit(0.0f);
             }
             else
             {

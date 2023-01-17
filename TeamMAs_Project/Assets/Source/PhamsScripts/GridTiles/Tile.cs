@@ -176,13 +176,13 @@ namespace TeamMAsTD
             return true;
         }
 
-        public void UprootUnit()
+        public void UprootUnit(float uprootDelaySec)
         {
             if (plantUnitOnTile == null) return;
 
             if (disableUprootOnTile) return;
 
-            Destroy(plantUnitOnTile.gameObject);
+            Destroy(plantUnitOnTile.gameObject, uprootDelaySec);
 
             plantUnitOnTile = null;
 

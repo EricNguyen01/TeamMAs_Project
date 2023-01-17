@@ -176,7 +176,7 @@ namespace TeamMAsTD
             //if the parent tile that this plant is planted on is not null:
             if (tilePlantedOn != null && tilePlantedOn.plantUnitOnTile == plantUnitLinked) 
             { 
-                tilePlantedOn.UprootUnit();
+                tilePlantedOn.UprootUnit(0.6f);
                 return;
             }
 
@@ -186,7 +186,7 @@ namespace TeamMAsTD
             {
                 if(tile.plantUnitOnTile != null && tile.plantUnitOnTile == plantUnitLinked)
                 {
-                    tile.UprootUnit();
+                    tile.UprootUnit(0.6f);
                     return;
                 }
             }
