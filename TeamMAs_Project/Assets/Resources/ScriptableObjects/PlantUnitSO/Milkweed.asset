@@ -19,7 +19,7 @@ MonoBehaviour:
   <unitThumbnail>k__BackingField: {fileID: 0}
   <plantProjectileSO>k__BackingField: {fileID: 11400000, guid: 700432d60d0410a4482fe445d643989b, type: 2}
   <waterBars>k__BackingField: 4
-  <roundsSurviveWithoutWater>k__BackingField: 1
+  <wavesSurviveWithoutWater>k__BackingField: 0
   <damage>k__BackingField: 60
   <attackSpeed>k__BackingField: 1.5
   <attackRangeInTiles>k__BackingField: 10
@@ -33,3 +33,5 @@ MonoBehaviour:
   <uprootRefundAmount>k__BackingField: 0
   <uprootCost>k__BackingField: 0
   <waterUse>k__BackingField: 3
+  <waterBarsRefilledPerWatering>k__BackingField: 1
+  <wateringCoinsCost>k__BackingField: 1
