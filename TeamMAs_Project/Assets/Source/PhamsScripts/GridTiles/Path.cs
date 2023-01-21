@@ -16,6 +16,9 @@ namespace TeamMAsTD
 
         [field: SerializeField] public Sprite pathTileSprite { get; private set; }
 
+        [Header("Path Debug Section")]
+        [SerializeField] private bool showDebugLog = true;
+
         //This list is used for when the user updating the path tiles list in the editor
         [SerializeField] [HideInInspector] private List<Tile> oldOrderedPathTiles = new List<Tile>();
 
@@ -25,12 +28,16 @@ namespace TeamMAsTD
         {
             if (orderedPathTiles == null)
             {
-                Debug.LogError("Path's tiles list is null! Make sure the list is intialized.");
+                Debug.LogError("Path's tiles list is null! Make sure the list is intialized. Path update failed!");
+
                 return false;
             }
             if (orderedPathTiles.Count == 0)
             {
-                Debug.LogWarning("Path's tiles list is empty! Ideally, there should be at least a start and an end tile for a path to be generated!");
+                Debug.LogWarning("Path's tiles list is empty! " +
+                                 "Ideally, there should be at least a start and an end tile for a path to be generated." +
+                                 "Path update failed!");
+
                 return false;
             }
 
@@ -58,12 +65,10 @@ namespace TeamMAsTD
                 //either it is empty (1st update) or if not empty then we alr cleared the list on last update
                 oldOrderedPathTiles.Add(orderedPathTiles[i]);
 
-                //if the current tile element is alr set as an AI path -> ignore and continue.
-                if (orderedPathTiles[i].is_AI_Path) continue;
+                //if the current tile element is not set as an AI path -> set it as AI path.
+                if (!orderedPathTiles[i].is_AI_Path) orderedPathTiles[i].is_AI_Path = true;
 
-                //if the current tile element is NOT an AI path -> set it as an AI path tile.
-                orderedPathTiles[i].is_AI_Path = true;
-
+                //set new path tile sprite if there's one provided
                 SpriteRenderer tileSpriteRenderer = orderedPathTiles[i].GetComponent<SpriteRenderer>();
 
                 SetPathTileSprite(orderedPathTiles[i], tileSpriteRenderer);
@@ -78,6 +83,8 @@ namespace TeamMAsTD
 
             tileSpriteRenderer.sprite = pathTileSprite;
 
+            if(showDebugLog) Debug.Log("Path Tile: " + tile.name + " is set with new tile sprite!");
+
             tile.EnableDrawTileDebug(false);
         }
 
@@ -85,9 +92,13 @@ namespace TeamMAsTD
         {
             if (!CanUpdatePath()) return;
 
+            if (showDebugLog) Debug.Log("Path update started!");
+
             //if this is the first time the path is updated:
             if (oldOrderedPathTiles == null || oldOrderedPathTiles.Count == 0)
             {
+                if (showDebugLog) Debug.Log("Path is being updated for the first time!");
+
                 //the function below
                 //goes through the orderedPathTiles list and sets each tile in it to AI path status.
                 //each newly updated tile in path will also be stored in oldOrderedPath list for comparison in later updates.
@@ -98,7 +109,7 @@ namespace TeamMAsTD
 
             //else if this is NOT the first time the path is updated:
 
-            //FIRST, compare bt/ the old and current path to see if any tile is no longer AI path:
+            //first, compare bt/ the old and current path to see if any tile is no longer AI path:
             //Begins by go through the list of old ordered path tiles (snapshot of the last path update):
             for(int i = 0; i < oldOrderedPathTiles.Count; i++)
             {
@@ -121,7 +132,9 @@ namespace TeamMAsTD
         private void ClearPath()
         {
             if (orderedPathTiles == null || orderedPathTiles.Count == 0) return;
-            
+
+            if (showDebugLog) Debug.Log("Clearing path started");
+
             //set all the current tiles in the current path tiles list to NON AI path.
             for (int i = 0; i < orderedPathTiles.Count; i++)
             {
@@ -129,9 +142,12 @@ namespace TeamMAsTD
 
                 orderedPathTiles[i].is_AI_Path = false;
             }
+
             //then:
+
             //clear the current path list
             orderedPathTiles.Clear();
+
             //also clear the old list
             oldOrderedPathTiles.Clear();
         }

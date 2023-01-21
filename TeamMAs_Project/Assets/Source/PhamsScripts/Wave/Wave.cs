@@ -61,7 +61,10 @@ namespace TeamMAsTD
 
             float endInitTime = Time.realtimeSinceStartup - startInitTime;
 
-            Debug.Log("Wave: " + waveSO.name + " finished initializing. Took: " + endInitTime * 1000.0f + "ms.");
+            if (waveSpawner != null && waveSpawner.showDebugLog)
+            {
+                Debug.Log("Wave: " + waveSO.name + " finished initializing. Took: " + endInitTime * 1000.0f + "ms.");
+            }
         }
 
         private void LoadTotalVisitorAndVisitorTypesListForThisWave(WaveSO waveSO)
@@ -101,7 +104,11 @@ namespace TeamMAsTD
             //do not load spawn chance list if there's only 1 type of visitor in wave (always 100% chance to spawn this type)
             if (waveSO.visitorTypesToSpawnThisWave.Length == 1)
             {
-                Debug.Log("Wave " + waveSO.name + " only has 1 type of visitor!");
+                if (waveSpawnerOfThisWave != null && waveSpawnerOfThisWave.showDebugLog)
+                {
+                    Debug.Log("Wave " + waveSO.name + " only has 1 type of visitor!");
+                }
+
                 return;
             }
 
@@ -287,8 +294,11 @@ namespace TeamMAsTD
                 //if there's no more visitors of that corresponding type to spawn.
                 RemoveVisitorTypeIfDepleted(visitorSO);
 
-                Debug.Log("Visitor: " + visitorSO.displayName + " successfully spawned in wave " + waveSO.name + 
+                if(waveSpawnerOfThisWave != null && waveSpawnerOfThisWave.showDebugLog)
+                {
+                    Debug.Log("Visitor: " + visitorSO.displayName + " successfully spawned in wave " + waveSO.name +
                 ". Remaining Visitors: " + totalVisitorsToSpawnList.Count);
+                }
             }
         }
 
@@ -330,11 +340,17 @@ namespace TeamMAsTD
                 WaveStoppedWithNoVisitorLeft();
                 yield break;
             }
-            //else
-            //spawn visitors based on their chance with wait time in between until all visitor types and their numbers are spawned up
-            Debug.Log("Wave " + waveSO.name + " Successfully Started! Total visitors: " + totalVisitorsToSpawnList.Count);
 
-            while(totalVisitorsToSpawnList.Count > 0)
+            //else
+
+            //show spawn start succesful log
+            if (waveSpawnerOfThisWave != null && waveSpawnerOfThisWave.showDebugLog)
+            {
+                Debug.Log("Wave " + waveSO.name + " Successfully Started! Total visitors: " + totalVisitorsToSpawnList.Count);
+            }
+            //then
+            //spawn visitors based on their chance with wait time in between until all visitor types and their numbers are spawned up
+            while (totalVisitorsToSpawnList.Count > 0)
             {
                 SpawnAVisitor(GetVisitorTypeToSpawnBasedOnChance());
 
@@ -347,7 +363,10 @@ namespace TeamMAsTD
             //process wave stopped
             WaveStoppedWithNoVisitorLeft();
 
-            Debug.Log("Wave " + waveSO.name + " Successfully Stopped! Total visitors: " + totalVisitorsToSpawnList.Count);
+            if(waveSpawnerOfThisWave != null && waveSpawnerOfThisWave.showDebugLog)
+            {
+                Debug.Log("Wave " + waveSO.name + " Successfully Stopped! Total visitors: " + totalVisitorsToSpawnList.Count);
+            }
         }
 
         private bool WaveStoppedWithNoVisitorLeft()

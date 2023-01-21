@@ -29,6 +29,7 @@ MonoBehaviour:
   <isPlacableOnPath>k__BackingField: 1
   plantTargetsLayerNames:
   - Visitors
+  plantTargetsSpecifically: 2
   <plantingCoinCost>k__BackingField: 0
   <uprootRefundAmount>k__BackingField: 0
   <uprootCost>k__BackingField: 0

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <displayName>k__BackingField: Bee
   <unitPrefab>k__BackingField: {fileID: 2664338853412353054, guid: 64086f4c5ed51664f9239dd28dd5ca4c, type: 3}
-  <visitorType>k__BackingField: 1
+  <visitorType>k__BackingField: 2
   <happinessAsHealth>k__BackingField: 70
   <moveSpeed>k__BackingField: 1.5
   <emotionalAttackDamage>k__BackingField: 1

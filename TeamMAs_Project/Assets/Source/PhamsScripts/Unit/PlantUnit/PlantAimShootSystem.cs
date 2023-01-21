@@ -94,7 +94,7 @@ namespace TeamMAsTD
 
                     if (!projectileGO.activeInHierarchy) projectileGO.SetActive(true);
 
-                    Debug.Log("Projectile: " + projectileGO.name + " successfully launched from Plant: " + name + ".");
+                    //Debug.Log("Projectile: " + projectileGO.name + " successfully launched from Plant: " + name + ".");
                 }
 
                 currentShootWaitTime = plantUnitLinked.plantUnitScriptableObject.attackSpeed;
@@ -142,6 +142,12 @@ namespace TeamMAsTD
 
                 if (visitorUnit.currentVisitorHealth <= 0.0f) continue;
 
+                //dont register the current visitor as in range if it is not the specific type that this plant can target
+                if(plantUnitLinked != null && plantUnitLinked.plantUnitScriptableObject.plantTargetsSpecifically != VisitorUnitSO.VisitorType.None)
+                {
+                    if (plantUnitLinked.plantUnitScriptableObject.plantTargetsSpecifically != visitorUnit.visitorUnitSO.visitorType) continue;
+                }
+
                 visitorsInRange.Add(visitorUnit);
             }
 
@@ -171,12 +177,14 @@ namespace TeamMAsTD
                     if (visitorTargetsList[0] == null)
                     {
                         visitorTargetsList[0] = visitorsInRange[i];
+
                         continue;
                     }
 
                     //use normal dist sort since its a 1 target only.
                     //using linq here would be too overkill and expensive
                     float distToPlantOld = Vector2.Distance(transform.position, visitorTargetsList[0].transform.position);
+
                     float distToPlantNew = Vector2.Distance(transform.position, visitorsInRange[i].transform.position);
 
                     if (distToPlantNew < distToPlantOld)
@@ -265,7 +273,7 @@ namespace TeamMAsTD
 
             bool returnSuccessful = plantProjectilePool.ReturnProjectileObjectToPool(projectile.gameObject);
 
-            if(returnSuccessful) Debug.Log("Plant projectile successfully returned to pool!");
+            //if(returnSuccessful) Debug.Log("Plant projectile successfully returned to pool!");
         }
 
         public void EnablePlantAimShoot(bool enabled)

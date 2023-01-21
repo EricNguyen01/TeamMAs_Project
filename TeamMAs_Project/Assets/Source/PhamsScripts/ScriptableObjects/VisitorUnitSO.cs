@@ -8,7 +8,7 @@ namespace TeamMAsTD
     [CreateAssetMenu(menuName = "Visitor Data Asset/New Visitor")]
     public class VisitorUnitSO : UnitSO
     {
-        public enum VisitorType { Human, Pollinator }
+        public enum VisitorType { None, Human, Pollinator }
 
         [field: Header("Visitor Unit Stats")]
         [field: SerializeField] public VisitorType visitorType { get; private set; } = VisitorType.Human;

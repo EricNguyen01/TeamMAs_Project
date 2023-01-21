@@ -99,6 +99,8 @@ namespace TeamMAsTD
             else if(coinsCost > GameResource.gameResourceInstance.coinResourceSO.resourceAmount)
             {
                 Debug.LogError("Insufficient Funds to Refill Water Bars!");
+
+                return;//exit function (stop refill) on insufficient funds
             }
             else GameResource.gameResourceInstance.coinResourceSO.RemoveResourceAmount(coinsCost);
 
@@ -157,7 +159,7 @@ namespace TeamMAsTD
                 //uproot if rounds survived without water = rounds can survive without water
                 if (currentWavesSurvivedWithoutWater >= wavesCanSurviveWithoutWater)
                 {
-                    UprootOnWaterDepleted();
+                    UprootOnWaterDepleted(0.6f);
                 }
             }
         }
@@ -171,12 +173,12 @@ namespace TeamMAsTD
             else plantUnitWorldUI.SetWaterSliderValue(0, totalWaterBars);
         }
 
-        private void UprootOnWaterDepleted()
+        private void UprootOnWaterDepleted(float uprootDelaySec)
         {
             //if the parent tile that this plant is planted on is not null:
             if (tilePlantedOn != null && tilePlantedOn.plantUnitOnTile == plantUnitLinked) 
             { 
-                tilePlantedOn.UprootUnit(0.6f);
+                tilePlantedOn.UprootUnit(uprootDelaySec);
                 return;
             }
 

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <displayName>k__BackingField: AverageJoe
   <unitPrefab>k__BackingField: {fileID: 2664338853412353054, guid: 27b9c1f91fcdf1d4e8386e27eed034f7, type: 3}
-  <visitorType>k__BackingField: 0
+  <visitorType>k__BackingField: 1
   <happinessAsHealth>k__BackingField: 100
   <moveSpeed>k__BackingField: 1
   <emotionalAttackDamage>k__BackingField: 1

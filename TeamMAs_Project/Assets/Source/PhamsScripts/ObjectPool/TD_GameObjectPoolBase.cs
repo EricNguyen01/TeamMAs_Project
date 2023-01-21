@@ -7,9 +7,9 @@ namespace TeamMAsTD
     /*
      * This class ONLY handles the create of a GameObject pool based on the provided GameObject or GameObject prefab from another MonoBehaviour script.
      * This class also ONLY handles the adding, 
-     *                             getting an inactive gameobject from pool, 
-     *                             enabling/disabling an inactive gameobject from pool, 
-     *                             and removing gameobject from pool.
+     *          getting an inactive gameobject from pool, 
+     *          enabling/disabling an inactive gameobject from pool, 
+     *          and removing gameobject from pool.
      *                             
      * This class DOES NOT deal with any attached script or other components to the gameobject being pooled.
      * NOR DOES it deal with the object being pooled functionalities, initialization, behaviours, etc...

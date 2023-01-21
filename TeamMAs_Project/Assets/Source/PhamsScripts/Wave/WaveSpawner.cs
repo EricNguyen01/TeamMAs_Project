@@ -13,9 +13,14 @@ namespace TeamMAsTD
      */
     public class WaveSpawner : MonoBehaviour
     {
+        [Header("Wave Spawner And Waves Config")]
         [SerializeField] private List<WaveSO> waveSOList = new List<WaveSO>();
 
         [SerializeField] private WaveSpawnerManager waveSpawnerManagerPrefab;//in case WaveSpawner is in use and WaveSpawnerManager is missing
+
+        [field: Header("Debug Section")]
+        [field: SerializeField] public bool showDebugLog { get; private set; } = false;
+        [field: SerializeField] public bool showWaveTimer { get; private set; } = true;
 
         //INTERNALS............................................................................
 
@@ -33,6 +38,10 @@ namespace TeamMAsTD
         public int currentWave { get; private set; } = 0;
 
         public bool waveAlreadyStarted { get; private set; } = false;
+
+        private float waveTimerStartTime = 0.0f;
+
+        private float waveTimerEndTime = 0.0f;
 
         //Wave events declarations
         //StartWaveUI.cs receives these events to enable/disable start wave Button UI.
@@ -61,7 +70,7 @@ namespace TeamMAsTD
 
             float endInitTime = Time.realtimeSinceStartup - startInitTime;
 
-            Debug.Log("WaveSpawner Finished Initializing VisitorPools and Child Wave Objects. Took: " + endInitTime * 1000.0f + "ms.");
+            if(showDebugLog) Debug.Log("WaveSpawner Finished Initializing VisitorPools and Child Wave Objects. Took: " + endInitTime * 1000.0f + "ms.");
         }
 
         private void OnEnable()
@@ -183,6 +192,9 @@ namespace TeamMAsTD
 
             waveAlreadyStarted = true;
 
+            //log wave start time
+            waveTimerStartTime = Time.realtimeSinceStartup;
+
             //invoke wave started event
             OnWaveStarted?.Invoke(this, waveNum);
         }
@@ -212,6 +224,20 @@ namespace TeamMAsTD
             return false;
         }
 
+        private void LogWaveRunTimeInSeconds(int waveNum)
+        {
+            if (!showWaveTimer) return;
+
+            //calculate wave total runtime
+            float totalWaveRuntime = waveTimerEndTime - waveTimerStartTime;
+
+            //log time
+            Debug.Log("Wave: " + waveNum + " Took: " + totalWaveRuntime.ToString() + "s to finish!");
+
+            //reset timer
+            waveTimerStartTime = 0.0f; waveTimerEndTime = 0.0f;
+        }
+
         //PUBLICS..........................................................................
 
         //This function is to be called by WaveStart UI Button event to start a wave from current wave number.
@@ -227,6 +253,10 @@ namespace TeamMAsTD
             wavesList[waveNum].ProcessWaveStopped();
 
             waveAlreadyStarted = false;
+
+            waveTimerEndTime = Time.realtimeSinceStartup;
+
+            LogWaveRunTimeInSeconds(waveNum);
 
             if (!broadcastWaveFinishedEvent) return;
 

@@ -12584,8 +12584,8 @@ MonoBehaviour:
   <is_AI_Path>k__BackingField: 1
   <plantUnitOnTile>k__BackingField: {fileID: 0}
   <disableUprootOnTile>k__BackingField: 0
-  drawTileDebug: 1
-  drawDebugRuntime: 1
+  drawTileDebug: 0
+  drawDebugRuntime: 0
   OnPlantUnitPlantedOnTile:
     m_PersistentCalls:
       m_Calls:
@@ -12834,7 +12834,7 @@ SpriteRenderer:
   m_SortingLayerID: -1096490527
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: db750325989564987a34393247d883b4, type: 3}
+  m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -15995,7 +15995,7 @@ SpriteRenderer:
   m_SortingLayerID: -1096490527
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: db750325989564987a34393247d883b4, type: 3}
+  m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -16022,8 +16022,8 @@ MonoBehaviour:
   <is_AI_Path>k__BackingField: 1
   <plantUnitOnTile>k__BackingField: {fileID: 0}
   <disableUprootOnTile>k__BackingField: 0
-  drawTileDebug: 1
-  drawDebugRuntime: 1
+  drawTileDebug: 0
+  drawDebugRuntime: 0
   OnPlantUnitPlantedOnTile:
     m_PersistentCalls:
       m_Calls:
@@ -20622,7 +20622,7 @@ SpriteRenderer:
   m_SortingLayerID: -1096490527
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: db750325989564987a34393247d883b4, type: 3}
+  m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -20649,8 +20649,8 @@ MonoBehaviour:
   <is_AI_Path>k__BackingField: 1
   <plantUnitOnTile>k__BackingField: {fileID: 0}
   <disableUprootOnTile>k__BackingField: 0
-  drawTileDebug: 1
-  drawDebugRuntime: 1
+  drawTileDebug: 0
+  drawDebugRuntime: 0
   OnPlantUnitPlantedOnTile:
     m_PersistentCalls:
       m_Calls:
@@ -22062,7 +22062,7 @@ SpriteRenderer:
   m_SortingLayerID: -1096490527
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: db750325989564987a34393247d883b4, type: 3}
+  m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -22089,8 +22089,8 @@ MonoBehaviour:
   <is_AI_Path>k__BackingField: 1
   <plantUnitOnTile>k__BackingField: {fileID: 0}
   <disableUprootOnTile>k__BackingField: 0
-  drawTileDebug: 1
-  drawDebugRuntime: 1
+  drawTileDebug: 0
+  drawDebugRuntime: 0
   OnPlantUnitPlantedOnTile:
     m_PersistentCalls:
       m_Calls:
@@ -25010,7 +25010,7 @@ SpriteRenderer:
   m_SortingLayerID: -1096490527
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: db750325989564987a34393247d883b4, type: 3}
+  m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -25037,8 +25037,8 @@ MonoBehaviour:
   <is_AI_Path>k__BackingField: 1
   <plantUnitOnTile>k__BackingField: {fileID: 0}
   <disableUprootOnTile>k__BackingField: 0
-  drawTileDebug: 1
-  drawDebugRuntime: 1
+  drawTileDebug: 0
+  drawDebugRuntime: 0
   OnPlantUnitPlantedOnTile:
     m_PersistentCalls:
       m_Calls:
@@ -25797,7 +25797,7 @@ SpriteRenderer:
   m_SortingLayerID: -1096490527
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: db750325989564987a34393247d883b4, type: 3}
+  m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -25824,8 +25824,8 @@ MonoBehaviour:
   <is_AI_Path>k__BackingField: 1
   <plantUnitOnTile>k__BackingField: {fileID: 0}
   <disableUprootOnTile>k__BackingField: 0
-  drawTileDebug: 1
-  drawDebugRuntime: 1
+  drawTileDebug: 0
+  drawDebugRuntime: 0
   OnPlantUnitPlantedOnTile:
     m_PersistentCalls:
       m_Calls:
@@ -27276,7 +27276,7 @@ SpriteRenderer:
   m_SortingLayerID: -1096490527
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: db750325989564987a34393247d883b4, type: 3}
+  m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -27303,8 +27303,8 @@ MonoBehaviour:
   <is_AI_Path>k__BackingField: 1
   <plantUnitOnTile>k__BackingField: {fileID: 0}
   <disableUprootOnTile>k__BackingField: 0
-  drawTileDebug: 1
-  drawDebugRuntime: 1
+  drawTileDebug: 0
+  drawDebugRuntime: 0
   OnPlantUnitPlantedOnTile:
     m_PersistentCalls:
       m_Calls:
@@ -31895,7 +31895,7 @@ SpriteRenderer:
   m_SortingLayerID: -1096490527
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: db750325989564987a34393247d883b4, type: 3}
+  m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -31922,8 +31922,8 @@ MonoBehaviour:
   <is_AI_Path>k__BackingField: 1
   <plantUnitOnTile>k__BackingField: {fileID: 0}
   <disableUprootOnTile>k__BackingField: 0
-  drawTileDebug: 1
-  drawDebugRuntime: 1
+  drawTileDebug: 0
+  drawDebugRuntime: 0
   OnPlantUnitPlantedOnTile:
     m_PersistentCalls:
       m_Calls:
@@ -36512,7 +36512,7 @@ SpriteRenderer:
   m_SortingLayerID: -1096490527
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: db750325989564987a34393247d883b4, type: 3}
+  m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -36539,8 +36539,8 @@ MonoBehaviour:
   <is_AI_Path>k__BackingField: 1
   <plantUnitOnTile>k__BackingField: {fileID: 0}
   <disableUprootOnTile>k__BackingField: 0
-  drawTileDebug: 1
-  drawDebugRuntime: 1
+  drawTileDebug: 0
+  drawDebugRuntime: 0
   OnPlantUnitPlantedOnTile:
     m_PersistentCalls:
       m_Calls:
@@ -36973,7 +36973,7 @@ SpriteRenderer:
   m_SortingLayerID: -1096490527
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: db750325989564987a34393247d883b4, type: 3}
+  m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -37000,8 +37000,8 @@ MonoBehaviour:
   <is_AI_Path>k__BackingField: 1
   <plantUnitOnTile>k__BackingField: {fileID: 0}
   <disableUprootOnTile>k__BackingField: 0
-  drawTileDebug: 1
-  drawDebugRuntime: 1
+  drawTileDebug: 0
+  drawDebugRuntime: 0
   OnPlantUnitPlantedOnTile:
     m_PersistentCalls:
       m_Calls:
@@ -38278,7 +38278,7 @@ SpriteRenderer:
   m_SortingLayerID: -1096490527
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: db750325989564987a34393247d883b4, type: 3}
+  m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -38305,8 +38305,8 @@ MonoBehaviour:
   <is_AI_Path>k__BackingField: 1
   <plantUnitOnTile>k__BackingField: {fileID: 0}
   <disableUprootOnTile>k__BackingField: 0
-  drawTileDebug: 1
-  drawDebugRuntime: 1
+  drawTileDebug: 0
+  drawDebugRuntime: 0
   OnPlantUnitPlantedOnTile:
     m_PersistentCalls:
       m_Calls:
@@ -41481,7 +41481,7 @@ SpriteRenderer:
   m_SortingLayerID: -1096490527
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: db750325989564987a34393247d883b4, type: 3}
+  m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -41508,8 +41508,8 @@ MonoBehaviour:
   <is_AI_Path>k__BackingField: 1
   <plantUnitOnTile>k__BackingField: {fileID: 0}
   <disableUprootOnTile>k__BackingField: 0
-  drawTileDebug: 1
-  drawDebugRuntime: 1
+  drawTileDebug: 0
+  drawDebugRuntime: 0
   OnPlantUnitPlantedOnTile:
     m_PersistentCalls:
       m_Calls:
@@ -45001,7 +45001,7 @@ SpriteRenderer:
   m_SortingLayerID: -1096490527
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: db750325989564987a34393247d883b4, type: 3}
+  m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -45028,8 +45028,8 @@ MonoBehaviour:
   <is_AI_Path>k__BackingField: 1
   <plantUnitOnTile>k__BackingField: {fileID: 0}
   <disableUprootOnTile>k__BackingField: 0
-  drawTileDebug: 1
-  drawDebugRuntime: 1
+  drawTileDebug: 0
+  drawDebugRuntime: 0
   OnPlantUnitPlantedOnTile:
     m_PersistentCalls:
       m_Calls:
@@ -51569,7 +51569,7 @@ SpriteRenderer:
   m_SortingLayerID: -1096490527
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: db750325989564987a34393247d883b4, type: 3}
+  m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -51596,8 +51596,8 @@ MonoBehaviour:
   <is_AI_Path>k__BackingField: 1
   <plantUnitOnTile>k__BackingField: {fileID: 0}
   <disableUprootOnTile>k__BackingField: 0
-  drawTileDebug: 1
-  drawDebugRuntime: 1
+  drawTileDebug: 0
+  drawDebugRuntime: 0
   OnPlantUnitPlantedOnTile:
     m_PersistentCalls:
       m_Calls:
@@ -53636,7 +53636,7 @@ SpriteRenderer:
   m_SortingLayerID: -1096490527
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: db750325989564987a34393247d883b4, type: 3}
+  m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -53663,8 +53663,8 @@ MonoBehaviour:
   <is_AI_Path>k__BackingField: 1
   <plantUnitOnTile>k__BackingField: {fileID: 0}
   <disableUprootOnTile>k__BackingField: 0
-  drawTileDebug: 1
-  drawDebugRuntime: 1
+  drawTileDebug: 0
+  drawDebugRuntime: 0
   OnPlantUnitPlantedOnTile:
     m_PersistentCalls:
       m_Calls:
@@ -57496,7 +57496,8 @@ MonoBehaviour:
   - {fileID: 1161297722}
   - {fileID: 2105857201}
   - {fileID: 504853798}
-  <pathTileSprite>k__BackingField: {fileID: 0}
+  <pathTileSprite>k__BackingField: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
+  showDebugLog: 0
   oldOrderedPathTiles:
   - {fileID: 975712826}
   - {fileID: 1823725612}
@@ -58899,7 +58900,7 @@ SpriteRenderer:
   m_SortingLayerID: -1096490527
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: db750325989564987a34393247d883b4, type: 3}
+  m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -58926,8 +58927,8 @@ MonoBehaviour:
   <is_AI_Path>k__BackingField: 1
   <plantUnitOnTile>k__BackingField: {fileID: 0}
   <disableUprootOnTile>k__BackingField: 0
-  drawTileDebug: 1
-  drawDebugRuntime: 1
+  drawTileDebug: 0
+  drawDebugRuntime: 0
   OnPlantUnitPlantedOnTile:
     m_PersistentCalls:
       m_Calls:
@@ -60331,9 +60332,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5322612110409281863, guid: 58e8e62d98316384986ae230a8a998f4, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.57748413
+      objectReference: {fileID: 0}
+    - target: {fileID: 5322612110409281863, guid: 58e8e62d98316384986ae230a8a998f4, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5322612110570391745, guid: 58e8e62d98316384986ae230a8a998f4, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.841095
+      objectReference: {fileID: 0}
     - target: {fileID: 5322612110599623272, guid: 58e8e62d98316384986ae230a8a998f4, type: 3}
       propertyPath: m_fontColor32.rgba
       value: 4284725218
+      objectReference: {fileID: 0}
+    - target: {fileID: 5322612110599623273, guid: 58e8e62d98316384986ae230a8a998f4, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.000015258789
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 58e8e62d98316384986ae230a8a998f4, type: 3}

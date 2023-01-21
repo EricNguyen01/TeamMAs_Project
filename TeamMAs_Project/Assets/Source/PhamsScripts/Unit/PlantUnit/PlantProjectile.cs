@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -23,6 +24,8 @@ namespace TeamMAsTD
 
         private float travelSpeed = 1.0f;
 
+        private bool alreadyCollided = false;
+
         private bool isHoming = false;
 
         private void Awake()
@@ -33,12 +36,6 @@ namespace TeamMAsTD
             }
 
             CheckProjectileColliderAndRigidbody();
-        }
-
-        private void OnDisable()
-        {
-            projectileRigidbody2D.velocity = Vector2.zero;
-            projectileRigidbody2D.angularVelocity = 0.0f;
         }
 
         private void Update()
@@ -57,6 +54,10 @@ namespace TeamMAsTD
 
         private void OnCollisionEnter2D(Collision2D collision)
         {
+            if (alreadyCollided) return;
+
+            alreadyCollided = true;
+
             IDamageable damageable = collision.gameObject.GetComponent<IDamageable>();
 
             if (damageable == null) return;
@@ -75,7 +76,7 @@ namespace TeamMAsTD
             if(Vector2.Distance(projectileStartPos, (Vector2)transform.position) >= maxTravelDistance)
             {
                 DespawnProjectile();
-                Debug.Log("Projectile has despawned from being out of travel dist!");
+                //Debug.Log("Projectile has despawned from being out of travel dist!");
             }
         }
 
@@ -85,10 +86,19 @@ namespace TeamMAsTD
             if(plantUnitOfProjectile == null)
             {
                 Destroy(gameObject);
+
                 return;
             }
 
-            //else 
+            //else
+
+            //reset data before return to pool
+            alreadyCollided = false;
+
+            projectileRigidbody2D.velocity = Vector2.zero;
+
+            projectileRigidbody2D.angularVelocity = 0.0f;
+
             //return this projectile to plant's projectile pool
             plantUnitOfProjectile.ReturnProjectileToPool(this);
         }
@@ -99,7 +109,7 @@ namespace TeamMAsTD
 
             if(projectileCollider2D == null)
             {
-                projectileCollider2D = gameObject.AddComponent<CapsuleCollider2D>();
+                projectileCollider2D = gameObject.AddComponent<CircleCollider2D>();
             }
 
             projectileRigidbody2D = GetComponent<Rigidbody2D>();
@@ -110,6 +120,7 @@ namespace TeamMAsTD
             }
 
             projectileRigidbody2D.gravityScale = 0.0f;
+
             projectileRigidbody2D.freezeRotation = true;
         }
 
@@ -126,7 +137,9 @@ namespace TeamMAsTD
             }
 
             plantProjectileSO = plantUnitSpawnedThisProjectile.plantUnitScriptableObject.plantProjectileSO;
+
             plantUnitOfProjectile = plantUnitSpawnedThisProjectile;
+
             plantUnitSO = plantUnitSpawnedThisProjectile.plantUnitScriptableObject;
 
             projectileStartPos = (Vector2)plantUnitOfProjectile.transform.position;

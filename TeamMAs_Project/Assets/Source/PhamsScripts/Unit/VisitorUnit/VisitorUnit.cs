@@ -345,10 +345,21 @@ namespace TeamMAsTD
             {
                 PlantProjectile projectile = (PlantProjectile)damageCauser;
 
+                //if this visitor is not a type that the hit projectile's plant is set to target -> dont do damage to visitor.
+                if (projectile.plantUnitSO != null && projectile.plantUnitSO.plantTargetsSpecifically != VisitorUnitSO.VisitorType.None)
+                {
+                    if (projectile.plantUnitSO.plantTargetsSpecifically != visitorUnitSO.visitorType)
+                    {
+                        return null;//return nothing cause technically we didnt hit this visitor if this check is true
+                    }
+                }
+
+                //else
+
                 //set damage to HP
                 currentVisitorHealth -= damage * DamageMultiplier(projectile);
 
-                Debug.Log("Visitor: " + name + " took: " + damage + " damage from projectile: " + projectile.name);
+                //Debug.Log("Visitor: " + name + " took: " + damage + " damage from projectile: " + projectile.name);
 
                 //set health bar slider UI component value if not null
                 if (visitorWorldUIComponent != null)
