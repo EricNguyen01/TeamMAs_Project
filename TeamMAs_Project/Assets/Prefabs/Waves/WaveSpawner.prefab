@@ -46,3 +46,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waveSOList: []
   waveSpawnerManagerPrefab: {fileID: 1967716630559944052, guid: 7ab7f7b5757ee6a44998073a2c9cd286, type: 3}
+  <showDebugLog>k__BackingField: 0
+  <showWavesEndHealthProcessDebugLog>k__BackingField: 0
+  <showWaveTimerLog>k__BackingField: 1

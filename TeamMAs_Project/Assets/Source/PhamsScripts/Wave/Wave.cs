@@ -337,7 +337,8 @@ namespace TeamMAsTD
             //if was supposed to spawn but no visitor to spawn -> stop wave and break from spawn coroutine
             if (totalVisitorsToSpawnList == null || totalVisitorsToSpawnList.Count == 0)
             {
-                WaveStoppedWithNoVisitorLeft();
+                WaveStoppedWithNoVisitorsLeft();
+
                 yield break;
             }
 
@@ -361,7 +362,7 @@ namespace TeamMAsTD
             yield return new WaitUntil(() => activeVisitorsInScene.Count == 0);
 
             //process wave stopped
-            WaveStoppedWithNoVisitorLeft();
+            WaveStoppedWithNoVisitorsLeft();
 
             if(waveSpawnerOfThisWave != null && waveSpawnerOfThisWave.showDebugLog)
             {
@@ -369,7 +370,7 @@ namespace TeamMAsTD
             }
         }
 
-        private bool WaveStoppedWithNoVisitorLeft()
+        private bool WaveStoppedWithNoVisitorsLeft()
         {
             if (totalVisitorsToSpawnList == null || totalVisitorsToSpawnList.Count == 0)
             {
@@ -394,13 +395,14 @@ namespace TeamMAsTD
             //cant call visitor spawn coroutine multiple times if wave's been already started and running
             if (waveHasAlreadyStarted) return;
 
-            //check if all visitors in wave has been spawned -> if yes, stop wave
-            bool waveHasStopped = WaveStoppedWithNoVisitorLeft();
-
-            if (waveHasStopped)
+            //check if all visitors in wave has been spawned
+            if (totalVisitorsToSpawnList == null || totalVisitorsToSpawnList.Count == 0)
             {
-                Debug.LogWarning("Wave: " + waveSO.name + " is started but there's no visitors left to spawn so it has been stopped!");
-                return;
+                //if all visitors have spawned in wave
+                //re-initialize wave and visitors data for a wave restart
+                LoadTotalVisitorAndVisitorTypesListForThisWave(waveSO);
+
+                LoadVisitorSpawnChanceListForThisWave(waveSO);
             }
 
             //if there are still visitors to spawn -> start wave coroutine

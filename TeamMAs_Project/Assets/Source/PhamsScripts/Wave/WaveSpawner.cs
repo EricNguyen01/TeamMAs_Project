@@ -1,3 +1,4 @@
+using Language.Lua;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -20,7 +21,8 @@ namespace TeamMAsTD
 
         [field: Header("Debug Section")]
         [field: SerializeField] public bool showDebugLog { get; private set; } = false;
-        [field: SerializeField] public bool showWaveTimer { get; private set; } = true;
+        [field: SerializeField] public bool showWavesEndHealthProcessDebugLog { get; private set; } = false;
+        [field: SerializeField] public bool showWaveTimerLog { get; private set; } = true;
 
         //INTERNALS............................................................................
 
@@ -148,7 +150,10 @@ namespace TeamMAsTD
         {
             if (waveNum < 0 || waveNum >= wavesList.Count)
             {
-                Debug.LogWarning("Trying to start a wave that is out of the WaveSpawner: " + name + "'s waveList range! WaveSpawner stopped!");
+                Debug.LogWarning("Trying to start a wave that is out of the WaveSpawner: " + name + "'s waveList range! " +
+                    "\n Remember that WaveSpawner's WaveList range starts at the 0 index not 1!" +
+                    "\n WaveSpawner stopped!");
+
                 return;
             }
 
@@ -178,14 +183,15 @@ namespace TeamMAsTD
                 return;
             }
 
-            //if any wave is running while we abt to start a new wave -> stop the ongoing waves
+            //if any wave is running while we abt to start a new wave -> stop the ongoing waves - CURRENTLY DEPRACATED!
+            /*
             for (int i = 0; i < wavesList.Count; i++)
             {
                 if (wavesList[i] == null) continue;
 
                 //if (wavesList[i].gameObject.activeInHierarchy) wavesList[i].gameObject.SetActive(false);
                 if (wavesList[i].waveHasAlreadyStarted) ProcessWaveFinished(i, false, false);
-            }
+            }*/
 
             //Call the ProcessWaveStarted function in Wave.cs to start a new selected wave based on the provided waveNum parameter
             wavesList[waveNum].ProcessWaveStarted();
@@ -226,7 +232,7 @@ namespace TeamMAsTD
 
         private void LogWaveRunTimeInSeconds(int waveNum)
         {
-            if (!showWaveTimer) return;
+            if (!showWaveTimerLog) return;
 
             //calculate wave total runtime
             float totalWaveRuntime = waveTimerEndTime - waveTimerStartTime;
@@ -238,12 +244,74 @@ namespace TeamMAsTD
             waveTimerStartTime = 0.0f; waveTimerEndTime = 0.0f;
         }
 
+        private void HealEmotionalHealthAfterBossWave(WaveSO waveSO)//parameter is waveSO of the wave that just finished.
+        {
+            if (waveSO.visitorTypesToSpawnThisWave == null || waveSO.visitorTypesToSpawnThisWave.Length == 0) return;
+
+            bool isBossWave = false;
+
+            //if the waveSO of wave that just finished has a boss in its visitor types list -> wave is boss wave.
+            for(int i = 0; i < waveSO.visitorTypesToSpawnThisWave.Length; i++)
+            {
+                if (waveSO.visitorTypesToSpawnThisWave[i].visitorType.isBoss)
+                {
+                    isBossWave = true;//boss wave is determined
+
+                    break;//exit loop immediately
+                }
+            }
+
+            if (!isBossWave) return;//if after checking through wave visitor types list and it was not a boss wave -> exit function
+
+            //else if it was a boss wave
+
+            //check for existing emotional health game resource
+            if (GameResource.gameResourceInstance != null && GameResource.gameResourceInstance.emotionalHealthSO != null)
+            {
+                if(showWavesEndHealthProcessDebugLog) Debug.Log("Heal Health After Boss Wave!");
+
+                //heal up amount according to EmotionalHealthSO's health healed after boss wave data
+                GameResource.gameResourceInstance.emotionalHealthSO.AddResourceAmount(GameResource.gameResourceInstance.emotionalHealthSO.healthHealedAfterBossWave);
+            }
+        }
+
+        private void IncreaseTotalBaseEmotionalHealth()
+        {
+            //check for existing emotional health game resource
+            if (GameResource.gameResourceInstance != null && GameResource.gameResourceInstance.emotionalHealthSO != null)
+            {
+                //if health amount is current = health amount cap (is at full hp)
+                if(GameResource.gameResourceInstance.emotionalHealthSO.resourceAmount == GameResource.gameResourceInstance.emotionalHealthSO.resourceAmountCap)
+                {
+                    if (showWavesEndHealthProcessDebugLog) Debug.Log("Increase Current Health and Health Cap!");
+
+                    //increase both health cap and current health on wave end.
+                    GameResource.gameResourceInstance.emotionalHealthSO.IncreaseResourceAmountCap(GameResource.gameResourceInstance.emotionalHealthSO.totalBaseHealthIncreaseOnWaveEnd, true);
+                    //exit
+                    return;
+                }
+                //else -> only icnrease health cap
+                if (showWavesEndHealthProcessDebugLog) Debug.Log("Increase Health Cap!");
+
+                GameResource.gameResourceInstance.emotionalHealthSO.IncreaseResourceAmountCap(GameResource.gameResourceInstance.emotionalHealthSO.totalBaseHealthIncreaseOnWaveEnd, false);
+            }
+        }
+
         //PUBLICS..........................................................................
 
         //This function is to be called by WaveStart UI Button event to start a wave from current wave number.
         public void StartCurrentWave()
         {
             StartWave(currentWave);
+        }
+
+        public void DEBUG_StartWaveAt(int waveNum)
+        {
+            //MUST use JumpToWave here instead of StartWave to avoid bugs!!!
+            JumpToWave(waveNum, true);
+
+            //decrease current wave by 1 so that when the currently running wave is finished, current wave ends up the same
+            currentWave--;
         }
 
         public void ProcessWaveFinished(int waveNum, bool incrementWaveOnFinished, bool broadcastWaveFinishedEvent)
@@ -264,8 +332,19 @@ namespace TeamMAsTD
             if (currentWave < wavesList.Count - 1)
             {
                 //Debug.Log("OnWaveFinished Invoked!");
+                bool hasOtherOngoingWaves = FindOtherOnGoingWaves();
 
-                OnWaveFinished?.Invoke(this, waveNum, FindOtherOnGoingWaves());
+                OnWaveFinished?.Invoke(this, waveNum, hasOtherOngoingWaves);
+
+                //process emotional health change on all waves end
+                if (!hasOtherOngoingWaves)
+                {
+                    if (showDebugLog) Debug.Log("Process Health On All Waves End!");
+
+                    IncreaseTotalBaseEmotionalHealth();
+
+                    HealEmotionalHealthAfterBossWave(waveSOList[waveNum]);
+                }
 
                 if (incrementWaveOnFinished) currentWave++;
             }
@@ -277,11 +356,14 @@ namespace TeamMAsTD
             }
         }
 
-        public void JumpToWave(int waveNum, bool startWaveAfterJump)
+        private void JumpToWave(int waveNum, bool startWaveAfterJump)
         {
             if (waveNum < 0 || waveNum >= wavesList.Count)
             {
-                Debug.LogWarning("Trying to start a wave that is out of the WaveSpawner: " + name + "'s waveList range! WaveSpawner stopped!");
+                Debug.LogWarning("Trying to start a wave that is out of the WaveSpawner: " + name + "'s waveList range! " +
+                    "\n Remember that WaveSpawner's WaveList range starts at the 0 index not 1!" +
+                    "\n WaveSpawner stopped!");
+
                 return;
             }
 

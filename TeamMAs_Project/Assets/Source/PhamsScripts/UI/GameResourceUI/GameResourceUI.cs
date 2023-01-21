@@ -15,6 +15,11 @@ namespace TeamMAsTD
 
         [SerializeField] private TextMeshProUGUI resourceAmountText;
 
+        [SerializeField] private bool displayResourceAmountCap = false;
+
+        [Header("Debug Section")]
+        [SerializeField] private bool showDebugAndErrorLog = false;
+
         private void Awake()
         {
             if(gameResourceSO == null)
@@ -26,11 +31,19 @@ namespace TeamMAsTD
                 return;
             }
 
-            gameResourceSO.SetGameResourceUIBeingUsedToDisplayResourceData(this);
-
             DisplayResourceNameText();
 
-            DisplayResourceAmountText();
+            DisplayResourceAmountText(gameResourceSO);
+        }
+
+        private void OnEnable()
+        {
+            GameResourceSO.OnResourceAmountUpdated += DisplayResourceAmountText;
+        }
+
+        private void OnDisable()
+        {
+            GameResourceSO.OnResourceAmountUpdated -= DisplayResourceAmountText;
         }
 
         public void DisplayResourceNameText()
@@ -39,7 +52,7 @@ namespace TeamMAsTD
 
             if (resourceNameText == null)
             {
-                Debug.LogError("GameResourceUI: " + name + " is missing resource name TextMeshProUGUI component reference!");
+                if(showDebugAndErrorLog) Debug.LogError("GameResourceUI: " + name + " is missing resource name TextMeshProUGUI component reference!");
 
                 return;
             }
@@ -47,18 +60,27 @@ namespace TeamMAsTD
             resourceNameText.text = gameResourceSO.resourceName;
         }
 
-        public void DisplayResourceAmountText()
+        public void DisplayResourceAmountText(GameResourceSO gameResourceSO)
         {
-            if (gameResourceSO == null) return;
+            if (this.gameResourceSO == null || gameResourceSO == null) return;
+
+            if (this.gameResourceSO != gameResourceSO) return;
 
             if (resourceAmountText == null)
             {
-                Debug.LogError("GameResourceUI: " + name + " is missing resource amount TextMeshProUGUI component reference!");
+                if (showDebugAndErrorLog) Debug.LogError("GameResourceUI: " + name + " is missing resource amount TextMeshProUGUI component reference!");
 
                 return;
             }
 
-            resourceAmountText.text = Mathf.RoundToInt(gameResourceSO.resourceAmount).ToString();
+            if (!displayResourceAmountCap) 
+            { 
+                resourceAmountText.text = Mathf.RoundToInt(gameResourceSO.resourceAmount).ToString(); 
+            }
+            else
+            {
+                resourceAmountText.text = Mathf.RoundToInt(gameResourceSO.resourceAmount).ToString() + "/" + Mathf.RoundToInt(gameResourceSO.resourceAmountCap).ToString();
+            }
         }
     }
 }

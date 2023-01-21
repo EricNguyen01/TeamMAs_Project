@@ -45,3 +45,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <coinResourceSO>k__BackingField: {fileID: 11400000, guid: 8e1a1ca0ddadee249926956090c104d3, type: 2}
+  <emotionalHealthSO>k__BackingField: {fileID: 11400000, guid: 937c4f7a685a532469cd11ad08463e2b, type: 2}

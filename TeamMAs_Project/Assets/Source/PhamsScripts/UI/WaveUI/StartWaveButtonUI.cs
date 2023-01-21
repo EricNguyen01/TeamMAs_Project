@@ -98,11 +98,22 @@ namespace TeamMAsTD
         }
 
         //This function is a UI Button's UnityEvent callback, called when user pressed the startWaveButton.
-        public void StartWave()
+        public void StartCurrentWave()//if previous no wave was started -> start at 1st wave. Else start from last wave
         {
             if (waveSpawnerLinkedToButton == null) return;
 
             waveSpawnerLinkedToButton.StartCurrentWave();
+        }
+
+        //this function is also a UI Button's Unity Event callback function
+        //Start a specific wave by providing wave num - use this function in start wave button for testing only!
+        public void DEBUG_StartWaveAt(int waveNum)
+        {
+            if (waveSpawnerLinkedToButton == null) return;
+
+            waveSpawnerLinkedToButton.DEBUG_StartWaveAt(waveNum);
+
+            Debug.LogWarning("Wave started has been changed to wave: " + (waveNum + 1) + " based on DEBUG_StartWaveAt function parameter set in WaveStartButton's OnClick().");
         }
 
 

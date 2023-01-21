@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 #if UNITY_EDITOR
 using UnityEditor;
@@ -25,6 +26,10 @@ namespace TeamMAsTD
 
         [SerializeField] [HideInInspector] private Tile[] gridArray;//the 2D array representing the grid that has been flattened into a 1D array
 
+        [SerializeField] private UnityEvent OnFirstPlantUnitPlantedOnGrid;
+
+        private bool alreadyHasPlantOnGrid = false;
+
         //PUBLICS...........................................................
 
         public Tile[] GetGridFlattened2DArray()
@@ -36,6 +41,30 @@ namespace TeamMAsTD
         public int GetGridArrayIndexFromTileCoordinate(int tileGrid_X, int tileGrid_Y)
         {
             return tileGrid_X * gridHeight/*the array height*/ + tileGrid_Y;
+        }
+
+        //iterate through the grid to check if any plant has been planted before or not
+        public void CheckPlantUnitAsFirstPlantUnitOnGrid(PlantUnit plantUnit)
+        {
+            if (gridArray == null || gridArray.Length == 0) return;
+
+            if (alreadyHasPlantOnGrid) return;
+
+            for(int i = 0; i < gridArray.Length; i++)
+            {
+                if (gridArray[i].plantUnitOnTile != null && gridArray[i].plantUnitOnTile != plantUnit)
+                {
+                    alreadyHasPlantOnGrid = true;
+
+                    return;
+                }
+            }
+
+            Debug.Log("First Plant Has Been Planted On Grid!");
+
+            alreadyHasPlantOnGrid = true;
+
+            OnFirstPlantUnitPlantedOnGrid?.Invoke();
         }
 
 

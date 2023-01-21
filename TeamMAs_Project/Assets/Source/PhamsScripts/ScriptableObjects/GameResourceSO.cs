@@ -13,46 +13,64 @@ namespace TeamMAsTD
     {
         [field: SerializeField] public string resourceName { get; private set; }
         [field: SerializeField] [field: Min(0)] public float resourceAmount { get; private set; }
-        [field: SerializeField] [field: Min(0)] public float resourceAmountCap { get; private set; } = 2000.0f;
+        [field: SerializeField] [field: Min(0)] public float resourceAmountCap { get; private set; }
 
-        private GameResourceUI gameResourceUI;
+        //This event is sub by GameResourceUI.cs to update the UI display of resource amount
+        public static event System.Action<GameResourceSO> OnResourceAmountUpdated;
 
 #if UNITY_EDITOR
-        private void OnValidate()
+        protected virtual void OnValidate()
         {
-            CheckAmountMinMaxReached();
+            CheckResourceAmountMinMaxReached();
+
+            OnResourceAmountUpdated?.Invoke(this);
         }
 #endif
 
-        private void Awake()
+        protected virtual void Awake()
         {
-            CheckAmountMinMaxReached();
+            CheckResourceAmountMinMaxReached();
+
+            OnResourceAmountUpdated?.Invoke(this);
         }
 
-        public void SetGameResourceUIBeingUsedToDisplayResourceData(GameResourceUI gameResourceUI)
-        {
-            this.gameResourceUI = gameResourceUI;
-        }
-
-        public void AddResourceAmount(float addedAmount)
+        public virtual void AddResourceAmount(float addedAmount)
         {
             resourceAmount += addedAmount;
 
-            CheckAmountMinMaxReached();
+            CheckResourceAmountMinMaxReached();
 
-            if (gameResourceUI != null) gameResourceUI.DisplayResourceAmountText();
+            OnResourceAmountUpdated?.Invoke(this);
         }
 
-        public void RemoveResourceAmount(float removedAmount)
+        public virtual void RemoveResourceAmount(float removedAmount)
         {
             resourceAmount -= removedAmount;
 
-            CheckAmountMinMaxReached();
+            CheckResourceAmountMinMaxReached();
 
-            if (gameResourceUI != null) gameResourceUI.DisplayResourceAmountText();
+            OnResourceAmountUpdated?.Invoke(this);
         }
 
-        private void CheckAmountMinMaxReached()
+        public virtual void IncreaseResourceAmountCap(float increaseAmount, bool matchResourceAmountToNewCapAmount)
+        {
+            resourceAmountCap += increaseAmount;
+
+            if (matchResourceAmountToNewCapAmount) resourceAmount = resourceAmountCap;
+
+            OnResourceAmountUpdated?.Invoke(this);
+        }
+
+        public virtual void DecreaseResourceAmountCap(float decreaseAmount)
+        {
+            resourceAmountCap -= decreaseAmount;
+
+            CheckResourceAmountMinMaxReached();
+
+            OnResourceAmountUpdated?.Invoke(this);
+        }
+
+        protected virtual void CheckResourceAmountMinMaxReached()
         {
             //if resource amount below 0 -> set = 0
             if(resourceAmount < 0.0f)

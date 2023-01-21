@@ -92,6 +92,12 @@ namespace TeamMAsTD
 
                     projectileGO.transform.rotation = CalculateProjectileRotatesTowardsTarget(projectileGO, visitorTargetsList[i]);
 
+                    //get the plant projectile script component attached to the projectile game object just taken from projectile pool
+                    PlantProjectile plantProjectile = projectileGO.GetComponent<PlantProjectile>();
+
+                    //set the visitor target data for the plant projectile script if one is found
+                    if (plantProjectile != null) plantProjectile.SetTargettedVisitorUnit(visitorTargetsList[i]);
+
                     if (!projectileGO.activeInHierarchy) projectileGO.SetActive(true);
 
                     //Debug.Log("Projectile: " + projectileGO.name + " successfully launched from Plant: " + name + ".");
@@ -116,6 +122,9 @@ namespace TeamMAsTD
             currentTargetsUpdateWaitTime -= Time.deltaTime;
         }
 
+        //This function immediately updates visitor targets list and reset the update timer
+        //use in OnVisitorAppeased event to re-update targets list immediately because a visitor just dissapeared in scene
+        //also use in update visitor targets list in update after update timer has finished
         private void UpdateVisitorTargetsList()
         {
             UpdateVisitorTargetsList(GetVisitorsInRange());

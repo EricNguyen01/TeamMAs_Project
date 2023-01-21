@@ -339,7 +339,7 @@ namespace TeamMAsTD
         }
 
         //IDamageable Interface functions..............................................
-        public VisitorUnit TakeDamageFrom(object damageCauser, float damage)
+        public void TakeDamageFrom(object damageCauser, float damage)
         {
             if(damageCauser.GetType() == typeof(PlantProjectile))
             {
@@ -350,7 +350,7 @@ namespace TeamMAsTD
                 {
                     if (projectile.plantUnitSO.plantTargetsSpecifically != visitorUnitSO.visitorType)
                     {
-                        return null;//return nothing cause technically we didnt hit this visitor if this check is true
+                        return;//exit function
                     }
                 }
 
@@ -392,7 +392,7 @@ namespace TeamMAsTD
                 }
             }
 
-            return this;
+            return;
         }
 
         private float DamageMultiplier(PlantProjectile projectile)
@@ -404,6 +404,11 @@ namespace TeamMAsTD
             if (visitorUnitSO.visitorType == VisitorUnitSO.VisitorType.Pollinator) damageMultiplier += projectile.plantUnitSO.pollinatorMultiplier;
 
             return damageMultiplier;
+        }
+
+        public object ObjectTakenDamage()
+        {
+            return this;
         }
     }
 }

@@ -14,6 +14,8 @@ namespace TeamMAsTD
 
         public PlantUnitSO plantUnitSO { get; private set; }
 
+        private VisitorUnit targettedVisitorOfProjectile;
+
         private Collider2D projectileCollider2D;
 
         private Rigidbody2D projectileRigidbody2D;
@@ -24,7 +26,7 @@ namespace TeamMAsTD
 
         private float travelSpeed = 1.0f;
 
-        private bool alreadyCollided = false;
+        private bool alreadyHitAVisitor = false;
 
         private bool isHoming = false;
 
@@ -36,6 +38,16 @@ namespace TeamMAsTD
             }
 
             CheckProjectileColliderAndRigidbody();
+        }
+
+        private void OnDisable()
+        {
+            //reset data on returning to pool and getting disabled
+            alreadyHitAVisitor = false;
+
+            projectileRigidbody2D.velocity = Vector2.zero;
+
+            projectileRigidbody2D.angularVelocity = 0.0f;
         }
 
         private void Update()
@@ -54,17 +66,35 @@ namespace TeamMAsTD
 
         private void OnCollisionEnter2D(Collision2D collision)
         {
-            if (alreadyCollided) return;
+            if (alreadyHitAVisitor) return;
 
-            alreadyCollided = true;
-
+            //find if the object collided is an IDamageable -> only IDamageable can receive damage from projectile
             IDamageable damageable = collision.gameObject.GetComponent<IDamageable>();
 
+            //if not IDamageable -> do nothing!
             if (damageable == null) return;
 
-            VisitorUnit visitor = damageable.TakeDamageFrom(this, plantUnitSO.damage);
+            VisitorUnit visitorHit = null;
 
-            if(visitor != null) Debug.Log("Projectile Hit Visitor: " + visitor.name);
+            //check for the type of object hit
+            if(damageable.ObjectTakenDamage().GetType() == typeof(VisitorUnit))
+            {
+                visitorHit = (VisitorUnit)damageable.ObjectTakenDamage();
+            }
+
+            //check if a valid visitor is hit and whether it is the same as the visitor this projectile and plant is targetting
+            if(visitorHit != null && targettedVisitorOfProjectile != null)
+            {
+                //if hit a non-targetted visitor -> do nothing!
+                if (visitorHit != targettedVisitorOfProjectile) return;
+            }
+
+            //else deals damage to visitor
+            damageable.TakeDamageFrom(this, plantUnitSO.damage);
+
+            //if(visitorHit != null) Debug.Log("Projectile Hit Visitor: " + visitorHit.name);
+
+            alreadyHitAVisitor = true;
 
             DespawnProjectile();//despawn projectile on hit.
         }
@@ -91,13 +121,6 @@ namespace TeamMAsTD
             }
 
             //else
-
-            //reset data before return to pool
-            alreadyCollided = false;
-
-            projectileRigidbody2D.velocity = Vector2.zero;
-
-            projectileRigidbody2D.angularVelocity = 0.0f;
 
             //return this projectile to plant's projectile pool
             plantUnitOfProjectile.ReturnProjectileToPool(this);
@@ -149,6 +172,11 @@ namespace TeamMAsTD
             travelSpeed = plantProjectileSO.plantProjectileSpeed;
 
             isHoming = plantProjectileSO.isHoming;
+        }
+
+        public void SetTargettedVisitorUnit(VisitorUnit visitor)
+        {
+            targettedVisitorOfProjectile = visitor;
         }
     }
 }
