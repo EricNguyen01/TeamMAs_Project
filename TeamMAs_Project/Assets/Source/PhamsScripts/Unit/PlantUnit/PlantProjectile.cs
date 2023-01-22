@@ -1,4 +1,3 @@
-using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -36,7 +35,7 @@ namespace TeamMAsTD
             {
                 Debug.LogError("PlantProjectile GameObject: " + name + " is not in PlantProjectile layer!");
             }
-
+            
             CheckProjectileColliderAndRigidbody();
         }
 
