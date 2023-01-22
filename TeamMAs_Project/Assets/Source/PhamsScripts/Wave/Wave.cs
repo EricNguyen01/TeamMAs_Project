@@ -192,6 +192,7 @@ namespace TeamMAsTD
                     if (!justSwitchedToBossSpawnChanceList)
                     {
                         previousSpawnRandomNumber = -1;
+
                         justSwitchedToBossSpawnChanceList = true;
                     }
 
@@ -199,11 +200,19 @@ namespace TeamMAsTD
                 }
             }
 
-            //process looking for a valid random visitor type to spawn based on current selected spawn chance list
+            //randomly shuffle the selected spawn chance list
+            spawnChanceList = HelperFunctions.RandomShuffleListElements(spawnChanceList);
+
+            //infiitely looping to look for a valid random visitor type to spawn
+            //by randomly choose an element within the randomly shuffled spawn chance list
+            //if new random visitor element is the same as previous (repeated) or is null -> continue looping
+            //loop only stops when a valid visitor is found
             while (true)
             {
                 if (spawnChanceList.Count == 0) return null;
 
+                //select randomly and non-repeatedly an element in the spawnChanceList 
+                //return null if current visitor value is null or repeated
                 visitorType = GetVisitorTypeFromSpawnChanceList(spawnChanceList);
 
                 if (visitorType == null) continue;
@@ -337,9 +346,14 @@ namespace TeamMAsTD
             //if was supposed to spawn but no visitor to spawn -> stop wave and break from spawn coroutine
             if (totalVisitorsToSpawnList == null || totalVisitorsToSpawnList.Count == 0)
             {
-                WaveStoppedWithNoVisitorsLeft();
+                Debug.LogWarning("Wave: " + waveNum + " appears to have no visitors to spawn. Wave stopped!");
 
-                yield break;
+                //calls this Wave's WaveSpawner ProcessWaveFinished function to process wave finished
+                //because wave was stopped abruptly due to no visitors to spawn -> dont broadcast wave finished event
+                //but increment wave num nonetheless
+                waveSpawnerOfThisWave.ProcessWaveFinished(waveNum, true, true);
+
+                yield break;//break out of and end this visitor spawn coroutine
             }
 
             //else
@@ -362,27 +376,19 @@ namespace TeamMAsTD
             yield return new WaitUntil(() => activeVisitorsInScene.Count == 0);
 
             //process wave stopped
-            WaveStoppedWithNoVisitorsLeft();
+            //calls this Wave's WaveSpawner ProcessWaveFinished function to process wave finished
+            //wave run and finished successfully -> increment wave num + broadcast wave event
+            waveSpawnerOfThisWave.ProcessWaveFinished(waveNum, true, true);
 
-            if(waveSpawnerOfThisWave != null && waveSpawnerOfThisWave.showDebugLog)
+            if (waveSpawnerOfThisWave != null && waveSpawnerOfThisWave.showDebugLog)
             {
                 Debug.Log("Wave " + waveSO.name + " Successfully Stopped! Total visitors: " + totalVisitorsToSpawnList.Count);
             }
         }
 
-        private bool WaveStoppedWithNoVisitorsLeft()
-        {
-            if (totalVisitorsToSpawnList == null || totalVisitorsToSpawnList.Count == 0)
-            {
-                //calls this Wave's WaveSpawner ProcessWaveFinished function to process wave finished
-                waveSpawnerOfThisWave.ProcessWaveFinished(waveNum, true, true);
-
-                return true;
-            }
-
-            return false;
-        }
-
+        //DONT USE THIS FUNCTION TO STOP THIS WAVE
+        //USE waveSpawnerOfThisWave.ProcessWaveFinished(param,param,param)
+        //In waveSpawnerOfThisWave.ProcessWaveFinished, this function below will be called along with other logics wave end logic.
         public void ProcessWaveStopped()
         {
             waveHasAlreadyStarted = false;
@@ -405,6 +411,20 @@ namespace TeamMAsTD
                 LoadVisitorSpawnChanceListForThisWave(waveSO);
             }
 
+            //if after re-initialization of visitors data and wave still has no visitors to spawn -> stop wave
+            if(totalVisitorsToSpawnList == null || totalVisitorsToSpawnList.Count == 0)
+            {
+                Debug.LogWarning("Wave: " + waveNum + " appears to have no visitors to spawn. Wave stopped!");
+
+                //calls this Wave's WaveSpawner ProcessWaveFinished function to process wave finished
+                //because wave was stopped abruptly due to no visitors to spawn -> dont broadcast wave finished event
+                //but increment wave num nonetheless
+                waveSpawnerOfThisWave.ProcessWaveFinished(waveNum, true, false);
+
+                return;
+            }
+
+            //else
             //if there are still visitors to spawn -> start wave coroutine
             waveSpawnerOfThisWave.StartCoroutine(VisitorSpawnCoroutine());
         }

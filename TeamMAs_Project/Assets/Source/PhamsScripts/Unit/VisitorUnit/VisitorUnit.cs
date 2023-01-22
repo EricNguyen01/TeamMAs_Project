@@ -332,6 +332,16 @@ namespace TeamMAsTD
             waveSpawnedThisVisitor = wave;
         }
 
+        public Vector2 GetVisitorUnitMoveDir(bool normalized)
+        {
+            if (normalized) 
+            { 
+                return (currentTileWaypointPos - (Vector2)transform.position).normalized; 
+            }
+
+            return currentTileWaypointPos - (Vector2)transform.position;
+        }
+
         //IUnit Interface functions....................................................
         public UnitSO GetUnitScriptableObjectData()
         {

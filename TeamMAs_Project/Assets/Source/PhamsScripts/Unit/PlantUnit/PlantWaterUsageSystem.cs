@@ -159,7 +159,7 @@ namespace TeamMAsTD
                 //uproot if rounds survived without water = rounds can survive without water
                 if (currentWavesSurvivedWithoutWater >= wavesCanSurviveWithoutWater)
                 {
-                    UprootOnWaterDepleted(0.6f);
+                    UprootOnWaterDepleted(1f);
                 }
             }
         }

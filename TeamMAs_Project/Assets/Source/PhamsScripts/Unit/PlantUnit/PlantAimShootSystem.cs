@@ -65,6 +65,7 @@ namespace TeamMAsTD
             if (enableAimShoot)
             {
                 UpdateVisitorTargetsListInUpdate();
+
                 ProcessPlantAimShoot();
             }
         }
@@ -73,7 +74,22 @@ namespace TeamMAsTD
         {
             if (projectileObj == null || target == null) return Quaternion.identity;
 
-            Vector2 dirToTarget = (Vector2)target.transform.position - (Vector2)projectileObj.transform.position;
+            //attempt to calculate and get targetted visitor's look ahead position
+            Vector2 targetLookAheadPos = LookAheadTargetPosition(target);
+
+            Vector2 dirToTarget = Vector2.zero;
+
+            //if there's a viable target look ahead position -> use it to calculate dirToTarget
+            if (targetLookAheadPos != Vector2.zero)
+            {
+                //Debug.Log("Look Ahead Aiming!");
+                dirToTarget = targetLookAheadPos - (Vector2)projectileObj.transform.position;
+            }
+            //else use the target's position itself to calculate dirToTarget
+            else 
+            { 
+                dirToTarget = (Vector2)target.transform.position - (Vector2)projectileObj.transform.position; 
+            }
 
             dirToTarget.Normalize();
 
@@ -84,9 +100,16 @@ namespace TeamMAsTD
         {
             if(currentShootWaitTime <= 0.0f)
             {
+                bool shootSuccessful = false;
+
                 for (int i = 0; i < visitorTargetsList.Count; i++)
                 {
-                    if (visitorTargetsList[i] == null) continue;
+                    //dont shoot if visitor target is null, dead, or inactive in scene
+                    if (visitorTargetsList[i] == null || 
+                        visitorTargetsList[i].currentVisitorHealth <= 0.0f || 
+                        !visitorTargetsList[i].gameObject.activeInHierarchy) continue;
+
+                    //else->proceed to process shooting functionalities...
 
                     GameObject projectileGO = plantProjectilePool.GetInactiveProjectileObjectFromPool();
 
@@ -100,10 +123,13 @@ namespace TeamMAsTD
 
                     if (!projectileGO.activeInHierarchy) projectileGO.SetActive(true);
 
+                    shootSuccessful = true;
+
                     //Debug.Log("Projectile: " + projectileGO.name + " successfully launched from Plant: " + name + ".");
                 }
 
-                currentShootWaitTime = plantUnitLinked.plantUnitScriptableObject.attackSpeed;
+                //only reset attack timer (atk spd) if shooting was succesful
+                if(shootSuccessful) currentShootWaitTime = plantUnitLinked.plantUnitScriptableObject.attackSpeed;
 
                 return;
             }
@@ -128,6 +154,7 @@ namespace TeamMAsTD
         private void UpdateVisitorTargetsList()
         {
             UpdateVisitorTargetsList(GetVisitorsInRange());
+
             currentTargetsUpdateWaitTime = baseTargetsUpdateWaitTime;
         }
 
@@ -225,6 +252,31 @@ namespace TeamMAsTD
             }
         }
 
+        //calculate where the targetted visitor unit will be based on plant projectile speed
+        private Vector2 LookAheadTargetPosition(VisitorUnit targettedVisitor)
+        {
+            if (targettedVisitor == null || targettedVisitor.visitorUnitSO == null) return Vector2.zero;
+
+            if (plantProjectileSO == null || plantProjectileSO.plantProjectileSpeed == 0) return Vector2.zero;
+
+            //dont look ahead if projectile is of homing type
+            if(plantProjectileSO.isHoming) return Vector2.zero;
+
+            float distToTarget = Vector2.Distance((Vector2)targettedVisitor.transform.position, (Vector2)transform.position);
+
+            //dist/time = spd so time = dist/spd
+            float timeTakenToTarget = distToTarget / plantProjectileSO.plantProjectileSpeed;
+
+            //calculate where the target will be in its current movement direction after the above "timeTakenToTarget" value
+            //dist/time = spd so dist = spd * time
+            float targetLookAheadDist = targettedVisitor.visitorUnitSO.moveSpeed * timeTakenToTarget;
+
+            //look ahead pos = target current pos + target current move dir(normalized) * look ahead distance
+            Vector2 targetLookAheadPos = (Vector2)targettedVisitor.transform.position + targettedVisitor.GetVisitorUnitMoveDir(true) * targetLookAheadDist;
+
+            return targetLookAheadPos;
+        }
+
         private void CheckOngoingWavesExist()
         {
             bool alreadyHasOngoingWave = false;
@@ -253,7 +305,10 @@ namespace TeamMAsTD
         {
             if (plantUnit == null || plantProjectileSO == null || plantProjectileSO.plantProjectilePrefab == null)
             {
+                Debug.LogError("PlantAimShootSystem on PlantUnit: " + name + " is missing vital references upon initialization. Disabling script...");
+
                 enabled = false;
+
                 return;
             }
 

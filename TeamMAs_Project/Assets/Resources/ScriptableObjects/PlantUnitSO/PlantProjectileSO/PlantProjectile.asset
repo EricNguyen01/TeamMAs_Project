@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: PlantProjectile
   m_EditorClassIdentifier: 
   <plantProjectilePrefab>k__BackingField: {fileID: 1245357011178758982, guid: 35ea5bef05d59534ea6a6fd64e6739e3, type: 3}
-  <plantProjectileSpeed>k__BackingField: 30
-  <isHoming>k__BackingField: 0
+  <plantProjectileSpeed>k__BackingField: 5
+  <isHoming>k__BackingField: 1

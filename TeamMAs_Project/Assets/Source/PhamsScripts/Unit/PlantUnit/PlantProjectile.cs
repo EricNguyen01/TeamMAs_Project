@@ -25,8 +25,6 @@ namespace TeamMAsTD
 
         private float travelSpeed = 1.0f;
 
-        private bool alreadyHitAVisitor = false;
-
         private bool isHoming = false;
 
         private void Awake()
@@ -42,7 +40,6 @@ namespace TeamMAsTD
         private void OnDisable()
         {
             //reset data on returning to pool and getting disabled
-            alreadyHitAVisitor = false;
 
             projectileRigidbody2D.velocity = Vector2.zero;
 
@@ -52,21 +49,15 @@ namespace TeamMAsTD
         private void Update()
         {
             DespawnOnOutOfTravelDistance();
+        }
 
-            //if projectile is a homing type
-            if (isHoming)
-            {
-
-                return;
-            }
-            //else
-            transform.position += transform.up * travelSpeed * Time.deltaTime;
+        private void FixedUpdate()
+        {
+            ProcessProjectileMovement();
         }
 
         private void OnCollisionEnter2D(Collision2D collision)
         {
-            if (alreadyHitAVisitor) return;
-
             //find if the object collided is an IDamageable -> only IDamageable can receive damage from projectile
             IDamageable damageable = collision.gameObject.GetComponent<IDamageable>();
 
@@ -82,20 +73,60 @@ namespace TeamMAsTD
             }
 
             //check if a valid visitor is hit and whether it is the same as the visitor this projectile and plant is targetting
-            if(visitorHit != null && targettedVisitorOfProjectile != null)
+            //also check if targetted visitor is not null or disabled(returned to visitor pool) and has health > 0.0f
+            if(visitorHit != null && targettedVisitorOfProjectile != null && targettedVisitorOfProjectile.currentVisitorHealth > 0.0f && targettedVisitorOfProjectile.gameObject.activeInHierarchy)
             {
-                //if hit a non-targetted visitor -> do nothing!
-                if (visitorHit != targettedVisitorOfProjectile) return;
+                //if hit a non-targetted visitor
+                if (visitorHit != targettedVisitorOfProjectile)
+                {
+                    //check whether the projectile has passed the intended target and is now hitting a different one further
+                    if (plantUnitOfProjectile != null)
+                    {
+                        float distFromPlantToVisitorHit = Vector2.Distance((Vector2)visitorHit.transform.position, (Vector2)plantUnitOfProjectile.transform.position);
+
+                        float distFromPlantToTargettedVisitor = Vector2.Distance((Vector2)targettedVisitorOfProjectile.transform.position, (Vector2)plantUnitOfProjectile.transform.position);
+
+                        //if still moving to intended target and hit another visitor along the way -> do nothing and exit hit event
+                        if (distFromPlantToVisitorHit <= distFromPlantToTargettedVisitor) return;
+                    }
+                    //else
+                    //if plant unit of this projectile is null or
+                    //if this projectile has passed the intended target and is hitting another visitor further ->
+                    //continue to execute hit event below
+                }
+                //else if hit the intended target -> also continue execute hit event below
             }
 
-            //else deals damage to visitor
+            //if above checks failed menaing that a valid target is hit -> deals damage to hit visitor
             damageable.TakeDamageFrom(this, plantUnitSO.damage);
 
             //if(visitorHit != null) Debug.Log("Projectile Hit Visitor: " + visitorHit.name);
 
-            alreadyHitAVisitor = true;
-
             DespawnProjectile();//despawn projectile on hit.
+        }
+
+        private void ProcessProjectileMovement()
+        {
+            //if projectile is a homing type
+            if (isHoming)
+            {
+                //if target visitor unit given to this projectile is not null, not dead, and not disabled -> home onto target
+                if (targettedVisitorOfProjectile != null && 
+                    targettedVisitorOfProjectile.currentVisitorHealth > 0.0f && 
+                    targettedVisitorOfProjectile.gameObject.activeInHierarchy)
+                {
+                    Vector3 targetPosSameZ = new Vector3(targettedVisitorOfProjectile.transform.position.x, targettedVisitorOfProjectile.transform.position.y, transform.position.z);
+
+                    transform.rotation = Quaternion.RotateTowards(transform.rotation, HelperFunctions.GetRotationToPos2D(transform.position, targetPosSameZ), 180.0f * Time.fixedDeltaTime);
+
+                    transform.position = Vector3.MoveTowards(transform.position, targettedVisitorOfProjectile.transform.position, travelSpeed * Time.fixedDeltaTime);
+
+                    return;
+                }
+            }
+            //else if not homing or target is null/disable ->
+            //just fly forward with direction based on starting rotation (rotation upon projectile enabled)
+            transform.position += transform.up * travelSpeed * Time.fixedDeltaTime;
         }
 
         private void DespawnOnOutOfTravelDistance()

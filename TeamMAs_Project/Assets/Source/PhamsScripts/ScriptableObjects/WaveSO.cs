@@ -16,7 +16,7 @@ namespace TeamMAsTD
         {
             public VisitorUnitSO visitorType;
             [Min(1)] public int spawnNumbers;
-            [Min(1)] public int spawnChance;
+            [Range(1, 50)] public int spawnChance;
         }
 
         [field: Header("This Wave Data")]
@@ -36,12 +36,6 @@ namespace TeamMAsTD
         [field: Header("This Wave Visitor Health Scaling Data")]
         [field: SerializeField] public bool applyVisitorHealthScalingThisWave { get; private set; } = true;
         [field: SerializeField][field: Min(1.0f)] public float visitorHealthScalingMultiplier { get; private set; } = 1.0f;
-
-        /*[field: Header("Wave GameObject Prefab")]
-        [field: SerializeField]
-        [field: Tooltip("The GameObject prefab with the Wave script component attached that is to be spawned by WaveSpawner." +
-        "Check WaveSpawner.cs script.")]
-        public GameObject wavePrefab { get; private set; }*/
 
         public int GetSpawnNumberOfVisitorType(VisitorUnitSO visitorSO)
         {

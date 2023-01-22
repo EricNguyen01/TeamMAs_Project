@@ -325,8 +325,11 @@ namespace TeamMAsTD
 
             LogWaveRunTimeInSeconds(waveNum);
 
-            if (!broadcastWaveFinishedEvent) return;
+            //if IS NOT LAST WAVE in wave list and broadcastWaveFinishedEvent is set to false -> dont broadcast and return
+            //if LAST WAVE -> ALWAYS broadcast event because we need to disable startwave button UI (UI must picked up last wave event)
+            if (currentWave < wavesList.Count - 1 && !broadcastWaveFinishedEvent) return;
 
+            //else if broadcast event is true->
             //invoke different wave ended events that depend on whether the last wave has spawned or not
             if (currentWave < wavesList.Count - 1)
             {
