@@ -66,7 +66,7 @@ namespace TeamMAsTD
 
             VisitorUnit visitorHit = null;
 
-            //check for the type of object hit
+            //check for the type of object hit -> if IDamageable is of VisitorUnit type, set visitorHit
             if(damageable.ObjectTakenDamage().GetType() == typeof(VisitorUnit))
             {
                 visitorHit = (VisitorUnit)damageable.ObjectTakenDamage();
@@ -74,7 +74,10 @@ namespace TeamMAsTD
 
             //check if a valid visitor is hit and whether it is the same as the visitor this projectile and plant is targetting
             //also check if targetted visitor is not null or disabled(returned to visitor pool) and has health > 0.0f
-            if(visitorHit != null && targettedVisitorOfProjectile != null && targettedVisitorOfProjectile.currentVisitorHealth > 0.0f && targettedVisitorOfProjectile.gameObject.activeInHierarchy)
+            if(visitorHit != null && 
+                targettedVisitorOfProjectile != null && 
+                targettedVisitorOfProjectile.currentVisitorHealth > 0.0f && 
+                targettedVisitorOfProjectile.gameObject.activeInHierarchy)
             {
                 //if hit a non-targetted visitor
                 if (visitorHit != targettedVisitorOfProjectile)
@@ -97,7 +100,7 @@ namespace TeamMAsTD
                 //else if hit the intended target -> also continue execute hit event below
             }
 
-            //if above checks failed menaing that a valid target is hit -> deals damage to hit visitor
+            //if above checks have not caused the function to exit meaning that a valid IDamageable is hit -> deals damage accordingly
             damageable.TakeDamageFrom(this, plantUnitSO.damage);
 
             //if(visitorHit != null) Debug.Log("Projectile Hit Visitor: " + visitorHit.name);
