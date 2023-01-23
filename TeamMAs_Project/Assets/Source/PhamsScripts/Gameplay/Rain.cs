@@ -14,6 +14,7 @@ namespace TeamMAsTD
         //if there's rain animation -> add here...
 
         //sub by PlantWaterUsageSystem.cs for water refilling after rain
+        //sub by TileMenu for temporary disabling menu UI interaction during rain
         public static event System.Action<Rain> OnRainStarted;
         public static event System.Action<Rain> OnRainEnded;
 

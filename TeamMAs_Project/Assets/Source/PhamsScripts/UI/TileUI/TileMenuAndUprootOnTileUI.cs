@@ -15,7 +15,10 @@ namespace TeamMAsTD
 
         //INTERNALS...........................................................................................
 
+        private CanvasGroup tileWorldCanvasGroup;
+
         private Tile tileSelectedForUprootConfirmation;
+
         private Camera mainCam;
 
         private PointerEventData pEventData;//Unity's EventSystem pointer event data
@@ -25,6 +28,39 @@ namespace TeamMAsTD
         [SerializeField] public UnityEvent OnTileMenuOpened;
 
         //PRIVATES.............................................................................................
+
+        private void Awake()
+        {
+            if (tileWorldCanvas == null)
+            {
+                tileWorldCanvas = GetComponentInChildren<Canvas>(true);
+
+                if (tileWorldCanvas == null)
+                {
+                    Debug.LogError("Tile World Canvas children component not found on tile: " + name + ". Plant uprooting won't work!");
+                    enabled = false;
+                    return;
+                }
+            }
+
+            tileWorldCanvasGroup = tileWorldCanvas.GetComponent<CanvasGroup>();
+
+            if (tileWorldCanvasGroup == null) tileWorldCanvasGroup = tileWorldCanvas.gameObject.AddComponent<CanvasGroup>();
+
+            tileSelectedForUprootConfirmation = GetComponent<Tile>();
+
+            if (tileSelectedForUprootConfirmation == null)
+            {
+                Debug.LogError("Tile script component not found. Plant uprooting won't work!");
+                enabled = false;
+                return;
+            }
+
+            if (mainCam == null) mainCam = Camera.main;
+
+            if (tileWorldCanvas.worldCamera == null) tileWorldCanvas.worldCamera = mainCam;
+        }
+
         private void OnEnable()
         {
             //check for an existing EventSystem and disble script if null
@@ -36,29 +72,16 @@ namespace TeamMAsTD
                 return;
             }
 
-            if (tileWorldCanvas == null)
-            {
-                tileWorldCanvas = GetComponentInChildren<Canvas>();
+            //Rain.cs C# Events sub
+            Rain.OnRainStarted += TemporaryDisableTileMenuInteractionOnRainStarted;
+            Rain.OnRainEnded += StopDisableTileMenuInteractionOnRainEnded;
+        }
 
-                if (tileWorldCanvas == null)
-                {
-                    Debug.LogError("Tile World Canvas children component not found on tile: " + name + ". Plant uprooting won't work!");
-                    enabled = false;
-                    return;
-                }
-            }
-
-            tileSelectedForUprootConfirmation = GetComponent<Tile>();
-            if(tileSelectedForUprootConfirmation == null)
-            {
-                Debug.LogError("Tile script component not found. Plant uprooting won't work!");
-                enabled = false;
-                return;
-            }
-
-            if(mainCam == null) mainCam = Camera.main;
-
-            if(tileWorldCanvas.worldCamera == null) tileWorldCanvas.worldCamera = mainCam;
+        private void OnDisable()
+        {
+            //Rain.cs C# events unsub
+            Rain.OnRainStarted -= TemporaryDisableTileMenuInteractionOnRainStarted;
+            Rain.OnRainEnded -= StopDisableTileMenuInteractionOnRainEnded;
         }
 
         //PRIVATES..............................................................................
@@ -93,6 +116,31 @@ namespace TeamMAsTD
             }
 
             if(tileWorldCanvas.gameObject.activeInHierarchy) tileWorldCanvas.gameObject.SetActive(false);
+        }
+
+        private void TemporaryDisableTileMenuInteraction(bool disabled)
+        {
+            if (tileWorldCanvasGroup == null) return;
+
+            if (disabled)
+            {
+                tileWorldCanvasGroup.interactable = false;
+
+                return;
+            }
+
+            tileWorldCanvasGroup.interactable = true;
+        }
+
+        //Rain.cs C# Event functions............................................................................
+        private void TemporaryDisableTileMenuInteractionOnRainStarted(Rain rain)
+        {
+            TemporaryDisableTileMenuInteraction(true);
+        }
+
+        private void StopDisableTileMenuInteractionOnRainEnded(Rain rain)
+        {
+            TemporaryDisableTileMenuInteraction(false);
         }
 
         //PUBLICS..............................................................................................
