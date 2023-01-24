@@ -21,11 +21,11 @@ namespace TeamMAsTD
 
         private float currentShootWaitTime = 0.0f;
 
-        private float baseTargetsUpdateWaitTime = 0.1f;
+        private float baseTargetsUpdateWaitTime = 0.03f;
 
         private float currentTargetsUpdateWaitTime = 0.0f;
 
-        private List<VisitorUnit> debugVisitorsInRange;
+        private List<VisitorUnit> visitorsInRangeList = new List<VisitorUnit>();
 
         private void OnEnable()
         {
@@ -100,33 +100,11 @@ namespace TeamMAsTD
         {
             if(currentShootWaitTime <= 0.0f)
             {
-                bool shootSuccessful = false;
+                currentShootWaitTime = 0.0f;
 
-                for (int i = 0; i < visitorTargetsList.Count; i++)
-                {
-                    //dont shoot if visitor target is null, dead, or inactive in scene
-                    if (visitorTargetsList[i] == null || 
-                        visitorTargetsList[i].currentVisitorHealth <= 0.0f || 
-                        !visitorTargetsList[i].gameObject.activeInHierarchy) continue;
+                if (visitorsInRangeList == null || visitorsInRangeList.Count == 0) return;
 
-                    //else->proceed to process shooting functionalities...
-
-                    GameObject projectileGO = plantProjectilePool.GetInactiveProjectileObjectFromPool();
-
-                    projectileGO.transform.rotation = CalculateProjectileRotatesTowardsTarget(projectileGO, visitorTargetsList[i]);
-
-                    //get the plant projectile script component attached to the projectile game object just taken from projectile pool
-                    PlantProjectile plantProjectile = projectileGO.GetComponent<PlantProjectile>();
-
-                    //set the visitor target data for the plant projectile script if one is found
-                    if (plantProjectile != null) plantProjectile.SetTargettedVisitorUnit(visitorTargetsList[i]);
-
-                    if (!projectileGO.activeInHierarchy) projectileGO.SetActive(true);
-
-                    shootSuccessful = true;
-
-                    //Debug.Log("Projectile: " + projectileGO.name + " successfully launched from Plant: " + name + ".");
-                }
+                bool shootSuccessful = PlantPeformsAimShoot();
 
                 //only reset attack timer (atk spd) if shooting was succesful
                 if(shootSuccessful) currentShootWaitTime = plantUnitLinked.plantUnitScriptableObject.attackSpeed;
@@ -137,11 +115,66 @@ namespace TeamMAsTD
             currentShootWaitTime -= Time.deltaTime;
         }
 
+        private bool PlantPeformsAimShoot()
+        {
+            //dont shoot if any visitor target in target list is null, dead, or inactive in scene
+            //if such situation occurs, immediately update target list and reset its update timer
+            for (int i = 0; i < visitorTargetsList.Count; i++)
+            {
+                if (visitorTargetsList[i] == null ||
+                    visitorTargetsList[i].currentVisitorHealth <= 0.0f ||
+                    !visitorTargetsList[i].gameObject.activeInHierarchy)
+                {
+                    //in case this plant can perform multiple targets shooting
+                    if(visitorTargetsList.Count > 1)
+                    {
+                        //in case the number of visitors in range or in scene are less than the number of visitors this plant can multi-target
+                        if (visitorsInRangeList != null && i >= visitorsInRangeList.Count) break;
+                    }
+
+                    currentTargetsUpdateWaitTime = 0.0f;
+
+                    return false;
+                }
+            }
+
+            //else if all targets in target list are valid -> performs aim shoot
+
+            for (int i = 0; i < visitorTargetsList.Count; i++)
+            {
+                //this if check is
+                //in case the number of visitors in range or in scene are less than the number of visitors this plant can multi-target
+                //projectiles will not be launched for any null target list element
+                if (visitorTargetsList[i] == null ||
+                    visitorTargetsList[i].currentVisitorHealth <= 0.0f ||
+                    !visitorTargetsList[i].gameObject.activeInHierarchy) continue;
+
+                GameObject projectileGO = plantProjectilePool.GetInactiveProjectileObjectFromPool();
+
+                projectileGO.transform.rotation = CalculateProjectileRotatesTowardsTarget(projectileGO, visitorTargetsList[i]);
+
+                //get the plant projectile script component attached to the projectile game object just taken from projectile pool
+                PlantProjectile plantProjectile = projectileGO.GetComponent<PlantProjectile>();
+
+                //set the visitor target data for the plant projectile script if one is found
+                if (plantProjectile != null) plantProjectile.SetTargettedVisitorUnit(visitorTargetsList[i]);
+
+                if (!projectileGO.activeInHierarchy) projectileGO.SetActive(true);
+
+                //Debug.Log("Projectile: " + projectileGO.name + " successfully launched from Plant: " + name + ".");
+            }
+
+            return true;
+        }
+
         private void UpdateVisitorTargetsListInUpdate()
         {
             if (currentTargetsUpdateWaitTime <= 0.0f)
             {
-                UpdateVisitorTargetsList();
+                currentTargetsUpdateWaitTime = 0.0f;
+
+                UpdateVisitorTargetsList();//update timer is reset in this function
+
                 return;
             }
 
@@ -153,7 +186,9 @@ namespace TeamMAsTD
         //also use in update visitor targets list in update after update timer has finished
         private void UpdateVisitorTargetsList()
         {
-            UpdateVisitorTargetsList(GetVisitorsInRange());
+            visitorsInRangeList = GetVisitorsInRange();
+
+            UpdateVisitorTargetsList(visitorsInRangeList);
 
             currentTargetsUpdateWaitTime = baseTargetsUpdateWaitTime;
         }
@@ -192,8 +227,6 @@ namespace TeamMAsTD
 
         private void UpdateVisitorTargetsList(List<VisitorUnit> visitorsInRange)
         {
-            debugVisitorsInRange = visitorsInRange;
-
             //if there's no visitors in range -> reset visitorTargetsList elements to null
             if (visitorsInRange == null || visitorsInRange.Count == 0)
             {
@@ -241,7 +274,7 @@ namespace TeamMAsTD
             //match the sorted visitorsInRange list to the visitorTargetsList now that the distance are in order
             for(int i = 0; i < visitorTargetsList.Count; i++)
             {
-                if(i <= visitorsInRange.Count - 1)
+                if(i < visitorsInRange.Count)
                 {
                     visitorTargetsList[i] = visitorsInRange[i];
                 }
@@ -262,6 +295,7 @@ namespace TeamMAsTD
             //dont look ahead if projectile is of homing type
             if(plantProjectileSO.isHoming) return Vector2.zero;
 
+            //get distance from this plant unit to targetted visitor unit
             float distToTarget = Vector2.Distance((Vector2)targettedVisitor.transform.position, (Vector2)transform.position);
 
             //dist/time = spd so time = dist/spd
@@ -273,6 +307,8 @@ namespace TeamMAsTD
 
             //look ahead pos = target current pos + target current move dir(normalized) * look ahead distance
             Vector2 targetLookAheadPos = (Vector2)targettedVisitor.transform.position + targettedVisitor.GetVisitorUnitMoveDir(true) * targetLookAheadDist;
+
+            //Debug.Log("VisitorUnit: " + targettedVisitor.name + " (" + targettedVisitor.GetInstanceID() + ") Look Ahead Pos: " + targetLookAheadPos);
 
             return targetLookAheadPos;
         }
