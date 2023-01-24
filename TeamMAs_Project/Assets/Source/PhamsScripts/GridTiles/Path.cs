@@ -88,6 +88,15 @@ namespace TeamMAsTD
             tile.EnableDrawTileDebug(false);
         }
 
+        private void RemovePathTileSprite(Tile tile, SpriteRenderer tileSpriteRenderer)
+        {
+            if (tile == null || tileSpriteRenderer == null) return;
+
+            tileSpriteRenderer.sprite = null;
+
+            tile.EnableDrawTileDebug(true);
+        }
+
         private void UpdatePath()
         {
             if (!CanUpdatePath()) return;
@@ -141,6 +150,11 @@ namespace TeamMAsTD
                 if (orderedPathTiles[i] == null) continue;
 
                 orderedPathTiles[i].is_AI_Path = false;
+
+                //remove the AI Path sprite on tile if one exists
+                SpriteRenderer tileSpriteRenderer = orderedPathTiles[i].GetComponent<SpriteRenderer>();
+
+                if(tileSpriteRenderer.sprite != null) RemovePathTileSprite(orderedPathTiles[i], tileSpriteRenderer);
             }
 
             //then:
