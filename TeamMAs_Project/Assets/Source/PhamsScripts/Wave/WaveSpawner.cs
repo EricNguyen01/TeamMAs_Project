@@ -237,7 +237,10 @@ namespace TeamMAsTD
             float totalWaveRuntime = waveTimerEndTime - waveTimerStartTime;
 
             //log time
-            Debug.Log("Wave: " + waveNum + " Took: " + totalWaveRuntime.ToString() + "s to finish!");
+            if(waveSOList != null && waveSOList.Count > 0)
+            {
+                Debug.Log("Wave: " + waveSOList[waveNum].name + " Took: " + totalWaveRuntime.ToString() + "s to finish!");
+            }
 
             //reset timer
             waveTimerStartTime = 0.0f; waveTimerEndTime = 0.0f;
