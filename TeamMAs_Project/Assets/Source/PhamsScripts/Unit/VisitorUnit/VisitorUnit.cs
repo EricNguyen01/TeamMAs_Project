@@ -196,8 +196,13 @@ namespace TeamMAsTD
             //if reached last tile pos in path
             if(Vector2.Distance((Vector2)transform.position, lastTilePos) <= 0.05f)
             {
+                //deals emotional damage
+                VisitorsDealEmotionalDamage();
+
                 ProcessVisitorDespawns();
+
                 startFollowingPath = false;
+
                 return;
             }
 
@@ -209,6 +214,15 @@ namespace TeamMAsTD
             }
 
             transform.position = Vector2.MoveTowards(transform.position, currentTileWaypointPos, visitorUnitSO.moveSpeed * Time.deltaTime);
+        }
+
+        private void VisitorsDealEmotionalDamage()
+        {
+            if (GameResource.gameResourceInstance == null || GameResource.gameResourceInstance.emotionalHealthSO == null) return;
+
+            if (visitorUnitSO == null) return;
+
+            GameResource.gameResourceInstance.emotionalHealthSO.RemoveResourceAmount(visitorUnitSO.emotionalAttackDamage);
         }
 
         //This function returns visitor to pool and deregister it from active visitor list in the wave that spawned it.
