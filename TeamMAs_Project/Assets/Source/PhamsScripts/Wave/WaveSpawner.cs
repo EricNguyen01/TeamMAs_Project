@@ -341,8 +341,6 @@ namespace TeamMAsTD
                 //process emotional health change on all waves end
                 if (!hasOtherOngoingWaves)
                 {
-                    if (showDebugLog) Debug.Log("Process Health On All Waves End!");
-
                     IncreaseTotalBaseEmotionalHealth();
 
                     HealEmotionalHealthAfterBossWave(waveSOList[waveNum]);

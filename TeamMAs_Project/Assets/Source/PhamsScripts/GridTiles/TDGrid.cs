@@ -26,9 +26,9 @@ namespace TeamMAsTD
 
         [SerializeField] [HideInInspector] private Tile[] gridArray;//the 2D array representing the grid that has been flattened into a 1D array
 
-        [SerializeField] private UnityEvent OnFirstPlantUnitPlantedOnGrid;
+        [SerializeField] private UnityEvent OnFirstDandelionPlantedOnGrid;
 
-        private bool alreadyHasPlantOnGrid = false;
+        private bool alreadyHasDandelionOnGrid = false;//for debugging
 
         //PUBLICS...........................................................
 
@@ -44,27 +44,31 @@ namespace TeamMAsTD
         }
 
         //iterate through the grid to check if any plant has been planted before or not
-        public void CheckPlantUnitAsFirstPlantUnitOnGrid(PlantUnit plantUnit)
+        public void CheckPlantUnitAsFirstDandelionUnitOnGrid(PlantUnit plantUnit)
         {
             if (gridArray == null || gridArray.Length == 0) return;
 
-            if (alreadyHasPlantOnGrid) return;
+            if (alreadyHasDandelionOnGrid) return;
 
             for(int i = 0; i < gridArray.Length; i++)
             {
-                if (gridArray[i].plantUnitOnTile != null && gridArray[i].plantUnitOnTile != plantUnit)
+                if (gridArray[i].plantUnitOnTile != null && 
+                    gridArray[i].plantUnitOnTile != plantUnit &&
+                    gridArray[i].plantUnitOnTile.plantUnitScriptableObject.displayName == "Dandelion")
                 {
-                    alreadyHasPlantOnGrid = true;
+                    alreadyHasDandelionOnGrid = true;
 
                     return;
                 }
             }
 
-            Debug.Log("First Plant Has Been Planted On Grid!");
+            if (plantUnit.plantUnitScriptableObject.displayName != "Dandelion") return;
 
-            alreadyHasPlantOnGrid = true;
+            Debug.Log("First Dandelion Has Been Planted On Grid!");
 
-            OnFirstPlantUnitPlantedOnGrid?.Invoke();
+            alreadyHasDandelionOnGrid = true;
+
+            OnFirstDandelionPlantedOnGrid?.Invoke();
         }
 
 

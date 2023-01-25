@@ -21320,6 +21320,9 @@ MonoBehaviour:
   - {fileID: 504853798}
   - {fileID: 434428339}
   - {fileID: 743545317}
+  OnFirstDandelionPlantedOnGrid:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!4 &830625744
 Transform:
   m_ObjectHideFlags: 0
@@ -28308,6 +28311,10 @@ PrefabInstance:
     - target: {fileID: 1209370932406157311, guid: ba3e2134a4ef544458f0e54fa7cc239f, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1209370933322639145, guid: ba3e2134a4ef544458f0e54fa7cc239f, type: 3}
+      propertyPath: m_Alpha
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1209370933322639148, guid: ba3e2134a4ef544458f0e54fa7cc239f, type: 3}
       propertyPath: m_AnchorMax.y
@@ -60352,6 +60359,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0.000015258789
       objectReference: {fileID: 0}
+    - target: {fileID: 5883281028228278699, guid: 58e8e62d98316384986ae230a8a998f4, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.97317505
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 58e8e62d98316384986ae230a8a998f4, type: 3}
 --- !u!1001 &6779733656380449125
@@ -60418,22 +60429,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 910096186279003502, guid: 6e63e86c283224240aea3258256ba6a3, type: 3}
-      propertyPath: waveSOList.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 910096186279003502, guid: 6e63e86c283224240aea3258256ba6a3, type: 3}
-      propertyPath: waveSOList.Array.data[0]
-      value: 
-      objectReference: {fileID: 11400000, guid: 2cd58fb9ac307fb45b06e9101d3658ed, type: 2}
-    - target: {fileID: 910096186279003502, guid: 6e63e86c283224240aea3258256ba6a3, type: 3}
-      propertyPath: waveSOList.Array.data[1]
-      value: 
-      objectReference: {fileID: 11400000, guid: b16765a0bcc07c8478164ec1436adee3, type: 2}
-    - target: {fileID: 910096186279003502, guid: 6e63e86c283224240aea3258256ba6a3, type: 3}
-      propertyPath: waveSOList.Array.data[2]
-      value: 
-      objectReference: {fileID: 11400000, guid: 103d75cf90e1a594c8b06458addf1c97, type: 2}
     - target: {fileID: 2262348578732048999, guid: 6e63e86c283224240aea3258256ba6a3, type: 3}
       propertyPath: m_RootOrder
       value: 8
@@ -60481,10 +60476,6 @@ PrefabInstance:
     - target: {fileID: 8842526174319833595, guid: 6e63e86c283224240aea3258256ba6a3, type: 3}
       propertyPath: m_Name
       value: WaveSpawner
-      objectReference: {fileID: 0}
-    - target: {fileID: 8842526174319833595, guid: 6e63e86c283224240aea3258256ba6a3, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6e63e86c283224240aea3258256ba6a3, type: 3}

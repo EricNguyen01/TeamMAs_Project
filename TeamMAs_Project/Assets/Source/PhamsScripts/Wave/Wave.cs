@@ -201,12 +201,12 @@ namespace TeamMAsTD
             }
 
             //randomly shuffle the selected spawn chance list
-            spawnChanceList = HelperFunctions.RandomShuffleListElements(spawnChanceList);
+            //spawnChanceList = HelperFunctions.RandomShuffleListElements(spawnChanceList);
 
             //infiitely looping to look for a valid random visitor type to spawn
             //by randomly choose an element within the randomly shuffled spawn chance list
             //if new random visitor element is the same as previous (repeated) or is null -> continue looping
-            //loop only stops when a valid visitor is found
+            //loop only stops when a valid visitor is found (COULD HAVE POTENTIAL BUGS HERE - WATCH THIS LOOP CLOSELY!!!)
             while (true)
             {
                 if (spawnChanceList.Count == 0) return null;
@@ -223,6 +223,19 @@ namespace TeamMAsTD
 
         private VisitorUnitSO GetVisitorTypeFromSpawnChanceList(List<VisitorUnitSO> spawnChanceList)
         {
+            //the below if deals with an edge case in which spawn chance list only has 1 element
+            //this edge case has caused a bug where the while loop in GetVisitorTypeToSpawnBasedOnChance() loops infinitely.
+            if (spawnChanceList.Count == 1)
+            {
+                currentSpawnRandomNumber = 0;
+
+                previousSpawnRandomNumber = -1;
+
+                return spawnChanceList[0];
+            }
+
+            //else if not above -> process normally 
+
             currentSpawnRandomNumber = Random.Range(0, spawnChanceList.Count);
 
             //make sure rand is not a repeat 

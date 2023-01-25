@@ -44,7 +44,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42ab8c0addd3a2743968339ba0d27d85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waveSOList: []
+  waveSOList:
+  - {fileID: 11400000, guid: 2cd58fb9ac307fb45b06e9101d3658ed, type: 2}
+  - {fileID: 11400000, guid: b16765a0bcc07c8478164ec1436adee3, type: 2}
+  - {fileID: 11400000, guid: 103d75cf90e1a594c8b06458addf1c97, type: 2}
+  - {fileID: 11400000, guid: 4e57d45113429cd4297df5fad99bebe1, type: 2}
+  - {fileID: 11400000, guid: 652ee3dd1fc68e04b84fe3cc68b02f56, type: 2}
+  - {fileID: 11400000, guid: 29994f7c3ce6df949a842cf85e61973e, type: 2}
+  - {fileID: 11400000, guid: 1abc05b6a2d11884ab729be62adee719, type: 2}
+  - {fileID: 11400000, guid: a9c9424915cdef84483821f838f0897c, type: 2}
+  - {fileID: 11400000, guid: 1e1fdab6854acec4aae71dd60958bb53, type: 2}
+  - {fileID: 11400000, guid: d9a1cd3a012ce074db3771684f18b6a9, type: 2}
   waveSpawnerManagerPrefab: {fileID: 1967716630559944052, guid: 7ab7f7b5757ee6a44998073a2c9cd286, type: 3}
   <showDebugLog>k__BackingField: 0
   <showWavesEndHealthProcessDebugLog>k__BackingField: 0

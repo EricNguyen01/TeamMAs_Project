@@ -173,7 +173,7 @@ namespace TeamMAsTD
             }
             else GameResource.gameResourceInstance.coinResourceSO.RemoveResourceAmount(plantUnitOnTile.plantUnitScriptableObject.plantingCoinCost);
 
-            gridParent.CheckPlantUnitAsFirstPlantUnitOnGrid(plantUnitOnTile);
+            gridParent.CheckPlantUnitAsFirstDandelionUnitOnGrid(plantUnitOnTile);
 
             return true;
         }
