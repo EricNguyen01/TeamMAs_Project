@@ -200,16 +200,20 @@ namespace TeamMAsTD
                 }
             }
 
-            //randomly shuffle the selected spawn chance list
-            //spawnChanceList = HelperFunctions.RandomShuffleListElements(spawnChanceList);
-
-            //infiitely looping to look for a valid random visitor type to spawn
-            //by randomly choose an element within the randomly shuffled spawn chance list
+            //this while loop looks for a valid random visitor type to spawn
+            //by randomly choose an element within the spawn chance list
             //if new random visitor element is the same as previous (repeated) or is null -> continue looping
-            //loop only stops when a valid visitor is found (COULD HAVE POTENTIAL BUGS HERE - WATCH THIS LOOP CLOSELY!!!)
-            while (true)
+            //loop only stops when a valid visitor is found
+            //if after 5 loop count and no invalid visitor is returned (it shouldnt take this many loop counts) then 
+            //smth is wrong with the way the waveSO or wave spawner is set up.
+            //Exit the while loop at this point anyway to avoid infinite loop.
+            int count = 0;
+
+            while (count < 5)
             {
                 if (spawnChanceList.Count == 0) return null;
+
+                count++;
 
                 //select randomly and non-repeatedly an element in the spawnChanceList 
                 //return null if current visitor value is null or repeated
@@ -219,6 +223,8 @@ namespace TeamMAsTD
 
                 return visitorType;
             }
+
+            return null;
         }
 
         private VisitorUnitSO GetVisitorTypeFromSpawnChanceList(List<VisitorUnitSO> spawnChanceList)
