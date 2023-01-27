@@ -26,11 +26,21 @@ public class Dialog : MonoBehaviour
         StartCoroutine(DialogTest(1f));
     }
 
+    void OnConversationStart(Transform actor)
+    {
+        Time.timeScale = 0;
+    }
+
+    void OnConversationEnd(Transform actor)
+    {
+        Time.timeScale = 1;
+    }
+
     IEnumerator DialogTest(float delayTime)
     {
         yield return new WaitForSeconds(delayTime);
         //DialogueManager.StartConversation(string conversation, Transform actor, Transform conversant); // actor and conversant are optional
-        DialogueManager.StartConversation("Wave/1");
+        StartConversation(1);
         //GetComponent<DialogueSystemTrigger>().OnUse();  // also works, only if using a DialogueSystemTrigger component set to OnUse
     }
 
