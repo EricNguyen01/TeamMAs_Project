@@ -101,13 +101,15 @@ namespace TeamMAsTD
                 {
                     if(tileWithUnitToUproot.plantUnitOnTile != null)
                     {
-                        float refundAmount = tileWithUnitToUproot.plantUnitOnTile.plantUnitScriptableObject.uprootRefundAmount;
-
-                        GameResource.gameResourceInstance.coinResourceSO.AddResourceAmount(refundAmount);
-
                         float costAmount = tileWithUnitToUproot.plantUnitOnTile.plantUnitScriptableObject.uprootCost;
 
+                        if (GameResource.gameResourceInstance.coinResourceSO.resourceAmount < costAmount) return;
+
+                        float refundAmount = tileWithUnitToUproot.plantUnitOnTile.plantUnitScriptableObject.uprootRefundAmount;
+
                         GameResource.gameResourceInstance.coinResourceSO.RemoveResourceAmount(costAmount);
+
+                        GameResource.gameResourceInstance.coinResourceSO.AddResourceAmount(refundAmount);
                     }
                 }
 
