@@ -4,7 +4,7 @@ using PixelCrushers.DialogueSystem;
 
 public class Dialog : MonoBehaviour
 {
-    [SerializeField] string conversation; // the title of the conversation
+    //[SerializeField] string conversation; // the title of the conversation
 
     /* NOTES
     Using Names in Dialog Text
@@ -30,7 +30,7 @@ public class Dialog : MonoBehaviour
     {
         yield return new WaitForSeconds(delayTime);
         //DialogueManager.StartConversation(string conversation, Transform actor, Transform conversant); // actor and conversant are optional
-        DialogueManager.StartConversation(conversation);
+        DialogueManager.StartConversation("Wave/1");
         //GetComponent<DialogueSystemTrigger>().OnUse();  // also works, only if using a DialogueSystemTrigger component set to OnUse
     }
 
@@ -42,5 +42,10 @@ public class Dialog : MonoBehaviour
     public void StartConversation(string conversation)
     {
         DialogueManager.StartConversation(conversation);
+    }
+
+    public void StartConversation(int waveNum)
+    {
+        DialogueManager.StartConversation("Wave/" + (waveNum));
     }
 }

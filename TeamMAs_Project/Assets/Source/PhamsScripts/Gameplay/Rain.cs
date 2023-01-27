@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using PixelCrushers.DialogueSystem;
 
 namespace TeamMAsTD
 {
@@ -61,7 +62,8 @@ namespace TeamMAsTD
 
         public void TestRainEvent(int waveNum)
         {
-            Debug.Log("Wave just finished: " + waveNum);
+            //Debug.Log("Wave just finished: " + waveNum);
+            DialogueManager.StartConversation("Wave/" + (waveNum + 2));
         }
     }
 }

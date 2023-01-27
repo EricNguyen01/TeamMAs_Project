@@ -1648,12 +1648,12 @@ MonoBehaviour:
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 4.2857056, y: 31.644325}
-    canvasZoom: 0.70000035
+    canvasScrollPosition: {x: 0, y: 12.311922}
+    canvasZoom: 0.61000043
   - id: 6
     fields:
     - title: Title
-      value: Water
+      value: Wave/2
       type: 0
       typeString: CustomFieldType_Text
     - title: Description

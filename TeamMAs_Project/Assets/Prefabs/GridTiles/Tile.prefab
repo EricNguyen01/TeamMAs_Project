@@ -746,7 +746,7 @@ SpriteRenderer:
   m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: db750325989564987a34393247d883b4, type: 3}
-  m_Color: {r: 0, g: 1, b: 0, a: 1}
+  m_Color: {r: 0.49411768, g: 0.3803922, b: 0.29803923, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -807,7 +807,7 @@ MonoBehaviour:
   <plantUnitOnTile>k__BackingField: {fileID: 0}
   <disableUprootOnTile>k__BackingField: 0
   drawTileDebug: 1
-  drawDebugRuntime: 1
+  drawDebugRuntime: 0
   OnPlantUnitPlantedOnTile:
     m_PersistentCalls:
       m_Calls:
