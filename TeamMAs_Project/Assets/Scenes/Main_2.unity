@@ -256,14 +256,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.7490566, b: 0.7490566, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1b82165064c81f748bc3ddbae1b11014, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -494,14 +494,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.7490566, b: 0.7490566, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1b82165064c81f748bc3ddbae1b11014, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -689,6 +689,21 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnPlantingFailedOnTile:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 777042340}
+        m_TargetAssemblyTypeName: TeamMAsTD.Dialog, Assembly-CSharp
+        m_MethodName: PlantBlocked
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnPlantUnitUprootedOnTile:
     m_PersistentCalls:
       m_Calls:
@@ -702,6 +717,21 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnInsufficientFundsToUproot:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 777042340}
+        m_TargetAssemblyTypeName: TeamMAsTD.Dialog, Assembly-CSharp
+        m_MethodName: NoMoney
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Uproot
           m_BoolArgument: 0
         m_CallState: 2
   <tileNumInRow>k__BackingField: 9
@@ -816,6 +846,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wateringSoundPlayerPrefab: {fileID: 1954455504458609106, guid: 7ea03095a313b0c4292be0f076dce57e, type: 3}
+  OnInsufficientFundsToWater:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 777042340}
+        m_TargetAssemblyTypeName: TeamMAsTD.Dialog, Assembly-CSharp
+        m_MethodName: NoMoney
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Water
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &15538441
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1322,14 +1367,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.7490566, b: 0.7490566, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1b82165064c81f748bc3ddbae1b11014, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -1480,14 +1525,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.7490566, b: 0.7490566, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1b82165064c81f748bc3ddbae1b11014, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -1717,6 +1762,21 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnPlantingFailedOnTile:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 777042340}
+        m_TargetAssemblyTypeName: TeamMAsTD.Dialog, Assembly-CSharp
+        m_MethodName: PlantBlocked
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnPlantUnitUprootedOnTile:
     m_PersistentCalls:
       m_Calls:
@@ -1730,6 +1790,21 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnInsufficientFundsToUproot:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 777042340}
+        m_TargetAssemblyTypeName: TeamMAsTD.Dialog, Assembly-CSharp
+        m_MethodName: NoMoney
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Uproot
           m_BoolArgument: 0
         m_CallState: 2
   <tileNumInRow>k__BackingField: 7
@@ -1844,6 +1919,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wateringSoundPlayerPrefab: {fileID: 1954455504458609106, guid: 7ea03095a313b0c4292be0f076dce57e, type: 3}
+  OnInsufficientFundsToWater:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 777042340}
+        m_TargetAssemblyTypeName: TeamMAsTD.Dialog, Assembly-CSharp
+        m_MethodName: NoMoney
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Water
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &52810154
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2032,7 +2122,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: X
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -3048,7 +3138,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: X
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -3183,7 +3273,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: X
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -3318,7 +3408,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: X
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -3533,7 +3623,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: X
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -3909,6 +3999,21 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnPlantingFailedOnTile:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 777042340}
+        m_TargetAssemblyTypeName: TeamMAsTD.Dialog, Assembly-CSharp
+        m_MethodName: PlantBlocked
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnPlantUnitUprootedOnTile:
     m_PersistentCalls:
       m_Calls:
@@ -3922,6 +4027,21 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnInsufficientFundsToUproot:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 777042340}
+        m_TargetAssemblyTypeName: TeamMAsTD.Dialog, Assembly-CSharp
+        m_MethodName: NoMoney
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Uproot
           m_BoolArgument: 0
         m_CallState: 2
   <tileNumInRow>k__BackingField: 1
@@ -4036,6 +4156,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wateringSoundPlayerPrefab: {fileID: 1954455504458609106, guid: 7ea03095a313b0c4292be0f076dce57e, type: 3}
+  OnInsufficientFundsToWater:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 777042340}
+        m_TargetAssemblyTypeName: TeamMAsTD.Dialog, Assembly-CSharp
+        m_MethodName: NoMoney
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Water
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &105890049
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4299,14 +4434,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.7490566, b: 0.7490566, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1b82165064c81f748bc3ddbae1b11014, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -4834,6 +4969,21 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnPlantingFailedOnTile:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 777042340}
+        m_TargetAssemblyTypeName: TeamMAsTD.Dialog, Assembly-CSharp
+        m_MethodName: PlantBlocked
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnPlantUnitUprootedOnTile:
     m_PersistentCalls:
       m_Calls:
@@ -4847,6 +4997,21 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnInsufficientFundsToUproot:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 777042340}
+        m_TargetAssemblyTypeName: TeamMAsTD.Dialog, Assembly-CSharp
+        m_MethodName: NoMoney
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Uproot
           m_BoolArgument: 0
         m_CallState: 2
   <tileNumInRow>k__BackingField: 0
@@ -4961,6 +5126,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wateringSoundPlayerPrefab: {fileID: 1954455504458609106, guid: 7ea03095a313b0c4292be0f076dce57e, type: 3}
+  OnInsufficientFundsToWater:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 777042340}
+        m_TargetAssemblyTypeName: TeamMAsTD.Dialog, Assembly-CSharp
+        m_MethodName: NoMoney
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Water
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &121886958
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6054,7 +6234,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: X
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -6265,7 +6445,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: X
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -6641,6 +6821,21 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnPlantingFailedOnTile:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 777042340}
+        m_TargetAssemblyTypeName: TeamMAsTD.Dialog, Assembly-CSharp
+        m_MethodName: PlantBlocked
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnPlantUnitUprootedOnTile:
     m_PersistentCalls:
       m_Calls:
@@ -6654,6 +6849,21 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnInsufficientFundsToUproot:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 777042340}
+        m_TargetAssemblyTypeName: TeamMAsTD.Dialog, Assembly-CSharp
+        m_MethodName: NoMoney
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Uproot
           m_BoolArgument: 0
         m_CallState: 2
   <tileNumInRow>k__BackingField: 3
@@ -6768,6 +6978,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wateringSoundPlayerPrefab: {fileID: 1954455504458609106, guid: 7ea03095a313b0c4292be0f076dce57e, type: 3}
+  OnInsufficientFundsToWater:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 777042340}
+        m_TargetAssemblyTypeName: TeamMAsTD.Dialog, Assembly-CSharp
+        m_MethodName: NoMoney
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Water
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &197177031
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7102,7 +7327,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: X
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -7237,7 +7462,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: X
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -7655,7 +7880,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: X
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -8850,14 +9075,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.7490566, b: 0.7490566, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1b82165064c81f748bc3ddbae1b11014, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -9578,6 +9803,21 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnPlantingFailedOnTile:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 777042340}
+        m_TargetAssemblyTypeName: TeamMAsTD.Dialog, Assembly-CSharp
+        m_MethodName: PlantBlocked
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnPlantUnitUprootedOnTile:
     m_PersistentCalls:
       m_Calls:
@@ -9591,6 +9831,21 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnInsufficientFundsToUproot:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 777042340}
+        m_TargetAssemblyTypeName: TeamMAsTD.Dialog, Assembly-CSharp
+        m_MethodName: NoMoney
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Uproot
           m_BoolArgument: 0
         m_CallState: 2
   <tileNumInRow>k__BackingField: 9
@@ -9705,6 +9960,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wateringSoundPlayerPrefab: {fileID: 1954455504458609106, guid: 7ea03095a313b0c4292be0f076dce57e, type: 3}
+  OnInsufficientFundsToWater:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 777042340}
+        m_TargetAssemblyTypeName: TeamMAsTD.Dialog, Assembly-CSharp
+        m_MethodName: NoMoney
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Water
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &340959693
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10714,7 +10984,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: X
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -11000,14 +11270,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.7490566, b: 0.7490566, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1b82165064c81f748bc3ddbae1b11014, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -11159,7 +11429,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: X
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -11617,7 +11887,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: X
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -12147,7 +12417,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: X
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -12280,6 +12550,21 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnPlantingFailedOnTile:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 777042340}
+        m_TargetAssemblyTypeName: TeamMAsTD.Dialog, Assembly-CSharp
+        m_MethodName: PlantBlocked
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnPlantUnitUprootedOnTile:
     m_PersistentCalls:
       m_Calls:
@@ -12293,6 +12578,21 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnInsufficientFundsToUproot:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 777042340}
+        m_TargetAssemblyTypeName: TeamMAsTD.Dialog, Assembly-CSharp
+        m_MethodName: NoMoney
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Uproot
           m_BoolArgument: 0
         m_CallState: 2
   <tileNumInRow>k__BackingField: 0
@@ -12407,6 +12707,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wateringSoundPlayerPrefab: {fileID: 1954455504458609106, guid: 7ea03095a313b0c4292be0f076dce57e, type: 3}
+  OnInsufficientFundsToWater:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 777042340}
+        m_TargetAssemblyTypeName: TeamMAsTD.Dialog, Assembly-CSharp
+        m_MethodName: NoMoney
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Water
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &456749766
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12803,7 +13118,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: X
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -13930,14 +14245,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.7490566, b: 0.7490566, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1b82165064c81f748bc3ddbae1b11014, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -14011,6 +14326,21 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnPlantingFailedOnTile:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 777042340}
+        m_TargetAssemblyTypeName: TeamMAsTD.Dialog, Assembly-CSharp
+        m_MethodName: PlantBlocked
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnPlantUnitUprootedOnTile:
     m_PersistentCalls:
       m_Calls:
@@ -14024,6 +14354,21 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnInsufficientFundsToUproot:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 777042340}
+        m_TargetAssemblyTypeName: TeamMAsTD.Dialog, Assembly-CSharp
+        m_MethodName: NoMoney
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Uproot
           m_BoolArgument: 0
         m_CallState: 2
   <tileNumInRow>k__BackingField: 4
@@ -14138,6 +14483,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wateringSoundPlayerPrefab: {fileID: 1954455504458609106, guid: 7ea03095a313b0c4292be0f076dce57e, type: 3}
+  OnInsufficientFundsToWater:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 777042340}
+        m_TargetAssemblyTypeName: TeamMAsTD.Dialog, Assembly-CSharp
+        m_MethodName: NoMoney
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Water
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &548260355
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14324,6 +14684,21 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnPlantingFailedOnTile:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 777042340}
+        m_TargetAssemblyTypeName: TeamMAsTD.Dialog, Assembly-CSharp
+        m_MethodName: PlantBlocked
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnPlantUnitUprootedOnTile:
     m_PersistentCalls:
       m_Calls:
@@ -14337,6 +14712,21 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnInsufficientFundsToUproot:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 777042340}
+        m_TargetAssemblyTypeName: TeamMAsTD.Dialog, Assembly-CSharp
+        m_MethodName: NoMoney
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Uproot
           m_BoolArgument: 0
         m_CallState: 2
   <tileNumInRow>k__BackingField: 1
@@ -14451,6 +14841,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wateringSoundPlayerPrefab: {fileID: 1954455504458609106, guid: 7ea03095a313b0c4292be0f076dce57e, type: 3}
+  OnInsufficientFundsToWater:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 777042340}
+        m_TargetAssemblyTypeName: TeamMAsTD.Dialog, Assembly-CSharp
+        m_MethodName: NoMoney
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Water
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &551824657
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16580,14 +16985,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.7490566, b: 0.7490566, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1b82165064c81f748bc3ddbae1b11014, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -16738,14 +17143,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.7490566, b: 0.7490566, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1b82165064c81f748bc3ddbae1b11014, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -16866,6 +17271,21 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnPlantingFailedOnTile:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 777042340}
+        m_TargetAssemblyTypeName: TeamMAsTD.Dialog, Assembly-CSharp
+        m_MethodName: PlantBlocked
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnPlantUnitUprootedOnTile:
     m_PersistentCalls:
       m_Calls:
@@ -16879,6 +17299,21 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnInsufficientFundsToUproot:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 777042340}
+        m_TargetAssemblyTypeName: TeamMAsTD.Dialog, Assembly-CSharp
+        m_MethodName: NoMoney
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Uproot
           m_BoolArgument: 0
         m_CallState: 2
   <tileNumInRow>k__BackingField: 5
@@ -16993,6 +17428,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wateringSoundPlayerPrefab: {fileID: 1954455504458609106, guid: 7ea03095a313b0c4292be0f076dce57e, type: 3}
+  OnInsufficientFundsToWater:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 777042340}
+        m_TargetAssemblyTypeName: TeamMAsTD.Dialog, Assembly-CSharp
+        m_MethodName: NoMoney
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Water
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &686431548
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17181,7 +17631,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: X
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -17557,6 +18007,21 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnPlantingFailedOnTile:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 777042340}
+        m_TargetAssemblyTypeName: TeamMAsTD.Dialog, Assembly-CSharp
+        m_MethodName: PlantBlocked
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnPlantUnitUprootedOnTile:
     m_PersistentCalls:
       m_Calls:
@@ -17570,6 +18035,21 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnInsufficientFundsToUproot:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 777042340}
+        m_TargetAssemblyTypeName: TeamMAsTD.Dialog, Assembly-CSharp
+        m_MethodName: NoMoney
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Uproot
           m_BoolArgument: 0
         m_CallState: 2
   <tileNumInRow>k__BackingField: 9
@@ -17684,6 +18164,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wateringSoundPlayerPrefab: {fileID: 1954455504458609106, guid: 7ea03095a313b0c4292be0f076dce57e, type: 3}
+  OnInsufficientFundsToWater:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 777042340}
+        m_TargetAssemblyTypeName: TeamMAsTD.Dialog, Assembly-CSharp
+        m_MethodName: NoMoney
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Water
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &696377663
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18083,7 +18578,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: X
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -18293,14 +18788,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.7490566, b: 0.7490566, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1b82165064c81f748bc3ddbae1b11014, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -18451,14 +18946,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.7490566, b: 0.7490566, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1b82165064c81f748bc3ddbae1b11014, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -18532,6 +19027,21 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnPlantingFailedOnTile:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 777042340}
+        m_TargetAssemblyTypeName: TeamMAsTD.Dialog, Assembly-CSharp
+        m_MethodName: PlantBlocked
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnPlantUnitUprootedOnTile:
     m_PersistentCalls:
       m_Calls:
@@ -18545,6 +19055,21 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnInsufficientFundsToUproot:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 777042340}
+        m_TargetAssemblyTypeName: TeamMAsTD.Dialog, Assembly-CSharp
+        m_MethodName: NoMoney
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Uproot
           m_BoolArgument: 0
         m_CallState: 2
   <tileNumInRow>k__BackingField: 8
@@ -18659,6 +19184,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wateringSoundPlayerPrefab: {fileID: 1954455504458609106, guid: 7ea03095a313b0c4292be0f076dce57e, type: 3}
+  OnInsufficientFundsToWater:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 777042340}
+        m_TargetAssemblyTypeName: TeamMAsTD.Dialog, Assembly-CSharp
+        m_MethodName: NoMoney
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Water
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &712307768
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18922,14 +19462,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.7490566, b: 0.7490566, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1b82165064c81f748bc3ddbae1b11014, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -19119,7 +19659,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: X
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -19751,6 +20291,7 @@ GameObject:
   m_Component:
   - component: {fileID: 777042339}
   - component: {fileID: 777042338}
+  - component: {fileID: 777042340}
   m_Layer: 0
   m_Name: Grid
   m_TagString: Untagged
@@ -19905,6 +20446,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &777042340
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 777042337}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca55256f202eebb469285b8b09c93107, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &777917020
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -19912,6 +20465,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1045599303906836323, guid: d1cdca22ec4708540aa68019e182a7d8, type: 3}
+      propertyPath: m_Name
+      value: Skip Text
+      objectReference: {fileID: 0}
     - target: {fileID: 8732644743540076669, guid: d1cdca22ec4708540aa68019e182a7d8, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -20024,7 +20581,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: X
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -20204,6 +20761,21 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnPlantingFailedOnTile:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 777042340}
+        m_TargetAssemblyTypeName: TeamMAsTD.Dialog, Assembly-CSharp
+        m_MethodName: PlantBlocked
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnPlantUnitUprootedOnTile:
     m_PersistentCalls:
       m_Calls:
@@ -20217,6 +20789,21 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnInsufficientFundsToUproot:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 777042340}
+        m_TargetAssemblyTypeName: TeamMAsTD.Dialog, Assembly-CSharp
+        m_MethodName: NoMoney
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Uproot
           m_BoolArgument: 0
         m_CallState: 2
   <tileNumInRow>k__BackingField: 8
@@ -20331,6 +20918,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wateringSoundPlayerPrefab: {fileID: 1954455504458609106, guid: 7ea03095a313b0c4292be0f076dce57e, type: 3}
+  OnInsufficientFundsToWater:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 777042340}
+        m_TargetAssemblyTypeName: TeamMAsTD.Dialog, Assembly-CSharp
+        m_MethodName: NoMoney
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Water
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &782636142
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20729,14 +21331,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.7490566, b: 0.7490566, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1b82165064c81f748bc3ddbae1b11014, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -21286,14 +21888,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.7490566, b: 0.7490566, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1b82165064c81f748bc3ddbae1b11014, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -21520,14 +22122,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.7490566, b: 0.7490566, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1b82165064c81f748bc3ddbae1b11014, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -22324,6 +22926,21 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnPlantingFailedOnTile:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 777042340}
+        m_TargetAssemblyTypeName: TeamMAsTD.Dialog, Assembly-CSharp
+        m_MethodName: PlantBlocked
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnPlantUnitUprootedOnTile:
     m_PersistentCalls:
       m_Calls:
@@ -22337,6 +22954,21 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnInsufficientFundsToUproot:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 777042340}
+        m_TargetAssemblyTypeName: TeamMAsTD.Dialog, Assembly-CSharp
+        m_MethodName: NoMoney
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Uproot
           m_BoolArgument: 0
         m_CallState: 2
   <tileNumInRow>k__BackingField: 7
@@ -22451,6 +23083,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wateringSoundPlayerPrefab: {fileID: 1954455504458609106, guid: 7ea03095a313b0c4292be0f076dce57e, type: 3}
+  OnInsufficientFundsToWater:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 777042340}
+        m_TargetAssemblyTypeName: TeamMAsTD.Dialog, Assembly-CSharp
+        m_MethodName: NoMoney
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Water
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &840555214
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22714,14 +23361,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.7490566, b: 0.7490566, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1b82165064c81f748bc3ddbae1b11014, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -22795,6 +23442,21 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnPlantingFailedOnTile:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 777042340}
+        m_TargetAssemblyTypeName: TeamMAsTD.Dialog, Assembly-CSharp
+        m_MethodName: PlantBlocked
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnPlantUnitUprootedOnTile:
     m_PersistentCalls:
       m_Calls:
@@ -22808,6 +23470,21 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnInsufficientFundsToUproot:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 777042340}
+        m_TargetAssemblyTypeName: TeamMAsTD.Dialog, Assembly-CSharp
+        m_MethodName: NoMoney
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Uproot
           m_BoolArgument: 0
         m_CallState: 2
   <tileNumInRow>k__BackingField: 6
@@ -22922,6 +23599,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wateringSoundPlayerPrefab: {fileID: 1954455504458609106, guid: 7ea03095a313b0c4292be0f076dce57e, type: 3}
+  OnInsufficientFundsToWater:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 777042340}
+        m_TargetAssemblyTypeName: TeamMAsTD.Dialog, Assembly-CSharp
+        m_MethodName: NoMoney
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Water
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &845359700
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23110,7 +23802,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: X
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -23321,7 +24013,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: X
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -23638,7 +24330,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: X
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -23848,14 +24540,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.7490566, b: 0.7490566, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1b82165064c81f748bc3ddbae1b11014, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -24363,14 +25055,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.7490566, b: 0.7490566, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1b82165064c81f748bc3ddbae1b11014, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -25660,14 +26352,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.7490566, b: 0.7490566, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1b82165064c81f748bc3ddbae1b11014, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -26331,14 +27023,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.7490566, b: 0.7490566, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1b82165064c81f748bc3ddbae1b11014, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -26461,7 +27153,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: X
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -26596,7 +27288,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: X
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -27086,6 +27778,21 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnPlantingFailedOnTile:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 777042340}
+        m_TargetAssemblyTypeName: TeamMAsTD.Dialog, Assembly-CSharp
+        m_MethodName: PlantBlocked
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnPlantUnitUprootedOnTile:
     m_PersistentCalls:
       m_Calls:
@@ -27099,6 +27806,21 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnInsufficientFundsToUproot:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 777042340}
+        m_TargetAssemblyTypeName: TeamMAsTD.Dialog, Assembly-CSharp
+        m_MethodName: NoMoney
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Uproot
           m_BoolArgument: 0
         m_CallState: 2
   <tileNumInRow>k__BackingField: 3
@@ -27213,6 +27935,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wateringSoundPlayerPrefab: {fileID: 1954455504458609106, guid: 7ea03095a313b0c4292be0f076dce57e, type: 3}
+  OnInsufficientFundsToWater:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 777042340}
+        m_TargetAssemblyTypeName: TeamMAsTD.Dialog, Assembly-CSharp
+        m_MethodName: NoMoney
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Water
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &979564351
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27719,14 +28456,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.7490566, b: 0.7490566, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1b82165064c81f748bc3ddbae1b11014, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -28043,6 +28780,21 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnPlantingFailedOnTile:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 777042340}
+        m_TargetAssemblyTypeName: TeamMAsTD.Dialog, Assembly-CSharp
+        m_MethodName: PlantBlocked
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnPlantUnitUprootedOnTile:
     m_PersistentCalls:
       m_Calls:
@@ -28056,6 +28808,21 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnInsufficientFundsToUproot:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 777042340}
+        m_TargetAssemblyTypeName: TeamMAsTD.Dialog, Assembly-CSharp
+        m_MethodName: NoMoney
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Uproot
           m_BoolArgument: 0
         m_CallState: 2
   <tileNumInRow>k__BackingField: 5
@@ -28170,6 +28937,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wateringSoundPlayerPrefab: {fileID: 1954455504458609106, guid: 7ea03095a313b0c4292be0f076dce57e, type: 3}
+  OnInsufficientFundsToWater:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 777042340}
+        m_TargetAssemblyTypeName: TeamMAsTD.Dialog, Assembly-CSharp
+        m_MethodName: NoMoney
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Water
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1002748427
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28432,6 +29214,21 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnPlantingFailedOnTile:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 777042340}
+        m_TargetAssemblyTypeName: TeamMAsTD.Dialog, Assembly-CSharp
+        m_MethodName: PlantBlocked
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnPlantUnitUprootedOnTile:
     m_PersistentCalls:
       m_Calls:
@@ -28445,6 +29242,21 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnInsufficientFundsToUproot:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 777042340}
+        m_TargetAssemblyTypeName: TeamMAsTD.Dialog, Assembly-CSharp
+        m_MethodName: NoMoney
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Uproot
           m_BoolArgument: 0
         m_CallState: 2
   <tileNumInRow>k__BackingField: 2
@@ -28559,6 +29371,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wateringSoundPlayerPrefab: {fileID: 1954455504458609106, guid: 7ea03095a313b0c4292be0f076dce57e, type: 3}
+  OnInsufficientFundsToWater:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 777042340}
+        m_TargetAssemblyTypeName: TeamMAsTD.Dialog, Assembly-CSharp
+        m_MethodName: NoMoney
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Water
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1004615124
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28822,14 +29649,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.7490566, b: 0.7490566, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1b82165064c81f748bc3ddbae1b11014, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -29696,14 +30523,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.7490566, b: 0.7490566, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1b82165064c81f748bc3ddbae1b11014, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -30022,7 +30849,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: X
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -30308,14 +31135,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.7490566, b: 0.7490566, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1b82165064c81f748bc3ddbae1b11014, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -30389,6 +31216,21 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnPlantingFailedOnTile:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 777042340}
+        m_TargetAssemblyTypeName: TeamMAsTD.Dialog, Assembly-CSharp
+        m_MethodName: PlantBlocked
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnPlantUnitUprootedOnTile:
     m_PersistentCalls:
       m_Calls:
@@ -30402,6 +31244,21 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnInsufficientFundsToUproot:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 777042340}
+        m_TargetAssemblyTypeName: TeamMAsTD.Dialog, Assembly-CSharp
+        m_MethodName: NoMoney
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Uproot
           m_BoolArgument: 0
         m_CallState: 2
   <tileNumInRow>k__BackingField: 1
@@ -30516,6 +31373,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wateringSoundPlayerPrefab: {fileID: 1954455504458609106, guid: 7ea03095a313b0c4292be0f076dce57e, type: 3}
+  OnInsufficientFundsToWater:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 777042340}
+        m_TargetAssemblyTypeName: TeamMAsTD.Dialog, Assembly-CSharp
+        m_MethodName: NoMoney
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Water
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1079170321
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30974,7 +31846,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: X
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -31289,6 +32161,21 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnPlantingFailedOnTile:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 777042340}
+        m_TargetAssemblyTypeName: TeamMAsTD.Dialog, Assembly-CSharp
+        m_MethodName: PlantBlocked
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnPlantUnitUprootedOnTile:
     m_PersistentCalls:
       m_Calls:
@@ -31302,6 +32189,21 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnInsufficientFundsToUproot:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 777042340}
+        m_TargetAssemblyTypeName: TeamMAsTD.Dialog, Assembly-CSharp
+        m_MethodName: NoMoney
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Uproot
           m_BoolArgument: 0
         m_CallState: 2
   <tileNumInRow>k__BackingField: 4
@@ -31416,6 +32318,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wateringSoundPlayerPrefab: {fileID: 1954455504458609106, guid: 7ea03095a313b0c4292be0f076dce57e, type: 3}
+  OnInsufficientFundsToWater:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 777042340}
+        m_TargetAssemblyTypeName: TeamMAsTD.Dialog, Assembly-CSharp
+        m_MethodName: NoMoney
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Water
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1107879448
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -31604,7 +32521,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: X
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -32146,6 +33063,21 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnPlantingFailedOnTile:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 777042340}
+        m_TargetAssemblyTypeName: TeamMAsTD.Dialog, Assembly-CSharp
+        m_MethodName: PlantBlocked
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnPlantUnitUprootedOnTile:
     m_PersistentCalls:
       m_Calls:
@@ -32159,6 +33091,21 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnInsufficientFundsToUproot:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 777042340}
+        m_TargetAssemblyTypeName: TeamMAsTD.Dialog, Assembly-CSharp
+        m_MethodName: NoMoney
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Uproot
           m_BoolArgument: 0
         m_CallState: 2
   <tileNumInRow>k__BackingField: 2
@@ -32273,6 +33220,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wateringSoundPlayerPrefab: {fileID: 1954455504458609106, guid: 7ea03095a313b0c4292be0f076dce57e, type: 3}
+  OnInsufficientFundsToWater:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 777042340}
+        m_TargetAssemblyTypeName: TeamMAsTD.Dialog, Assembly-CSharp
+        m_MethodName: NoMoney
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Water
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1155804724
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32594,6 +33556,21 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnPlantingFailedOnTile:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 777042340}
+        m_TargetAssemblyTypeName: TeamMAsTD.Dialog, Assembly-CSharp
+        m_MethodName: PlantBlocked
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnPlantUnitUprootedOnTile:
     m_PersistentCalls:
       m_Calls:
@@ -32607,6 +33584,21 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnInsufficientFundsToUproot:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 777042340}
+        m_TargetAssemblyTypeName: TeamMAsTD.Dialog, Assembly-CSharp
+        m_MethodName: NoMoney
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Uproot
           m_BoolArgument: 0
         m_CallState: 2
   <tileNumInRow>k__BackingField: 6
@@ -32721,6 +33713,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wateringSoundPlayerPrefab: {fileID: 1954455504458609106, guid: 7ea03095a313b0c4292be0f076dce57e, type: 3}
+  OnInsufficientFundsToWater:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 777042340}
+        m_TargetAssemblyTypeName: TeamMAsTD.Dialog, Assembly-CSharp
+        m_MethodName: NoMoney
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Water
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1158758390
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -33199,7 +34206,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: X
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -33652,14 +34659,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.7490566, b: 0.7490566, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1b82165064c81f748bc3ddbae1b11014, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -33849,7 +34856,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: X
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -34059,14 +35066,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.7490566, b: 0.7490566, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1b82165064c81f748bc3ddbae1b11014, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -34890,6 +35897,21 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnPlantingFailedOnTile:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 777042340}
+        m_TargetAssemblyTypeName: TeamMAsTD.Dialog, Assembly-CSharp
+        m_MethodName: PlantBlocked
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnPlantUnitUprootedOnTile:
     m_PersistentCalls:
       m_Calls:
@@ -34903,6 +35925,21 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnInsufficientFundsToUproot:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 777042340}
+        m_TargetAssemblyTypeName: TeamMAsTD.Dialog, Assembly-CSharp
+        m_MethodName: NoMoney
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Uproot
           m_BoolArgument: 0
         m_CallState: 2
   <tileNumInRow>k__BackingField: 5
@@ -35017,6 +36054,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wateringSoundPlayerPrefab: {fileID: 1954455504458609106, guid: 7ea03095a313b0c4292be0f076dce57e, type: 3}
+  OnInsufficientFundsToWater:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 777042340}
+        m_TargetAssemblyTypeName: TeamMAsTD.Dialog, Assembly-CSharp
+        m_MethodName: NoMoney
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Water
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1232097726
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -35203,6 +36255,21 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnPlantingFailedOnTile:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 777042340}
+        m_TargetAssemblyTypeName: TeamMAsTD.Dialog, Assembly-CSharp
+        m_MethodName: PlantBlocked
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnPlantUnitUprootedOnTile:
     m_PersistentCalls:
       m_Calls:
@@ -35216,6 +36283,21 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnInsufficientFundsToUproot:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 777042340}
+        m_TargetAssemblyTypeName: TeamMAsTD.Dialog, Assembly-CSharp
+        m_MethodName: NoMoney
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Uproot
           m_BoolArgument: 0
         m_CallState: 2
   <tileNumInRow>k__BackingField: 4
@@ -35330,6 +36412,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wateringSoundPlayerPrefab: {fileID: 1954455504458609106, guid: 7ea03095a313b0c4292be0f076dce57e, type: 3}
+  OnInsufficientFundsToWater:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 777042340}
+        m_TargetAssemblyTypeName: TeamMAsTD.Dialog, Assembly-CSharp
+        m_MethodName: NoMoney
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Water
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1232348858
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -36129,6 +37226,21 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnPlantingFailedOnTile:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 777042340}
+        m_TargetAssemblyTypeName: TeamMAsTD.Dialog, Assembly-CSharp
+        m_MethodName: PlantBlocked
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnPlantUnitUprootedOnTile:
     m_PersistentCalls:
       m_Calls:
@@ -36142,6 +37254,21 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnInsufficientFundsToUproot:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 777042340}
+        m_TargetAssemblyTypeName: TeamMAsTD.Dialog, Assembly-CSharp
+        m_MethodName: NoMoney
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Uproot
           m_BoolArgument: 0
         m_CallState: 2
   <tileNumInRow>k__BackingField: 2
@@ -36256,6 +37383,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wateringSoundPlayerPrefab: {fileID: 1954455504458609106, guid: 7ea03095a313b0c4292be0f076dce57e, type: 3}
+  OnInsufficientFundsToWater:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 777042340}
+        m_TargetAssemblyTypeName: TeamMAsTD.Dialog, Assembly-CSharp
+        m_MethodName: NoMoney
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Water
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1277552497
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -36889,14 +38031,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.7490566, b: 0.7490566, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1b82165064c81f748bc3ddbae1b11014, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -36972,7 +38114,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: X
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -37258,14 +38400,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.7490566, b: 0.7490566, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1b82165064c81f748bc3ddbae1b11014, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -37341,7 +38483,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: X
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -38271,14 +39413,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.7490566, b: 0.7490566, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1b82165064c81f748bc3ddbae1b11014, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -38995,6 +40137,21 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnPlantingFailedOnTile:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 777042340}
+        m_TargetAssemblyTypeName: TeamMAsTD.Dialog, Assembly-CSharp
+        m_MethodName: PlantBlocked
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnPlantUnitUprootedOnTile:
     m_PersistentCalls:
       m_Calls:
@@ -39008,6 +40165,21 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnInsufficientFundsToUproot:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 777042340}
+        m_TargetAssemblyTypeName: TeamMAsTD.Dialog, Assembly-CSharp
+        m_MethodName: NoMoney
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Uproot
           m_BoolArgument: 0
         m_CallState: 2
   <tileNumInRow>k__BackingField: 4
@@ -39122,6 +40294,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wateringSoundPlayerPrefab: {fileID: 1954455504458609106, guid: 7ea03095a313b0c4292be0f076dce57e, type: 3}
+  OnInsufficientFundsToWater:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 777042340}
+        m_TargetAssemblyTypeName: TeamMAsTD.Dialog, Assembly-CSharp
+        m_MethodName: NoMoney
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Water
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1368556762
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -39432,14 +40619,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.7490566, b: 0.7490566, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1b82165064c81f748bc3ddbae1b11014, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -39591,7 +40778,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: X
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -39801,14 +40988,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.7490566, b: 0.7490566, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1b82165064c81f748bc3ddbae1b11014, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -39996,6 +41183,21 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnPlantingFailedOnTile:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 777042340}
+        m_TargetAssemblyTypeName: TeamMAsTD.Dialog, Assembly-CSharp
+        m_MethodName: PlantBlocked
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnPlantUnitUprootedOnTile:
     m_PersistentCalls:
       m_Calls:
@@ -40009,6 +41211,21 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnInsufficientFundsToUproot:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 777042340}
+        m_TargetAssemblyTypeName: TeamMAsTD.Dialog, Assembly-CSharp
+        m_MethodName: NoMoney
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Uproot
           m_BoolArgument: 0
         m_CallState: 2
   <tileNumInRow>k__BackingField: 1
@@ -40123,6 +41340,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wateringSoundPlayerPrefab: {fileID: 1954455504458609106, guid: 7ea03095a313b0c4292be0f076dce57e, type: 3}
+  OnInsufficientFundsToWater:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 777042340}
+        m_TargetAssemblyTypeName: TeamMAsTD.Dialog, Assembly-CSharp
+        m_MethodName: NoMoney
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Water
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1398176862
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -40387,7 +41619,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: X
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -40834,14 +42066,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.7490566, b: 0.7490566, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1b82165064c81f748bc3ddbae1b11014, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -40915,6 +42147,21 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnPlantingFailedOnTile:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 777042340}
+        m_TargetAssemblyTypeName: TeamMAsTD.Dialog, Assembly-CSharp
+        m_MethodName: PlantBlocked
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnPlantUnitUprootedOnTile:
     m_PersistentCalls:
       m_Calls:
@@ -40928,6 +42175,21 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnInsufficientFundsToUproot:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 777042340}
+        m_TargetAssemblyTypeName: TeamMAsTD.Dialog, Assembly-CSharp
+        m_MethodName: NoMoney
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Uproot
           m_BoolArgument: 0
         m_CallState: 2
   <tileNumInRow>k__BackingField: 8
@@ -41042,6 +42304,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wateringSoundPlayerPrefab: {fileID: 1954455504458609106, guid: 7ea03095a313b0c4292be0f076dce57e, type: 3}
+  OnInsufficientFundsToWater:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 777042340}
+        m_TargetAssemblyTypeName: TeamMAsTD.Dialog, Assembly-CSharp
+        m_MethodName: NoMoney
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Water
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1435873239
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -41306,7 +42583,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: X
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -41439,6 +42716,21 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnPlantingFailedOnTile:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 777042340}
+        m_TargetAssemblyTypeName: TeamMAsTD.Dialog, Assembly-CSharp
+        m_MethodName: PlantBlocked
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnPlantUnitUprootedOnTile:
     m_PersistentCalls:
       m_Calls:
@@ -41452,6 +42744,21 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnInsufficientFundsToUproot:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 777042340}
+        m_TargetAssemblyTypeName: TeamMAsTD.Dialog, Assembly-CSharp
+        m_MethodName: NoMoney
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Uproot
           m_BoolArgument: 0
         m_CallState: 2
   <tileNumInRow>k__BackingField: 9
@@ -41566,6 +42873,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wateringSoundPlayerPrefab: {fileID: 1954455504458609106, guid: 7ea03095a313b0c4292be0f076dce57e, type: 3}
+  OnInsufficientFundsToWater:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 777042340}
+        m_TargetAssemblyTypeName: TeamMAsTD.Dialog, Assembly-CSharp
+        m_MethodName: NoMoney
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Water
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1444773942
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -41752,6 +43074,21 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnPlantingFailedOnTile:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 777042340}
+        m_TargetAssemblyTypeName: TeamMAsTD.Dialog, Assembly-CSharp
+        m_MethodName: PlantBlocked
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnPlantUnitUprootedOnTile:
     m_PersistentCalls:
       m_Calls:
@@ -41765,6 +43102,21 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnInsufficientFundsToUproot:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 777042340}
+        m_TargetAssemblyTypeName: TeamMAsTD.Dialog, Assembly-CSharp
+        m_MethodName: NoMoney
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Uproot
           m_BoolArgument: 0
         m_CallState: 2
   <tileNumInRow>k__BackingField: 0
@@ -41879,6 +43231,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wateringSoundPlayerPrefab: {fileID: 1954455504458609106, guid: 7ea03095a313b0c4292be0f076dce57e, type: 3}
+  OnInsufficientFundsToWater:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 777042340}
+        m_TargetAssemblyTypeName: TeamMAsTD.Dialog, Assembly-CSharp
+        m_MethodName: NoMoney
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Water
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1445330513
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -42067,7 +43434,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: X
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -42384,7 +43751,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: X
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -42674,14 +44041,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.7490566, b: 0.7490566, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1b82165064c81f748bc3ddbae1b11014, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -43403,6 +44770,21 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnPlantingFailedOnTile:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 777042340}
+        m_TargetAssemblyTypeName: TeamMAsTD.Dialog, Assembly-CSharp
+        m_MethodName: PlantBlocked
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnPlantUnitUprootedOnTile:
     m_PersistentCalls:
       m_Calls:
@@ -43416,6 +44798,21 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnInsufficientFundsToUproot:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 777042340}
+        m_TargetAssemblyTypeName: TeamMAsTD.Dialog, Assembly-CSharp
+        m_MethodName: NoMoney
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Uproot
           m_BoolArgument: 0
         m_CallState: 2
   <tileNumInRow>k__BackingField: 2
@@ -43530,6 +44927,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wateringSoundPlayerPrefab: {fileID: 1954455504458609106, guid: 7ea03095a313b0c4292be0f076dce57e, type: 3}
+  OnInsufficientFundsToWater:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 777042340}
+        m_TargetAssemblyTypeName: TeamMAsTD.Dialog, Assembly-CSharp
+        m_MethodName: NoMoney
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Water
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1491814702
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -44313,14 +45725,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.7490566, b: 0.7490566, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1b82165064c81f748bc3ddbae1b11014, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -44396,7 +45808,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: X
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -44606,14 +46018,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.7490566, b: 0.7490566, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1b82165064c81f748bc3ddbae1b11014, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -44767,6 +46179,21 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnPlantingFailedOnTile:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 777042340}
+        m_TargetAssemblyTypeName: TeamMAsTD.Dialog, Assembly-CSharp
+        m_MethodName: PlantBlocked
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnPlantUnitUprootedOnTile:
     m_PersistentCalls:
       m_Calls:
@@ -44780,6 +46207,21 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnInsufficientFundsToUproot:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 777042340}
+        m_TargetAssemblyTypeName: TeamMAsTD.Dialog, Assembly-CSharp
+        m_MethodName: NoMoney
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Uproot
           m_BoolArgument: 0
         m_CallState: 2
   <tileNumInRow>k__BackingField: 8
@@ -44894,6 +46336,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wateringSoundPlayerPrefab: {fileID: 1954455504458609106, guid: 7ea03095a313b0c4292be0f076dce57e, type: 3}
+  OnInsufficientFundsToWater:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 777042340}
+        m_TargetAssemblyTypeName: TeamMAsTD.Dialog, Assembly-CSharp
+        m_MethodName: NoMoney
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Water
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1528747905
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -45080,6 +46537,21 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnPlantingFailedOnTile:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 777042340}
+        m_TargetAssemblyTypeName: TeamMAsTD.Dialog, Assembly-CSharp
+        m_MethodName: PlantBlocked
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnPlantUnitUprootedOnTile:
     m_PersistentCalls:
       m_Calls:
@@ -45093,6 +46565,21 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnInsufficientFundsToUproot:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 777042340}
+        m_TargetAssemblyTypeName: TeamMAsTD.Dialog, Assembly-CSharp
+        m_MethodName: NoMoney
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Uproot
           m_BoolArgument: 0
         m_CallState: 2
   <tileNumInRow>k__BackingField: 9
@@ -45207,6 +46694,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wateringSoundPlayerPrefab: {fileID: 1954455504458609106, guid: 7ea03095a313b0c4292be0f076dce57e, type: 3}
+  OnInsufficientFundsToWater:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 777042340}
+        m_TargetAssemblyTypeName: TeamMAsTD.Dialog, Assembly-CSharp
+        m_MethodName: NoMoney
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Water
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1538477359
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -45509,7 +47011,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: X
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -45642,6 +47144,21 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnPlantingFailedOnTile:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 777042340}
+        m_TargetAssemblyTypeName: TeamMAsTD.Dialog, Assembly-CSharp
+        m_MethodName: PlantBlocked
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnPlantUnitUprootedOnTile:
     m_PersistentCalls:
       m_Calls:
@@ -45655,6 +47172,21 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnInsufficientFundsToUproot:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 777042340}
+        m_TargetAssemblyTypeName: TeamMAsTD.Dialog, Assembly-CSharp
+        m_MethodName: NoMoney
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Uproot
           m_BoolArgument: 0
         m_CallState: 2
   <tileNumInRow>k__BackingField: 7
@@ -45769,6 +47301,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wateringSoundPlayerPrefab: {fileID: 1954455504458609106, guid: 7ea03095a313b0c4292be0f076dce57e, type: 3}
+  OnInsufficientFundsToWater:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 777042340}
+        m_TargetAssemblyTypeName: TeamMAsTD.Dialog, Assembly-CSharp
+        m_MethodName: NoMoney
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Water
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1554078848
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -45955,6 +47502,21 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnPlantingFailedOnTile:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 777042340}
+        m_TargetAssemblyTypeName: TeamMAsTD.Dialog, Assembly-CSharp
+        m_MethodName: PlantBlocked
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnPlantUnitUprootedOnTile:
     m_PersistentCalls:
       m_Calls:
@@ -45968,6 +47530,21 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnInsufficientFundsToUproot:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 777042340}
+        m_TargetAssemblyTypeName: TeamMAsTD.Dialog, Assembly-CSharp
+        m_MethodName: NoMoney
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Uproot
           m_BoolArgument: 0
         m_CallState: 2
   <tileNumInRow>k__BackingField: 2
@@ -46082,6 +47659,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wateringSoundPlayerPrefab: {fileID: 1954455504458609106, guid: 7ea03095a313b0c4292be0f076dce57e, type: 3}
+  OnInsufficientFundsToWater:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 777042340}
+        m_TargetAssemblyTypeName: TeamMAsTD.Dialog, Assembly-CSharp
+        m_MethodName: NoMoney
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Water
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1560932790
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -46270,7 +47862,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: X
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -46540,7 +48132,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: X
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -46675,7 +48267,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: X
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -47266,6 +48858,21 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnPlantingFailedOnTile:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 777042340}
+        m_TargetAssemblyTypeName: TeamMAsTD.Dialog, Assembly-CSharp
+        m_MethodName: PlantBlocked
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnPlantUnitUprootedOnTile:
     m_PersistentCalls:
       m_Calls:
@@ -47279,6 +48886,21 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnInsufficientFundsToUproot:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 777042340}
+        m_TargetAssemblyTypeName: TeamMAsTD.Dialog, Assembly-CSharp
+        m_MethodName: NoMoney
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Uproot
           m_BoolArgument: 0
         m_CallState: 2
   <tileNumInRow>k__BackingField: 3
@@ -47393,6 +49015,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wateringSoundPlayerPrefab: {fileID: 1954455504458609106, guid: 7ea03095a313b0c4292be0f076dce57e, type: 3}
+  OnInsufficientFundsToWater:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 777042340}
+        m_TargetAssemblyTypeName: TeamMAsTD.Dialog, Assembly-CSharp
+        m_MethodName: NoMoney
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Water
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1616826383
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -48019,14 +49656,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.7490566, b: 0.7490566, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1b82165064c81f748bc3ddbae1b11014, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -48147,6 +49784,21 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnPlantingFailedOnTile:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 777042340}
+        m_TargetAssemblyTypeName: TeamMAsTD.Dialog, Assembly-CSharp
+        m_MethodName: PlantBlocked
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnPlantUnitUprootedOnTile:
     m_PersistentCalls:
       m_Calls:
@@ -48160,6 +49812,21 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnInsufficientFundsToUproot:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 777042340}
+        m_TargetAssemblyTypeName: TeamMAsTD.Dialog, Assembly-CSharp
+        m_MethodName: NoMoney
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Uproot
           m_BoolArgument: 0
         m_CallState: 2
   <tileNumInRow>k__BackingField: 5
@@ -48274,6 +49941,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wateringSoundPlayerPrefab: {fileID: 1954455504458609106, guid: 7ea03095a313b0c4292be0f076dce57e, type: 3}
+  OnInsufficientFundsToWater:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 777042340}
+        m_TargetAssemblyTypeName: TeamMAsTD.Dialog, Assembly-CSharp
+        m_MethodName: NoMoney
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Water
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1640197438
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -48537,14 +50219,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.7490566, b: 0.7490566, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1b82165064c81f748bc3ddbae1b11014, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -49011,6 +50693,21 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnPlantingFailedOnTile:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 777042340}
+        m_TargetAssemblyTypeName: TeamMAsTD.Dialog, Assembly-CSharp
+        m_MethodName: PlantBlocked
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnPlantUnitUprootedOnTile:
     m_PersistentCalls:
       m_Calls:
@@ -49024,6 +50721,21 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnInsufficientFundsToUproot:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 777042340}
+        m_TargetAssemblyTypeName: TeamMAsTD.Dialog, Assembly-CSharp
+        m_MethodName: NoMoney
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Uproot
           m_BoolArgument: 0
         m_CallState: 2
   <tileNumInRow>k__BackingField: 7
@@ -49138,6 +50850,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wateringSoundPlayerPrefab: {fileID: 1954455504458609106, guid: 7ea03095a313b0c4292be0f076dce57e, type: 3}
+  OnInsufficientFundsToWater:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 777042340}
+        m_TargetAssemblyTypeName: TeamMAsTD.Dialog, Assembly-CSharp
+        m_MethodName: NoMoney
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Water
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1675363181
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -50021,6 +51748,21 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnPlantingFailedOnTile:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 777042340}
+        m_TargetAssemblyTypeName: TeamMAsTD.Dialog, Assembly-CSharp
+        m_MethodName: PlantBlocked
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnPlantUnitUprootedOnTile:
     m_PersistentCalls:
       m_Calls:
@@ -50034,6 +51776,21 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnInsufficientFundsToUproot:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 777042340}
+        m_TargetAssemblyTypeName: TeamMAsTD.Dialog, Assembly-CSharp
+        m_MethodName: NoMoney
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Uproot
           m_BoolArgument: 0
         m_CallState: 2
   <tileNumInRow>k__BackingField: 3
@@ -50148,6 +51905,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wateringSoundPlayerPrefab: {fileID: 1954455504458609106, guid: 7ea03095a313b0c4292be0f076dce57e, type: 3}
+  OnInsufficientFundsToWater:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 777042340}
+        m_TargetAssemblyTypeName: TeamMAsTD.Dialog, Assembly-CSharp
+        m_MethodName: NoMoney
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Water
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1705588426
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -50411,14 +52183,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.7490566, b: 0.7490566, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1b82165064c81f748bc3ddbae1b11014, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -50801,6 +52573,21 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnPlantingFailedOnTile:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 777042340}
+        m_TargetAssemblyTypeName: TeamMAsTD.Dialog, Assembly-CSharp
+        m_MethodName: PlantBlocked
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnPlantUnitUprootedOnTile:
     m_PersistentCalls:
       m_Calls:
@@ -50814,6 +52601,21 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnInsufficientFundsToUproot:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 777042340}
+        m_TargetAssemblyTypeName: TeamMAsTD.Dialog, Assembly-CSharp
+        m_MethodName: NoMoney
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Uproot
           m_BoolArgument: 0
         m_CallState: 2
   <tileNumInRow>k__BackingField: 8
@@ -50928,6 +52730,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wateringSoundPlayerPrefab: {fileID: 1954455504458609106, guid: 7ea03095a313b0c4292be0f076dce57e, type: 3}
+  OnInsufficientFundsToWater:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 777042340}
+        m_TargetAssemblyTypeName: TeamMAsTD.Dialog, Assembly-CSharp
+        m_MethodName: NoMoney
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Water
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1727865217
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -51431,14 +53248,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.7490566, b: 0.7490566, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1b82165064c81f748bc3ddbae1b11014, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -51512,6 +53329,21 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnPlantingFailedOnTile:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 777042340}
+        m_TargetAssemblyTypeName: TeamMAsTD.Dialog, Assembly-CSharp
+        m_MethodName: PlantBlocked
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnPlantUnitUprootedOnTile:
     m_PersistentCalls:
       m_Calls:
@@ -51525,6 +53357,21 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnInsufficientFundsToUproot:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 777042340}
+        m_TargetAssemblyTypeName: TeamMAsTD.Dialog, Assembly-CSharp
+        m_MethodName: NoMoney
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Uproot
           m_BoolArgument: 0
         m_CallState: 2
   <tileNumInRow>k__BackingField: 6
@@ -51639,6 +53486,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wateringSoundPlayerPrefab: {fileID: 1954455504458609106, guid: 7ea03095a313b0c4292be0f076dce57e, type: 3}
+  OnInsufficientFundsToWater:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 777042340}
+        m_TargetAssemblyTypeName: TeamMAsTD.Dialog, Assembly-CSharp
+        m_MethodName: NoMoney
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Water
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1747731291
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -51962,7 +53824,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: X
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -52662,7 +54524,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: X
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -52797,7 +54659,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: X
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -53175,7 +55037,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: X
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -53385,14 +55247,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.7490566, b: 0.7490566, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1b82165064c81f748bc3ddbae1b11014, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -55634,7 +57496,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: X
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -55844,14 +57706,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.7490566, b: 0.7490566, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1b82165064c81f748bc3ddbae1b11014, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -56140,6 +58002,21 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnPlantingFailedOnTile:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 777042340}
+        m_TargetAssemblyTypeName: TeamMAsTD.Dialog, Assembly-CSharp
+        m_MethodName: PlantBlocked
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnPlantUnitUprootedOnTile:
     m_PersistentCalls:
       m_Calls:
@@ -56153,6 +58030,21 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnInsufficientFundsToUproot:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 777042340}
+        m_TargetAssemblyTypeName: TeamMAsTD.Dialog, Assembly-CSharp
+        m_MethodName: NoMoney
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Uproot
           m_BoolArgument: 0
         m_CallState: 2
   <tileNumInRow>k__BackingField: 0
@@ -56267,6 +58159,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wateringSoundPlayerPrefab: {fileID: 1954455504458609106, guid: 7ea03095a313b0c4292be0f076dce57e, type: 3}
+  OnInsufficientFundsToWater:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 777042340}
+        m_TargetAssemblyTypeName: TeamMAsTD.Dialog, Assembly-CSharp
+        m_MethodName: NoMoney
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Water
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1899135431
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -56610,14 +58517,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.7490566, b: 0.7490566, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1b82165064c81f748bc3ddbae1b11014, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -57270,14 +59177,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.7490566, b: 0.7490566, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1b82165064c81f748bc3ddbae1b11014, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -57353,7 +59260,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: X
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -57849,6 +59756,21 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnPlantingFailedOnTile:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 777042340}
+        m_TargetAssemblyTypeName: TeamMAsTD.Dialog, Assembly-CSharp
+        m_MethodName: PlantBlocked
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnPlantUnitUprootedOnTile:
     m_PersistentCalls:
       m_Calls:
@@ -57862,6 +59784,21 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnInsufficientFundsToUproot:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 777042340}
+        m_TargetAssemblyTypeName: TeamMAsTD.Dialog, Assembly-CSharp
+        m_MethodName: NoMoney
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Uproot
           m_BoolArgument: 0
         m_CallState: 2
   <tileNumInRow>k__BackingField: 0
@@ -57976,6 +59913,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wateringSoundPlayerPrefab: {fileID: 1954455504458609106, guid: 7ea03095a313b0c4292be0f076dce57e, type: 3}
+  OnInsufficientFundsToWater:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 777042340}
+        m_TargetAssemblyTypeName: TeamMAsTD.Dialog, Assembly-CSharp
+        m_MethodName: NoMoney
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Water
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1933233871
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -58955,14 +60907,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.7490566, b: 0.7490566, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1b82165064c81f748bc3ddbae1b11014, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -59906,6 +61858,21 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnPlantingFailedOnTile:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 777042340}
+        m_TargetAssemblyTypeName: TeamMAsTD.Dialog, Assembly-CSharp
+        m_MethodName: PlantBlocked
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnPlantUnitUprootedOnTile:
     m_PersistentCalls:
       m_Calls:
@@ -59919,6 +61886,21 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnInsufficientFundsToUproot:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 777042340}
+        m_TargetAssemblyTypeName: TeamMAsTD.Dialog, Assembly-CSharp
+        m_MethodName: NoMoney
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Uproot
           m_BoolArgument: 0
         m_CallState: 2
   <tileNumInRow>k__BackingField: 3
@@ -60033,6 +62015,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wateringSoundPlayerPrefab: {fileID: 1954455504458609106, guid: 7ea03095a313b0c4292be0f076dce57e, type: 3}
+  OnInsufficientFundsToWater:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 777042340}
+        m_TargetAssemblyTypeName: TeamMAsTD.Dialog, Assembly-CSharp
+        m_MethodName: NoMoney
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Water
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2005115264
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -60669,7 +62666,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: X
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -61732,6 +63729,21 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnPlantingFailedOnTile:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 777042340}
+        m_TargetAssemblyTypeName: TeamMAsTD.Dialog, Assembly-CSharp
+        m_MethodName: PlantBlocked
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnPlantUnitUprootedOnTile:
     m_PersistentCalls:
       m_Calls:
@@ -61745,6 +63757,21 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnInsufficientFundsToUproot:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 777042340}
+        m_TargetAssemblyTypeName: TeamMAsTD.Dialog, Assembly-CSharp
+        m_MethodName: NoMoney
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Uproot
           m_BoolArgument: 0
         m_CallState: 2
   <tileNumInRow>k__BackingField: 7
@@ -61859,6 +63886,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wateringSoundPlayerPrefab: {fileID: 1954455504458609106, guid: 7ea03095a313b0c4292be0f076dce57e, type: 3}
+  OnInsufficientFundsToWater:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 777042340}
+        m_TargetAssemblyTypeName: TeamMAsTD.Dialog, Assembly-CSharp
+        m_MethodName: NoMoney
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Water
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2059737622
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -62288,6 +64330,21 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnPlantingFailedOnTile:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 777042340}
+        m_TargetAssemblyTypeName: TeamMAsTD.Dialog, Assembly-CSharp
+        m_MethodName: PlantBlocked
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnPlantUnitUprootedOnTile:
     m_PersistentCalls:
       m_Calls:
@@ -62301,6 +64358,21 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnInsufficientFundsToUproot:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 777042340}
+        m_TargetAssemblyTypeName: TeamMAsTD.Dialog, Assembly-CSharp
+        m_MethodName: NoMoney
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Uproot
           m_BoolArgument: 0
         m_CallState: 2
   <tileNumInRow>k__BackingField: 6
@@ -62415,6 +64487,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wateringSoundPlayerPrefab: {fileID: 1954455504458609106, guid: 7ea03095a313b0c4292be0f076dce57e, type: 3}
+  OnInsufficientFundsToWater:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 777042340}
+        m_TargetAssemblyTypeName: TeamMAsTD.Dialog, Assembly-CSharp
+        m_MethodName: NoMoney
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Water
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2065378679
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -62603,7 +64690,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: X
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -62816,6 +64903,21 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnPlantingFailedOnTile:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 777042340}
+        m_TargetAssemblyTypeName: TeamMAsTD.Dialog, Assembly-CSharp
+        m_MethodName: PlantBlocked
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnPlantUnitUprootedOnTile:
     m_PersistentCalls:
       m_Calls:
@@ -62829,6 +64931,21 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnInsufficientFundsToUproot:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 777042340}
+        m_TargetAssemblyTypeName: TeamMAsTD.Dialog, Assembly-CSharp
+        m_MethodName: NoMoney
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Uproot
           m_BoolArgument: 0
         m_CallState: 2
   <tileNumInRow>k__BackingField: 4
@@ -62943,6 +65060,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wateringSoundPlayerPrefab: {fileID: 1954455504458609106, guid: 7ea03095a313b0c4292be0f076dce57e, type: 3}
+  OnInsufficientFundsToWater:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 777042340}
+        m_TargetAssemblyTypeName: TeamMAsTD.Dialog, Assembly-CSharp
+        m_MethodName: NoMoney
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Water
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2070348977
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -63286,14 +65418,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.7490566, b: 0.7490566, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1b82165064c81f748bc3ddbae1b11014, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -63369,7 +65501,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: X
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -63579,14 +65711,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.7490566, b: 0.7490566, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1b82165064c81f748bc3ddbae1b11014, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -63660,6 +65792,21 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnPlantingFailedOnTile:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 777042340}
+        m_TargetAssemblyTypeName: TeamMAsTD.Dialog, Assembly-CSharp
+        m_MethodName: PlantBlocked
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnPlantUnitUprootedOnTile:
     m_PersistentCalls:
       m_Calls:
@@ -63673,6 +65820,21 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnInsufficientFundsToUproot:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 777042340}
+        m_TargetAssemblyTypeName: TeamMAsTD.Dialog, Assembly-CSharp
+        m_MethodName: NoMoney
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Uproot
           m_BoolArgument: 0
         m_CallState: 2
   <tileNumInRow>k__BackingField: 1
@@ -63787,6 +65949,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wateringSoundPlayerPrefab: {fileID: 1954455504458609106, guid: 7ea03095a313b0c4292be0f076dce57e, type: 3}
+  OnInsufficientFundsToWater:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 777042340}
+        m_TargetAssemblyTypeName: TeamMAsTD.Dialog, Assembly-CSharp
+        m_MethodName: NoMoney
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Water
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2103963346
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -63973,6 +66150,21 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnPlantingFailedOnTile:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 777042340}
+        m_TargetAssemblyTypeName: TeamMAsTD.Dialog, Assembly-CSharp
+        m_MethodName: PlantBlocked
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnPlantUnitUprootedOnTile:
     m_PersistentCalls:
       m_Calls:
@@ -63986,6 +66178,21 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnInsufficientFundsToUproot:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 777042340}
+        m_TargetAssemblyTypeName: TeamMAsTD.Dialog, Assembly-CSharp
+        m_MethodName: NoMoney
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Uproot
           m_BoolArgument: 0
         m_CallState: 2
   <tileNumInRow>k__BackingField: 5
@@ -64100,6 +66307,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wateringSoundPlayerPrefab: {fileID: 1954455504458609106, guid: 7ea03095a313b0c4292be0f076dce57e, type: 3}
+  OnInsufficientFundsToWater:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 777042340}
+        m_TargetAssemblyTypeName: TeamMAsTD.Dialog, Assembly-CSharp
+        m_MethodName: NoMoney
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Water
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2118044407
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -64363,14 +66585,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.7490566, b: 0.7490566, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1b82165064c81f748bc3ddbae1b11014, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -64521,14 +66743,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.7490566, b: 0.7490566, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1b82165064c81f748bc3ddbae1b11014, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -64758,6 +66980,21 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnPlantingFailedOnTile:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 777042340}
+        m_TargetAssemblyTypeName: TeamMAsTD.Dialog, Assembly-CSharp
+        m_MethodName: PlantBlocked
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnPlantUnitUprootedOnTile:
     m_PersistentCalls:
       m_Calls:
@@ -64771,6 +67008,21 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnInsufficientFundsToUproot:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 777042340}
+        m_TargetAssemblyTypeName: TeamMAsTD.Dialog, Assembly-CSharp
+        m_MethodName: NoMoney
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Uproot
           m_BoolArgument: 0
         m_CallState: 2
   <tileNumInRow>k__BackingField: 6
@@ -64885,6 +67137,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wateringSoundPlayerPrefab: {fileID: 1954455504458609106, guid: 7ea03095a313b0c4292be0f076dce57e, type: 3}
+  OnInsufficientFundsToWater:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 777042340}
+        m_TargetAssemblyTypeName: TeamMAsTD.Dialog, Assembly-CSharp
+        m_MethodName: NoMoney
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Water
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2133675649
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -65363,14 +67630,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.7490566, b: 0.7490566, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1b82165064c81f748bc3ddbae1b11014, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -66073,6 +68340,18 @@ PrefabInstance:
       propertyPath: waveSpawnerLinkedToButton
       value: 
       objectReference: {fileID: 7007502426730147584}
+    - target: {fileID: 7663563580350903435, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
+      propertyPath: m_Name
+      value: Keep Text
+      objectReference: {fileID: 0}
+    - target: {fileID: 7663563580612757596, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
+      propertyPath: m_Name
+      value: Uproot Text
+      objectReference: {fileID: 0}
+    - target: {fileID: 7663563580648961377, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
+      propertyPath: m_Name
+      value: Start Week Text
+      objectReference: {fileID: 0}
     - target: {fileID: 7663563581319725107, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
       propertyPath: m_Color.a
       value: 1

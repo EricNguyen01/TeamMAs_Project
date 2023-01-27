@@ -249,20 +249,6 @@ MonoBehaviour:
       value: 
       type: 0
       typeString: CustomFieldType_Text
-  - id: 2
-    fields:
-    - title: Name
-      value: hasMoney
-      type: 0
-      typeString: 
-    - title: Initial Value
-      value: True
-      type: 2
-      typeString: CustomFieldType_Boolean
-    - title: Description
-      value: 
-      type: 0
-      typeString: 
   - id: 3
     fields:
     - title: Name
@@ -281,6 +267,48 @@ MonoBehaviour:
     fields:
     - title: Name
       value: rocksBlocked
+      type: 0
+      typeString: CustomFieldType_Text
+    - title: Initial Value
+      value: False
+      type: 2
+      typeString: CustomFieldType_Boolean
+    - title: Description
+      value: 
+      type: 0
+      typeString: CustomFieldType_Text
+  - id: 2
+    fields:
+    - title: Name
+      value: noMoneyPlant
+      type: 0
+      typeString: 
+    - title: Initial Value
+      value: False
+      type: 2
+      typeString: CustomFieldType_Boolean
+    - title: Description
+      value: 
+      type: 0
+      typeString: 
+  - id: 6
+    fields:
+    - title: Name
+      value: noMoneyWater
+      type: 0
+      typeString: CustomFieldType_Text
+    - title: Initial Value
+      value: False
+      type: 2
+      typeString: CustomFieldType_Boolean
+    - title: Description
+      value: 
+      type: 0
+      typeString: CustomFieldType_Text
+  - id: 7
+    fields:
+    - title: Name
+      value: noMoneyUproot
       type: 0
       typeString: CustomFieldType_Text
     - title: Initial Value
@@ -1138,7 +1166,19 @@ MonoBehaviour:
       - originConversationID: 4
         originDialogueID: 0
         destinationConversationID: 4
-        destinationDialogueID: 2
+        destinationDialogueID: 7
+        isConnector: 0
+        priority: 2
+      - originConversationID: 4
+        originDialogueID: 0
+        destinationConversationID: 4
+        destinationDialogueID: 6
+        isConnector: 0
+        priority: 2
+      - originConversationID: 4
+        originDialogueID: 0
+        destinationConversationID: 4
+        destinationDialogueID: 5
         isConnector: 0
         priority: 2
       - originConversationID: 4
@@ -1150,15 +1190,15 @@ MonoBehaviour:
       - originConversationID: 4
         originDialogueID: 0
         destinationConversationID: 4
-        destinationDialogueID: 4
+        destinationDialogueID: 2
         isConnector: 0
-        priority: 2
+        priority: 0
       - originConversationID: 4
         originDialogueID: 0
         destinationConversationID: 4
-        destinationDialogueID: 5
+        destinationDialogueID: 4
         isConnector: 0
-        priority: 2
+        priority: 0
       conditionsString: 
       userScript: 
       onExecute:
@@ -1166,8 +1206,8 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 390
-        y: 20
+        x: 20
+        y: 180
         width: 160
         height: 30
     - id: 1
@@ -1193,7 +1233,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: You can't afford that.
+        value: You can't afford that plant.
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
@@ -1212,15 +1252,15 @@ MonoBehaviour:
       falseConditionAction: Block
       conditionPriority: 2
       outgoingLinks: []
-      conditionsString: Variable["hasMoney"] == false
-      userScript: 
+      conditionsString: Variable["noMoneyPlant"] == true
+      userScript: Variable["noMoneyPlant"] = false
       onExecute:
         m_PersistentCalls:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 30
-        y: 70
+        x: 200
+        y: 30
         width: 160
         height: 30
     - id: 2
@@ -1272,8 +1312,8 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 210
-        y: 70
+        x: 200
+        y: 280
         width: 160
         height: 30
     - id: 3
@@ -1319,14 +1359,14 @@ MonoBehaviour:
       conditionPriority: 2
       outgoingLinks: []
       conditionsString: Variable["rocksBlocked"] == true
-      userScript: 
+      userScript: Variable["rocksBlocked"] = false
       onExecute:
         m_PersistentCalls:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 390
-        y: 70
+        x: 200
+        y: 230
         width: 160
         height: 30
     - id: 4
@@ -1360,7 +1400,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Priority
-        value: 1
+        value: 0
         type: 1
         typeString: CustomFieldType_Number
       conversationID: 4
@@ -1378,8 +1418,8 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 568.5715
-        y: 70
+        x: 200
+        y: 330
         width: 160
         height: 30
     - id: 5
@@ -1425,19 +1465,125 @@ MonoBehaviour:
       conditionPriority: 2
       outgoingLinks: []
       conditionsString: Variable["pathBlocked"] == true
-      userScript: 
+      userScript: Variable["pathBlocked"] = false
       onExecute:
         m_PersistentCalls:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 750
-        y: 70
+        x: 200
+        y: 180
+        width: 160
+        height: 30
+    - id: 6
+      fields:
+      - title: Title
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Description
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Actor
+        value: 2
+        type: 5
+        typeString: CustomFieldType_Actor
+      - title: Conversant
+        value: 1
+        type: 5
+        typeString: CustomFieldType_Actor
+      - title: Menu Text
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Dialogue Text
+        value: You can't afford the water.
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Sequence
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Priority
+        value: 1
+        type: 1
+        typeString: CustomFieldType_Number
+      conversationID: 4
+      isRoot: 0
+      isGroup: 0
+      nodeColor: 
+      delaySimStatus: 0
+      falseConditionAction: Block
+      conditionPriority: 2
+      outgoingLinks: []
+      conditionsString: Variable["noMoneyWater"] == true
+      userScript: Variable["noMoneyWater"] = false
+      onExecute:
+        m_PersistentCalls:
+          m_Calls: []
+      canvasRect:
+        serializedVersion: 2
+        x: 200
+        y: 130
+        width: 160
+        height: 30
+    - id: 7
+      fields:
+      - title: Title
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Description
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Actor
+        value: 2
+        type: 5
+        typeString: CustomFieldType_Actor
+      - title: Conversant
+        value: 1
+        type: 5
+        typeString: CustomFieldType_Actor
+      - title: Menu Text
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Dialogue Text
+        value: Dandelion's expensive to uproot. $10. Stupid, I know.
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Sequence
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Priority
+        value: 1
+        type: 1
+        typeString: CustomFieldType_Number
+      conversationID: 4
+      isRoot: 0
+      isGroup: 0
+      nodeColor: 
+      delaySimStatus: 0
+      falseConditionAction: Block
+      conditionPriority: 2
+      outgoingLinks: []
+      conditionsString: Variable["noMoneyUproot"] == true
+      userScript: Variable["noMoneyUproot"] = false
+      onExecute:
+        m_PersistentCalls:
+          m_Calls: []
+      canvasRect:
+        serializedVersion: 2
+        x: 203.81961
+        y: 80
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 0.70968246, y: 1.9703927}
-    canvasZoom: 0.7000003
+    canvasScrollPosition: {x: 0.95451844, y: 0.6069646}
+    canvasZoom: 0.45249987
   - id: 5
     fields:
     - title: Title
