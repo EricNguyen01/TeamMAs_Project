@@ -403,6 +403,8 @@ namespace TeamMAsTD
             {
                 Debug.Log("Wave " + waveSO.name + " Successfully Stopped! Total visitors: " + totalVisitorsToSpawnList.Count);
             }
+
+            yield break;
         }
 
         //DONT USE THIS FUNCTION TO STOP THIS WAVE

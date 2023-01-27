@@ -164,7 +164,7 @@ namespace TeamMAsTD
             }
         }
 
-        private void ConsumingWaterBars()
+        public void ConsumingWaterBars()
         {
             waterBarsRemaining -= plantUnitSO.waterUse;
 
@@ -195,6 +195,13 @@ namespace TeamMAsTD
 
             //else if all above failed -> just destroy the plant here
             Destroy(gameObject);
+        }
+
+        public bool IsWaterFull()
+        {
+            if (waterBarsRemaining >= totalWaterBars) return true;
+
+            return false;
         }
     }
 }

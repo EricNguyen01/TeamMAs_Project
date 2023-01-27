@@ -3437,6 +3437,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 080cf3d574df4e44ebaf1dde15c38c2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  wateringSoundPlayerPrefab: {fileID: 1954455504458609106, guid: 7ea03095a313b0c4292be0f076dce57e, type: 3}
 --- !u!82 &170740119
 AudioSource:
   m_ObjectHideFlags: 0
@@ -3682,7 +3683,19 @@ MonoBehaviour:
         m_CallState: 2
   OnPlantUnitUprootedOnTile:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 170740119}
+        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+        m_MethodName: PlayOneShot
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: a8159632e8f7b584d94126a8a80c94ad, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   <tileNumInRow>k__BackingField: 1
   <tileNumInColumn>k__BackingField: 2
   <gridParent>k__BackingField: {fileID: 830625743}
@@ -3952,6 +3965,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 080cf3d574df4e44ebaf1dde15c38c2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  wateringSoundPlayerPrefab: {fileID: 1954455504458609106, guid: 7ea03095a313b0c4292be0f076dce57e, type: 3}
 --- !u!82 &186098064
 AudioSource:
   m_ObjectHideFlags: 0
@@ -4197,7 +4211,19 @@ MonoBehaviour:
         m_CallState: 2
   OnPlantUnitUprootedOnTile:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 186098064}
+        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+        m_MethodName: PlayOneShot
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: a8159632e8f7b584d94126a8a80c94ad, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   <tileNumInRow>k__BackingField: 1
   <tileNumInColumn>k__BackingField: 3
   <gridParent>k__BackingField: {fileID: 830625743}
@@ -6420,6 +6446,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 080cf3d574df4e44ebaf1dde15c38c2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  wateringSoundPlayerPrefab: {fileID: 1954455504458609106, guid: 7ea03095a313b0c4292be0f076dce57e, type: 3}
 --- !u!82 &307363082
 AudioSource:
   m_ObjectHideFlags: 0
@@ -6665,7 +6692,19 @@ MonoBehaviour:
         m_CallState: 2
   OnPlantUnitUprootedOnTile:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 307363082}
+        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+        m_MethodName: PlayOneShot
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: a8159632e8f7b584d94126a8a80c94ad, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   <tileNumInRow>k__BackingField: 4
   <tileNumInColumn>k__BackingField: 1
   <gridParent>k__BackingField: {fileID: 830625743}
@@ -9032,6 +9071,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 080cf3d574df4e44ebaf1dde15c38c2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  wateringSoundPlayerPrefab: {fileID: 1954455504458609106, guid: 7ea03095a313b0c4292be0f076dce57e, type: 3}
 --- !u!82 &396856304
 AudioSource:
   m_ObjectHideFlags: 0
@@ -9277,7 +9317,19 @@ MonoBehaviour:
         m_CallState: 2
   OnPlantUnitUprootedOnTile:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 396856304}
+        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+        m_MethodName: PlayOneShot
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: a8159632e8f7b584d94126a8a80c94ad, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   <tileNumInRow>k__BackingField: 4
   <tileNumInColumn>k__BackingField: 4
   <gridParent>k__BackingField: {fileID: 830625743}
@@ -10053,6 +10105,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 080cf3d574df4e44ebaf1dde15c38c2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  wateringSoundPlayerPrefab: {fileID: 1954455504458609106, guid: 7ea03095a313b0c4292be0f076dce57e, type: 3}
 --- !u!82 &426317609
 AudioSource:
   m_ObjectHideFlags: 0
@@ -10298,7 +10351,19 @@ MonoBehaviour:
         m_CallState: 2
   OnPlantUnitUprootedOnTile:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 426317609}
+        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+        m_MethodName: PlayOneShot
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: a8159632e8f7b584d94126a8a80c94ad, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   <tileNumInRow>k__BackingField: 0
   <tileNumInColumn>k__BackingField: 4
   <gridParent>k__BackingField: {fileID: 830625743}
@@ -10623,6 +10688,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 080cf3d574df4e44ebaf1dde15c38c2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  wateringSoundPlayerPrefab: {fileID: 1954455504458609106, guid: 7ea03095a313b0c4292be0f076dce57e, type: 3}
 --- !u!82 &434428334
 AudioSource:
   m_ObjectHideFlags: 0
@@ -10868,7 +10934,19 @@ MonoBehaviour:
         m_CallState: 2
   OnPlantUnitUprootedOnTile:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 434428334}
+        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+        m_MethodName: PlayOneShot
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: a8159632e8f7b584d94126a8a80c94ad, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   <tileNumInRow>k__BackingField: 9
   <tileNumInColumn>k__BackingField: 3
   <gridParent>k__BackingField: {fileID: 830625743}
@@ -10923,6 +11001,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 080cf3d574df4e44ebaf1dde15c38c2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  wateringSoundPlayerPrefab: {fileID: 1954455504458609106, guid: 7ea03095a313b0c4292be0f076dce57e, type: 3}
 --- !u!82 &440199147
 AudioSource:
   m_ObjectHideFlags: 0
@@ -11168,7 +11247,19 @@ MonoBehaviour:
         m_CallState: 2
   OnPlantUnitUprootedOnTile:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 440199147}
+        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+        m_MethodName: PlayOneShot
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: a8159632e8f7b584d94126a8a80c94ad, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   <tileNumInRow>k__BackingField: 2
   <tileNumInColumn>k__BackingField: 0
   <gridParent>k__BackingField: {fileID: 830625743}
@@ -12030,6 +12121,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 080cf3d574df4e44ebaf1dde15c38c2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  wateringSoundPlayerPrefab: {fileID: 1954455504458609106, guid: 7ea03095a313b0c4292be0f076dce57e, type: 3}
 --- !u!82 &467218548
 AudioSource:
   m_ObjectHideFlags: 0
@@ -12275,7 +12367,19 @@ MonoBehaviour:
         m_CallState: 2
   OnPlantUnitUprootedOnTile:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 467218548}
+        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+        m_MethodName: PlayOneShot
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: a8159632e8f7b584d94126a8a80c94ad, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   <tileNumInRow>k__BackingField: 0
   <tileNumInColumn>k__BackingField: 0
   <gridParent>k__BackingField: {fileID: 830625743}
@@ -12603,7 +12707,19 @@ MonoBehaviour:
         m_CallState: 2
   OnPlantUnitUprootedOnTile:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 504853802}
+        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+        m_MethodName: PlayOneShot
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: a8159632e8f7b584d94126a8a80c94ad, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   <tileNumInRow>k__BackingField: 9
   <tileNumInColumn>k__BackingField: 2
   <gridParent>k__BackingField: {fileID: 830625743}
@@ -12635,6 +12751,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 080cf3d574df4e44ebaf1dde15c38c2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  wateringSoundPlayerPrefab: {fileID: 1954455504458609106, guid: 7ea03095a313b0c4292be0f076dce57e, type: 3}
 --- !u!114 &504853801
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12896,6 +13013,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 080cf3d574df4e44ebaf1dde15c38c2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  wateringSoundPlayerPrefab: {fileID: 1954455504458609106, guid: 7ea03095a313b0c4292be0f076dce57e, type: 3}
 --- !u!82 &511323917
 AudioSource:
   m_ObjectHideFlags: 0
@@ -13141,7 +13259,19 @@ MonoBehaviour:
         m_CallState: 2
   OnPlantUnitUprootedOnTile:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 511323917}
+        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+        m_MethodName: PlayOneShot
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: a8159632e8f7b584d94126a8a80c94ad, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   <tileNumInRow>k__BackingField: 5
   <tileNumInColumn>k__BackingField: 4
   <gridParent>k__BackingField: {fileID: 830625743}
@@ -13900,6 +14030,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 080cf3d574df4e44ebaf1dde15c38c2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  wateringSoundPlayerPrefab: {fileID: 1954455504458609106, guid: 7ea03095a313b0c4292be0f076dce57e, type: 3}
 --- !u!82 &563153029
 AudioSource:
   m_ObjectHideFlags: 0
@@ -14145,7 +14276,19 @@ MonoBehaviour:
         m_CallState: 2
   OnPlantUnitUprootedOnTile:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 563153029}
+        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+        m_MethodName: PlayOneShot
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: a8159632e8f7b584d94126a8a80c94ad, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   <tileNumInRow>k__BackingField: 4
   <tileNumInColumn>k__BackingField: 0
   <gridParent>k__BackingField: {fileID: 830625743}
@@ -15336,6 +15479,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 080cf3d574df4e44ebaf1dde15c38c2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  wateringSoundPlayerPrefab: {fileID: 1954455504458609106, guid: 7ea03095a313b0c4292be0f076dce57e, type: 3}
 --- !u!82 &633039745
 AudioSource:
   m_ObjectHideFlags: 0
@@ -15581,7 +15725,19 @@ MonoBehaviour:
         m_CallState: 2
   OnPlantUnitUprootedOnTile:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 633039745}
+        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+        m_MethodName: PlayOneShot
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: a8159632e8f7b584d94126a8a80c94ad, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   <tileNumInRow>k__BackingField: 6
   <tileNumInColumn>k__BackingField: 0
   <gridParent>k__BackingField: {fileID: 830625743}
@@ -15796,6 +15952,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 080cf3d574df4e44ebaf1dde15c38c2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  wateringSoundPlayerPrefab: {fileID: 1954455504458609106, guid: 7ea03095a313b0c4292be0f076dce57e, type: 3}
 --- !u!82 &642846876
 AudioSource:
   m_ObjectHideFlags: 0
@@ -16041,7 +16198,19 @@ MonoBehaviour:
         m_CallState: 2
   OnPlantUnitUprootedOnTile:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 642846876}
+        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+        m_MethodName: PlayOneShot
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: a8159632e8f7b584d94126a8a80c94ad, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   <tileNumInRow>k__BackingField: 7
   <tileNumInColumn>k__BackingField: 1
   <gridParent>k__BackingField: {fileID: 830625743}
@@ -18007,7 +18176,19 @@ MonoBehaviour:
         m_CallState: 2
   OnPlantUnitUprootedOnTile:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 743545318}
+        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+        m_MethodName: PlayOneShot
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: a8159632e8f7b584d94126a8a80c94ad, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   <tileNumInRow>k__BackingField: 9
   <tileNumInColumn>k__BackingField: 4
   <gridParent>k__BackingField: {fileID: 830625743}
@@ -18119,6 +18300,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 080cf3d574df4e44ebaf1dde15c38c2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  wateringSoundPlayerPrefab: {fileID: 1954455504458609106, guid: 7ea03095a313b0c4292be0f076dce57e, type: 3}
 --- !u!114 &743545320
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20423,6 +20605,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 080cf3d574df4e44ebaf1dde15c38c2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  wateringSoundPlayerPrefab: {fileID: 1954455504458609106, guid: 7ea03095a313b0c4292be0f076dce57e, type: 3}
 --- !u!82 &803103927
 AudioSource:
   m_ObjectHideFlags: 0
@@ -20668,7 +20851,19 @@ MonoBehaviour:
         m_CallState: 2
   OnPlantUnitUprootedOnTile:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 803103927}
+        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+        m_MethodName: PlayOneShot
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: a8159632e8f7b584d94126a8a80c94ad, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   <tileNumInRow>k__BackingField: 3
   <tileNumInColumn>k__BackingField: 3
   <gridParent>k__BackingField: {fileID: 830625743}
@@ -21866,6 +22061,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 080cf3d574df4e44ebaf1dde15c38c2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  wateringSoundPlayerPrefab: {fileID: 1954455504458609106, guid: 7ea03095a313b0c4292be0f076dce57e, type: 3}
 --- !u!82 &853382154
 AudioSource:
   m_ObjectHideFlags: 0
@@ -22111,7 +22307,19 @@ MonoBehaviour:
         m_CallState: 2
   OnPlantUnitUprootedOnTile:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 853382154}
+        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+        m_MethodName: PlayOneShot
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: a8159632e8f7b584d94126a8a80c94ad, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   <tileNumInRow>k__BackingField: 5
   <tileNumInColumn>k__BackingField: 1
   <gridParent>k__BackingField: {fileID: 830625743}
@@ -23833,6 +24041,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 080cf3d574df4e44ebaf1dde15c38c2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  wateringSoundPlayerPrefab: {fileID: 1954455504458609106, guid: 7ea03095a313b0c4292be0f076dce57e, type: 3}
 --- !u!82 &913059528
 AudioSource:
   m_ObjectHideFlags: 0
@@ -24078,7 +24287,19 @@ MonoBehaviour:
         m_CallState: 2
   OnPlantUnitUprootedOnTile:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 913059528}
+        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+        m_MethodName: PlayOneShot
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: a8159632e8f7b584d94126a8a80c94ad, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   <tileNumInRow>k__BackingField: 6
   <tileNumInColumn>k__BackingField: 3
   <gridParent>k__BackingField: {fileID: 830625743}
@@ -24814,6 +25035,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 080cf3d574df4e44ebaf1dde15c38c2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  wateringSoundPlayerPrefab: {fileID: 1954455504458609106, guid: 7ea03095a313b0c4292be0f076dce57e, type: 3}
 --- !u!82 &953828148
 AudioSource:
   m_ObjectHideFlags: 0
@@ -25059,7 +25281,19 @@ MonoBehaviour:
         m_CallState: 2
   OnPlantUnitUprootedOnTile:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 953828148}
+        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+        m_MethodName: PlayOneShot
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: a8159632e8f7b584d94126a8a80c94ad, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   <tileNumInRow>k__BackingField: 5
   <tileNumInColumn>k__BackingField: 3
   <gridParent>k__BackingField: {fileID: 830625743}
@@ -25601,6 +25835,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 080cf3d574df4e44ebaf1dde15c38c2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  wateringSoundPlayerPrefab: {fileID: 1954455504458609106, guid: 7ea03095a313b0c4292be0f076dce57e, type: 3}
 --- !u!82 &975712821
 AudioSource:
   m_ObjectHideFlags: 0
@@ -25846,7 +26081,19 @@ MonoBehaviour:
         m_CallState: 2
   OnPlantUnitUprootedOnTile:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 975712821}
+        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+        m_MethodName: PlayOneShot
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: a8159632e8f7b584d94126a8a80c94ad, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   <tileNumInRow>k__BackingField: 0
   <tileNumInColumn>k__BackingField: 2
   <gridParent>k__BackingField: {fileID: 830625743}
@@ -26733,6 +26980,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 080cf3d574df4e44ebaf1dde15c38c2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  wateringSoundPlayerPrefab: {fileID: 1954455504458609106, guid: 7ea03095a313b0c4292be0f076dce57e, type: 3}
 --- !u!82 &1013581628
 AudioSource:
   m_ObjectHideFlags: 0
@@ -26978,7 +27226,19 @@ MonoBehaviour:
         m_CallState: 2
   OnPlantUnitUprootedOnTile:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1013581628}
+        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+        m_MethodName: PlayOneShot
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: a8159632e8f7b584d94126a8a80c94ad, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   <tileNumInRow>k__BackingField: 8
   <tileNumInColumn>k__BackingField: 3
   <gridParent>k__BackingField: {fileID: 830625743}
@@ -27080,6 +27340,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 080cf3d574df4e44ebaf1dde15c38c2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  wateringSoundPlayerPrefab: {fileID: 1954455504458609106, guid: 7ea03095a313b0c4292be0f076dce57e, type: 3}
 --- !u!82 &1021929113
 AudioSource:
   m_ObjectHideFlags: 0
@@ -27325,7 +27586,19 @@ MonoBehaviour:
         m_CallState: 2
   OnPlantUnitUprootedOnTile:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1021929113}
+        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+        m_MethodName: PlayOneShot
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: a8159632e8f7b584d94126a8a80c94ad, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   <tileNumInRow>k__BackingField: 6
   <tileNumInColumn>k__BackingField: 1
   <gridParent>k__BackingField: {fileID: 830625743}
@@ -27570,6 +27843,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 080cf3d574df4e44ebaf1dde15c38c2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  wateringSoundPlayerPrefab: {fileID: 1954455504458609106, guid: 7ea03095a313b0c4292be0f076dce57e, type: 3}
 --- !u!82 &1037748842
 AudioSource:
   m_ObjectHideFlags: 0
@@ -27815,7 +28089,19 @@ MonoBehaviour:
         m_CallState: 2
   OnPlantUnitUprootedOnTile:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1037748842}
+        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+        m_MethodName: PlayOneShot
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: a8159632e8f7b584d94126a8a80c94ad, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   <tileNumInRow>k__BackingField: 3
   <tileNumInColumn>k__BackingField: 2
   <gridParent>k__BackingField: {fileID: 830625743}
@@ -27870,6 +28156,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 080cf3d574df4e44ebaf1dde15c38c2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  wateringSoundPlayerPrefab: {fileID: 1954455504458609106, guid: 7ea03095a313b0c4292be0f076dce57e, type: 3}
 --- !u!82 &1038250415
 AudioSource:
   m_ObjectHideFlags: 0
@@ -28115,7 +28402,19 @@ MonoBehaviour:
         m_CallState: 2
   OnPlantUnitUprootedOnTile:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1038250415}
+        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+        m_MethodName: PlayOneShot
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: a8159632e8f7b584d94126a8a80c94ad, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   <tileNumInRow>k__BackingField: 6
   <tileNumInColumn>k__BackingField: 4
   <gridParent>k__BackingField: {fileID: 830625743}
@@ -28586,6 +28885,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 080cf3d574df4e44ebaf1dde15c38c2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  wateringSoundPlayerPrefab: {fileID: 1954455504458609106, guid: 7ea03095a313b0c4292be0f076dce57e, type: 3}
 --- !u!82 &1053435818
 AudioSource:
   m_ObjectHideFlags: 0
@@ -28831,7 +29131,19 @@ MonoBehaviour:
         m_CallState: 2
   OnPlantUnitUprootedOnTile:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1053435818}
+        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+        m_MethodName: PlayOneShot
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: a8159632e8f7b584d94126a8a80c94ad, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   <tileNumInRow>k__BackingField: 3
   <tileNumInColumn>k__BackingField: 4
   <gridParent>k__BackingField: {fileID: 830625743}
@@ -31703,6 +32015,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 080cf3d574df4e44ebaf1dde15c38c2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  wateringSoundPlayerPrefab: {fileID: 1954455504458609106, guid: 7ea03095a313b0c4292be0f076dce57e, type: 3}
 --- !u!82 &1161297717
 AudioSource:
   m_ObjectHideFlags: 0
@@ -31948,7 +32261,19 @@ MonoBehaviour:
         m_CallState: 2
   OnPlantUnitUprootedOnTile:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1161297717}
+        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+        m_MethodName: PlayOneShot
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: a8159632e8f7b584d94126a8a80c94ad, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   <tileNumInRow>k__BackingField: 8
   <tileNumInColumn>k__BackingField: 1
   <gridParent>k__BackingField: {fileID: 830625743}
@@ -33539,6 +33864,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 080cf3d574df4e44ebaf1dde15c38c2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  wateringSoundPlayerPrefab: {fileID: 1954455504458609106, guid: 7ea03095a313b0c4292be0f076dce57e, type: 3}
 --- !u!82 &1215738976
 AudioSource:
   m_ObjectHideFlags: 0
@@ -33784,7 +34110,19 @@ MonoBehaviour:
         m_CallState: 2
   OnPlantUnitUprootedOnTile:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1215738976}
+        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+        m_MethodName: PlayOneShot
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: a8159632e8f7b584d94126a8a80c94ad, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   <tileNumInRow>k__BackingField: 9
   <tileNumInColumn>k__BackingField: 1
   <gridParent>k__BackingField: {fileID: 830625743}
@@ -33997,6 +34335,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 080cf3d574df4e44ebaf1dde15c38c2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  wateringSoundPlayerPrefab: {fileID: 1954455504458609106, guid: 7ea03095a313b0c4292be0f076dce57e, type: 3}
 --- !u!82 &1220308427
 AudioSource:
   m_ObjectHideFlags: 0
@@ -34242,7 +34581,19 @@ MonoBehaviour:
         m_CallState: 2
   OnPlantUnitUprootedOnTile:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1220308427}
+        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+        m_MethodName: PlayOneShot
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: a8159632e8f7b584d94126a8a80c94ad, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   <tileNumInRow>k__BackingField: 4
   <tileNumInColumn>k__BackingField: 2
   <gridParent>k__BackingField: {fileID: 830625743}
@@ -36320,6 +36671,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 080cf3d574df4e44ebaf1dde15c38c2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  wateringSoundPlayerPrefab: {fileID: 1954455504458609106, guid: 7ea03095a313b0c4292be0f076dce57e, type: 3}
 --- !u!82 &1295939257
 AudioSource:
   m_ObjectHideFlags: 0
@@ -36565,7 +36917,19 @@ MonoBehaviour:
         m_CallState: 2
   OnPlantUnitUprootedOnTile:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1295939257}
+        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+        m_MethodName: PlayOneShot
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: a8159632e8f7b584d94126a8a80c94ad, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   <tileNumInRow>k__BackingField: 4
   <tileNumInColumn>k__BackingField: 3
   <gridParent>k__BackingField: {fileID: 830625743}
@@ -36781,6 +37145,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 080cf3d574df4e44ebaf1dde15c38c2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  wateringSoundPlayerPrefab: {fileID: 1954455504458609106, guid: 7ea03095a313b0c4292be0f076dce57e, type: 3}
 --- !u!82 &1301455141
 AudioSource:
   m_ObjectHideFlags: 0
@@ -37026,7 +37391,19 @@ MonoBehaviour:
         m_CallState: 2
   OnPlantUnitUprootedOnTile:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1301455141}
+        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+        m_MethodName: PlayOneShot
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: a8159632e8f7b584d94126a8a80c94ad, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   <tileNumInRow>k__BackingField: 1
   <tileNumInColumn>k__BackingField: 1
   <gridParent>k__BackingField: {fileID: 830625743}
@@ -38086,6 +38463,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 080cf3d574df4e44ebaf1dde15c38c2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  wateringSoundPlayerPrefab: {fileID: 1954455504458609106, guid: 7ea03095a313b0c4292be0f076dce57e, type: 3}
 --- !u!82 &1338914168
 AudioSource:
   m_ObjectHideFlags: 0
@@ -38331,7 +38709,19 @@ MonoBehaviour:
         m_CallState: 2
   OnPlantUnitUprootedOnTile:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1338914168}
+        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+        m_MethodName: PlayOneShot
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: a8159632e8f7b584d94126a8a80c94ad, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   <tileNumInRow>k__BackingField: 2
   <tileNumInColumn>k__BackingField: 3
   <gridParent>k__BackingField: {fileID: 830625743}
@@ -38596,6 +38986,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 080cf3d574df4e44ebaf1dde15c38c2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  wateringSoundPlayerPrefab: {fileID: 1954455504458609106, guid: 7ea03095a313b0c4292be0f076dce57e, type: 3}
 --- !u!82 &1366974094
 AudioSource:
   m_ObjectHideFlags: 0
@@ -38841,7 +39232,19 @@ MonoBehaviour:
         m_CallState: 2
   OnPlantUnitUprootedOnTile:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1366974094}
+        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+        m_MethodName: PlayOneShot
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: a8159632e8f7b584d94126a8a80c94ad, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   <tileNumInRow>k__BackingField: 5
   <tileNumInColumn>k__BackingField: 0
   <gridParent>k__BackingField: {fileID: 830625743}
@@ -40201,6 +40604,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 080cf3d574df4e44ebaf1dde15c38c2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  wateringSoundPlayerPrefab: {fileID: 1954455504458609106, guid: 7ea03095a313b0c4292be0f076dce57e, type: 3}
 --- !u!82 &1442283002
 AudioSource:
   m_ObjectHideFlags: 0
@@ -40446,7 +40850,19 @@ MonoBehaviour:
         m_CallState: 2
   OnPlantUnitUprootedOnTile:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1442283002}
+        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+        m_MethodName: PlayOneShot
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: a8159632e8f7b584d94126a8a80c94ad, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   <tileNumInRow>k__BackingField: 0
   <tileNumInColumn>k__BackingField: 3
   <gridParent>k__BackingField: {fileID: 830625743}
@@ -41289,6 +41705,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 080cf3d574df4e44ebaf1dde15c38c2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  wateringSoundPlayerPrefab: {fileID: 1954455504458609106, guid: 7ea03095a313b0c4292be0f076dce57e, type: 3}
 --- !u!82 &1494655233
 AudioSource:
   m_ObjectHideFlags: 0
@@ -41534,7 +41951,19 @@ MonoBehaviour:
         m_CallState: 2
   OnPlantUnitUprootedOnTile:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1494655233}
+        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+        m_MethodName: PlayOneShot
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: a8159632e8f7b584d94126a8a80c94ad, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   <tileNumInRow>k__BackingField: 5
   <tileNumInColumn>k__BackingField: 2
   <gridParent>k__BackingField: {fileID: 830625743}
@@ -41771,6 +42200,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 080cf3d574df4e44ebaf1dde15c38c2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  wateringSoundPlayerPrefab: {fileID: 1954455504458609106, guid: 7ea03095a313b0c4292be0f076dce57e, type: 3}
 --- !u!82 &1517923849
 AudioSource:
   m_ObjectHideFlags: 0
@@ -42016,7 +42446,19 @@ MonoBehaviour:
         m_CallState: 2
   OnPlantUnitUprootedOnTile:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1517923849}
+        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+        m_MethodName: PlayOneShot
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: a8159632e8f7b584d94126a8a80c94ad, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   <tileNumInRow>k__BackingField: 1
   <tileNumInColumn>k__BackingField: 0
   <gridParent>k__BackingField: {fileID: 830625743}
@@ -43389,6 +43831,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 080cf3d574df4e44ebaf1dde15c38c2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  wateringSoundPlayerPrefab: {fileID: 1954455504458609106, guid: 7ea03095a313b0c4292be0f076dce57e, type: 3}
 --- !u!82 &1577133853
 AudioSource:
   m_ObjectHideFlags: 0
@@ -43634,7 +44077,19 @@ MonoBehaviour:
         m_CallState: 2
   OnPlantUnitUprootedOnTile:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1577133853}
+        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+        m_MethodName: PlayOneShot
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: a8159632e8f7b584d94126a8a80c94ad, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   <tileNumInRow>k__BackingField: 2
   <tileNumInColumn>k__BackingField: 4
   <gridParent>k__BackingField: {fileID: 830625743}
@@ -44809,6 +45264,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 080cf3d574df4e44ebaf1dde15c38c2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  wateringSoundPlayerPrefab: {fileID: 1954455504458609106, guid: 7ea03095a313b0c4292be0f076dce57e, type: 3}
 --- !u!82 &1624766203
 AudioSource:
   m_ObjectHideFlags: 0
@@ -45054,7 +45510,19 @@ MonoBehaviour:
         m_CallState: 2
   OnPlantUnitUprootedOnTile:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1624766203}
+        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+        m_MethodName: PlayOneShot
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: a8159632e8f7b584d94126a8a80c94ad, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   <tileNumInRow>k__BackingField: 2
   <tileNumInColumn>k__BackingField: 2
   <gridParent>k__BackingField: {fileID: 830625743}
@@ -45347,6 +45815,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 080cf3d574df4e44ebaf1dde15c38c2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  wateringSoundPlayerPrefab: {fileID: 1954455504458609106, guid: 7ea03095a313b0c4292be0f076dce57e, type: 3}
 --- !u!82 &1631339208
 AudioSource:
   m_ObjectHideFlags: 0
@@ -45592,7 +46061,19 @@ MonoBehaviour:
         m_CallState: 2
   OnPlantUnitUprootedOnTile:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1631339208}
+        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+        m_MethodName: PlayOneShot
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: a8159632e8f7b584d94126a8a80c94ad, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   <tileNumInRow>k__BackingField: 7
   <tileNumInColumn>k__BackingField: 2
   <gridParent>k__BackingField: {fileID: 830625743}
@@ -46074,6 +46555,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 080cf3d574df4e44ebaf1dde15c38c2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  wateringSoundPlayerPrefab: {fileID: 1954455504458609106, guid: 7ea03095a313b0c4292be0f076dce57e, type: 3}
 --- !u!82 &1651627246
 AudioSource:
   m_ObjectHideFlags: 0
@@ -46319,7 +46801,19 @@ MonoBehaviour:
         m_CallState: 2
   OnPlantUnitUprootedOnTile:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1651627246}
+        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+        m_MethodName: PlayOneShot
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: a8159632e8f7b584d94126a8a80c94ad, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   <tileNumInRow>k__BackingField: 1
   <tileNumInColumn>k__BackingField: 4
   <gridParent>k__BackingField: {fileID: 830625743}
@@ -46913,6 +47407,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 080cf3d574df4e44ebaf1dde15c38c2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  wateringSoundPlayerPrefab: {fileID: 1954455504458609106, guid: 7ea03095a313b0c4292be0f076dce57e, type: 3}
 --- !u!82 &1657613414
 AudioSource:
   m_ObjectHideFlags: 0
@@ -47158,7 +47653,19 @@ MonoBehaviour:
         m_CallState: 2
   OnPlantUnitUprootedOnTile:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1657613414}
+        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+        m_MethodName: PlayOneShot
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: a8159632e8f7b584d94126a8a80c94ad, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   <tileNumInRow>k__BackingField: 3
   <tileNumInColumn>k__BackingField: 0
   <gridParent>k__BackingField: {fileID: 830625743}
@@ -47596,6 +48103,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 080cf3d574df4e44ebaf1dde15c38c2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  wateringSoundPlayerPrefab: {fileID: 1954455504458609106, guid: 7ea03095a313b0c4292be0f076dce57e, type: 3}
 --- !u!82 &1673598902
 AudioSource:
   m_ObjectHideFlags: 0
@@ -47841,7 +48349,19 @@ MonoBehaviour:
         m_CallState: 2
   OnPlantUnitUprootedOnTile:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1673598902}
+        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+        m_MethodName: PlayOneShot
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: a8159632e8f7b584d94126a8a80c94ad, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   <tileNumInRow>k__BackingField: 6
   <tileNumInColumn>k__BackingField: 2
   <gridParent>k__BackingField: {fileID: 830625743}
@@ -48573,6 +49093,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 080cf3d574df4e44ebaf1dde15c38c2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  wateringSoundPlayerPrefab: {fileID: 1954455504458609106, guid: 7ea03095a313b0c4292be0f076dce57e, type: 3}
 --- !u!82 &1719880961
 AudioSource:
   m_ObjectHideFlags: 0
@@ -48818,7 +49339,19 @@ MonoBehaviour:
         m_CallState: 2
   OnPlantUnitUprootedOnTile:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1719880961}
+        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+        m_MethodName: PlayOneShot
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: a8159632e8f7b584d94126a8a80c94ad, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   <tileNumInRow>k__BackingField: 3
   <tileNumInColumn>k__BackingField: 1
   <gridParent>k__BackingField: {fileID: 830625743}
@@ -50198,6 +50731,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 080cf3d574df4e44ebaf1dde15c38c2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  wateringSoundPlayerPrefab: {fileID: 1954455504458609106, guid: 7ea03095a313b0c4292be0f076dce57e, type: 3}
 --- !u!82 &1761950707
 AudioSource:
   m_ObjectHideFlags: 0
@@ -50443,7 +50977,19 @@ MonoBehaviour:
         m_CallState: 2
   OnPlantUnitUprootedOnTile:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1761950707}
+        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+        m_MethodName: PlayOneShot
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: a8159632e8f7b584d94126a8a80c94ad, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   <tileNumInRow>k__BackingField: 8
   <tileNumInColumn>k__BackingField: 0
   <gridParent>k__BackingField: {fileID: 830625743}
@@ -51377,6 +51923,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 080cf3d574df4e44ebaf1dde15c38c2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  wateringSoundPlayerPrefab: {fileID: 1954455504458609106, guid: 7ea03095a313b0c4292be0f076dce57e, type: 3}
 --- !u!82 &1823725607
 AudioSource:
   m_ObjectHideFlags: 0
@@ -51622,7 +52169,19 @@ MonoBehaviour:
         m_CallState: 2
   OnPlantUnitUprootedOnTile:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1823725607}
+        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+        m_MethodName: PlayOneShot
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: a8159632e8f7b584d94126a8a80c94ad, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   <tileNumInRow>k__BackingField: 0
   <tileNumInColumn>k__BackingField: 1
   <gridParent>k__BackingField: {fileID: 830625743}
@@ -53444,6 +54003,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 080cf3d574df4e44ebaf1dde15c38c2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  wateringSoundPlayerPrefab: {fileID: 1954455504458609106, guid: 7ea03095a313b0c4292be0f076dce57e, type: 3}
 --- !u!82 &1914809304
 AudioSource:
   m_ObjectHideFlags: 0
@@ -53689,7 +54249,19 @@ MonoBehaviour:
         m_CallState: 2
   OnPlantUnitUprootedOnTile:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1914809304}
+        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+        m_MethodName: PlayOneShot
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: a8159632e8f7b584d94126a8a80c94ad, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   <tileNumInRow>k__BackingField: 2
   <tileNumInColumn>k__BackingField: 1
   <gridParent>k__BackingField: {fileID: 830625743}
@@ -54475,6 +55047,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 080cf3d574df4e44ebaf1dde15c38c2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  wateringSoundPlayerPrefab: {fileID: 1954455504458609106, guid: 7ea03095a313b0c4292be0f076dce57e, type: 3}
 --- !u!82 &1951846232
 AudioSource:
   m_ObjectHideFlags: 0
@@ -54720,7 +55293,19 @@ MonoBehaviour:
         m_CallState: 2
   OnPlantUnitUprootedOnTile:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1951846232}
+        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+        m_MethodName: PlayOneShot
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: a8159632e8f7b584d94126a8a80c94ad, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   <tileNumInRow>k__BackingField: 7
   <tileNumInColumn>k__BackingField: 3
   <gridParent>k__BackingField: {fileID: 830625743}
@@ -55371,6 +55956,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 080cf3d574df4e44ebaf1dde15c38c2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  wateringSoundPlayerPrefab: {fileID: 1954455504458609106, guid: 7ea03095a313b0c4292be0f076dce57e, type: 3}
 --- !u!82 &1981373693
 AudioSource:
   m_ObjectHideFlags: 0
@@ -55616,7 +56202,19 @@ MonoBehaviour:
         m_CallState: 2
   OnPlantUnitUprootedOnTile:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1981373693}
+        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+        m_MethodName: PlayOneShot
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: a8159632e8f7b584d94126a8a80c94ad, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   <tileNumInRow>k__BackingField: 8
   <tileNumInColumn>k__BackingField: 4
   <gridParent>k__BackingField: {fileID: 830625743}
@@ -57128,6 +57726,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 080cf3d574df4e44ebaf1dde15c38c2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  wateringSoundPlayerPrefab: {fileID: 1954455504458609106, guid: 7ea03095a313b0c4292be0f076dce57e, type: 3}
 --- !u!82 &2053043964
 AudioSource:
   m_ObjectHideFlags: 0
@@ -57373,7 +57972,19 @@ MonoBehaviour:
         m_CallState: 2
   OnPlantUnitUprootedOnTile:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2053043964}
+        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+        m_MethodName: PlayOneShot
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: a8159632e8f7b584d94126a8a80c94ad, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   <tileNumInRow>k__BackingField: 7
   <tileNumInColumn>k__BackingField: 0
   <gridParent>k__BackingField: {fileID: 830625743}
@@ -57711,6 +58322,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 080cf3d574df4e44ebaf1dde15c38c2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  wateringSoundPlayerPrefab: {fileID: 1954455504458609106, guid: 7ea03095a313b0c4292be0f076dce57e, type: 3}
 --- !u!82 &2079493357
 AudioSource:
   m_ObjectHideFlags: 0
@@ -57956,7 +58568,19 @@ MonoBehaviour:
         m_CallState: 2
   OnPlantUnitUprootedOnTile:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2079493357}
+        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+        m_MethodName: PlayOneShot
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: a8159632e8f7b584d94126a8a80c94ad, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   <tileNumInRow>k__BackingField: 7
   <tileNumInColumn>k__BackingField: 4
   <gridParent>k__BackingField: {fileID: 830625743}
@@ -58058,6 +58682,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 080cf3d574df4e44ebaf1dde15c38c2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  wateringSoundPlayerPrefab: {fileID: 1954455504458609106, guid: 7ea03095a313b0c4292be0f076dce57e, type: 3}
 --- !u!82 &2089849632
 AudioSource:
   m_ObjectHideFlags: 0
@@ -58303,7 +58928,19 @@ MonoBehaviour:
         m_CallState: 2
   OnPlantUnitUprootedOnTile:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2089849632}
+        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+        m_MethodName: PlayOneShot
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: a8159632e8f7b584d94126a8a80c94ad, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   <tileNumInRow>k__BackingField: 9
   <tileNumInColumn>k__BackingField: 0
   <gridParent>k__BackingField: {fileID: 830625743}
@@ -58708,6 +59345,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 080cf3d574df4e44ebaf1dde15c38c2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  wateringSoundPlayerPrefab: {fileID: 1954455504458609106, guid: 7ea03095a313b0c4292be0f076dce57e, type: 3}
 --- !u!82 &2105857196
 AudioSource:
   m_ObjectHideFlags: 0
@@ -58953,7 +59591,19 @@ MonoBehaviour:
         m_CallState: 2
   OnPlantUnitUprootedOnTile:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2105857196}
+        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+        m_MethodName: PlayOneShot
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: a8159632e8f7b584d94126a8a80c94ad, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   <tileNumInRow>k__BackingField: 8
   <tileNumInColumn>k__BackingField: 2
   <gridParent>k__BackingField: {fileID: 830625743}
@@ -59964,6 +60614,63 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2133784904}
   m_CullTransparentMesh: 1
+--- !u!1001 &47394650562900156
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1339863086565876900, guid: 76c56936b5589c44ca64edd249b2eb3a, type: 3}
+      propertyPath: m_Name
+      value: BattleMusicPlayer
+      objectReference: {fileID: 0}
+    - target: {fileID: 3956855074552508585, guid: 76c56936b5589c44ca64edd249b2eb3a, type: 3}
+      propertyPath: m_RootOrder
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 3956855074552508585, guid: 76c56936b5589c44ca64edd249b2eb3a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3956855074552508585, guid: 76c56936b5589c44ca64edd249b2eb3a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3956855074552508585, guid: 76c56936b5589c44ca64edd249b2eb3a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3956855074552508585, guid: 76c56936b5589c44ca64edd249b2eb3a, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3956855074552508585, guid: 76c56936b5589c44ca64edd249b2eb3a, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3956855074552508585, guid: 76c56936b5589c44ca64edd249b2eb3a, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3956855074552508585, guid: 76c56936b5589c44ca64edd249b2eb3a, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3956855074552508585, guid: 76c56936b5589c44ca64edd249b2eb3a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3956855074552508585, guid: 76c56936b5589c44ca64edd249b2eb3a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3956855074552508585, guid: 76c56936b5589c44ca64edd249b2eb3a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 76c56936b5589c44ca64edd249b2eb3a, type: 3}
 --- !u!1001 &1634471411808605010
 PrefabInstance:
   m_ObjectHideFlags: 0

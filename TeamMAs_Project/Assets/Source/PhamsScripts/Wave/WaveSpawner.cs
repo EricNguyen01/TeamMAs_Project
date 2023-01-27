@@ -48,6 +48,7 @@ namespace TeamMAsTD
         //StartWaveUI.cs receives these events to enable/disable start wave Button UI.
         //PlantAimShootSystem.cs receives these events to enable/disable plant targetting/shooting.
         //Rain.cs receives these events to enable, well...rain.
+        //BattleMusicPlayer.cs receives these events to enable/disable battle theme
         public static event System.Action<WaveSpawner, int> OnWaveStarted;
         public static event System.Action<WaveSpawner, int, bool> OnWaveFinished;
         public static event System.Action<WaveSpawner, bool> OnAllWaveSpawned;
@@ -95,6 +96,8 @@ namespace TeamMAsTD
             {
                 WaveSpawnerManager.waveSpawnerManagerInstance.RemoveWaveSpawnerFromList(this);
             }
+
+            StopAllCoroutines();
         }
 
         private void CreateWaveObjects()
