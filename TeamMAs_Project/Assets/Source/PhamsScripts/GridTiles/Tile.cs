@@ -39,13 +39,16 @@ namespace TeamMAsTD
         [SerializeField] public UnityEvent OnPlantUnitUprootedOnTile;
 
         //Internal........................................................
-        [field: SerializeField] [field: HideInInspector]
+        [field: SerializeField]
+        [field: HideInInspector]
         public int tileNumInRow { get; private set; }//position X in the grid (not in world space)
 
-        [field: SerializeField] [field: HideInInspector]
+        [field: SerializeField]
+        [field: HideInInspector]
         public int tileNumInColumn { get; private set; }//position Y in the grid (not in world space)
 
-        [field: SerializeField] [field: HideInInspector]
+        [field: SerializeField]
+        [field: HideInInspector]
         public TDGrid gridParent { get; private set; }//the grid that is housing this tile
 
         private SpriteRenderer spriteRenderer;
@@ -58,7 +61,7 @@ namespace TeamMAsTD
         {
             spriteRenderer = GetComponent<SpriteRenderer>();
 
-            if(spriteRenderer == null)
+            if (spriteRenderer == null)
             {
                 spriteRenderer = gameObject.AddComponent<SpriteRenderer>();
             }
@@ -100,12 +103,12 @@ namespace TeamMAsTD
                 return false;
             }
             //check coin resource
-            if(GameResource.gameResourceInstance != null)
+            if (GameResource.gameResourceInstance != null)
             {
                 //if coin resource amount < plant unit coin costs -> can't plant 
                 if (GameResource.gameResourceInstance.coinResourceSO.resourceAmount < unitSO.plantingCoinCost)
                 {
-                    Debug.Log("Insufficient Fund! Not enough coins to plant unit.");
+                    Debug.Log("Insufficient Funds! Not enough coins to plant unit.");
                     return false;
                 }
             }
@@ -141,7 +144,7 @@ namespace TeamMAsTD
             tileNumInRow = numInRow;
             tileNumInColumn = numInColumn;
             gridParent = parentGrid;
-            
+
             //set name for the tile game object to its coordinate in the grid for readability (we don't want smth like tile(1) as a name).
             gameObject.name = "Tile" + tileNumInRow.ToString() + "." + tileNumInColumn.ToString();
         }
@@ -152,9 +155,9 @@ namespace TeamMAsTD
             //if can't place unit on this tile->do nothing
             if (!CanPlaceUnit(plantUnitSO)) return false;
 
-            if(plantUnitSO.unitPrefab == null)
+            if (plantUnitSO.unitPrefab == null)
             {
-                Debug.LogError("A plant unit: " + plantUnitSO.displayName + "is being planted on tile: " + name + 
+                Debug.LogError("A plant unit: " + plantUnitSO.displayName + "is being planted on tile: " + name +
                 " without a unit prefab data assigned in the unit scriptable object! Unit placement failed!");
                 return false;
             }
@@ -165,7 +168,7 @@ namespace TeamMAsTD
             //get the Unit script component from the instantiated Unit obj
             PlantUnit unit = unitObj.GetComponent<PlantUnit>();
 
-            if(unit == null)
+            if (unit == null)
             {
                 Debug.LogError("A plant unit prefab is placed on tile: " + name + " but it has no PlantUnit script attached." +
                 "This results in no plant unit being placed!");
@@ -226,10 +229,10 @@ namespace TeamMAsTD
             drawDebugRuntime = false;
         }
 
-    //EDITOR...........................................................................
+        //EDITOR...........................................................................
 
-    //Tile editor stuff................................................................
-    #if UNITY_EDITOR
+        //Tile editor stuff................................................................
+#if UNITY_EDITOR
         //Draw the debug gizmos for this tile in scene view only
         private void OnDrawGizmos()
         {
@@ -273,6 +276,6 @@ namespace TeamMAsTD
                 Handles.Label((Vector2)tile.transform.position + Vector2.right * -0.2f, "" + tile.tileNumInRow + "," + tile.tileNumInColumn);
             }
         }
-    #endif
+#endif
     }
 }

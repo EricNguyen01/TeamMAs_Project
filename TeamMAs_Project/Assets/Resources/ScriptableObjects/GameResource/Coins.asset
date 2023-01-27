@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Coins
   m_EditorClassIdentifier: 
   <resourceName>k__BackingField: Coins
-  <resourceAmount>k__BackingField: 1005
+  <resourceAmount>k__BackingField: 100
   <resourceAmountCap>k__BackingField: 2000
   <coinsGainOnWaveEnded>k__BackingField: 5

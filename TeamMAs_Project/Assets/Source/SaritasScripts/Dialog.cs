@@ -16,6 +16,9 @@ public class Dialog : MonoBehaviour
     [pic=2]
     anywhere in the dialog text to use the 2nd sprite
 
+    Set Variables
+    DialogueLua.SetVariable("name", value);
+
     Italics
     [em1]italicized text[/em1]
     * customizable in Database -> Database Properties -> Emphasis Settings

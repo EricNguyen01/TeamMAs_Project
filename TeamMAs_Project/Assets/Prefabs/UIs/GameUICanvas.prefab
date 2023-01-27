@@ -462,7 +462,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8205453728837324731, guid: 9fcef3549ef177e499bbc1c3ebc5df6d, type: 3}
       propertyPath: m_lineSpacing
-      value: 5
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 8205453728837324731, guid: 9fcef3549ef177e499bbc1c3ebc5df6d, type: 3}
       propertyPath: m_VerticalAlignment
