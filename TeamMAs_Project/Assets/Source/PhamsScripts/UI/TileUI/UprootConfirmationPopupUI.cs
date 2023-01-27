@@ -96,7 +96,7 @@ namespace TeamMAsTD
         {
             if(tileWithUnitToUproot != null)
             {
-                //process uproot coins refund
+                //process uproot coins cost and refund
                 if (GameResource.gameResourceInstance != null && GameResource.gameResourceInstance.coinResourceSO != null)
                 {
                     if(tileWithUnitToUproot.plantUnitOnTile != null)
@@ -104,6 +104,10 @@ namespace TeamMAsTD
                         float refundAmount = tileWithUnitToUproot.plantUnitOnTile.plantUnitScriptableObject.uprootRefundAmount;
 
                         GameResource.gameResourceInstance.coinResourceSO.AddResourceAmount(refundAmount);
+
+                        float costAmount = tileWithUnitToUproot.plantUnitOnTile.plantUnitScriptableObject.uprootCost;
+
+                        GameResource.gameResourceInstance.coinResourceSO.RemoveResourceAmount(costAmount);
                     }
                 }
 
