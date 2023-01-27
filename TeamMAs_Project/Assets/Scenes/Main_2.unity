@@ -689,6 +689,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnPlantingFailedOnTile:
+    m_PersistentCalls:
+      m_Calls: []
   OnPlantUnitUprootedOnTile:
     m_PersistentCalls:
       m_Calls:
@@ -704,6 +707,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnInsufficientFundsToUproot:
+    m_PersistentCalls:
+      m_Calls: []
   <tileNumInRow>k__BackingField: 9
   <tileNumInColumn>k__BackingField: 4
   <gridParent>k__BackingField: {fileID: 777042338}
@@ -816,6 +822,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wateringSoundPlayerPrefab: {fileID: 1954455504458609106, guid: 7ea03095a313b0c4292be0f076dce57e, type: 3}
+  OnInsufficientFundsToWater:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &15538441
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1717,6 +1726,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnPlantingFailedOnTile:
+    m_PersistentCalls:
+      m_Calls: []
   OnPlantUnitUprootedOnTile:
     m_PersistentCalls:
       m_Calls:
@@ -1732,6 +1744,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnInsufficientFundsToUproot:
+    m_PersistentCalls:
+      m_Calls: []
   <tileNumInRow>k__BackingField: 7
   <tileNumInColumn>k__BackingField: 3
   <gridParent>k__BackingField: {fileID: 777042338}
@@ -1844,6 +1859,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wateringSoundPlayerPrefab: {fileID: 1954455504458609106, guid: 7ea03095a313b0c4292be0f076dce57e, type: 3}
+  OnInsufficientFundsToWater:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &52810154
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3909,6 +3927,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnPlantingFailedOnTile:
+    m_PersistentCalls:
+      m_Calls: []
   OnPlantUnitUprootedOnTile:
     m_PersistentCalls:
       m_Calls:
@@ -3924,6 +3945,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnInsufficientFundsToUproot:
+    m_PersistentCalls:
+      m_Calls: []
   <tileNumInRow>k__BackingField: 1
   <tileNumInColumn>k__BackingField: 4
   <gridParent>k__BackingField: {fileID: 777042338}
@@ -4036,6 +4060,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wateringSoundPlayerPrefab: {fileID: 1954455504458609106, guid: 7ea03095a313b0c4292be0f076dce57e, type: 3}
+  OnInsufficientFundsToWater:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &105890049
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4834,6 +4861,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnPlantingFailedOnTile:
+    m_PersistentCalls:
+      m_Calls: []
   OnPlantUnitUprootedOnTile:
     m_PersistentCalls:
       m_Calls:
@@ -4849,6 +4879,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnInsufficientFundsToUproot:
+    m_PersistentCalls:
+      m_Calls: []
   <tileNumInRow>k__BackingField: 0
   <tileNumInColumn>k__BackingField: 0
   <gridParent>k__BackingField: {fileID: 777042338}
@@ -4961,6 +4994,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wateringSoundPlayerPrefab: {fileID: 1954455504458609106, guid: 7ea03095a313b0c4292be0f076dce57e, type: 3}
+  OnInsufficientFundsToWater:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &121886958
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6641,6 +6677,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnPlantingFailedOnTile:
+    m_PersistentCalls:
+      m_Calls: []
   OnPlantUnitUprootedOnTile:
     m_PersistentCalls:
       m_Calls:
@@ -6656,6 +6695,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnInsufficientFundsToUproot:
+    m_PersistentCalls:
+      m_Calls: []
   <tileNumInRow>k__BackingField: 3
   <tileNumInColumn>k__BackingField: 3
   <gridParent>k__BackingField: {fileID: 777042338}
@@ -6768,6 +6810,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wateringSoundPlayerPrefab: {fileID: 1954455504458609106, guid: 7ea03095a313b0c4292be0f076dce57e, type: 3}
+  OnInsufficientFundsToWater:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &197177031
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9578,6 +9623,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnPlantingFailedOnTile:
+    m_PersistentCalls:
+      m_Calls: []
   OnPlantUnitUprootedOnTile:
     m_PersistentCalls:
       m_Calls:
@@ -9593,6 +9641,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnInsufficientFundsToUproot:
+    m_PersistentCalls:
+      m_Calls: []
   <tileNumInRow>k__BackingField: 9
   <tileNumInColumn>k__BackingField: 3
   <gridParent>k__BackingField: {fileID: 777042338}
@@ -9705,6 +9756,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wateringSoundPlayerPrefab: {fileID: 1954455504458609106, guid: 7ea03095a313b0c4292be0f076dce57e, type: 3}
+  OnInsufficientFundsToWater:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &340959693
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12280,6 +12334,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnPlantingFailedOnTile:
+    m_PersistentCalls:
+      m_Calls: []
   OnPlantUnitUprootedOnTile:
     m_PersistentCalls:
       m_Calls:
@@ -12295,6 +12352,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnInsufficientFundsToUproot:
+    m_PersistentCalls:
+      m_Calls: []
   <tileNumInRow>k__BackingField: 0
   <tileNumInColumn>k__BackingField: 2
   <gridParent>k__BackingField: {fileID: 777042338}
@@ -12407,6 +12467,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wateringSoundPlayerPrefab: {fileID: 1954455504458609106, guid: 7ea03095a313b0c4292be0f076dce57e, type: 3}
+  OnInsufficientFundsToWater:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &456749766
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14011,6 +14074,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnPlantingFailedOnTile:
+    m_PersistentCalls:
+      m_Calls: []
   OnPlantUnitUprootedOnTile:
     m_PersistentCalls:
       m_Calls:
@@ -14026,6 +14092,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnInsufficientFundsToUproot:
+    m_PersistentCalls:
+      m_Calls: []
   <tileNumInRow>k__BackingField: 4
   <tileNumInColumn>k__BackingField: 0
   <gridParent>k__BackingField: {fileID: 777042338}
@@ -14138,6 +14207,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wateringSoundPlayerPrefab: {fileID: 1954455504458609106, guid: 7ea03095a313b0c4292be0f076dce57e, type: 3}
+  OnInsufficientFundsToWater:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &548260355
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14324,6 +14396,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnPlantingFailedOnTile:
+    m_PersistentCalls:
+      m_Calls: []
   OnPlantUnitUprootedOnTile:
     m_PersistentCalls:
       m_Calls:
@@ -14339,6 +14414,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnInsufficientFundsToUproot:
+    m_PersistentCalls:
+      m_Calls: []
   <tileNumInRow>k__BackingField: 1
   <tileNumInColumn>k__BackingField: 0
   <gridParent>k__BackingField: {fileID: 777042338}
@@ -14451,6 +14529,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wateringSoundPlayerPrefab: {fileID: 1954455504458609106, guid: 7ea03095a313b0c4292be0f076dce57e, type: 3}
+  OnInsufficientFundsToWater:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &551824657
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16866,6 +16947,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnPlantingFailedOnTile:
+    m_PersistentCalls:
+      m_Calls: []
   OnPlantUnitUprootedOnTile:
     m_PersistentCalls:
       m_Calls:
@@ -16881,6 +16965,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnInsufficientFundsToUproot:
+    m_PersistentCalls:
+      m_Calls: []
   <tileNumInRow>k__BackingField: 5
   <tileNumInColumn>k__BackingField: 2
   <gridParent>k__BackingField: {fileID: 777042338}
@@ -16993,6 +17080,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wateringSoundPlayerPrefab: {fileID: 1954455504458609106, guid: 7ea03095a313b0c4292be0f076dce57e, type: 3}
+  OnInsufficientFundsToWater:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &686431548
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17557,6 +17647,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnPlantingFailedOnTile:
+    m_PersistentCalls:
+      m_Calls: []
   OnPlantUnitUprootedOnTile:
     m_PersistentCalls:
       m_Calls:
@@ -17572,6 +17665,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnInsufficientFundsToUproot:
+    m_PersistentCalls:
+      m_Calls: []
   <tileNumInRow>k__BackingField: 9
   <tileNumInColumn>k__BackingField: 0
   <gridParent>k__BackingField: {fileID: 777042338}
@@ -17684,6 +17780,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wateringSoundPlayerPrefab: {fileID: 1954455504458609106, guid: 7ea03095a313b0c4292be0f076dce57e, type: 3}
+  OnInsufficientFundsToWater:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &696377663
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18532,6 +18631,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnPlantingFailedOnTile:
+    m_PersistentCalls:
+      m_Calls: []
   OnPlantUnitUprootedOnTile:
     m_PersistentCalls:
       m_Calls:
@@ -18547,6 +18649,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnInsufficientFundsToUproot:
+    m_PersistentCalls:
+      m_Calls: []
   <tileNumInRow>k__BackingField: 8
   <tileNumInColumn>k__BackingField: 0
   <gridParent>k__BackingField: {fileID: 777042338}
@@ -18659,6 +18764,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wateringSoundPlayerPrefab: {fileID: 1954455504458609106, guid: 7ea03095a313b0c4292be0f076dce57e, type: 3}
+  OnInsufficientFundsToWater:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &712307768
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20204,6 +20312,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnPlantingFailedOnTile:
+    m_PersistentCalls:
+      m_Calls: []
   OnPlantUnitUprootedOnTile:
     m_PersistentCalls:
       m_Calls:
@@ -20219,6 +20330,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnInsufficientFundsToUproot:
+    m_PersistentCalls:
+      m_Calls: []
   <tileNumInRow>k__BackingField: 8
   <tileNumInColumn>k__BackingField: 4
   <gridParent>k__BackingField: {fileID: 777042338}
@@ -20331,6 +20445,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wateringSoundPlayerPrefab: {fileID: 1954455504458609106, guid: 7ea03095a313b0c4292be0f076dce57e, type: 3}
+  OnInsufficientFundsToWater:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &782636142
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22324,6 +22441,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnPlantingFailedOnTile:
+    m_PersistentCalls:
+      m_Calls: []
   OnPlantUnitUprootedOnTile:
     m_PersistentCalls:
       m_Calls:
@@ -22339,6 +22459,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnInsufficientFundsToUproot:
+    m_PersistentCalls:
+      m_Calls: []
   <tileNumInRow>k__BackingField: 7
   <tileNumInColumn>k__BackingField: 2
   <gridParent>k__BackingField: {fileID: 777042338}
@@ -22451,6 +22574,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wateringSoundPlayerPrefab: {fileID: 1954455504458609106, guid: 7ea03095a313b0c4292be0f076dce57e, type: 3}
+  OnInsufficientFundsToWater:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &840555214
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22795,6 +22921,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnPlantingFailedOnTile:
+    m_PersistentCalls:
+      m_Calls: []
   OnPlantUnitUprootedOnTile:
     m_PersistentCalls:
       m_Calls:
@@ -22810,6 +22939,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnInsufficientFundsToUproot:
+    m_PersistentCalls:
+      m_Calls: []
   <tileNumInRow>k__BackingField: 6
   <tileNumInColumn>k__BackingField: 1
   <gridParent>k__BackingField: {fileID: 777042338}
@@ -22922,6 +23054,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wateringSoundPlayerPrefab: {fileID: 1954455504458609106, guid: 7ea03095a313b0c4292be0f076dce57e, type: 3}
+  OnInsufficientFundsToWater:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &845359700
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27086,6 +27221,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnPlantingFailedOnTile:
+    m_PersistentCalls:
+      m_Calls: []
   OnPlantUnitUprootedOnTile:
     m_PersistentCalls:
       m_Calls:
@@ -27101,6 +27239,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnInsufficientFundsToUproot:
+    m_PersistentCalls:
+      m_Calls: []
   <tileNumInRow>k__BackingField: 3
   <tileNumInColumn>k__BackingField: 2
   <gridParent>k__BackingField: {fileID: 777042338}
@@ -27213,6 +27354,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wateringSoundPlayerPrefab: {fileID: 1954455504458609106, guid: 7ea03095a313b0c4292be0f076dce57e, type: 3}
+  OnInsufficientFundsToWater:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &979564351
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28043,6 +28187,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnPlantingFailedOnTile:
+    m_PersistentCalls:
+      m_Calls: []
   OnPlantUnitUprootedOnTile:
     m_PersistentCalls:
       m_Calls:
@@ -28058,6 +28205,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnInsufficientFundsToUproot:
+    m_PersistentCalls:
+      m_Calls: []
   <tileNumInRow>k__BackingField: 5
   <tileNumInColumn>k__BackingField: 4
   <gridParent>k__BackingField: {fileID: 777042338}
@@ -28170,6 +28320,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wateringSoundPlayerPrefab: {fileID: 1954455504458609106, guid: 7ea03095a313b0c4292be0f076dce57e, type: 3}
+  OnInsufficientFundsToWater:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1002748427
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28432,6 +28585,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnPlantingFailedOnTile:
+    m_PersistentCalls:
+      m_Calls: []
   OnPlantUnitUprootedOnTile:
     m_PersistentCalls:
       m_Calls:
@@ -28447,6 +28603,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnInsufficientFundsToUproot:
+    m_PersistentCalls:
+      m_Calls: []
   <tileNumInRow>k__BackingField: 2
   <tileNumInColumn>k__BackingField: 3
   <gridParent>k__BackingField: {fileID: 777042338}
@@ -28559,6 +28718,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wateringSoundPlayerPrefab: {fileID: 1954455504458609106, guid: 7ea03095a313b0c4292be0f076dce57e, type: 3}
+  OnInsufficientFundsToWater:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1004615124
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30389,6 +30551,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnPlantingFailedOnTile:
+    m_PersistentCalls:
+      m_Calls: []
   OnPlantUnitUprootedOnTile:
     m_PersistentCalls:
       m_Calls:
@@ -30404,6 +30569,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnInsufficientFundsToUproot:
+    m_PersistentCalls:
+      m_Calls: []
   <tileNumInRow>k__BackingField: 1
   <tileNumInColumn>k__BackingField: 2
   <gridParent>k__BackingField: {fileID: 777042338}
@@ -30516,6 +30684,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wateringSoundPlayerPrefab: {fileID: 1954455504458609106, guid: 7ea03095a313b0c4292be0f076dce57e, type: 3}
+  OnInsufficientFundsToWater:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1079170321
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -31289,6 +31460,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnPlantingFailedOnTile:
+    m_PersistentCalls:
+      m_Calls: []
   OnPlantUnitUprootedOnTile:
     m_PersistentCalls:
       m_Calls:
@@ -31304,6 +31478,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnInsufficientFundsToUproot:
+    m_PersistentCalls:
+      m_Calls: []
   <tileNumInRow>k__BackingField: 4
   <tileNumInColumn>k__BackingField: 1
   <gridParent>k__BackingField: {fileID: 777042338}
@@ -31416,6 +31593,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wateringSoundPlayerPrefab: {fileID: 1954455504458609106, guid: 7ea03095a313b0c4292be0f076dce57e, type: 3}
+  OnInsufficientFundsToWater:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1107879448
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32146,6 +32326,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnPlantingFailedOnTile:
+    m_PersistentCalls:
+      m_Calls: []
   OnPlantUnitUprootedOnTile:
     m_PersistentCalls:
       m_Calls:
@@ -32161,6 +32344,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnInsufficientFundsToUproot:
+    m_PersistentCalls:
+      m_Calls: []
   <tileNumInRow>k__BackingField: 2
   <tileNumInColumn>k__BackingField: 0
   <gridParent>k__BackingField: {fileID: 777042338}
@@ -32273,6 +32459,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wateringSoundPlayerPrefab: {fileID: 1954455504458609106, guid: 7ea03095a313b0c4292be0f076dce57e, type: 3}
+  OnInsufficientFundsToWater:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1155804724
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32594,6 +32783,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnPlantingFailedOnTile:
+    m_PersistentCalls:
+      m_Calls: []
   OnPlantUnitUprootedOnTile:
     m_PersistentCalls:
       m_Calls:
@@ -32609,6 +32801,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnInsufficientFundsToUproot:
+    m_PersistentCalls:
+      m_Calls: []
   <tileNumInRow>k__BackingField: 6
   <tileNumInColumn>k__BackingField: 0
   <gridParent>k__BackingField: {fileID: 777042338}
@@ -32721,6 +32916,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wateringSoundPlayerPrefab: {fileID: 1954455504458609106, guid: 7ea03095a313b0c4292be0f076dce57e, type: 3}
+  OnInsufficientFundsToWater:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1158758390
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -34890,6 +35088,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnPlantingFailedOnTile:
+    m_PersistentCalls:
+      m_Calls: []
   OnPlantUnitUprootedOnTile:
     m_PersistentCalls:
       m_Calls:
@@ -34905,6 +35106,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnInsufficientFundsToUproot:
+    m_PersistentCalls:
+      m_Calls: []
   <tileNumInRow>k__BackingField: 5
   <tileNumInColumn>k__BackingField: 1
   <gridParent>k__BackingField: {fileID: 777042338}
@@ -35017,6 +35221,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wateringSoundPlayerPrefab: {fileID: 1954455504458609106, guid: 7ea03095a313b0c4292be0f076dce57e, type: 3}
+  OnInsufficientFundsToWater:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1232097726
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -35203,6 +35410,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnPlantingFailedOnTile:
+    m_PersistentCalls:
+      m_Calls: []
   OnPlantUnitUprootedOnTile:
     m_PersistentCalls:
       m_Calls:
@@ -35218,6 +35428,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnInsufficientFundsToUproot:
+    m_PersistentCalls:
+      m_Calls: []
   <tileNumInRow>k__BackingField: 4
   <tileNumInColumn>k__BackingField: 3
   <gridParent>k__BackingField: {fileID: 777042338}
@@ -35330,6 +35543,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wateringSoundPlayerPrefab: {fileID: 1954455504458609106, guid: 7ea03095a313b0c4292be0f076dce57e, type: 3}
+  OnInsufficientFundsToWater:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1232348858
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -36129,6 +36345,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnPlantingFailedOnTile:
+    m_PersistentCalls:
+      m_Calls: []
   OnPlantUnitUprootedOnTile:
     m_PersistentCalls:
       m_Calls:
@@ -36144,6 +36363,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnInsufficientFundsToUproot:
+    m_PersistentCalls:
+      m_Calls: []
   <tileNumInRow>k__BackingField: 2
   <tileNumInColumn>k__BackingField: 2
   <gridParent>k__BackingField: {fileID: 777042338}
@@ -36256,6 +36478,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wateringSoundPlayerPrefab: {fileID: 1954455504458609106, guid: 7ea03095a313b0c4292be0f076dce57e, type: 3}
+  OnInsufficientFundsToWater:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1277552497
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -38995,6 +39220,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnPlantingFailedOnTile:
+    m_PersistentCalls:
+      m_Calls: []
   OnPlantUnitUprootedOnTile:
     m_PersistentCalls:
       m_Calls:
@@ -39010,6 +39238,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnInsufficientFundsToUproot:
+    m_PersistentCalls:
+      m_Calls: []
   <tileNumInRow>k__BackingField: 4
   <tileNumInColumn>k__BackingField: 2
   <gridParent>k__BackingField: {fileID: 777042338}
@@ -39122,6 +39353,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wateringSoundPlayerPrefab: {fileID: 1954455504458609106, guid: 7ea03095a313b0c4292be0f076dce57e, type: 3}
+  OnInsufficientFundsToWater:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1368556762
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -39996,6 +40230,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnPlantingFailedOnTile:
+    m_PersistentCalls:
+      m_Calls: []
   OnPlantUnitUprootedOnTile:
     m_PersistentCalls:
       m_Calls:
@@ -40011,6 +40248,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnInsufficientFundsToUproot:
+    m_PersistentCalls:
+      m_Calls: []
   <tileNumInRow>k__BackingField: 1
   <tileNumInColumn>k__BackingField: 3
   <gridParent>k__BackingField: {fileID: 777042338}
@@ -40123,6 +40363,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wateringSoundPlayerPrefab: {fileID: 1954455504458609106, guid: 7ea03095a313b0c4292be0f076dce57e, type: 3}
+  OnInsufficientFundsToWater:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1398176862
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -40915,6 +41158,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnPlantingFailedOnTile:
+    m_PersistentCalls:
+      m_Calls: []
   OnPlantUnitUprootedOnTile:
     m_PersistentCalls:
       m_Calls:
@@ -40930,6 +41176,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnInsufficientFundsToUproot:
+    m_PersistentCalls:
+      m_Calls: []
   <tileNumInRow>k__BackingField: 8
   <tileNumInColumn>k__BackingField: 3
   <gridParent>k__BackingField: {fileID: 777042338}
@@ -41042,6 +41291,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wateringSoundPlayerPrefab: {fileID: 1954455504458609106, guid: 7ea03095a313b0c4292be0f076dce57e, type: 3}
+  OnInsufficientFundsToWater:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1435873239
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -41439,6 +41691,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnPlantingFailedOnTile:
+    m_PersistentCalls:
+      m_Calls: []
   OnPlantUnitUprootedOnTile:
     m_PersistentCalls:
       m_Calls:
@@ -41454,6 +41709,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnInsufficientFundsToUproot:
+    m_PersistentCalls:
+      m_Calls: []
   <tileNumInRow>k__BackingField: 9
   <tileNumInColumn>k__BackingField: 2
   <gridParent>k__BackingField: {fileID: 777042338}
@@ -41566,6 +41824,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wateringSoundPlayerPrefab: {fileID: 1954455504458609106, guid: 7ea03095a313b0c4292be0f076dce57e, type: 3}
+  OnInsufficientFundsToWater:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1444773942
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -41752,6 +42013,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnPlantingFailedOnTile:
+    m_PersistentCalls:
+      m_Calls: []
   OnPlantUnitUprootedOnTile:
     m_PersistentCalls:
       m_Calls:
@@ -41767,6 +42031,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnInsufficientFundsToUproot:
+    m_PersistentCalls:
+      m_Calls: []
   <tileNumInRow>k__BackingField: 0
   <tileNumInColumn>k__BackingField: 1
   <gridParent>k__BackingField: {fileID: 777042338}
@@ -41879,6 +42146,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wateringSoundPlayerPrefab: {fileID: 1954455504458609106, guid: 7ea03095a313b0c4292be0f076dce57e, type: 3}
+  OnInsufficientFundsToWater:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1445330513
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -43403,6 +43673,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnPlantingFailedOnTile:
+    m_PersistentCalls:
+      m_Calls: []
   OnPlantUnitUprootedOnTile:
     m_PersistentCalls:
       m_Calls:
@@ -43418,6 +43691,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnInsufficientFundsToUproot:
+    m_PersistentCalls:
+      m_Calls: []
   <tileNumInRow>k__BackingField: 2
   <tileNumInColumn>k__BackingField: 4
   <gridParent>k__BackingField: {fileID: 777042338}
@@ -43530,6 +43806,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wateringSoundPlayerPrefab: {fileID: 1954455504458609106, guid: 7ea03095a313b0c4292be0f076dce57e, type: 3}
+  OnInsufficientFundsToWater:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1491814702
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -44767,6 +45046,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnPlantingFailedOnTile:
+    m_PersistentCalls:
+      m_Calls: []
   OnPlantUnitUprootedOnTile:
     m_PersistentCalls:
       m_Calls:
@@ -44782,6 +45064,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnInsufficientFundsToUproot:
+    m_PersistentCalls:
+      m_Calls: []
   <tileNumInRow>k__BackingField: 8
   <tileNumInColumn>k__BackingField: 1
   <gridParent>k__BackingField: {fileID: 777042338}
@@ -44894,6 +45179,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wateringSoundPlayerPrefab: {fileID: 1954455504458609106, guid: 7ea03095a313b0c4292be0f076dce57e, type: 3}
+  OnInsufficientFundsToWater:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1528747905
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -45080,6 +45368,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnPlantingFailedOnTile:
+    m_PersistentCalls:
+      m_Calls: []
   OnPlantUnitUprootedOnTile:
     m_PersistentCalls:
       m_Calls:
@@ -45095,6 +45386,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnInsufficientFundsToUproot:
+    m_PersistentCalls:
+      m_Calls: []
   <tileNumInRow>k__BackingField: 9
   <tileNumInColumn>k__BackingField: 1
   <gridParent>k__BackingField: {fileID: 777042338}
@@ -45207,6 +45501,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wateringSoundPlayerPrefab: {fileID: 1954455504458609106, guid: 7ea03095a313b0c4292be0f076dce57e, type: 3}
+  OnInsufficientFundsToWater:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1538477359
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -45642,6 +45939,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnPlantingFailedOnTile:
+    m_PersistentCalls:
+      m_Calls: []
   OnPlantUnitUprootedOnTile:
     m_PersistentCalls:
       m_Calls:
@@ -45657,6 +45957,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnInsufficientFundsToUproot:
+    m_PersistentCalls:
+      m_Calls: []
   <tileNumInRow>k__BackingField: 7
   <tileNumInColumn>k__BackingField: 0
   <gridParent>k__BackingField: {fileID: 777042338}
@@ -45769,6 +46072,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wateringSoundPlayerPrefab: {fileID: 1954455504458609106, guid: 7ea03095a313b0c4292be0f076dce57e, type: 3}
+  OnInsufficientFundsToWater:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1554078848
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -45955,6 +46261,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnPlantingFailedOnTile:
+    m_PersistentCalls:
+      m_Calls: []
   OnPlantUnitUprootedOnTile:
     m_PersistentCalls:
       m_Calls:
@@ -45970,6 +46279,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnInsufficientFundsToUproot:
+    m_PersistentCalls:
+      m_Calls: []
   <tileNumInRow>k__BackingField: 2
   <tileNumInColumn>k__BackingField: 1
   <gridParent>k__BackingField: {fileID: 777042338}
@@ -46082,6 +46394,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wateringSoundPlayerPrefab: {fileID: 1954455504458609106, guid: 7ea03095a313b0c4292be0f076dce57e, type: 3}
+  OnInsufficientFundsToWater:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1560932790
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -47266,6 +47581,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnPlantingFailedOnTile:
+    m_PersistentCalls:
+      m_Calls: []
   OnPlantUnitUprootedOnTile:
     m_PersistentCalls:
       m_Calls:
@@ -47281,6 +47599,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnInsufficientFundsToUproot:
+    m_PersistentCalls:
+      m_Calls: []
   <tileNumInRow>k__BackingField: 3
   <tileNumInColumn>k__BackingField: 1
   <gridParent>k__BackingField: {fileID: 777042338}
@@ -47393,6 +47714,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wateringSoundPlayerPrefab: {fileID: 1954455504458609106, guid: 7ea03095a313b0c4292be0f076dce57e, type: 3}
+  OnInsufficientFundsToWater:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1616826383
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -48147,6 +48471,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnPlantingFailedOnTile:
+    m_PersistentCalls:
+      m_Calls: []
   OnPlantUnitUprootedOnTile:
     m_PersistentCalls:
       m_Calls:
@@ -48162,6 +48489,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnInsufficientFundsToUproot:
+    m_PersistentCalls:
+      m_Calls: []
   <tileNumInRow>k__BackingField: 5
   <tileNumInColumn>k__BackingField: 3
   <gridParent>k__BackingField: {fileID: 777042338}
@@ -48274,6 +48604,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wateringSoundPlayerPrefab: {fileID: 1954455504458609106, guid: 7ea03095a313b0c4292be0f076dce57e, type: 3}
+  OnInsufficientFundsToWater:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1640197438
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -49011,6 +49344,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnPlantingFailedOnTile:
+    m_PersistentCalls:
+      m_Calls: []
   OnPlantUnitUprootedOnTile:
     m_PersistentCalls:
       m_Calls:
@@ -49026,6 +49362,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnInsufficientFundsToUproot:
+    m_PersistentCalls:
+      m_Calls: []
   <tileNumInRow>k__BackingField: 7
   <tileNumInColumn>k__BackingField: 1
   <gridParent>k__BackingField: {fileID: 777042338}
@@ -49138,6 +49477,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wateringSoundPlayerPrefab: {fileID: 1954455504458609106, guid: 7ea03095a313b0c4292be0f076dce57e, type: 3}
+  OnInsufficientFundsToWater:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1675363181
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -50021,6 +50363,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnPlantingFailedOnTile:
+    m_PersistentCalls:
+      m_Calls: []
   OnPlantUnitUprootedOnTile:
     m_PersistentCalls:
       m_Calls:
@@ -50036,6 +50381,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnInsufficientFundsToUproot:
+    m_PersistentCalls:
+      m_Calls: []
   <tileNumInRow>k__BackingField: 3
   <tileNumInColumn>k__BackingField: 0
   <gridParent>k__BackingField: {fileID: 777042338}
@@ -50148,6 +50496,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wateringSoundPlayerPrefab: {fileID: 1954455504458609106, guid: 7ea03095a313b0c4292be0f076dce57e, type: 3}
+  OnInsufficientFundsToWater:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1705588426
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -50801,6 +51152,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnPlantingFailedOnTile:
+    m_PersistentCalls:
+      m_Calls: []
   OnPlantUnitUprootedOnTile:
     m_PersistentCalls:
       m_Calls:
@@ -50816,6 +51170,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnInsufficientFundsToUproot:
+    m_PersistentCalls:
+      m_Calls: []
   <tileNumInRow>k__BackingField: 8
   <tileNumInColumn>k__BackingField: 2
   <gridParent>k__BackingField: {fileID: 777042338}
@@ -50928,6 +51285,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wateringSoundPlayerPrefab: {fileID: 1954455504458609106, guid: 7ea03095a313b0c4292be0f076dce57e, type: 3}
+  OnInsufficientFundsToWater:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1727865217
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -51512,6 +51872,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnPlantingFailedOnTile:
+    m_PersistentCalls:
+      m_Calls: []
   OnPlantUnitUprootedOnTile:
     m_PersistentCalls:
       m_Calls:
@@ -51527,6 +51890,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnInsufficientFundsToUproot:
+    m_PersistentCalls:
+      m_Calls: []
   <tileNumInRow>k__BackingField: 6
   <tileNumInColumn>k__BackingField: 4
   <gridParent>k__BackingField: {fileID: 777042338}
@@ -51639,6 +52005,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wateringSoundPlayerPrefab: {fileID: 1954455504458609106, guid: 7ea03095a313b0c4292be0f076dce57e, type: 3}
+  OnInsufficientFundsToWater:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1747731291
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -56140,6 +56509,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnPlantingFailedOnTile:
+    m_PersistentCalls:
+      m_Calls: []
   OnPlantUnitUprootedOnTile:
     m_PersistentCalls:
       m_Calls:
@@ -56155,6 +56527,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnInsufficientFundsToUproot:
+    m_PersistentCalls:
+      m_Calls: []
   <tileNumInRow>k__BackingField: 0
   <tileNumInColumn>k__BackingField: 3
   <gridParent>k__BackingField: {fileID: 777042338}
@@ -56267,6 +56642,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wateringSoundPlayerPrefab: {fileID: 1954455504458609106, guid: 7ea03095a313b0c4292be0f076dce57e, type: 3}
+  OnInsufficientFundsToWater:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1899135431
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -57849,6 +58227,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnPlantingFailedOnTile:
+    m_PersistentCalls:
+      m_Calls: []
   OnPlantUnitUprootedOnTile:
     m_PersistentCalls:
       m_Calls:
@@ -57864,6 +58245,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnInsufficientFundsToUproot:
+    m_PersistentCalls:
+      m_Calls: []
   <tileNumInRow>k__BackingField: 0
   <tileNumInColumn>k__BackingField: 4
   <gridParent>k__BackingField: {fileID: 777042338}
@@ -57976,6 +58360,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wateringSoundPlayerPrefab: {fileID: 1954455504458609106, guid: 7ea03095a313b0c4292be0f076dce57e, type: 3}
+  OnInsufficientFundsToWater:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1933233871
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -59906,6 +60293,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnPlantingFailedOnTile:
+    m_PersistentCalls:
+      m_Calls: []
   OnPlantUnitUprootedOnTile:
     m_PersistentCalls:
       m_Calls:
@@ -59921,6 +60311,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnInsufficientFundsToUproot:
+    m_PersistentCalls:
+      m_Calls: []
   <tileNumInRow>k__BackingField: 3
   <tileNumInColumn>k__BackingField: 4
   <gridParent>k__BackingField: {fileID: 777042338}
@@ -60033,6 +60426,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wateringSoundPlayerPrefab: {fileID: 1954455504458609106, guid: 7ea03095a313b0c4292be0f076dce57e, type: 3}
+  OnInsufficientFundsToWater:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &2005115264
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -61732,6 +62128,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnPlantingFailedOnTile:
+    m_PersistentCalls:
+      m_Calls: []
   OnPlantUnitUprootedOnTile:
     m_PersistentCalls:
       m_Calls:
@@ -61747,6 +62146,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnInsufficientFundsToUproot:
+    m_PersistentCalls:
+      m_Calls: []
   <tileNumInRow>k__BackingField: 7
   <tileNumInColumn>k__BackingField: 4
   <gridParent>k__BackingField: {fileID: 777042338}
@@ -61859,6 +62261,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wateringSoundPlayerPrefab: {fileID: 1954455504458609106, guid: 7ea03095a313b0c4292be0f076dce57e, type: 3}
+  OnInsufficientFundsToWater:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &2059737622
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -62288,6 +62693,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnPlantingFailedOnTile:
+    m_PersistentCalls:
+      m_Calls: []
   OnPlantUnitUprootedOnTile:
     m_PersistentCalls:
       m_Calls:
@@ -62303,6 +62711,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnInsufficientFundsToUproot:
+    m_PersistentCalls:
+      m_Calls: []
   <tileNumInRow>k__BackingField: 6
   <tileNumInColumn>k__BackingField: 3
   <gridParent>k__BackingField: {fileID: 777042338}
@@ -62415,6 +62826,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wateringSoundPlayerPrefab: {fileID: 1954455504458609106, guid: 7ea03095a313b0c4292be0f076dce57e, type: 3}
+  OnInsufficientFundsToWater:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &2065378679
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -62816,6 +63230,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnPlantingFailedOnTile:
+    m_PersistentCalls:
+      m_Calls: []
   OnPlantUnitUprootedOnTile:
     m_PersistentCalls:
       m_Calls:
@@ -62831,6 +63248,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnInsufficientFundsToUproot:
+    m_PersistentCalls:
+      m_Calls: []
   <tileNumInRow>k__BackingField: 4
   <tileNumInColumn>k__BackingField: 4
   <gridParent>k__BackingField: {fileID: 777042338}
@@ -62943,6 +63363,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wateringSoundPlayerPrefab: {fileID: 1954455504458609106, guid: 7ea03095a313b0c4292be0f076dce57e, type: 3}
+  OnInsufficientFundsToWater:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &2070348977
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -63660,6 +64083,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnPlantingFailedOnTile:
+    m_PersistentCalls:
+      m_Calls: []
   OnPlantUnitUprootedOnTile:
     m_PersistentCalls:
       m_Calls:
@@ -63675,6 +64101,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnInsufficientFundsToUproot:
+    m_PersistentCalls:
+      m_Calls: []
   <tileNumInRow>k__BackingField: 1
   <tileNumInColumn>k__BackingField: 1
   <gridParent>k__BackingField: {fileID: 777042338}
@@ -63787,6 +64216,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wateringSoundPlayerPrefab: {fileID: 1954455504458609106, guid: 7ea03095a313b0c4292be0f076dce57e, type: 3}
+  OnInsufficientFundsToWater:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &2103963346
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -63973,6 +64405,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnPlantingFailedOnTile:
+    m_PersistentCalls:
+      m_Calls: []
   OnPlantUnitUprootedOnTile:
     m_PersistentCalls:
       m_Calls:
@@ -63988,6 +64423,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnInsufficientFundsToUproot:
+    m_PersistentCalls:
+      m_Calls: []
   <tileNumInRow>k__BackingField: 5
   <tileNumInColumn>k__BackingField: 0
   <gridParent>k__BackingField: {fileID: 777042338}
@@ -64100,6 +64538,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wateringSoundPlayerPrefab: {fileID: 1954455504458609106, guid: 7ea03095a313b0c4292be0f076dce57e, type: 3}
+  OnInsufficientFundsToWater:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &2118044407
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -64758,6 +65199,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnPlantingFailedOnTile:
+    m_PersistentCalls:
+      m_Calls: []
   OnPlantUnitUprootedOnTile:
     m_PersistentCalls:
       m_Calls:
@@ -64773,6 +65217,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnInsufficientFundsToUproot:
+    m_PersistentCalls:
+      m_Calls: []
   <tileNumInRow>k__BackingField: 6
   <tileNumInColumn>k__BackingField: 2
   <gridParent>k__BackingField: {fileID: 777042338}
@@ -64885,6 +65332,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wateringSoundPlayerPrefab: {fileID: 1954455504458609106, guid: 7ea03095a313b0c4292be0f076dce57e, type: 3}
+  OnInsufficientFundsToWater:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &2133675649
 MonoBehaviour:
   m_ObjectHideFlags: 0
