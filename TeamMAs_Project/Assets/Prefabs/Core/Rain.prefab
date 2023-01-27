@@ -46,3 +46,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <plantWaterBarsRefilledAfterRain>k__BackingField: 1
   rainDuration: 1.5
+  OnRainEndedEvent:
+    m_PersistentCalls:
+      m_Calls: []

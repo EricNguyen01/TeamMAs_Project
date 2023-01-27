@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace TeamMAsTD
 {
@@ -10,6 +11,12 @@ namespace TeamMAsTD
         [field: SerializeField] public int plantWaterBarsRefilledAfterRain { get; private set; } = 1;
 
         [SerializeField] private float rainDuration = 1.5f;
+
+        //Unity Event
+        [SerializeField] private UnityEvent<int> OnRainEndedEvent;
+
+        //the current wave that just ended right before rain started happening
+        private int currentWaveBeforeRain = 0;
 
         //if there's rain animation -> add here...
 
@@ -33,7 +40,9 @@ namespace TeamMAsTD
         private void OnWaveFinished(WaveSpawner waveSpawner, int waveNum, bool stillHasOngoingWaves)
         {
             if (stillHasOngoingWaves) return;
-            
+
+            currentWaveBeforeRain = waveNum;
+
             StartCoroutine(RainSequenceCoroutine());
         }
 
@@ -46,6 +55,13 @@ namespace TeamMAsTD
             yield return new WaitForSeconds(rainDuration);
 
             OnRainEnded?.Invoke(this);
+
+            OnRainEndedEvent?.Invoke(currentWaveBeforeRain);
+        }
+
+        public void TestRainEvent(int waveNum)
+        {
+            Debug.Log("Wave just finished: " + waveNum);
         }
     }
 }
