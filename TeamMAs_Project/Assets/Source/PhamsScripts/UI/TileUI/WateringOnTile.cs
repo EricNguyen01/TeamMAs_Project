@@ -13,6 +13,8 @@ namespace TeamMAsTD
     {
         [SerializeField] private SoundPlayer wateringSoundPlayerPrefab;
 
+        [SerializeField] private UnityEvent OnInsufficientFundsToWater;
+
         private Tile tileToWater;
 
         private void Awake()
@@ -39,12 +41,27 @@ namespace TeamMAsTD
 
             int wateringCoinsCost = tileToWater.plantUnitOnTile.plantUnitScriptableObject.wateringCoinsCost;
 
+            ProcessWateringSufficientFundsEvent(wateringCoinsCost);
+
             //play watering sound if plant on tile's water is not full
             //watering sound is played by creating a sound player object with SoundPlayer.cs script attached that plays watering sound on awake
             //upon finished playing watering sounds, watering sound player object is destroyed based on watering sound clip's length
             if (!tilePlantWaterUsageSystem.IsWaterFull()) SpawnAndDestroyWateringSoundPlayerIfNotNull();
 
             tilePlantWaterUsageSystem.RefillWaterBars(waterBarsToRefill, wateringCoinsCost);
+        }
+
+        private void ProcessWateringSufficientFundsEvent(int waterCost)
+        {
+            if (GameResource.gameResourceInstance == null || GameResource.gameResourceInstance.coinResourceSO == null) return;
+
+            if(waterCost > GameResource.gameResourceInstance.coinResourceSO.resourceAmount)
+            {
+                OnInsufficientFundsToWater?.Invoke();
+
+                return;
+            }
+            
         }
 
         private void SpawnAndDestroyWateringSoundPlayerIfNotNull()
