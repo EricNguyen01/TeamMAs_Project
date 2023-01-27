@@ -35,8 +35,10 @@ namespace TeamMAsTD
         private bool drawDebugRuntime = true;
 
         //UnityEvents....................................................
-        [SerializeField] public UnityEvent OnPlantUnitPlantedOnTile;
-        [SerializeField] public UnityEvent OnPlantUnitUprootedOnTile;
+        [SerializeField] private UnityEvent<PlantUnit, Tile> OnPlantUnitPlantedOnTile;
+        [SerializeField] private UnityEvent<PlantUnitSO, Tile> OnPlantingFailedOnTile;
+        [SerializeField] private UnityEvent<PlantUnit, Tile> OnPlantUnitUprootedOnTile;
+        [SerializeField] private UnityEvent OnInsufficientFundsToUproot;
 
         //Internal........................................................
         [field: SerializeField]
@@ -96,10 +98,14 @@ namespace TeamMAsTD
         {
             if (plantUnitOnTile != null || isOccupied)
             {
+                OnPlantingFailedOnTile?.Invoke(null, this);
+
                 return false;
             }
             if (is_AI_Path && !unitSO.isPlacableOnPath)
             {
+                OnPlantingFailedOnTile?.Invoke(unitSO, this);
+
                 return false;
             }
             //check coin resource
@@ -109,6 +115,9 @@ namespace TeamMAsTD
                 if (GameResource.gameResourceInstance.coinResourceSO.resourceAmount < unitSO.plantingCoinCost)
                 {
                     Debug.Log("Insufficient Funds! Not enough coins to plant unit.");
+
+                    OnPlantingFailedOnTile?.Invoke(unitSO, this);
+
                     return false;
                 }
             }
@@ -179,7 +188,8 @@ namespace TeamMAsTD
 
             plantUnitOnTile = unit;
 
-            OnPlantUnitPlantedOnTile?.Invoke();
+            //throw plant successful event
+            OnPlantUnitPlantedOnTile?.Invoke(plantUnitOnTile, this);
 
             //re-enable tile UI open/close functionality on a plant planted on
             tileMenuAndUprootOnTileUI.SetDisableTileMenuOpen(false);
@@ -206,11 +216,17 @@ namespace TeamMAsTD
             //disable tile menu open/close functionality after plant uprooted
             tileMenuAndUprootOnTileUI.SetDisableTileMenuOpen(true);
 
+            //throw uproot event
+            OnPlantUnitUprootedOnTile?.Invoke(plantUnitOnTile, this);
+
             Destroy(plantUnitOnTile.gameObject, uprootDelaySec);
 
             plantUnitOnTile = null;
+        }
 
-            OnPlantUnitUprootedOnTile?.Invoke();
+        public void UprootingInsufficientFundsEventInvoke()
+        {
+            OnInsufficientFundsToUproot?.Invoke();
         }
 
         public void EnableDrawTileDebug(bool enabled)

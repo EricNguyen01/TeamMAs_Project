@@ -103,7 +103,12 @@ namespace TeamMAsTD
                     {
                         float costAmount = tileWithUnitToUproot.plantUnitOnTile.plantUnitScriptableObject.uprootCost;
 
-                        if (GameResource.gameResourceInstance.coinResourceSO.resourceAmount < costAmount) return;
+                        if (GameResource.gameResourceInstance.coinResourceSO.resourceAmount < costAmount) 
+                        {
+                            tileWithUnitToUproot.UprootingInsufficientFundsEventInvoke();
+
+                            return; 
+                        }
 
                         float refundAmount = tileWithUnitToUproot.plantUnitOnTile.plantUnitScriptableObject.uprootRefundAmount;
 
