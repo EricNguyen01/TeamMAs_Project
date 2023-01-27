@@ -15,8 +15,8 @@ MonoBehaviour:
   <displayName>k__BackingField: Higher-than-Average Joe
   <unitPrefab>k__BackingField: {fileID: 2664338853412353054, guid: 9f49a4db8cf4c424a86e3bde720b5a50, type: 3}
   <visitorType>k__BackingField: 1
-  <happinessAsHealth>k__BackingField: 100
-  <moveSpeed>k__BackingField: 1
+  <happinessAsHealth>k__BackingField: 700
+  <moveSpeed>k__BackingField: 0.75
   <emotionalAttackDamage>k__BackingField: 1
   <isBoss>k__BackingField: 1
   <visitorHitColor>k__BackingField: {r: 1, g: 0.21960784, b: 0.8117647, a: 1}
