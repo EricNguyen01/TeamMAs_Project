@@ -19,9 +19,6 @@ namespace TeamMAsTD
                     audioSource = gameObject.AddComponent<AudioSource>();
                 }
             }
-
-            audioSource.playOnAwake = false;
-            audioSource.loop = false;
         }
 
         public void PlayAudioOneShot(AudioClip audioClip)
@@ -41,6 +38,15 @@ namespace TeamMAsTD
             if (audioSource.isPlaying) audioSource.Stop();
 
             audioSource.PlayOneShot(audioClip);
+        }
+
+        public float GetCurrentAudioClipLengthIfNotNull()
+        {
+            if (audioSource == null) return 0.0f;
+
+            if (audioSource.clip == null) return 0.0f;
+
+            return audioSource.clip.length;
         }
     }
 }

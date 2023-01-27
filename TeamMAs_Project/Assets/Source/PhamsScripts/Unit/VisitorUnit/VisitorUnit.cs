@@ -9,7 +9,9 @@ namespace TeamMAsTD
     {
         [field: SerializeField] public VisitorUnitSO visitorUnitSO { get; private set; }
 
-        [SerializeField] HeartEffect heartEffect;
+        [SerializeField] private HeartEffect heartEffect;
+
+        [SerializeField] private GameResourceDropper visitorCoinsDropper;
 
         public float currentVisitorHealth { get; private set; } = 0.0f;
 
@@ -104,6 +106,16 @@ namespace TeamMAsTD
             visitorWorldUIComponent = GetComponent<UnitWorldUI>();
 
             visitorCollider2D = GetComponent<Collider2D>();
+
+            if(visitorCoinsDropper != null)
+            {
+                visitorCoinsDropper.SetDropAmountForResource(visitorUnitSO.coinResourceToDrop, visitorUnitSO.visitorsAppeasedCoinsDrop);
+
+                visitorCoinsDropper.SetDropChanceForResource(visitorUnitSO.coinResourceToDrop,
+                                                             0,
+                                                             visitorUnitSO.chanceToDropCoins,
+                                                             visitorUnitSO.chanceToNotDropCoins);
+            }
         }
 
         private void OnEnable()
@@ -298,6 +310,7 @@ namespace TeamMAsTD
             if (currentAppeasementTime <= 0.0f)
             {
                 if (gameObject.activeInHierarchy) ProcessVisitorDespawns();
+
                 return;
             }
 
@@ -312,6 +325,7 @@ namespace TeamMAsTD
             if (currentAppeasementTime <= 0.0f)
             {
                 currentAppeasementTime = 0.0f;
+
                 ProcessVisitorDespawns();
             }
         }
@@ -410,6 +424,11 @@ namespace TeamMAsTD
                     if(visitorAnimation != null)
                     {
                         visitorAnimation.Play("Appease");
+                    }
+
+                    if(visitorCoinsDropper != null)
+                    {
+                        visitorCoinsDropper.DropResource();
                     }
 
                     OnVisitorAppeased?.Invoke();

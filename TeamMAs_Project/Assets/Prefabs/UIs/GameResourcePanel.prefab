@@ -612,7 +612,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89d15348a13c2da4a96fa61b3bb751a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameResourceSO: {fileID: 11400000, guid: 8e1a1ca0ddadee249926956090c104d3, type: 2}
+  gameResourceSO: {fileID: 11400000, guid: 7f0c635957a541840b7d3206387c7a84, type: 2}
   resourceNameText: {fileID: 5322612110599623272}
   resourceAmountText: {fileID: 5322612110409281862}
   displayResourceAmountCap: 0

@@ -31,7 +31,7 @@ MonoBehaviour:
   - Visitors
   plantTargetsSpecifically: 0
   <plantingCoinCost>k__BackingField: 6
-  <uprootRefundAmount>k__BackingField: 0
+  <uprootRefundAmount>k__BackingField: 1
   <uprootCost>k__BackingField: 0
   <waterUse>k__BackingField: 2
   <waterBarsRefilledPerWatering>k__BackingField: 1

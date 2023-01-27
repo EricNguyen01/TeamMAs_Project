@@ -22,3 +22,7 @@ MonoBehaviour:
   <visitorHitColor>k__BackingField: {r: 1, g: 0.22075468, b: 0.81027067, a: 1}
   <visitorAppeasementAnimClip>k__BackingField: {fileID: 0}
   <visitorAppeasementTime>k__BackingField: 2.5
+  <coinResourceToDrop>k__BackingField: {fileID: 11400000, guid: 7f0c635957a541840b7d3206387c7a84, type: 2}
+  <visitorsAppeasedCoinsDrop>k__BackingField: 5
+  <chanceToDropCoins>k__BackingField: 40
+  <chanceToNotDropCoins>k__BackingField: 60

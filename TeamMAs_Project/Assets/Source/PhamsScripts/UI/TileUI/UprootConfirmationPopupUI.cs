@@ -96,6 +96,18 @@ namespace TeamMAsTD
         {
             if(tileWithUnitToUproot != null)
             {
+                //process uproot coins refund
+                if (GameResource.gameResourceInstance != null && GameResource.gameResourceInstance.coinResourceSO != null)
+                {
+                    if(tileWithUnitToUproot.plantUnitOnTile != null)
+                    {
+                        float refundAmount = tileWithUnitToUproot.plantUnitOnTile.plantUnitScriptableObject.uprootRefundAmount;
+
+                        GameResource.gameResourceInstance.coinResourceSO.AddResourceAmount(refundAmount);
+                    }
+                }
+
+                //performs uproot
                 tileWithUnitToUproot.UprootUnit(0.0f);
             }
             else

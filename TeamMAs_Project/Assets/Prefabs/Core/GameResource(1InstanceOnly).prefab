@@ -44,5 +44,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8741862ca7886646b82e55b499510b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <coinResourceSO>k__BackingField: {fileID: 11400000, guid: 8e1a1ca0ddadee249926956090c104d3, type: 2}
+  <coinResourceSO>k__BackingField: {fileID: 11400000, guid: 7f0c635957a541840b7d3206387c7a84, type: 2}
   <emotionalHealthSO>k__BackingField: {fileID: 11400000, guid: 937c4f7a685a532469cd11ad08463e2b, type: 2}

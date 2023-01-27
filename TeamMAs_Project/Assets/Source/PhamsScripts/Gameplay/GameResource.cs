@@ -15,7 +15,7 @@ namespace TeamMAsTD
     [DisallowMultipleComponent]
     public class GameResource : MonoBehaviour
     {
-        [field: SerializeField] public GameResourceSO coinResourceSO { get; private set; }
+        [field: SerializeField] public CoinResourceSO coinResourceSO { get; private set; }
 
         [field: SerializeField] public EmotionalHealthGameResourceSO emotionalHealthSO { get; private set; }
         //make new fields for new game resources SO here...

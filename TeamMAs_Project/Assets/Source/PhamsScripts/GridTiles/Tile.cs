@@ -50,6 +50,8 @@ namespace TeamMAsTD
 
         private SpriteRenderer spriteRenderer;
 
+        private TileMenuAndUprootOnTileUI tileMenuAndUprootOnTileUI;
+
         //PRIVATES......................................................................
 
         private void Awake()
@@ -115,9 +117,19 @@ namespace TeamMAsTD
         //then, get the attached script component
         private void Attach_TileMenu_And_UprootOnTileUI_ScriptComponentIfNull()
         {
-            if (GetComponent<TileMenuAndUprootOnTileUI>() == null)
+            if (tileMenuAndUprootOnTileUI == null)
             {
-                gameObject.AddComponent<TileMenuAndUprootOnTileUI>();
+                tileMenuAndUprootOnTileUI = GetComponent<TileMenuAndUprootOnTileUI>();
+            }
+
+            if (tileMenuAndUprootOnTileUI == null)
+            {
+                tileMenuAndUprootOnTileUI = GetComponentInChildren<TileMenuAndUprootOnTileUI>(true);
+            }
+
+            if (tileMenuAndUprootOnTileUI == null)
+            {
+                tileMenuAndUprootOnTileUI = gameObject.AddComponent<TileMenuAndUprootOnTileUI>();
             }
         }
 
@@ -166,8 +178,11 @@ namespace TeamMAsTD
 
             OnPlantUnitPlantedOnTile?.Invoke();
 
+            //re-enable tile UI open/close functionality on a plant planted on
+            tileMenuAndUprootOnTileUI.SetDisableTileMenuOpen(false);
+
             //coin cost on plant unit planted successful
-            if(GameResource.gameResourceInstance == null || GameResource.gameResourceInstance.coinResourceSO == null)
+            if (GameResource.gameResourceInstance == null || GameResource.gameResourceInstance.coinResourceSO == null)
             {
                 Debug.LogError("GameResource Instance with Coin Resource is missing in scene! Planting coins cost won't function!");
             }
@@ -183,6 +198,10 @@ namespace TeamMAsTD
             if (plantUnitOnTile == null) return;
 
             if (disableUprootOnTile) return;
+
+            //close tile menu on plant on tile uprooted and
+            //disable tile menu open/close functionality after plant uprooted
+            tileMenuAndUprootOnTileUI.SetDisableTileMenuOpen(true);
 
             Destroy(plantUnitOnTile.gameObject, uprootDelaySec);
 

@@ -11,6 +11,8 @@ namespace TeamMAsTD
     [RequireComponent(typeof(Tile), typeof(TileMenuAndUprootOnTileUI))]
     public class WateringOnTile : MonoBehaviour
     {
+        [SerializeField] private SoundPlayer wateringSoundPlayerPrefab;
+
         private Tile tileToWater;
 
         private void Awake()
@@ -37,7 +39,38 @@ namespace TeamMAsTD
 
             int wateringCoinsCost = tileToWater.plantUnitOnTile.plantUnitScriptableObject.wateringCoinsCost;
 
+            //play watering sound if plant on tile's water is not full
+            //watering sound is played by creating a sound player object with SoundPlayer.cs script attached that plays watering sound on awake
+            //upon finished playing watering sounds, watering sound player object is destroyed based on watering sound clip's length
+            if (!tilePlantWaterUsageSystem.IsWaterFull()) SpawnAndDestroyWateringSoundPlayerIfNotNull();
+
             tilePlantWaterUsageSystem.RefillWaterBars(waterBarsToRefill, wateringCoinsCost);
+        }
+
+        private void SpawnAndDestroyWateringSoundPlayerIfNotNull()
+        {
+            if (wateringSoundPlayerPrefab == null) return;
+
+            GameObject wateringSoundObj = Instantiate(wateringSoundPlayerPrefab.gameObject, transform.position, Quaternion.identity, transform);
+
+            SoundPlayer wateringSoundPlayer = wateringSoundObj.GetComponent<SoundPlayer>();
+
+            if(wateringSoundPlayer != null)
+            {
+                float wateringSoundLength = wateringSoundPlayer.GetCurrentAudioClipLengthIfNotNull();
+
+                if(wateringSoundLength > 0.0f)
+                {
+                    //if watering sound length is found -> destroy after this duration
+                    Destroy(wateringSoundObj, wateringSoundLength);
+                }
+                else Destroy(wateringSoundObj, 1.0f);//if clip's length is undefined -> destroy after 1.0f
+
+                return;
+            }
+
+            //if watering sound player script not found -> destroy after 1.0f;
+            Destroy(wateringSoundObj, 1.0f);
         }
     }
 }
