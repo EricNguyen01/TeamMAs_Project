@@ -26,7 +26,7 @@ namespace TeamMAsTD
 
         private void Awake()
         {
-            if(waveSpawnerLinkedToButton == null)
+            if (waveSpawnerLinkedToButton == null)
             {
                 Debug.LogError("Start Wave Button: " + name + " has no WaveSpawner linked to it assigned! Disabling button!");
                 gameObject.SetActive(false);
@@ -35,7 +35,7 @@ namespace TeamMAsTD
 
             startWaveCanvasGroup = GetComponent<CanvasGroup>();
 
-            if(startWaveCanvasGroup == null)
+            if (startWaveCanvasGroup == null)
             {
                 startWaveCanvasGroup = gameObject.AddComponent<CanvasGroup>();
             }
@@ -65,7 +65,7 @@ namespace TeamMAsTD
 
         private void SetStartWaveButtonWaveText()
         {
-            if(startWaveButtonText == null)
+            if (startWaveButtonText == null)
             {
                 Debug.LogWarning("Start Wave Button UI Text component is not assigned! Button text displays won't work!");
                 return;
@@ -75,11 +75,11 @@ namespace TeamMAsTD
 
             if (!startedAtWave_1)
             {
-                startWaveButtonText.text = "Start Wave " + waveSpawnerLinkedToButton.currentWave;
+                startWaveButtonText.text = "Start Week " + waveSpawnerLinkedToButton.currentWave;
                 return;
             }
 
-            startWaveButtonText.text = "Start Wave " + (waveSpawnerLinkedToButton.currentWave + 1).ToString();
+            startWaveButtonText.text = "Start Week " + (waveSpawnerLinkedToButton.currentWave + 1).ToString();
         }
 
         private void EnableButton(bool enabled)
