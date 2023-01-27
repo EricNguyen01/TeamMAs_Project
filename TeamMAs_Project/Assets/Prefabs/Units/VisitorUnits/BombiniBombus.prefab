@@ -88,6 +88,7 @@ GameObject:
   - component: {fileID: 7552244346061551099}
   - component: {fileID: 2541358654680153799}
   - component: {fileID: -9081863570021092993}
+  - component: {fileID: -3697293230899282434}
   - component: {fileID: 1787145894408673747}
   m_Layer: 8
   m_Name: BombiniBombus
@@ -179,6 +180,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <visitorUnitSO>k__BackingField: {fileID: 11400000, guid: 950d07a7bc4f24c46bd5503a8f9974a3, type: 2}
   heartEffect: {fileID: 2041714446470901258}
+  visitorCoinsDropper: {fileID: -3697293230899282434}
 --- !u!114 &-9081863570021092993
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -194,6 +196,26 @@ MonoBehaviour:
   unitWorldCanvas: {fileID: 6002797163402936112}
   nameTextMeshProComponent: {fileID: 1824957415631162759}
   healthBarSlider: {fileID: 2213447289065136952}
+--- !u!114 &-3697293230899282434
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2664338853412353054}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4462e269569302f479345d41c2891793, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <resourcesToDropArr>k__BackingField:
+  - resourceToDrop: {fileID: 11400000, guid: 7f0c635957a541840b7d3206387c7a84, type: 2}
+    dropAmount: 0
+    resourceDropChanceBetweenResources: 1
+    chanceToNotDrop: 1
+    chanceToDrop: 1
+  dropAllResources: 1
+  alwaysDropSomething: 0
 --- !u!61 &1787145894408673747
 BoxCollider2D:
   m_ObjectHideFlags: 0

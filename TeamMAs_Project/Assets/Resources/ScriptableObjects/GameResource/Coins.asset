@@ -9,9 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b7a01806bbf0e9040be35c77dddcd8a5, type: 3}
-  m_Name: Coin
+  m_Script: {fileID: 11500000, guid: 71fb460e50329084a9597a0e0c936855, type: 3}
+  m_Name: Coins
   m_EditorClassIdentifier: 
   <resourceName>k__BackingField: Coins
-  <resourceAmount>k__BackingField: 2000
+  <resourceAmount>k__BackingField: 1005
   <resourceAmountCap>k__BackingField: 2000
+  <coinsGainOnWaveEnded>k__BackingField: 5

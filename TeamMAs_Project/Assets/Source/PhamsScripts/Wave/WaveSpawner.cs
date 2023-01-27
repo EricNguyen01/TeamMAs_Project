@@ -285,7 +285,7 @@ namespace TeamMAsTD
                 //if health amount is current = health amount cap (is at full hp)
                 if(GameResource.gameResourceInstance.emotionalHealthSO.resourceAmount == GameResource.gameResourceInstance.emotionalHealthSO.resourceAmountCap)
                 {
-                    if (showWavesEndHealthProcessDebugLog) Debug.Log("Increase Current Health and Health Cap!");
+                    if (showWavesEndHealthProcessDebugLog) Debug.Log("Health is full. Increase Current Health and Total Health Cap!");
 
                     //increase both health cap and current health on wave end.
                     GameResource.gameResourceInstance.emotionalHealthSO.IncreaseResourceAmountCap(GameResource.gameResourceInstance.emotionalHealthSO.totalBaseHealthIncreaseOnWaveEnd, true);
@@ -293,10 +293,19 @@ namespace TeamMAsTD
                     return;
                 }
                 //else -> only icnrease health cap
-                if (showWavesEndHealthProcessDebugLog) Debug.Log("Increase Health Cap!");
+                if (showWavesEndHealthProcessDebugLog) Debug.Log("Health is not full. Increase Total Health Cap Only!");
 
                 GameResource.gameResourceInstance.emotionalHealthSO.IncreaseResourceAmountCap(GameResource.gameResourceInstance.emotionalHealthSO.totalBaseHealthIncreaseOnWaveEnd, false);
             }
+        }
+
+        private void DropCoinsOnWaveEnded(WaveSO waveJustEnded)
+        {
+            if (GameResource.gameResourceInstance == null || GameResource.gameResourceInstance.coinResourceSO == null) return;
+
+            CoinResourceSO coinResourceSO = GameResource.gameResourceInstance.coinResourceSO;
+
+            GameResource.gameResourceInstance.coinResourceSO.AddResourceAmount(coinResourceSO.coinsGainOnWaveEnded + waveJustEnded.extraCoinsDropFromWave);
         }
 
         //PUBLICS..........................................................................
@@ -334,14 +343,18 @@ namespace TeamMAsTD
 
             //else if broadcast event is true->
             //invoke different wave ended events that depend on whether the last wave has spawned or not
+            //if the wave just ended is not the final wave:
             if (currentWave < wavesList.Count - 1)
             {
                 //Debug.Log("OnWaveFinished Invoked!");
                 bool hasOtherOngoingWaves = FindOtherOnGoingWaves();
 
+                //coins drop on wave ended
+                DropCoinsOnWaveEnded(waveSOList[waveNum]);
+
                 OnWaveFinished?.Invoke(this, waveNum, hasOtherOngoingWaves);
 
-                //process emotional health change on all waves end
+                //process emotional health change if no other waves from other WaveSpawner are currently running
                 if (!hasOtherOngoingWaves)
                 {
                     IncreaseTotalBaseEmotionalHealth();
@@ -351,10 +364,12 @@ namespace TeamMAsTD
 
                 if (incrementWaveOnFinished) currentWave++;
             }
+            //else if wave just ended is the final wave
             else
             {
                 //Debug.Log("OnAllWaveSpawned Invoked!");
 
+                //broadcast all waves of this WaveSpawner just finished running event
                 OnAllWaveSpawned?.Invoke(this, FindOtherOnGoingWaves());
             }
         }

@@ -16,7 +16,7 @@ namespace TeamMAsTD
         {
             public VisitorUnitSO visitorType;
             [Min(1)] public int spawnNumbers;
-            [Range(1, 50)] public int spawnChance;
+            [Range(1, 100)] public int spawnChance;
         }
 
         [field: Header("This Wave Data")]
@@ -36,6 +36,10 @@ namespace TeamMAsTD
         [field: Header("This Wave Visitor Health Scaling Data")]
         [field: SerializeField] public bool applyVisitorHealthScalingThisWave { get; private set; } = true;
         [field: SerializeField][field: Min(1.0f)] public float visitorHealthScalingMultiplier { get; private set; } = 1.0f;
+
+        [field: Header("This Wave Coins Drop Data")]
+        [field: Tooltip("The extra coins drop on this specific wave ended in addition to the base drop set in Coins game resource scriptable object.")]
+        [field: SerializeField] [field: Min(0)] public int extraCoinsDropFromWave { get; private set; } = 0;
 
         public int GetSpawnNumberOfVisitorType(VisitorUnitSO visitorSO)
         {

@@ -22,6 +22,10 @@ namespace TeamMAsTD
 
         [field: Header("Visitor Appeasement Settings")]
         [field: SerializeField] public AnimationClip visitorAppeasementAnimClip { get; private set; }
-        [field: SerializeField] public float visitorAppeasementTime { get; private set; } = 2.5f;
+        [field: SerializeField] [field: Min(0)] public float visitorAppeasementTime { get; private set; } = 2.5f;
+        [field: SerializeField] public CoinResourceSO coinResourceToDrop { get; private set; }
+        [field: SerializeField][field: Min(0)] public int visitorsAppeasedCoinsDrop { get; private set; }
+        [field: SerializeField][field: Range(1, 100)] public int chanceToDropCoins { get; private set; }
+        [field: SerializeField][field: Range(0, 100)] public int chanceToNotDropCoins { get; private set; }
     }
 }
