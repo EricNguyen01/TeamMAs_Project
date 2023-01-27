@@ -26,12 +26,12 @@ public class Dialog : MonoBehaviour
         StartCoroutine(DialogTest(1f));
     }
 
-    void OnConversationStart(Transform actor)
+    void OnConversationStart(Transform actor) // THIS SCRIPT MUST BE ON DIALOGUE MANAGER CUSTOM TO WORK
     {
         Time.timeScale = 0;
     }
 
-    void OnConversationEnd(Transform actor)
+    void OnConversationEnd(Transform actor) // THIS SCRIPT MUST BE ON DIALOGUE MANAGER CUSTOM TO WORK
     {
         Time.timeScale = 1;
     }
@@ -39,9 +39,9 @@ public class Dialog : MonoBehaviour
     IEnumerator DialogTest(float delayTime)
     {
         yield return new WaitForSeconds(delayTime);
+
         //DialogueManager.StartConversation(string conversation, Transform actor, Transform conversant); // actor and conversant are optional
         StartConversation(1);
-        //GetComponent<DialogueSystemTrigger>().OnUse();  // also works, only if using a DialogueSystemTrigger component set to OnUse
     }
 
     public void SkipDialog()
