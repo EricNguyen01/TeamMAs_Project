@@ -11,6 +11,8 @@ namespace TeamMAsTD
 
         [field: SerializeField] public AudioClip audioClipToPlay { get; private set; }
 
+        [SerializeField] private float musicFadesOutDuration = 1.4f;
+
         private float audioSourceBaseVolume = 0.0f;
 
         private void Awake()
@@ -74,7 +76,7 @@ namespace TeamMAsTD
 
             if (!audioSource.isPlaying) return;
 
-            StartCoroutine(FadeOutMusic(audioSourceBaseVolume, 0.0f, 1f));
+            StartCoroutine(FadeOutMusic(audioSourceBaseVolume, 0.0f, musicFadesOutDuration));
         }
 
         private IEnumerator FadeOutMusic(float volumeBeginsFade, float volumeEndsFade, float fadeDuration)
