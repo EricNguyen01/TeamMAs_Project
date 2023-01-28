@@ -575,7 +575,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1b82165064c81f748bc3ddbae1b11014, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -823,6 +823,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnPlantingFailedOnTile:
+    m_PersistentCalls:
+      m_Calls: []
   OnPlantUnitUprootedOnTile:
     m_PersistentCalls:
       m_Calls:
@@ -838,6 +841,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnInsufficientFundsToUproot:
+    m_PersistentCalls:
+      m_Calls: []
   <tileNumInRow>k__BackingField: 0
   <tileNumInColumn>k__BackingField: 0
   <gridParent>k__BackingField: {fileID: 0}
@@ -882,6 +888,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wateringSoundPlayerPrefab: {fileID: 1954455504458609106, guid: 7ea03095a313b0c4292be0f076dce57e, type: 3}
+  OnInsufficientFundsToWater:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!82 &8137925640410980039
 AudioSource:
   m_ObjectHideFlags: 0
