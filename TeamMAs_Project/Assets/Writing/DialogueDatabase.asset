@@ -2919,7 +2919,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: "No, that\u2019s a myth. You'd actually grow better there, unfortunately..."
+        value: "No, that\u2019s a myth. You'd grow better there, unfortunately..."
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
