@@ -15,14 +15,14 @@ namespace TeamMAsTD
 
         private void Awake()
         {
-            if(audioSource == null)
+            if (audioSource == null)
             {
-                audioSource= GetComponent<AudioSource>();
+                audioSource = GetComponent<AudioSource>();
 
-                if(audioSource == null) audioSource = gameObject.AddComponent<AudioSource>();
+                if (audioSource == null) audioSource = gameObject.AddComponent<AudioSource>();
             }
 
-            if(audioClipToPlay == null)
+            if (audioClipToPlay == null)
             {
                 Debug.LogWarning("Battle Music Player: " + name + " doesnt have an audio clip to play assigned!");
             }
@@ -65,7 +65,9 @@ namespace TeamMAsTD
 
             if (enabled)
             {
-                audioSource.volume = audioSourceBaseVolume;
+                //audioSource.volume = audioSourceBaseVolume;
+
+                StartCoroutine(FadeInMusic(0.0f, audioSourceBaseVolume, musicFadeDuration / 3)); // feel free to refactor -sarita
 
                 if (!audioSource.isPlaying) audioSource.Play();
 
@@ -74,12 +76,12 @@ namespace TeamMAsTD
 
             if (!audioSource.isPlaying) return;
 
-            StartCoroutine(FadeOutMusic(audioSourceBaseVolume, 0.0f, 1f));
+            StartCoroutine(FadeOutMusic(audioSourceBaseVolume, 0.0f, musicFadeDuration));
         }
 
         private IEnumerator FadeOutMusic(float volumeBeginsFade, float volumeEndsFade, float fadeDuration)
         {
-            if(fadeDuration <= 0.0f)
+            if (fadeDuration <= 0.0f)
             {
                 if (audioSource.isPlaying) audioSource.Stop();
 
@@ -90,7 +92,7 @@ namespace TeamMAsTD
 
             float lerpedVolume = 0.0f;
 
-            while(fadeTime < fadeDuration)
+            while (fadeTime < fadeDuration)
             {
                 lerpedVolume = Mathf.Lerp(volumeBeginsFade, volumeEndsFade, fadeTime);
 
@@ -102,6 +104,26 @@ namespace TeamMAsTD
             }
 
             audioSource.Stop();
+
+            yield break;
+        }
+
+        private IEnumerator FadeInMusic(float volumeBeginsFade, float volumeEndsFade, float fadeDuration) // i'm lazy. feel free to refactor -sarita
+        {
+            float fadeTime = 0.0f;
+
+            float lerpedVolume = 0.0f;
+
+            while (lerpedVolume < volumeEndsFade)
+            {
+                lerpedVolume = Mathf.Lerp(volumeBeginsFade, volumeEndsFade, fadeTime / fadeDuration);
+
+                audioSource.volume = lerpedVolume;
+
+                yield return new WaitForFixedUpdate();
+
+                fadeTime += Time.fixedDeltaTime;
+            }
 
             yield break;
         }
