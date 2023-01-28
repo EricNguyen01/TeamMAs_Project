@@ -11,7 +11,9 @@ namespace TeamMAsTD
 
         [field: SerializeField] public AudioClip audioClipToPlay { get; private set; }
 
-        [SerializeField] private float musicFadeDuration = 1.4f;
+        [SerializeField] private float musicFadesInDuration = 1.0f;
+
+        [SerializeField] private float musicFadesOutDuration = 1.4f;
 
         private float audioSourceBaseVolume = 0.0f;
 
@@ -67,28 +69,21 @@ namespace TeamMAsTD
 
             if (enabled)
             {
-                //audioSource.volume = audioSourceBaseVolume;
-
-                StartCoroutine(FadeInMusic(0.0f, audioSourceBaseVolume, musicFadeDuration / 3)); // feel free to refactor -sarita
-
                 if (!audioSource.isPlaying) audioSource.Play();
+
+                StartCoroutine(MusicFadesLerpFromTo(0.0f, audioSourceBaseVolume, musicFadesInDuration));
 
                 return;
             }
 
             if (!audioSource.isPlaying) return;
 
-            StartCoroutine(FadeOutMusic(audioSourceBaseVolume, 0.0f, musicFadeDuration));
+            StartCoroutine(MusicFadesLerpFromTo(audioSourceBaseVolume, 0.0f, musicFadesOutDuration, true));
         }
 
-        private IEnumerator FadeOutMusic(float volumeBeginsFade, float volumeEndsFade, float fadeDuration)
+        private IEnumerator MusicFadesLerpFromTo(float volumeFrom, float volumeTo, float fadeDuration, bool stopMusicOnFinished = false)
         {
-            if (fadeDuration <= 0.0f)
-            {
-                if (audioSource.isPlaying) audioSource.Stop();
-
-                yield break;
-            }
+            audioSource.volume = volumeFrom;
 
             float fadeTime = 0.0f;
 
@@ -96,7 +91,7 @@ namespace TeamMAsTD
 
             while (fadeTime < fadeDuration)
             {
-                lerpedVolume = Mathf.Lerp(volumeBeginsFade, volumeEndsFade, fadeTime);
+                lerpedVolume = Mathf.Lerp(volumeFrom, volumeTo, fadeTime);
 
                 audioSource.volume = lerpedVolume;
 
@@ -105,27 +100,9 @@ namespace TeamMAsTD
                 fadeTime += Time.fixedDeltaTime;
             }
 
-            audioSource.Stop();
+            audioSource.volume = volumeTo;
 
-            yield break;
-        }
-
-        private IEnumerator FadeInMusic(float volumeBeginsFade, float volumeEndsFade, float fadeDuration) // i'm lazy. feel free to refactor -sarita
-        {
-            float fadeTime = 0.0f;
-
-            float lerpedVolume = 0.0f;
-
-            while (lerpedVolume < volumeEndsFade)
-            {
-                lerpedVolume = Mathf.Lerp(volumeBeginsFade, volumeEndsFade, fadeTime / fadeDuration);
-
-                audioSource.volume = lerpedVolume;
-
-                yield return new WaitForFixedUpdate();
-
-                fadeTime += Time.fixedDeltaTime;
-            }
+            if(stopMusicOnFinished && audioSource.isPlaying) audioSource.Stop();
 
             yield break;
         }

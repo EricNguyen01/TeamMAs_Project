@@ -68569,6 +68569,18 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8832401153954520558, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
+      propertyPath: m_Alpha
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8832401153954520558, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
+      propertyPath: m_Interactable
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8832401153954520558, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
+      propertyPath: m_BlocksRaycasts
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8832401154024209712, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -68593,6 +68605,18 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8832401154024209717, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
+      propertyPath: m_Alpha
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8832401154024209717, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
+      propertyPath: m_Interactable
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8832401154024209717, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
+      propertyPath: m_BlocksRaycasts
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8832401154026542293, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -68639,6 +68663,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8832401155225839075, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
       propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8832401155225839078, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
+      propertyPath: m_Alpha
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8832401155225839078, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
+      propertyPath: m_Interactable
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8832401155225839078, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
+      propertyPath: m_BlocksRaycasts
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9106326678215302672, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}

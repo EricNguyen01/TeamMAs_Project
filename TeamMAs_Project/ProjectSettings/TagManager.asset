@@ -50,9 +50,9 @@ TagManager:
   - name: Plant
     uniqueID: 2314798829
     locked: 0
-  - name: UI
-    uniqueID: 599533699
-    locked: 0
   - name: Visitor
     uniqueID: 1719923375
+    locked: 0
+  - name: UI
+    uniqueID: 599533699
     locked: 0
