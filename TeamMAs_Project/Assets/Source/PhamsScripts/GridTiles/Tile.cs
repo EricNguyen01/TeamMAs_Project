@@ -24,10 +24,8 @@ namespace TeamMAsTD
         [field: SerializeField] public PlantUnit plantUnitOnTile { get; private set; }
         [field: SerializeField] public bool disableUprootOnTile { get; private set; } = false;
 
-#if UNITY_EDITOR
         [Header("Tile Debug Config")]
         [SerializeField] private bool drawTileDebug = true;
-#endif
 
         [SerializeField]
         [Tooltip("Draw the tile color debug (e.g: green for plantable, grey for rocks, etc). " +
