@@ -245,7 +245,7 @@ namespace TeamMAsTD
             currentSpawnRandomNumber = Random.Range(0, spawnChanceList.Count);
 
             //make sure rand is not a repeat 
-            if (currentSpawnRandomNumber == previousSpawnRandomNumber) return null;
+            //if (currentSpawnRandomNumber == previousSpawnRandomNumber) return null;
 
             previousSpawnRandomNumber = currentSpawnRandomNumber;
 
