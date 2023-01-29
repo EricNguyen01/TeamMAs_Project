@@ -40,6 +40,7 @@ namespace TeamMAsTD
         [field: SerializeField] [field: Min(0)] public int plantingCoinCost { get; private set; }
         [field: SerializeField] [field: Min(0)] public int uprootRefundAmount { get; private set; }
         [field: SerializeField] [field: Min(0)] public int uprootCost { get; private set; }
+        [field: SerializeField] [field: Min(0)] public int uprootHealthCost { get; private set; }
         [field: SerializeField] [field: Min(0)] public int waterUse { get; private set; }
         [field: SerializeField] [field: Min(0)] public int waterBarsRefilledPerWatering { get; private set; } = 1;
         [field: SerializeField][field: Min(0)] public int wateringCoinsCost { get; private set; } = 1;

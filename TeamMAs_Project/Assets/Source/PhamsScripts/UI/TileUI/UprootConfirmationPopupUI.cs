@@ -103,6 +103,7 @@ namespace TeamMAsTD
                     {
                         float costAmount = tileWithUnitToUproot.plantUnitOnTile.plantUnitScriptableObject.uprootCost;
 
+                        //if there's an uproot cost amount and current coins < uproot cost -> stop uproot
                         if (GameResource.gameResourceInstance.coinResourceSO.resourceAmount < costAmount) 
                         {
                             tileWithUnitToUproot.UprootingInsufficientFundsEventInvoke();

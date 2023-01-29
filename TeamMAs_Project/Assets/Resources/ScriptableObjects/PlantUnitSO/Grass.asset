@@ -33,6 +33,7 @@ MonoBehaviour:
   <plantingCoinCost>k__BackingField: 4
   <uprootRefundAmount>k__BackingField: 1
   <uprootCost>k__BackingField: 0
+  <uprootHealthCost>k__BackingField: 1
   <waterUse>k__BackingField: 3
   <waterBarsRefilledPerWatering>k__BackingField: 1
   <wateringCoinsCost>k__BackingField: 1

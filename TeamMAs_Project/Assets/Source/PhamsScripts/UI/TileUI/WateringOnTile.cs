@@ -26,6 +26,11 @@ namespace TeamMAsTD
                 enabled = false;
                 return;
             }
+
+            if(wateringSoundPlayerPrefab == null)
+            {
+                Debug.LogWarning("Watering Sound Player Prefab is missing on WateringOnTile: " + name);
+            }
         }
 
         //Watering button UI event function -> callback from button's OnClicked event 
@@ -37,34 +42,37 @@ namespace TeamMAsTD
 
             if (tilePlantWaterUsageSystem == null) return;
 
+            //if water in plant water usage system is full -> exit function
+            if (tilePlantWaterUsageSystem.IsWaterFull()) return;
+
             int waterBarsToRefill = tileToWater.plantUnitOnTile.plantUnitScriptableObject.waterBarsRefilledPerWatering;
 
             int wateringCoinsCost = tileToWater.plantUnitOnTile.plantUnitScriptableObject.wateringCoinsCost;
 
-            ProcessWateringSufficientFundsEvent(wateringCoinsCost);
+            //check for sufficient funds to water
+            if (GameResource.gameResourceInstance != null && GameResource.gameResourceInstance.coinResourceSO != null)
+            {
+                if (GameResource.gameResourceInstance.coinResourceSO.resourceAmount < wateringCoinsCost)
+                {
+                    //if insufficient funds to water -> broadcast event and exit function
+                    Debug.LogError("Watering Failed: Insufficient Funds to Refill Water Bars!");
 
-            //play watering sound if plant on tile's water is not full
+                    OnInsufficientFundsToWater?.Invoke();
+
+                    return;
+                }
+            }
+
+            //else if there is sufficient fund to water
+            //play watering sound if plant on tile's water is not full (water full check is above)
             //watering sound is played by creating a sound player object with SoundPlayer.cs script attached that plays watering sound on awake
             //upon finished playing watering sounds, watering sound player object is destroyed based on watering sound clip's length
-            if (!tilePlantWaterUsageSystem.IsWaterFull()) SpawnAndDestroyWateringSoundPlayerIfNotNull();
+            SpawnAndDestroy_WateringSoundPlayer_IfNotNull();
 
             tilePlantWaterUsageSystem.RefillWaterBars(waterBarsToRefill, wateringCoinsCost);
         }
 
-        private void ProcessWateringSufficientFundsEvent(int waterCost)
-        {
-            if (GameResource.gameResourceInstance == null || GameResource.gameResourceInstance.coinResourceSO == null) return;
-
-            if(waterCost > GameResource.gameResourceInstance.coinResourceSO.resourceAmount)
-            {
-                OnInsufficientFundsToWater?.Invoke();
-
-                return;
-            }
-            
-        }
-
-        private void SpawnAndDestroyWateringSoundPlayerIfNotNull()
+        private void SpawnAndDestroy_WateringSoundPlayer_IfNotNull()
         {
             if (wateringSoundPlayerPrefab == null) return;
 

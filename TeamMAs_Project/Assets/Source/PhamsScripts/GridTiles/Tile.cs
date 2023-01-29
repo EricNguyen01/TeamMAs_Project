@@ -96,7 +96,7 @@ namespace TeamMAsTD
         {
             if (plantUnitOnTile != null || isOccupied)
             {
-                OnPlantingFailedOnTile?.Invoke(null, this);
+                OnPlantingFailedOnTile?.Invoke(unitSO, this);
 
                 return false;
             }
@@ -216,6 +216,14 @@ namespace TeamMAsTD
 
             //throw uproot event
             OnPlantUnitUprootedOnTile?.Invoke(plantUnitOnTile, this);
+
+            //process uproot health cost
+            if(GameResource.gameResourceInstance != null && GameResource.gameResourceInstance.emotionalHealthSO != null)
+            {
+                Debug.Log("Plant Uprooted, Consuming Emotional Health!");
+
+                GameResource.gameResourceInstance.emotionalHealthSO.RemoveResourceAmount(plantUnitOnTile.plantUnitScriptableObject.uprootHealthCost);
+            }
 
             Destroy(plantUnitOnTile.gameObject, uprootDelaySec);
 
