@@ -14,14 +14,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <visitorTypesToSpawnThisWave>k__BackingField:
   - visitorType: {fileID: 11400000, guid: 5d9daf08272e8754a8584dfa26f65ed1, type: 2}
-    spawnNumbers: 10
+    spawnNumbers: 8
     spawnChance: 5
   - visitorType: {fileID: 11400000, guid: 297fbbaf0eb4b9a4f9e1270ac6e199f4, type: 2}
     spawnNumbers: 10
+    spawnChance: 5
+  - visitorType: {fileID: 11400000, guid: cce1c36890388f547ae264ae7be37a4d, type: 2}
+    spawnNumbers: 2
     spawnChance: 5
   <waitTimeToFirstSpawn>k__BackingField: 1
   <waitTimeBetweenSpawn>k__BackingField: 1
   <spawnBossLast>k__BackingField: 1
   <applyVisitorHealthScalingThisWave>k__BackingField: 1
-  <visitorHealthScalingMultiplier>k__BackingField: 1
+  <visitorHealthScalingMultiplier>k__BackingField: 1.2
   <extraCoinsDropFromWave>k__BackingField: 0
