@@ -13,13 +13,13 @@ namespace TeamMAsTD
     {
         [SerializeField] private Canvas tileWorldCanvas;
 
+        [SerializeField] private Camera worldUICam;
+
         //INTERNALS...........................................................................................
 
         private CanvasGroup tileWorldCanvasGroup;
 
         private Tile tileSelectedForUprootConfirmation;
-
-        private Camera mainCam;
 
         private PointerEventData pEventData;//Unity's EventSystem pointer event data
 
@@ -58,9 +58,26 @@ namespace TeamMAsTD
                 return;
             }
 
-            if (mainCam == null) mainCam = Camera.main;
+            if(worldUICam != null)
+            {
+                tileWorldCanvas.worldCamera = worldUICam;
+            }
+            else
+            {
+                foreach(Camera cam in Camera.allCameras)
+                {
+                    if (cam.cullingMask == LayerMask.GetMask("WorldUI"))
+                    {
+                        worldUICam = cam;
 
-            if (tileWorldCanvas.worldCamera == null) tileWorldCanvas.worldCamera = mainCam;
+                        if (tileWorldCanvas.worldCamera == null) tileWorldCanvas.worldCamera = worldUICam;
+
+                        break;
+                    }
+                }
+            }
+
+            if (tileWorldCanvas.worldCamera == null) tileWorldCanvas.worldCamera = Camera.main;
         }
 
         private void OnEnable()

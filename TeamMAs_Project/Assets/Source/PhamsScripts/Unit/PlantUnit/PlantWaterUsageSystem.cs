@@ -8,6 +8,8 @@ namespace TeamMAsTD
     [RequireComponent(typeof(PlantUnit))]
     public class PlantWaterUsageSystem : MonoBehaviour
     {
+        [SerializeField] private StatPopupSpawner plantWateringPopup;
+
         private PlantUnit plantUnitLinked;
 
         private PlantUnitSO plantUnitSO;
@@ -46,6 +48,11 @@ namespace TeamMAsTD
                 enabled = false;
 
                 return;
+            }
+
+            if(plantWateringPopup == null)
+            {
+                Debug.LogWarning("PlantWateringPopupSpawner component is missing in :" + name + "'s PlantWaterUsageSystem!");
             }
         }
 
@@ -107,6 +114,8 @@ namespace TeamMAsTD
             //filling water
             waterBarsRemaining += barsRefilled;
 
+            if (plantWateringPopup != null) plantWateringPopup.PopUp(null, "+" + barsRefilled.ToString());
+
             //reset current rounds survived without water if water bars remaining > 0 after being refilled.
             if (waterBarsRemaining > 0) 
             { 
@@ -167,6 +176,8 @@ namespace TeamMAsTD
         public void ConsumingWaterBars()
         {
             waterBarsRemaining -= plantUnitSO.waterUse;
+
+            if(plantWateringPopup != null) plantWateringPopup.PopUp(null, "-" + plantUnitSO.waterUse.ToString());
 
             //set water slider UI values
             if(waterBarsRemaining > 0) plantUnitWorldUI.SetWaterSliderValue(waterBarsRemaining, totalWaterBars);
