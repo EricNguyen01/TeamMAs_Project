@@ -111,6 +111,7 @@ Transform:
   m_Children:
   - {fileID: 5631884636994372409}
   - {fileID: 668591779807285864}
+  - {fileID: 9157216391705658167}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -153,7 +154,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1719923375
-  m_SortingLayer: 5
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: cbef51c30994be5408e78c58c34ff984, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -211,6 +212,7 @@ MonoBehaviour:
   <resourcesToDropArr>k__BackingField:
   - resourceToDrop: {fileID: 11400000, guid: 7f0c635957a541840b7d3206387c7a84, type: 2}
     dropAmount: 0
+    resourceDropPopupSpawner: {fileID: 5981983333208447104}
     resourceDropChanceBetweenResources: 1
     chanceToNotDrop: 1
     chanceToDrop: 1
@@ -682,6 +684,79 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!1001 &4348309632875166279
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 4062420015516626225}
+    m_Modifications:
+    - target: {fileID: 4849456886206888304, guid: be2a0ac942afe8841bf8cf4a38447cca, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4849456886206888304, guid: be2a0ac942afe8841bf8cf4a38447cca, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4849456886206888304, guid: be2a0ac942afe8841bf8cf4a38447cca, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4849456886206888304, guid: be2a0ac942afe8841bf8cf4a38447cca, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4849456886206888304, guid: be2a0ac942afe8841bf8cf4a38447cca, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4849456886206888304, guid: be2a0ac942afe8841bf8cf4a38447cca, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4849456886206888304, guid: be2a0ac942afe8841bf8cf4a38447cca, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4849456886206888304, guid: be2a0ac942afe8841bf8cf4a38447cca, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4849456886206888304, guid: be2a0ac942afe8841bf8cf4a38447cca, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4849456886206888304, guid: be2a0ac942afe8841bf8cf4a38447cca, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4849456886206888304, guid: be2a0ac942afe8841bf8cf4a38447cca, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8923729546418773549, guid: be2a0ac942afe8841bf8cf4a38447cca, type: 3}
+      propertyPath: m_Name
+      value: CoinPopupSpawner
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: be2a0ac942afe8841bf8cf4a38447cca, type: 3}
+--- !u!114 &5981983333208447104 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8024300418989073095, guid: be2a0ac942afe8841bf8cf4a38447cca, type: 3}
+  m_PrefabInstance: {fileID: 4348309632875166279}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c19b9f42d03e804ab593c9d4f5ba6e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &9157216391705658167 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4849456886206888304, guid: be2a0ac942afe8841bf8cf4a38447cca, type: 3}
+  m_PrefabInstance: {fileID: 4348309632875166279}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &5220231340384649088
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4849456886206888304}
   - component: {fileID: 8024300418989073095}
   m_Layer: 0
-  m_Name: WateringPopupSpawner
+  m_Name: CoinPopupSpawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -44,12 +44,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c19b9f42d03e804ab593c9d4f5ba6e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  statPopupPrefab: {fileID: 7758570173177216992, guid: 9927ca0bad663494b9045813e762547f, type: 3}
+  statPopupPrefab: {fileID: 7758570173177216992, guid: ed741a84b9ba3b4459355084ad0d754f, type: 3}
   startVerticalOffset: 0
   startHorizontalOffset: 0
-  verticalDistanceFromStart: 0.7
-  horizontalDistFromStart: 0.24
+  verticalDistanceFromStart: 0.35
+  horizontalDistFromStart: 0.2
   randomHorizontalTravelDistFromStart: 1
   randomVerticalTravelDistFromStart: 0
-  popupTime: 0.8
-  popupNumberToPool: 5
+  popupTime: 0.6

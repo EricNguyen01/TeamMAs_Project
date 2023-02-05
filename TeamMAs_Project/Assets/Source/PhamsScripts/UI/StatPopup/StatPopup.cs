@@ -80,7 +80,9 @@ namespace TeamMAsTD
                 currentTravelTime = popupTravelTime;
 
                 //if finished popping up, return this stat popup object to pool through calling below function from its stat popup spawner
-                statPopupSpawnerSpawnedThisPopup.ReturnStatPopupToPool(this);
+                if (statPopupSpawnerSpawnedThisPopup != null) statPopupSpawnerSpawnedThisPopup.ReturnStatPopupToPool(this);
+                //if the stat popup spawner of this stat popup is null->destroy this stat popup game object
+                else Destroy(gameObject);
             }
         }
 

@@ -42,6 +42,10 @@ namespace TeamMAsTD
         [Tooltip("The time it takes for popup to move from start to end position.")]
         protected float popupTime = 0.7f;
 
+        [SerializeField]
+        [Tooltip("The number of stat popup objects to spawn into a pool before runtime so that they can be enable when needed later")]
+        protected int popupNumberToPool = 1;
+
         protected StatPopupPool statPopupPool;
 
         protected virtual void Awake()
@@ -57,9 +61,15 @@ namespace TeamMAsTD
 
             statPopupPool = new StatPopupPool(this, statPopupPrefab.gameObject, transform);
 
-            statPopupPool.CreateAndAddStatPopupsToPool(5);
+            statPopupPool.CreateAndAddStatPopupsToPool(popupNumberToPool);
         }
 
+        //PopUp Overloading
+        public virtual void PopUp()
+        {
+            PopUp(null, null);
+        }
+        
         public virtual void PopUp(Sprite spriteToPopup, string textToPopup)
         {
             Vector3 popupStartPos = transform.position + new Vector3(startHorizontalOffset, startVerticalOffset, transform.position.z);

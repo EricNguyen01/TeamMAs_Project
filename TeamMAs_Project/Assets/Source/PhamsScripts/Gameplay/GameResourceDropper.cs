@@ -13,6 +13,8 @@ namespace TeamMAsTD
 
             public int dropAmount;
 
+            public StatPopupSpawner resourceDropPopupSpawner;
+
             [Tooltip("This resource drop chances compared to other resources in the resource drop list. In other words," +
                      "how likely is this resource is going to drop compared to all the resources that could be dropped by this dropper.")]
             [Range(1, 100)] public int resourceDropChanceBetweenResources;
@@ -24,10 +26,11 @@ namespace TeamMAsTD
             [Tooltip("The opposite of chanceToNotDrop and is used to compare with this value")]
             [Range(1, 100)] public int chanceToDrop;
 
-            public ResourceDropperStruct(GameResourceSO resourceSO, int amount, int dropChanceBtResources, int chanceToNotDrop, int chanceToDrop)
+            public ResourceDropperStruct(GameResourceSO resourceSO, int amount, StatPopupSpawner resourcePopup, int dropChanceBtResources, int chanceToNotDrop, int chanceToDrop)
             {
                 resourceToDrop = resourceSO;
                 dropAmount = amount;
+                resourceDropPopupSpawner = resourcePopup;
                 resourceDropChanceBetweenResources = dropChanceBtResources;
                 this.chanceToNotDrop = chanceToNotDrop;
                 this.chanceToDrop = chanceToDrop;
@@ -80,6 +83,7 @@ namespace TeamMAsTD
 
         //Public function to performs either dropping a random resource in the resource array based on total drop chances
         //or drop all resources in the array. Final resource drop can be something or nothing.
+        //this function overloaded the base DropResource() below
         public void DropResource()
         {
             if (resourcesToDropArr == null || resourcesToDropArr.Length == 0)
@@ -119,6 +123,11 @@ namespace TeamMAsTD
             {
                 resourceToDropStruct.resourceToDrop.AddResourceAmount(resourceToDropStruct.dropAmount);
 
+                if(resourceToDropStruct.resourceDropPopupSpawner != null)
+                {
+                    resourceToDropStruct.resourceDropPopupSpawner.PopUp(null, "+" + resourceToDropStruct.dropAmount.ToString());
+                }
+
                 return;
             }
 
@@ -130,6 +139,10 @@ namespace TeamMAsTD
 
             resourceToDropStruct.resourceToDrop.AddResourceAmount(resourceToDropStruct.dropAmount);
 
+            if (resourceToDropStruct.resourceDropPopupSpawner != null)
+            {
+                resourceToDropStruct.resourceDropPopupSpawner.PopUp(null, "+" + resourceToDropStruct.dropAmount.ToString());
+            }
         }
 
         public void DropAllResources(bool alwaysDrop)
@@ -158,7 +171,7 @@ namespace TeamMAsTD
             //in case of invalid resources vs resources drop chance list
             if (resourceVsResourcesDropChanceList == null || resourceVsResourcesDropChanceList.Count == 0)
             {
-                return new ResourceDropperStruct(null, 0, 0, 0, 0);//return a default layout with all null or 0 value 
+                return new ResourceDropperStruct(null, 0, null, 0, 0, 0);//return a default layout with all null or 0 value 
             }
 
             if(resourceVsResourcesDropChanceList.Count == 1)
@@ -186,7 +199,7 @@ namespace TeamMAsTD
             }
 
             //if no valid resource was acquired for dropping
-            return new ResourceDropperStruct(null, 0, 0, 0, 0);//return a default layout with all null or 0 value 
+            return new ResourceDropperStruct(null, 0, null, 0, 0, 0);//return a default layout with all null or 0 value 
         }
 
         private void SetDropChancesBetweenResourcesList()
