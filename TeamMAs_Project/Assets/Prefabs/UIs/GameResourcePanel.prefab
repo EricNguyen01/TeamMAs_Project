@@ -247,6 +247,7 @@ MonoBehaviour:
   resourceNameText: {fileID: 0}
   resourceAmountText: {fileID: 3403952189450786895}
   displayResourceAmountCap: 1
+  gameResourceUIStatPopupSpawner: {fileID: 8024300418989073095, guid: 312d4e6a02524d141bd8cd5c5b7b5206, type: 3}
   showDebugAndErrorLog: 0
 --- !u!1 &3216412137299497360
 GameObject:
@@ -769,6 +770,7 @@ MonoBehaviour:
   resourceNameText: {fileID: 5322612110599623272}
   resourceAmountText: {fileID: 5322612110409281862}
   displayResourceAmountCap: 0
+  gameResourceUIStatPopupSpawner: {fileID: 8024300418989073095, guid: be2a0ac942afe8841bf8cf4a38447cca, type: 3}
   showDebugAndErrorLog: 0
 --- !u!1 &5322612110599623254
 GameObject:

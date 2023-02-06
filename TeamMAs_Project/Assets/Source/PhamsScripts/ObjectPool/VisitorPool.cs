@@ -34,12 +34,12 @@ namespace TeamMAsTD
         public bool CreateAndAddInactiveVisitorsToPool(int numberToPool)
         {
             //Calls the base function in TD_GameObjectPoolBase
-            return base.CreateAndAddToPool(visitorTypeInPool.unitPrefab, numberToPool, waveSpawnerTransform, true);
+            return CreateAndAddToPool(visitorTypeInPool.unitPrefab, numberToPool, waveSpawnerTransform, true);
         }
 
         public GameObject EnableVisitorFromPool()
         {
-            GameObject visitorGO = base.EnableGameObjectFromPool();
+            GameObject visitorGO = EnableGameObjectFromPool();
             
             VisitorUnit visitorUnit = visitorGO.GetComponent<VisitorUnit>();
 
@@ -56,14 +56,14 @@ namespace TeamMAsTD
         {
             if (visitor == null) return;
 
-            base.ReturnGameObjectToPool(visitor.gameObject);
+            ReturnGameObjectToPool(visitor.gameObject);
         }
 
         public void RemoveVisitorFromPool(VisitorUnit visitor)
         {
             if (visitor == null) return;
 
-            base.RemoveGameObjectFromPool(visitor.gameObject);
+            RemoveGameObjectFromPool(visitor.gameObject);
 
             visitor.SetPoolContainsThisVisitor(null);
         }

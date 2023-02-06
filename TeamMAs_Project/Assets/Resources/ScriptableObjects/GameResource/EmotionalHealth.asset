@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: EmotionalHealth
   m_EditorClassIdentifier: 
   <resourceName>k__BackingField: Emotional Health
-  <resourceAmount>k__BackingField: 10
-  <resourceAmountCap>k__BackingField: 10
+  <resourceAmount>k__BackingField: 100
+  <resourceAmountCap>k__BackingField: 100
   <totalBaseHealthIncreaseOnWaveEnd>k__BackingField: 1
   <healthHealedAfterBossWave>k__BackingField: 5

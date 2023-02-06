@@ -114,7 +114,7 @@ namespace TeamMAsTD
             //filling water
             waterBarsRemaining += barsRefilled;
 
-            if (plantWateringPopup != null) plantWateringPopup.PopUp(null, "+" + barsRefilled.ToString());
+            if (plantWateringPopup != null) plantWateringPopup.PopUp(null, "+" + barsRefilled.ToString(), true);
 
             //reset current rounds survived without water if water bars remaining > 0 after being refilled.
             if (waterBarsRemaining > 0) 
@@ -177,7 +177,7 @@ namespace TeamMAsTD
         {
             waterBarsRemaining -= plantUnitSO.waterUse;
 
-            if(plantWateringPopup != null) plantWateringPopup.PopUp(null, "-" + plantUnitSO.waterUse.ToString());
+            if(plantWateringPopup != null) plantWateringPopup.PopUp(null, "-" + plantUnitSO.waterUse.ToString(), false);
 
             //set water slider UI values
             if(waterBarsRemaining > 0) plantUnitWorldUI.SetWaterSliderValue(waterBarsRemaining, totalWaterBars);

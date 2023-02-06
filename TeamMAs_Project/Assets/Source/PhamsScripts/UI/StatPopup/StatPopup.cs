@@ -6,13 +6,30 @@ using TMPro;
 
 namespace TeamMAsTD
 {
+    [DisallowMultipleComponent]
     public class StatPopup : MonoBehaviour
     {
+        [Header("Stat Popup UI Components")]
+
         [SerializeField] private Canvas statPopupWorldUICanvas;
 
         [SerializeField] private Image statPopupUIImage;
 
         [SerializeField] private TextMeshProUGUI statPopupTextMesh;
+
+        private RectTransform statPopupWorldUIRectTransform;
+
+        [Header("Stat Popup Config")]
+
+        [SerializeField] private Sprite positiveStatPopupSprite;
+
+        [SerializeField] private Sprite negativeStatPopupSprite;
+
+        [SerializeField] private Color positiveStatPopupTextColor;
+
+        [SerializeField] private Color negativeStatPopupTextColor;
+
+        private StatPopupPool statPopupPoolSpawnedThisPopup;
 
         private StatPopupSpawner statPopupSpawnerSpawnedThisPopup;
 
@@ -51,6 +68,11 @@ namespace TeamMAsTD
             gameObject.SetActive(false);
         }
 
+        private void OnEnable()
+        {
+            if (statPopupPoolSpawnedThisPopup == null) gameObject.SetActive(false);
+        }
+
         private void OnDisable()
         {
             //reset everything on disable
@@ -80,16 +102,29 @@ namespace TeamMAsTD
                 currentTravelTime = popupTravelTime;
 
                 //if finished popping up, return this stat popup object to pool through calling below function from its stat popup spawner
-                if (statPopupSpawnerSpawnedThisPopup != null) statPopupSpawnerSpawnedThisPopup.ReturnStatPopupToPool(this);
+                if (statPopupPoolSpawnedThisPopup != null) statPopupPoolSpawnedThisPopup.ReturnStatPopupGameObjectToPool(gameObject);
                 //if the stat popup spawner of this stat popup is null->destroy this stat popup game object
                 else Destroy(gameObject);
             }
         }
 
-        public void InitializeStatPopup(StatPopupSpawner statPopupSpawner, Vector3 startPos, Vector3 endPos, float travelTime)
+        public void InitializeStatPopup(StatPopupSpawner statPopupSpawner, StatPopupPool statPopupPool)
         {
-            statPopupSpawnerSpawnedThisPopup = statPopupSpawner;
-            
+            statPopupPoolSpawnedThisPopup = statPopupPool;
+
+            if (statPopupPoolSpawnedThisPopup != null)
+            {
+                statPopupSpawnerSpawnedThisPopup = statPopupPoolSpawnedThisPopup.statPopupSpawnerSpawnedThisPool;
+
+                if (statPopupSpawnerSpawnedThisPopup != null)
+                {
+                    SetStatPopupScaleMultipliers(statPopupSpawnerSpawnedThisPopup.statPopupScaleMultiplier);
+                }
+            }
+        }
+
+        public void InitializeStatPopup(Vector3 startPos, Vector3 endPos, float travelTime)
+        {
             this.startPos = startPos;
 
             transform.position = this.startPos;
@@ -99,11 +134,63 @@ namespace TeamMAsTD
             popupTravelTime = travelTime;
         }
 
-        public void SetStatPopupImageAndText(Sprite imagePopup, string textPopup)
+        public void SetNewStatPopupSprite(Sprite spritePopup)
         {
-            if (statPopupUIImage != null && imagePopup != null) statPopupUIImage.sprite = imagePopup;
+            if (statPopupUIImage != null && spritePopup != null) statPopupUIImage.sprite = spritePopup;
+        }
 
-            if(statPopupTextMesh != null && !string.IsNullOrEmpty(textPopup)) statPopupTextMesh.text = textPopup;
+        public void SetStatPopupText(string textPopup)
+        {
+            if (statPopupTextMesh != null && !string.IsNullOrEmpty(textPopup)) statPopupTextMesh.text = textPopup;
+        }
+
+        public void SetStatPopupTextColor(Color colorToSet)
+        {
+            statPopupTextMesh.color = colorToSet;
+        }
+
+        public void SetPositiveStatPopupSprite()
+        {
+            if (positiveStatPopupSprite == null) return;
+
+            statPopupUIImage.sprite = positiveStatPopupSprite;
+        }
+
+        public void SetNegativeStatPopupSprite()
+        {
+            if(negativeStatPopupSprite == null) return;
+
+            statPopupUIImage.sprite = negativeStatPopupSprite;
+        }
+
+        public void SetStatPopupPositiveTextColor()
+        {
+            statPopupTextMesh.color = positiveStatPopupTextColor;
+        }
+
+        public void SetStatPopupNegativeTextColor()
+        {
+            statPopupTextMesh.color = negativeStatPopupTextColor;
+        }
+
+        public void SetStatPopupScaleMultipliers(float multipliers)
+        {
+            if (statPopupWorldUICanvas == null) return;
+
+            if(statPopupWorldUIRectTransform == null)
+            {
+                statPopupWorldUIRectTransform = statPopupWorldUICanvas.GetComponent<RectTransform>();
+            }
+
+            if (statPopupWorldUIRectTransform == null) return;
+
+            if (multipliers == 0) return;
+
+            float sizeXMultiplied = statPopupWorldUIRectTransform.sizeDelta.x * multipliers;
+
+            float sizeYMultiplied = statPopupWorldUIRectTransform.sizeDelta.y * multipliers;
+
+            statPopupWorldUIRectTransform.sizeDelta = new Vector2(sizeXMultiplied, sizeYMultiplied);
         }
     }
 }

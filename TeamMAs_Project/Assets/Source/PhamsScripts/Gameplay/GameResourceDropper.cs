@@ -125,7 +125,7 @@ namespace TeamMAsTD
 
                 if(resourceToDropStruct.resourceDropPopupSpawner != null)
                 {
-                    resourceToDropStruct.resourceDropPopupSpawner.PopUp(null, "+" + resourceToDropStruct.dropAmount.ToString());
+                    resourceToDropStruct.resourceDropPopupSpawner.PopUp(null, "+" + resourceToDropStruct.dropAmount.ToString(), true);
                 }
 
                 return;
@@ -141,7 +141,7 @@ namespace TeamMAsTD
 
             if (resourceToDropStruct.resourceDropPopupSpawner != null)
             {
-                resourceToDropStruct.resourceDropPopupSpawner.PopUp(null, "+" + resourceToDropStruct.dropAmount.ToString());
+                resourceToDropStruct.resourceDropPopupSpawner.PopUp(null, "+" + resourceToDropStruct.dropAmount.ToString(), true);
             }
         }
 

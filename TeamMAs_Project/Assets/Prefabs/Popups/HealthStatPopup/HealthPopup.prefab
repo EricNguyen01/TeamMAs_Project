@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1727523822615239370}
   - component: {fileID: 4397547518056734228}
   m_Layer: 5
-  m_Name: CoinPopupImage
+  m_Name: HealthPopupImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -35,7 +35,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0.33837658, y: 1}
-  m_AnchoredPosition: {x: -0.0015787482, y: 0.000028192997}
+  m_AnchoredPosition: {x: -0.0015788078, y: 0.000028192997}
   m_SizeDelta: {x: -0.0034683049, y: -0.000027650967}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1727523822615239370
@@ -66,7 +66,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: c09c73ebb2a2f8245941f38630022015, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 89d8152fc00fd244a8ef7a86190e5e2a, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -87,7 +87,7 @@ GameObject:
   - component: {fileID: 9133518828207136777}
   - component: {fileID: 4704434254398890029}
   m_Layer: 5
-  m_Name: CoinPopupPanel
+  m_Name: HealthPopupPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -136,7 +136,7 @@ GameObject:
   - component: {fileID: 2253092831701831863}
   - component: {fileID: 6086493140825315093}
   m_Layer: 5
-  m_Name: CoinPopupWorldCanvas
+  m_Name: HealthPopupWorldCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -229,9 +229,8 @@ GameObject:
   m_Component:
   - component: {fileID: 7769448042610555259}
   - component: {fileID: 7758570173177216992}
-  - component: {fileID: 2914227463471515456}
   m_Layer: 0
-  m_Name: CoinPopup
+  m_Name: HealthPopup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -270,28 +269,8 @@ MonoBehaviour:
   statPopupTextMesh: {fileID: 7512172702897273963}
   positiveStatPopupSprite: {fileID: 0}
   negativeStatPopupSprite: {fileID: 0}
-  positiveStatPopupTextColor: {r: 0.8980392, g: 0.80784315, b: 0.4, a: 1}
+  positiveStatPopupTextColor: {r: 0.3114971, g: 0.8584906, b: 0.18141682, a: 1}
   negativeStatPopupTextColor: {r: 0.7924528, g: 0.18241365, b: 0.18241365, a: 1}
---- !u!95 &2914227463471515456
-Animator:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6180301496802505232}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 38b2409e0746ba649844b60e8b558ed0, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &8982342318295134763
 GameObject:
   m_ObjectHideFlags: 0
@@ -304,7 +283,7 @@ GameObject:
   - component: {fileID: 8781326177324571992}
   - component: {fileID: 7512172702897273963}
   m_Layer: 5
-  m_Name: CoinPopupText
+  m_Name: HealthPopupText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -327,7 +306,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.33837658, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.0017587394, y: 0.000016510487}
+  m_AnchoredPosition: {x: -0.0017587543, y: 0.000016510487}
   m_SizeDelta: {x: 0.0033951644, y: -0.00010223687}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8781326177324571992

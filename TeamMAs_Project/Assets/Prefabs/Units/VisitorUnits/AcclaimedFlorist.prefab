@@ -735,6 +735,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8024300418989073095, guid: be2a0ac942afe8841bf8cf4a38447cca, type: 3}
+      propertyPath: verticalDistanceFromStart
+      value: 0.3
+      objectReference: {fileID: 0}
     - target: {fileID: 8923729546418773549, guid: be2a0ac942afe8841bf8cf4a38447cca, type: 3}
       propertyPath: m_Name
       value: CoinPopupSpawner
