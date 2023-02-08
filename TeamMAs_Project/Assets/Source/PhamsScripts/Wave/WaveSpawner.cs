@@ -377,7 +377,7 @@ namespace TeamMAsTD
             }
         }
 
-        private void JumpToWave(int waveNum, bool startWaveAfterJump)
+        public void JumpToWave(int waveNum, bool startWaveAfterJump)
         {
             if (waveNum < 0 || waveNum >= wavesList.Count)
             {
@@ -427,6 +427,11 @@ namespace TeamMAsTD
             visitorTypesWithPoolExisted.Add(visitorSO);
 
             return visitorPool;
+        }
+
+        public Wave GetCurrentWave()
+        {
+            return wavesList[currentWave];
         }
     }
 }
