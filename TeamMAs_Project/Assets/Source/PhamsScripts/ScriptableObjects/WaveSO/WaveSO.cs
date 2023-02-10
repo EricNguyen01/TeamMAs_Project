@@ -78,5 +78,19 @@ namespace TeamMAsTD
 
             return visitorSpawnChance;
         }
+
+        public int GetTotalVisitorsSpawnNumber()
+        {
+            if (visitorTypesToSpawnThisWave == null || visitorTypesToSpawnThisWave.Length == 0) return 0;
+
+            int totalSpawnNum = 0;
+
+            for(int i = 0; i < visitorTypesToSpawnThisWave.Length; i++)
+            {
+                totalSpawnNum += visitorTypesToSpawnThisWave[i].spawnNumbers;
+            }
+
+            return totalSpawnNum;
+        }
     }
 }

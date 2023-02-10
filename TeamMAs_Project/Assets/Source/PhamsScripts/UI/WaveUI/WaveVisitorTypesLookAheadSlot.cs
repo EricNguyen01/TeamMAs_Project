@@ -7,18 +7,28 @@ namespace TeamMAsTD
     [DisallowMultipleComponent]
     public class WaveVisitorTypesLookAheadSlot : MonoBehaviour
     {
-        [SerializeField] private VisitorUnitSO visitorUnitSO;
-
-        public bool shouldDisplayThisSlot { get; set; } = false;
+        private VisitorUnitSO visitorUnitSO;
 
         private void Awake()
         {
             
         }
 
-        private void DisplayLookAheadUISlot(bool shouldDisplay)
+        public void InitializeVisitorTypeLookAheadSlot(VisitorUnitSO visitorUnitSO)
         {
+            this.visitorUnitSO = visitorUnitSO;
+        }
 
+        public void DisplayLookAheadUISlot(bool shouldDisplay)
+        {
+            if (shouldDisplay)
+            {
+                gameObject.SetActive(true);
+
+                return;
+            }
+
+            gameObject.SetActive(false);
         }
     }
 }
