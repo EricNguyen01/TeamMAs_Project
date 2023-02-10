@@ -211,7 +211,7 @@ namespace TeamMAsTD
             //On dragging while still holding the mouse:
             //fix the drag drop UI image object to the EventSystem mouse pointer (in dragDropUIImage UI space from screen space)
             Vector2 mousePosLocal;
-            RectTransformUtility.ScreenPointToLocalPointInRectangle(parentCanvaRect, eventData.position, null, out mousePosLocal);
+            RectTransformUtility.ScreenPointToLocalPointInRectangle(parentCanvaRect, eventData.position, parentCanva.worldCamera, out mousePosLocal);
             dragDropUIImageObject.transform.position = parentCanvaRect.transform.TransformPoint(mousePosLocal);
         }
 

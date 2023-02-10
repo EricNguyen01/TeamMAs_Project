@@ -237,6 +237,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 477775613199755476}
+  - {fileID: 2665542294742553176}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -329,6 +330,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12504477573dd9840957d341b05e13eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  plantWateringPopup: {fileID: 643268691178981871}
 --- !u!114 &-2432774013692229524
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -434,7 +436,7 @@ GameObject:
   - component: {fileID: 6753461174853190979}
   - component: {fileID: 3974546454851151446}
   m_Layer: 0
-  m_Name: VisitorWorldCanvas
+  m_Name: PlantWorldCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -522,3 +524,76 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!1001 &7471845340950702888
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 4818493569168229228}
+    m_Modifications:
+    - target: {fileID: 4849456886206888304, guid: 431a89f3dbf43dc40aa4f536b42e817a, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4849456886206888304, guid: 431a89f3dbf43dc40aa4f536b42e817a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.24431582
+      objectReference: {fileID: 0}
+    - target: {fileID: 4849456886206888304, guid: 431a89f3dbf43dc40aa4f536b42e817a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.32
+      objectReference: {fileID: 0}
+    - target: {fileID: 4849456886206888304, guid: 431a89f3dbf43dc40aa4f536b42e817a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 5.773175
+      objectReference: {fileID: 0}
+    - target: {fileID: 4849456886206888304, guid: 431a89f3dbf43dc40aa4f536b42e817a, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4849456886206888304, guid: 431a89f3dbf43dc40aa4f536b42e817a, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4849456886206888304, guid: 431a89f3dbf43dc40aa4f536b42e817a, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4849456886206888304, guid: 431a89f3dbf43dc40aa4f536b42e817a, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4849456886206888304, guid: 431a89f3dbf43dc40aa4f536b42e817a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4849456886206888304, guid: 431a89f3dbf43dc40aa4f536b42e817a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4849456886206888304, guid: 431a89f3dbf43dc40aa4f536b42e817a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8923729546418773549, guid: 431a89f3dbf43dc40aa4f536b42e817a, type: 3}
+      propertyPath: m_Name
+      value: WateringPopupSpawner
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 431a89f3dbf43dc40aa4f536b42e817a, type: 3}
+--- !u!114 &643268691178981871 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8024300418989073095, guid: 431a89f3dbf43dc40aa4f536b42e817a, type: 3}
+  m_PrefabInstance: {fileID: 7471845340950702888}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c19b9f42d03e804ab593c9d4f5ba6e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &2665542294742553176 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4849456886206888304, guid: 431a89f3dbf43dc40aa4f536b42e817a, type: 3}
+  m_PrefabInstance: {fileID: 7471845340950702888}
+  m_PrefabAsset: {fileID: 0}

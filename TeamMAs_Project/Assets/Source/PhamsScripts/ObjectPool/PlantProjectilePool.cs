@@ -73,12 +73,12 @@ namespace TeamMAsTD
 
         public GameObject GetInactiveProjectileObjectFromPool()
         {
-            return base.GetInactiveGameObjectFromPool();
+            return GetInactiveGameObjectFromPool();
         }
 
         public bool ReturnProjectileObjectToPool(GameObject projectileGO)
         {
-            return base.ReturnGameObjectToPool(projectileGO);
+            return ReturnGameObjectToPool(projectileGO);
         }
     }
 }
