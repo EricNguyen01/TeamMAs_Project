@@ -27,4 +27,4 @@ MonoBehaviour:
   <spawnBossLast>k__BackingField: 1
   <applyVisitorHealthScalingThisWave>k__BackingField: 1
   <visitorHealthScalingMultiplier>k__BackingField: 1.2
-  <extraCoinsDropFromWave>k__BackingField: 0
+  <extraCoinsDropFromWave>k__BackingField: 4
