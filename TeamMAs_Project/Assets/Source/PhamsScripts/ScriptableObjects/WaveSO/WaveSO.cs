@@ -92,5 +92,31 @@ namespace TeamMAsTD
 
             return totalSpawnNum;
         }
+
+        public List<VisitorUnitSO> GetWaveUniqueVisitorTypes()
+        {
+            if (visitorTypesToSpawnThisWave == null || visitorTypesToSpawnThisWave.Length == 0) return null;
+
+            List<VisitorUnitSO> uniqueVisitorTypes = new List<VisitorUnitSO>();
+
+            for(int i = 0; i < visitorTypesToSpawnThisWave.Length; i++)
+            {
+                if (visitorTypesToSpawnThisWave[i].visitorType == null) continue;
+
+                if(uniqueVisitorTypes.Count == 0)
+                {
+                    uniqueVisitorTypes.Add(visitorTypesToSpawnThisWave[i].visitorType);
+
+                    continue;
+                }
+
+                if(uniqueVisitorTypes.Count > 0 && !uniqueVisitorTypes.Contains(visitorTypesToSpawnThisWave[i].visitorType))
+                {
+                    uniqueVisitorTypes.Add(visitorTypesToSpawnThisWave[i].visitorType);
+                }
+            }
+
+            return uniqueVisitorTypes;
+        }
     }
 }

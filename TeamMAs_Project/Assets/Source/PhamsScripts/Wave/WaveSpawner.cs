@@ -433,5 +433,14 @@ namespace TeamMAsTD
         {
             return wavesList[currentWave];
         }
+
+        public Wave GetNextWaveFromCurrentWave(int lookAheadNum)
+        {
+            int targetWaveNum = currentWave + lookAheadNum;
+
+            if(targetWaveNum >= wavesList.Count) targetWaveNum = wavesList.Count - 1;
+
+            return wavesList[targetWaveNum];
+        }
     }
 }

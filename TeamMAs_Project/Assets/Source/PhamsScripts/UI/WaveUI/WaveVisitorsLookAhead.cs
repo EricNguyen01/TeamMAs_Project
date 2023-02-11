@@ -16,12 +16,9 @@ namespace TeamMAsTD
 
         [SerializeField] private HorizontalOrVerticalLayoutGroup UIContentToSpawnLookAheadSlotsUnder;
 
-        [SerializeField] [Min(1)] private int lookAheadUISlotsToDisplay = 3;
-
-        private Queue<WaveVisitorTypesLookAheadSlot> waveVisitorTypesLookAheadSlotsQueue = new Queue<WaveVisitorTypesLookAheadSlot>();
-
         private List<WaveVisitorTypesLookAheadSlot> waveVisitorTypesLookAheadSlotsList = new List<WaveVisitorTypesLookAheadSlot>();
 
+        private int currentWave = 0;
 
         private void Awake()
         {
@@ -53,53 +50,173 @@ namespace TeamMAsTD
             }
         }
 
-        private void CreateVisitorTypesLookAheadUISlotsForWave(Wave wave)
+        private void OnEnable()
+        {
+            WaveSpawner.OnWaveFinished += UpdateVisitorTypesLookAheadOnWaveEvent;
+            WaveSpawner.OnAllWaveSpawned += DisableLookAheadSlotsOnAllWaveSpawned;
+        }
+
+        private void OnDisable()
+        {
+            WaveSpawner.OnWaveFinished -= UpdateVisitorTypesLookAheadOnWaveEvent;
+            WaveSpawner.OnAllWaveSpawned -= DisableLookAheadSlotsOnAllWaveSpawned;
+        }
+
+        private void Start()
+        {
+            if(waveSpawnerToLookAhead != null)
+            {
+                currentWave = waveSpawnerToLookAhead.currentWave;
+
+                UpdateVisitorTypesLookAheadUISlotsForWave(waveSpawnerToLookAhead.GetCurrentWave());
+            }
+        }
+
+        private void CreateVisitorTypesLookAheadUISlotsForWave(Wave wave, bool activeOnCreated)
         {
             if (wave == null || wave.waveSO == null || wave.waveSO.visitorTypesToSpawnThisWave == null) return;
 
             if (waveVisitorTypesLookAheadSlotsList.Count > 0) return;
 
-            for(int i = 0; i < wave.waveSO.visitorTypesToSpawnThisWave.Length; i++)
+            List<VisitorUnitSO> uniqueVisitorTypesInWave = wave.waveSO.GetWaveUniqueVisitorTypes();
+
+            if (uniqueVisitorTypesInWave == null || uniqueVisitorTypesInWave.Count == 0) return;
+
+            for (int i = 0; i < uniqueVisitorTypesInWave.Count; i++)
             {
-                GameObject visitorLookAheadSlotGO = Instantiate(visitorTypesLookAheadUISlotPrefab.gameObject, UIContentToSpawnLookAheadSlotsUnder.transform);
+                if (uniqueVisitorTypesInWave[i] == null) continue;
 
-                WaveVisitorTypesLookAheadSlot visitorLookAheadSlotScript = visitorLookAheadSlotGO.GetComponent<WaveVisitorTypesLookAheadSlot>();
-
-                if(visitorLookAheadSlotScript == null)
-                {
-                    Destroy(visitorLookAheadSlotGO);
-
-                    continue;
-                }
-
-                visitorLookAheadSlotScript.InitializeVisitorTypeLookAheadSlot(wave.waveSO.visitorTypesToSpawnThisWave[i].visitorType);
-
-                waveVisitorTypesLookAheadSlotsList.Add(visitorLookAheadSlotScript);
+                CreateVisitorTypesSlotsFor(uniqueVisitorTypesInWave[i], activeOnCreated);
             }
+        }
+
+        private void CreateVisitorTypesSlotsFor(VisitorUnitSO visitorSO, bool activeOnCreated)
+        {
+            if (visitorSO == null) return;
+
+            GameObject visitorLookAheadSlotGO = Instantiate(visitorTypesLookAheadUISlotPrefab.gameObject, UIContentToSpawnLookAheadSlotsUnder.transform);
+
+            WaveVisitorTypesLookAheadSlot visitorLookAheadSlotScript = visitorLookAheadSlotGO.GetComponent<WaveVisitorTypesLookAheadSlot>();
+
+            visitorLookAheadSlotScript.UpdateVisitorTypeLookAheadSlot(visitorSO);
+
+            waveVisitorTypesLookAheadSlotsList.Add(visitorLookAheadSlotScript);
+
+            if (activeOnCreated) visitorLookAheadSlotScript.EnableLookAheadUISlot(true);
+            else visitorLookAheadSlotScript.EnableLookAheadUISlot(false);
         }
 
         private void UpdateVisitorTypesLookAheadUISlotsForWave(Wave wave)
         {
             if (wave == null || wave.waveSO == null || wave.waveSO.visitorTypesToSpawnThisWave == null) return;
 
+            //if no visitor types look ahead slot exists -> create all the required look ahead slots for this wave
             if (waveVisitorTypesLookAheadSlotsList.Count <= 0)
             {
-                CreateVisitorTypesLookAheadUISlotsForWave(wave);
+                CreateVisitorTypesLookAheadUISlotsForWave(wave, true);
 
                 return;
             }
 
+            //else if some look ahead slots exist and are in use -> update them accordingly for this wave
+
             int currentCreatedSlots = waveVisitorTypesLookAheadSlotsList.Count;
 
-            int waveTotalVisitors = wave.waveSO.GetTotalVisitorsSpawnNumber();
+            List<VisitorUnitSO> waveUniqueVisitorTypes = wave.waveSO.GetWaveUniqueVisitorTypes();
 
-            if (currentCreatedSlots > waveTotalVisitors)
+            //if the currently created look ahead slot has more or equal number of slots than this wave's unique visitor types count
+            if (currentCreatedSlots >= waveUniqueVisitorTypes.Count)
             {
-                HasSetActiveOrInactiveLookAheadSlotFromTo(waveTotalVisitors, currentCreatedSlots, false);
+                //loop through all the currently created look ahead slot
+                for(int i = 0; i < waveVisitorTypesLookAheadSlotsList.Count; i++)
+                {
+                    //continue if null
+                    if (waveVisitorTypesLookAheadSlotsList[i] == null) continue;
+
+                    //if current checking slot is still in range of this wave's unique visitor types list range
+                    if(i < waveUniqueVisitorTypes.Count)
+                    {
+                        //update slot with new visitor SO data of this wave
+                        waveVisitorTypesLookAheadSlotsList[i].UpdateVisitorTypeLookAheadSlot(waveUniqueVisitorTypes[i]);
+
+                        //enable slot display
+                        waveVisitorTypesLookAheadSlotsList[i].EnableLookAheadUISlot(true);
+
+                        continue;
+                    }
+
+                    //else if current checking slot has gone beyond the range of this wave's unique visitor types list range
+                    //they are unused for this wave and thus are disabled.
+                    waveVisitorTypesLookAheadSlotsList[i].UpdateVisitorTypeLookAheadSlot(null);
+
+                    waveVisitorTypesLookAheadSlotsList[i].EnableLookAheadUISlot(false);
+                }
+
+                return;
+            }
+            //else if the currently created slots are less than this wave's unique visitor types count
+            else
+            {
+                //loop through this wave's unique visitor types list
+                for(int i = 0; i < waveUniqueVisitorTypes.Count; i++)
+                {
+                    if (waveVisitorTypesLookAheadSlotsList[i] == null) continue;
+
+                    //if current checking element is still within the currently created slots range
+                    if(i < currentCreatedSlots)
+                    {
+                        //update visitor SO data and set slot active
+                        waveVisitorTypesLookAheadSlotsList[i].UpdateVisitorTypeLookAheadSlot(waveUniqueVisitorTypes[i]);
+
+                        waveVisitorTypesLookAheadSlotsList[i].EnableLookAheadUISlot(true);
+
+                        continue;
+                    }
+
+                    //if current checking element went beyond the currently created slots range
+                    //-> add more slots to the current look ahead slots list
+                    CreateVisitorTypesSlotsFor(waveUniqueVisitorTypes[i], true);
+                }
             }
         }
 
-        private void SetActiveOrInactiveAllLookAheadSlot(bool shouldActiveAll)
+        //Base update function for OnWaveFinished event in WaveSpawner.cs
+        private void UpdateVisitorTypesLookAheadOnWaveEvent(WaveSpawner waveSpawner, int waveNum, bool stillHasOngoingWaves)
+        {
+            if (waveSpawner == null) return;
+
+            if (waveSpawnerToLookAhead != waveSpawner) return;
+
+            Wave waveToLookAhead = null;
+
+            if (currentWave == waveSpawnerToLookAhead.currentWave) 
+            {
+                waveToLookAhead = waveSpawnerToLookAhead.GetNextWaveFromCurrentWave(1);
+
+                currentWave += 1;
+            }
+            else
+            {
+                waveToLookAhead = waveSpawnerToLookAhead.GetCurrentWave();
+
+                currentWave = waveSpawnerToLookAhead.currentWave;
+            }
+
+            UpdateVisitorTypesLookAheadUISlotsForWave(waveToLookAhead);
+        }
+
+        private void DisableLookAheadSlotsOnAllWaveSpawned(WaveSpawner waveSpawner, bool allWaveSpawned)
+        {
+            if (waveSpawner == null) return;
+
+            if (waveSpawnerToLookAhead != waveSpawner) return;
+
+            if (!allWaveSpawned) return;
+
+            SetActiveAllLookAheadSlot(false);
+        }
+
+        private void SetActiveAllLookAheadSlot(bool shouldActiveAll)
         {
             if (waveVisitorTypesLookAheadSlotsList == null || waveVisitorTypesLookAheadSlotsList.Count == 0) return;
 
@@ -107,11 +224,11 @@ namespace TeamMAsTD
             {
                 if (waveVisitorTypesLookAheadSlotsList[i] == null) continue;
 
-                waveVisitorTypesLookAheadSlotsList[i].DisplayLookAheadUISlot(shouldActiveAll);
+                waveVisitorTypesLookAheadSlotsList[i].EnableLookAheadUISlot(shouldActiveAll);
             }
         }
 
-        private bool HasSetActiveOrInactiveLookAheadSlotFromTo(int fromSlotNum, int toSlotNum, bool shouldActive)
+        private bool HasSetActiveLookAheadSlotFromTo(int fromSlotNum, int toSlotNum, bool shouldActive)
         {
             if (fromSlotNum >= waveVisitorTypesLookAheadSlotsList.Count) fromSlotNum = waveVisitorTypesLookAheadSlotsList.Count - 1;
 
@@ -131,23 +248,13 @@ namespace TeamMAsTD
             {
                 if (waveVisitorTypesLookAheadSlotsList[fromSlotNum] != null) 
                 { 
-                    waveVisitorTypesLookAheadSlotsList[fromSlotNum].DisplayLookAheadUISlot(shouldActive); 
+                    waveVisitorTypesLookAheadSlotsList[fromSlotNum].EnableLookAheadUISlot(shouldActive); 
                 }
 
                 fromSlotNum++;
             }
 
             return true;
-        }
-
-        private void StartWaveVisitorTypesLookAhead()
-        {
-
-        }
-
-        private void EndWaveVisitorTypesLookAhead()
-        {
-
         }
     }
 }
