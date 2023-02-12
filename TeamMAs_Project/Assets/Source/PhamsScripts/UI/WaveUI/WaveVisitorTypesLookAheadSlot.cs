@@ -32,12 +32,12 @@ namespace TeamMAsTD
         {
             if (shouldEnable)
             {
-                gameObject.SetActive(true);
+                if(!gameObject.activeInHierarchy) gameObject.SetActive(true);
 
                 return;
             }
 
-            gameObject.SetActive(false);
+            if(gameObject.activeInHierarchy) gameObject.SetActive(false);
         }
 
         private void UpdateSlotVisitorTypeVisualFrom(VisitorUnitSO visitorUnitSO)

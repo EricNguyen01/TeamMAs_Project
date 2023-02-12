@@ -14,11 +14,13 @@ namespace TeamMAsTD
 
         [SerializeField] private WaveVisitorTypesLookAheadSlot visitorTypesLookAheadUISlotPrefab;
 
-        [SerializeField] private HorizontalOrVerticalLayoutGroup UIContentToSpawnLookAheadSlotsUnder;
+        [SerializeField] private GridLayoutGroup UIContentToSpawnLookAheadSlotsUnder;
 
         private List<WaveVisitorTypesLookAheadSlot> waveVisitorTypesLookAheadSlotsList = new List<WaveVisitorTypesLookAheadSlot>();
 
         private int currentWave = 0;
+
+        private bool hasFinishedRaining = false;
 
         private void Awake()
         {
@@ -54,12 +56,20 @@ namespace TeamMAsTD
         {
             WaveSpawner.OnWaveFinished += UpdateVisitorTypesLookAheadOnWaveEvent;
             WaveSpawner.OnAllWaveSpawned += DisableLookAheadSlotsOnAllWaveSpawned;
+
+            Rain.OnRainStarted += (Rain r) => hasFinishedRaining = false;
+            Rain.OnRainEnded += (Rain r) => hasFinishedRaining = true;
         }
 
         private void OnDisable()
         {
             WaveSpawner.OnWaveFinished -= UpdateVisitorTypesLookAheadOnWaveEvent;
             WaveSpawner.OnAllWaveSpawned -= DisableLookAheadSlotsOnAllWaveSpawned;
+
+            Rain.OnRainStarted -= (Rain r) => hasFinishedRaining = false;
+            Rain.OnRainEnded -= (Rain r) => hasFinishedRaining = true;
+
+            StopAllCoroutines();
         }
 
         private void Start()
@@ -160,11 +170,11 @@ namespace TeamMAsTD
                 //loop through this wave's unique visitor types list
                 for(int i = 0; i < waveUniqueVisitorTypes.Count; i++)
                 {
-                    if (waveVisitorTypesLookAheadSlotsList[i] == null) continue;
-
                     //if current checking element is still within the currently created slots range
                     if(i < currentCreatedSlots)
                     {
+                        if (waveVisitorTypesLookAheadSlotsList[i] == null) continue;
+
                         //update visitor SO data and set slot active
                         waveVisitorTypesLookAheadSlotsList[i].UpdateVisitorTypeLookAheadSlot(waveUniqueVisitorTypes[i]);
 
@@ -202,7 +212,20 @@ namespace TeamMAsTD
                 currentWave = waveSpawnerToLookAhead.currentWave;
             }
 
+            StartCoroutine(VisitorTypesUpdateAfterRainCoroutine(waveToLookAhead));
+        }
+
+        private IEnumerator VisitorTypesUpdateAfterRainCoroutine(Wave waveToLookAhead)
+        {
+            SetActiveAllLookAheadSlot(false);
+
+            yield return new WaitUntil(() => hasFinishedRaining);
+
             UpdateVisitorTypesLookAheadUISlotsForWave(waveToLookAhead);
+
+            hasFinishedRaining = false;
+
+            yield break;
         }
 
         private void DisableLookAheadSlotsOnAllWaveSpawned(WaveSpawner waveSpawner, bool allWaveSpawned)
