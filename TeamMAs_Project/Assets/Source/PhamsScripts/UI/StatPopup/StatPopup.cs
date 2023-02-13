@@ -25,6 +25,10 @@ namespace TeamMAsTD
 
         [SerializeField] private Sprite negativeStatPopupSprite;
 
+        [SerializeField] private string positiveStatText;
+
+        [SerializeField] private string negativeStatText;
+
         [SerializeField] private Color positiveStatPopupTextColor;
 
         [SerializeField] private Color negativeStatPopupTextColor;
@@ -71,6 +75,22 @@ namespace TeamMAsTD
         private void OnEnable()
         {
             if (statPopupPoolSpawnedThisPopup == null) gameObject.SetActive(false);
+
+            if(statPopupUIImage != null)
+            {
+                Color color = statPopupUIImage.color;
+
+                if(statPopupUIImage.sprite == null)
+                {
+                    color.a = 0.0f;
+                    statPopupUIImage.color = color;
+                }
+                else
+                {
+                    color.a = 100.0f;
+                    statPopupUIImage.color = color;
+                }
+            }
         }
 
         private void OnDisable()
@@ -142,6 +162,18 @@ namespace TeamMAsTD
         public void SetStatPopupText(string textPopup)
         {
             if (statPopupTextMesh != null && !string.IsNullOrEmpty(textPopup)) statPopupTextMesh.text = textPopup;
+        }
+
+        public void UseDefaultStatPopupText(bool usePositiveText)
+        {
+            if (usePositiveText)
+            {
+                if (statPopupTextMesh != null) statPopupTextMesh.text = positiveStatText;
+
+                return;
+            }
+
+            if (statPopupTextMesh != null) statPopupTextMesh.text = negativeStatText;
         }
 
         public void SetStatPopupTextColor(Color colorToSet)

@@ -24,6 +24,11 @@ namespace TeamMAsTD
         [field: SerializeField] public PlantUnit plantUnitOnTile { get; private set; }
         [field: SerializeField] public bool disableUprootOnTile { get; private set; } = false;
 
+        [Header("Tile Components")]
+        [SerializeField] private StatPopupSpawner insufficientFundToPlantOnTilePopupPrefab;
+
+        private StatPopupSpawner thisTileInsufficientFundToPlantStatPopup;
+
         [Header("Tile Debug Config")]
         [SerializeField] private bool drawTileDebug = true;
 
@@ -33,9 +38,9 @@ namespace TeamMAsTD
         private bool drawDebugRuntime = true;
 
         //UnityEvents....................................................
-        [SerializeField] private UnityEvent<PlantUnit, Tile> OnPlantUnitPlantedOnTile;
+        [SerializeField] public UnityEvent<PlantUnit, Tile> OnPlantUnitPlantedOnTile;
         [SerializeField] private UnityEvent<PlantUnitSO, Tile> OnPlantingFailedOnTile;
-        [SerializeField] private UnityEvent<PlantUnit, Tile> OnPlantUnitUprootedOnTile;
+        [SerializeField] public UnityEvent<PlantUnit, Tile> OnPlantUnitUprootedOnTile;
         [SerializeField] private UnityEvent OnInsufficientFundsToUproot;
 
         //Internal........................................................
@@ -72,6 +77,15 @@ namespace TeamMAsTD
                 else spriteRenderer.color = Color.green;
 
                 if (is_AI_Path) spriteRenderer.color = Color.white;
+            }
+
+            if(insufficientFundToPlantOnTilePopupPrefab != null)
+            {
+                GameObject statPopupSpawnerGO = Instantiate(insufficientFundToPlantOnTilePopupPrefab.gameObject, transform);
+
+                statPopupSpawnerGO.transform.localPosition = Vector3.zero;
+
+                thisTileInsufficientFundToPlantStatPopup = statPopupSpawnerGO.GetComponent<StatPopupSpawner>();
             }
 
             Attach_TileMenu_And_UprootOnTileUI_ScriptComponentIfNull();
@@ -112,7 +126,12 @@ namespace TeamMAsTD
                 //if coin resource amount < plant unit coin costs -> can't plant 
                 if (GameResource.gameResourceInstance.coinResourceSO.resourceAmount < unitSO.plantingCoinCost)
                 {
-                    Debug.Log("Insufficient Funds! Not enough coins to plant unit.");
+                    //Debug.Log("Insufficient Funds! Not enough coins to plant unit.");
+
+                    if(thisTileInsufficientFundToPlantStatPopup != null)
+                    {
+                        thisTileInsufficientFundToPlantStatPopup.PopUp(null, null, false);
+                    }
 
                     OnPlantingFailedOnTile?.Invoke(unitSO, this);
 
