@@ -1,4 +1,3 @@
-using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -26,6 +25,9 @@ namespace TeamMAsTD
         private int wavesCanSurviveWithoutWater = 1;//default, will be changed on initialize (check initialization func).
 
         private int currentWavesSurvivedWithoutWater = -1;//doesnt count on the wave that water gets to 0 (start counting from next no water wave)
+
+        //WaterAllButton.cs sub to this event to check for water all costs 
+        public static event System.Action<PlantUnitSO> OnPlantWaterBarsRefilled;
 
         private void OnEnable()
         {
@@ -115,6 +117,8 @@ namespace TeamMAsTD
             //filling water
             waterBarsRemaining += barsPerRefill;
 
+            OnPlantWaterBarsRefilled?.Invoke(plantUnitSO);
+
             if (plantWateringPopup != null) plantWateringPopup.PopUp(null, "+" + barsPerRefill.ToString(), true);
 
             //reset current rounds survived without water if water bars remaining > 0 after being refilled.
@@ -144,8 +148,6 @@ namespace TeamMAsTD
         {
             if (waterBarsRemaining >= totalWaterBars) return;
 
-            int waterTimes = 0;
-
             int barsRefilled = 0;
 
             int barsToRefill = totalWaterBars - waterBarsRemaining;
@@ -154,11 +156,6 @@ namespace TeamMAsTD
             {
                 barsRefilled += barsPerRefill;
 
-                waterTimes++;
-            }
-
-            for(int i = 0; i < waterTimes; i++)
-            {
                 RefillWaterBars(barsPerRefill, coinCostPerRefill);
             }
         }

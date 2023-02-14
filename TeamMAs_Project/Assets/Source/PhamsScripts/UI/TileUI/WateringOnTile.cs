@@ -91,7 +91,7 @@ namespace TeamMAsTD
             tilePlantWaterUsageSystem.RefillWaterBars(waterBarsToRefill, wateringCoinsCost);
         }
 
-        private void SpawnAndDestroy_WateringSoundPlayer_IfNotNull()
+        public void SpawnAndDestroy_WateringSoundPlayer_IfNotNull()
         {
             if (wateringSoundPlayerPrefab == null) return;
 

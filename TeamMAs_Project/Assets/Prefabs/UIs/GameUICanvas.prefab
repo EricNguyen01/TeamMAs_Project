@@ -947,11 +947,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2252886726537697463, guid: a8befa3fb9194844db1b9863b01669ef, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0.15999985
+      value: 0.16000366
       objectReference: {fileID: 0}
     - target: {fileID: 3573310272857652583, guid: a8befa3fb9194844db1b9863b01669ef, type: 3}
       propertyPath: m_Name
       value: WaterAllButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 6433098137989424551, guid: a8befa3fb9194844db1b9863b01669ef, type: 3}
+      propertyPath: m_fontSize
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 6433098137989424551, guid: a8befa3fb9194844db1b9863b01669ef, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4279911370
       objectReference: {fileID: 0}
     - target: {fileID: 6681737795274441115, guid: a8befa3fb9194844db1b9863b01669ef, type: 3}
       propertyPath: m_Pivot.x

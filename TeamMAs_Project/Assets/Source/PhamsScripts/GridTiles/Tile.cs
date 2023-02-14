@@ -29,6 +29,8 @@ namespace TeamMAsTD
 
         private StatPopupSpawner thisTileInsufficientFundToPlantStatPopup;
 
+        public WateringOnTile wateringOnTileScriptComp { get; private set; }
+
         [Header("Tile Debug Config")]
         [SerializeField] private bool drawTileDebug = true;
 
@@ -65,6 +67,8 @@ namespace TeamMAsTD
         private void Awake()
         {
             spriteRenderer = GetComponent<SpriteRenderer>();
+
+            wateringOnTileScriptComp = GetComponent<WateringOnTile>();
 
             if (spriteRenderer == null)
             {

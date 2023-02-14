@@ -702,6 +702,7 @@ Transform:
   m_Children:
   - {fileID: 604362249090703262}
   - {fileID: 4491038925274618025}
+  - {fileID: 4981401744532728664}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -907,7 +908,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 0.6
+  m_Volume: 0.34
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -1314,6 +1315,60 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!1 &8609673313869442410
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4981401744532728664}
+  - component: {fileID: 5769412368593011950}
+  m_Layer: 0
+  m_Name: InsufficientFundPopupSpawner(Clone)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4981401744532728664
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8609673313869442410}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1794901231074394364}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5769412368593011950
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8609673313869442410}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c19b9f42d03e804ab593c9d4f5ba6e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  statPopupPrefab: {fileID: 7758570173177216992, guid: b557c86240a21f649a36b3bc7b6ae2a6, type: 3}
+  <statPopupScaleMultiplier>k__BackingField: 2.6
+  startVerticalOffset: 0
+  startHorizontalOffset: 0
+  verticalDistanceFromStart: 0.9
+  horizontalDistFromStart: 0
+  randomHorizontalTravelDistFromStart: 0
+  randomVerticalTravelDistFromStart: 0
+  popupTime: 1
+  popupNumberToPool: 5
 --- !u!1 &8936701173133550592
 GameObject:
   m_ObjectHideFlags: 0
