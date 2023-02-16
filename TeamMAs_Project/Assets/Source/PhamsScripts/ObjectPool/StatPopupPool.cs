@@ -73,7 +73,15 @@ namespace TeamMAsTD
 
             if(popupSprite != null) statPopupOfStatPopupObj.SetNewStatPopupSprite(popupSprite);
 
-            if(!string.IsNullOrEmpty(popupText)) statPopupOfStatPopupObj.SetStatPopupText(popupText);
+            if (!string.IsNullOrEmpty(popupText)) 
+            { 
+                statPopupOfStatPopupObj.SetStatPopupText(popupText); 
+            }
+            else
+            {
+                if (isPositivePopup) statPopupOfStatPopupObj.UseDefaultStatPopupText(true);
+                else statPopupOfStatPopupObj.UseDefaultStatPopupText(false);
+            }
 
             if (isPositivePopup)
             {

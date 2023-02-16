@@ -13,6 +13,10 @@ namespace TeamMAsTD
     {
         [SerializeField] private SoundPlayer wateringSoundPlayerPrefab;
 
+        [SerializeField] private StatPopupSpawner insufficientWateringFundStatPopupPrefab;
+
+        private StatPopupSpawner thisTileInsufficientWateringFundPopup;
+
         [SerializeField] private UnityEvent OnInsufficientFundsToWater;
 
         private Tile tileToWater;
@@ -30,6 +34,15 @@ namespace TeamMAsTD
             if(wateringSoundPlayerPrefab == null)
             {
                 Debug.LogWarning("Watering Sound Player Prefab is missing on WateringOnTile: " + name);
+            }
+
+            if (insufficientWateringFundStatPopupPrefab != null)
+            {
+                GameObject statPopUpSpawnerGO = Instantiate(insufficientWateringFundStatPopupPrefab.gameObject, transform);
+
+                statPopUpSpawnerGO.transform.localPosition = Vector3.zero;
+
+                thisTileInsufficientWateringFundPopup = statPopUpSpawnerGO.GetComponent<StatPopupSpawner>();
             }
         }
 
@@ -55,7 +68,13 @@ namespace TeamMAsTD
                 if (GameResource.gameResourceInstance.coinResourceSO.resourceAmount < wateringCoinsCost)
                 {
                     //if insufficient funds to water -> broadcast event and exit function
-                    Debug.LogError("Watering Failed: Insufficient Funds to Refill Water Bars!");
+                    //Debug.LogError("Watering Failed: Insufficient Funds to Refill Water Bars!");
+
+                    //if there's an insufficient fund to water stat popup script component attached -> show insufficient funds popup
+                    if(thisTileInsufficientWateringFundPopup != null)
+                    {
+                        thisTileInsufficientWateringFundPopup.PopUp(null, null, false);
+                    }
 
                     OnInsufficientFundsToWater?.Invoke();
 
@@ -72,7 +91,7 @@ namespace TeamMAsTD
             tilePlantWaterUsageSystem.RefillWaterBars(waterBarsToRefill, wateringCoinsCost);
         }
 
-        private void SpawnAndDestroy_WateringSoundPlayer_IfNotNull()
+        public void SpawnAndDestroy_WateringSoundPlayer_IfNotNull()
         {
             if (wateringSoundPlayerPrefab == null) return;
 

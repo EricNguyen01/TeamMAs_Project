@@ -9,6 +9,7 @@ namespace TeamMAsTD
     public class UnitWorldUI : MonoBehaviour
     {
         [SerializeField] protected Canvas unitWorldCanvas;
+        [SerializeField] protected bool logMissingUIComponentsWarning = false;
         [SerializeField] protected TextMeshProUGUI nameTextMeshProComponent;
         [SerializeField] protected Slider healthBarSlider;
 
@@ -48,14 +49,17 @@ namespace TeamMAsTD
                 return;
             }
 
-            if (nameTextMeshProComponent == null)
+            if (logMissingUIComponentsWarning)
             {
-                Debug.LogWarning("Unit name text UI component is not assigned on Unit World UI script on obj: " + name + ".");
-            }
+                if (nameTextMeshProComponent == null)
+                {
+                    Debug.LogWarning("Unit name text UI component is not assigned on Unit World UI script on obj: " + name + ".");
+                }
 
-            if(healthBarSlider == null)
-            {
-                Debug.LogWarning("Unit health bar slider UI component is not assigned on Unit World UI script on obj: " + name + ".");
+                if (healthBarSlider == null)
+                {
+                    Debug.LogWarning("Unit health bar slider UI component is not assigned on Unit World UI script on obj: " + name + ".");
+                }
             }
 
             unitWorldCanvas.worldCamera = Camera.main;

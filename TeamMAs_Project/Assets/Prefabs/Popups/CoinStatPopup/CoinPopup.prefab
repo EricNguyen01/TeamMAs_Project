@@ -182,7 +182,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 599533699
-  m_SortingOrder: 0
+  m_SortingOrder: 10
   m_TargetDisplay: 0
 --- !u!225 &2253092831701831863
 CanvasGroup:
@@ -270,6 +270,8 @@ MonoBehaviour:
   statPopupTextMesh: {fileID: 7512172702897273963}
   positiveStatPopupSprite: {fileID: 0}
   negativeStatPopupSprite: {fileID: 0}
+  positiveStatText: 
+  negativeStatText: 
   positiveStatPopupTextColor: {r: 0.8980392, g: 0.80784315, b: 0.4, a: 1}
   negativeStatPopupTextColor: {r: 0.7924528, g: 0.18241365, b: 0.18241365, a: 1}
 --- !u!95 &2914227463471515456

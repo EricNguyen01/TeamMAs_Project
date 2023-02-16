@@ -13,9 +13,12 @@ namespace TeamMAsTD
         {
             base.SetUpUnitWorldUI();
 
-            if(waterSlider == null)
+            if (logMissingUIComponentsWarning)
             {
-                Debug.LogWarning("Plant water slider UI component is not assigned on Plant Unit World UI script on obj: " + name + ".");
+                if (waterSlider == null)
+                {
+                    Debug.LogWarning("Plant water slider UI component is not assigned on Plant Unit World UI script on obj: " + name + ".");
+                }
             }
         }
 

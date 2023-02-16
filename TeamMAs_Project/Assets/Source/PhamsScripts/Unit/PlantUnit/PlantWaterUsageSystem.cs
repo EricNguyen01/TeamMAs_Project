@@ -26,6 +26,9 @@ namespace TeamMAsTD
 
         private int currentWavesSurvivedWithoutWater = -1;//doesnt count on the wave that water gets to 0 (start counting from next no water wave)
 
+        //WaterAllButton.cs sub to this event to check for water all costs 
+        public static event System.Action<PlantUnitSO> OnPlantWaterBarsRefilled;
+
         private void OnEnable()
         {
             WaveSpawner.OnWaveFinished += ConsumeWaterOnWaveFinished;
@@ -81,7 +84,7 @@ namespace TeamMAsTD
         }
 
         //Use this func for refilling water using both rain (0 coin cost) and/or the water bucket UI button (coin cost)
-        public void RefillWaterBars(int barsRefilled, float coinsCost)
+        public void RefillWaterBars(int barsPerRefill, float coinsCostPerRefill)
         {
             //if water is full -> don't refill!
             if (waterBarsRemaining >= totalWaterBars)
@@ -94,7 +97,7 @@ namespace TeamMAsTD
             //else
 
             //refill amount cant be less than 0
-            if (barsRefilled < 0) return;
+            if (barsPerRefill < 0) return;
 
             //use coins to fill water
             //check for GameResource and Coin Resource references
@@ -103,18 +106,20 @@ namespace TeamMAsTD
                 Debug.LogError("GameResource with Coin Resource is missing. Can't deduct coins from watering plant!");
             }
             //if references are not missing -> check for sufficient refilling funds
-            else if(coinsCost > GameResource.gameResourceInstance.coinResourceSO.resourceAmount)
+            else if(coinsCostPerRefill > GameResource.gameResourceInstance.coinResourceSO.resourceAmount)
             {
                 Debug.LogError("Insufficient Funds to Refill Water Bars!");
 
                 return;//exit function (stop refill) on insufficient funds
             }
-            else GameResource.gameResourceInstance.coinResourceSO.RemoveResourceAmount(coinsCost);
+            else GameResource.gameResourceInstance.coinResourceSO.RemoveResourceAmount(coinsCostPerRefill);
 
             //filling water
-            waterBarsRemaining += barsRefilled;
+            waterBarsRemaining += barsPerRefill;
 
-            if (plantWateringPopup != null) plantWateringPopup.PopUp(null, "+" + barsRefilled.ToString(), true);
+            OnPlantWaterBarsRefilled?.Invoke(plantUnitSO);
+
+            if (plantWateringPopup != null) plantWateringPopup.PopUp(null, "+" + barsPerRefill.ToString(), true);
 
             //reset current rounds survived without water if water bars remaining > 0 after being refilled.
             if (waterBarsRemaining > 0) 
@@ -139,12 +144,28 @@ namespace TeamMAsTD
             plantUnitWorldUI.SetWaterSliderValue(waterBarsRemaining, totalWaterBars);
         }
 
+        public void RefillAllWaterBars(int barsPerRefill, int coinCostPerRefill)
+        {
+            if (waterBarsRemaining >= totalWaterBars) return;
+
+            int barsRefilled = 0;
+
+            int barsToRefill = totalWaterBars - waterBarsRemaining;
+
+            while (barsRefilled < barsToRefill)
+            {
+                barsRefilled += barsPerRefill;
+
+                RefillWaterBars(barsPerRefill, coinCostPerRefill);
+            }
+        }
+
         //Water is consumed first on wave finished
         private void ConsumeWaterOnWaveFinished(WaveSpawner waveSpawner, int waveNum, bool stillHasOngoingWaves)
         {
             if (stillHasOngoingWaves) return;
 
-            ConsumingWaterBars();
+            ConsumingWaterBars(plantUnitSO.waterUse);
         }
         
         //Then, after consuming from wave finished, rain occurs in which water is refilled on rain ended
@@ -173,11 +194,11 @@ namespace TeamMAsTD
             }
         }
 
-        public void ConsumingWaterBars()
+        public void ConsumingWaterBars(int waterBarsConsumed)
         {
-            waterBarsRemaining -= plantUnitSO.waterUse;
+            waterBarsRemaining -= waterBarsConsumed;
 
-            if(plantWateringPopup != null) plantWateringPopup.PopUp(null, "-" + plantUnitSO.waterUse.ToString(), false);
+            if(plantWateringPopup != null) plantWateringPopup.PopUp(null, "-" + waterBarsConsumed.ToString(), false);
 
             //set water slider UI values
             if(waterBarsRemaining > 0) plantUnitWorldUI.SetWaterSliderValue(waterBarsRemaining, totalWaterBars);
@@ -213,6 +234,32 @@ namespace TeamMAsTD
             if (waterBarsRemaining >= totalWaterBars) return true;
 
             return false;
+        }
+
+        public int GetFullRefillTotalCoinCosts()
+        {
+            //if water is full -> cost nothing
+            if (waterBarsRemaining >= totalWaterBars) return 0;
+
+            int barsToRefill = totalWaterBars - waterBarsRemaining;
+
+            int barsPerRefill = plantUnitSO.waterBarsRefilledPerWatering;
+
+            //if water bars need to be refilled is <= bars that can be refilled per watering -> cost is equal to 1 time water refill costs
+            if (barsToRefill <= barsPerRefill) return plantUnitSO.wateringCoinsCost;
+
+            int waterTimes = 0;
+
+            int barsRefilled = 0;
+
+            while (barsRefilled < barsToRefill)
+            {
+                barsRefilled += barsPerRefill;
+
+                waterTimes++;
+            }
+
+            return plantUnitSO.wateringCoinsCost * waterTimes;
         }
     }
 }

@@ -67,6 +67,39 @@ namespace TeamMAsTD
 
             statPopupPool.CreateAndAddStatPopupsToPool(popupNumberToPool);
         }
+
+        public void SetStatPopupSpawnerConfig(float startVertOffset = 0.0f, float startHorOffset = 0.0f, float vertDistFromStart = 0.0f, float horDistFromStart = 0.0f, float popupScaleMultiplier = 0.0f, float popupTime = 0.0f, bool randomTravelVert = false, bool randomTravelHor = true)
+        {
+            if(startVertOffset > 0.0f)
+            {
+                startVerticalOffset = startVertOffset;
+            }
+            if(startHorOffset > 0.0f)
+            {
+                startHorizontalOffset = startHorOffset;
+            }
+            if(vertDistFromStart > 0.0f)
+            {
+                verticalDistanceFromStart = vertDistFromStart;
+            }
+            if(horDistFromStart > 0.0f)
+            {
+                horizontalDistFromStart = horDistFromStart;
+            }
+            if(popupScaleMultiplier > 0.0f)
+            {
+                statPopupScaleMultiplier = popupScaleMultiplier;
+            }
+
+            randomHorizontalTravelDistFromStart = randomTravelHor;
+
+            randomVerticalTravelDistFromStart = randomTravelVert;
+
+            if(popupTime > 0.0f)
+            {
+                this.popupTime = popupTime;
+            }
+        }
         
         public virtual void PopUp(Sprite spriteToPopup, string textToPopup, bool isPositivePopup)
         {
