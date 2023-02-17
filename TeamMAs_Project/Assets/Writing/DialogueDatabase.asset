@@ -189,10 +189,10 @@ MonoBehaviour:
       type: 0
       typeString: 
     portrait: {fileID: 0}
-    spritePortrait: {fileID: 21300000, guid: 610643c3750c7d24a99a50609148b0e5, type: 3}
+    spritePortrait: {fileID: 21300000, guid: 07325c34994599d4eb19922e0b75bea0, type: 3}
     alternatePortraits: []
     spritePortraits:
-    - {fileID: 21300000, guid: 07325c34994599d4eb19922e0b75bea0, type: 3}
+    - {fileID: 21300000, guid: 610643c3750c7d24a99a50609148b0e5, type: 3}
   - id: 6
     fields:
     - title: Name
@@ -1103,13 +1103,13 @@ MonoBehaviour:
       - originConversationID: 4
         originDialogueID: 0
         destinationConversationID: 4
-        destinationDialogueID: 8
+        destinationDialogueID: 9
         isConnector: 0
         priority: 0
       - originConversationID: 4
         originDialogueID: 0
         destinationConversationID: 4
-        destinationDialogueID: 9
+        destinationDialogueID: 8
         isConnector: 0
         priority: 0
       conditionsString: 
@@ -1199,7 +1199,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: Click and drag a plant from the shop to a free tile to plant it.
+        value: Click and drag a plant from the shop to a free tile to plant it.[pic=2]
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
@@ -1570,7 +1570,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: Bees like flowers, humans like popular plants. Keep them happy![pic=1]
+        value: Bees like flowers, humans like popular plants. Keep them happy!
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
@@ -2060,8 +2060,10 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: You don't have a choice. The [em2]bees need flowers[/em2], or we'll
+        value: 'You don''t have a choice. The [em2]bees need flowers[/em2], or we''ll
           have a disaster on our hands.
+
+          [pic=2]'
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
@@ -2120,8 +2122,10 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: (Groundskeeper, we don't have a lot of [em2]water credits[/em2]. So
-          if you have to choose who to use them on...)
+        value: '(Groundskeeper, we don''t have a lot of [em2]water credits[/em2].
+          So if you have to choose who to use them on...)
+
+          [pic=2]'
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
@@ -3074,7 +3078,9 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: Can you afford that? We're not made of [em2]water credits[/em2].
+        value: 'Can you afford that? We''re not made of [em2]water credits[/em2].
+
+          [pic=2]'
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
@@ -3298,7 +3304,9 @@ MonoBehaviour:
         typeString: CustomFieldType_Text
       - title: Dialogue Text
         value: '(A word from above, groundskeeper: the mechanic from this next conversation
-          doesn''t exist yet. Stay tuned or don''t.)'
+          doesn''t exist yet. Stay tuned or don''t.)
+
+          [pic=2]'
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
@@ -3536,7 +3544,9 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: "My bad. I grind grass into a pulp and feed it to the dirt.\r"
+        value: 'My bad. I grind grass into a pulp and feed it to the dirt.
+
+          [pic=2]'
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
@@ -3656,7 +3666,9 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: No.
+        value: 'No.
+
+          [pic=2]'
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
@@ -3774,7 +3786,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: "No, that\u2019s a myth. You'd grow better there, actually..."
+        value: "No, that\u2019s a myth. You'd grow better there, actually...\n[pic=2]"
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
@@ -3888,7 +3900,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: "I bring nitrogen from the air to the soil. It\u2019s free fertilizer."
+        value: "I bring nitrogen from the air to the soil. It\u2019s free fertilizer.\n[pic=2]"
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
@@ -3925,8 +3937,8 @@ MonoBehaviour:
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 68.11301, y: 10.324649}
-    canvasZoom: 0.5500004
+    canvasScrollPosition: {x: 91.08724, y: 34.95205}
+    canvasZoom: 0.42725033
   - id: 8
     fields:
     - title: Title
@@ -4447,8 +4459,8 @@ MonoBehaviour:
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 0, y: 17.391296}
-    canvasZoom: 0.46000046
+    canvasScrollPosition: {x: 0, y: 8.438702}
+    canvasZoom: 0.4357503
   - id: 9
     fields:
     - title: Title
@@ -7301,7 +7313,9 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: Give them a chance, Grass. [em2]We could use the extra flowerpower[/em2].
+        value: 'Give them a chance, Grass. [em2]We could use the extra flowerpower[/em2].
+
+          [pic=2]'
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
