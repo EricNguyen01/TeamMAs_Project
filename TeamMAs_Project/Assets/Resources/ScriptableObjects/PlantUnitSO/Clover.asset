@@ -20,17 +20,17 @@ MonoBehaviour:
   <plantProjectileSO>k__BackingField: {fileID: 11400000, guid: 700432d60d0410a4482fe445d643989b, type: 2}
   <waterBars>k__BackingField: 4
   <wavesSurviveWithoutWater>k__BackingField: 0
-  <damage>k__BackingField: 5
-  <attackSpeed>k__BackingField: 1.5
+  <damage>k__BackingField: 15
+  <attackSpeed>k__BackingField: 0.75
   <attackRangeInTiles>k__BackingField: 10
   <targetsPerAttack>k__BackingField: 3
-  <humanMultiplier>k__BackingField: 1
-  <pollinatorMultiplier>k__BackingField: 1
+  <humanMultiplier>k__BackingField: 0.5
+  <pollinatorMultiplier>k__BackingField: 0.5
   <isPlacableOnPath>k__BackingField: 1
   plantTargetsLayerNames:
   - Visitors
   plantTargetsSpecifically: 0
-  <plantingCoinCost>k__BackingField: 6
+  <plantingCoinCost>k__BackingField: 5
   <uprootRefundAmount>k__BackingField: 1
   <uprootCost>k__BackingField: 0
   <uprootHealthCost>k__BackingField: 1
