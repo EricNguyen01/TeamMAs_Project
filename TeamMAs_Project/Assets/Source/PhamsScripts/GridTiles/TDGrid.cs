@@ -28,7 +28,25 @@ namespace TeamMAsTD
 
         [SerializeField] private UnityEvent OnFirstDandelionPlantedOnGrid;
 
+        [SerializeField] private UnityEvent OnFirstCloverPlantedOnGrid;
+
+        private List<Tile> unplantedTileList = new List<Tile>();
+
         private bool alreadyHasDandelionOnGrid = false;//for debugging
+
+        private bool alreadyHasCloverOnGrid = false;
+
+        //UNITY
+
+        private void OnEnable()
+        {
+            WaveSpawner.OnWaveStarted += SpawnPlantOnWaveStarted;
+        }
+
+        private void OnDisable()
+        {
+            WaveSpawner.OnWaveStarted -= SpawnPlantOnWaveStarted;
+        }
 
         //PUBLICS...........................................................
 
@@ -38,13 +56,26 @@ namespace TeamMAsTD
         }
 
         //the method below returns the grid array index correspond to the provided tile coordinate in the grid.
+        public int GetGridArrayIndexFromTileCoordinate(Vector2 tileCoordInt)
+        {
+            return GetGridArrayIndexFromTileCoordinate((int)tileCoordInt.x, (int)tileCoordInt.y);
+        }
+
         public int GetGridArrayIndexFromTileCoordinate(int tileGrid_X, int tileGrid_Y)
         {
+            if (tileGrid_X < 0) tileGrid_X = 0;
+
+            if (tileGrid_X > gridWidth) tileGrid_X = gridWidth - 1;
+
+            if (tileGrid_Y < 0) tileGrid_Y = 0;
+
+            if (tileGrid_Y > gridHeight) tileGrid_Y = gridHeight - 1;
+
             return tileGrid_X * gridHeight/*the array height*/ + tileGrid_Y;
         }
 
         //iterate through the grid to check if any plant has been planted before or not
-        public void CheckPlantUnitAsFirstDandelionUnitOnGrid(PlantUnit plantUnit)
+        public void CheckPlantUnitAsFirstUnitOfTypeOnGrid(PlantUnit plantUnit)
         {
             if (gridArray == null || gridArray.Length == 0) return;
 
@@ -57,18 +88,60 @@ namespace TeamMAsTD
                     gridArray[i].plantUnitOnTile.plantUnitScriptableObject.displayName == "Dandelion")
                 {
                     alreadyHasDandelionOnGrid = true;
+                }
 
-                    return;
+                if (gridArray[i].plantUnitOnTile != null &&
+                    gridArray[i].plantUnitOnTile != plantUnit &&
+                    gridArray[i].plantUnitOnTile.plantUnitScriptableObject.displayName == "Clover")
+                {
+                    alreadyHasCloverOnGrid = true;
                 }
             }
 
-            if (plantUnit.plantUnitScriptableObject.displayName != "Dandelion") return;
+            if (plantUnit.plantUnitScriptableObject.displayName == "Dandelion")
+            {
+                if (!alreadyHasDandelionOnGrid)
+                {
+                    //Debug.Log("First Dandelion Has Been Planted On Grid!");
 
-            Debug.Log("First Dandelion Has Been Planted On Grid!");
+                    alreadyHasDandelionOnGrid = true;
 
-            alreadyHasDandelionOnGrid = true;
+                    OnFirstDandelionPlantedOnGrid?.Invoke();
+                }
+            }
+            else if(plantUnit.plantUnitScriptableObject.displayName == "Clover")
+            {
+                if (!alreadyHasCloverOnGrid)
+                {
+                    alreadyHasCloverOnGrid = true;
 
-            OnFirstDandelionPlantedOnGrid?.Invoke();
+                    OnFirstCloverPlantedOnGrid?.Invoke();
+                }
+            }
+        }
+
+        public List<Tile> GetUnplantedTiles()
+        {
+            if (gridArray == null || gridArray.Length == 0) return null;
+
+            for(int i = 0; i > gridArray.Length; i++)
+            {
+                if (gridArray[i].isOccupied) continue;
+
+                if (gridArray[i].plantUnitOnTile == null)
+                {
+                    if(!unplantedTileList.Contains(gridArray[i])) unplantedTileList.Add(gridArray[i]);
+
+                    continue;
+                }
+
+                if(gridArray[i].plantUnitOnTile != null)
+                {
+                    if (unplantedTileList.Contains(gridArray[i])) unplantedTileList.Remove(gridArray[i]);
+                }
+            }
+
+            return unplantedTileList;
         }
 
 
@@ -154,6 +227,59 @@ namespace TeamMAsTD
             }
 
             gridArray = null;//set grid to null so that it can be re-initialized and re-generated in CreateGrid() function.
+        }
+
+        private void SpawnPlantOnWaveStarted(WaveSpawner waveSpawner, int waveNum)
+        {
+            List<Tile> unplantedTiles = GetUnplantedTiles();
+
+            if (unplantedTiles == null || unplantedTiles.Count == 0) return;
+
+            if (waveSpawner == null) return;
+
+            if (waveSpawner.GetCurrentWave() == null) return;
+
+            Wave wave = waveSpawner.GetCurrentWave();
+
+            if (wave.waveSO == null ||
+               wave.waveSO.plantsToSpawnThisWave == null ||
+               wave.waveSO.plantsToSpawnThisWave.Length == 0) return;
+
+            for(int i = 0; i < wave.waveSO.plantsToSpawnThisWave.Length; i++)
+            {
+                if (unplantedTileList.Count == 0) return;
+
+                if (wave.waveSO.plantsToSpawnThisWave[i].plantUnitSOToSpawn == null) continue;
+
+                PlantUnitSO plantSO = wave.waveSO.plantsToSpawnThisWave[i].plantUnitSOToSpawn;
+
+                Vector2 plantCoord = Vector2.zero;
+
+                int unplantedTilesIndex = Random.Range(0, unplantedTiles.Count);
+
+                if (unplantedTiles.Count == 1)
+                {
+                    unplantedTilesIndex = 0;
+
+                    plantCoord = new Vector2(unplantedTiles[0].tileNumInRow, unplantedTiles[0].tileNumInColumn);
+                }
+                else 
+                {
+                    plantCoord = new Vector2(unplantedTiles[unplantedTilesIndex].tileNumInRow, unplantedTiles[unplantedTilesIndex].tileNumInColumn); 
+                }
+
+                if(SpawnPlantOnTileCoord(plantSO, plantCoord))
+                {
+                    unplantedTileList.RemoveAt(unplantedTilesIndex);
+                }
+            }
+        }
+
+        private bool SpawnPlantOnTileCoord(PlantUnitSO plantSO, Vector2 tileCoordInt)
+        {
+            int tileIndexInGrid = GetGridArrayIndexFromTileCoordinate(tileCoordInt);
+
+            return gridArray[tileIndexInGrid].PlaceUnit(plantSO);
         }
     
     //UNITY EDITOR only class and function for Grid
