@@ -189,10 +189,10 @@ MonoBehaviour:
       type: 0
       typeString: 
     portrait: {fileID: 0}
-    spritePortrait: {fileID: 21300000, guid: 610643c3750c7d24a99a50609148b0e5, type: 3}
+    spritePortrait: {fileID: 21300000, guid: 07325c34994599d4eb19922e0b75bea0, type: 3}
     alternatePortraits: []
     spritePortraits:
-    - {fileID: 21300000, guid: 07325c34994599d4eb19922e0b75bea0, type: 3}
+    - {fileID: 21300000, guid: 610643c3750c7d24a99a50609148b0e5, type: 3}
   - id: 6
     fields:
     - title: Name
@@ -1199,7 +1199,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: Click and drag a plant from the shop to a free tile to plant it.
+        value: Click and drag a plant from the shop to a free tile to plant it.[pic=2]
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
@@ -1570,9 +1570,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: 'Bees like flowers, humans like popular plants. Keep them happy!
-
-          [pic=2]'
+        value: Bees like flowers, humans like popular plants. Keep them happy!
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
@@ -1591,7 +1589,7 @@ MonoBehaviour:
       falseConditionAction: Block
       conditionPriority: 2
       outgoingLinks: []
-      conditionsString: 
+      conditionsString: Variable["wave"] == 3
       userScript: 
       onExecute:
         m_PersistentCalls:
@@ -1599,7 +1597,7 @@ MonoBehaviour:
       canvasRect:
         serializedVersion: 2
         x: 20
-        y: 230
+        y: 307.34146
         width: 160
         height: 30
     entryGroups: []
@@ -2062,8 +2060,10 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: You don't have a choice. The [em2]bees need flowers[/em2], or we'll
+        value: 'You don''t have a choice. The [em2]bees need flowers[/em2], or we''ll
           have a disaster on our hands.
+
+          [pic=2]'
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
@@ -2122,8 +2122,10 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: (Groundskeeper, we don't have a lot of [em2]water credits[/em2]. So
-          if you have to choose who to use them on...)
+        value: '(Groundskeeper, we don''t have a lot of [em2]water credits[/em2].
+          So if you have to choose who to use them on...)
+
+          [pic=2]'
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
@@ -3076,7 +3078,9 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: Can you afford that? We're not made of [em2]water credits[/em2].
+        value: 'Can you afford that? We''re not made of [em2]water credits[/em2].
+
+          [pic=2]'
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
@@ -3300,7 +3304,9 @@ MonoBehaviour:
         typeString: CustomFieldType_Text
       - title: Dialogue Text
         value: '(A word from above, groundskeeper: the mechanic from this next conversation
-          doesn''t exist yet. Stay tuned or don''t.)'
+          doesn''t exist yet. Stay tuned or don''t.)
+
+          [pic=2]'
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
@@ -3538,7 +3544,9 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: "My bad. I grind grass into a pulp and feed it to the dirt.\r"
+        value: 'My bad. I grind grass into a pulp and feed it to the dirt.
+
+          [pic=2]'
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
@@ -3658,7 +3666,9 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: No.
+        value: 'No.
+
+          [pic=2]'
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
@@ -3776,7 +3786,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: "No, that\u2019s a myth. You'd grow better there, actually..."
+        value: "No, that\u2019s a myth. You'd grow better there, actually...\n[pic=2]"
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
@@ -3890,7 +3900,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: "I bring nitrogen from the air to the soil. It\u2019s free fertilizer."
+        value: "I bring nitrogen from the air to the soil. It\u2019s free fertilizer.\n[pic=2]"
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
@@ -3927,8 +3937,8 @@ MonoBehaviour:
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 68.11301, y: 10.324649}
-    canvasZoom: 0.5500004
+    canvasScrollPosition: {x: 91.08724, y: 34.95205}
+    canvasZoom: 0.42725033
   - id: 8
     fields:
     - title: Title
@@ -4449,8 +4459,8 @@ MonoBehaviour:
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 0, y: 17.391296}
-    canvasZoom: 0.46000046
+    canvasScrollPosition: {x: 0, y: 8.438702}
+    canvasZoom: 0.4357503
   - id: 9
     fields:
     - title: Title
@@ -7303,7 +7313,9 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: Give them a chance, Grass. [em2]We could use the extra flowerpower[/em2].
+        value: 'Give them a chance, Grass. [em2]We could use the extra flowerpower[/em2].
+
+          [pic=2]'
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
@@ -7459,7 +7471,7 @@ MonoBehaviour:
   - id: 18
     fields:
     - title: Title
-      value: ???
+      value: Warning/Visitors
       type: 0
       typeString: CustomFieldType_Text
     - title: Description
@@ -7543,7 +7555,13 @@ MonoBehaviour:
       delaySimStatus: 0
       falseConditionAction: Block
       conditionPriority: 2
-      outgoingLinks: []
+      outgoingLinks:
+      - originConversationID: 18
+        originDialogueID: 0
+        destinationConversationID: 18
+        destinationDialogueID: 1
+        isConnector: 0
+        priority: 2
       conditionsString: 
       userScript: Variable["cloverPlanted"] = true
       onExecute:
@@ -7553,6 +7571,60 @@ MonoBehaviour:
         serializedVersion: 2
         x: 30
         y: 20
+        width: 160
+        height: 30
+    - id: 1
+      fields:
+      - title: Title
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Description
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Actor
+        value: 2
+        type: 5
+        typeString: CustomFieldType_Actor
+      - title: Conversant
+        value: 3
+        type: 5
+        typeString: CustomFieldType_Actor
+      - title: Menu Text
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Dialogue Text
+        value: Hey, I appreciate the confidence in your garden, but you should [em2]plant
+          something the bees will like[/em2] too.
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Sequence
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Priority
+        value: 0
+        type: 1
+        typeString: CustomFieldType_Number
+      conversationID: 18
+      isRoot: 0
+      isGroup: 0
+      nodeColor: 
+      delaySimStatus: 0
+      falseConditionAction: Block
+      conditionPriority: 2
+      outgoingLinks: []
+      conditionsString: 
+      userScript: 
+      onExecute:
+        m_PersistentCalls:
+          m_Calls: []
+      canvasRect:
+        serializedVersion: 2
+        x: 222.19661
+        y: 87.34105
         width: 160
         height: 30
     entryGroups: []

@@ -87,6 +87,11 @@ namespace TeamMAsTD
         {
             DialogueLua.SetVariable("noMoney" + type, true);
         }
+
+        public void SetDialogBoolTrue(string name)
+        {
+            DialogueLua.SetVariable(name, true);
+        }
     }
 
 }
