@@ -30,4 +30,4 @@ MonoBehaviour:
   <extraCoinsDropFromWave>k__BackingField: 4
   <plantsToSpawnOnThisWaveStart>k__BackingField:
   - plantUnitSOToSpawn: {fileID: 11400000, guid: ebe49aa0d994d7d488c580c1a9bccd35, type: 2}
-    spawnNumbers: 2
+    spawnNumbers: 1

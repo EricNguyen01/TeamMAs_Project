@@ -32,7 +32,7 @@ MonoBehaviour:
   plantTargetsSpecifically: 2
   <plantingCoinCost>k__BackingField: 0
   <uprootRefundAmount>k__BackingField: 0
-  <uprootCost>k__BackingField: 10
+  <uprootCost>k__BackingField: 5
   <uprootHealthCost>k__BackingField: 1
   <waterUse>k__BackingField: 2
   <waterBarsRefilledPerWatering>k__BackingField: 1

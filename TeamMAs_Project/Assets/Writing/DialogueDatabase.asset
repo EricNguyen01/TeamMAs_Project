@@ -1185,7 +1185,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: Click and drag a plant from the shop to a free tile to plant it.[pic=2]
+        value: Click and drag a plant from the shop to a free tile to plant it.
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
@@ -1310,7 +1310,7 @@ MonoBehaviour:
       falseConditionAction: Block
       conditionPriority: 2
       outgoingLinks: []
-      conditionsString: Variable["wave"] == 2
+      conditionsString: Variable["wave"] == 2 or (Variable["wave"] > 4)
       userScript: 
       onExecute:
         m_PersistentCalls:
@@ -1450,7 +1450,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: Dandelion's expensive to uproot. $10. Stupid, I know.
+        value: Dandelion's expensive to uproot. $5. Stupid, I know.
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
@@ -1503,7 +1503,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: Uproot plants in the action menu. But weeds are pricey to dig up.
+        value: Uproot plants in the action menu. But weeds are $5 to dig up.
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
@@ -1529,7 +1529,7 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 204.24411
+        x: 201.82718
         y: 375.92206
         width: 160
         height: 30
@@ -1556,7 +1556,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: Bees like flowers, humans like popular plants. Keep them happy!
+        value: Bees like flowers, humans like popular plants.
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
@@ -1587,8 +1587,8 @@ MonoBehaviour:
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 24.783922, y: 123.91945}
-    canvasZoom: 0.41374955
+    canvasScrollPosition: {x: 7.3081083, y: 79.17173}
+    canvasZoom: 0.38374954
   - id: 5
     fields:
     - title: Title
@@ -4445,7 +4445,7 @@ MonoBehaviour:
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 0, y: 8.438702}
+    canvasScrollPosition: {x: 0, y: 3.848938}
     canvasZoom: 0.4357503
   - id: 9
     fields:
@@ -5569,7 +5569,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: "Ha ha, something like that. I\u2019d like to join this garden, if
+        value: "Haha, something like that. I\u2019d like to join this garden, if
           you\u2019ll have me."
         type: 0
         typeString: CustomFieldType_Text
@@ -5661,7 +5661,7 @@ MonoBehaviour:
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 0, y: 572.7265}
+    canvasScrollPosition: {x: 0, y: 605.45374}
     canvasZoom: 0.5500003
   - id: 11
     fields:
@@ -6581,8 +6581,8 @@ MonoBehaviour:
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 0, y: 0}
-    canvasZoom: 0.6100003
+    canvasScrollPosition: {x: 105.61065, y: 53.14822}
+    canvasZoom: 0.5200004
   - id: 17
     fields:
     - title: Title
@@ -7422,7 +7422,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: But it was free real estate, last I checked...
+        value: But it was free real estate...
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence

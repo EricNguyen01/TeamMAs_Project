@@ -323,7 +323,7 @@ MonoBehaviour:
   - id: 8
     fields:
     - title: Name
-      value: firstDandelionPlanted
+      value: dandelionPlanted
       type: 0
       typeString: CustomFieldType_Text
     - title: Initial Value
@@ -338,20 +338,6 @@ MonoBehaviour:
     fields:
     - title: Name
       value: cloverPlanted
-      type: 0
-      typeString: CustomFieldType_Text
-    - title: Initial Value
-      value: False
-      type: 2
-      typeString: CustomFieldType_Boolean
-    - title: Description
-      value: 
-      type: 0
-      typeString: CustomFieldType_Text
-  - id: 10
-    fields:
-    - title: Name
-      value: firstUprootDone
       type: 0
       typeString: CustomFieldType_Text
     - title: Initial Value
@@ -1199,7 +1185,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: Click and drag a plant from the shop to a free tile to plant it.[pic=2]
+        value: Click and drag a plant from the shop to a free tile to plant it.
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
@@ -1464,7 +1450,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: Dandelion's expensive to uproot. $10. Stupid, I know.
+        value: Dandelion's expensive to uproot. $5. Stupid, I know.
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
@@ -1517,7 +1503,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: Uproot plants in the action menu. But weeds are pricey to dig up.
+        value: Uproot plants in the action menu. But weeds are $5 to dig up.
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
@@ -1543,7 +1529,7 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 204.24411
+        x: 206.66101
         y: 375.92206
         width: 160
         height: 30
@@ -1570,7 +1556,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: Bees like flowers, humans like popular plants. Keep them happy!
+        value: Bees like flowers, humans like popular plants.
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
@@ -1601,12 +1587,12 @@ MonoBehaviour:
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 24.783922, y: 123.91945}
+    canvasScrollPosition: {x: 0, y: 64.59073}
     canvasZoom: 0.41374955
   - id: 5
     fields:
     - title: Title
-      value: Clover
+      value: Clover/First
       type: 0
       typeString: CustomFieldType_Text
     - title: Description
@@ -1694,7 +1680,7 @@ MonoBehaviour:
         isConnector: 0
         priority: 2
       conditionsString: 
-      userScript: Variable["firstDandelionPlanted"] = true
+      userScript: Variable["cloverPlanted"] = true
       onExecute:
         m_PersistentCalls:
           m_Calls: []
@@ -4459,7 +4445,7 @@ MonoBehaviour:
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 0, y: 8.438702}
+    canvasScrollPosition: {x: 0, y: 3.848938}
     canvasZoom: 0.4357503
   - id: 9
     fields:
@@ -5583,7 +5569,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: "Ha ha, something like that. I\u2019d like to join this garden, if
+        value: "Haha, something like that. I\u2019d like to join this garden, if
           you\u2019ll have me."
         type: 0
         typeString: CustomFieldType_Text
@@ -5675,7 +5661,7 @@ MonoBehaviour:
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 0, y: 572.7265}
+    canvasScrollPosition: {x: 0, y: 605.45374}
     canvasZoom: 0.5500003
   - id: 11
     fields:
@@ -6190,11 +6176,11 @@ MonoBehaviour:
   - id: 16
     fields:
     - title: Title
-      value: Uproot
+      value: Wave/4
       type: 0
       typeString: CustomFieldType_Text
     - title: Description
-      value: Hello?
+      value: 
       type: 0
       typeString: CustomFieldType_Text
     - title: Actor
@@ -6282,7 +6268,7 @@ MonoBehaviour:
         isConnector: 0
         priority: 2
       conditionsString: 
-      userScript: Variable["firstUprootDone"] = true
+      userScript: Variable["wave"] = Variable["wave"] + 1
       onExecute:
         m_PersistentCalls:
           m_Calls: []
@@ -6315,7 +6301,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: 'Why does uprooting cost [em2]water credits[/em2], anyway?
+        value: 'Why does [em2]uprooting cost water credits[/em2], anyway?
 
           [pic=2]'
         type: 0
@@ -6376,8 +6362,10 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: That's just the preferred currency now. You know, after the water
-          tax. From the drought. The one happening [em1]right now[/em1].
+        value: 'That''s just how money is, now. You know, after the water tax. From
+          the water shortage.
+
+          [pic=2]'
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
@@ -6497,7 +6485,10 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: ...Never mind.
+        value: 'The... dry spell that everyone''s been suffering from? For the past
+          year? You know what, forget it.
+
+          [pic=2]'
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
@@ -6556,8 +6547,10 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: (I don't know what I expected. So many humans coddle Grass with water,
-          even now...)
+        value: '(I don''t know what I expected. So many humans coddle Grass with
+          water, even now...)
+
+          [pic=2]'
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
@@ -6588,12 +6581,12 @@ MonoBehaviour:
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 0, y: 19.672134}
-    canvasZoom: 0.6100003
+    canvasScrollPosition: {x: 105.61065, y: 53.14822}
+    canvasZoom: 0.5200004
   - id: 17
     fields:
     - title: Title
-      value: Wave/4
+      value: Dandelion/First
       type: 0
       typeString: CustomFieldType_Text
     - title: Description
@@ -6685,7 +6678,7 @@ MonoBehaviour:
         isConnector: 0
         priority: 2
       conditionsString: 
-      userScript: Variable["wave"] = Variable["wave"] + 1
+      userScript: Variable["dandelionPlanted"] = true
       onExecute:
         m_PersistentCalls:
           m_Calls: []
@@ -7429,7 +7422,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: But it was free real estate, last I checked...
+        value: But it was free real estate...
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
