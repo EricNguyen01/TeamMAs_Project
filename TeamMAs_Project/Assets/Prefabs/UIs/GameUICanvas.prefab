@@ -953,6 +953,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: WaterAllButton
       objectReference: {fileID: 0}
+    - target: {fileID: 4037210357746051912, guid: a8befa3fb9194844db1b9863b01669ef, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.1329956
+      objectReference: {fileID: 0}
     - target: {fileID: 6433098137989424551, guid: a8befa3fb9194844db1b9863b01669ef, type: 3}
       propertyPath: m_fontSize
       value: 25
@@ -1211,26 +1215,30 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1209370932395382298, guid: ba3e2134a4ef544458f0e54fa7cc239f, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1209370932395382298, guid: ba3e2134a4ef544458f0e54fa7cc239f, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1209370932395382298, guid: ba3e2134a4ef544458f0e54fa7cc239f, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 189.67563
       objectReference: {fileID: 0}
     - target: {fileID: 1209370932395382298, guid: ba3e2134a4ef544458f0e54fa7cc239f, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: 190.66202
       objectReference: {fileID: 0}
     - target: {fileID: 1209370932395382298, guid: ba3e2134a4ef544458f0e54fa7cc239f, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 126.837814
       objectReference: {fileID: 0}
     - target: {fileID: 1209370932395382298, guid: ba3e2134a4ef544458f0e54fa7cc239f, type: 3}
       propertyPath: m_AnchoredPosition.y
+      value: -333.99304
+      objectReference: {fileID: 0}
+    - target: {fileID: 1209370932395382299, guid: ba3e2134a4ef544458f0e54fa7cc239f, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1209370932406157311, guid: ba3e2134a4ef544458f0e54fa7cc239f, type: 3}

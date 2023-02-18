@@ -19,6 +19,13 @@ namespace TeamMAsTD
             [Range(1, 100)] public int spawnChance;
         }
 
+        [System.Serializable]
+        public struct PlantSpawnOnWaveStruct
+        {
+            public PlantUnitSO plantUnitSOToSpawn;
+            [Min(1)] public int spawnNumbers;
+        }
+
         [field: Header("This Wave Data")]
 
         [field: SerializeField]
@@ -40,6 +47,9 @@ namespace TeamMAsTD
         [field: Header("This Wave Coins Drop Data")]
         [field: Tooltip("The extra coins drop on this specific wave ended in addition to the base drop set in Coins game resource scriptable object.")]
         [field: SerializeField] [field: Min(0)] public int extraCoinsDropFromWave { get; private set; } = 0;
+
+        [field: Header("Plant To Spawn On This Wave")]
+        [field: SerializeField] public PlantSpawnOnWaveStruct[] plantsToSpawnOnThisWaveStart { get; private set; }
 
         public int GetSpawnNumberOfVisitorType(VisitorUnitSO visitorSO)
         {
