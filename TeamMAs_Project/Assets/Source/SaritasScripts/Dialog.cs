@@ -88,12 +88,10 @@ namespace TeamMAsTD
             DialogueLua.SetVariable("noMoney" + type, true);
         }
 
-        IEnumerator DelayedSetBool(string name, bool value, float delayTime)
+        public void SetDialogBoolTrue(string name)
         {
-            yield return new WaitForSeconds(delayTime);
-            DialogueLua.SetVariable(name, value);
+            DialogueLua.SetVariable(name, true);
         }
-
     }
 
 }

@@ -35,7 +35,10 @@ namespace TeamMAsTD
             {
                 Debug.LogWarning("Watering Sound Player Prefab is missing on WateringOnTile: " + name);
             }
+        }
 
+        private void Start()
+        {
             if (insufficientWateringFundStatPopupPrefab != null)
             {
                 GameObject statPopUpSpawnerGO = Instantiate(insufficientWateringFundStatPopupPrefab.gameObject, transform);

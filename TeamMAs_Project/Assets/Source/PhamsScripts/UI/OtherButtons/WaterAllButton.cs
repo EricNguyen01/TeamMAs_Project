@@ -159,17 +159,24 @@ namespace TeamMAsTD
         {
             if(!CanWaterAll()) return;
 
+            bool hasPlayedWateringSound = false;
+
             for(int i = 0; i < existingPlantUnits.Count; i++)
             {
+                if (existingPlantUnits[i] == null) continue;
+
                 int barsPerRefill = existingPlantUnits[i].plantUnitScriptableObject.waterBarsRefilledPerWatering;
 
                 int coinCostPerRefill = existingPlantUnits[i].plantUnitScriptableObject.wateringCoinsCost;
 
                 //Play individual plant watering sound from the WateringOnTile script attached to the tiles with plants planted on
-                if (existingPlantUnits[i].tilePlacedOn != null)
+                if (!hasPlayedWateringSound && existingPlantUnits[i].tilePlacedOn != null)
                 {
                     if (existingPlantUnits[i].tilePlacedOn.wateringOnTileScriptComp != null)
                     {
+                        //only play water sound on 1 plant instance instead of all (to avoid exploding player's ears)
+                        hasPlayedWateringSound = true;
+
                         existingPlantUnits[i].tilePlacedOn.wateringOnTileScriptComp.SpawnAndDestroy_WateringSoundPlayer_IfNotNull();
                     }
                 }
