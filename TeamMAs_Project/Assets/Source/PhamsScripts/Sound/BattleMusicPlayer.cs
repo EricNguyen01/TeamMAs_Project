@@ -65,7 +65,7 @@ namespace TeamMAsTD
 
         private void DisableBattleThemeOnAllWavesFinished(WaveSpawner waveSpawner, bool hasOngoingWaves)
         {
-            DisableBattleThemeOnAllWavesFinished(waveSpawner, hasOngoingWaves);
+            DisableBattleThemeOnAllWavesFinished(waveSpawner, 0, hasOngoingWaves);
         }
 
         public void EnableBattleMusic(bool enabled, bool loop = true)
