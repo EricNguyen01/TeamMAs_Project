@@ -2123,7 +2123,7 @@ MonoBehaviour:
         typeString: CustomFieldType_Text
       - title: Dialogue Text
         value: '(Groundskeeper, we don''t have a lot of [em2]water credits[/em2].
-          So if you have to choose who to use them on...)
+          If you ever have to [em2]choose[/em2] who to spend them on... well...)
 
           [pic=2]'
         type: 0
@@ -7429,7 +7429,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: Last I checked, it was free real estate.
+        value: But it was free real estate, last I checked...
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
@@ -7466,7 +7466,7 @@ MonoBehaviour:
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 0, y: 172.62976}
+    canvasScrollPosition: {x: 0, y: 0}
     canvasZoom: 0.40000045
   - id: 18
     fields:

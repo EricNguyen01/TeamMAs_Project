@@ -45,7 +45,7 @@ namespace TeamMAsTD
             yield return new WaitForSeconds(delayTime);
 
             //DialogueManager.StartConversation(string conversation, Transform actor, Transform conversant); // actor and conversant are optional
-            StartConversation(1);
+            StartConversation(4);
         }
 
         public void SkipDialog()
