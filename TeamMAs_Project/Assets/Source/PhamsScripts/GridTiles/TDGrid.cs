@@ -280,7 +280,10 @@ namespace TeamMAsTD
 
                     plantCoord = new Vector2(unplantedTileList[unplantedTilesIndex].tileNumInRow, unplantedTileList[unplantedTilesIndex].tileNumInColumn);
 
-                    SpawnPlantOnTileCoord(plantSO, plantCoord);
+                    if(SpawnPlantOnTileCoord(plantSO, plantCoord))
+                    {
+                        unplantedTileList.RemoveAt(unplantedTilesIndex);
+                    }
                 }
             }
         }

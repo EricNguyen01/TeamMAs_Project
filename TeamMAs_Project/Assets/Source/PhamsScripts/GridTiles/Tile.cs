@@ -61,11 +61,15 @@ namespace TeamMAsTD
 
         private TileMenuAndUprootOnTileUI tileMenuAndUprootOnTileUI;
 
+        public AudioSource tileAudioSource { get; private set; }
+
         //PRIVATES......................................................................
 
         private void Awake()
         {
             spriteRenderer = GetComponent<SpriteRenderer>();
+
+            tileAudioSource = GetComponent<AudioSource>();
 
             wateringOnTileScriptComp = GetComponent<WateringOnTile>();
 
@@ -168,6 +172,44 @@ namespace TeamMAsTD
             }
         }
 
+        private IEnumerator DisableTileUprootAudioIfAnotherIsPlaying()
+        {
+            if (tileAudioSource == null) yield break;
+
+            Tile[] tilesInGridParent = gridParent.GetGridFlattened2DArray();
+
+            if (tilesInGridParent == null || tilesInGridParent.Length == 0) yield break;
+
+            float baseVolume = tileAudioSource.volume;
+
+            float t = 0.0f;
+
+            while(t <= 0.5f)
+            {
+                for (int i = 0; i < tilesInGridParent.Length; i++)
+                {
+                    if (tilesInGridParent[i] == this) continue;
+
+                    if (tilesInGridParent[i].tileAudioSource == null) continue;
+                    
+                    if (tilesInGridParent[i].tileAudioSource.isPlaying)
+                    {
+                        tileAudioSource.volume = 0.0f;
+
+                        tileAudioSource.Stop();
+                    }
+                }
+
+                t += Time.fixedDeltaTime;
+
+                yield return new WaitForFixedUpdate();
+            }
+
+            tileAudioSource.volume = baseVolume;
+
+            yield break;
+        }
+
         //PUBLICS........................................................................
 
         //the method below gets and sets the tile's data from the Grid class upon grid generation
@@ -239,13 +281,17 @@ namespace TeamMAsTD
             //disable tile menu open/close functionality after plant uprooted
             tileMenuAndUprootOnTileUI.SetDisableTileMenuOpen(true);
 
+            //this coroutine function is to avoid multiple instances of tile uproot audio being played 
+            //when multiple plants are uprooted at the same time
+            StartCoroutine(DisableTileUprootAudioIfAnotherIsPlaying());
+
             //throw uproot event
             OnPlantUnitUprootedOnTile?.Invoke(plantUnitOnTile, this);
 
             //process uproot health cost
-            if(GameResource.gameResourceInstance != null && GameResource.gameResourceInstance.emotionalHealthSO != null)
+            if (GameResource.gameResourceInstance != null && GameResource.gameResourceInstance.emotionalHealthSO != null)
             {
-                Debug.Log("Plant Uprooted, Consuming Emotional Health!");
+                //Debug.Log("Plant Uprooted, Consuming Emotional Health!");
 
                 GameResource.gameResourceInstance.emotionalHealthSO.RemoveResourceAmount(plantUnitOnTile.plantUnitScriptableObject.uprootHealthCost);
             }
