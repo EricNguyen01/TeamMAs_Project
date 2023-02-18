@@ -39,12 +39,14 @@ namespace TeamMAsTD
         {
             WaveSpawner.OnWaveStarted += EnableBattleThemeOnWaveStarted;
             WaveSpawner.OnWaveFinished += DisableBattleThemeOnAllWavesFinished;
+            WaveSpawner.OnAllWaveSpawned += DisableBattleThemeOnAllWavesFinished;
         }
 
         private void OnDisable()
         {
             WaveSpawner.OnWaveStarted -= EnableBattleThemeOnWaveStarted;
             WaveSpawner.OnWaveFinished -= DisableBattleThemeOnAllWavesFinished;
+            WaveSpawner.OnAllWaveSpawned -= DisableBattleThemeOnAllWavesFinished;
 
             StopAllCoroutines();
         }
@@ -59,6 +61,11 @@ namespace TeamMAsTD
             if (hasOngoingWaves) return;
 
             EnableBattleMusic(false);
+        }
+
+        private void DisableBattleThemeOnAllWavesFinished(WaveSpawner waveSpawner, bool hasOngoingWaves)
+        {
+            DisableBattleThemeOnAllWavesFinished(waveSpawner, hasOngoingWaves);
         }
 
         public void EnableBattleMusic(bool enabled, bool loop = true)

@@ -23,6 +23,7 @@ namespace TeamMAsTD
         public struct PlantSpawnOnWaveStruct
         {
             public PlantUnitSO plantUnitSOToSpawn;
+            [Min(1)] public int spawnNumbers;
         }
 
         [field: Header("This Wave Data")]
@@ -48,7 +49,7 @@ namespace TeamMAsTD
         [field: SerializeField] [field: Min(0)] public int extraCoinsDropFromWave { get; private set; } = 0;
 
         [field: Header("Plant To Spawn On This Wave")]
-        [field: SerializeField] public PlantSpawnOnWaveStruct[] plantsToSpawnThisWave { get; private set; }
+        [field: SerializeField] public PlantSpawnOnWaveStruct[] plantsToSpawnOnThisWaveStart { get; private set; }
 
         public int GetSpawnNumberOfVisitorType(VisitorUnitSO visitorSO)
         {

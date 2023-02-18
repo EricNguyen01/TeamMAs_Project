@@ -79,8 +79,6 @@ namespace TeamMAsTD
         {
             if (gridArray == null || gridArray.Length == 0) return;
 
-            if (alreadyHasDandelionOnGrid) return;
-
             for(int i = 0; i < gridArray.Length; i++)
             {
                 if (gridArray[i].plantUnitOnTile != null && 
@@ -109,10 +107,13 @@ namespace TeamMAsTD
                     OnFirstDandelionPlantedOnGrid?.Invoke();
                 }
             }
-            else if(plantUnit.plantUnitScriptableObject.displayName == "Clover")
+
+            if(plantUnit.plantUnitScriptableObject.displayName == "Clover")
             {
                 if (!alreadyHasCloverOnGrid)
                 {
+                    Debug.Log("First Clover Planted On Grid!");
+
                     alreadyHasCloverOnGrid = true;
 
                     OnFirstCloverPlantedOnGrid?.Invoke();
@@ -124,7 +125,7 @@ namespace TeamMAsTD
         {
             if (gridArray == null || gridArray.Length == 0) return null;
 
-            for(int i = 0; i > gridArray.Length; i++)
+            for(int i = 0; i < gridArray.Length; i++)
             {
                 if (gridArray[i].isOccupied) continue;
 
@@ -231,9 +232,9 @@ namespace TeamMAsTD
 
         private void SpawnPlantOnWaveStarted(WaveSpawner waveSpawner, int waveNum)
         {
-            List<Tile> unplantedTiles = GetUnplantedTiles();
+            GetUnplantedTiles();
 
-            if (unplantedTiles == null || unplantedTiles.Count == 0) return;
+            if (unplantedTileList == null || unplantedTileList.Count == 0) return;
 
             if (waveSpawner == null) return;
 
@@ -242,35 +243,44 @@ namespace TeamMAsTD
             Wave wave = waveSpawner.GetCurrentWave();
 
             if (wave.waveSO == null ||
-               wave.waveSO.plantsToSpawnThisWave == null ||
-               wave.waveSO.plantsToSpawnThisWave.Length == 0) return;
+                wave.waveSO.plantsToSpawnOnThisWaveStart == null ||
+                wave.waveSO.plantsToSpawnOnThisWaveStart.Length == 0) return;
 
-            for(int i = 0; i < wave.waveSO.plantsToSpawnThisWave.Length; i++)
+            for(int i = 0; i < wave.waveSO.plantsToSpawnOnThisWaveStart.Length; i++)
             {
                 if (unplantedTileList.Count == 0) return;
 
-                if (wave.waveSO.plantsToSpawnThisWave[i].plantUnitSOToSpawn == null) continue;
+                if (wave.waveSO.plantsToSpawnOnThisWaveStart[i].plantUnitSOToSpawn == null) continue;
 
-                PlantUnitSO plantSO = wave.waveSO.plantsToSpawnThisWave[i].plantUnitSOToSpawn;
+                PlantUnitSO plantSO = wave.waveSO.plantsToSpawnOnThisWaveStart[i].plantUnitSOToSpawn;
 
                 Vector2 plantCoord = Vector2.zero;
 
-                int unplantedTilesIndex = Random.Range(0, unplantedTiles.Count);
+                int previousTilesIndex = 0;
 
-                if (unplantedTiles.Count == 1)
+                for(int j = 0; j < wave.waveSO.plantsToSpawnOnThisWaveStart[i].spawnNumbers; j++)
                 {
-                    unplantedTilesIndex = 0;
+                    if (unplantedTileList.Count == 0) break;
 
-                    plantCoord = new Vector2(unplantedTiles[0].tileNumInRow, unplantedTiles[0].tileNumInColumn);
-                }
-                else 
-                {
-                    plantCoord = new Vector2(unplantedTiles[unplantedTilesIndex].tileNumInRow, unplantedTiles[unplantedTilesIndex].tileNumInColumn); 
-                }
+                    int unplantedTilesIndex = Random.Range(0, unplantedTileList.Count);
 
-                if(SpawnPlantOnTileCoord(plantSO, plantCoord))
-                {
-                    unplantedTileList.RemoveAt(unplantedTilesIndex);
+                    if(unplantedTileList.Count > 1 && unplantedTilesIndex == previousTilesIndex)
+                    {
+                        int count = 0;
+
+                        while(count < 5 && unplantedTilesIndex == previousTilesIndex)
+                        {
+                            unplantedTilesIndex = Random.Range(0, unplantedTileList.Count);
+
+                            count++;
+                        }
+                    }
+
+                    previousTilesIndex = unplantedTilesIndex;
+
+                    plantCoord = new Vector2(unplantedTileList[unplantedTilesIndex].tileNumInRow, unplantedTileList[unplantedTilesIndex].tileNumInColumn);
+
+                    SpawnPlantOnTileCoord(plantSO, plantCoord);
                 }
             }
         }

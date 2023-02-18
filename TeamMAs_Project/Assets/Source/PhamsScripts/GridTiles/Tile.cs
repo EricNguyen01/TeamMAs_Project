@@ -12,7 +12,6 @@ namespace TeamMAsTD
 {
 #if UNITY_EDITOR
     [CanEditMultipleObjects]
-    [ExecuteAlways]
 #endif
     [DisallowMultipleComponent]
     [RequireComponent(typeof(TileMenuAndUprootOnTileUI))]
@@ -83,7 +82,12 @@ namespace TeamMAsTD
                 if (is_AI_Path) spriteRenderer.color = Color.white;
             }
 
-            if(insufficientFundToPlantOnTilePopupPrefab != null)
+            Attach_TileMenu_And_UprootOnTileUI_ScriptComponentIfNull();
+        }
+
+        private void Start()
+        {
+            if (insufficientFundToPlantOnTilePopupPrefab != null)
             {
                 GameObject statPopupSpawnerGO = Instantiate(insufficientFundToPlantOnTilePopupPrefab.gameObject, transform);
 
@@ -91,8 +95,6 @@ namespace TeamMAsTD
 
                 thisTileInsufficientFundToPlantStatPopup = statPopupSpawnerGO.GetComponent<StatPopupSpawner>();
             }
-
-            Attach_TileMenu_And_UprootOnTileUI_ScriptComponentIfNull();
         }
 
 #if UNITY_EDITOR
