@@ -1217,6 +1217,10 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1404210886, guid: ba3e2134a4ef544458f0e54fa7cc239f, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1209370932069080868, guid: ba3e2134a4ef544458f0e54fa7cc239f, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0

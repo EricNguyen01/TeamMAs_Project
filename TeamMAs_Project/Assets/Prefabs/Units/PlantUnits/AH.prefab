@@ -193,7 +193,7 @@ SpriteRenderer:
   m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: db750325989564987a34393247d883b4, type: 3}
-  m_Color: {r: 0.56886446, g: 0.20761837, b: 0.6792453, a: 1}
+  m_Color: {r: 0.41191033, g: 0.3411765, b: 0.99215686, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -254,6 +254,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   unitWorldCanvas: {fileID: 4260263329143712872}
+  logMissingUIComponentsWarning: 0
   nameTextMeshProComponent: {fileID: 0}
   healthBarSlider: {fileID: 0}
   waterSlider: {fileID: 6422578828115457895}
