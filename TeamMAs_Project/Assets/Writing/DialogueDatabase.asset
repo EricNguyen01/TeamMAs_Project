@@ -1047,13 +1047,13 @@ MonoBehaviour:
       - originConversationID: 4
         originDialogueID: 0
         destinationConversationID: 4
-        destinationDialogueID: 1
+        destinationDialogueID: 7
         isConnector: 0
         priority: 2
       - originConversationID: 4
         originDialogueID: 0
         destinationConversationID: 4
-        destinationDialogueID: 7
+        destinationDialogueID: 1
         isConnector: 0
         priority: 2
       - originConversationID: 4
@@ -1087,7 +1087,7 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 20
+        x: 22.5
         y: 155
         width: 160
         height: 30
@@ -1122,7 +1122,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Priority
-        value: 1
+        value: 2
         type: 1
         typeString: CustomFieldType_Number
       conversationID: 4
@@ -1303,7 +1303,7 @@ MonoBehaviour:
         destinationConversationID: 4
         destinationDialogueID: 9
         isConnector: 0
-        priority: 2
+        priority: 0
       conditionsString: Variable["wave"] == 2
       userScript: 
       onExecute:
@@ -1452,7 +1452,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Priority
-        value: 1
+        value: 2
         type: 1
         typeString: CustomFieldType_Number
       conversationID: 4
@@ -1521,7 +1521,7 @@ MonoBehaviour:
         destinationConversationID: 4
         destinationDialogueID: 10
         isConnector: 0
-        priority: 2
+        priority: 0
       conditionsString: Variable["wave"] == 4
       userScript: 
       onExecute:
@@ -1580,7 +1580,7 @@ MonoBehaviour:
         destinationConversationID: 4
         destinationDialogueID: 8
         isConnector: 0
-        priority: 2
+        priority: 0
       conditionsString: Variable["wave"] == 3
       userScript: 
       onExecute:
@@ -1639,7 +1639,7 @@ MonoBehaviour:
         destinationConversationID: 4
         destinationDialogueID: 11
         isConnector: 0
-        priority: 2
+        priority: 0
       conditionsString: Variable["wave"] == 5
       userScript: 
       onExecute:
@@ -1674,7 +1674,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: Looks like the Higher Joes will be visiting us a lot now.
+        value: Looks like the Decent Joes will be visiting us a lot now.
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
@@ -1698,7 +1698,7 @@ MonoBehaviour:
         destinationConversationID: 4
         destinationDialogueID: 14
         isConnector: 0
-        priority: 2
+        priority: 0
       conditionsString: Variable["wave"] == 6
       userScript: 
       onExecute:
@@ -1706,7 +1706,7 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 1100
+        x: 1097.5
         y: 155
         width: 160
         height: 30
@@ -1810,7 +1810,7 @@ MonoBehaviour:
         destinationConversationID: 4
         destinationDialogueID: 12
         isConnector: 0
-        priority: 2
+        priority: 0
       conditionsString: Variable["wave"] == 9
       userScript: 
       onExecute:
@@ -1869,7 +1869,7 @@ MonoBehaviour:
         destinationConversationID: 4
         destinationDialogueID: 15
         isConnector: 0
-        priority: 2
+        priority: 0
       conditionsString: Variable["wave"] == 7
       userScript: 
       onExecute:
@@ -1928,7 +1928,7 @@ MonoBehaviour:
         destinationConversationID: 4
         destinationDialogueID: 13
         isConnector: 0
-        priority: 2
+        priority: 0
       conditionsString: Variable["wave"] == 8
       userScript: 
       onExecute:
@@ -1941,8 +1941,8 @@ MonoBehaviour:
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 46.364246, y: 65.15361}
-    canvasZoom: 0.4
+    canvasScrollPosition: {x: 0, y: 4.9999957}
+    canvasZoom: 0.39999998
   - id: 5
     fields:
     - title: Title

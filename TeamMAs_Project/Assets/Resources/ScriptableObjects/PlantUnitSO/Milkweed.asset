@@ -30,7 +30,7 @@ MonoBehaviour:
   plantTargetsLayerNames:
   - Visitors
   plantTargetsSpecifically: 0
-  <plantingCoinCost>k__BackingField: 20
+  <plantingCoinCost>k__BackingField: 18
   <uprootRefundAmount>k__BackingField: 0
   <uprootCost>k__BackingField: 0
   <uprootHealthCost>k__BackingField: 0

@@ -5088,6 +5088,17 @@ RectTransform:
   m_AnchoredPosition: {x: 0.015, y: 0.7518}
   m_SizeDelta: {x: 2.8088, y: 2.5096}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &142572642 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6809323818228570051, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
+  m_PrefabInstance: {fileID: 7663563580318445356}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &144783645
 GameObject:
   m_ObjectHideFlags: 0
@@ -30970,6 +30981,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1171490529}
   m_CullTransparentMesh: 1
+--- !u!114 &1179507637 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8832401154024209715, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
+  m_PrefabInstance: {fileID: 7663563580318445356}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1183101711
 GameObject:
   m_ObjectHideFlags: 0
@@ -38576,6 +38598,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1430479549}
   m_CullTransparentMesh: 1
+--- !u!114 &1430695672 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8832401155225839072, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
+  m_PrefabInstance: {fileID: 7663563580318445356}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1435873235
 GameObject:
   m_ObjectHideFlags: 0
@@ -56632,6 +56665,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1983007210}
   m_CullTransparentMesh: 1
+--- !u!114 &1990895787 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6809323817316273936, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
+  m_PrefabInstance: {fileID: 7663563580318445356}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1997207009
 GameObject:
   m_ObjectHideFlags: 0
@@ -63298,6 +63342,30 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6809323817316273936, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
+      propertyPath: m_Color.a
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6809323818228570051, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
+      propertyPath: m_Color.a
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7663563579968728992, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
+      propertyPath: hyssopIcon
+      value: 
+      objectReference: {fileID: 1990895787}
+    - target: {fileID: 7663563579968728992, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
+      propertyPath: hyssopShop
+      value: 
+      objectReference: {fileID: 1430695672}
+    - target: {fileID: 7663563579968728992, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
+      propertyPath: milkweedIcon
+      value: 
+      objectReference: {fileID: 142572642}
+    - target: {fileID: 7663563579968728992, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
+      propertyPath: milkweedShop
+      value: 
+      objectReference: {fileID: 1179507637}
     - target: {fileID: 7663563579968728992, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
       propertyPath: waveSpawnerLinkedToButton
       value: 
@@ -63448,6 +63516,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8832401154024209712, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
       propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8832401154024209715, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8832401155225839072, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
+      propertyPath: m_Color.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8832401155225839072, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
+      propertyPath: m_RaycastTarget
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8832401155225839075, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
