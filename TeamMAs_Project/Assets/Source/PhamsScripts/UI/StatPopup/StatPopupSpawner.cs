@@ -70,23 +70,23 @@ namespace TeamMAsTD
 
         public void SetStatPopupSpawnerConfig(float startVertOffset = 0.0f, float startHorOffset = 0.0f, float vertDistFromStart = 0.0f, float horDistFromStart = 0.0f, float popupScaleMultiplier = 0.0f, float popupTime = 0.0f, bool randomTravelVert = false, bool randomTravelHor = true)
         {
-            if(startVertOffset > 0.0f)
+            if (startVertOffset > 0.0f)
             {
                 startVerticalOffset = startVertOffset;
             }
-            if(startHorOffset > 0.0f)
+            if (startHorOffset > 0.0f)
             {
                 startHorizontalOffset = startHorOffset;
             }
-            if(vertDistFromStart > 0.0f)
+            if (vertDistFromStart > 0.0f)
             {
                 verticalDistanceFromStart = vertDistFromStart;
             }
-            if(horDistFromStart > 0.0f)
+            if (horDistFromStart > 0.0f)
             {
                 horizontalDistFromStart = horDistFromStart;
             }
-            if(popupScaleMultiplier > 0.0f)
+            if (popupScaleMultiplier > 0.0f)
             {
                 statPopupScaleMultiplier = popupScaleMultiplier;
             }
@@ -95,12 +95,12 @@ namespace TeamMAsTD
 
             randomVerticalTravelDistFromStart = randomTravelVert;
 
-            if(popupTime > 0.0f)
+            if (popupTime > 0.0f)
             {
                 this.popupTime = popupTime;
             }
         }
-        
+
         public virtual void PopUp(Sprite spriteToPopup, string textToPopup, bool isPositivePopup)
         {
             Vector3 popupStartPos = transform.position + new Vector3(startHorizontalOffset, startVerticalOffset, transform.position.z);
@@ -109,20 +109,28 @@ namespace TeamMAsTD
             float vertDist = verticalDistanceFromStart;
 
             if (randomHorizontalTravelDistFromStart) horDist = Random.Range(0.01f, horizontalDistFromStart);
-            
-            if(randomVerticalTravelDistFromStart) vertDist = Random.Range(0.01f, verticalDistanceFromStart);
+
+            if (randomVerticalTravelDistFromStart) vertDist = Random.Range(0.01f, verticalDistanceFromStart);
 
             Vector3 popupEndPos = popupStartPos + new Vector3(horDist, vertDist, popupStartPos.z);
 
             //This EnableStatPopupGameObjectFromPool in StatPopupPool script both enables and initializes the StatPopup obj at the same time.
-            GameObject statPopupObj = statPopupPool.Init_And_Enable_StatPopup_GameObject_FromPool(spriteToPopup, 
-                                                                                                  textToPopup, 
+            GameObject statPopupObj = statPopupPool.Init_And_Enable_StatPopup_GameObject_FromPool(spriteToPopup,
+                                                                                                  textToPopup,
                                                                                                   isPositivePopup,
-                                                                                                  popupStartPos, 
-                                                                                                  popupEndPos, 
+                                                                                                  popupStartPos,
+                                                                                                  popupEndPos,
                                                                                                   popupTime);
 
-            if(statPopupObj == null)
+            // sarita (temporary swap between broken heart animation or green heart)
+            if ((name == "GameResourceUIHealthPopupSpawner") && isPositivePopup)
+            {
+                Animator[] animators = statPopupObj.GetComponentsInChildren<Animator>();
+                foreach (Animator animator in animators)
+                    animator.SetTrigger("positive");
+            }
+
+            if (statPopupObj == null)
             {
                 Debug.LogWarning("StatPopup GameObjects spawned from StatPopupPrefab by StatPopupSpawner: " + name + " is missing StatPopup script! " +
                     "Please check if a StatPopup script is attached to the StatPopupPrefab.");

@@ -16,7 +16,7 @@ MonoBehaviour:
   <unitPrefab>k__BackingField: {fileID: 2664338853412353054, guid: 27b9c1f91fcdf1d4e8386e27eed034f7, type: 3}
   <visitorType>k__BackingField: 1
   <happinessAsHealth>k__BackingField: 100
-  <moveSpeed>k__BackingField: 1
+  <moveSpeed>k__BackingField: 50
   <emotionalAttackDamage>k__BackingField: 1
   <isBoss>k__BackingField: 0
   <visitorHitColor>k__BackingField: {r: 1, g: 0.22075468, b: 0.81027067, a: 1}

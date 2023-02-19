@@ -109,8 +109,8 @@ RectTransform:
   m_Children:
   - {fileID: 2542059463708966027}
   - {fileID: 1209370932395382298}
-  - {fileID: 1209370933322639148}
   - {fileID: 1209370932069080868}
+  - {fileID: 1209370933322639148}
   - {fileID: 1209370932406157311}
   m_Father: {fileID: 2542059463325797388}
   m_RootOrder: 0
@@ -450,7 +450,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3715392631770610075, guid: be51dee99d5dc4942855546c15466bf0, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3715392631770610075, guid: be51dee99d5dc4942855546c15466bf0, type: 3}
       propertyPath: m_AnchorMax.x
@@ -588,7 +588,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3715392631770610075, guid: be51dee99d5dc4942855546c15466bf0, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3715392631770610075, guid: be51dee99d5dc4942855546c15466bf0, type: 3}
       propertyPath: m_AnchorMax.x
