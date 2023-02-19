@@ -22,7 +22,7 @@ MonoBehaviour:
   <wavesSurviveWithoutWater>k__BackingField: 0
   <damage>k__BackingField: 10
   <attackSpeed>k__BackingField: 0.75
-  <attackRangeInTiles>k__BackingField: 10
+  <attackRangeInTiles>k__BackingField: 2
   <targetsPerAttack>k__BackingField: 3
   <humanMultiplier>k__BackingField: 0.5
   <pollinatorMultiplier>k__BackingField: 0.5
