@@ -186,17 +186,22 @@ namespace TeamMAsTD
 
             while(t <= 0.5f)
             {
-                for (int i = 0; i < tilesInGridParent.Length; i++)
+                if (tileAudioSource.volume > 0.0f)
                 {
-                    if (tilesInGridParent[i] == this) continue;
-
-                    if (tilesInGridParent[i].tileAudioSource == null) continue;
-                    
-                    if (tilesInGridParent[i].tileAudioSource.isPlaying)
+                    for (int i = 0; i < tilesInGridParent.Length; i++)
                     {
-                        tileAudioSource.volume = 0.0f;
+                        if (tilesInGridParent[i] == this) continue;
 
-                        tileAudioSource.Stop();
+                        if (tilesInGridParent[i].tileAudioSource == null) continue;
+
+                        if (tilesInGridParent[i].tileAudioSource.isPlaying)
+                        {
+                            tileAudioSource.volume = 0.0f;
+
+                            tileAudioSource.Stop();
+
+                            break;
+                        }
                     }
                 }
 
