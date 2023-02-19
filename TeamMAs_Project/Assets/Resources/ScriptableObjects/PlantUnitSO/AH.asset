@@ -20,7 +20,7 @@ MonoBehaviour:
   <plantProjectileSO>k__BackingField: {fileID: 11400000, guid: 700432d60d0410a4482fe445d643989b, type: 2}
   <waterBars>k__BackingField: 4
   <wavesSurviveWithoutWater>k__BackingField: 0
-  <damage>k__BackingField: 20
+  <damage>k__BackingField: 30
   <attackSpeed>k__BackingField: 1
   <attackRangeInTiles>k__BackingField: 5
   <targetsPerAttack>k__BackingField: 1
