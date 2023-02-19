@@ -16,7 +16,7 @@ MonoBehaviour:
   <unitPrefab>k__BackingField: {fileID: 7171100457624758856, guid: 2e9d9fb45f7651749958cad9c82a386f, type: 3}
   <unitID>k__BackingField: 69d9c241-135e-4441-b140-0999d6186126
   <unitDescription>k__BackingField: 
-  <unitThumbnail>k__BackingField: {fileID: 0}
+  <unitThumbnail>k__BackingField: {fileID: 21300000, guid: 0ad3ea48a480695469c0c8e452ec4746, type: 3}
   <plantProjectileSO>k__BackingField: {fileID: 11400000, guid: 700432d60d0410a4482fe445d643989b, type: 2}
   <waterBars>k__BackingField: 4
   <wavesSurviveWithoutWater>k__BackingField: 0
