@@ -1444,7 +1444,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: Dandelion's expensive to uproot. $5. Stupid, I know.
+        value: Weeds are stupid expensive to uproot. $5.
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
