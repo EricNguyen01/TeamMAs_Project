@@ -20,7 +20,7 @@ MonoBehaviour:
   <plantProjectileSO>k__BackingField: {fileID: 11400000, guid: 700432d60d0410a4482fe445d643989b, type: 2}
   <waterBars>k__BackingField: 4
   <wavesSurviveWithoutWater>k__BackingField: 0
-  <damage>k__BackingField: 10
+  <damage>k__BackingField: 15
   <attackSpeed>k__BackingField: 0.75
   <attackRangeInTiles>k__BackingField: 2
   <plantRangeCirclePrefab>k__BackingField: {fileID: 7084800912723135991, guid: 19a398b9eb06d5b49927dd43e49faa1a, type: 3}
