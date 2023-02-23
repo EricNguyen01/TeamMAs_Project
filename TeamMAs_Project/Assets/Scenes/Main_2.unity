@@ -63314,6 +63314,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 248687116289078423, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4283396898
+      objectReference: {fileID: 0}
     - target: {fileID: 2199127071567654328, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
       propertyPath: gameResourceUIStatPopupSpawner
       value: 
@@ -63344,11 +63348,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6809323817316273936, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
       propertyPath: m_Color.a
-      value: 0.4
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6809323817316273936, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6809323818228570051, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
       propertyPath: m_Color.a
-      value: 0.4
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7663563579968728992, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
       propertyPath: hyssopIcon
@@ -63520,7 +63528,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8832401154024209715, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
       propertyPath: m_RaycastTarget
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8832401154024209717, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
+      propertyPath: m_Alpha
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8832401154024209717, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
+      propertyPath: m_Interactable
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8832401154024209717, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
+      propertyPath: m_BlocksRaycasts
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8832401155225839072, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
       propertyPath: m_Color.a
@@ -63528,7 +63548,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8832401155225839072, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
       propertyPath: m_RaycastTarget
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8832401155225839075, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
       propertyPath: m_AnchorMax.y
@@ -63553,6 +63573,18 @@ PrefabInstance:
     - target: {fileID: 8832401155225839075, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8832401155225839078, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
+      propertyPath: m_Alpha
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8832401155225839078, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
+      propertyPath: m_Interactable
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8832401155225839078, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
+      propertyPath: m_BlocksRaycasts
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}

@@ -120,6 +120,8 @@ namespace TeamMAsTD
                 return;
             }
 
+            PlantUnit plantSelected = tileSelectedForUprootConfirmation.plantUnitOnTile;
+
             //if a plant exists on this tile->process open/close tile menu
             if (opened)
             {
@@ -127,14 +129,42 @@ namespace TeamMAsTD
                 {
                     tileWorldCanvas.gameObject.SetActive(true);
 
+                    OpenPlantRangeCircle(plantSelected, true);
+
                     OnTileMenuOpened?.Invoke();
                 }
-                else tileWorldCanvas.gameObject.SetActive(false);
+                else 
+                {
+                    OpenPlantRangeCircle(plantSelected, false);
+
+                    tileWorldCanvas.gameObject.SetActive(false); 
+                }
 
                 return;
             }
 
-            if (tileWorldCanvas.gameObject.activeInHierarchy) tileWorldCanvas.gameObject.SetActive(false);
+            if (tileWorldCanvas.gameObject.activeInHierarchy) 
+            { 
+                tileWorldCanvas.gameObject.SetActive(false);
+
+                OpenPlantRangeCircle(plantSelected, false);
+            }
+        }
+
+        private void OpenPlantRangeCircle(PlantUnit plantUnit, bool shouldOpen)
+        {
+            if (plantUnit == null) return;
+
+            if (plantUnit.plantRangeCircle == null) return;
+
+            if (shouldOpen)
+            {
+                plantUnit.plantRangeCircle.DisplayPlantRangeCircle(true);
+
+                return;
+            }
+
+            plantUnit.plantRangeCircle.DisplayPlantRangeCircle(false);
         }
 
         //Rain.cs C# Event functions............................................................................
@@ -154,6 +184,7 @@ namespace TeamMAsTD
 
         //PUBLICS..............................................................................................
 
+        //UnityEvent function for uproot UI button
         public void OnUprootOptionClicked()
         {
             //spawn uproot prompt

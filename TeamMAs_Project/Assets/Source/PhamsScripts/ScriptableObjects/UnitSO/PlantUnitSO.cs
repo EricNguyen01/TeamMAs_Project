@@ -24,6 +24,9 @@ namespace TeamMAsTD
         [field: Tooltip("How many tiles this unit's attacks/abilities can reach?")] 
         public int attackRangeInTiles { get; private set; } = 1;
 
+        [field: SerializeField]
+        public PlantRangeCircle plantRangeCirclePrefab { get; private set; }
+
         [field: SerializeField] [field: Min(1)]
         [field: Tooltip("How many targets this plant unit can attack per attack? 1 = no aoe atk while higher number = aoe.")]
         public int targetsPerAttack { get; private set; } = 1;

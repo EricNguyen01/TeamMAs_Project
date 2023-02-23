@@ -413,7 +413,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 599533699
-  m_SortingOrder: 0
+  m_SortingOrder: 10
   m_TargetDisplay: 0
 --- !u!114 &7663563581612626001
 MonoBehaviour:
@@ -1443,18 +1443,6 @@ PrefabInstance:
       propertyPath: m_fontAsset
       value: 
       objectReference: {fileID: 11400000, guid: 5c95bc2a72192a64bb719010a14b3f77, type: 2}
-    - target: {fileID: 7481489046319341135, guid: 16dbb63223bfca245b689ccfb5433817, type: 3}
-      propertyPath: m_fontColor.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7481489046319341135, guid: 16dbb63223bfca245b689ccfb5433817, type: 3}
-      propertyPath: m_fontColor.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7481489046319341135, guid: 16dbb63223bfca245b689ccfb5433817, type: 3}
-      propertyPath: m_fontColor.r
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7481489046319341135, guid: 16dbb63223bfca245b689ccfb5433817, type: 3}
       propertyPath: m_sharedMaterial
       value: 

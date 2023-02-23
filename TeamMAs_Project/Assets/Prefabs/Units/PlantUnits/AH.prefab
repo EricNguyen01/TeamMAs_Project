@@ -191,7 +191,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1980168467
   m_SortingLayer: 3
-  m_SortingOrder: 0
+  m_SortingOrder: 5
   m_Sprite: {fileID: 7482667652216324306, guid: db750325989564987a34393247d883b4, type: 3}
   m_Color: {r: 0.41191033, g: 0.3411765, b: 0.99215686, a: 1}
   m_FlipX: 0
@@ -216,6 +216,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <plantUnitScriptableObject>k__BackingField: {fileID: 11400000, guid: 462832fdbbb9cc34d8a23db6909e48c7, type: 2}
+  plantRangeCirclePrefab: {fileID: 7084800912723135991, guid: 19a398b9eb06d5b49927dd43e49faa1a, type: 3}
 --- !u!114 &6003989832151466817
 MonoBehaviour:
   m_ObjectHideFlags: 0

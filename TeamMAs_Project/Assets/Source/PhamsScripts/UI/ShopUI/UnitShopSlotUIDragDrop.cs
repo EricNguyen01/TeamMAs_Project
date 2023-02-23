@@ -55,6 +55,8 @@ namespace TeamMAsTD
         //the Rect Transform of the top most parent UI canva above
         private RectTransform parentCanvaRect;
 
+        private PlantRangeCircle plantRangeCircleIndicator;
+
         //PRIVATES.........................................................................
 
         private void Awake()
@@ -87,6 +89,8 @@ namespace TeamMAsTD
 
         private void Start()
         {
+            CreatePlantRangeCircleIndicatorOnStart();
+
             originalDragDropPos = dragDropUIImageObject.transform.localPosition;
         }
 
@@ -189,6 +193,65 @@ namespace TeamMAsTD
             }
         }
 
+        private void ActiveChildrenObjectOfDragDropUIImageObj(bool active)
+        {
+            if (dragDropUIImageObject == null) return;
+
+            if (dragDropUIImageObject.transform.childCount == 0) return;
+
+            if (active)
+            {
+                for(int i = 0; i < dragDropUIImageObject.transform.childCount; i++)
+                {
+                    if (!dragDropUIImageObject.transform.GetChild(i).gameObject.activeInHierarchy)
+                    {
+                        dragDropUIImageObject.transform.GetChild(i).gameObject.SetActive(true);
+                    }
+                }
+
+                return;
+            }
+
+            for (int i = 0; i < dragDropUIImageObject.transform.childCount; i++)
+            {
+                if (dragDropUIImageObject.transform.GetChild(i).gameObject.activeInHierarchy)
+                {
+                    dragDropUIImageObject.transform.GetChild(i).gameObject.SetActive(false);
+                }
+            }
+        }
+
+        private void CreatePlantRangeCircleIndicatorOnStart()
+        {
+            if (slotUnitScriptableObject == null) return;
+
+            if (slotUnitScriptableObject.plantRangeCirclePrefab == null) return;
+
+            plantRangeCircleIndicator = Instantiate(slotUnitScriptableObject.plantRangeCirclePrefab.gameObject).GetComponent<PlantRangeCircle>();
+
+            plantRangeCircleIndicator.InitializePlantRangeCircle(slotUnitScriptableObject, false);
+
+            plantRangeCircleIndicator.transform.position = Vector3.zero;
+
+            plantRangeCircleIndicator.gameObject.SetActive(false);
+        }
+
+        private void EnableAndSet_PlantRangeCircle_To_WorldMousePos(Vector2 screenMousePos, bool enabled)
+        {
+            if (plantRangeCircleIndicator == null) return;
+
+            if (enabled)
+            {
+                if (!plantRangeCircleIndicator.gameObject.activeInHierarchy) plantRangeCircleIndicator.gameObject.SetActive(true);
+
+                plantRangeCircleIndicator.transform.position = screenMousePos;
+
+                return;
+            }
+
+            if (plantRangeCircleIndicator.gameObject.activeInHierarchy) plantRangeCircleIndicator.gameObject.SetActive(false);
+        }
+
         //UnityEventSystem Drag/Drop Interface functions.........................................
 
         public void OnBeginDrag(PointerEventData eventData)
@@ -203,6 +266,12 @@ namespace TeamMAsTD
 
             EventSystem.current.SetSelectedGameObject(null);
 
+            ActiveChildrenObjectOfDragDropUIImageObj(true);
+
+            Vector2 worldMousePos = parentCanva.worldCamera.ScreenToWorldPoint(Input.mousePosition);
+
+            EnableAndSet_PlantRangeCircle_To_WorldMousePos(worldMousePos, true);
+
             OnStartedDragging?.Invoke();
         }
 
@@ -211,8 +280,14 @@ namespace TeamMAsTD
             //On dragging while still holding the mouse:
             //fix the drag drop UI image object to the EventSystem mouse pointer (in dragDropUIImage UI space from screen space)
             Vector2 mousePosLocal;
+
             RectTransformUtility.ScreenPointToLocalPointInRectangle(parentCanvaRect, eventData.position, parentCanva.worldCamera, out mousePosLocal);
+            
             dragDropUIImageObject.transform.position = parentCanvaRect.transform.TransformPoint(mousePosLocal);
+
+            Vector2 worldMousePos = parentCanva.worldCamera.ScreenToWorldPoint(Input.mousePosition);
+
+            EnableAndSet_PlantRangeCircle_To_WorldMousePos(worldMousePos, true);
         }
 
         public void OnEndDrag(PointerEventData eventData)
@@ -222,11 +297,17 @@ namespace TeamMAsTD
             //Immediately return the drag/drop Image UI obj back to being this obj's children with original local pos
             //after that set it to inactive
             dragDropUIImageObject.transform.SetParent(transform);
+
             dragDropUIImageObject.transform.localPosition = originalDragDropPos;
+
             dragDropUIImageObject.gameObject.SetActive(false);
+
+            ActiveChildrenObjectOfDragDropUIImageObj(false);
 
             //reset to prepare for next drag/drop
             unitShopSlotImageRaycastComponent.raycastTarget = true;
+
+            EnableAndSet_PlantRangeCircle_To_WorldMousePos(Vector2.zero, false);
 
             //Check if the mouse is hovered upon anything that is recognized by the EventSystem
             if (eventData.pointerEnter == null)

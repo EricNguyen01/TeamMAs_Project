@@ -357,7 +357,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1980168467
   m_SortingLayer: 3
-  m_SortingOrder: 0
+  m_SortingOrder: 5
   m_Sprite: {fileID: 21300000, guid: 8de2872e48ed12b45b365211bd983207, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -382,6 +382,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <plantUnitScriptableObject>k__BackingField: {fileID: 11400000, guid: b027c0987efb0b34bada201c95f907f2, type: 2}
+  plantRangeCirclePrefab: {fileID: 7084800912723135991, guid: 19a398b9eb06d5b49927dd43e49faa1a, type: 3}
 --- !u!114 &2984172582457731264
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -420,6 +421,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   unitWorldCanvas: {fileID: 2324428350134831006}
+  logMissingUIComponentsWarning: 0
   nameTextMeshProComponent: {fileID: 0}
   healthBarSlider: {fileID: 0}
   waterSlider: {fileID: 930197486966519794}
