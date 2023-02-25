@@ -11,7 +11,8 @@ namespace TeamMAsTD
     [DisallowMultipleComponent]
     public class UnitShopSlotUIDragDrop : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
     {
-        [SerializeField] [Tooltip("The Unit Scriptable Object of this slot.")] private PlantUnitSO slotUnitScriptableObject;
+        [SerializeField] [Tooltip("The Unit Scriptable Object of this slot.")] 
+        private PlantUnitSO slotUnitScriptableObject;
 
         [SerializeField] private Image unitThumbnailImage;
         [SerializeField] private TextMeshProUGUI unitNameDisplay;

@@ -958,7 +958,7 @@ MonoBehaviour:
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 4.4284554, y: 8.8006525}
+    canvasScrollPosition: {x: 0, y: 0}
     canvasZoom: 0.56425035
   - id: 4
     fields:
@@ -1941,7 +1941,7 @@ MonoBehaviour:
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 72.41382, y: 1.7241516}
+    canvasScrollPosition: {x: 0, y: 56.896576}
     canvasZoom: 0.58
   - id: 5
     fields:

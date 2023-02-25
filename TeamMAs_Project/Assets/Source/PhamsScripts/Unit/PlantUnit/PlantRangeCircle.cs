@@ -36,6 +36,8 @@ namespace TeamMAsTD
         {
             if (plantSO != null)
             {
+                if (plantSO.attackRangeInTiles <= 0 || plantSO.attackRangeInTiles == Mathf.Infinity) return;
+
                 float maxRange = 0.0f;
 
                 TDGrid grid = FindObjectOfType<TDGrid>();
@@ -64,6 +66,8 @@ namespace TeamMAsTD
         {
             if (plantUnit != null)
             {
+                if(plantUnit.plantMaxAttackRange <= 0 || plantUnit.plantMaxAttackRange == Mathf.Infinity) return;
+
                 float tileSize = 1.0f;
                 
                 if(plantUnit.tilePlacedOn != null && plantUnit.tilePlacedOn.gridParent != null)
