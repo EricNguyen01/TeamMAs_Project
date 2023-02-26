@@ -63,6 +63,8 @@ namespace TeamMAsTD
 
         public AudioSource tileAudioSource { get; private set; }
 
+        public TileGlow tileGlowComp { get; private set; }
+
         //PRIVATES......................................................................
 
         private void Awake()
@@ -76,6 +78,13 @@ namespace TeamMAsTD
             if (spriteRenderer == null)
             {
                 spriteRenderer = gameObject.AddComponent<SpriteRenderer>();
+            }
+
+            tileGlowComp = GetComponent<TileGlow>();
+
+            if(tileGlowComp == null)
+            {
+                tileGlowComp = gameObject.AddComponent<TileGlow>();
             }
 
             if (drawDebugRuntime)
@@ -116,17 +125,25 @@ namespace TeamMAsTD
         }
 #endif
 
-        private bool CanPlaceUnit(PlantUnitSO unitSO)
+        private bool CanPlaceUnit(PlantUnitSO plantUnitSO)
+        {
+            //check for plantable and also trigger related events/functions
+            return CanPlaceUnit(plantUnitSO, false);
+        }
+
+        //The "doChecksOnly" bool is for whether this function should ONLY do the if checks to see if a plant can be planted on this tile
+        //or if it should also trigger related events and functions if a plant can/can't be planted
+        private bool CanPlaceUnit(PlantUnitSO unitSO, bool doChecksOnly)
         {
             if (plantUnitOnTile != null || isOccupied)
             {
-                OnPlantingFailedOnTile?.Invoke(unitSO, this);
+                if(!doChecksOnly) OnPlantingFailedOnTile?.Invoke(unitSO, this);
 
                 return false;
             }
             if (is_AI_Path && !unitSO.isPlacableOnPath)
             {
-                OnPlantingFailedOnTile?.Invoke(unitSO, this);
+                if(!doChecksOnly) OnPlantingFailedOnTile?.Invoke(unitSO, this);
 
                 return false;
             }
@@ -138,12 +155,15 @@ namespace TeamMAsTD
                 {
                     //Debug.Log("Insufficient Funds! Not enough coins to plant unit.");
 
-                    if(thisTileInsufficientFundToPlantStatPopup != null)
+                    if (!doChecksOnly)
                     {
-                        thisTileInsufficientFundToPlantStatPopup.PopUp(null, null, false);
-                    }
+                        if (thisTileInsufficientFundToPlantStatPopup != null)
+                        {
+                            thisTileInsufficientFundToPlantStatPopup.PopUp(null, null, false);
+                        }
 
-                    OnPlantingFailedOnTile?.Invoke(unitSO, this);
+                        OnPlantingFailedOnTile?.Invoke(unitSO, this);
+                    }
 
                     return false;
                 }
@@ -273,6 +293,9 @@ namespace TeamMAsTD
 
             gridParent.CheckPlantUnitAsFirstUnitOfTypeOnGrid(plantUnitOnTile);
 
+            //disable tile plantable glow effect that was enabled during drag/drop in case it has not been disabled in dragdrop script
+            EnablePlantableTileGlowOnPlantDrag(plantUnitSO, false);
+
             return true;
         }
 
@@ -325,6 +348,46 @@ namespace TeamMAsTD
             drawTileDebug = false;
 
             drawDebugRuntime = false;
+        }
+
+        public void EnablePlantableTileGlowOnPlantDrag(PlantUnitSO plantUnitSO, bool enabled)
+        {
+            if(plantUnitSO == null)
+            {
+                if (!tileGlowComp.isTileGlowing) return;
+
+                if (tileGlowComp.isTileGlowing) 
+                { 
+                    tileGlowComp.DisableTileGlowEffect();
+
+                    return;
+                }
+            }
+
+            //if enabled:
+            if (enabled)
+            {
+                //only check for plantable without triggering any other related events/functions ("doOnlyChecks" para = true)
+                if(CanPlaceUnit(plantUnitSO, true))
+                {
+                    //enable positive glow (green glow)
+                    tileGlowComp.EnableTileGlowEffect(true);
+                }
+                else
+                {
+                    //enable negative glow (red glow)
+                    tileGlowComp.EnableTileGlowEffect(false);
+                }
+
+                return;//exit after enabled
+            }
+
+            //else if disabled:
+            //if alr disabled -> do nothing and exit
+            if (!tileGlowComp.isTileGlowing) return;
+
+            //if not disabled -> disable
+            tileGlowComp.DisableTileGlowEffect();
         }
 
         //EDITOR...........................................................................
