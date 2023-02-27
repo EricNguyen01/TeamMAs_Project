@@ -8,4 +8,6 @@ AnimatorOverrideController:
   m_PrefabAsset: {fileID: 0}
   m_Name: PlantTooltipClickReminder
   m_Controller: {fileID: 9100000, guid: c4e0e02adfe479f45b74d3a8547152cb, type: 2}
-  m_Clips: []
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: 26f44808902168d4f9e46eb8ec98362b, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: e5a61601346571d4cbe4341c4a362163, type: 2}

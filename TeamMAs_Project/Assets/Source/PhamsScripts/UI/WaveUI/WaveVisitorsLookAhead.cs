@@ -74,6 +74,7 @@ namespace TeamMAsTD
 
         private void Start()
         {
+            //waveSpawnerToLookAhead reference is checked in Awake()
             if(waveSpawnerToLookAhead != null)
             {
                 currentWave = waveSpawnerToLookAhead.currentWave;

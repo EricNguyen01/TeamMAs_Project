@@ -65307,18 +65307,6 @@ PrefabInstance:
       propertyPath: gameResourceUIStatPopupSpawner
       value: 
       objectReference: {fileID: 1407023545}
-    - target: {fileID: 2843247785751352375, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -0.74601746
-      objectReference: {fileID: 0}
-    - target: {fileID: 2843247786089608428, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0.74598694
-      objectReference: {fileID: 0}
-    - target: {fileID: 2843247787056426047, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -0.74601746
-      objectReference: {fileID: 0}
     - target: {fileID: 5268446183886847556, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0

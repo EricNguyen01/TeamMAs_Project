@@ -18,11 +18,15 @@ namespace TeamMAsTD
 
         private UnitInfoTooltip unitInfoTooltip;
 
+        [field: SerializeField] public Transform unitInfoTooltipSpawnTransformRef { get; private set; }
+
         [field: SerializeField] public Vector2 unitInfoTooltipSpawnOffset { get; private set; }
 
-        [SerializeField] private AnimatorOverrideController clickReminderAnimOverride;
+        [field: SerializeField] public AnimatorOverrideController clickReminderAnimOverride { get; private set; }
 
         private PointerEventData pointerEventData;
+
+        private UnitInfoTooltipClickReminderDisplayTimer clickReminderDisplayTimer;
 
         private void OnEnable()
         {
@@ -36,10 +40,22 @@ namespace TeamMAsTD
 
                 return;
             }
+
+            clickReminderDisplayTimer = GetComponentInParent<UnitInfoTooltipClickReminderDisplayTimer>();
+
+            if (clickReminderDisplayTimer != null) clickReminderDisplayTimer.RegisterTooltipEnablerAsChildOfReminderTimerOnly(this);
+        }
+
+        private void OnDisable()
+        {
+            if(clickReminderDisplayTimer != null) clickReminderDisplayTimer.DeregisterTooltipEnablerFromReminderTotally(this);
         }
 
         private void Start()
         {
+            //This function must be in Start() to avoid execution conflicts with WaveVisitorsLookAhead.cs
+            //where WaveVisitorLookAhead has not finished initialized this visitor look ahead slot yet,
+            //hence, this slot tooltip could receive a null data
             CreateAndInitUnitInfoTooltip();
 
             EnableUnitInfoTooltipImage(false);
@@ -49,7 +65,10 @@ namespace TeamMAsTD
 
         private void CreateAndInitUnitInfoTooltip()
         {
-            Vector2 tooltipSpawnPos = (Vector2)transform.position + unitInfoTooltipSpawnOffset;
+            Vector2 tooltipSpawnPos;
+
+            if (unitInfoTooltipSpawnTransformRef != null) tooltipSpawnPos = (Vector2)unitInfoTooltipSpawnTransformRef.position;
+            else tooltipSpawnPos = (Vector2)transform.position + unitInfoTooltipSpawnOffset;
 
             GameObject tooltipGO = Instantiate(unitInfoTooltipPrefab.gameObject, tooltipSpawnPos, Quaternion.identity);
 
@@ -85,12 +104,14 @@ namespace TeamMAsTD
             {
                 unitInfoTooltip.EnableUnitInfoTooltipImage(true);
 
-                EnableTooltipClickOnReminder(false);
+                if (clickReminderDisplayTimer != null) clickReminderDisplayTimer.SetReminderInactiveAndStopTimerOnTooltipOpened(this);
 
                 return;
             }
 
             unitInfoTooltip.EnableUnitInfoTooltipImage(false);
+
+            if (clickReminderDisplayTimer != null) clickReminderDisplayTimer.StartClickOnReminderTimerOnTooltipClosed(this);
         }
 
         public void EnableTooltipClickOnReminder(bool enabled)
@@ -105,6 +126,11 @@ namespace TeamMAsTD
             }
 
             unitInfoTooltip.EnableTooltipClickOnReminder(false);
+        }
+
+        public void SetUnitTooltipClickReminderDisplayTimer(UnitInfoTooltipClickReminderDisplayTimer clickReminderTimer)
+        {
+            clickReminderDisplayTimer = clickReminderTimer;
         }
 
         //Unity's EventSystem interfaces implementation.......................................................

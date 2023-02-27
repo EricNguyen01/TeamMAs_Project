@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 namespace TeamMAsTD
 {
+    [DisallowMultipleComponent]
     public class UnitInfoTooltip : MonoBehaviour
     {
         [Header("Required Components")]
@@ -23,6 +24,8 @@ namespace TeamMAsTD
         private UnitSO unitScriptableObjectToDisplayTooltip;
 
         private Canvas unitInfoTooltipCanvas;
+
+        private Animator tooltipClickOnReminderAnimator;
 
         public bool isTooltipActive { get; private set; } = false;
 
@@ -43,6 +46,8 @@ namespace TeamMAsTD
 
             if (worldUICam != null) unitInfoTooltipCanvas.worldCamera = worldUICam;
             else unitInfoTooltipCanvas.worldCamera = Camera.main;
+
+            if(tooltipClickOnReminderText != null) tooltipClickOnReminderAnimator = tooltipClickOnReminderText.GetComponent<Animator>();
         }
 
         public void InitializeUnitInfoTooltip(UnitInfoTooltipEnabler tooltipEnablerSpawnedThis, UnitSO unitSO, Vector2 displayPos)
@@ -69,7 +74,27 @@ namespace TeamMAsTD
 
             tooltipWorldUIImage.sprite = unitScriptableObjectToDisplayTooltip.unitInfoTooltipImageSprite;
 
-            transform.position = (Vector2)unitInfoTooltipEnablerSpawnedThisTooltip.transform.position + unitInfoTooltipEnablerSpawnedThisTooltip.unitInfoTooltipSpawnOffset;
+            SetTooltipClickOnReminderTextAnimator(unitInfoTooltipEnablerSpawnedThisTooltip.clickReminderAnimOverride);
+
+            if(unitInfoTooltipEnablerSpawnedThisTooltip.unitInfoTooltipSpawnTransformRef != null)
+            {
+                transform.position = (Vector2)unitInfoTooltipEnablerSpawnedThisTooltip.unitInfoTooltipSpawnTransformRef.position;
+            }
+            else
+            {
+                transform.position = (Vector2)unitInfoTooltipEnablerSpawnedThisTooltip.transform.position + unitInfoTooltipEnablerSpawnedThisTooltip.unitInfoTooltipSpawnOffset;
+            }
+        }
+
+        public void SetTooltipClickOnReminderTextAnimator(AnimatorOverrideController animOverrideController)
+        {
+            if (tooltipClickOnReminderText == null) return;
+
+            if(tooltipClickOnReminderAnimator == null) return;
+
+            if (animOverrideController == null) return;
+
+            tooltipClickOnReminderAnimator.runtimeAnimatorController = animOverrideController;
         }
 
         public void EnableUnitInfoTooltipImage(bool enabled)
