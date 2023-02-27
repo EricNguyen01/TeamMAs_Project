@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
 using UnityEngine.UI;
 
 namespace TeamMAsTD
@@ -8,7 +9,11 @@ namespace TeamMAsTD
     [DisallowMultipleComponent]
     public class WaveVisitorTypesLookAheadSlot : MonoBehaviour
     {
+        [Header("Required Components")]
+
         [SerializeField] private Image slotUIImage;
+
+        private UnitInfoTooltipEnabler unitInfoTooltipEnabler;
 
         private void Awake()
         {
@@ -21,11 +26,15 @@ namespace TeamMAsTD
             {
                 Debug.LogWarning("Wave Visitor Types Look Ahead Slot: " + name + " is missing UI Image reference!");
             }
+
+            unitInfoTooltipEnabler = GetComponent<UnitInfoTooltipEnabler>();
         }
 
         public void UpdateVisitorTypeLookAheadSlot(VisitorUnitSO visitorUnitSO)
         {
             UpdateSlotVisitorTypeVisualFrom(visitorUnitSO);
+
+            UpdateVisitorInfoTooltipIfApplicable(visitorUnitSO);
         }
 
         public void EnableLookAheadUISlot(bool shouldEnable)
@@ -35,6 +44,14 @@ namespace TeamMAsTD
                 if(!gameObject.activeInHierarchy) gameObject.SetActive(true);
 
                 return;
+            }
+
+            //disable tooltip (in case it's opened) on visitor type look ahead slot is disabled
+            if (unitInfoTooltipEnabler != null) 
+            { 
+                unitInfoTooltipEnabler.EnableUnitInfoTooltipImage(false);
+
+                unitInfoTooltipEnabler.EnableTooltipClickOnReminder(false);
             }
 
             if(gameObject.activeInHierarchy) gameObject.SetActive(false);
@@ -59,6 +76,13 @@ namespace TeamMAsTD
             slotUIImage.sprite = visitorSprite;
 
             if (!slotUIImage.preserveAspect) slotUIImage.preserveAspect = true;
+        }
+
+        private void UpdateVisitorInfoTooltipIfApplicable(VisitorUnitSO visitorSO)
+        {
+            if (unitInfoTooltipEnabler == null) return;
+
+            unitInfoTooltipEnabler.UpdateUnitInfoTooltipDataFrom(visitorSO);
         }
     }
 }

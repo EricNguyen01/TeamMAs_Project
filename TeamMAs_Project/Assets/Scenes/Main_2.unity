@@ -1008,12 +1008,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba61a76fa13f32a459bc021551fa14c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  glowColorPositive: {r: 0.15151297, g: 0.5283019, b: 0.15151297, a: 1}
-  glowColorNegative: {r: 0.9716981, g: 0.040334597, b: 0.040334597, a: 1}
+  glowColorPositive: {r: 0.15752934, g: 0.4716981, b: 0.15752934, a: 1}
+  glowColorNegative: {r: 0.9811321, g: 0.03147021, b: 0.03147021, a: 1}
   glowAlphaFrom: 200
-  glowAlphaTo: 250
+  glowAlphaTo: 240
   colorBrightnessFrom: 0.45
-  colorBrightnessTo: 0.65
+  colorBrightnessTo: 0.6
   glowCycleFrequency: 1.3
 --- !u!114 &15538447
 MonoBehaviour:
@@ -2014,12 +2014,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba61a76fa13f32a459bc021551fa14c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  glowColorPositive: {r: 0.15151297, g: 0.5283019, b: 0.15151297, a: 1}
-  glowColorNegative: {r: 0.9716981, g: 0.040334597, b: 0.040334597, a: 1}
+  glowColorPositive: {r: 0.15752934, g: 0.4716981, b: 0.15752934, a: 1}
+  glowColorNegative: {r: 0.9811321, g: 0.03147021, b: 0.03147021, a: 1}
   glowAlphaFrom: 200
-  glowAlphaTo: 250
+  glowAlphaTo: 240
   colorBrightnessFrom: 0.45
-  colorBrightnessTo: 0.65
+  colorBrightnessTo: 0.6
   glowCycleFrequency: 1.3
 --- !u!114 &52810160
 MonoBehaviour:
@@ -4075,12 +4075,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba61a76fa13f32a459bc021551fa14c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  glowColorPositive: {r: 0.15151297, g: 0.5283019, b: 0.15151297, a: 1}
-  glowColorNegative: {r: 0.9716981, g: 0.040334597, b: 0.040334597, a: 1}
+  glowColorPositive: {r: 0.15752934, g: 0.4716981, b: 0.15752934, a: 1}
+  glowColorNegative: {r: 0.9811321, g: 0.03147021, b: 0.03147021, a: 1}
   glowAlphaFrom: 200
-  glowAlphaTo: 250
+  glowAlphaTo: 240
   colorBrightnessFrom: 0.45
-  colorBrightnessTo: 0.65
+  colorBrightnessTo: 0.6
   glowCycleFrequency: 1.3
 --- !u!114 &105890055
 MonoBehaviour:
@@ -4978,12 +4978,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba61a76fa13f32a459bc021551fa14c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  glowColorPositive: {r: 0.15151297, g: 0.5283019, b: 0.15151297, a: 1}
-  glowColorNegative: {r: 0.9716981, g: 0.040334597, b: 0.040334597, a: 1}
+  glowColorPositive: {r: 0.15752934, g: 0.4716981, b: 0.15752934, a: 1}
+  glowColorNegative: {r: 0.9811321, g: 0.03147021, b: 0.03147021, a: 1}
   glowAlphaFrom: 200
-  glowAlphaTo: 250
+  glowAlphaTo: 240
   colorBrightnessFrom: 0.45
-  colorBrightnessTo: 0.65
+  colorBrightnessTo: 0.6
   glowCycleFrequency: 1.3
 --- !u!114 &121886964
 MonoBehaviour:
@@ -5244,17 +5244,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0.015, y: 0.7518}
   m_SizeDelta: {x: 2.8088, y: 2.5096}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &142572642 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6809323818228570051, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
-  m_PrefabInstance: {fileID: 7663563580318445356}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &144783645
 GameObject:
   m_ObjectHideFlags: 0
@@ -6774,12 +6763,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba61a76fa13f32a459bc021551fa14c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  glowColorPositive: {r: 0.15151297, g: 0.5283019, b: 0.15151297, a: 1}
-  glowColorNegative: {r: 0.9716981, g: 0.040334597, b: 0.040334597, a: 1}
+  glowColorPositive: {r: 0.15752934, g: 0.4716981, b: 0.15752934, a: 1}
+  glowColorNegative: {r: 0.9811321, g: 0.03147021, b: 0.03147021, a: 1}
   glowAlphaFrom: 200
-  glowAlphaTo: 250
+  glowAlphaTo: 240
   colorBrightnessFrom: 0.45
-  colorBrightnessTo: 0.65
+  colorBrightnessTo: 0.6
   glowCycleFrequency: 1.3
 --- !u!114 &197177037
 MonoBehaviour:
@@ -9362,12 +9351,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba61a76fa13f32a459bc021551fa14c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  glowColorPositive: {r: 0.15151297, g: 0.5283019, b: 0.15151297, a: 1}
-  glowColorNegative: {r: 0.9716981, g: 0.040334597, b: 0.040334597, a: 1}
+  glowColorPositive: {r: 0.15752934, g: 0.4716981, b: 0.15752934, a: 1}
+  glowColorNegative: {r: 0.9811321, g: 0.03147021, b: 0.03147021, a: 1}
   glowAlphaFrom: 200
-  glowAlphaTo: 250
+  glowAlphaTo: 240
   colorBrightnessFrom: 0.45
-  colorBrightnessTo: 0.65
+  colorBrightnessTo: 0.6
   glowCycleFrequency: 1.3
 --- !u!114 &340959699
 MonoBehaviour:
@@ -11824,12 +11813,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba61a76fa13f32a459bc021551fa14c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  glowColorPositive: {r: 0.15151297, g: 0.5283019, b: 0.15151297, a: 1}
-  glowColorNegative: {r: 0.9716981, g: 0.040334597, b: 0.040334597, a: 1}
+  glowColorPositive: {r: 0.15752934, g: 0.4716981, b: 0.15752934, a: 1}
+  glowColorNegative: {r: 0.9811321, g: 0.03147021, b: 0.03147021, a: 1}
   glowAlphaFrom: 200
-  glowAlphaTo: 250
+  glowAlphaTo: 240
   colorBrightnessFrom: 0.45
-  colorBrightnessTo: 0.65
+  colorBrightnessTo: 0.6
   glowCycleFrequency: 1.3
 --- !u!114 &456749772
 MonoBehaviour:
@@ -13725,12 +13714,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba61a76fa13f32a459bc021551fa14c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  glowColorPositive: {r: 0.15151297, g: 0.5283019, b: 0.15151297, a: 1}
-  glowColorNegative: {r: 0.9716981, g: 0.040334597, b: 0.040334597, a: 1}
+  glowColorPositive: {r: 0.15752934, g: 0.4716981, b: 0.15752934, a: 1}
+  glowColorNegative: {r: 0.9811321, g: 0.03147021, b: 0.03147021, a: 1}
   glowAlphaFrom: 200
-  glowAlphaTo: 250
+  glowAlphaTo: 240
   colorBrightnessFrom: 0.45
-  colorBrightnessTo: 0.65
+  colorBrightnessTo: 0.6
   glowCycleFrequency: 1.3
 --- !u!114 &548260361
 MonoBehaviour:
@@ -14125,12 +14114,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba61a76fa13f32a459bc021551fa14c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  glowColorPositive: {r: 0.15151297, g: 0.5283019, b: 0.15151297, a: 1}
-  glowColorNegative: {r: 0.9716981, g: 0.040334597, b: 0.040334597, a: 1}
+  glowColorPositive: {r: 0.15752934, g: 0.4716981, b: 0.15752934, a: 1}
+  glowColorNegative: {r: 0.9811321, g: 0.03147021, b: 0.03147021, a: 1}
   glowAlphaFrom: 200
-  glowAlphaTo: 250
+  glowAlphaTo: 240
   colorBrightnessFrom: 0.45
-  colorBrightnessTo: 0.65
+  colorBrightnessTo: 0.6
   glowCycleFrequency: 1.3
 --- !u!114 &551824663
 MonoBehaviour:
@@ -16427,12 +16416,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba61a76fa13f32a459bc021551fa14c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  glowColorPositive: {r: 0.15151297, g: 0.5283019, b: 0.15151297, a: 1}
-  glowColorNegative: {r: 0.9716981, g: 0.040334597, b: 0.040334597, a: 1}
+  glowColorPositive: {r: 0.15752934, g: 0.4716981, b: 0.15752934, a: 1}
+  glowColorNegative: {r: 0.9811321, g: 0.03147021, b: 0.03147021, a: 1}
   glowAlphaFrom: 200
-  glowAlphaTo: 250
+  glowAlphaTo: 240
   colorBrightnessFrom: 0.45
-  colorBrightnessTo: 0.65
+  colorBrightnessTo: 0.6
   glowCycleFrequency: 1.3
 --- !u!114 &686431554
 MonoBehaviour:
@@ -17096,12 +17085,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba61a76fa13f32a459bc021551fa14c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  glowColorPositive: {r: 0.15151297, g: 0.5283019, b: 0.15151297, a: 1}
-  glowColorNegative: {r: 0.9716981, g: 0.040334597, b: 0.040334597, a: 1}
+  glowColorPositive: {r: 0.15752934, g: 0.4716981, b: 0.15752934, a: 1}
+  glowColorNegative: {r: 0.9811321, g: 0.03147021, b: 0.03147021, a: 1}
   glowAlphaFrom: 200
-  glowAlphaTo: 250
+  glowAlphaTo: 240
   colorBrightnessFrom: 0.45
-  colorBrightnessTo: 0.65
+  colorBrightnessTo: 0.6
   glowCycleFrequency: 1.3
 --- !u!114 &696377669
 MonoBehaviour:
@@ -18158,12 +18147,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba61a76fa13f32a459bc021551fa14c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  glowColorPositive: {r: 0.15151297, g: 0.5283019, b: 0.15151297, a: 1}
-  glowColorNegative: {r: 0.9716981, g: 0.040334597, b: 0.040334597, a: 1}
+  glowColorPositive: {r: 0.15752934, g: 0.4716981, b: 0.15752934, a: 1}
+  glowColorNegative: {r: 0.9811321, g: 0.03147021, b: 0.03147021, a: 1}
   glowAlphaFrom: 200
-  glowAlphaTo: 250
+  glowAlphaTo: 240
   colorBrightnessFrom: 0.45
-  colorBrightnessTo: 0.65
+  colorBrightnessTo: 0.6
   glowCycleFrequency: 1.3
 --- !u!114 &712307774
 MonoBehaviour:
@@ -19949,12 +19938,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba61a76fa13f32a459bc021551fa14c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  glowColorPositive: {r: 0.15151297, g: 0.5283019, b: 0.15151297, a: 1}
-  glowColorNegative: {r: 0.9716981, g: 0.040334597, b: 0.040334597, a: 1}
+  glowColorPositive: {r: 0.15752934, g: 0.4716981, b: 0.15752934, a: 1}
+  glowColorNegative: {r: 0.9811321, g: 0.03147021, b: 0.03147021, a: 1}
   glowAlphaFrom: 200
-  glowAlphaTo: 250
+  glowAlphaTo: 240
   colorBrightnessFrom: 0.45
-  colorBrightnessTo: 0.65
+  colorBrightnessTo: 0.6
   glowCycleFrequency: 1.3
 --- !u!114 &782636148
 MonoBehaviour:
@@ -21829,12 +21818,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba61a76fa13f32a459bc021551fa14c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  glowColorPositive: {r: 0.15151297, g: 0.5283019, b: 0.15151297, a: 1}
-  glowColorNegative: {r: 0.9716981, g: 0.040334597, b: 0.040334597, a: 1}
+  glowColorPositive: {r: 0.15752934, g: 0.4716981, b: 0.15752934, a: 1}
+  glowColorNegative: {r: 0.9811321, g: 0.03147021, b: 0.03147021, a: 1}
   glowAlphaFrom: 200
-  glowAlphaTo: 250
+  glowAlphaTo: 240
   colorBrightnessFrom: 0.45
-  colorBrightnessTo: 0.65
+  colorBrightnessTo: 0.6
   glowCycleFrequency: 1.3
 --- !u!114 &840555220
 MonoBehaviour:
@@ -22387,12 +22376,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba61a76fa13f32a459bc021551fa14c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  glowColorPositive: {r: 0.15151297, g: 0.5283019, b: 0.15151297, a: 1}
-  glowColorNegative: {r: 0.9716981, g: 0.040334597, b: 0.040334597, a: 1}
+  glowColorPositive: {r: 0.15752934, g: 0.4716981, b: 0.15752934, a: 1}
+  glowColorNegative: {r: 0.9811321, g: 0.03147021, b: 0.03147021, a: 1}
   glowAlphaFrom: 200
-  glowAlphaTo: 250
+  glowAlphaTo: 240
   colorBrightnessFrom: 0.45
-  colorBrightnessTo: 0.65
+  colorBrightnessTo: 0.6
   glowCycleFrequency: 1.3
 --- !u!114 &845359706
 MonoBehaviour:
@@ -26111,12 +26100,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba61a76fa13f32a459bc021551fa14c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  glowColorPositive: {r: 0.15151297, g: 0.5283019, b: 0.15151297, a: 1}
-  glowColorNegative: {r: 0.9716981, g: 0.040334597, b: 0.040334597, a: 1}
+  glowColorPositive: {r: 0.15752934, g: 0.4716981, b: 0.15752934, a: 1}
+  glowColorNegative: {r: 0.9811321, g: 0.03147021, b: 0.03147021, a: 1}
   glowAlphaFrom: 200
-  glowAlphaTo: 250
+  glowAlphaTo: 240
   colorBrightnessFrom: 0.45
-  colorBrightnessTo: 0.65
+  colorBrightnessTo: 0.6
   glowCycleFrequency: 1.3
 --- !u!114 &979564357
 MonoBehaviour:
@@ -26937,12 +26926,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba61a76fa13f32a459bc021551fa14c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  glowColorPositive: {r: 0.15151297, g: 0.5283019, b: 0.15151297, a: 1}
-  glowColorNegative: {r: 0.9716981, g: 0.040334597, b: 0.040334597, a: 1}
+  glowColorPositive: {r: 0.15752934, g: 0.4716981, b: 0.15752934, a: 1}
+  glowColorNegative: {r: 0.9811321, g: 0.03147021, b: 0.03147021, a: 1}
   glowAlphaFrom: 200
-  glowAlphaTo: 250
+  glowAlphaTo: 240
   colorBrightnessFrom: 0.45
-  colorBrightnessTo: 0.65
+  colorBrightnessTo: 0.6
   glowCycleFrequency: 1.3
 --- !u!114 &1002748433
 MonoBehaviour:
@@ -27413,12 +27402,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba61a76fa13f32a459bc021551fa14c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  glowColorPositive: {r: 0.15151297, g: 0.5283019, b: 0.15151297, a: 1}
-  glowColorNegative: {r: 0.9716981, g: 0.040334597, b: 0.040334597, a: 1}
+  glowColorPositive: {r: 0.15752934, g: 0.4716981, b: 0.15752934, a: 1}
+  glowColorNegative: {r: 0.9811321, g: 0.03147021, b: 0.03147021, a: 1}
   glowAlphaFrom: 200
-  glowAlphaTo: 250
+  glowAlphaTo: 240
   colorBrightnessFrom: 0.45
-  colorBrightnessTo: 0.65
+  colorBrightnessTo: 0.6
   glowCycleFrequency: 1.3
 --- !u!114 &1004615130
 MonoBehaviour:
@@ -29250,12 +29239,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba61a76fa13f32a459bc021551fa14c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  glowColorPositive: {r: 0.15151297, g: 0.5283019, b: 0.15151297, a: 1}
-  glowColorNegative: {r: 0.9716981, g: 0.040334597, b: 0.040334597, a: 1}
+  glowColorPositive: {r: 0.15752934, g: 0.4716981, b: 0.15752934, a: 1}
+  glowColorNegative: {r: 0.9811321, g: 0.03147021, b: 0.03147021, a: 1}
   glowAlphaFrom: 200
-  glowAlphaTo: 250
+  glowAlphaTo: 240
   colorBrightnessFrom: 0.45
-  colorBrightnessTo: 0.65
+  colorBrightnessTo: 0.6
   glowCycleFrequency: 1.3
 --- !u!114 &1079170327
 MonoBehaviour:
@@ -30237,12 +30226,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba61a76fa13f32a459bc021551fa14c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  glowColorPositive: {r: 0.15151297, g: 0.5283019, b: 0.15151297, a: 1}
-  glowColorNegative: {r: 0.9716981, g: 0.040334597, b: 0.040334597, a: 1}
+  glowColorPositive: {r: 0.15752934, g: 0.4716981, b: 0.15752934, a: 1}
+  glowColorNegative: {r: 0.9811321, g: 0.03147021, b: 0.03147021, a: 1}
   glowAlphaFrom: 200
-  glowAlphaTo: 250
+  glowAlphaTo: 240
   colorBrightnessFrom: 0.45
-  colorBrightnessTo: 0.65
+  colorBrightnessTo: 0.6
   glowCycleFrequency: 1.3
 --- !u!114 &1107879454
 MonoBehaviour:
@@ -31181,12 +31170,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba61a76fa13f32a459bc021551fa14c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  glowColorPositive: {r: 0.15151297, g: 0.5283019, b: 0.15151297, a: 1}
-  glowColorNegative: {r: 0.9716981, g: 0.040334597, b: 0.040334597, a: 1}
+  glowColorPositive: {r: 0.15752934, g: 0.4716981, b: 0.15752934, a: 1}
+  glowColorNegative: {r: 0.9811321, g: 0.03147021, b: 0.03147021, a: 1}
   glowAlphaFrom: 200
-  glowAlphaTo: 250
+  glowAlphaTo: 240
   colorBrightnessFrom: 0.45
-  colorBrightnessTo: 0.65
+  colorBrightnessTo: 0.6
   glowCycleFrequency: 1.3
 --- !u!114 &1155804730
 MonoBehaviour:
@@ -31716,12 +31705,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba61a76fa13f32a459bc021551fa14c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  glowColorPositive: {r: 0.15151297, g: 0.5283019, b: 0.15151297, a: 1}
-  glowColorNegative: {r: 0.9716981, g: 0.040334597, b: 0.040334597, a: 1}
+  glowColorPositive: {r: 0.15752934, g: 0.4716981, b: 0.15752934, a: 1}
+  glowColorNegative: {r: 0.9811321, g: 0.03147021, b: 0.03147021, a: 1}
   glowAlphaFrom: 200
-  glowAlphaTo: 250
+  glowAlphaTo: 240
   colorBrightnessFrom: 0.45
-  colorBrightnessTo: 0.65
+  colorBrightnessTo: 0.6
   glowCycleFrequency: 1.3
 --- !u!114 &1158758396
 MonoBehaviour:
@@ -31922,17 +31911,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1171490529}
   m_CullTransparentMesh: 1
---- !u!114 &1179507637 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8832401154024209715, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
-  m_PrefabInstance: {fileID: 7663563580318445356}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1183101711
 GameObject:
   m_ObjectHideFlags: 0
@@ -33783,12 +33761,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba61a76fa13f32a459bc021551fa14c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  glowColorPositive: {r: 0.15151297, g: 0.5283019, b: 0.15151297, a: 1}
-  glowColorNegative: {r: 0.9716981, g: 0.040334597, b: 0.040334597, a: 1}
+  glowColorPositive: {r: 0.15752934, g: 0.4716981, b: 0.15752934, a: 1}
+  glowColorNegative: {r: 0.9811321, g: 0.03147021, b: 0.03147021, a: 1}
   glowAlphaFrom: 200
-  glowAlphaTo: 250
+  glowAlphaTo: 240
   colorBrightnessFrom: 0.45
-  colorBrightnessTo: 0.65
+  colorBrightnessTo: 0.6
   glowCycleFrequency: 1.3
 --- !u!114 &1232097732
 MonoBehaviour:
@@ -34183,12 +34161,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba61a76fa13f32a459bc021551fa14c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  glowColorPositive: {r: 0.15151297, g: 0.5283019, b: 0.15151297, a: 1}
-  glowColorNegative: {r: 0.9716981, g: 0.040334597, b: 0.040334597, a: 1}
+  glowColorPositive: {r: 0.15752934, g: 0.4716981, b: 0.15752934, a: 1}
+  glowColorNegative: {r: 0.9811321, g: 0.03147021, b: 0.03147021, a: 1}
   glowAlphaFrom: 200
-  glowAlphaTo: 250
+  glowAlphaTo: 240
   colorBrightnessFrom: 0.45
-  colorBrightnessTo: 0.65
+  colorBrightnessTo: 0.6
   glowCycleFrequency: 1.3
 --- !u!114 &1232348864
 MonoBehaviour:
@@ -35196,12 +35174,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba61a76fa13f32a459bc021551fa14c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  glowColorPositive: {r: 0.15151297, g: 0.5283019, b: 0.15151297, a: 1}
-  glowColorNegative: {r: 0.9716981, g: 0.040334597, b: 0.040334597, a: 1}
+  glowColorPositive: {r: 0.15752934, g: 0.4716981, b: 0.15752934, a: 1}
+  glowColorNegative: {r: 0.9811321, g: 0.03147021, b: 0.03147021, a: 1}
   glowAlphaFrom: 200
-  glowAlphaTo: 250
+  glowAlphaTo: 240
   colorBrightnessFrom: 0.45
-  colorBrightnessTo: 0.65
+  colorBrightnessTo: 0.6
   glowCycleFrequency: 1.3
 --- !u!114 &1277552503
 MonoBehaviour:
@@ -38004,12 +37982,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba61a76fa13f32a459bc021551fa14c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  glowColorPositive: {r: 0.15151297, g: 0.5283019, b: 0.15151297, a: 1}
-  glowColorNegative: {r: 0.9716981, g: 0.040334597, b: 0.040334597, a: 1}
+  glowColorPositive: {r: 0.15752934, g: 0.4716981, b: 0.15752934, a: 1}
+  glowColorNegative: {r: 0.9811321, g: 0.03147021, b: 0.03147021, a: 1}
   glowAlphaFrom: 200
-  glowAlphaTo: 250
+  glowAlphaTo: 240
   colorBrightnessFrom: 0.45
-  colorBrightnessTo: 0.65
+  colorBrightnessTo: 0.6
   glowCycleFrequency: 1.3
 --- !u!114 &1368556768
 MonoBehaviour:
@@ -39092,12 +39070,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba61a76fa13f32a459bc021551fa14c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  glowColorPositive: {r: 0.15151297, g: 0.5283019, b: 0.15151297, a: 1}
-  glowColorNegative: {r: 0.9716981, g: 0.040334597, b: 0.040334597, a: 1}
+  glowColorPositive: {r: 0.15752934, g: 0.4716981, b: 0.15752934, a: 1}
+  glowColorNegative: {r: 0.9811321, g: 0.03147021, b: 0.03147021, a: 1}
   glowAlphaFrom: 200
-  glowAlphaTo: 250
+  glowAlphaTo: 240
   colorBrightnessFrom: 0.45
-  colorBrightnessTo: 0.65
+  colorBrightnessTo: 0.6
   glowCycleFrequency: 1.3
 --- !u!114 &1398176868
 MonoBehaviour:
@@ -39734,17 +39712,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1430479549}
   m_CullTransparentMesh: 1
---- !u!114 &1430695672 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8832401155225839072, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
-  m_PrefabInstance: {fileID: 7663563580318445356}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1435873235
 GameObject:
   m_ObjectHideFlags: 0
@@ -40120,12 +40087,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba61a76fa13f32a459bc021551fa14c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  glowColorPositive: {r: 0.15151297, g: 0.5283019, b: 0.15151297, a: 1}
-  glowColorNegative: {r: 0.9716981, g: 0.040334597, b: 0.040334597, a: 1}
+  glowColorPositive: {r: 0.15752934, g: 0.4716981, b: 0.15752934, a: 1}
+  glowColorNegative: {r: 0.9811321, g: 0.03147021, b: 0.03147021, a: 1}
   glowAlphaFrom: 200
-  glowAlphaTo: 250
+  glowAlphaTo: 240
   colorBrightnessFrom: 0.45
-  colorBrightnessTo: 0.65
+  colorBrightnessTo: 0.6
   glowCycleFrequency: 1.3
 --- !u!114 &1435873245
 MonoBehaviour:
@@ -40731,12 +40698,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba61a76fa13f32a459bc021551fa14c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  glowColorPositive: {r: 0.15151297, g: 0.5283019, b: 0.15151297, a: 1}
-  glowColorNegative: {r: 0.9716981, g: 0.040334597, b: 0.040334597, a: 1}
+  glowColorPositive: {r: 0.15752934, g: 0.4716981, b: 0.15752934, a: 1}
+  glowColorNegative: {r: 0.9811321, g: 0.03147021, b: 0.03147021, a: 1}
   glowAlphaFrom: 200
-  glowAlphaTo: 250
+  glowAlphaTo: 240
   colorBrightnessFrom: 0.45
-  colorBrightnessTo: 0.65
+  colorBrightnessTo: 0.6
   glowCycleFrequency: 1.3
 --- !u!114 &1444773948
 MonoBehaviour:
@@ -41131,12 +41098,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba61a76fa13f32a459bc021551fa14c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  glowColorPositive: {r: 0.15151297, g: 0.5283019, b: 0.15151297, a: 1}
-  glowColorNegative: {r: 0.9716981, g: 0.040334597, b: 0.040334597, a: 1}
+  glowColorPositive: {r: 0.15752934, g: 0.4716981, b: 0.15752934, a: 1}
+  glowColorNegative: {r: 0.9811321, g: 0.03147021, b: 0.03147021, a: 1}
   glowAlphaFrom: 200
-  glowAlphaTo: 250
+  glowAlphaTo: 240
   colorBrightnessFrom: 0.45
-  colorBrightnessTo: 0.65
+  colorBrightnessTo: 0.6
   glowCycleFrequency: 1.3
 --- !u!114 &1445330519
 MonoBehaviour:
@@ -42911,12 +42878,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba61a76fa13f32a459bc021551fa14c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  glowColorPositive: {r: 0.15151297, g: 0.5283019, b: 0.15151297, a: 1}
-  glowColorNegative: {r: 0.9716981, g: 0.040334597, b: 0.040334597, a: 1}
+  glowColorPositive: {r: 0.15752934, g: 0.4716981, b: 0.15752934, a: 1}
+  glowColorNegative: {r: 0.9811321, g: 0.03147021, b: 0.03147021, a: 1}
   glowAlphaFrom: 200
-  glowAlphaTo: 250
+  glowAlphaTo: 240
   colorBrightnessFrom: 0.45
-  colorBrightnessTo: 0.65
+  colorBrightnessTo: 0.6
   glowCycleFrequency: 1.3
 --- !u!114 &1491814708
 MonoBehaviour:
@@ -44362,12 +44329,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba61a76fa13f32a459bc021551fa14c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  glowColorPositive: {r: 0.15151297, g: 0.5283019, b: 0.15151297, a: 1}
-  glowColorNegative: {r: 0.9716981, g: 0.040334597, b: 0.040334597, a: 1}
+  glowColorPositive: {r: 0.15752934, g: 0.4716981, b: 0.15752934, a: 1}
+  glowColorNegative: {r: 0.9811321, g: 0.03147021, b: 0.03147021, a: 1}
   glowAlphaFrom: 200
-  glowAlphaTo: 250
+  glowAlphaTo: 240
   colorBrightnessFrom: 0.45
-  colorBrightnessTo: 0.65
+  colorBrightnessTo: 0.6
   glowCycleFrequency: 1.3
 --- !u!114 &1528747911
 MonoBehaviour:
@@ -44762,12 +44729,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba61a76fa13f32a459bc021551fa14c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  glowColorPositive: {r: 0.15151297, g: 0.5283019, b: 0.15151297, a: 1}
-  glowColorNegative: {r: 0.9716981, g: 0.040334597, b: 0.040334597, a: 1}
+  glowColorPositive: {r: 0.15752934, g: 0.4716981, b: 0.15752934, a: 1}
+  glowColorNegative: {r: 0.9811321, g: 0.03147021, b: 0.03147021, a: 1}
   glowAlphaFrom: 200
-  glowAlphaTo: 250
+  glowAlphaTo: 240
   colorBrightnessFrom: 0.45
-  colorBrightnessTo: 0.65
+  colorBrightnessTo: 0.6
   glowCycleFrequency: 1.3
 --- !u!114 &1538477365
 MonoBehaviour:
@@ -45411,12 +45378,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba61a76fa13f32a459bc021551fa14c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  glowColorPositive: {r: 0.15151297, g: 0.5283019, b: 0.15151297, a: 1}
-  glowColorNegative: {r: 0.9716981, g: 0.040334597, b: 0.040334597, a: 1}
+  glowColorPositive: {r: 0.15752934, g: 0.4716981, b: 0.15752934, a: 1}
+  glowColorNegative: {r: 0.9811321, g: 0.03147021, b: 0.03147021, a: 1}
   glowAlphaFrom: 200
-  glowAlphaTo: 250
+  glowAlphaTo: 240
   colorBrightnessFrom: 0.45
-  colorBrightnessTo: 0.65
+  colorBrightnessTo: 0.6
   glowCycleFrequency: 1.3
 --- !u!114 &1554078854
 MonoBehaviour:
@@ -45811,12 +45778,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba61a76fa13f32a459bc021551fa14c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  glowColorPositive: {r: 0.15151297, g: 0.5283019, b: 0.15151297, a: 1}
-  glowColorNegative: {r: 0.9716981, g: 0.040334597, b: 0.040334597, a: 1}
+  glowColorPositive: {r: 0.15752934, g: 0.4716981, b: 0.15752934, a: 1}
+  glowColorNegative: {r: 0.9811321, g: 0.03147021, b: 0.03147021, a: 1}
   glowAlphaFrom: 200
-  glowAlphaTo: 250
+  glowAlphaTo: 240
   colorBrightnessFrom: 0.45
-  colorBrightnessTo: 0.65
+  colorBrightnessTo: 0.6
   glowCycleFrequency: 1.3
 --- !u!114 &1560932796
 MonoBehaviour:
@@ -47100,12 +47067,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba61a76fa13f32a459bc021551fa14c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  glowColorPositive: {r: 0.15151297, g: 0.5283019, b: 0.15151297, a: 1}
-  glowColorNegative: {r: 0.9716981, g: 0.040334597, b: 0.040334597, a: 1}
+  glowColorPositive: {r: 0.15752934, g: 0.4716981, b: 0.15752934, a: 1}
+  glowColorNegative: {r: 0.9811321, g: 0.03147021, b: 0.03147021, a: 1}
   glowAlphaFrom: 200
-  glowAlphaTo: 250
+  glowAlphaTo: 240
   colorBrightnessFrom: 0.45
-  colorBrightnessTo: 0.65
+  colorBrightnessTo: 0.6
   glowCycleFrequency: 1.3
 --- !u!114 &1616826389
 MonoBehaviour:
@@ -48068,12 +48035,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba61a76fa13f32a459bc021551fa14c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  glowColorPositive: {r: 0.15151297, g: 0.5283019, b: 0.15151297, a: 1}
-  glowColorNegative: {r: 0.9716981, g: 0.040334597, b: 0.040334597, a: 1}
+  glowColorPositive: {r: 0.15752934, g: 0.4716981, b: 0.15752934, a: 1}
+  glowColorNegative: {r: 0.9811321, g: 0.03147021, b: 0.03147021, a: 1}
   glowAlphaFrom: 200
-  glowAlphaTo: 250
+  glowAlphaTo: 240
   colorBrightnessFrom: 0.45
-  colorBrightnessTo: 0.65
+  colorBrightnessTo: 0.6
   glowCycleFrequency: 1.3
 --- !u!114 &1640197444
 MonoBehaviour:
@@ -49019,12 +48986,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba61a76fa13f32a459bc021551fa14c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  glowColorPositive: {r: 0.15151297, g: 0.5283019, b: 0.15151297, a: 1}
-  glowColorNegative: {r: 0.9716981, g: 0.040334597, b: 0.040334597, a: 1}
+  glowColorPositive: {r: 0.15752934, g: 0.4716981, b: 0.15752934, a: 1}
+  glowColorNegative: {r: 0.9811321, g: 0.03147021, b: 0.03147021, a: 1}
   glowAlphaFrom: 200
-  glowAlphaTo: 250
+  glowAlphaTo: 240
   colorBrightnessFrom: 0.45
-  colorBrightnessTo: 0.65
+  colorBrightnessTo: 0.6
   glowCycleFrequency: 1.3
 --- !u!114 &1675363187
 MonoBehaviour:
@@ -49898,12 +49865,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba61a76fa13f32a459bc021551fa14c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  glowColorPositive: {r: 0.15151297, g: 0.5283019, b: 0.15151297, a: 1}
-  glowColorNegative: {r: 0.9716981, g: 0.040334597, b: 0.040334597, a: 1}
+  glowColorPositive: {r: 0.15752934, g: 0.4716981, b: 0.15752934, a: 1}
+  glowColorNegative: {r: 0.9811321, g: 0.03147021, b: 0.03147021, a: 1}
   glowAlphaFrom: 200
-  glowAlphaTo: 250
+  glowAlphaTo: 240
   colorBrightnessFrom: 0.45
-  colorBrightnessTo: 0.65
+  colorBrightnessTo: 0.6
   glowCycleFrequency: 1.3
 --- !u!114 &1705588432
 MonoBehaviour:
@@ -50765,12 +50732,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba61a76fa13f32a459bc021551fa14c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  glowColorPositive: {r: 0.15151297, g: 0.5283019, b: 0.15151297, a: 1}
-  glowColorNegative: {r: 0.9716981, g: 0.040334597, b: 0.040334597, a: 1}
+  glowColorPositive: {r: 0.15752934, g: 0.4716981, b: 0.15752934, a: 1}
+  glowColorNegative: {r: 0.9811321, g: 0.03147021, b: 0.03147021, a: 1}
   glowAlphaFrom: 200
-  glowAlphaTo: 250
+  glowAlphaTo: 240
   colorBrightnessFrom: 0.45
-  colorBrightnessTo: 0.65
+  colorBrightnessTo: 0.6
   glowCycleFrequency: 1.3
 --- !u!114 &1727865223
 MonoBehaviour:
@@ -51563,12 +51530,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba61a76fa13f32a459bc021551fa14c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  glowColorPositive: {r: 0.15151297, g: 0.5283019, b: 0.15151297, a: 1}
-  glowColorNegative: {r: 0.9716981, g: 0.040334597, b: 0.040334597, a: 1}
+  glowColorPositive: {r: 0.15752934, g: 0.4716981, b: 0.15752934, a: 1}
+  glowColorNegative: {r: 0.9811321, g: 0.03147021, b: 0.03147021, a: 1}
   glowAlphaFrom: 200
-  glowAlphaTo: 250
+  glowAlphaTo: 240
   colorBrightnessFrom: 0.45
-  colorBrightnessTo: 0.65
+  colorBrightnessTo: 0.6
   glowCycleFrequency: 1.3
 --- !u!114 &1747731297
 MonoBehaviour:
@@ -55705,12 +55672,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba61a76fa13f32a459bc021551fa14c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  glowColorPositive: {r: 0.15151297, g: 0.5283019, b: 0.15151297, a: 1}
-  glowColorNegative: {r: 0.9716981, g: 0.040334597, b: 0.040334597, a: 1}
+  glowColorPositive: {r: 0.15752934, g: 0.4716981, b: 0.15752934, a: 1}
+  glowColorNegative: {r: 0.9811321, g: 0.03147021, b: 0.03147021, a: 1}
   glowAlphaFrom: 200
-  glowAlphaTo: 250
+  glowAlphaTo: 240
   colorBrightnessFrom: 0.45
-  colorBrightnessTo: 0.65
+  colorBrightnessTo: 0.6
   glowCycleFrequency: 1.3
 --- !u!114 &1899135437
 MonoBehaviour:
@@ -57501,12 +57468,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba61a76fa13f32a459bc021551fa14c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  glowColorPositive: {r: 0.15151297, g: 0.5283019, b: 0.15151297, a: 1}
-  glowColorNegative: {r: 0.9716981, g: 0.040334597, b: 0.040334597, a: 1}
+  glowColorPositive: {r: 0.15752934, g: 0.4716981, b: 0.15752934, a: 1}
+  glowColorNegative: {r: 0.9811321, g: 0.03147021, b: 0.03147021, a: 1}
   glowAlphaFrom: 200
-  glowAlphaTo: 250
+  glowAlphaTo: 240
   colorBrightnessFrom: 0.45
-  colorBrightnessTo: 0.65
+  colorBrightnessTo: 0.6
   glowCycleFrequency: 1.3
 --- !u!114 &1933233877
 MonoBehaviour:
@@ -58425,17 +58392,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1983007210}
   m_CullTransparentMesh: 1
---- !u!114 &1990895787 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6809323817316273936, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
-  m_PrefabInstance: {fileID: 7663563580318445356}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1997207009
 GameObject:
   m_ObjectHideFlags: 0
@@ -59329,12 +59285,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba61a76fa13f32a459bc021551fa14c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  glowColorPositive: {r: 0.15151297, g: 0.5283019, b: 0.15151297, a: 1}
-  glowColorNegative: {r: 0.9716981, g: 0.040334597, b: 0.040334597, a: 1}
+  glowColorPositive: {r: 0.15752934, g: 0.4716981, b: 0.15752934, a: 1}
+  glowColorNegative: {r: 0.9811321, g: 0.03147021, b: 0.03147021, a: 1}
   glowAlphaFrom: 200
-  glowAlphaTo: 250
+  glowAlphaTo: 240
   colorBrightnessFrom: 0.45
-  colorBrightnessTo: 0.65
+  colorBrightnessTo: 0.6
   glowCycleFrequency: 1.3
 --- !u!114 &2005115270
 MonoBehaviour:
@@ -61024,12 +60980,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba61a76fa13f32a459bc021551fa14c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  glowColorPositive: {r: 0.15151297, g: 0.5283019, b: 0.15151297, a: 1}
-  glowColorNegative: {r: 0.9716981, g: 0.040334597, b: 0.040334597, a: 1}
+  glowColorPositive: {r: 0.15752934, g: 0.4716981, b: 0.15752934, a: 1}
+  glowColorNegative: {r: 0.9811321, g: 0.03147021, b: 0.03147021, a: 1}
   glowAlphaFrom: 200
-  glowAlphaTo: 250
+  glowAlphaTo: 240
   colorBrightnessFrom: 0.45
-  colorBrightnessTo: 0.65
+  colorBrightnessTo: 0.6
   glowCycleFrequency: 1.3
 --- !u!114 &2059737628
 MonoBehaviour:
@@ -61558,12 +61514,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba61a76fa13f32a459bc021551fa14c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  glowColorPositive: {r: 0.15151297, g: 0.5283019, b: 0.15151297, a: 1}
-  glowColorNegative: {r: 0.9716981, g: 0.040334597, b: 0.040334597, a: 1}
+  glowColorPositive: {r: 0.15752934, g: 0.4716981, b: 0.15752934, a: 1}
+  glowColorNegative: {r: 0.9811321, g: 0.03147021, b: 0.03147021, a: 1}
   glowAlphaFrom: 200
-  glowAlphaTo: 250
+  glowAlphaTo: 240
   colorBrightnessFrom: 0.45
-  colorBrightnessTo: 0.65
+  colorBrightnessTo: 0.6
   glowCycleFrequency: 1.3
 --- !u!114 &2065378685
 MonoBehaviour:
@@ -62173,12 +62129,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba61a76fa13f32a459bc021551fa14c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  glowColorPositive: {r: 0.15151297, g: 0.5283019, b: 0.15151297, a: 1}
-  glowColorNegative: {r: 0.9716981, g: 0.040334597, b: 0.040334597, a: 1}
+  glowColorPositive: {r: 0.15752934, g: 0.4716981, b: 0.15752934, a: 1}
+  glowColorNegative: {r: 0.9811321, g: 0.03147021, b: 0.03147021, a: 1}
   glowAlphaFrom: 200
-  glowAlphaTo: 250
+  glowAlphaTo: 240
   colorBrightnessFrom: 0.45
-  colorBrightnessTo: 0.65
+  colorBrightnessTo: 0.6
   glowCycleFrequency: 1.3
 --- !u!114 &2070348983
 MonoBehaviour:
@@ -63104,12 +63060,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba61a76fa13f32a459bc021551fa14c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  glowColorPositive: {r: 0.15151297, g: 0.5283019, b: 0.15151297, a: 1}
-  glowColorNegative: {r: 0.9716981, g: 0.040334597, b: 0.040334597, a: 1}
+  glowColorPositive: {r: 0.15752934, g: 0.4716981, b: 0.15752934, a: 1}
+  glowColorNegative: {r: 0.9811321, g: 0.03147021, b: 0.03147021, a: 1}
   glowAlphaFrom: 200
-  glowAlphaTo: 250
+  glowAlphaTo: 240
   colorBrightnessFrom: 0.45
-  colorBrightnessTo: 0.65
+  colorBrightnessTo: 0.6
   glowCycleFrequency: 1.3
 --- !u!114 &2103963352
 MonoBehaviour:
@@ -63504,12 +63460,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba61a76fa13f32a459bc021551fa14c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  glowColorPositive: {r: 0.15151297, g: 0.5283019, b: 0.15151297, a: 1}
-  glowColorNegative: {r: 0.9716981, g: 0.040334597, b: 0.040334597, a: 1}
+  glowColorPositive: {r: 0.15752934, g: 0.4716981, b: 0.15752934, a: 1}
+  glowColorNegative: {r: 0.9811321, g: 0.03147021, b: 0.03147021, a: 1}
   glowAlphaFrom: 200
-  glowAlphaTo: 250
+  glowAlphaTo: 240
   colorBrightnessFrom: 0.45
-  colorBrightnessTo: 0.65
+  colorBrightnessTo: 0.6
   glowCycleFrequency: 1.3
 --- !u!114 &2118044413
 MonoBehaviour:
@@ -64376,12 +64332,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba61a76fa13f32a459bc021551fa14c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  glowColorPositive: {r: 0.15151297, g: 0.5283019, b: 0.15151297, a: 1}
-  glowColorNegative: {r: 0.9716981, g: 0.040334597, b: 0.040334597, a: 1}
+  glowColorPositive: {r: 0.15752934, g: 0.4716981, b: 0.15752934, a: 1}
+  glowColorNegative: {r: 0.9811321, g: 0.03147021, b: 0.03147021, a: 1}
   glowAlphaFrom: 200
-  glowAlphaTo: 250
+  glowAlphaTo: 240
   colorBrightnessFrom: 0.45
-  colorBrightnessTo: 0.65
+  colorBrightnessTo: 0.6
   glowCycleFrequency: 1.3
 --- !u!114 &2133675655
 MonoBehaviour:
@@ -65347,14 +65303,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 248687116289078423, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
-      propertyPath: m_fontColor32.rgba
-      value: 4283396898
-      objectReference: {fileID: 0}
     - target: {fileID: 2199127071567654328, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
       propertyPath: gameResourceUIStatPopupSpawner
       value: 
       objectReference: {fileID: 1407023545}
+    - target: {fileID: 2843247785751352375, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -0.74601746
+      objectReference: {fileID: 0}
+    - target: {fileID: 2843247786089608428, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.74598694
+      objectReference: {fileID: 0}
+    - target: {fileID: 2843247787056426047, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -0.74601746
+      objectReference: {fileID: 0}
     - target: {fileID: 5268446183886847556, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -65379,34 +65343,6 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6809323817316273936, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
-      propertyPath: m_Color.a
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6809323817316273936, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
-      propertyPath: m_RaycastTarget
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6809323818228570051, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
-      propertyPath: m_Color.a
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7663563579968728992, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
-      propertyPath: hyssopIcon
-      value: 
-      objectReference: {fileID: 1990895787}
-    - target: {fileID: 7663563579968728992, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
-      propertyPath: hyssopShop
-      value: 
-      objectReference: {fileID: 1430695672}
-    - target: {fileID: 7663563579968728992, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
-      propertyPath: milkweedIcon
-      value: 
-      objectReference: {fileID: 142572642}
-    - target: {fileID: 7663563579968728992, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
-      propertyPath: milkweedShop
-      value: 
-      objectReference: {fileID: 1179507637}
     - target: {fileID: 7663563579968728992, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
       propertyPath: waveSpawnerLinkedToButton
       value: 
@@ -65559,30 +65495,6 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8832401154024209715, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
-      propertyPath: m_RaycastTarget
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8832401154024209717, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
-      propertyPath: m_Alpha
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8832401154024209717, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
-      propertyPath: m_Interactable
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8832401154024209717, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
-      propertyPath: m_BlocksRaycasts
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8832401155225839072, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
-      propertyPath: m_Color.a
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8832401155225839072, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
-      propertyPath: m_RaycastTarget
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 8832401155225839075, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -65606,18 +65518,6 @@ PrefabInstance:
     - target: {fileID: 8832401155225839075, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8832401155225839078, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
-      propertyPath: m_Alpha
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8832401155225839078, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
-      propertyPath: m_Interactable
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8832401155225839078, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
-      propertyPath: m_BlocksRaycasts
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}

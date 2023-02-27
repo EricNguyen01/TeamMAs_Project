@@ -169,11 +169,6 @@ namespace TeamMAsTD
                 }
             }
 
-            //recursively looping this func to continue glow effect until there's external instruction to disable glowing
-            //everytime this coroutine is looped, the glow is reversed
-            //COULD BE POTENTIALLY A DANGEROUS BUG! WATCH THIS RECURSION CAREFULLY!!!
-            //StartCoroutine(TileGlowProcessCoroutine());
-
             glowCycleTime = 0.0f;
 
             yield break;

@@ -9,5 +9,6 @@ namespace TeamMAsTD
         [field: Header("General Unit Data")]
         [field: SerializeField] public string displayName { get; private set; }
         [field: SerializeField] public GameObject unitPrefab { get; private set; }
+        [field: SerializeField] public Sprite unitInfoTooltipImageSprite { get; private set; }
     }
 }

@@ -390,14 +390,6 @@ PrefabInstance:
       propertyPath: m_PreserveAspect
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 7955741955678269511, guid: be51dee99d5dc4942855546c15466bf0, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -1.5775604
-      objectReference: {fileID: 0}
-    - target: {fileID: 7955741955678269511, guid: be51dee99d5dc4942855546c15466bf0, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -0.50076294
-      objectReference: {fileID: 0}
     - target: {fileID: 8336062919121141092, guid: be51dee99d5dc4942855546c15466bf0, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -0.050964355
@@ -543,6 +535,10 @@ PrefabInstance:
     - target: {fileID: 7955741955678269511, guid: be51dee99d5dc4942855546c15466bf0, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: -1.5775452
+      objectReference: {fileID: 0}
+    - target: {fileID: 7955741955678269511, guid: be51dee99d5dc4942855546c15466bf0, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -0.500824
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: be51dee99d5dc4942855546c15466bf0, type: 3}
