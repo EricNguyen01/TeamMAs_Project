@@ -112,7 +112,7 @@ namespace TeamMAsTD
                 }
 
                 //Create wave object by calling its constructor and fills its parameters
-                Wave wave = /*waveObj.GetComponent<Wave>()*/ new Wave(this, waveSOList[i], i);
+                Wave wave = new Wave(this, waveSOList[i], i);
 
                 wavesList.Add(wave);
             }

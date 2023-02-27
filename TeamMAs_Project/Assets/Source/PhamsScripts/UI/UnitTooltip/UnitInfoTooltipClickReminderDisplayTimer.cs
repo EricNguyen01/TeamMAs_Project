@@ -26,17 +26,24 @@ namespace TeamMAsTD
 
         private float currentTimeToCloseReminder = 0.0f;
 
-        [SerializeField] private bool showTooltipClickReminderOnStart = true;
+        [field: SerializeField] public bool showTooltipClickReminderOnStart { get; private set; } = true;
 
         private bool hasATooltipBeenOpenedRecently = false;
 
         private bool shouldStartClickReminderTimer = false;
+
+        private bool timerIsPaused = false;
 
         private void Awake()
         {
             if (timeUntilNextReminderMax <= timeUntilNextReminderMin) timeUntilNextReminderMax += timeUntilNextReminderMin;
 
             timeUntilNextReminder = Random.Range(timeUntilNextReminderMin, timeUntilNextReminderMax);
+        }
+
+        private void OnDisable()
+        {
+            StopAllCoroutines();
         }
 
         private void Start()
@@ -48,7 +55,7 @@ namespace TeamMAsTD
 
             if (showTooltipClickReminderOnStart)
             {
-                DisplayTooltipClickReminderForSelectedTooltips();
+                StartCoroutine(ShowClickOnReminderDelayCoroutine(1.5f));
             }
         }
 
@@ -101,6 +108,8 @@ namespace TeamMAsTD
 
         private void UpdateTimeUntilNextReminder()
         {
+            if(timerIsPaused) return;
+
             //if a tooltip has been opened recently OR smth is preventing clickon reminder timer to start
             //dont start timer
             if (hasATooltipBeenOpenedRecently || !shouldStartClickReminderTimer)
@@ -150,6 +159,8 @@ namespace TeamMAsTD
 
             for (int i = 0; i < unitTooltipsToDisplayClickReminder.Count; i++)
             {
+                if (unitTooltipsToDisplayClickReminder[i] == null) continue;
+
                 if (!unitTooltipsToDisplayClickReminder[i].gameObject.activeInHierarchy) continue;
 
                 unitTooltipsToDisplayClickReminder[i].EnableTooltipClickOnReminder(false);
@@ -168,6 +179,8 @@ namespace TeamMAsTD
             
             for(int i = 0; i < unitTooltipsToDisplayClickReminder.Count; i++)
             {
+                if (unitTooltipsToDisplayClickReminder[i] == null) continue;
+
                 if (!unitTooltipsToDisplayClickReminder[i].gameObject.activeInHierarchy) continue;
 
                 unitTooltipsToDisplayClickReminder[i].EnableTooltipClickOnReminder(true);
@@ -179,7 +192,7 @@ namespace TeamMAsTD
             //or players clicked on a tooltip then closed it and with that, the click-on reminder is also closed and reset.
             shouldStartClickReminderTimer = false;
 
-            currentTimeUntilNextReminder = 0.0f;
+            ResetTimer();
         }
 
         //stops and resets click-on reminder timer everytime a tooltip that is a child of this timer is opened
@@ -194,6 +207,8 @@ namespace TeamMAsTD
             shouldStartClickReminderTimer = false;
 
             tooltipEnabler.EnableTooltipClickOnReminder(false);
+
+            CloseTooltipClickReminderForSelectedTooltips();
 
             ResetTimer();
         }
@@ -211,6 +226,8 @@ namespace TeamMAsTD
             hasATooltipBeenOpenedRecently = false;
 
             shouldStartClickReminderTimer = true;
+
+            ResetTimer();
         }
 
         private void ResetTimer()
@@ -218,6 +235,8 @@ namespace TeamMAsTD
             timeUntilNextReminder = Random.Range(timeUntilNextReminderMin, timeUntilNextReminderMax);
 
             currentTimeUntilNextReminder = 0.0f;
+
+            currentTimeToCloseReminder = 0.0f;
         }
 
         //to add to the "unitTooltipsToDisplayClickReminder" list during runtime in addition to in the editor pre-runtime.
@@ -230,7 +249,7 @@ namespace TeamMAsTD
             }
 
             //also add to children list if not already done so
-            RegisterTooltipEnablerAsChildOfReminderTimerOnly(tooltipEnabler);
+            RegisterTooltipEnablerInChildListOnly(tooltipEnabler);
         }
 
         //same as above function but for removing
@@ -245,7 +264,17 @@ namespace TeamMAsTD
             //(its just not displaying the reminder thats all)
         }
 
-        public void RegisterTooltipEnablerAsChildOfReminderTimerOnly(UnitInfoTooltipEnabler tooltipEnabler)
+        public void ClearTooltipsThatWillDisplayClickOnReminderList()
+        {
+            unitTooltipsToDisplayClickReminder.Clear();
+        }
+
+        public void PauseTimer(bool shouldPause)
+        {
+            timerIsPaused = shouldPause;
+        }
+
+        public void RegisterTooltipEnablerInChildListOnly(UnitInfoTooltipEnabler tooltipEnabler)
         {
             if (!childTooltipsToCheckForReminders.Contains(tooltipEnabler))
             {
@@ -255,16 +284,13 @@ namespace TeamMAsTD
             }
         }
 
-        public void DeregisterTooltipEnablerFromReminderTotally(UnitInfoTooltipEnabler tooltipEnabler)
+        private IEnumerator ShowClickOnReminderDelayCoroutine(float delaySec)
         {
-            if(unitTooltipsToDisplayClickReminder.Contains(tooltipEnabler)) unitTooltipsToDisplayClickReminder.Remove(tooltipEnabler);
+            yield return new WaitForSeconds(delaySec);
 
-            if (childTooltipsToCheckForReminders.Contains(tooltipEnabler)) 
-            { 
-                childTooltipsToCheckForReminders.Remove(tooltipEnabler);
+            DisplayTooltipClickReminderForSelectedTooltips();
 
-                tooltipEnabler.SetUnitTooltipClickReminderDisplayTimer(null);
-            }
+            yield break;
         }
     }
 }

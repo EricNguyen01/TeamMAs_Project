@@ -41,30 +41,24 @@ namespace TeamMAsTD
                 return;
             }
 
-            clickReminderDisplayTimer = GetComponentInParent<UnitInfoTooltipClickReminderDisplayTimer>();
-
-            if (clickReminderDisplayTimer != null) clickReminderDisplayTimer.RegisterTooltipEnablerAsChildOfReminderTimerOnly(this);
-        }
-
-        private void OnDisable()
-        {
-            if(clickReminderDisplayTimer != null) clickReminderDisplayTimer.DeregisterTooltipEnablerFromReminderTotally(this);
+            //This function must be in here to avoid execution conflicts with WaveVisitorsLookAhead.cs
+            //where WaveVisitorLookAhead has not finished initialized this visitor look ahead slot yet,
+            //hence, this slot tooltip could receive a null data
+            CreateAndInitUnitInfoTooltip();
         }
 
         private void Start()
         {
-            //This function must be in Start() to avoid execution conflicts with WaveVisitorsLookAhead.cs
-            //where WaveVisitorLookAhead has not finished initialized this visitor look ahead slot yet,
-            //hence, this slot tooltip could receive a null data
-            CreateAndInitUnitInfoTooltip();
-
-            EnableUnitInfoTooltipImage(false);
+            EnableUnitInfoTooltipImage(false, false);
 
             EnableTooltipClickOnReminder(false);
         }
 
         private void CreateAndInitUnitInfoTooltip()
         {
+            //if already created -> do nothing and exit
+            if (unitInfoTooltip != null) return;
+
             Vector2 tooltipSpawnPos;
 
             if (unitInfoTooltipSpawnTransformRef != null) tooltipSpawnPos = (Vector2)unitInfoTooltipSpawnTransformRef.position;
@@ -74,7 +68,7 @@ namespace TeamMAsTD
 
             unitInfoTooltip = tooltipGO.GetComponent<UnitInfoTooltip>();
 
-            unitInfoTooltip.InitializeUnitInfoTooltip(this, unitScriptableObjectToDisplayTooltip, Vector2.zero);
+            unitInfoTooltip.InitializeUnitInfoTooltip(this, unitScriptableObjectToDisplayTooltip);
         }
 
         public void UpdateUnitInfoTooltipDataFrom(UnitSO unitSO)
@@ -86,6 +80,8 @@ namespace TeamMAsTD
 
             //update SO data from external scripts/sources
             unitScriptableObjectToDisplayTooltip = unitSO;
+
+            if(unitInfoTooltip != null) unitInfoTooltip.InitializeUnitInfoTooltip(this, unitScriptableObjectToDisplayTooltip);
         }
 
         public void UnitInfoTooltipImageToggle()
@@ -96,7 +92,7 @@ namespace TeamMAsTD
             else EnableUnitInfoTooltipImage(false);
         }
 
-        public void EnableUnitInfoTooltipImage(bool enabled)
+        public void EnableUnitInfoTooltipImage(bool enabled, bool setTooltipClickReminderStatus = true)
         {
             if (unitInfoTooltip == null) return;
 
@@ -104,14 +100,20 @@ namespace TeamMAsTD
             {
                 unitInfoTooltip.EnableUnitInfoTooltipImage(true);
 
-                if (clickReminderDisplayTimer != null) clickReminderDisplayTimer.SetReminderInactiveAndStopTimerOnTooltipOpened(this);
+                if (clickReminderDisplayTimer != null && setTooltipClickReminderStatus) 
+                { 
+                    clickReminderDisplayTimer.SetReminderInactiveAndStopTimerOnTooltipOpened(this); 
+                }
 
                 return;
             }
 
             unitInfoTooltip.EnableUnitInfoTooltipImage(false);
 
-            if (clickReminderDisplayTimer != null) clickReminderDisplayTimer.StartClickOnReminderTimerOnTooltipClosed(this);
+            if (clickReminderDisplayTimer != null && setTooltipClickReminderStatus) 
+            { 
+                clickReminderDisplayTimer.StartClickOnReminderTimerOnTooltipClosed(this); 
+            }
         }
 
         public void EnableTooltipClickOnReminder(bool enabled)

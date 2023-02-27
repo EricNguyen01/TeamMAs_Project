@@ -13,7 +13,7 @@ namespace TeamMAsTD
 
         [SerializeField] private Image slotUIImage;
 
-        private UnitInfoTooltipEnabler unitInfoTooltipEnabler;
+        public UnitInfoTooltipEnabler unitInfoTooltipEnabler { get; private set; }
 
         private void Awake()
         {
@@ -83,6 +83,20 @@ namespace TeamMAsTD
             if (unitInfoTooltipEnabler == null) return;
 
             unitInfoTooltipEnabler.UpdateUnitInfoTooltipDataFrom(visitorSO);
+        }
+
+        public void RegisterThisSlotUnitTooltipToTooltipClickOnReminder(UnitInfoTooltipClickReminderDisplayTimer reminderTimer)
+        {
+            if(reminderTimer == null) return;
+
+            if(unitInfoTooltipEnabler == null)
+            {
+                unitInfoTooltipEnabler = GetComponent<UnitInfoTooltipEnabler>();
+
+                if (unitInfoTooltipEnabler == null) return;
+            }
+
+            reminderTimer.RegisterTooltipEnablerInChildListOnly(unitInfoTooltipEnabler);
         }
     }
 }

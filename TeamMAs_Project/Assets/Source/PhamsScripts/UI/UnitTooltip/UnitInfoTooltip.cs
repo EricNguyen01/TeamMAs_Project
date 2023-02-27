@@ -50,7 +50,7 @@ namespace TeamMAsTD
             if(tooltipClickOnReminderText != null) tooltipClickOnReminderAnimator = tooltipClickOnReminderText.GetComponent<Animator>();
         }
 
-        public void InitializeUnitInfoTooltip(UnitInfoTooltipEnabler tooltipEnablerSpawnedThis, UnitSO unitSO, Vector2 displayPos)
+        public void InitializeUnitInfoTooltip(UnitInfoTooltipEnabler tooltipEnablerSpawnedThis, UnitSO unitSO)
         {
             if(tooltipEnablerSpawnedThis == null)
             {
@@ -72,7 +72,10 @@ namespace TeamMAsTD
 
             unitScriptableObjectToDisplayTooltip = unitInfoTooltipEnablerSpawnedThisTooltip.unitScriptableObjectToDisplayTooltip;
 
-            tooltipWorldUIImage.sprite = unitScriptableObjectToDisplayTooltip.unitInfoTooltipImageSprite;
+            if (unitScriptableObjectToDisplayTooltip != null)
+            {
+                tooltipWorldUIImage.sprite = unitScriptableObjectToDisplayTooltip.unitInfoTooltipImageSprite;
+            }
 
             SetTooltipClickOnReminderTextAnimator(unitInfoTooltipEnablerSpawnedThisTooltip.clickReminderAnimOverride);
 
