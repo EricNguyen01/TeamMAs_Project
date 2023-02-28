@@ -24,6 +24,8 @@ namespace TeamMAsTD
 
         [field: SerializeField] public AnimatorOverrideController clickReminderAnimOverride { get; private set; }
 
+        [field: SerializeField] public bool autoEnableTooltipOnStart { get; private set; } = false;
+
         private PointerEventData pointerEventData;
 
         private UnitInfoTooltipClickReminderDisplayTimer clickReminderDisplayTimer;
@@ -49,7 +51,7 @@ namespace TeamMAsTD
 
         private void Start()
         {
-            EnableUnitInfoTooltipImage(false, false);
+            EnableUnitInfoTooltipImage(autoEnableTooltipOnStart, false);
 
             EnableTooltipClickOnReminder(false);
         }

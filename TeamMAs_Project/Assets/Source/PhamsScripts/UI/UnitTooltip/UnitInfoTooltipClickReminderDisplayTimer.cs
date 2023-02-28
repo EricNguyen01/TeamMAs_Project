@@ -284,8 +284,10 @@ namespace TeamMAsTD
             }
         }
 
-        private IEnumerator ShowClickOnReminderDelayCoroutine(float delaySec)
+        private IEnumerator ShowClickOnReminderDelayCoroutine(float delaySec = 1.0f)
         {
+            if (delaySec <= 0.0f) delaySec = 1.0f;
+
             yield return new WaitForSeconds(delaySec);
 
             DisplayTooltipClickReminderForSelectedTooltips();
