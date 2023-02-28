@@ -6,13 +6,13 @@ using UnityEngine;
 namespace TeamMAsTD
 {
     [DisallowMultipleComponent]
-    public class UnitInfoTooltipClickReminderDisplayTimer : MonoBehaviour
+    public class InfoTooltipClickReminderDisplayTimer : MonoBehaviour
     {
         [Header("Component Config")]
 
-        [SerializeField] private List<UnitInfoTooltipEnabler> unitTooltipsToDisplayClickReminder = new List<UnitInfoTooltipEnabler>();
+        [SerializeField] private List<InfoTooltipEnabler> tooltipsToDisplayClickReminder = new List<InfoTooltipEnabler>();
 
-        private List<UnitInfoTooltipEnabler> childTooltipsToCheckForReminders = new List<UnitInfoTooltipEnabler>();
+        private List<InfoTooltipEnabler> childTooltipsToCheckForReminders = new List<InfoTooltipEnabler>();
 
         [SerializeField] [Min(1.0f)] private float timeUntilNextReminderMin = 1000f;
 
@@ -68,21 +68,21 @@ namespace TeamMAsTD
 
         private bool HasValidSelectedAndChildrenTooltips()
         {
-            if (unitTooltipsToDisplayClickReminder == null || unitTooltipsToDisplayClickReminder.Count == 0) return false;
+            if (tooltipsToDisplayClickReminder == null || tooltipsToDisplayClickReminder.Count == 0) return false;
 
-            childTooltipsToCheckForReminders = GetComponentsInChildren<UnitInfoTooltipEnabler>(true).ToList();
+            childTooltipsToCheckForReminders = GetComponentsInChildren<InfoTooltipEnabler>(true).ToList();
 
             if (childTooltipsToCheckForReminders.Count == 0) return false;
 
             bool hasTooltipsThatAreNotChildren = false;
 
-            for (int i = 0; i < unitTooltipsToDisplayClickReminder.Count; i++)
+            for (int i = 0; i < tooltipsToDisplayClickReminder.Count; i++)
             {
-                if (childTooltipsToCheckForReminders.Contains(unitTooltipsToDisplayClickReminder[i])) continue;
+                if (childTooltipsToCheckForReminders.Contains(tooltipsToDisplayClickReminder[i])) continue;
 
                 hasTooltipsThatAreNotChildren = true;
 
-                unitTooltipsToDisplayClickReminder.RemoveAt(i);
+                tooltipsToDisplayClickReminder.RemoveAt(i);
             }
 
             if (hasTooltipsThatAreNotChildren)
@@ -93,7 +93,7 @@ namespace TeamMAsTD
                     "Make sure they are children of a reminder display timer component.");
             }
 
-            if (unitTooltipsToDisplayClickReminder.Count == 0) return false;
+            if (tooltipsToDisplayClickReminder.Count == 0) return false;
 
             return true;
         }
@@ -155,15 +155,15 @@ namespace TeamMAsTD
         //auto-closes all the selected click-on reminders after having displaying them for a certain amount of time (timeToCloseReminder var)
         public void CloseTooltipClickReminderForSelectedTooltips()
         {
-            if (unitTooltipsToDisplayClickReminder == null || unitTooltipsToDisplayClickReminder.Count == 0) return;
+            if (tooltipsToDisplayClickReminder == null || tooltipsToDisplayClickReminder.Count == 0) return;
 
-            for (int i = 0; i < unitTooltipsToDisplayClickReminder.Count; i++)
+            for (int i = 0; i < tooltipsToDisplayClickReminder.Count; i++)
             {
-                if (unitTooltipsToDisplayClickReminder[i] == null) continue;
+                if (tooltipsToDisplayClickReminder[i] == null) continue;
 
-                if (!unitTooltipsToDisplayClickReminder[i].gameObject.activeInHierarchy) continue;
+                if (!tooltipsToDisplayClickReminder[i].gameObject.activeInHierarchy) continue;
 
-                unitTooltipsToDisplayClickReminder[i].EnableTooltipClickOnReminder(false);
+                tooltipsToDisplayClickReminder[i].EnableTooltipClickOnReminder(false);
             }
 
             ResetTimer();
@@ -175,15 +175,15 @@ namespace TeamMAsTD
         //(timeUntilNextReminder var)
         public void DisplayTooltipClickReminderForSelectedTooltips()
         {
-            if (unitTooltipsToDisplayClickReminder == null || unitTooltipsToDisplayClickReminder.Count == 0) return;
+            if (tooltipsToDisplayClickReminder == null || tooltipsToDisplayClickReminder.Count == 0) return;
             
-            for(int i = 0; i < unitTooltipsToDisplayClickReminder.Count; i++)
+            for(int i = 0; i < tooltipsToDisplayClickReminder.Count; i++)
             {
-                if (unitTooltipsToDisplayClickReminder[i] == null) continue;
+                if (tooltipsToDisplayClickReminder[i] == null) continue;
 
-                if (!unitTooltipsToDisplayClickReminder[i].gameObject.activeInHierarchy) continue;
+                if (!tooltipsToDisplayClickReminder[i].gameObject.activeInHierarchy) continue;
 
-                unitTooltipsToDisplayClickReminder[i].EnableTooltipClickOnReminder(true);
+                tooltipsToDisplayClickReminder[i].EnableTooltipClickOnReminder(true);
             }
 
             //because we just started displaying tooltip click-on reminder -> should not start timer yet
@@ -196,7 +196,7 @@ namespace TeamMAsTD
         }
 
         //stops and resets click-on reminder timer everytime a tooltip that is a child of this timer is opened
-        public void SetReminderInactiveAndStopTimerOnTooltipOpened(UnitInfoTooltipEnabler tooltipEnabler)
+        public void SetReminderInactiveAndStopTimerOnTooltipOpened(InfoTooltipEnabler tooltipEnabler)
         {
             if(tooltipEnabler == null) return;
 
@@ -217,7 +217,7 @@ namespace TeamMAsTD
         //when a tooltip that is a child of this timer is closed -> timer will start
         //if the players open any tooltip that is a child of this timer within the timer (above function), it's reset
         //else if the timer is finished -> redisplay click-on reminder
-        public void StartClickOnReminderTimerOnTooltipClosed(UnitInfoTooltipEnabler tooltipEnabler)
+        public void StartClickOnReminderTimerOnTooltipClosed(InfoTooltipEnabler tooltipEnabler)
         {
             if (tooltipEnabler == null) return;
 
@@ -241,11 +241,11 @@ namespace TeamMAsTD
 
         //to add to the "unitTooltipsToDisplayClickReminder" list during runtime in addition to in the editor pre-runtime.
         //use this function in WaveVisitorLookAhead.cs to manage which recently updated LookAhead slot will get to display the reminder!
-        public void SetTooltipThatWillDisplayClickOnReminder(UnitInfoTooltipEnabler tooltipEnabler)
+        public void SetTooltipThatWillDisplayClickOnReminder(InfoTooltipEnabler tooltipEnabler)
         {
-            if (!unitTooltipsToDisplayClickReminder.Contains(tooltipEnabler))
+            if (!tooltipsToDisplayClickReminder.Contains(tooltipEnabler))
             {
-                unitTooltipsToDisplayClickReminder.Add(tooltipEnabler);
+                tooltipsToDisplayClickReminder.Add(tooltipEnabler);
             }
 
             //also add to children list if not already done so
@@ -253,11 +253,11 @@ namespace TeamMAsTD
         }
 
         //same as above function but for removing
-        public void RemoveTooltipThatWillDisplayClickOnReminder(UnitInfoTooltipEnabler tooltipEnabler)
+        public void RemoveTooltipThatWillDisplayClickOnReminder(InfoTooltipEnabler tooltipEnabler)
         {
-            if (unitTooltipsToDisplayClickReminder.Contains(tooltipEnabler))
+            if (tooltipsToDisplayClickReminder.Contains(tooltipEnabler))
             {
-                unitTooltipsToDisplayClickReminder.Remove(tooltipEnabler);
+                tooltipsToDisplayClickReminder.Remove(tooltipEnabler);
             }
 
             //dont remove from children list because we still need this tooltip enabler in children for checking the timer
@@ -266,7 +266,7 @@ namespace TeamMAsTD
 
         public void ClearTooltipsThatWillDisplayClickOnReminderList()
         {
-            unitTooltipsToDisplayClickReminder.Clear();
+            tooltipsToDisplayClickReminder.Clear();
         }
 
         public void PauseTimer(bool shouldPause)
@@ -274,7 +274,7 @@ namespace TeamMAsTD
             timerIsPaused = shouldPause;
         }
 
-        public void RegisterTooltipEnablerInChildListOnly(UnitInfoTooltipEnabler tooltipEnabler)
+        public void RegisterTooltipEnablerInChildListOnly(InfoTooltipEnabler tooltipEnabler)
         {
             if (!childTooltipsToCheckForReminders.Contains(tooltipEnabler))
             {

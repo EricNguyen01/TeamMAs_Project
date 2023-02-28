@@ -13,7 +13,7 @@ namespace TeamMAsTD
 
         [SerializeField] private Image slotUIImage;
 
-        public UnitInfoTooltipEnabler unitInfoTooltipEnabler { get; private set; }
+        public InfoTooltipEnabler unitInfoTooltipEnabler { get; private set; }
 
         private void Awake()
         {
@@ -27,7 +27,7 @@ namespace TeamMAsTD
                 Debug.LogWarning("Wave Visitor Types Look Ahead Slot: " + name + " is missing UI Image reference!");
             }
 
-            unitInfoTooltipEnabler = GetComponent<UnitInfoTooltipEnabler>();
+            unitInfoTooltipEnabler = GetComponent<InfoTooltipEnabler>();
         }
 
         public void UpdateVisitorTypeLookAheadSlot(VisitorUnitSO visitorUnitSO)
@@ -49,7 +49,7 @@ namespace TeamMAsTD
             //disable tooltip (in case it's opened) on visitor type look ahead slot is disabled
             if (unitInfoTooltipEnabler != null) 
             { 
-                unitInfoTooltipEnabler.EnableUnitInfoTooltipImage(false);
+                unitInfoTooltipEnabler.EnableInfoTooltipImage(false);
 
                 unitInfoTooltipEnabler.EnableTooltipClickOnReminder(false);
             }
@@ -82,16 +82,16 @@ namespace TeamMAsTD
         {
             if (unitInfoTooltipEnabler == null) return;
 
-            unitInfoTooltipEnabler.UpdateUnitInfoTooltipDataFrom(visitorSO);
+            unitInfoTooltipEnabler.UpdateInfoTooltipDataFrom(visitorSO);
         }
 
-        public void RegisterThisSlotUnitTooltipToTooltipClickOnReminder(UnitInfoTooltipClickReminderDisplayTimer reminderTimer)
+        public void RegisterThisSlotUnitTooltipToTooltipClickOnReminder(InfoTooltipClickReminderDisplayTimer reminderTimer)
         {
             if(reminderTimer == null) return;
 
             if(unitInfoTooltipEnabler == null)
             {
-                unitInfoTooltipEnabler = GetComponent<UnitInfoTooltipEnabler>();
+                unitInfoTooltipEnabler = GetComponent<InfoTooltipEnabler>();
 
                 if (unitInfoTooltipEnabler == null) return;
             }

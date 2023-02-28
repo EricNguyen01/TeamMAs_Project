@@ -118,9 +118,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <unitScriptableObjectToDisplayTooltip>k__BackingField: {fileID: 0}
-  unitInfoTooltipPrefab: {fileID: 5149056800383492733, guid: 4af3d5e4f2c382846ad109c19297ecaf, type: 3}
-  <unitInfoTooltipSpawnOffset>k__BackingField: {x: 0, y: 1.7}
-  clickReminderAnimOverride: {fileID: 0}
+  infoTooltipPrefab: {fileID: 5149056800383492733, guid: 4af3d5e4f2c382846ad109c19297ecaf, type: 3}
+  <infoTooltipSpawnTransformRef>k__BackingField: {fileID: 0}
+  <infoTooltipSpawnOffset>k__BackingField: {x: 0, y: 1.7}
+  <clickReminderAnimOverride>k__BackingField: {fileID: 0}
+  <autoEnableTooltipOnStart>k__BackingField: 0
 --- !u!114 &3979878922400640002
 MonoBehaviour:
   m_ObjectHideFlags: 0

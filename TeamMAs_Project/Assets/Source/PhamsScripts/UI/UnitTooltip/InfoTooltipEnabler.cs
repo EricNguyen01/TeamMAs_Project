@@ -8,19 +8,19 @@ using UnityEngine.EventSystems;
 namespace TeamMAsTD
 {
     [DisallowMultipleComponent]
-    public class UnitInfoTooltipEnabler : MonoBehaviour, IPointerDownHandler, IDeselectHandler
+    public class InfoTooltipEnabler : MonoBehaviour, IPointerDownHandler, IDeselectHandler
     {
         [field: Header("Required Components")]
 
         [field: SerializeField] public UnitSO unitScriptableObjectToDisplayTooltip { get; private set; }
 
-        [SerializeField] private UnitInfoTooltip unitInfoTooltipPrefab;
+        [SerializeField] private InfoTooltip infoTooltipPrefab;
 
-        private UnitInfoTooltip unitInfoTooltip;
+        private InfoTooltip infoTooltip;
 
-        [field: SerializeField] public Transform unitInfoTooltipSpawnTransformRef { get; private set; }
+        [field: SerializeField] public Transform infoTooltipSpawnTransformRef { get; private set; }
 
-        [field: SerializeField] public Vector2 unitInfoTooltipSpawnOffset { get; private set; }
+        [field: SerializeField] public Vector2 infoTooltipSpawnOffset { get; private set; }
 
         [field: SerializeField] public AnimatorOverrideController clickReminderAnimOverride { get; private set; }
 
@@ -28,7 +28,7 @@ namespace TeamMAsTD
 
         private PointerEventData pointerEventData;
 
-        public UnitInfoTooltipClickReminderDisplayTimer clickReminderDisplayTimer { get; private set; }
+        public InfoTooltipClickReminderDisplayTimer clickReminderDisplayTimer { get; private set; }
 
         private void OnEnable()
         {
@@ -46,61 +46,61 @@ namespace TeamMAsTD
             //This function must be in here to avoid execution conflicts with WaveVisitorsLookAhead.cs
             //where WaveVisitorLookAhead has not finished initialized this visitor look ahead slot yet,
             //hence, this slot tooltip could receive a null data
-            CreateAndInitUnitInfoTooltip();
+            CreateAndInitInfoTooltip();
         }
 
         private void Start()
         {
-            EnableUnitInfoTooltipImage(autoEnableTooltipOnStart, false);
+            EnableInfoTooltipImage(autoEnableTooltipOnStart, false);
 
             EnableTooltipClickOnReminder(false);
         }
 
-        private void CreateAndInitUnitInfoTooltip()
+        private void CreateAndInitInfoTooltip()
         {
             //if already created -> do nothing and exit
-            if (unitInfoTooltip != null) return;
+            if (infoTooltip != null) return;
 
             Vector2 tooltipSpawnPos;
 
-            if (unitInfoTooltipSpawnTransformRef != null) tooltipSpawnPos = (Vector2)unitInfoTooltipSpawnTransformRef.position;
-            else tooltipSpawnPos = (Vector2)transform.position + unitInfoTooltipSpawnOffset;
+            if (infoTooltipSpawnTransformRef != null) tooltipSpawnPos = (Vector2)infoTooltipSpawnTransformRef.position;
+            else tooltipSpawnPos = (Vector2)transform.position + infoTooltipSpawnOffset;
 
-            GameObject tooltipGO = Instantiate(unitInfoTooltipPrefab.gameObject, tooltipSpawnPos, Quaternion.identity);
+            GameObject tooltipGO = Instantiate(infoTooltipPrefab.gameObject, tooltipSpawnPos, Quaternion.identity);
 
-            unitInfoTooltip = tooltipGO.GetComponent<UnitInfoTooltip>();
+            infoTooltip = tooltipGO.GetComponent<InfoTooltip>();
 
-            unitInfoTooltip.InitializeUnitInfoTooltip(this, unitScriptableObjectToDisplayTooltip);
+            infoTooltip.InitializeInfoTooltip(this, unitScriptableObjectToDisplayTooltip);
         }
 
-        public void UpdateUnitInfoTooltipDataFrom(UnitSO unitSO)
+        public void UpdateInfoTooltipDataFrom(UnitSO unitSO)
         {
             //disable tooltip and tooltip click reminder on update
-            EnableUnitInfoTooltipImage(false);
+            EnableInfoTooltipImage(false);
 
             EnableTooltipClickOnReminder(false);
 
             //update SO data from external scripts/sources
             unitScriptableObjectToDisplayTooltip = unitSO;
 
-            if(unitInfoTooltip != null) unitInfoTooltip.InitializeUnitInfoTooltip(this, unitScriptableObjectToDisplayTooltip);
+            if(infoTooltip != null) infoTooltip.InitializeInfoTooltip(this, unitScriptableObjectToDisplayTooltip);
         }
 
-        public void UnitInfoTooltipImageToggle()
+        public void InfoTooltipImageToggle()
         {
-            if (unitInfoTooltip == null) return;
+            if (infoTooltip == null) return;
 
-            if (!unitInfoTooltip.isTooltipActive) EnableUnitInfoTooltipImage(true);
-            else EnableUnitInfoTooltipImage(false);
+            if (!infoTooltip.isTooltipActive) EnableInfoTooltipImage(true);
+            else EnableInfoTooltipImage(false);
         }
 
-        public void EnableUnitInfoTooltipImage(bool enabled, bool setTooltipClickReminderStatus = true)
+        public void EnableInfoTooltipImage(bool enabled, bool setTooltipClickReminderStatus = true)
         {
-            if (unitInfoTooltip == null) return;
+            if (infoTooltip == null) return;
 
             if (enabled)
             {
-                unitInfoTooltip.EnableUnitInfoTooltipImage(true, setTooltipClickReminderStatus);
+                infoTooltip.EnableInfoTooltipImage(true, setTooltipClickReminderStatus);
 
                 /*The if below has been moved to UnitInfoTooltip.cs' EnableUnitInfoTooltipImage()
                 if (clickReminderDisplayTimer != null && setTooltipClickReminderStatus) 
@@ -111,7 +111,7 @@ namespace TeamMAsTD
                 return;
             }
 
-            unitInfoTooltip.EnableUnitInfoTooltipImage(false, setTooltipClickReminderStatus);
+            infoTooltip.EnableInfoTooltipImage(false, setTooltipClickReminderStatus);
 
             /*The if below has been moved to UnitInfoTooltip.cs' EnableUnitInfoTooltipImage()
             if (clickReminderDisplayTimer != null && setTooltipClickReminderStatus) 
@@ -122,19 +122,19 @@ namespace TeamMAsTD
 
         public void EnableTooltipClickOnReminder(bool enabled)
         {
-            if (unitInfoTooltip == null) return;
+            if (infoTooltip == null) return;
 
             if (enabled)
             {
-                unitInfoTooltip.EnableTooltipClickOnReminder(true);
+                infoTooltip.EnableTooltipClickOnReminder(true);
 
                 return;
             }
 
-            unitInfoTooltip.EnableTooltipClickOnReminder(false);
+            infoTooltip.EnableTooltipClickOnReminder(false);
         }
 
-        public void SetUnitTooltipClickReminderDisplayTimer(UnitInfoTooltipClickReminderDisplayTimer clickReminderTimer)
+        public void SetUnitTooltipClickReminderDisplayTimer(InfoTooltipClickReminderDisplayTimer clickReminderTimer)
         {
             clickReminderDisplayTimer = clickReminderTimer;
         }
@@ -145,7 +145,7 @@ namespace TeamMAsTD
         {
             pointerEventData = eventData;
 
-            UnitInfoTooltipImageToggle();
+            InfoTooltipImageToggle();
 
             //set the selected game object in the current event system so that
             //when the event system detects a newly selected game obj whether null or not,
@@ -163,7 +163,7 @@ namespace TeamMAsTD
 
             if (pointerEventData.pointerEnter == null || pointerEventData.pointerEnter.gameObject == null || pointerEventData.pointerEnter.gameObject != gameObject)
             {
-                EnableUnitInfoTooltipImage(false);
+                EnableInfoTooltipImage(false);
             }
 
             //after OnDeselect is called, EventSystem's selected object is set to null again so we don't have to reset it manually.

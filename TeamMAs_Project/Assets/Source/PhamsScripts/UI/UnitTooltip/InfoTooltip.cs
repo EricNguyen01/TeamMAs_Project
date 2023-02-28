@@ -7,7 +7,7 @@ using UnityEngine.UI;
 namespace TeamMAsTD
 {
     [DisallowMultipleComponent]
-    public class UnitInfoTooltip : MonoBehaviour
+    public class InfoTooltip : MonoBehaviour
     {
         [Header("Required Components")]
 
@@ -19,11 +19,11 @@ namespace TeamMAsTD
 
         [SerializeField] private Camera worldUICam;
 
-        private UnitInfoTooltipEnabler unitInfoTooltipEnablerSpawnedThisTooltip;
+        private InfoTooltipEnabler infoTooltipEnablerSpawnedThisTooltip;
 
         private UnitSO unitScriptableObjectToDisplayTooltip;
 
-        private Canvas unitInfoTooltipCanvas;
+        private Canvas infoTooltipCanvas;
 
         private Animator tooltipClickOnReminderAnimator;
 
@@ -42,15 +42,15 @@ namespace TeamMAsTD
                 return;
             }
 
-            unitInfoTooltipCanvas = GetComponent<Canvas>();
+            infoTooltipCanvas = GetComponent<Canvas>();
 
-            if (worldUICam != null) unitInfoTooltipCanvas.worldCamera = worldUICam;
-            else unitInfoTooltipCanvas.worldCamera = Camera.main;
+            if (worldUICam != null) infoTooltipCanvas.worldCamera = worldUICam;
+            else infoTooltipCanvas.worldCamera = Camera.main;
 
             if(tooltipClickOnReminderText != null) tooltipClickOnReminderAnimator = tooltipClickOnReminderText.GetComponent<Animator>();
         }
 
-        public void InitializeUnitInfoTooltip(UnitInfoTooltipEnabler tooltipEnablerSpawnedThis, UnitSO unitSO)
+        public void InitializeInfoTooltip(InfoTooltipEnabler tooltipEnablerSpawnedThis, UnitSO unitSO)
         {
             if(tooltipEnablerSpawnedThis == null)
             {
@@ -59,33 +59,33 @@ namespace TeamMAsTD
                 return;
             }
 
-            unitInfoTooltipEnablerSpawnedThisTooltip = tooltipEnablerSpawnedThis;
+            infoTooltipEnablerSpawnedThisTooltip = tooltipEnablerSpawnedThis;
 
             UpdateTooltipDisplayDataFromTooltipEnabler();
         }
 
         private void UpdateTooltipDisplayDataFromTooltipEnabler()
         {
-            if (unitInfoTooltipEnablerSpawnedThisTooltip == null) return;
+            if (infoTooltipEnablerSpawnedThisTooltip == null) return;
 
             if (tooltipWorldUIImage == null) return;
 
-            unitScriptableObjectToDisplayTooltip = unitInfoTooltipEnablerSpawnedThisTooltip.unitScriptableObjectToDisplayTooltip;
+            unitScriptableObjectToDisplayTooltip = infoTooltipEnablerSpawnedThisTooltip.unitScriptableObjectToDisplayTooltip;
 
             if (unitScriptableObjectToDisplayTooltip != null)
             {
                 tooltipWorldUIImage.sprite = unitScriptableObjectToDisplayTooltip.unitInfoTooltipImageSprite;
             }
 
-            SetTooltipClickOnReminderTextAnimator(unitInfoTooltipEnablerSpawnedThisTooltip.clickReminderAnimOverride);
+            SetTooltipClickOnReminderTextAnimator(infoTooltipEnablerSpawnedThisTooltip.clickReminderAnimOverride);
 
-            if(unitInfoTooltipEnablerSpawnedThisTooltip.unitInfoTooltipSpawnTransformRef != null)
+            if(infoTooltipEnablerSpawnedThisTooltip.infoTooltipSpawnTransformRef != null)
             {
-                transform.position = (Vector2)unitInfoTooltipEnablerSpawnedThisTooltip.unitInfoTooltipSpawnTransformRef.position;
+                transform.position = (Vector2)infoTooltipEnablerSpawnedThisTooltip.infoTooltipSpawnTransformRef.position;
             }
             else
             {
-                transform.position = (Vector2)unitInfoTooltipEnablerSpawnedThisTooltip.transform.position + unitInfoTooltipEnablerSpawnedThisTooltip.unitInfoTooltipSpawnOffset;
+                transform.position = (Vector2)infoTooltipEnablerSpawnedThisTooltip.transform.position + infoTooltipEnablerSpawnedThisTooltip.infoTooltipSpawnOffset;
             }
         }
 
@@ -100,11 +100,16 @@ namespace TeamMAsTD
             tooltipClickOnReminderAnimator.runtimeAnimatorController = animOverrideController;
         }
 
-        public void EnableUnitInfoTooltipImage(bool enabled, bool setTooltipClickReminderStatus = true)
+        public void EnableIntoTooltipImageFromButton(bool enabled)
+        {
+            EnableInfoTooltipImage(enabled);
+        }
+
+        public void EnableInfoTooltipImage(bool enabled, bool setTooltipClickReminderStatus = true)
         {
             if (tooltipWorldUIImage == null) return;
 
-            if (unitInfoTooltipEnablerSpawnedThisTooltip == null) return;
+            if (infoTooltipEnablerSpawnedThisTooltip == null) return;
 
             if (enabled)
             {
@@ -114,9 +119,9 @@ namespace TeamMAsTD
 
                 if (!tooltipWorldUIImage.gameObject.activeInHierarchy) tooltipWorldUIImage.gameObject.SetActive(true);
 
-                if (unitInfoTooltipEnablerSpawnedThisTooltip.clickReminderDisplayTimer != null && setTooltipClickReminderStatus)
+                if (infoTooltipEnablerSpawnedThisTooltip.clickReminderDisplayTimer != null && setTooltipClickReminderStatus)
                 {
-                    unitInfoTooltipEnablerSpawnedThisTooltip.clickReminderDisplayTimer.SetReminderInactiveAndStopTimerOnTooltipOpened(unitInfoTooltipEnablerSpawnedThisTooltip);
+                    infoTooltipEnablerSpawnedThisTooltip.clickReminderDisplayTimer.SetReminderInactiveAndStopTimerOnTooltipOpened(infoTooltipEnablerSpawnedThisTooltip);
                 }
 
                 return;
@@ -126,9 +131,9 @@ namespace TeamMAsTD
 
             if (tooltipWorldUIImage.gameObject.activeInHierarchy) tooltipWorldUIImage.gameObject.SetActive(false);
 
-            if (unitInfoTooltipEnablerSpawnedThisTooltip.clickReminderDisplayTimer != null && setTooltipClickReminderStatus)
+            if (infoTooltipEnablerSpawnedThisTooltip.clickReminderDisplayTimer != null && setTooltipClickReminderStatus)
             {
-                unitInfoTooltipEnablerSpawnedThisTooltip.clickReminderDisplayTimer.StartClickOnReminderTimerOnTooltipClosed(unitInfoTooltipEnablerSpawnedThisTooltip);
+                infoTooltipEnablerSpawnedThisTooltip.clickReminderDisplayTimer.StartClickOnReminderTimerOnTooltipClosed(infoTooltipEnablerSpawnedThisTooltip);
             }
         }
 

@@ -18,7 +18,7 @@ namespace TeamMAsTD
 
         private List<WaveVisitorTypesLookAheadSlot> waveVisitorTypesLookAheadSlotsList = new List<WaveVisitorTypesLookAheadSlot>();
 
-        private UnitInfoTooltipClickReminderDisplayTimer unitTooltipClickOnReminderTimer;
+        private InfoTooltipClickReminderDisplayTimer tooltipClickOnReminderTimer;
 
         private int currentWave = 0;
 
@@ -53,11 +53,11 @@ namespace TeamMAsTD
                 return;
             }
 
-            unitTooltipClickOnReminderTimer = GetComponent<UnitInfoTooltipClickReminderDisplayTimer>();
+            tooltipClickOnReminderTimer = GetComponent<InfoTooltipClickReminderDisplayTimer>();
 
-            if(unitTooltipClickOnReminderTimer == null)
+            if(tooltipClickOnReminderTimer == null)
             {
-                unitTooltipClickOnReminderTimer = GetComponentInChildren<UnitInfoTooltipClickReminderDisplayTimer>();
+                tooltipClickOnReminderTimer = GetComponentInChildren<InfoTooltipClickReminderDisplayTimer>();
             }
         }
 
@@ -122,7 +122,7 @@ namespace TeamMAsTD
 
             visitorLookAheadSlotScript.UpdateVisitorTypeLookAheadSlot(visitorSO);
 
-            visitorLookAheadSlotScript.RegisterThisSlotUnitTooltipToTooltipClickOnReminder(unitTooltipClickOnReminderTimer);
+            visitorLookAheadSlotScript.RegisterThisSlotUnitTooltipToTooltipClickOnReminder(tooltipClickOnReminderTimer);
 
             waveVisitorTypesLookAheadSlotsList.Add(visitorLookAheadSlotScript);
 
@@ -240,9 +240,9 @@ namespace TeamMAsTD
             SetActiveAllLookAheadSlot(false);
 
             //close any active visitor type tooltip click-on reminder on updating visitor look ahead slots during rain
-            if(unitTooltipClickOnReminderTimer != null) unitTooltipClickOnReminderTimer.CloseTooltipClickReminderForSelectedTooltips();
+            if(tooltipClickOnReminderTimer != null) tooltipClickOnReminderTimer.CloseTooltipClickReminderForSelectedTooltips();
 
-            if (unitTooltipClickOnReminderTimer != null) unitTooltipClickOnReminderTimer.PauseTimer(true);
+            if (tooltipClickOnReminderTimer != null) tooltipClickOnReminderTimer.PauseTimer(true);
 
             yield return new WaitUntil(() => hasFinishedRaining);
 
@@ -307,7 +307,7 @@ namespace TeamMAsTD
 
         private void SetVisitorLookAheadSlotClickOnReminderTimerOnSlotsUpdated()
         {
-            if (unitTooltipClickOnReminderTimer == null) return;
+            if (tooltipClickOnReminderTimer == null) return;
 
             //Debug.Log("VisitorLookAhead Tooltip Reminder not null!");
 
@@ -315,7 +315,7 @@ namespace TeamMAsTD
 
             //Debug.Log("VisitorLookAhead slots list not null!");
 
-            unitTooltipClickOnReminderTimer.ClearTooltipsThatWillDisplayClickOnReminderList();
+            tooltipClickOnReminderTimer.ClearTooltipsThatWillDisplayClickOnReminderList();
 
             bool hasGottenFirstValidSlot = false;
 
@@ -334,14 +334,14 @@ namespace TeamMAsTD
 
                 hasGottenFirstValidSlot = true;
 
-                unitTooltipClickOnReminderTimer.SetTooltipThatWillDisplayClickOnReminder(waveVisitorTypesLookAheadSlotsList[i].unitInfoTooltipEnabler);
+                tooltipClickOnReminderTimer.SetTooltipThatWillDisplayClickOnReminder(waveVisitorTypesLookAheadSlotsList[i].unitInfoTooltipEnabler);
 
                 //Debug.Log("Visitor Type Slot Tooltip reminder is set!");
 
                 break;
             }
 
-            if (hasGottenFirstValidSlot) unitTooltipClickOnReminderTimer.PauseTimer(false);
+            if (hasGottenFirstValidSlot) tooltipClickOnReminderTimer.PauseTimer(false);
         }
     }
 }
