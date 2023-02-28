@@ -100,7 +100,7 @@ namespace TeamMAsTD
             tooltipClickOnReminderAnimator.runtimeAnimatorController = animOverrideController;
         }
 
-        public void EnableUnitInfoTooltipImage(bool enabled)
+        public void EnableUnitInfoTooltipImage(bool enabled, bool setTooltipClickReminderStatus = true)
         {
             if (tooltipWorldUIImage == null) return;
 
@@ -114,12 +114,22 @@ namespace TeamMAsTD
 
                 if (!tooltipWorldUIImage.gameObject.activeInHierarchy) tooltipWorldUIImage.gameObject.SetActive(true);
 
+                if (unitInfoTooltipEnablerSpawnedThisTooltip.clickReminderDisplayTimer != null && setTooltipClickReminderStatus)
+                {
+                    unitInfoTooltipEnablerSpawnedThisTooltip.clickReminderDisplayTimer.SetReminderInactiveAndStopTimerOnTooltipOpened(unitInfoTooltipEnablerSpawnedThisTooltip);
+                }
+
                 return;
             }
 
             isTooltipActive = false;
 
             if (tooltipWorldUIImage.gameObject.activeInHierarchy) tooltipWorldUIImage.gameObject.SetActive(false);
+
+            if (unitInfoTooltipEnablerSpawnedThisTooltip.clickReminderDisplayTimer != null && setTooltipClickReminderStatus)
+            {
+                unitInfoTooltipEnablerSpawnedThisTooltip.clickReminderDisplayTimer.StartClickOnReminderTimerOnTooltipClosed(unitInfoTooltipEnablerSpawnedThisTooltip);
+            }
         }
 
         public void EnableTooltipClickOnReminder(bool enabled)

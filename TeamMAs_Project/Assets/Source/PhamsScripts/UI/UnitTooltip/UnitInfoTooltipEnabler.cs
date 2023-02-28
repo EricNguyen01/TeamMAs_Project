@@ -28,7 +28,7 @@ namespace TeamMAsTD
 
         private PointerEventData pointerEventData;
 
-        private UnitInfoTooltipClickReminderDisplayTimer clickReminderDisplayTimer;
+        public UnitInfoTooltipClickReminderDisplayTimer clickReminderDisplayTimer { get; private set; }
 
         private void OnEnable()
         {
@@ -100,22 +100,24 @@ namespace TeamMAsTD
 
             if (enabled)
             {
-                unitInfoTooltip.EnableUnitInfoTooltipImage(true);
+                unitInfoTooltip.EnableUnitInfoTooltipImage(true, setTooltipClickReminderStatus);
 
+                /*The if below has been moved to UnitInfoTooltip.cs' EnableUnitInfoTooltipImage()
                 if (clickReminderDisplayTimer != null && setTooltipClickReminderStatus) 
                 { 
                     clickReminderDisplayTimer.SetReminderInactiveAndStopTimerOnTooltipOpened(this); 
-                }
+                }*/
 
                 return;
             }
 
-            unitInfoTooltip.EnableUnitInfoTooltipImage(false);
+            unitInfoTooltip.EnableUnitInfoTooltipImage(false, setTooltipClickReminderStatus);
 
+            /*The if below has been moved to UnitInfoTooltip.cs' EnableUnitInfoTooltipImage()
             if (clickReminderDisplayTimer != null && setTooltipClickReminderStatus) 
             { 
                 clickReminderDisplayTimer.StartClickOnReminderTimerOnTooltipClosed(this); 
-            }
+            }*/
         }
 
         public void EnableTooltipClickOnReminder(bool enabled)
