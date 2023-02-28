@@ -1213,10 +1213,6 @@ PrefabInstance:
       propertyPath: m_AnchorMin.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4037210357746051912, guid: a8befa3fb9194844db1b9863b01669ef, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0.1329956
-      objectReference: {fileID: 0}
     - target: {fileID: 6433098137989424551, guid: a8befa3fb9194844db1b9863b01669ef, type: 3}
       propertyPath: m_fontSize
       value: 33
@@ -1245,10 +1241,6 @@ PrefabInstance:
       propertyPath: m_sharedMaterial
       value: 
       objectReference: {fileID: -244629392850006900, guid: 5c95bc2a72192a64bb719010a14b3f77, type: 2}
-    - target: {fileID: 6433098137989424551, guid: a8befa3fb9194844db1b9863b01669ef, type: 3}
-      propertyPath: m_enableAutoSizing
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6433098137989424551, guid: a8befa3fb9194844db1b9863b01669ef, type: 3}
       propertyPath: m_fontColor32.rgba
       value: 4279911370

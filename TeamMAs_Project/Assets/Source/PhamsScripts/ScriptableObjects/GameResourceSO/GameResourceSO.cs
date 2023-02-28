@@ -12,8 +12,15 @@ namespace TeamMAsTD
     public class GameResourceSO : ScriptableObject
     {
         [field: SerializeField] public string resourceName { get; private set; }
+
+        [field: SerializeField] [field: Tooltip("The lowest possible amount of this resource")] 
+        public float resourceAmountBase { get; private set; } = 0.0f;
+
         [field: SerializeField] [field: Min(0)] public float resourceAmount { get; private set; }
-        [field: SerializeField] [field: Min(0)] public float resourceAmountCap { get; private set; }
+        [field: SerializeField]
+        [field: Tooltip("The highest possible amount of this resource. If value is 0, this resource has an infinite cap.")]
+        [field: Min(0)] 
+        public float resourceAmountCap { get; private set; }
 
         //This event is sub by GameResourceUI.cs to update the UI display of resource amount
         public static event System.Action<GameResourceSO> OnResourceAmountUpdated;
@@ -73,9 +80,9 @@ namespace TeamMAsTD
         protected virtual void CheckResourceAmountMinMaxReached()
         {
             //if resource amount below 0 -> set = 0
-            if(resourceAmount < 0.0f)
+            if(resourceAmount < resourceAmountBase)
             {
-                resourceAmount = 0.0f;
+                resourceAmount = resourceAmountBase;
                 return;
             }
 

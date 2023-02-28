@@ -12,7 +12,7 @@ namespace TeamMAsTD
     {
         [Header("Game Resource ScriptableObject Data")]
 
-        [SerializeField] private GameResourceSO gameResourceSO;
+        [SerializeField] protected GameResourceSO gameResourceSO;
 
         [Header("Game Resource UI Components")]
 
@@ -24,15 +24,15 @@ namespace TeamMAsTD
 
         [Header("Game Resource Stat Popup Components")]
 
-        [SerializeField] private StatPopupSpawner gameResourceUIStatPopupSpawner;
+        [SerializeField] protected StatPopupSpawner gameResourceUIStatPopupSpawner;
 
-        private int currentResourceAmount;
+        protected float currentResourceAmount;
 
         [Header("Debug Section")]
 
-        [SerializeField] private bool showDebugAndErrorLog = false;
+        [SerializeField] protected bool showDebugAndErrorLog = false;
 
-        private void Awake()
+        protected virtual void Awake()
         {
             if(gameResourceSO == null)
             {
@@ -43,26 +43,26 @@ namespace TeamMAsTD
                 return;
             }
 
-            currentResourceAmount = Mathf.RoundToInt(gameResourceSO.resourceAmount);
+            currentResourceAmount = gameResourceSO.resourceAmount;
 
             DisplayResourceNameText();
 
             DisplayResourceAmountText(gameResourceSO);
         }
 
-        private void OnEnable()
+        protected virtual void OnEnable()
         {
             GameResourceSO.OnResourceAmountUpdated += GameResourceUpdateStatPopupOnUI;
             GameResourceSO.OnResourceAmountUpdated += DisplayResourceAmountText;
         }
 
-        private void OnDisable()
+        protected virtual void OnDisable()
         {
             GameResourceSO.OnResourceAmountUpdated -= GameResourceUpdateStatPopupOnUI;
             GameResourceSO.OnResourceAmountUpdated -= DisplayResourceAmountText;
         }
 
-        public void DisplayResourceNameText()
+        public virtual void DisplayResourceNameText()
         {
             if (gameResourceSO == null) return;
 
@@ -76,7 +76,7 @@ namespace TeamMAsTD
             resourceNameText.text = gameResourceSO.resourceName;
         }
 
-        public void DisplayResourceAmountText(GameResourceSO gameResourceSO)
+        public virtual void DisplayResourceAmountText(GameResourceSO gameResourceSO)
         {
             if (this.gameResourceSO == null || gameResourceSO == null) return;
 
@@ -99,7 +99,7 @@ namespace TeamMAsTD
             }
         }
 
-        private void GameResourceUpdateStatPopupOnUI(GameResourceSO gameResourceSO)
+        protected virtual void GameResourceUpdateStatPopupOnUI(GameResourceSO gameResourceSO)
         {
             if (gameResourceUIStatPopupSpawner == null) return;
 
@@ -107,21 +107,21 @@ namespace TeamMAsTD
 
             if (this.gameResourceSO != gameResourceSO) return;
 
-            int roundedUpdatedResourceAmount = Mathf.RoundToInt(gameResourceSO.resourceAmount);
+            float updatedResourceAmount = gameResourceSO.resourceAmount;
 
-            if (roundedUpdatedResourceAmount == currentResourceAmount) return;
+            if (updatedResourceAmount == currentResourceAmount || Mathf.Abs(updatedResourceAmount - currentResourceAmount) <= Mathf.Epsilon) return;
 
-            if(roundedUpdatedResourceAmount > currentResourceAmount)
+            if(updatedResourceAmount > currentResourceAmount)
             {
-                gameResourceUIStatPopupSpawner.PopUp(null, "+" + (roundedUpdatedResourceAmount - currentResourceAmount).ToString(), true);
+                gameResourceUIStatPopupSpawner.PopUp(null, "+" + (updatedResourceAmount - currentResourceAmount).ToString(), true);
             }
 
-            if(roundedUpdatedResourceAmount < currentResourceAmount)
+            if(updatedResourceAmount < currentResourceAmount)
             {
-                gameResourceUIStatPopupSpawner.PopUp(null, "-" + (currentResourceAmount - roundedUpdatedResourceAmount).ToString(), false);
+                gameResourceUIStatPopupSpawner.PopUp(null, "-" + (currentResourceAmount - updatedResourceAmount).ToString(), false);
             }
 
-            currentResourceAmount = roundedUpdatedResourceAmount;
+            currentResourceAmount = updatedResourceAmount;
         }
     }
 }

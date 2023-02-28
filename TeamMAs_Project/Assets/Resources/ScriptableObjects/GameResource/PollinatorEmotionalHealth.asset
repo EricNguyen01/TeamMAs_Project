@@ -10,10 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f35030280ab18644fbf8482a86bb44fd, type: 3}
-  m_Name: EmotionalHealth
+  m_Name: PollinatorEmotionalHealth
   m_EditorClassIdentifier: 
-  <resourceName>k__BackingField: Emotional Health
-  <resourceAmount>k__BackingField: 5
-  <resourceAmountCap>k__BackingField: 5
-  <totalBaseHealthIncreaseOnWaveEnd>k__BackingField: 1
-  <healthHealedAfterBossWave>k__BackingField: 5
+  <resourceName>k__BackingField: PollinatorEmotionalHealth
+  <resourceAmount>k__BackingField: 50
+  <resourceAmountCap>k__BackingField: 100
+  <visitorTypeAffectingThisHealth>k__BackingField: 2

@@ -65342,6 +65342,14 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -12.630005
       objectReference: {fileID: 0}
+    - target: {fileID: 1972745749921449660, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
+      propertyPath: m_fontSize
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2199127071567654328, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2199127071567654328, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
       propertyPath: gameResourceUIStatPopupSpawner
       value: 
@@ -65562,6 +65570,10 @@ PrefabInstance:
       propertyPath: waveSpawnerToLookAhead
       value: 
       objectReference: {fileID: 7007502426730147584}
+    - target: {fileID: 8800420754615683155, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8832401153954520555, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0

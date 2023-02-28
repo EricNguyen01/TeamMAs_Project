@@ -249,6 +249,7 @@ namespace TeamMAsTD
             waveTimerStartTime = 0.0f; waveTimerEndTime = 0.0f;
         }
 
+        /*This function is DEPRACATED!!!
         private void HealEmotionalHealthAfterBossWave(WaveSO waveSO)//parameter is waveSO of the wave that just finished.
         {
             if (waveSO.visitorTypesToSpawnThisWave == null || waveSO.visitorTypesToSpawnThisWave.Length == 0) return;
@@ -278,8 +279,9 @@ namespace TeamMAsTD
                 //heal up amount according to EmotionalHealthSO's health healed after boss wave data
                 GameResource.gameResourceInstance.emotionalHealthSO.AddResourceAmount(GameResource.gameResourceInstance.emotionalHealthSO.healthHealedAfterBossWave);
             }
-        }
+        }*/
 
+        /*This function is DEPRACATED!!!
         private void IncreaseTotalBaseEmotionalHealth()
         {
             //check for existing emotional health game resource
@@ -300,7 +302,7 @@ namespace TeamMAsTD
 
                 GameResource.gameResourceInstance.emotionalHealthSO.IncreaseResourceAmountCap(GameResource.gameResourceInstance.emotionalHealthSO.totalBaseHealthIncreaseOnWaveEnd, false);
             }
-        }
+        }*/
 
         private void DropCoinsOnWaveEnded(WaveSO waveJustEnded)
         {
@@ -358,12 +360,13 @@ namespace TeamMAsTD
                 OnWaveFinished?.Invoke(this, waveNum, hasOtherOngoingWaves);
 
                 //process emotional health change if no other waves from other WaveSpawner are currently running
-                if (!hasOtherOngoingWaves)
+                //DEPRACATED!!!
+                /*if (!hasOtherOngoingWaves)
                 {
                     IncreaseTotalBaseEmotionalHealth();
 
                     HealEmotionalHealthAfterBossWave(waveSOList[waveNum]);
-                }
+                }*/
 
                 if (incrementWaveOnFinished) currentWave++;
             }

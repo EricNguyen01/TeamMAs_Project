@@ -19,6 +19,8 @@ namespace TeamMAsTD
         [Tooltip("Water to full for each plant.")]
         private bool waterAllBarsOnEachPlant = false;
 
+        [SerializeField] private string waterFullMessage;
+
         [Header("Required Components")]
 
         [SerializeField] private StatPopupSpawner insufficientFundToWaterAllPopupPrefab;
@@ -143,6 +145,14 @@ namespace TeamMAsTD
 
         private void DisplayWaterAllCostText(int waterAllCosts)
         {
+            if(waterAllCosts <= 0)
+            {
+                if(!string.IsNullOrEmpty(waterFullMessage)) waterAllCostText.text = waterFullMessage;
+                else waterAllCostText.text = "Water Full!";
+
+                return;
+            }
+
             waterAllCostText.text = "Cost: " + waterAllCosts.ToString();
         }
 
@@ -182,6 +192,9 @@ namespace TeamMAsTD
         public void WaterAll()
         {
             if(!CanWaterAll()) return;
+
+            //if total water all cost is less/equal 0 this means that all existing plant are having full water -> no need to water anymore
+            if (totalWaterAllCost <= 0) return;
 
             bool hasPlayedWateringSound = false;
 
