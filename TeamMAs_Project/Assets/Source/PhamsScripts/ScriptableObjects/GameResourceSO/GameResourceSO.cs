@@ -13,10 +13,14 @@ namespace TeamMAsTD
     {
         [field: SerializeField] public string resourceName { get; private set; }
 
-        [field: SerializeField] [field: Tooltip("The lowest possible amount of this resource")] 
+        [field: SerializeField] 
+        [field: Tooltip("The lowest possible amount of this resource")] 
         public float resourceAmountBase { get; private set; } = 0.0f;
 
-        [field: SerializeField] [field: Min(0)] public float resourceAmount { get; private set; }
+        [field: SerializeField] 
+        [field: Min(0)] 
+        public float resourceAmount { get; private set; }
+
         [field: SerializeField]
         [field: Tooltip("The highest possible amount of this resource. If value is 0, this resource has an infinite cap.")]
         [field: Min(0)] 
@@ -34,12 +38,12 @@ namespace TeamMAsTD
         }
 #endif
 
-        protected virtual void Awake()
+        /*protected virtual void Awake()
         {
             CheckResourceAmountMinMaxReached();
 
             OnResourceAmountUpdated?.Invoke(this);
-        }
+        }*/
 
         public virtual void AddResourceAmount(float addedAmount)
         {

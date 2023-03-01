@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using Language.Lua;
 
 namespace TeamMAsTD
 {
@@ -25,6 +24,8 @@ namespace TeamMAsTD
         [Header("Game Resource Stat Popup Components")]
 
         [SerializeField] protected StatPopupSpawner gameResourceUIStatPopupSpawner;
+
+        [SerializeField] protected Transform gameResourceUIStatPopupSpawnTransformRef;
 
         protected float currentResourceAmount;
 
@@ -48,6 +49,18 @@ namespace TeamMAsTD
             DisplayResourceNameText();
 
             DisplayResourceAmountText(gameResourceSO);
+
+            if (gameResourceUIStatPopupSpawner != null)
+            {
+                Vector3 spawnPos = Vector3.zero;
+
+                if(gameResourceUIStatPopupSpawnTransformRef != null) spawnPos = gameResourceUIStatPopupSpawnTransformRef.position;
+                else spawnPos = new Vector3(transform.position.x, transform.position.y, 0.0f);
+                
+                GameObject GO = Instantiate(gameResourceUIStatPopupSpawner.gameObject, spawnPos, Quaternion.identity);
+
+                gameResourceUIStatPopupSpawner = GO.GetComponent<StatPopupSpawner>();
+            }
         }
 
         protected virtual void OnEnable()
@@ -60,6 +73,11 @@ namespace TeamMAsTD
         {
             GameResourceSO.OnResourceAmountUpdated -= GameResourceUpdateStatPopupOnUI;
             GameResourceSO.OnResourceAmountUpdated -= DisplayResourceAmountText;
+        }
+
+        protected virtual void Start()
+        {
+            
         }
 
         public virtual void DisplayResourceNameText()
@@ -113,6 +131,7 @@ namespace TeamMAsTD
 
             if(updatedResourceAmount > currentResourceAmount)
             {
+                if (gameObject.name.Contains("Human")) Debug.Log("UpdatedResourceAmount: " + updatedResourceAmount + " | CurrentResourceAmount: " + currentResourceAmount);
                 gameResourceUIStatPopupSpawner.PopUp(null, "+" + (updatedResourceAmount - currentResourceAmount).ToString(), true);
             }
 

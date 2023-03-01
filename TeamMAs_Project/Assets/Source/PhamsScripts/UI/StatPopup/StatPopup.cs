@@ -25,6 +25,12 @@ namespace TeamMAsTD
 
         [SerializeField] private Sprite negativeStatPopupSprite;
 
+        [SerializeField] private Animator statPopupAnimator;
+
+        [SerializeField] private AnimatorOverrideController positiveStatPopupAnimatorOverride;
+
+        [SerializeField] private AnimatorOverrideController negativeStatPopupAnimatorOverride;
+
         [SerializeField] private string positiveStatText;
 
         [SerializeField] private string negativeStatText;
@@ -65,6 +71,13 @@ namespace TeamMAsTD
             if(statPopupTextMesh == null)
             {
                 statPopupTextMesh = GetComponentInChildren<TextMeshProUGUI>(true);
+            }
+
+            if(statPopupAnimator == null)
+            {
+                statPopupAnimator = GetComponent<Animator>();
+
+                if(statPopupAnimator == null) statPopupAnimator = gameObject.AddComponent<Animator>();
             }
 
             //this script and its object's enabled/disabled status can only be controlled by StatPopupPool.
@@ -183,6 +196,13 @@ namespace TeamMAsTD
 
         public void SetPositiveStatPopupSprite()
         {
+            if(statPopupAnimator != null && positiveStatPopupAnimatorOverride != null)
+            {
+                statPopupAnimator.runtimeAnimatorController = positiveStatPopupAnimatorOverride;
+
+                return;
+            }
+
             if (positiveStatPopupSprite == null) return;
 
             statPopupUIImage.sprite = positiveStatPopupSprite;
@@ -190,6 +210,13 @@ namespace TeamMAsTD
 
         public void SetNegativeStatPopupSprite()
         {
+            if(statPopupAnimator != null && negativeStatPopupAnimatorOverride != null)
+            {
+                statPopupAnimator.runtimeAnimatorController = negativeStatPopupAnimatorOverride;
+
+                return;
+            }
+
             if(negativeStatPopupSprite == null) return;
 
             statPopupUIImage.sprite = negativeStatPopupSprite;

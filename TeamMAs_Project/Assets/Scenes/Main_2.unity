@@ -558,7 +558,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 599533699
-  m_SortingOrder: 0
+  m_SortingOrder: 25
   m_TargetDisplay: 0
 --- !u!225 &12696939
 CanvasGroup:
@@ -2213,7 +2213,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 599533699
-  m_SortingOrder: 0
+  m_SortingOrder: 25
   m_TargetDisplay: 0
 --- !u!225 &57162429
 CanvasGroup:
@@ -2327,7 +2327,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 599533699
-  m_SortingOrder: 0
+  m_SortingOrder: 25
   m_TargetDisplay: 0
 --- !u!225 &60302364
 CanvasGroup:
@@ -2623,7 +2623,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 599533699
-  m_SortingOrder: 0
+  m_SortingOrder: 25
   m_TargetDisplay: 0
 --- !u!225 &64213123
 CanvasGroup:
@@ -2737,7 +2737,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 599533699
-  m_SortingOrder: 0
+  m_SortingOrder: 25
   m_TargetDisplay: 0
 --- !u!225 &65432427
 CanvasGroup:
@@ -5169,7 +5169,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 599533699
-  m_SortingOrder: 0
+  m_SortingOrder: 25
   m_TargetDisplay: 0
 --- !u!225 &138589709
 CanvasGroup:
@@ -5482,7 +5482,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 599533699
-  m_SortingOrder: 0
+  m_SortingOrder: 25
   m_TargetDisplay: 0
 --- !u!225 &151071259
 CanvasGroup:
@@ -5596,7 +5596,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 599533699
-  m_SortingOrder: 0
+  m_SortingOrder: 25
   m_TargetDisplay: 0
 --- !u!225 &153284303
 CanvasGroup:
@@ -5710,7 +5710,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 599533699
-  m_SortingOrder: 0
+  m_SortingOrder: 25
   m_TargetDisplay: 0
 --- !u!225 &160596793
 CanvasGroup:
@@ -8267,7 +8267,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 599533699
-  m_SortingOrder: 0
+  m_SortingOrder: 25
   m_TargetDisplay: 0
 --- !u!225 &290215129
 CanvasGroup:
@@ -8586,7 +8586,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 599533699
-  m_SortingOrder: 0
+  m_SortingOrder: 25
   m_TargetDisplay: 0
 --- !u!225 &327709971
 CanvasGroup:
@@ -9764,7 +9764,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 599533699
-  m_SortingOrder: 0
+  m_SortingOrder: 25
   m_TargetDisplay: 0
 --- !u!225 &372127082
 CanvasGroup:
@@ -10013,7 +10013,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 599533699
-  m_SortingOrder: 0
+  m_SortingOrder: 25
   m_TargetDisplay: 0
 --- !u!225 &408787492
 CanvasGroup:
@@ -11877,7 +11877,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 599533699
-  m_SortingOrder: 0
+  m_SortingOrder: 25
   m_TargetDisplay: 0
 --- !u!225 &465539903
 CanvasGroup:
@@ -12405,7 +12405,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 501804075}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.7809887, y: 0.12091184, z: 10.947187}
+  m_LocalPosition: {x: -8.15, y: 5.84, z: 10.947187}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -12531,7 +12531,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 599533699
-  m_SortingOrder: 0
+  m_SortingOrder: 25
   m_TargetDisplay: 0
 --- !u!225 &513132737
 CanvasGroup:
@@ -14435,7 +14435,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 599533699
-  m_SortingOrder: 0
+  m_SortingOrder: 25
   m_TargetDisplay: 0
 --- !u!225 &563745037
 CanvasGroup:
@@ -15029,7 +15029,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 599533699
-  m_SortingOrder: 0
+  m_SortingOrder: 25
   m_TargetDisplay: 0
 --- !u!225 &588993929
 CanvasGroup:
@@ -15353,7 +15353,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 599533699
-  m_SortingOrder: 0
+  m_SortingOrder: 25
   m_TargetDisplay: 0
 --- !u!225 &623404377
 CanvasGroup:
@@ -18369,7 +18369,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 599533699
-  m_SortingOrder: 0
+  m_SortingOrder: 25
   m_TargetDisplay: 0
 --- !u!225 &733378996
 CanvasGroup:
@@ -18694,7 +18694,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 599533699
-  m_SortingOrder: 0
+  m_SortingOrder: 25
   m_TargetDisplay: 0
 --- !u!225 &740464082
 CanvasGroup:
@@ -18808,7 +18808,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 599533699
-  m_SortingOrder: 0
+  m_SortingOrder: 25
   m_TargetDisplay: 0
 --- !u!225 &753727718
 CanvasGroup:
@@ -18969,7 +18969,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 599533699
-  m_SortingOrder: 0
+  m_SortingOrder: 25
   m_TargetDisplay: 0
 --- !u!225 &770164134
 CanvasGroup:
@@ -21053,7 +21053,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 599533699
-  m_SortingOrder: 0
+  m_SortingOrder: 25
   m_TargetDisplay: 0
 --- !u!225 &815295721
 CanvasGroup:
@@ -23395,7 +23395,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 599533699
-  m_SortingOrder: 0
+  m_SortingOrder: 25
   m_TargetDisplay: 0
 --- !u!225 &889641574
 CanvasGroup:
@@ -23801,7 +23801,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 599533699
-  m_SortingOrder: 0
+  m_SortingOrder: 25
   m_TargetDisplay: 0
 --- !u!225 &902644740
 CanvasGroup:
@@ -24231,7 +24231,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 599533699
-  m_SortingOrder: 0
+  m_SortingOrder: 25
   m_TargetDisplay: 0
 --- !u!225 &915829819
 CanvasGroup:
@@ -25516,7 +25516,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 599533699
-  m_SortingOrder: 0
+  m_SortingOrder: 25
   m_TargetDisplay: 0
 --- !u!225 &975213044
 CanvasGroup:
@@ -27957,7 +27957,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 599533699
-  m_SortingOrder: 0
+  m_SortingOrder: 25
   m_TargetDisplay: 0
 --- !u!225 &1018865744
 CanvasGroup:
@@ -28361,6 +28361,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c19b9f42d03e804ab593c9d4f5ba6e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &1039532476 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4849456886206888304, guid: be2a0ac942afe8841bf8cf4a38447cca, type: 3}
+  m_PrefabInstance: {fileID: 1475215347}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1040660543
 GameObject:
   m_ObjectHideFlags: 0
@@ -29459,7 +29464,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 599533699
-  m_SortingOrder: 0
+  m_SortingOrder: 25
   m_TargetDisplay: 0
 --- !u!225 &1091944511
 CanvasGroup:
@@ -30425,7 +30430,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 599533699
-  m_SortingOrder: 0
+  m_SortingOrder: 25
   m_TargetDisplay: 0
 --- !u!225 &1110135764
 CanvasGroup:
@@ -32377,7 +32382,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 599533699
-  m_SortingOrder: 0
+  m_SortingOrder: 25
   m_TargetDisplay: 0
 --- !u!225 &1186741400
 CanvasGroup:
@@ -33100,7 +33105,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 599533699
-  m_SortingOrder: 0
+  m_SortingOrder: 25
   m_TargetDisplay: 0
 --- !u!225 &1225628195
 CanvasGroup:
@@ -34407,7 +34412,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 599533699
-  m_SortingOrder: 0
+  m_SortingOrder: 25
   m_TargetDisplay: 0
 --- !u!225 &1243172879
 CanvasGroup:
@@ -34724,7 +34729,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 599533699
-  m_SortingOrder: 0
+  m_SortingOrder: 25
   m_TargetDisplay: 0
 --- !u!225 &1273133403
 CanvasGroup:
@@ -38620,7 +38625,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 599533699
-  m_SortingOrder: 0
+  m_SortingOrder: 25
   m_TargetDisplay: 0
 --- !u!225 &1391704925
 CanvasGroup:
@@ -39317,6 +39322,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c19b9f42d03e804ab593c9d4f5ba6e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &1407023546 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4849456886206888304, guid: 312d4e6a02524d141bd8cd5c5b7b5206, type: 3}
+  m_PrefabInstance: {fileID: 1779847581}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1415181114
 GameObject:
   m_ObjectHideFlags: 0
@@ -39356,7 +39366,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 599533699
-  m_SortingOrder: 0
+  m_SortingOrder: 25
   m_TargetDisplay: 0
 --- !u!225 &1415181116
 CanvasGroup:
@@ -41297,7 +41307,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 599533699
-  m_SortingOrder: 0
+  m_SortingOrder: 25
   m_TargetDisplay: 0
 --- !u!225 &1447742745
 CanvasGroup:
@@ -42190,11 +42200,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4849456886206888304, guid: be2a0ac942afe8841bf8cf4a38447cca, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.11
+      value: -2.52
       objectReference: {fileID: 0}
     - target: {fileID: 4849456886206888304, guid: be2a0ac942afe8841bf8cf4a38447cca, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.01
+      value: 4.3
       objectReference: {fileID: 0}
     - target: {fileID: 4849456886206888304, guid: be2a0ac942afe8841bf8cf4a38447cca, type: 3}
       propertyPath: m_LocalPosition.z
@@ -42250,7 +42260,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8923729546418773549, guid: be2a0ac942afe8841bf8cf4a38447cca, type: 3}
       propertyPath: m_Name
-      value: GameResourceUICoinPopupSpawner
+      value: GameResourceUICoinPopupSpawnerRef
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: be2a0ac942afe8841bf8cf4a38447cca, type: 3}
@@ -42293,7 +42303,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 599533699
-  m_SortingOrder: 0
+  m_SortingOrder: 25
   m_TargetDisplay: 0
 --- !u!225 &1476820474
 CanvasGroup:
@@ -44793,7 +44803,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 599533699
-  m_SortingOrder: 0
+  m_SortingOrder: 25
   m_TargetDisplay: 0
 --- !u!225 &1543845641
 CanvasGroup:
@@ -47131,7 +47141,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 599533699
-  m_SortingOrder: 0
+  m_SortingOrder: 25
   m_TargetDisplay: 0
 --- !u!225 &1618264021
 CanvasGroup:
@@ -47380,7 +47390,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 599533699
-  m_SortingOrder: 0
+  m_SortingOrder: 25
   m_TargetDisplay: 0
 --- !u!225 &1629577577
 CanvasGroup:
@@ -52009,7 +52019,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 599533699
-  m_SortingOrder: 0
+  m_SortingOrder: 25
   m_TargetDisplay: 0
 --- !u!225 &1765167586
 CanvasGroup:
@@ -52144,11 +52154,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4849456886206888304, guid: 312d4e6a02524d141bd8cd5c5b7b5206, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.86
+      value: 7.82
       objectReference: {fileID: 0}
     - target: {fileID: 4849456886206888304, guid: 312d4e6a02524d141bd8cd5c5b7b5206, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.98
+      value: -2.65
       objectReference: {fileID: 0}
     - target: {fileID: 4849456886206888304, guid: 312d4e6a02524d141bd8cd5c5b7b5206, type: 3}
       propertyPath: m_LocalPosition.z
@@ -52191,12 +52201,16 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8024300418989073095, guid: 312d4e6a02524d141bd8cd5c5b7b5206, type: 3}
+      propertyPath: startHorizontalOffset
+      value: -0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8024300418989073095, guid: 312d4e6a02524d141bd8cd5c5b7b5206, type: 3}
       propertyPath: horizontalDistFromStart
-      value: 0.4
+      value: -0.4
       objectReference: {fileID: 0}
     - target: {fileID: 8024300418989073095, guid: 312d4e6a02524d141bd8cd5c5b7b5206, type: 3}
       propertyPath: verticalDistanceFromStart
-      value: 0.55
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 8024300418989073095, guid: 312d4e6a02524d141bd8cd5c5b7b5206, type: 3}
       propertyPath: randomVerticalTravelDistFromStart
@@ -52204,11 +52218,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8024300418989073095, guid: 312d4e6a02524d141bd8cd5c5b7b5206, type: 3}
       propertyPath: <statPopupScaleMultiplier>k__BackingField
-      value: 2.25
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 8923729546418773549, guid: 312d4e6a02524d141bd8cd5c5b7b5206, type: 3}
       propertyPath: m_Name
-      value: GameResourceUIHealthPopupSpawner
+      value: GameResourceUIHealthPopupSpawnerRef
+      objectReference: {fileID: 0}
+    - target: {fileID: 8923729546418773549, guid: 312d4e6a02524d141bd8cd5c5b7b5206, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 312d4e6a02524d141bd8cd5c5b7b5206, type: 3}
@@ -52298,7 +52316,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 599533699
-  m_SortingOrder: 0
+  m_SortingOrder: 25
   m_TargetDisplay: 0
 --- !u!225 &1782601677
 CanvasGroup:
@@ -53716,7 +53734,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 599533699
-  m_SortingOrder: 0
+  m_SortingOrder: 25
   m_TargetDisplay: 0
 --- !u!225 &1829026572
 CanvasGroup:
@@ -56780,7 +56798,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 599533699
-  m_SortingOrder: 0
+  m_SortingOrder: 25
   m_TargetDisplay: 0
 --- !u!225 &1923618787
 CanvasGroup:
@@ -57029,7 +57047,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 599533699
-  m_SortingOrder: 0
+  m_SortingOrder: 25
   m_TargetDisplay: 0
 --- !u!225 &1930941021
 CanvasGroup:
@@ -57909,7 +57927,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 599533699
-  m_SortingOrder: 0
+  m_SortingOrder: 25
   m_TargetDisplay: 0
 --- !u!225 &1956502221
 CanvasGroup:
@@ -58846,7 +58864,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 599533699
-  m_SortingOrder: 0
+  m_SortingOrder: 25
   m_TargetDisplay: 0
 --- !u!225 &2005093684
 CanvasGroup:
@@ -59360,7 +59378,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 599533699
-  m_SortingOrder: 0
+  m_SortingOrder: 25
   m_TargetDisplay: 0
 --- !u!225 &2007624477
 CanvasGroup:
@@ -64936,7 +64954,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 599533699
-  m_SortingOrder: 0
+  m_SortingOrder: 25
   m_TargetDisplay: 0
 --- !u!225 &2145437244
 CanvasGroup:
@@ -65342,6 +65360,90 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -12.630005
       objectReference: {fileID: 0}
+    - target: {fileID: 1099689189817966449, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
+      propertyPath: gameResourceUIStatPopupSpawner
+      value: 
+      objectReference: {fileID: 1407023545}
+    - target: {fileID: 1099689189817966449, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
+      propertyPath: gameResourceUIStatPopupSpawnTransformRef
+      value: 
+      objectReference: {fileID: 1407023546}
+    - target: {fileID: 1099689189817966449, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
+      propertyPath: sliderVisualChangeBasedOnSliderPercentages.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1099689189817966449, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
+      propertyPath: sliderVisualChangeBasedOnSliderPercentages.Array.data[3].sliderFillColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1099689189817966449, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
+      propertyPath: sliderVisualChangeBasedOnSliderPercentages.Array.data[3].sliderFillColor.b
+      value: 0.53041685
+      objectReference: {fileID: 0}
+    - target: {fileID: 1099689189817966449, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
+      propertyPath: sliderVisualChangeBasedOnSliderPercentages.Array.data[3].sliderFillColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1099689189817966449, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
+      propertyPath: sliderVisualChangeBasedOnSliderPercentages.Array.data[3].sliderFillColor.r
+      value: 0.3150943
+      objectReference: {fileID: 0}
+    - target: {fileID: 1099689189817966449, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
+      propertyPath: sliderVisualChangeBasedOnSliderPercentages.Array.data[4].sliderFillColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1099689189817966449, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
+      propertyPath: sliderVisualChangeBasedOnSliderPercentages.Array.data[4].sliderFillColor.b
+      value: 0.53041685
+      objectReference: {fileID: 0}
+    - target: {fileID: 1099689189817966449, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
+      propertyPath: sliderVisualChangeBasedOnSliderPercentages.Array.data[4].sliderFillColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1099689189817966449, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
+      propertyPath: sliderVisualChangeBasedOnSliderPercentages.Array.data[4].sliderFillColor.r
+      value: 0.3150943
+      objectReference: {fileID: 0}
+    - target: {fileID: 1099689189817966449, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
+      propertyPath: sliderVisualChangeBasedOnSliderPercentages.Array.data[3].sliderHandleColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1099689189817966449, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
+      propertyPath: sliderVisualChangeBasedOnSliderPercentages.Array.data[3].sliderHandleColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1099689189817966449, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
+      propertyPath: sliderVisualChangeBasedOnSliderPercentages.Array.data[3].sliderHandleColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1099689189817966449, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
+      propertyPath: sliderVisualChangeBasedOnSliderPercentages.Array.data[3].sliderHandleColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1099689189817966449, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
+      propertyPath: sliderVisualChangeBasedOnSliderPercentages.Array.data[4].sliderHandleColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1099689189817966449, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
+      propertyPath: sliderVisualChangeBasedOnSliderPercentages.Array.data[4].sliderHandleColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1099689189817966449, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
+      propertyPath: sliderVisualChangeBasedOnSliderPercentages.Array.data[4].sliderHandleColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1099689189817966449, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
+      propertyPath: sliderVisualChangeBasedOnSliderPercentages.Array.data[4].sliderHandleColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1099689189817966449, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
+      propertyPath: sliderVisualChangeBasedOnSliderPercentages.Array.data[3].changeOnSliderPercentReached
+      value: 65
+      objectReference: {fileID: 0}
+    - target: {fileID: 1099689189817966449, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
+      propertyPath: sliderVisualChangeBasedOnSliderPercentages.Array.data[4].changeOnSliderPercentReached
+      value: 65
+      objectReference: {fileID: 0}
     - target: {fileID: 1972745749921449660, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
       propertyPath: m_fontSize
       value: 4
@@ -65368,7 +65470,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2205673638908027520, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -10.299988
+      value: -10.299927
       objectReference: {fileID: 0}
     - target: {fileID: 2980469443758118717, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
       propertyPath: tooltipsToDisplayClickReminder.Array.size
@@ -65378,6 +65480,14 @@ PrefabInstance:
       propertyPath: tooltipsToDisplayClickReminder.Array.data[0]
       value: 
       objectReference: {fileID: 1710880074}
+    - target: {fileID: 3272228352036030504, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
+      propertyPath: gameResourceUIStatPopupSpawner
+      value: 
+      objectReference: {fileID: 1407023545}
+    - target: {fileID: 3272228352036030504, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
+      propertyPath: gameResourceUIStatPopupSpawnTransformRef
+      value: 
+      objectReference: {fileID: 1407023546}
     - target: {fileID: 4044079845083414017, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -65396,6 +65506,46 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5268446183886847556, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
       propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6731880086588993991, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6731880086588993991, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6731880086588993991, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6731880086990785988, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6731880086990785988, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6731880087438727192, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6731880087438727192, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6731880087676247481, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6731880087676247481, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6731880087676247481, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
+      propertyPath: m_AnchorMin.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7489043846882857137, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
@@ -65436,7 +65586,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7663563581319725106, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -8.418884
+      value: -8.418945
       objectReference: {fileID: 0}
     - target: {fileID: 7663563581381265634, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
       propertyPath: m_SizeDelta.x
@@ -65452,7 +65602,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7663563581381265634, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -0.29999924
+      value: -0.30000305
       objectReference: {fileID: 0}
     - target: {fileID: 7663563581489115492, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
       propertyPath: m_SizeDelta.x
@@ -65474,6 +65624,10 @@ PrefabInstance:
       propertyPath: gameResourceUIStatPopupSpawner
       value: 
       objectReference: {fileID: 1039532475}
+    - target: {fileID: 7663563581489115495, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
+      propertyPath: gameResourceUIStatPopupSpawnTransformRef
+      value: 
+      objectReference: {fileID: 1039532476}
     - target: {fileID: 7663563581612626002, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
       propertyPath: m_Camera
       value: 
@@ -65565,6 +65719,10 @@ PrefabInstance:
     - target: {fileID: 7663563581612626007, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
       propertyPath: m_Name
       value: GameUICanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 7663563582007544842, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -0.0024414062
       objectReference: {fileID: 0}
     - target: {fileID: 8431845080792975626, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
       propertyPath: waveSpawnerToLookAhead

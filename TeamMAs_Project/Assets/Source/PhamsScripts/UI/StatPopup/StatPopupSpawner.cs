@@ -123,12 +123,12 @@ namespace TeamMAsTD
                                                                                                   popupTime);
 
             // sarita (temporary swap between broken heart animation or green heart)
-            if ((name == "GameResourceUIHealthPopupSpawner") && isPositivePopup)
+            /*if ((name == "GameResourceUIHealthPopupSpawner") && isPositivePopup)
             {
                 Animator[] animators = statPopupObj.GetComponentsInChildren<Animator>();
                 foreach (Animator animator in animators)
                     animator.SetTrigger("positive");
-            }
+            }*/
 
             if (statPopupObj == null)
             {
