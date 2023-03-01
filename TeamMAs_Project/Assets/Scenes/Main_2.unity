@@ -65446,7 +65446,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1972745749921449660, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
       propertyPath: m_fontSize
-      value: 4
+      value: 33
       objectReference: {fileID: 0}
     - target: {fileID: 2199127071567654328, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
       propertyPath: m_Enabled
@@ -65488,6 +65488,10 @@ PrefabInstance:
       propertyPath: gameResourceUIStatPopupSpawnTransformRef
       value: 
       objectReference: {fileID: 1407023546}
+    - target: {fileID: 3542460961768951359, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 155
+      objectReference: {fileID: 0}
     - target: {fileID: 4044079845083414017, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
       propertyPath: m_IsActive
       value: 0

@@ -324,6 +324,8 @@ namespace TeamMAsTD
                 GameResource.gameResourceInstance.emotionalHealthSO.RemoveResourceAmount(plantUnitOnTile.plantUnitScriptableObject.uprootHealthCost);
             }*/
 
+            plantUnitOnTile.ProcessPlantDestroyEffectFrom(this);
+
             Destroy(plantUnitOnTile.gameObject, uprootDelaySec);
 
             plantUnitOnTile = null;

@@ -75,6 +75,13 @@ namespace TeamMAsTD
 
             plantWaterUsageSystem.InitializePlantWaterUsageSystem(this);
 
+            if(plantUnitScriptableObject != null)
+            {
+                GameObject spawnedEffectGO = plantUnitScriptableObject.SpawnUnitEffectGameObject(plantUnitScriptableObject.unitSpawnEffectPrefab, transform, true, true);
+                
+                StartCoroutine(plantUnitScriptableObject.DestroyOnUnitEffectAnimFinishedCoroutine(spawnedEffectGO));
+            }
+
             GetAndSetUnitSprite();
 
             SetPlantUnitWorldUIElementsValues();
@@ -136,6 +143,21 @@ namespace TeamMAsTD
 
                 plantUnitWorldUI.SetWaterSliderValue(plantUnitScriptableObject.waterBars, plantUnitScriptableObject.waterBars);
             }
+        }
+
+        public void ProcessPlantDestroyEffectFrom(MonoBehaviour caller)
+        {
+            if (caller == null) return;
+
+            if (plantUnitScriptableObject == null) return;
+
+            GameObject spawnedEffectGO = plantUnitScriptableObject.SpawnUnitEffectGameObject(plantUnitScriptableObject.unitDestroyEffectPrefab, transform, false, true);
+            
+            //use other MonoBehavior (e.g Tile this plant on) to call this destroy effect coroutine
+            //since if called by this plant obj which will be destroyed before 
+            //this effect got destroyed, the destroy coroutine will stop as soon as this plant is destroyed
+            //which this effect will then never be destroyed!
+            caller.StartCoroutine(plantUnitScriptableObject.DestroyOnUnitEffectAnimFinishedCoroutine(spawnedEffectGO));
         }
 
         private void OnDrawGizmosSelected()

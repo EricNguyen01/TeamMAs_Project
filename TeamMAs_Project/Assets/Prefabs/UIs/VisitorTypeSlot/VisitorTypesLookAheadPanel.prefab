@@ -327,8 +327,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ed214ad606778a4cbeda30d80c3765b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unitTooltipsToDisplayClickReminder: []
-  timeUntilNextReminderMin: 1000
-  timeUntilNextReminderMax: 2000
+  tooltipsToDisplayClickReminder: []
+  timeUntilNextReminderMin: 500
+  timeUntilNextReminderMax: 1000
   timeToCloseReminder: 300
   <showTooltipClickReminderOnStart>k__BackingField: 1

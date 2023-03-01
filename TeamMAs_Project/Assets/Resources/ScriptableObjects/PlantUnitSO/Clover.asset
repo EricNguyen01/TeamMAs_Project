@@ -14,10 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <displayName>k__BackingField: Clover
   <unitPrefab>k__BackingField: {fileID: 3455637724528575129, guid: 529170a0d02545c4dabc3484d23cc29f, type: 3}
+  <unitInfoTooltipImageSprite>k__BackingField: {fileID: 0}
+  <unitSpawnEffectPrefab>k__BackingField: {fileID: 1355123197302658146, guid: f4f8b7672c4ecb146b287056f2e31299, type: 3}
+  <unitDestroyEffectPrefab>k__BackingField: {fileID: 1355123197302658146, guid: f4f8b7672c4ecb146b287056f2e31299, type: 3}
   <unitID>k__BackingField: 44e3801e-11fe-4044-aff8-3a289343bfe3
   <unitDescription>k__BackingField: 
   <unitThumbnail>k__BackingField: {fileID: 21300000, guid: 2fb50d6e06dc25c4c9b5cd49cfd8acd8, type: 3}
-  <plantProjectileSO>k__BackingField: {fileID: 11400000, guid: 700432d60d0410a4482fe445d643989b, type: 2}
+  <plantProjectileSO>k__BackingField: {fileID: 11400000, guid: 4970a3adbb1f09342944a3652baaae08, type: 2}
   <waterBars>k__BackingField: 4
   <wavesSurviveWithoutWater>k__BackingField: 0
   <damage>k__BackingField: 10
@@ -34,7 +37,7 @@ MonoBehaviour:
   <plantingCoinCost>k__BackingField: 5
   <uprootRefundAmount>k__BackingField: 0
   <uprootCost>k__BackingField: 5
-  <uprootHealthCost>k__BackingField: 1
+  <uprootHealthCost>k__BackingField: 0
   <waterUse>k__BackingField: 2
   <waterBarsRefilledPerWatering>k__BackingField: 1
   <wateringCoinsCost>k__BackingField: 1

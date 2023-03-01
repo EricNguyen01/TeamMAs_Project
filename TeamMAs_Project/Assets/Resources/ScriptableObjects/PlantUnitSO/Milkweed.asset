@@ -14,10 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <displayName>k__BackingField: Milkweed
   <unitPrefab>k__BackingField: {fileID: 7171100457624758856, guid: 2e9d9fb45f7651749958cad9c82a386f, type: 3}
+  <unitInfoTooltipImageSprite>k__BackingField: {fileID: 0}
+  <unitSpawnEffectPrefab>k__BackingField: {fileID: 1355123197302658146, guid: f4f8b7672c4ecb146b287056f2e31299, type: 3}
+  <unitDestroyEffectPrefab>k__BackingField: {fileID: 1355123197302658146, guid: f4f8b7672c4ecb146b287056f2e31299, type: 3}
   <unitID>k__BackingField: 69d9c241-135e-4441-b140-0999d6186126
   <unitDescription>k__BackingField: 
   <unitThumbnail>k__BackingField: {fileID: 21300000, guid: 0ad3ea48a480695469c0c8e452ec4746, type: 3}
-  <plantProjectileSO>k__BackingField: {fileID: 11400000, guid: 700432d60d0410a4482fe445d643989b, type: 2}
+  <plantProjectileSO>k__BackingField: {fileID: 11400000, guid: 4970a3adbb1f09342944a3652baaae08, type: 2}
   <waterBars>k__BackingField: 4
   <wavesSurviveWithoutWater>k__BackingField: 0
   <damage>k__BackingField: 60
@@ -34,7 +37,7 @@ MonoBehaviour:
   <plantingCoinCost>k__BackingField: 18
   <uprootRefundAmount>k__BackingField: 0
   <uprootCost>k__BackingField: 0
-  <uprootHealthCost>k__BackingField: 1
+  <uprootHealthCost>k__BackingField: 0
   <waterUse>k__BackingField: 3
   <waterBarsRefilledPerWatering>k__BackingField: 1
   <wateringCoinsCost>k__BackingField: 1

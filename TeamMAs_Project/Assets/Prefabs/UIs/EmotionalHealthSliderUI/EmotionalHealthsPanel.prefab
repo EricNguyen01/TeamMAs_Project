@@ -1,5 +1,41 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &75406506429918338
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8967164535070388139}
+  m_Layer: 5
+  m_Name: EHealthInfoTooltipSpawnTransformRef
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &8967164535070388139
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 75406506429918338}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8186297415258521066}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -43, y: -269}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &8186297413891835699
 GameObject:
   m_ObjectHideFlags: 0
@@ -109,6 +145,7 @@ MonoBehaviour:
   resourceAmountText: {fileID: 0}
   displayResourceAmountCap: 0
   gameResourceUIStatPopupSpawner: {fileID: 0}
+  gameResourceUIStatPopupSpawnTransformRef: {fileID: 0}
   showDebugAndErrorLog: 0
   gameResourceSlider: {fileID: 8186297413891835697}
   sliderFill: {fileID: 8186297415027156960}
@@ -239,8 +276,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.25, y: 0}
   m_AnchorMax: {x: 0.75, y: 1}
-  m_AnchoredPosition: {x: 0, y: -5}
-  m_SizeDelta: {x: 0, y: -20}
+  m_AnchoredPosition: {x: 0, y: 1.7799988}
+  m_SizeDelta: {x: 0, y: -6.43}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &8186297414518614293
 GameObject:
@@ -351,6 +388,7 @@ MonoBehaviour:
   resourceAmountText: {fileID: 0}
   displayResourceAmountCap: 0
   gameResourceUIStatPopupSpawner: {fileID: 0}
+  gameResourceUIStatPopupSpawnTransformRef: {fileID: 0}
   showDebugAndErrorLog: 0
   gameResourceSlider: {fileID: 8186297414518614299}
   sliderFill: {fileID: 8186297414579614268}
@@ -647,6 +685,7 @@ GameObject:
   - component: {fileID: 8186297415258521066}
   - component: {fileID: 8186297415258521064}
   - component: {fileID: 8186297415258521067}
+  - component: {fileID: 6951949651155475397}
   m_Layer: 5
   m_Name: EmotionalHealthsPanel
   m_TagString: Untagged
@@ -668,6 +707,7 @@ RectTransform:
   m_Children:
   - {fileID: 8186297414518614298}
   - {fileID: 8186297413891835696}
+  - {fileID: 8967164535070388139}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -696,6 +736,24 @@ CanvasGroup:
   m_Interactable: 0
   m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
+--- !u!114 &6951949651155475397
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8186297415258521061}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54e30631000929341ba03aca71ee7662, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <unitScriptableObjectToDisplayTooltip>k__BackingField: {fileID: 0}
+  infoTooltipPrefab: {fileID: 5149056800383492733, guid: 4d094eace41362c459636f834ba9620d, type: 3}
+  <infoTooltipSpawnTransformRef>k__BackingField: {fileID: 8967164535070388139}
+  <infoTooltipSpawnOffset>k__BackingField: {x: 0, y: 0}
+  <clickReminderAnimOverride>k__BackingField: {fileID: 0}
+  <autoEnableTooltipOnStart>k__BackingField: 1
 --- !u!1 &8186297415328604765
 GameObject:
   m_ObjectHideFlags: 0
@@ -843,8 +901,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.25, y: 0}
   m_AnchorMax: {x: 0.75, y: 1}
-  m_AnchoredPosition: {x: 0, y: -5}
-  m_SizeDelta: {x: 0, y: -20}
+  m_AnchoredPosition: {x: 0, y: 1.7900085}
+  m_SizeDelta: {x: 0, y: -6.43}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &8186297415826996434
 GameObject:
