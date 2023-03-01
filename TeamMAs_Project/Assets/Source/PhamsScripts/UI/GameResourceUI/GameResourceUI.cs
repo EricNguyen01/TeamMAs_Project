@@ -131,7 +131,6 @@ namespace TeamMAsTD
 
             if(updatedResourceAmount > currentResourceAmount)
             {
-                if (gameObject.name.Contains("Human")) Debug.Log("UpdatedResourceAmount: " + updatedResourceAmount + " | CurrentResourceAmount: " + currentResourceAmount);
                 gameResourceUIStatPopupSpawner.PopUp(null, "+" + (updatedResourceAmount - currentResourceAmount).ToString(), true);
             }
 
