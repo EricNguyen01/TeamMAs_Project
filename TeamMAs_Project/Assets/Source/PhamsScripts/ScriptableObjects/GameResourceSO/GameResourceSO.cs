@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
@@ -9,22 +10,31 @@ namespace TeamMAsTD
 {
     [System.Serializable]
     [CreateAssetMenu(menuName = "GameResource Data Asset/New Game Resource")]
-    public class GameResourceSO : ScriptableObject
+    public class GameResourceSO : ScriptableObject, ISerializationCallbackReceiver
     {
         [field: SerializeField] public string resourceName { get; private set; }
 
-        [field: SerializeField] 
-        [field: Tooltip("The lowest possible amount of this resource")] 
-        public float resourceAmountBase { get; private set; } = 0.0f;
+        [SerializeField]
+        [Tooltip("The lowest possible amount of this resource")]
+        private float InitialResourceAmountMin;//in-editor static only data
 
-        [field: SerializeField] 
-        [field: Min(0)] 
-        public float resourceAmount { get; private set; }
+        [field: NonSerialized]
+        public float resourceAmountMin { get; private set; } = 0.0f;//runtime non-static data
 
-        [field: SerializeField]
-        [field: Tooltip("The highest possible amount of this resource. If value is 0, this resource has an infinite cap.")]
-        [field: Min(0)] 
-        public float resourceAmountCap { get; private set; }
+        [SerializeField]
+        [Min(0)]
+        private float InitialResourceAmount;//in-editor static only SO data
+
+        [field: NonSerialized]
+        public float resourceAmount { get; private set; }//runtime non-static data
+
+        [SerializeField]
+        [Tooltip("The highest possible amount of this resource. If value is 0, this resource has an infinite cap.")]
+        [Min(0)]
+        private float InitialResourceAmountCap;//in-editor static only SO data
+
+        [field: NonSerialized]
+        public float resourceAmountCap { get; private set; }//runtime non-static data
 
         //This event is sub by GameResourceUI.cs to update the UI display of resource amount
         public static event System.Action<GameResourceSO> OnResourceAmountUpdated;
@@ -84,9 +94,9 @@ namespace TeamMAsTD
         protected virtual void CheckResourceAmountMinMaxReached()
         {
             //if resource amount below 0 -> set = 0
-            if(resourceAmount < resourceAmountBase)
+            if(resourceAmount < resourceAmountMin)
             {
-                resourceAmount = resourceAmountBase;
+                resourceAmount = resourceAmountMin;
                 return;
             }
 
@@ -95,6 +105,21 @@ namespace TeamMAsTD
 
             //else if there's a cap and current amount is above it -> reset to cap amount
             if (resourceAmount > resourceAmountCap) resourceAmount = resourceAmountCap;
+        }
+
+        //ISerializationCallbackReceiver interface implementation....................................................
+        public void OnBeforeSerialize()
+        {
+            
+        }
+
+        public void OnAfterDeserialize()
+        {
+            resourceAmountMin = InitialResourceAmountMin;
+
+            resourceAmount = InitialResourceAmount;
+
+            resourceAmountCap = InitialResourceAmountCap;
         }
     }
 }

@@ -83,9 +83,9 @@ namespace TeamMAsTD
                 return;
             }
 
-            if(gameResourceSlider.minValue != gameResourceSO.resourceAmountBase) gameResourceSlider.minValue = 0.0f;
+            if (gameResourceSlider.minValue != gameResourceSO.resourceAmountMin) gameResourceSlider.minValue = gameResourceSO.resourceAmountMin;
 
-            if(gameResourceSlider.maxValue != gameResourceSO.resourceAmountCap) gameResourceSlider.maxValue = gameResourceSO.resourceAmountCap;
+            if (gameResourceSlider.maxValue != gameResourceSO.resourceAmountCap) gameResourceSlider.maxValue = gameResourceSO.resourceAmountCap;
 
             gameResourceSlider.value = gameResourceSO.resourceAmount;
 
