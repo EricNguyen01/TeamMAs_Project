@@ -26,7 +26,7 @@ namespace TeamMAsTD
         [Header("Tile Components")]
         [SerializeField] private StatPopupSpawner insufficientFundToPlantOnTilePopupPrefab;
 
-        private StatPopupSpawner thisTileInsufficientFundToPlantStatPopup;
+        public StatPopupSpawner thisTileInsufficientFundToPlantStatPopup { get; private set; }
 
         public WateringOnTile wateringOnTileScriptComp { get; private set; }
 
@@ -96,10 +96,7 @@ namespace TeamMAsTD
             }
 
             Attach_TileMenu_And_UprootOnTileUI_ScriptComponentIfNull();
-        }
 
-        private void Start()
-        {
             if (insufficientFundToPlantOnTilePopupPrefab != null)
             {
                 GameObject statPopupSpawnerGO = Instantiate(insufficientFundToPlantOnTilePopupPrefab.gameObject, transform);
@@ -159,6 +156,8 @@ namespace TeamMAsTD
                     {
                         if (thisTileInsufficientFundToPlantStatPopup != null)
                         {
+                            thisTileInsufficientFundToPlantStatPopup.ResetStatPopupSpawnerConfigToStartDefault();
+
                             thisTileInsufficientFundToPlantStatPopup.PopUp(null, null, false);
                         }
 

@@ -11,13 +11,9 @@ namespace TeamMAsTD
     {
         [Header("Stat Popup UI Components")]
 
-        [SerializeField] private Canvas statPopupWorldUICanvas;
-
         [SerializeField] private Image statPopupUIImage;
 
         [SerializeField] private TextMeshProUGUI statPopupTextMesh;
-
-        private RectTransform statPopupWorldUIRectTransform;
 
         [Header("Stat Popup Config")]
 
@@ -55,15 +51,6 @@ namespace TeamMAsTD
 
         private void Awake()
         {
-            if(statPopupWorldUICanvas == null)
-            {
-                statPopupWorldUICanvas = GetComponentInChildren<Canvas>(true);
-            }
-            if(statPopupWorldUICanvas != null)
-            {
-                if(statPopupWorldUICanvas.worldCamera == null) statPopupWorldUICanvas.worldCamera = Camera.main;
-            }
-
             if(statPopupUIImage == null)
             {
                 statPopupUIImage = GetComponentInChildren<Image>(true);
@@ -234,22 +221,9 @@ namespace TeamMAsTD
 
         public void SetStatPopupScaleMultipliers(float multipliers)
         {
-            if (statPopupWorldUICanvas == null) return;
+            if (multipliers <= 0.0f) return;
 
-            if(statPopupWorldUIRectTransform == null)
-            {
-                statPopupWorldUIRectTransform = statPopupWorldUICanvas.GetComponent<RectTransform>();
-            }
-
-            if (statPopupWorldUIRectTransform == null) return;
-
-            if (multipliers == 0) return;
-
-            float sizeXMultiplied = statPopupWorldUIRectTransform.sizeDelta.x * multipliers;
-
-            float sizeYMultiplied = statPopupWorldUIRectTransform.sizeDelta.y * multipliers;
-
-            statPopupWorldUIRectTransform.sizeDelta = new Vector2(sizeXMultiplied, sizeYMultiplied);
+            transform.localScale = new Vector3(transform.localScale.x * multipliers, transform.localScale.y * multipliers, transform.localScale.z);
         }
     }
 }

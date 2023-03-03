@@ -108,12 +108,12 @@ namespace TeamMAsTD
         }
 
         //ISerializationCallbackReceiver interface implementation....................................................
-        public void OnBeforeSerialize()
+        void ISerializationCallbackReceiver.OnBeforeSerialize()
         {
             
         }
 
-        public void OnAfterDeserialize()
+        void ISerializationCallbackReceiver.OnAfterDeserialize()
         {
             resourceAmountMin = InitialResourceAmountMin;
 

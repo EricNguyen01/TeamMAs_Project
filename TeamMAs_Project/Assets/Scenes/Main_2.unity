@@ -849,7 +849,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wateringSoundPlayerPrefab: {fileID: 1954455504458609106, guid: 7ea03095a313b0c4292be0f076dce57e, type: 3}
-  insufficientWateringFundStatPopupPrefab: {fileID: 8024300418989073095, guid: f3a373e0118fdc54d85de7d5d9767e8c, type: 3}
+  insufficientWateringFundPopupScaleMultiplier: 0.64
   OnInsufficientFundsToWater:
     m_PersistentCalls:
       m_Calls:
@@ -1855,7 +1855,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wateringSoundPlayerPrefab: {fileID: 1954455504458609106, guid: 7ea03095a313b0c4292be0f076dce57e, type: 3}
-  insufficientWateringFundStatPopupPrefab: {fileID: 8024300418989073095, guid: f3a373e0118fdc54d85de7d5d9767e8c, type: 3}
+  insufficientWateringFundPopupScaleMultiplier: 0.64
   OnInsufficientFundsToWater:
     m_PersistentCalls:
       m_Calls:
@@ -3916,7 +3916,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wateringSoundPlayerPrefab: {fileID: 1954455504458609106, guid: 7ea03095a313b0c4292be0f076dce57e, type: 3}
-  insufficientWateringFundStatPopupPrefab: {fileID: 8024300418989073095, guid: f3a373e0118fdc54d85de7d5d9767e8c, type: 3}
+  insufficientWateringFundPopupScaleMultiplier: 0.64
   OnInsufficientFundsToWater:
     m_PersistentCalls:
       m_Calls:
@@ -4819,7 +4819,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wateringSoundPlayerPrefab: {fileID: 1954455504458609106, guid: 7ea03095a313b0c4292be0f076dce57e, type: 3}
-  insufficientWateringFundStatPopupPrefab: {fileID: 8024300418989073095, guid: f3a373e0118fdc54d85de7d5d9767e8c, type: 3}
+  insufficientWateringFundPopupScaleMultiplier: 0.64
   OnInsufficientFundsToWater:
     m_PersistentCalls:
       m_Calls:
@@ -6604,7 +6604,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wateringSoundPlayerPrefab: {fileID: 1954455504458609106, guid: 7ea03095a313b0c4292be0f076dce57e, type: 3}
-  insufficientWateringFundStatPopupPrefab: {fileID: 8024300418989073095, guid: f3a373e0118fdc54d85de7d5d9767e8c, type: 3}
+  insufficientWateringFundPopupScaleMultiplier: 0.64
   OnInsufficientFundsToWater:
     m_PersistentCalls:
       m_Calls:
@@ -9192,7 +9192,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wateringSoundPlayerPrefab: {fileID: 1954455504458609106, guid: 7ea03095a313b0c4292be0f076dce57e, type: 3}
-  insufficientWateringFundStatPopupPrefab: {fileID: 8024300418989073095, guid: f3a373e0118fdc54d85de7d5d9767e8c, type: 3}
+  insufficientWateringFundPopupScaleMultiplier: 0.64
   OnInsufficientFundsToWater:
     m_PersistentCalls:
       m_Calls:
@@ -11654,7 +11654,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wateringSoundPlayerPrefab: {fileID: 1954455504458609106, guid: 7ea03095a313b0c4292be0f076dce57e, type: 3}
-  insufficientWateringFundStatPopupPrefab: {fileID: 8024300418989073095, guid: f3a373e0118fdc54d85de7d5d9767e8c, type: 3}
+  insufficientWateringFundPopupScaleMultiplier: 0.64
   OnInsufficientFundsToWater:
     m_PersistentCalls:
       m_Calls:
@@ -13555,7 +13555,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wateringSoundPlayerPrefab: {fileID: 1954455504458609106, guid: 7ea03095a313b0c4292be0f076dce57e, type: 3}
-  insufficientWateringFundStatPopupPrefab: {fileID: 8024300418989073095, guid: f3a373e0118fdc54d85de7d5d9767e8c, type: 3}
+  insufficientWateringFundPopupScaleMultiplier: 0.64
   OnInsufficientFundsToWater:
     m_PersistentCalls:
       m_Calls:
@@ -13955,7 +13955,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wateringSoundPlayerPrefab: {fileID: 1954455504458609106, guid: 7ea03095a313b0c4292be0f076dce57e, type: 3}
-  insufficientWateringFundStatPopupPrefab: {fileID: 8024300418989073095, guid: f3a373e0118fdc54d85de7d5d9767e8c, type: 3}
+  insufficientWateringFundPopupScaleMultiplier: 0.64
   OnInsufficientFundsToWater:
     m_PersistentCalls:
       m_Calls:
@@ -16257,7 +16257,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wateringSoundPlayerPrefab: {fileID: 1954455504458609106, guid: 7ea03095a313b0c4292be0f076dce57e, type: 3}
-  insufficientWateringFundStatPopupPrefab: {fileID: 8024300418989073095, guid: f3a373e0118fdc54d85de7d5d9767e8c, type: 3}
+  insufficientWateringFundPopupScaleMultiplier: 0.64
   OnInsufficientFundsToWater:
     m_PersistentCalls:
       m_Calls:
@@ -16926,7 +16926,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wateringSoundPlayerPrefab: {fileID: 1954455504458609106, guid: 7ea03095a313b0c4292be0f076dce57e, type: 3}
-  insufficientWateringFundStatPopupPrefab: {fileID: 8024300418989073095, guid: f3a373e0118fdc54d85de7d5d9767e8c, type: 3}
+  insufficientWateringFundPopupScaleMultiplier: 0.64
   OnInsufficientFundsToWater:
     m_PersistentCalls:
       m_Calls:
@@ -17988,7 +17988,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wateringSoundPlayerPrefab: {fileID: 1954455504458609106, guid: 7ea03095a313b0c4292be0f076dce57e, type: 3}
-  insufficientWateringFundStatPopupPrefab: {fileID: 8024300418989073095, guid: f3a373e0118fdc54d85de7d5d9767e8c, type: 3}
+  insufficientWateringFundPopupScaleMultiplier: 0.64
   OnInsufficientFundsToWater:
     m_PersistentCalls:
       m_Calls:
@@ -19779,7 +19779,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wateringSoundPlayerPrefab: {fileID: 1954455504458609106, guid: 7ea03095a313b0c4292be0f076dce57e, type: 3}
-  insufficientWateringFundStatPopupPrefab: {fileID: 8024300418989073095, guid: f3a373e0118fdc54d85de7d5d9767e8c, type: 3}
+  insufficientWateringFundPopupScaleMultiplier: 0.64
   OnInsufficientFundsToWater:
     m_PersistentCalls:
       m_Calls:
@@ -21659,7 +21659,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wateringSoundPlayerPrefab: {fileID: 1954455504458609106, guid: 7ea03095a313b0c4292be0f076dce57e, type: 3}
-  insufficientWateringFundStatPopupPrefab: {fileID: 8024300418989073095, guid: f3a373e0118fdc54d85de7d5d9767e8c, type: 3}
+  insufficientWateringFundPopupScaleMultiplier: 0.64
   OnInsufficientFundsToWater:
     m_PersistentCalls:
       m_Calls:
@@ -22217,7 +22217,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wateringSoundPlayerPrefab: {fileID: 1954455504458609106, guid: 7ea03095a313b0c4292be0f076dce57e, type: 3}
-  insufficientWateringFundStatPopupPrefab: {fileID: 8024300418989073095, guid: f3a373e0118fdc54d85de7d5d9767e8c, type: 3}
+  insufficientWateringFundPopupScaleMultiplier: 0.64
   OnInsufficientFundsToWater:
     m_PersistentCalls:
       m_Calls:
@@ -25941,7 +25941,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wateringSoundPlayerPrefab: {fileID: 1954455504458609106, guid: 7ea03095a313b0c4292be0f076dce57e, type: 3}
-  insufficientWateringFundStatPopupPrefab: {fileID: 8024300418989073095, guid: f3a373e0118fdc54d85de7d5d9767e8c, type: 3}
+  insufficientWateringFundPopupScaleMultiplier: 0.64
   OnInsufficientFundsToWater:
     m_PersistentCalls:
       m_Calls:
@@ -26767,7 +26767,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wateringSoundPlayerPrefab: {fileID: 1954455504458609106, guid: 7ea03095a313b0c4292be0f076dce57e, type: 3}
-  insufficientWateringFundStatPopupPrefab: {fileID: 8024300418989073095, guid: f3a373e0118fdc54d85de7d5d9767e8c, type: 3}
+  insufficientWateringFundPopupScaleMultiplier: 0.64
   OnInsufficientFundsToWater:
     m_PersistentCalls:
       m_Calls:
@@ -27243,7 +27243,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wateringSoundPlayerPrefab: {fileID: 1954455504458609106, guid: 7ea03095a313b0c4292be0f076dce57e, type: 3}
-  insufficientWateringFundStatPopupPrefab: {fileID: 8024300418989073095, guid: f3a373e0118fdc54d85de7d5d9767e8c, type: 3}
+  insufficientWateringFundPopupScaleMultiplier: 0.64
   OnInsufficientFundsToWater:
     m_PersistentCalls:
       m_Calls:
@@ -29085,7 +29085,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wateringSoundPlayerPrefab: {fileID: 1954455504458609106, guid: 7ea03095a313b0c4292be0f076dce57e, type: 3}
-  insufficientWateringFundStatPopupPrefab: {fileID: 8024300418989073095, guid: f3a373e0118fdc54d85de7d5d9767e8c, type: 3}
+  insufficientWateringFundPopupScaleMultiplier: 0.64
   OnInsufficientFundsToWater:
     m_PersistentCalls:
       m_Calls:
@@ -30072,7 +30072,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wateringSoundPlayerPrefab: {fileID: 1954455504458609106, guid: 7ea03095a313b0c4292be0f076dce57e, type: 3}
-  insufficientWateringFundStatPopupPrefab: {fileID: 8024300418989073095, guid: f3a373e0118fdc54d85de7d5d9767e8c, type: 3}
+  insufficientWateringFundPopupScaleMultiplier: 0.64
   OnInsufficientFundsToWater:
     m_PersistentCalls:
       m_Calls:
@@ -31016,7 +31016,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wateringSoundPlayerPrefab: {fileID: 1954455504458609106, guid: 7ea03095a313b0c4292be0f076dce57e, type: 3}
-  insufficientWateringFundStatPopupPrefab: {fileID: 8024300418989073095, guid: f3a373e0118fdc54d85de7d5d9767e8c, type: 3}
+  insufficientWateringFundPopupScaleMultiplier: 0.64
   OnInsufficientFundsToWater:
     m_PersistentCalls:
       m_Calls:
@@ -31551,7 +31551,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wateringSoundPlayerPrefab: {fileID: 1954455504458609106, guid: 7ea03095a313b0c4292be0f076dce57e, type: 3}
-  insufficientWateringFundStatPopupPrefab: {fileID: 8024300418989073095, guid: f3a373e0118fdc54d85de7d5d9767e8c, type: 3}
+  insufficientWateringFundPopupScaleMultiplier: 0.64
   OnInsufficientFundsToWater:
     m_PersistentCalls:
       m_Calls:
@@ -33607,7 +33607,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wateringSoundPlayerPrefab: {fileID: 1954455504458609106, guid: 7ea03095a313b0c4292be0f076dce57e, type: 3}
-  insufficientWateringFundStatPopupPrefab: {fileID: 8024300418989073095, guid: f3a373e0118fdc54d85de7d5d9767e8c, type: 3}
+  insufficientWateringFundPopupScaleMultiplier: 0.64
   OnInsufficientFundsToWater:
     m_PersistentCalls:
       m_Calls:
@@ -34007,7 +34007,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wateringSoundPlayerPrefab: {fileID: 1954455504458609106, guid: 7ea03095a313b0c4292be0f076dce57e, type: 3}
-  insufficientWateringFundStatPopupPrefab: {fileID: 8024300418989073095, guid: f3a373e0118fdc54d85de7d5d9767e8c, type: 3}
+  insufficientWateringFundPopupScaleMultiplier: 0.64
   OnInsufficientFundsToWater:
     m_PersistentCalls:
       m_Calls:
@@ -35020,7 +35020,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wateringSoundPlayerPrefab: {fileID: 1954455504458609106, guid: 7ea03095a313b0c4292be0f076dce57e, type: 3}
-  insufficientWateringFundStatPopupPrefab: {fileID: 8024300418989073095, guid: f3a373e0118fdc54d85de7d5d9767e8c, type: 3}
+  insufficientWateringFundPopupScaleMultiplier: 0.64
   OnInsufficientFundsToWater:
     m_PersistentCalls:
       m_Calls:
@@ -37828,7 +37828,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wateringSoundPlayerPrefab: {fileID: 1954455504458609106, guid: 7ea03095a313b0c4292be0f076dce57e, type: 3}
-  insufficientWateringFundStatPopupPrefab: {fileID: 8024300418989073095, guid: f3a373e0118fdc54d85de7d5d9767e8c, type: 3}
+  insufficientWateringFundPopupScaleMultiplier: 0.64
   OnInsufficientFundsToWater:
     m_PersistentCalls:
       m_Calls:
@@ -38916,7 +38916,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wateringSoundPlayerPrefab: {fileID: 1954455504458609106, guid: 7ea03095a313b0c4292be0f076dce57e, type: 3}
-  insufficientWateringFundStatPopupPrefab: {fileID: 8024300418989073095, guid: f3a373e0118fdc54d85de7d5d9767e8c, type: 3}
+  insufficientWateringFundPopupScaleMultiplier: 0.64
   OnInsufficientFundsToWater:
     m_PersistentCalls:
       m_Calls:
@@ -39938,7 +39938,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wateringSoundPlayerPrefab: {fileID: 1954455504458609106, guid: 7ea03095a313b0c4292be0f076dce57e, type: 3}
-  insufficientWateringFundStatPopupPrefab: {fileID: 8024300418989073095, guid: f3a373e0118fdc54d85de7d5d9767e8c, type: 3}
+  insufficientWateringFundPopupScaleMultiplier: 0.64
   OnInsufficientFundsToWater:
     m_PersistentCalls:
       m_Calls:
@@ -40549,7 +40549,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wateringSoundPlayerPrefab: {fileID: 1954455504458609106, guid: 7ea03095a313b0c4292be0f076dce57e, type: 3}
-  insufficientWateringFundStatPopupPrefab: {fileID: 8024300418989073095, guid: f3a373e0118fdc54d85de7d5d9767e8c, type: 3}
+  insufficientWateringFundPopupScaleMultiplier: 0.64
   OnInsufficientFundsToWater:
     m_PersistentCalls:
       m_Calls:
@@ -40949,7 +40949,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wateringSoundPlayerPrefab: {fileID: 1954455504458609106, guid: 7ea03095a313b0c4292be0f076dce57e, type: 3}
-  insufficientWateringFundStatPopupPrefab: {fileID: 8024300418989073095, guid: f3a373e0118fdc54d85de7d5d9767e8c, type: 3}
+  insufficientWateringFundPopupScaleMultiplier: 0.64
   OnInsufficientFundsToWater:
     m_PersistentCalls:
       m_Calls:
@@ -42729,7 +42729,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wateringSoundPlayerPrefab: {fileID: 1954455504458609106, guid: 7ea03095a313b0c4292be0f076dce57e, type: 3}
-  insufficientWateringFundStatPopupPrefab: {fileID: 8024300418989073095, guid: f3a373e0118fdc54d85de7d5d9767e8c, type: 3}
+  insufficientWateringFundPopupScaleMultiplier: 0.64
   OnInsufficientFundsToWater:
     m_PersistentCalls:
       m_Calls:
@@ -44180,7 +44180,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wateringSoundPlayerPrefab: {fileID: 1954455504458609106, guid: 7ea03095a313b0c4292be0f076dce57e, type: 3}
-  insufficientWateringFundStatPopupPrefab: {fileID: 8024300418989073095, guid: f3a373e0118fdc54d85de7d5d9767e8c, type: 3}
+  insufficientWateringFundPopupScaleMultiplier: 0.64
   OnInsufficientFundsToWater:
     m_PersistentCalls:
       m_Calls:
@@ -44580,7 +44580,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wateringSoundPlayerPrefab: {fileID: 1954455504458609106, guid: 7ea03095a313b0c4292be0f076dce57e, type: 3}
-  insufficientWateringFundStatPopupPrefab: {fileID: 8024300418989073095, guid: f3a373e0118fdc54d85de7d5d9767e8c, type: 3}
+  insufficientWateringFundPopupScaleMultiplier: 0.64
   OnInsufficientFundsToWater:
     m_PersistentCalls:
       m_Calls:
@@ -45229,7 +45229,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wateringSoundPlayerPrefab: {fileID: 1954455504458609106, guid: 7ea03095a313b0c4292be0f076dce57e, type: 3}
-  insufficientWateringFundStatPopupPrefab: {fileID: 8024300418989073095, guid: f3a373e0118fdc54d85de7d5d9767e8c, type: 3}
+  insufficientWateringFundPopupScaleMultiplier: 0.64
   OnInsufficientFundsToWater:
     m_PersistentCalls:
       m_Calls:
@@ -45629,7 +45629,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wateringSoundPlayerPrefab: {fileID: 1954455504458609106, guid: 7ea03095a313b0c4292be0f076dce57e, type: 3}
-  insufficientWateringFundStatPopupPrefab: {fileID: 8024300418989073095, guid: f3a373e0118fdc54d85de7d5d9767e8c, type: 3}
+  insufficientWateringFundPopupScaleMultiplier: 0.64
   OnInsufficientFundsToWater:
     m_PersistentCalls:
       m_Calls:
@@ -46918,7 +46918,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wateringSoundPlayerPrefab: {fileID: 1954455504458609106, guid: 7ea03095a313b0c4292be0f076dce57e, type: 3}
-  insufficientWateringFundStatPopupPrefab: {fileID: 8024300418989073095, guid: f3a373e0118fdc54d85de7d5d9767e8c, type: 3}
+  insufficientWateringFundPopupScaleMultiplier: 0.64
   OnInsufficientFundsToWater:
     m_PersistentCalls:
       m_Calls:
@@ -47886,7 +47886,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wateringSoundPlayerPrefab: {fileID: 1954455504458609106, guid: 7ea03095a313b0c4292be0f076dce57e, type: 3}
-  insufficientWateringFundStatPopupPrefab: {fileID: 8024300418989073095, guid: f3a373e0118fdc54d85de7d5d9767e8c, type: 3}
+  insufficientWateringFundPopupScaleMultiplier: 0.64
   OnInsufficientFundsToWater:
     m_PersistentCalls:
       m_Calls:
@@ -48837,7 +48837,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wateringSoundPlayerPrefab: {fileID: 1954455504458609106, guid: 7ea03095a313b0c4292be0f076dce57e, type: 3}
-  insufficientWateringFundStatPopupPrefab: {fileID: 8024300418989073095, guid: f3a373e0118fdc54d85de7d5d9767e8c, type: 3}
+  insufficientWateringFundPopupScaleMultiplier: 0.64
   OnInsufficientFundsToWater:
     m_PersistentCalls:
       m_Calls:
@@ -49716,7 +49716,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wateringSoundPlayerPrefab: {fileID: 1954455504458609106, guid: 7ea03095a313b0c4292be0f076dce57e, type: 3}
-  insufficientWateringFundStatPopupPrefab: {fileID: 8024300418989073095, guid: f3a373e0118fdc54d85de7d5d9767e8c, type: 3}
+  insufficientWateringFundPopupScaleMultiplier: 0.64
   OnInsufficientFundsToWater:
     m_PersistentCalls:
       m_Calls:
@@ -50594,7 +50594,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wateringSoundPlayerPrefab: {fileID: 1954455504458609106, guid: 7ea03095a313b0c4292be0f076dce57e, type: 3}
-  insufficientWateringFundStatPopupPrefab: {fileID: 8024300418989073095, guid: f3a373e0118fdc54d85de7d5d9767e8c, type: 3}
+  insufficientWateringFundPopupScaleMultiplier: 0.64
   OnInsufficientFundsToWater:
     m_PersistentCalls:
       m_Calls:
@@ -51392,7 +51392,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wateringSoundPlayerPrefab: {fileID: 1954455504458609106, guid: 7ea03095a313b0c4292be0f076dce57e, type: 3}
-  insufficientWateringFundStatPopupPrefab: {fileID: 8024300418989073095, guid: f3a373e0118fdc54d85de7d5d9767e8c, type: 3}
+  insufficientWateringFundPopupScaleMultiplier: 0.64
   OnInsufficientFundsToWater:
     m_PersistentCalls:
       m_Calls:
@@ -55542,7 +55542,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wateringSoundPlayerPrefab: {fileID: 1954455504458609106, guid: 7ea03095a313b0c4292be0f076dce57e, type: 3}
-  insufficientWateringFundStatPopupPrefab: {fileID: 8024300418989073095, guid: f3a373e0118fdc54d85de7d5d9767e8c, type: 3}
+  insufficientWateringFundPopupScaleMultiplier: 0.64
   OnInsufficientFundsToWater:
     m_PersistentCalls:
       m_Calls:
@@ -57338,7 +57338,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wateringSoundPlayerPrefab: {fileID: 1954455504458609106, guid: 7ea03095a313b0c4292be0f076dce57e, type: 3}
-  insufficientWateringFundStatPopupPrefab: {fileID: 8024300418989073095, guid: f3a373e0118fdc54d85de7d5d9767e8c, type: 3}
+  insufficientWateringFundPopupScaleMultiplier: 0.64
   OnInsufficientFundsToWater:
     m_PersistentCalls:
       m_Calls:
@@ -59155,7 +59155,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wateringSoundPlayerPrefab: {fileID: 1954455504458609106, guid: 7ea03095a313b0c4292be0f076dce57e, type: 3}
-  insufficientWateringFundStatPopupPrefab: {fileID: 8024300418989073095, guid: f3a373e0118fdc54d85de7d5d9767e8c, type: 3}
+  insufficientWateringFundPopupScaleMultiplier: 0.64
   OnInsufficientFundsToWater:
     m_PersistentCalls:
       m_Calls:
@@ -60850,7 +60850,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wateringSoundPlayerPrefab: {fileID: 1954455504458609106, guid: 7ea03095a313b0c4292be0f076dce57e, type: 3}
-  insufficientWateringFundStatPopupPrefab: {fileID: 8024300418989073095, guid: f3a373e0118fdc54d85de7d5d9767e8c, type: 3}
+  insufficientWateringFundPopupScaleMultiplier: 0.64
   OnInsufficientFundsToWater:
     m_PersistentCalls:
       m_Calls:
@@ -61384,7 +61384,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wateringSoundPlayerPrefab: {fileID: 1954455504458609106, guid: 7ea03095a313b0c4292be0f076dce57e, type: 3}
-  insufficientWateringFundStatPopupPrefab: {fileID: 8024300418989073095, guid: f3a373e0118fdc54d85de7d5d9767e8c, type: 3}
+  insufficientWateringFundPopupScaleMultiplier: 0.64
   OnInsufficientFundsToWater:
     m_PersistentCalls:
       m_Calls:
@@ -61999,7 +61999,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wateringSoundPlayerPrefab: {fileID: 1954455504458609106, guid: 7ea03095a313b0c4292be0f076dce57e, type: 3}
-  insufficientWateringFundStatPopupPrefab: {fileID: 8024300418989073095, guid: f3a373e0118fdc54d85de7d5d9767e8c, type: 3}
+  insufficientWateringFundPopupScaleMultiplier: 0.64
   OnInsufficientFundsToWater:
     m_PersistentCalls:
       m_Calls:
@@ -62930,7 +62930,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wateringSoundPlayerPrefab: {fileID: 1954455504458609106, guid: 7ea03095a313b0c4292be0f076dce57e, type: 3}
-  insufficientWateringFundStatPopupPrefab: {fileID: 8024300418989073095, guid: f3a373e0118fdc54d85de7d5d9767e8c, type: 3}
+  insufficientWateringFundPopupScaleMultiplier: 0.64
   OnInsufficientFundsToWater:
     m_PersistentCalls:
       m_Calls:
@@ -63330,7 +63330,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wateringSoundPlayerPrefab: {fileID: 1954455504458609106, guid: 7ea03095a313b0c4292be0f076dce57e, type: 3}
-  insufficientWateringFundStatPopupPrefab: {fileID: 8024300418989073095, guid: f3a373e0118fdc54d85de7d5d9767e8c, type: 3}
+  insufficientWateringFundPopupScaleMultiplier: 0.64
   OnInsufficientFundsToWater:
     m_PersistentCalls:
       m_Calls:
@@ -64202,7 +64202,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wateringSoundPlayerPrefab: {fileID: 1954455504458609106, guid: 7ea03095a313b0c4292be0f076dce57e, type: 3}
-  insufficientWateringFundStatPopupPrefab: {fileID: 8024300418989073095, guid: f3a373e0118fdc54d85de7d5d9767e8c, type: 3}
+  insufficientWateringFundPopupScaleMultiplier: 0.64
   OnInsufficientFundsToWater:
     m_PersistentCalls:
       m_Calls:
@@ -65343,22 +65343,6 @@ PrefabInstance:
     - target: {fileID: 1628325844, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 38
-      objectReference: {fileID: 0}
-    - target: {fileID: 194554740377278472, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 84.34
-      objectReference: {fileID: 0}
-    - target: {fileID: 194554740377278472, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 25.26
-      objectReference: {fileID: 0}
-    - target: {fileID: 194554740377278472, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -81
-      objectReference: {fileID: 0}
-    - target: {fileID: 194554740377278472, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -12.630005
       objectReference: {fileID: 0}
     - target: {fileID: 1099689189817966449, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
       propertyPath: gameResourceUIStatPopupSpawner

@@ -26,6 +26,8 @@ namespace TeamMAsTD
 
         [field: SerializeField] public bool autoEnableTooltipOnStart { get; private set; } = false;
 
+        [field: SerializeField] public bool toggleTooltipOnClick { get; private set; } = true;
+
         private PointerEventData pointerEventData;
 
         public InfoTooltipClickReminderDisplayTimer clickReminderDisplayTimer { get; private set; }
@@ -145,7 +147,7 @@ namespace TeamMAsTD
         {
             pointerEventData = eventData;
 
-            InfoTooltipImageToggle();
+            if(toggleTooltipOnClick) InfoTooltipImageToggle();
 
             //set the selected game object in the current event system so that
             //when the event system detects a newly selected game obj whether null or not,

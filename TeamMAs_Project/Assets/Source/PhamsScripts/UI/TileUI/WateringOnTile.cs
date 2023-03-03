@@ -13,7 +13,9 @@ namespace TeamMAsTD
     {
         [SerializeField] private SoundPlayer wateringSoundPlayerPrefab;
 
-        [SerializeField] private StatPopupSpawner insufficientWateringFundStatPopupPrefab;
+        [SerializeField] private float insufficientWateringFundPopupScaleMultiplier = 0.64f;
+
+        //[SerializeField] private StatPopupSpawner insufficientWateringFundStatPopupPrefab;
 
         private StatPopupSpawner thisTileInsufficientWateringFundPopup;
 
@@ -21,9 +23,12 @@ namespace TeamMAsTD
 
         private Tile tileToWater;
 
+        private Button wateringChildButton;
+
         private void Awake()
         {
             tileToWater= GetComponent<Tile>();
+
             if(tileToWater == null)
             {
                 Debug.LogError("Tile script component not found. Watering on tile won't work, disabling script...");
@@ -35,21 +40,39 @@ namespace TeamMAsTD
             {
                 Debug.LogWarning("Watering Sound Player Prefab is missing on WateringOnTile: " + name);
             }
+
+            foreach(Button button in GetComponentsInChildren<Button>(true))
+            {
+                bool validButtonFound = false;
+
+                if (validButtonFound) break;
+
+                for(int i = 0; i < button.onClick.GetPersistentEventCount(); i++)
+                {
+                    if(button.onClick.GetPersistentMethodName(i) == "WaterTileIfHasPlantUnit")
+                    {
+                        validButtonFound = true;
+
+                        wateringChildButton = button;
+
+                        break;
+                    }
+                }
+            }
         }
 
         private void Start()
         {
-            if (insufficientWateringFundStatPopupPrefab != null)
+            //This if below needs to always be in Start() to avoid execution order conflicts
+            //since it's getting the insufficient fund popup which is created in Tile.cs' Awake()
+            if (tileToWater.thisTileInsufficientFundToPlantStatPopup != null)
             {
-                GameObject statPopUpSpawnerGO = Instantiate(insufficientWateringFundStatPopupPrefab.gameObject, transform);
-
-                statPopUpSpawnerGO.transform.localPosition = Vector3.zero;
-
-                thisTileInsufficientWateringFundPopup = statPopUpSpawnerGO.GetComponent<StatPopupSpawner>();
+                thisTileInsufficientWateringFundPopup = tileToWater.thisTileInsufficientFundToPlantStatPopup;
             }
         }
 
         //Watering button UI event function -> callback from button's OnClicked event 
+        //WARNING: IF THIS FUNCTION NAME IS TO BE CHANGED -> HAS TO CHANGE ITS STRING REFERENCE IN THE GET BUTTON IN AWAKE() AS WELL!!!!!
         public void WaterTileIfHasPlantUnit()
         {
             if (tileToWater.plantUnitOnTile == null) return;
@@ -65,25 +88,8 @@ namespace TeamMAsTD
 
             int wateringCoinsCost = tileToWater.plantUnitOnTile.plantUnitScriptableObject.wateringCoinsCost;
 
-            //check for sufficient funds to water
-            if (GameResource.gameResourceInstance != null && GameResource.gameResourceInstance.coinResourceSO != null)
-            {
-                if (GameResource.gameResourceInstance.coinResourceSO.resourceAmount < wateringCoinsCost)
-                {
-                    //if insufficient funds to water -> broadcast event and exit function
-                    //Debug.LogError("Watering Failed: Insufficient Funds to Refill Water Bars!");
-
-                    //if there's an insufficient fund to water stat popup script component attached -> show insufficient funds popup
-                    if(thisTileInsufficientWateringFundPopup != null)
-                    {
-                        thisTileInsufficientWateringFundPopup.PopUp(null, null, false);
-                    }
-
-                    OnInsufficientFundsToWater?.Invoke();
-
-                    return;
-                }
-            }
+            //check for insufficient watering fund and if insufficient -> process related popup and event
+            if(HasInsufficientWateringFund(wateringCoinsCost)) return;
 
             //else if there is sufficient fund to water
             //play watering sound if plant on tile's water is not full (water full check is above)
@@ -92,6 +98,54 @@ namespace TeamMAsTD
             SpawnAndDestroy_WateringSoundPlayer_IfNotNull();
 
             tilePlantWaterUsageSystem.RefillWaterBars(waterBarsToRefill, wateringCoinsCost);
+        }
+
+        private bool HasInsufficientWateringFund(int wateringCoinsCost)
+        {
+            //check for sufficient funds to water
+            if (GameResource.gameResourceInstance != null && GameResource.gameResourceInstance.coinResourceSO != null)
+            {
+                if (GameResource.gameResourceInstance.coinResourceSO.resourceAmount < wateringCoinsCost)
+                {
+                    //if insufficient funds to water -> broadcast event and exit function
+                    //Debug.LogError("Watering Failed: Insufficient Funds to Refill Water Bars!");
+
+                    if (wateringChildButton != null)
+                    {
+                        if (thisTileInsufficientWateringFundPopup != null)
+                        {
+                            float popupOffsetX = thisTileInsufficientWateringFundPopup.GetPopupPositionAfterStartOffsetApplied().x;
+
+                            float popupOffsetY = thisTileInsufficientWateringFundPopup.GetPopupPositionAfterStartOffsetApplied().y;
+
+                            float offsetToButtonX = wateringChildButton.transform.position.x - popupOffsetX;
+
+                            float offsetToButtonY = wateringChildButton.transform.position.y - popupOffsetY;
+
+                            //move tile insufficient fund popup object (check Tile.cs) to watering button's center position
+                            //reduce popup scale multiplier to 0.6f
+                            //these config values are reset in Tile.cs
+                            thisTileInsufficientWateringFundPopup.SetStatPopupSpawnerConfig(offsetToButtonY, 
+                                                                                            offsetToButtonX,   
+                                                                                            0.0f, 
+                                                                                            0.0f, 
+                                                                                            insufficientWateringFundPopupScaleMultiplier);
+                        }
+                    }
+
+                    //if there's an insufficient fund to water stat popup script component attached -> show insufficient funds popup
+                    if (thisTileInsufficientWateringFundPopup != null)
+                    {
+                        thisTileInsufficientWateringFundPopup.PopUp(null, null, false);
+                    }
+
+                    OnInsufficientFundsToWater?.Invoke();
+
+                    return true;
+                }
+            }
+
+            return false;
         }
 
         public void SpawnAndDestroy_WateringSoundPlayer_IfNotNull()

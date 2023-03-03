@@ -45,6 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   statPopupPrefab: {fileID: 7758570173177216992, guid: ed741a84b9ba3b4459355084ad0d754f, type: 3}
+  <statPopupScaleMultiplier>k__BackingField: 1.5
   startVerticalOffset: 0
   startHorizontalOffset: 0
   verticalDistanceFromStart: 0.35
@@ -52,3 +53,4 @@ MonoBehaviour:
   randomHorizontalTravelDistFromStart: 1
   randomVerticalTravelDistFromStart: 0
   popupTime: 0.6
+  popupNumberToPool: 1
