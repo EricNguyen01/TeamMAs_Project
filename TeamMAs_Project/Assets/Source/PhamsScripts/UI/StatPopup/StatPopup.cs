@@ -43,6 +43,8 @@ namespace TeamMAsTD
         
         private Vector3 endPos = Vector3.zero;
 
+        private Vector3 startingLocalScale;
+
         private float popupTravelTime;
 
         private float currentTravelTime = 0.0f;
@@ -66,6 +68,8 @@ namespace TeamMAsTD
 
                 if(statPopupAnimator == null) statPopupAnimator = gameObject.AddComponent<Animator>();
             }
+
+            startingLocalScale = transform.localScale;
 
             //this script and its object's enabled/disabled status can only be controlled by StatPopupPool.
             //if this script is not spawned by a StatPopupPool, it will always disable the whole gameobject by default on awake.
@@ -222,6 +226,8 @@ namespace TeamMAsTD
         public void SetStatPopupScaleMultipliers(float multipliers)
         {
             if (multipliers <= 0.0f) return;
+
+            transform.localScale = startingLocalScale;
 
             transform.localScale = new Vector3(transform.localScale.x * multipliers, transform.localScale.y * multipliers, transform.localScale.z);
         }

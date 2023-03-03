@@ -71,6 +71,11 @@ namespace TeamMAsTD
             
             statPopupOfStatPopupObj.InitializeStatPopup(enablePos, endPos, travelTime);
 
+            if (statPopupSpawnerSpawnedThisPool != null)
+            {
+                statPopupOfStatPopupObj.SetStatPopupScaleMultipliers(statPopupSpawnerSpawnedThisPool.statPopupScaleMultiplier);
+            }
+
             if(popupSprite != null) statPopupOfStatPopupObj.SetNewStatPopupSprite(popupSprite);
 
             if (!string.IsNullOrEmpty(popupText)) 

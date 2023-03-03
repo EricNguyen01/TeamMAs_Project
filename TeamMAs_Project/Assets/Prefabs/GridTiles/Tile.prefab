@@ -894,7 +894,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wateringSoundPlayerPrefab: {fileID: 1954455504458609106, guid: 7ea03095a313b0c4292be0f076dce57e, type: 3}
-  insufficientWateringFundStatPopupPrefab: {fileID: 8024300418989073095, guid: f3a373e0118fdc54d85de7d5d9767e8c, type: 3}
+  insufficientWateringFundPopupScaleMultiplier: 1
   OnInsufficientFundsToWater:
     m_PersistentCalls:
       m_Calls: []

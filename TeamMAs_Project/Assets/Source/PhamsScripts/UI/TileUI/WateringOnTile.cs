@@ -13,7 +13,7 @@ namespace TeamMAsTD
     {
         [SerializeField] private SoundPlayer wateringSoundPlayerPrefab;
 
-        [SerializeField] private float insufficientWateringFundPopupScaleMultiplier = 0.64f;
+        [SerializeField] private float insufficientWateringFundPopupScaleMultiplier = 1.0f;
 
         //[SerializeField] private StatPopupSpawner insufficientWateringFundStatPopupPrefab;
 

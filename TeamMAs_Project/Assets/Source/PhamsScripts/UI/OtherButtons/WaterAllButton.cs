@@ -25,6 +25,8 @@ namespace TeamMAsTD
 
         [SerializeField] private StatPopupSpawner insufficientFundToWaterAllPopupPrefab;
 
+        [SerializeField] private float insufficientFundToWaterAllPopupScaleMultiplier = 1.5f;
+
         [SerializeField] private TextMeshProUGUI waterAllCostText;
 
         private StatPopupSpawner insufficientFundToWaterAllPopup;
@@ -50,6 +52,12 @@ namespace TeamMAsTD
                 GameObject go = Instantiate(insufficientFundToWaterAllPopupPrefab.gameObject, transform.position, Quaternion.identity);
 
                 insufficientFundToWaterAllPopup = go.GetComponent<StatPopupSpawner>();
+
+                insufficientFundToWaterAllPopup.SetStatPopupSpawnerConfig(0.0f, 
+                                                                          0.0f, 
+                                                                          0.0f, 
+                                                                          0.0f, 
+                                                                          insufficientFundToWaterAllPopupScaleMultiplier);
             }
         }
 
