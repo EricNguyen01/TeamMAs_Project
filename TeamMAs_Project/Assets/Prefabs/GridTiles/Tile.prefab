@@ -1008,7 +1008,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   glowColor: {r: 1, g: 1, b: 1, a: 1}
   glowBrightness: 2
-  outlineWidth: 4
+  outlineWidth: 2
   alphaThreshold: 0.005
   drawOutside: 0
   enableInstancing: 0
@@ -1026,11 +1026,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   glowColorPositive: {r: 0.15752934, g: 0.4716981, b: 0.15752934, a: 1}
   glowColorNegative: {r: 0.9811321, g: 0.03147021, b: 0.03147021, a: 1}
-  glowAlphaFrom: 200
-  glowAlphaTo: 240
-  colorBrightnessFrom: 0.45
-  colorBrightnessTo: 0.6
-  glowCycleFrequency: 1.3
+  glowAlphaFrom: 210
+  glowAlphaTo: 255
+  colorBrightnessFrom: 0.55
+  colorBrightnessTo: 0.7
+  glowCycleFrequency: 1.2
 --- !u!1 &6202609648566256504
 GameObject:
   m_ObjectHideFlags: 0

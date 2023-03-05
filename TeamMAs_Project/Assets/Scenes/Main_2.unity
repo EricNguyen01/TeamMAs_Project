@@ -1010,11 +1010,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   glowColorPositive: {r: 0.15752934, g: 0.4716981, b: 0.15752934, a: 1}
   glowColorNegative: {r: 0.9811321, g: 0.03147021, b: 0.03147021, a: 1}
-  glowAlphaFrom: 200
-  glowAlphaTo: 240
-  colorBrightnessFrom: 0.45
-  colorBrightnessTo: 0.6
-  glowCycleFrequency: 1.3
+  glowAlphaFrom: 210
+  glowAlphaTo: 255
+  colorBrightnessFrom: 0.55
+  colorBrightnessTo: 0.7
+  glowCycleFrequency: 1.2
 --- !u!114 &15538447
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2016,11 +2016,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   glowColorPositive: {r: 0.15752934, g: 0.4716981, b: 0.15752934, a: 1}
   glowColorNegative: {r: 0.9811321, g: 0.03147021, b: 0.03147021, a: 1}
-  glowAlphaFrom: 200
-  glowAlphaTo: 240
-  colorBrightnessFrom: 0.45
-  colorBrightnessTo: 0.6
-  glowCycleFrequency: 1.3
+  glowAlphaFrom: 210
+  glowAlphaTo: 255
+  colorBrightnessFrom: 0.55
+  colorBrightnessTo: 0.7
+  glowCycleFrequency: 1.2
 --- !u!114 &52810160
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4077,11 +4077,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   glowColorPositive: {r: 0.15752934, g: 0.4716981, b: 0.15752934, a: 1}
   glowColorNegative: {r: 0.9811321, g: 0.03147021, b: 0.03147021, a: 1}
-  glowAlphaFrom: 200
-  glowAlphaTo: 240
-  colorBrightnessFrom: 0.45
-  colorBrightnessTo: 0.6
-  glowCycleFrequency: 1.3
+  glowAlphaFrom: 210
+  glowAlphaTo: 255
+  colorBrightnessFrom: 0.55
+  colorBrightnessTo: 0.7
+  glowCycleFrequency: 1.2
 --- !u!114 &105890055
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4980,11 +4980,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   glowColorPositive: {r: 0.15752934, g: 0.4716981, b: 0.15752934, a: 1}
   glowColorNegative: {r: 0.9811321, g: 0.03147021, b: 0.03147021, a: 1}
-  glowAlphaFrom: 200
-  glowAlphaTo: 240
-  colorBrightnessFrom: 0.45
-  colorBrightnessTo: 0.6
-  glowCycleFrequency: 1.3
+  glowAlphaFrom: 210
+  glowAlphaTo: 255
+  colorBrightnessFrom: 0.55
+  colorBrightnessTo: 0.7
+  glowCycleFrequency: 1.2
 --- !u!114 &121886964
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6765,11 +6765,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   glowColorPositive: {r: 0.15752934, g: 0.4716981, b: 0.15752934, a: 1}
   glowColorNegative: {r: 0.9811321, g: 0.03147021, b: 0.03147021, a: 1}
-  glowAlphaFrom: 200
-  glowAlphaTo: 240
-  colorBrightnessFrom: 0.45
-  colorBrightnessTo: 0.6
-  glowCycleFrequency: 1.3
+  glowAlphaFrom: 210
+  glowAlphaTo: 255
+  colorBrightnessFrom: 0.55
+  colorBrightnessTo: 0.7
+  glowCycleFrequency: 1.2
 --- !u!114 &197177037
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9353,11 +9353,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   glowColorPositive: {r: 0.15752934, g: 0.4716981, b: 0.15752934, a: 1}
   glowColorNegative: {r: 0.9811321, g: 0.03147021, b: 0.03147021, a: 1}
-  glowAlphaFrom: 200
-  glowAlphaTo: 240
-  colorBrightnessFrom: 0.45
-  colorBrightnessTo: 0.6
-  glowCycleFrequency: 1.3
+  glowAlphaFrom: 210
+  glowAlphaTo: 255
+  colorBrightnessFrom: 0.55
+  colorBrightnessTo: 0.7
+  glowCycleFrequency: 1.2
 --- !u!114 &340959699
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11815,11 +11815,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   glowColorPositive: {r: 0.15752934, g: 0.4716981, b: 0.15752934, a: 1}
   glowColorNegative: {r: 0.9811321, g: 0.03147021, b: 0.03147021, a: 1}
-  glowAlphaFrom: 200
-  glowAlphaTo: 240
-  colorBrightnessFrom: 0.45
-  colorBrightnessTo: 0.6
-  glowCycleFrequency: 1.3
+  glowAlphaFrom: 210
+  glowAlphaTo: 255
+  colorBrightnessFrom: 0.55
+  colorBrightnessTo: 0.7
+  glowCycleFrequency: 1.2
 --- !u!114 &456749772
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13716,11 +13716,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   glowColorPositive: {r: 0.15752934, g: 0.4716981, b: 0.15752934, a: 1}
   glowColorNegative: {r: 0.9811321, g: 0.03147021, b: 0.03147021, a: 1}
-  glowAlphaFrom: 200
-  glowAlphaTo: 240
-  colorBrightnessFrom: 0.45
-  colorBrightnessTo: 0.6
-  glowCycleFrequency: 1.3
+  glowAlphaFrom: 210
+  glowAlphaTo: 255
+  colorBrightnessFrom: 0.55
+  colorBrightnessTo: 0.7
+  glowCycleFrequency: 1.2
 --- !u!114 &548260361
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14116,11 +14116,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   glowColorPositive: {r: 0.15752934, g: 0.4716981, b: 0.15752934, a: 1}
   glowColorNegative: {r: 0.9811321, g: 0.03147021, b: 0.03147021, a: 1}
-  glowAlphaFrom: 200
-  glowAlphaTo: 240
-  colorBrightnessFrom: 0.45
-  colorBrightnessTo: 0.6
-  glowCycleFrequency: 1.3
+  glowAlphaFrom: 210
+  glowAlphaTo: 255
+  colorBrightnessFrom: 0.55
+  colorBrightnessTo: 0.7
+  glowCycleFrequency: 1.2
 --- !u!114 &551824663
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16418,11 +16418,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   glowColorPositive: {r: 0.15752934, g: 0.4716981, b: 0.15752934, a: 1}
   glowColorNegative: {r: 0.9811321, g: 0.03147021, b: 0.03147021, a: 1}
-  glowAlphaFrom: 200
-  glowAlphaTo: 240
-  colorBrightnessFrom: 0.45
-  colorBrightnessTo: 0.6
-  glowCycleFrequency: 1.3
+  glowAlphaFrom: 210
+  glowAlphaTo: 255
+  colorBrightnessFrom: 0.55
+  colorBrightnessTo: 0.7
+  glowCycleFrequency: 1.2
 --- !u!114 &686431554
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17087,11 +17087,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   glowColorPositive: {r: 0.15752934, g: 0.4716981, b: 0.15752934, a: 1}
   glowColorNegative: {r: 0.9811321, g: 0.03147021, b: 0.03147021, a: 1}
-  glowAlphaFrom: 200
-  glowAlphaTo: 240
-  colorBrightnessFrom: 0.45
-  colorBrightnessTo: 0.6
-  glowCycleFrequency: 1.3
+  glowAlphaFrom: 210
+  glowAlphaTo: 255
+  colorBrightnessFrom: 0.55
+  colorBrightnessTo: 0.7
+  glowCycleFrequency: 1.2
 --- !u!114 &696377669
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18149,11 +18149,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   glowColorPositive: {r: 0.15752934, g: 0.4716981, b: 0.15752934, a: 1}
   glowColorNegative: {r: 0.9811321, g: 0.03147021, b: 0.03147021, a: 1}
-  glowAlphaFrom: 200
-  glowAlphaTo: 240
-  colorBrightnessFrom: 0.45
-  colorBrightnessTo: 0.6
-  glowCycleFrequency: 1.3
+  glowAlphaFrom: 210
+  glowAlphaTo: 255
+  colorBrightnessFrom: 0.55
+  colorBrightnessTo: 0.7
+  glowCycleFrequency: 1.2
 --- !u!114 &712307774
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19940,11 +19940,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   glowColorPositive: {r: 0.15752934, g: 0.4716981, b: 0.15752934, a: 1}
   glowColorNegative: {r: 0.9811321, g: 0.03147021, b: 0.03147021, a: 1}
-  glowAlphaFrom: 200
-  glowAlphaTo: 240
-  colorBrightnessFrom: 0.45
-  colorBrightnessTo: 0.6
-  glowCycleFrequency: 1.3
+  glowAlphaFrom: 210
+  glowAlphaTo: 255
+  colorBrightnessFrom: 0.55
+  colorBrightnessTo: 0.7
+  glowCycleFrequency: 1.2
 --- !u!114 &782636148
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21820,11 +21820,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   glowColorPositive: {r: 0.15752934, g: 0.4716981, b: 0.15752934, a: 1}
   glowColorNegative: {r: 0.9811321, g: 0.03147021, b: 0.03147021, a: 1}
-  glowAlphaFrom: 200
-  glowAlphaTo: 240
-  colorBrightnessFrom: 0.45
-  colorBrightnessTo: 0.6
-  glowCycleFrequency: 1.3
+  glowAlphaFrom: 210
+  glowAlphaTo: 255
+  colorBrightnessFrom: 0.55
+  colorBrightnessTo: 0.7
+  glowCycleFrequency: 1.2
 --- !u!114 &840555220
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22378,11 +22378,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   glowColorPositive: {r: 0.15752934, g: 0.4716981, b: 0.15752934, a: 1}
   glowColorNegative: {r: 0.9811321, g: 0.03147021, b: 0.03147021, a: 1}
-  glowAlphaFrom: 200
-  glowAlphaTo: 240
-  colorBrightnessFrom: 0.45
-  colorBrightnessTo: 0.6
-  glowCycleFrequency: 1.3
+  glowAlphaFrom: 210
+  glowAlphaTo: 255
+  colorBrightnessFrom: 0.55
+  colorBrightnessTo: 0.7
+  glowCycleFrequency: 1.2
 --- !u!114 &845359706
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26102,11 +26102,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   glowColorPositive: {r: 0.15752934, g: 0.4716981, b: 0.15752934, a: 1}
   glowColorNegative: {r: 0.9811321, g: 0.03147021, b: 0.03147021, a: 1}
-  glowAlphaFrom: 200
-  glowAlphaTo: 240
-  colorBrightnessFrom: 0.45
-  colorBrightnessTo: 0.6
-  glowCycleFrequency: 1.3
+  glowAlphaFrom: 210
+  glowAlphaTo: 255
+  colorBrightnessFrom: 0.55
+  colorBrightnessTo: 0.7
+  glowCycleFrequency: 1.2
 --- !u!114 &979564357
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26928,11 +26928,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   glowColorPositive: {r: 0.15752934, g: 0.4716981, b: 0.15752934, a: 1}
   glowColorNegative: {r: 0.9811321, g: 0.03147021, b: 0.03147021, a: 1}
-  glowAlphaFrom: 200
-  glowAlphaTo: 240
-  colorBrightnessFrom: 0.45
-  colorBrightnessTo: 0.6
-  glowCycleFrequency: 1.3
+  glowAlphaFrom: 210
+  glowAlphaTo: 255
+  colorBrightnessFrom: 0.55
+  colorBrightnessTo: 0.7
+  glowCycleFrequency: 1.2
 --- !u!114 &1002748433
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27404,11 +27404,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   glowColorPositive: {r: 0.15752934, g: 0.4716981, b: 0.15752934, a: 1}
   glowColorNegative: {r: 0.9811321, g: 0.03147021, b: 0.03147021, a: 1}
-  glowAlphaFrom: 200
-  glowAlphaTo: 240
-  colorBrightnessFrom: 0.45
-  colorBrightnessTo: 0.6
-  glowCycleFrequency: 1.3
+  glowAlphaFrom: 210
+  glowAlphaTo: 255
+  colorBrightnessFrom: 0.55
+  colorBrightnessTo: 0.7
+  glowCycleFrequency: 1.2
 --- !u!114 &1004615130
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29246,11 +29246,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   glowColorPositive: {r: 0.15752934, g: 0.4716981, b: 0.15752934, a: 1}
   glowColorNegative: {r: 0.9811321, g: 0.03147021, b: 0.03147021, a: 1}
-  glowAlphaFrom: 200
-  glowAlphaTo: 240
-  colorBrightnessFrom: 0.45
-  colorBrightnessTo: 0.6
-  glowCycleFrequency: 1.3
+  glowAlphaFrom: 210
+  glowAlphaTo: 255
+  colorBrightnessFrom: 0.55
+  colorBrightnessTo: 0.7
+  glowCycleFrequency: 1.2
 --- !u!114 &1079170327
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30233,11 +30233,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   glowColorPositive: {r: 0.15752934, g: 0.4716981, b: 0.15752934, a: 1}
   glowColorNegative: {r: 0.9811321, g: 0.03147021, b: 0.03147021, a: 1}
-  glowAlphaFrom: 200
-  glowAlphaTo: 240
-  colorBrightnessFrom: 0.45
-  colorBrightnessTo: 0.6
-  glowCycleFrequency: 1.3
+  glowAlphaFrom: 210
+  glowAlphaTo: 255
+  colorBrightnessFrom: 0.55
+  colorBrightnessTo: 0.7
+  glowCycleFrequency: 1.2
 --- !u!114 &1107879454
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -31177,11 +31177,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   glowColorPositive: {r: 0.15752934, g: 0.4716981, b: 0.15752934, a: 1}
   glowColorNegative: {r: 0.9811321, g: 0.03147021, b: 0.03147021, a: 1}
-  glowAlphaFrom: 200
-  glowAlphaTo: 240
-  colorBrightnessFrom: 0.45
-  colorBrightnessTo: 0.6
-  glowCycleFrequency: 1.3
+  glowAlphaFrom: 210
+  glowAlphaTo: 255
+  colorBrightnessFrom: 0.55
+  colorBrightnessTo: 0.7
+  glowCycleFrequency: 1.2
 --- !u!114 &1155804730
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -31712,11 +31712,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   glowColorPositive: {r: 0.15752934, g: 0.4716981, b: 0.15752934, a: 1}
   glowColorNegative: {r: 0.9811321, g: 0.03147021, b: 0.03147021, a: 1}
-  glowAlphaFrom: 200
-  glowAlphaTo: 240
-  colorBrightnessFrom: 0.45
-  colorBrightnessTo: 0.6
-  glowCycleFrequency: 1.3
+  glowAlphaFrom: 210
+  glowAlphaTo: 255
+  colorBrightnessFrom: 0.55
+  colorBrightnessTo: 0.7
+  glowCycleFrequency: 1.2
 --- !u!114 &1158758396
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -33768,11 +33768,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   glowColorPositive: {r: 0.15752934, g: 0.4716981, b: 0.15752934, a: 1}
   glowColorNegative: {r: 0.9811321, g: 0.03147021, b: 0.03147021, a: 1}
-  glowAlphaFrom: 200
-  glowAlphaTo: 240
-  colorBrightnessFrom: 0.45
-  colorBrightnessTo: 0.6
-  glowCycleFrequency: 1.3
+  glowAlphaFrom: 210
+  glowAlphaTo: 255
+  colorBrightnessFrom: 0.55
+  colorBrightnessTo: 0.7
+  glowCycleFrequency: 1.2
 --- !u!114 &1232097732
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -34168,11 +34168,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   glowColorPositive: {r: 0.15752934, g: 0.4716981, b: 0.15752934, a: 1}
   glowColorNegative: {r: 0.9811321, g: 0.03147021, b: 0.03147021, a: 1}
-  glowAlphaFrom: 200
-  glowAlphaTo: 240
-  colorBrightnessFrom: 0.45
-  colorBrightnessTo: 0.6
-  glowCycleFrequency: 1.3
+  glowAlphaFrom: 210
+  glowAlphaTo: 255
+  colorBrightnessFrom: 0.55
+  colorBrightnessTo: 0.7
+  glowCycleFrequency: 1.2
 --- !u!114 &1232348864
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -35181,11 +35181,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   glowColorPositive: {r: 0.15752934, g: 0.4716981, b: 0.15752934, a: 1}
   glowColorNegative: {r: 0.9811321, g: 0.03147021, b: 0.03147021, a: 1}
-  glowAlphaFrom: 200
-  glowAlphaTo: 240
-  colorBrightnessFrom: 0.45
-  colorBrightnessTo: 0.6
-  glowCycleFrequency: 1.3
+  glowAlphaFrom: 210
+  glowAlphaTo: 255
+  colorBrightnessFrom: 0.55
+  colorBrightnessTo: 0.7
+  glowCycleFrequency: 1.2
 --- !u!114 &1277552503
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -37989,11 +37989,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   glowColorPositive: {r: 0.15752934, g: 0.4716981, b: 0.15752934, a: 1}
   glowColorNegative: {r: 0.9811321, g: 0.03147021, b: 0.03147021, a: 1}
-  glowAlphaFrom: 200
-  glowAlphaTo: 240
-  colorBrightnessFrom: 0.45
-  colorBrightnessTo: 0.6
-  glowCycleFrequency: 1.3
+  glowAlphaFrom: 210
+  glowAlphaTo: 255
+  colorBrightnessFrom: 0.55
+  colorBrightnessTo: 0.7
+  glowCycleFrequency: 1.2
 --- !u!114 &1368556768
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -39077,11 +39077,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   glowColorPositive: {r: 0.15752934, g: 0.4716981, b: 0.15752934, a: 1}
   glowColorNegative: {r: 0.9811321, g: 0.03147021, b: 0.03147021, a: 1}
-  glowAlphaFrom: 200
-  glowAlphaTo: 240
-  colorBrightnessFrom: 0.45
-  colorBrightnessTo: 0.6
-  glowCycleFrequency: 1.3
+  glowAlphaFrom: 210
+  glowAlphaTo: 255
+  colorBrightnessFrom: 0.55
+  colorBrightnessTo: 0.7
+  glowCycleFrequency: 1.2
 --- !u!114 &1398176868
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -40099,11 +40099,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   glowColorPositive: {r: 0.15752934, g: 0.4716981, b: 0.15752934, a: 1}
   glowColorNegative: {r: 0.9811321, g: 0.03147021, b: 0.03147021, a: 1}
-  glowAlphaFrom: 200
-  glowAlphaTo: 240
-  colorBrightnessFrom: 0.45
-  colorBrightnessTo: 0.6
-  glowCycleFrequency: 1.3
+  glowAlphaFrom: 210
+  glowAlphaTo: 255
+  colorBrightnessFrom: 0.55
+  colorBrightnessTo: 0.7
+  glowCycleFrequency: 1.2
 --- !u!114 &1435873245
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -40710,11 +40710,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   glowColorPositive: {r: 0.15752934, g: 0.4716981, b: 0.15752934, a: 1}
   glowColorNegative: {r: 0.9811321, g: 0.03147021, b: 0.03147021, a: 1}
-  glowAlphaFrom: 200
-  glowAlphaTo: 240
-  colorBrightnessFrom: 0.45
-  colorBrightnessTo: 0.6
-  glowCycleFrequency: 1.3
+  glowAlphaFrom: 210
+  glowAlphaTo: 255
+  colorBrightnessFrom: 0.55
+  colorBrightnessTo: 0.7
+  glowCycleFrequency: 1.2
 --- !u!114 &1444773948
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -41110,11 +41110,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   glowColorPositive: {r: 0.15752934, g: 0.4716981, b: 0.15752934, a: 1}
   glowColorNegative: {r: 0.9811321, g: 0.03147021, b: 0.03147021, a: 1}
-  glowAlphaFrom: 200
-  glowAlphaTo: 240
-  colorBrightnessFrom: 0.45
-  colorBrightnessTo: 0.6
-  glowCycleFrequency: 1.3
+  glowAlphaFrom: 210
+  glowAlphaTo: 255
+  colorBrightnessFrom: 0.55
+  colorBrightnessTo: 0.7
+  glowCycleFrequency: 1.2
 --- !u!114 &1445330519
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -42256,7 +42256,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8024300418989073095, guid: be2a0ac942afe8841bf8cf4a38447cca, type: 3}
       propertyPath: <statPopupScaleMultiplier>k__BackingField
-      value: 2.25
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 8923729546418773549, guid: be2a0ac942afe8841bf8cf4a38447cca, type: 3}
       propertyPath: m_Name
@@ -42890,11 +42890,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   glowColorPositive: {r: 0.15752934, g: 0.4716981, b: 0.15752934, a: 1}
   glowColorNegative: {r: 0.9811321, g: 0.03147021, b: 0.03147021, a: 1}
-  glowAlphaFrom: 200
-  glowAlphaTo: 240
-  colorBrightnessFrom: 0.45
-  colorBrightnessTo: 0.6
-  glowCycleFrequency: 1.3
+  glowAlphaFrom: 210
+  glowAlphaTo: 255
+  colorBrightnessFrom: 0.55
+  colorBrightnessTo: 0.7
+  glowCycleFrequency: 1.2
 --- !u!114 &1491814708
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -44341,11 +44341,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   glowColorPositive: {r: 0.15752934, g: 0.4716981, b: 0.15752934, a: 1}
   glowColorNegative: {r: 0.9811321, g: 0.03147021, b: 0.03147021, a: 1}
-  glowAlphaFrom: 200
-  glowAlphaTo: 240
-  colorBrightnessFrom: 0.45
-  colorBrightnessTo: 0.6
-  glowCycleFrequency: 1.3
+  glowAlphaFrom: 210
+  glowAlphaTo: 255
+  colorBrightnessFrom: 0.55
+  colorBrightnessTo: 0.7
+  glowCycleFrequency: 1.2
 --- !u!114 &1528747911
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -44741,11 +44741,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   glowColorPositive: {r: 0.15752934, g: 0.4716981, b: 0.15752934, a: 1}
   glowColorNegative: {r: 0.9811321, g: 0.03147021, b: 0.03147021, a: 1}
-  glowAlphaFrom: 200
-  glowAlphaTo: 240
-  colorBrightnessFrom: 0.45
-  colorBrightnessTo: 0.6
-  glowCycleFrequency: 1.3
+  glowAlphaFrom: 210
+  glowAlphaTo: 255
+  colorBrightnessFrom: 0.55
+  colorBrightnessTo: 0.7
+  glowCycleFrequency: 1.2
 --- !u!114 &1538477365
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -45390,11 +45390,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   glowColorPositive: {r: 0.15752934, g: 0.4716981, b: 0.15752934, a: 1}
   glowColorNegative: {r: 0.9811321, g: 0.03147021, b: 0.03147021, a: 1}
-  glowAlphaFrom: 200
-  glowAlphaTo: 240
-  colorBrightnessFrom: 0.45
-  colorBrightnessTo: 0.6
-  glowCycleFrequency: 1.3
+  glowAlphaFrom: 210
+  glowAlphaTo: 255
+  colorBrightnessFrom: 0.55
+  colorBrightnessTo: 0.7
+  glowCycleFrequency: 1.2
 --- !u!114 &1554078854
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -45790,11 +45790,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   glowColorPositive: {r: 0.15752934, g: 0.4716981, b: 0.15752934, a: 1}
   glowColorNegative: {r: 0.9811321, g: 0.03147021, b: 0.03147021, a: 1}
-  glowAlphaFrom: 200
-  glowAlphaTo: 240
-  colorBrightnessFrom: 0.45
-  colorBrightnessTo: 0.6
-  glowCycleFrequency: 1.3
+  glowAlphaFrom: 210
+  glowAlphaTo: 255
+  colorBrightnessFrom: 0.55
+  colorBrightnessTo: 0.7
+  glowCycleFrequency: 1.2
 --- !u!114 &1560932796
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -47079,11 +47079,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   glowColorPositive: {r: 0.15752934, g: 0.4716981, b: 0.15752934, a: 1}
   glowColorNegative: {r: 0.9811321, g: 0.03147021, b: 0.03147021, a: 1}
-  glowAlphaFrom: 200
-  glowAlphaTo: 240
-  colorBrightnessFrom: 0.45
-  colorBrightnessTo: 0.6
-  glowCycleFrequency: 1.3
+  glowAlphaFrom: 210
+  glowAlphaTo: 255
+  colorBrightnessFrom: 0.55
+  colorBrightnessTo: 0.7
+  glowCycleFrequency: 1.2
 --- !u!114 &1616826389
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -48047,11 +48047,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   glowColorPositive: {r: 0.15752934, g: 0.4716981, b: 0.15752934, a: 1}
   glowColorNegative: {r: 0.9811321, g: 0.03147021, b: 0.03147021, a: 1}
-  glowAlphaFrom: 200
-  glowAlphaTo: 240
-  colorBrightnessFrom: 0.45
-  colorBrightnessTo: 0.6
-  glowCycleFrequency: 1.3
+  glowAlphaFrom: 210
+  glowAlphaTo: 255
+  colorBrightnessFrom: 0.55
+  colorBrightnessTo: 0.7
+  glowCycleFrequency: 1.2
 --- !u!114 &1640197444
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -48998,11 +48998,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   glowColorPositive: {r: 0.15752934, g: 0.4716981, b: 0.15752934, a: 1}
   glowColorNegative: {r: 0.9811321, g: 0.03147021, b: 0.03147021, a: 1}
-  glowAlphaFrom: 200
-  glowAlphaTo: 240
-  colorBrightnessFrom: 0.45
-  colorBrightnessTo: 0.6
-  glowCycleFrequency: 1.3
+  glowAlphaFrom: 210
+  glowAlphaTo: 255
+  colorBrightnessFrom: 0.55
+  colorBrightnessTo: 0.7
+  glowCycleFrequency: 1.2
 --- !u!114 &1675363187
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -49877,11 +49877,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   glowColorPositive: {r: 0.15752934, g: 0.4716981, b: 0.15752934, a: 1}
   glowColorNegative: {r: 0.9811321, g: 0.03147021, b: 0.03147021, a: 1}
-  glowAlphaFrom: 200
-  glowAlphaTo: 240
-  colorBrightnessFrom: 0.45
-  colorBrightnessTo: 0.6
-  glowCycleFrequency: 1.3
+  glowAlphaFrom: 210
+  glowAlphaTo: 255
+  colorBrightnessFrom: 0.55
+  colorBrightnessTo: 0.7
+  glowCycleFrequency: 1.2
 --- !u!114 &1705588432
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -50755,11 +50755,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   glowColorPositive: {r: 0.15752934, g: 0.4716981, b: 0.15752934, a: 1}
   glowColorNegative: {r: 0.9811321, g: 0.03147021, b: 0.03147021, a: 1}
-  glowAlphaFrom: 200
-  glowAlphaTo: 240
-  colorBrightnessFrom: 0.45
-  colorBrightnessTo: 0.6
-  glowCycleFrequency: 1.3
+  glowAlphaFrom: 210
+  glowAlphaTo: 255
+  colorBrightnessFrom: 0.55
+  colorBrightnessTo: 0.7
+  glowCycleFrequency: 1.2
 --- !u!114 &1727865223
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -51553,11 +51553,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   glowColorPositive: {r: 0.15752934, g: 0.4716981, b: 0.15752934, a: 1}
   glowColorNegative: {r: 0.9811321, g: 0.03147021, b: 0.03147021, a: 1}
-  glowAlphaFrom: 200
-  glowAlphaTo: 240
-  colorBrightnessFrom: 0.45
-  colorBrightnessTo: 0.6
-  glowCycleFrequency: 1.3
+  glowAlphaFrom: 210
+  glowAlphaTo: 255
+  colorBrightnessFrom: 0.55
+  colorBrightnessTo: 0.7
+  glowCycleFrequency: 1.2
 --- !u!114 &1747731297
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -55703,11 +55703,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   glowColorPositive: {r: 0.15752934, g: 0.4716981, b: 0.15752934, a: 1}
   glowColorNegative: {r: 0.9811321, g: 0.03147021, b: 0.03147021, a: 1}
-  glowAlphaFrom: 200
-  glowAlphaTo: 240
-  colorBrightnessFrom: 0.45
-  colorBrightnessTo: 0.6
-  glowCycleFrequency: 1.3
+  glowAlphaFrom: 210
+  glowAlphaTo: 255
+  colorBrightnessFrom: 0.55
+  colorBrightnessTo: 0.7
+  glowCycleFrequency: 1.2
 --- !u!114 &1899135437
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -57499,11 +57499,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   glowColorPositive: {r: 0.15752934, g: 0.4716981, b: 0.15752934, a: 1}
   glowColorNegative: {r: 0.9811321, g: 0.03147021, b: 0.03147021, a: 1}
-  glowAlphaFrom: 200
-  glowAlphaTo: 240
-  colorBrightnessFrom: 0.45
-  colorBrightnessTo: 0.6
-  glowCycleFrequency: 1.3
+  glowAlphaFrom: 210
+  glowAlphaTo: 255
+  colorBrightnessFrom: 0.55
+  colorBrightnessTo: 0.7
+  glowCycleFrequency: 1.2
 --- !u!114 &1933233877
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -59316,11 +59316,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   glowColorPositive: {r: 0.15752934, g: 0.4716981, b: 0.15752934, a: 1}
   glowColorNegative: {r: 0.9811321, g: 0.03147021, b: 0.03147021, a: 1}
-  glowAlphaFrom: 200
-  glowAlphaTo: 240
-  colorBrightnessFrom: 0.45
-  colorBrightnessTo: 0.6
-  glowCycleFrequency: 1.3
+  glowAlphaFrom: 210
+  glowAlphaTo: 255
+  colorBrightnessFrom: 0.55
+  colorBrightnessTo: 0.7
+  glowCycleFrequency: 1.2
 --- !u!114 &2005115270
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -61011,11 +61011,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   glowColorPositive: {r: 0.15752934, g: 0.4716981, b: 0.15752934, a: 1}
   glowColorNegative: {r: 0.9811321, g: 0.03147021, b: 0.03147021, a: 1}
-  glowAlphaFrom: 200
-  glowAlphaTo: 240
-  colorBrightnessFrom: 0.45
-  colorBrightnessTo: 0.6
-  glowCycleFrequency: 1.3
+  glowAlphaFrom: 210
+  glowAlphaTo: 255
+  colorBrightnessFrom: 0.55
+  colorBrightnessTo: 0.7
+  glowCycleFrequency: 1.2
 --- !u!114 &2059737628
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -61545,11 +61545,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   glowColorPositive: {r: 0.15752934, g: 0.4716981, b: 0.15752934, a: 1}
   glowColorNegative: {r: 0.9811321, g: 0.03147021, b: 0.03147021, a: 1}
-  glowAlphaFrom: 200
-  glowAlphaTo: 240
-  colorBrightnessFrom: 0.45
-  colorBrightnessTo: 0.6
-  glowCycleFrequency: 1.3
+  glowAlphaFrom: 210
+  glowAlphaTo: 255
+  colorBrightnessFrom: 0.55
+  colorBrightnessTo: 0.7
+  glowCycleFrequency: 1.2
 --- !u!114 &2065378685
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -62160,11 +62160,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   glowColorPositive: {r: 0.15752934, g: 0.4716981, b: 0.15752934, a: 1}
   glowColorNegative: {r: 0.9811321, g: 0.03147021, b: 0.03147021, a: 1}
-  glowAlphaFrom: 200
-  glowAlphaTo: 240
-  colorBrightnessFrom: 0.45
-  colorBrightnessTo: 0.6
-  glowCycleFrequency: 1.3
+  glowAlphaFrom: 210
+  glowAlphaTo: 255
+  colorBrightnessFrom: 0.55
+  colorBrightnessTo: 0.7
+  glowCycleFrequency: 1.2
 --- !u!114 &2070348983
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -63091,11 +63091,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   glowColorPositive: {r: 0.15752934, g: 0.4716981, b: 0.15752934, a: 1}
   glowColorNegative: {r: 0.9811321, g: 0.03147021, b: 0.03147021, a: 1}
-  glowAlphaFrom: 200
-  glowAlphaTo: 240
-  colorBrightnessFrom: 0.45
-  colorBrightnessTo: 0.6
-  glowCycleFrequency: 1.3
+  glowAlphaFrom: 210
+  glowAlphaTo: 255
+  colorBrightnessFrom: 0.55
+  colorBrightnessTo: 0.7
+  glowCycleFrequency: 1.2
 --- !u!114 &2103963352
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -63491,11 +63491,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   glowColorPositive: {r: 0.15752934, g: 0.4716981, b: 0.15752934, a: 1}
   glowColorNegative: {r: 0.9811321, g: 0.03147021, b: 0.03147021, a: 1}
-  glowAlphaFrom: 200
-  glowAlphaTo: 240
-  colorBrightnessFrom: 0.45
-  colorBrightnessTo: 0.6
-  glowCycleFrequency: 1.3
+  glowAlphaFrom: 210
+  glowAlphaTo: 255
+  colorBrightnessFrom: 0.55
+  colorBrightnessTo: 0.7
+  glowCycleFrequency: 1.2
 --- !u!114 &2118044413
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -64363,11 +64363,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   glowColorPositive: {r: 0.15752934, g: 0.4716981, b: 0.15752934, a: 1}
   glowColorNegative: {r: 0.9811321, g: 0.03147021, b: 0.03147021, a: 1}
-  glowAlphaFrom: 200
-  glowAlphaTo: 240
-  colorBrightnessFrom: 0.45
-  colorBrightnessTo: 0.6
-  glowCycleFrequency: 1.3
+  glowAlphaFrom: 210
+  glowAlphaTo: 255
+  colorBrightnessFrom: 0.55
+  colorBrightnessTo: 0.7
+  glowCycleFrequency: 1.2
 --- !u!114 &2133675655
 MonoBehaviour:
   m_ObjectHideFlags: 0

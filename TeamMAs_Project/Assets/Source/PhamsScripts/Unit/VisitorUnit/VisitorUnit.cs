@@ -43,6 +43,8 @@ namespace TeamMAsTD
 
         private Color visitorOriginalSpriteColor = Color.white;
 
+        private Color visitorHitColor = Color.white;
+
         private UnitWorldUI visitorWorldUIComponent;
 
         private Collider2D visitorCollider2D;
@@ -280,7 +282,10 @@ namespace TeamMAsTD
             if (visitorSpriteRenderer != null)
             {
                 visitorOriginalSpriteColor.a = 255.0f;
+
                 visitorSpriteRenderer.color = visitorOriginalSpriteColor;
+
+                visitorHitColor = visitorUnitSO.visitorHitColor;
             }
         }
 
@@ -290,7 +295,7 @@ namespace TeamMAsTD
 
             currentDamageVisualTime -= Time.deltaTime;
 
-            Color color = Color.Lerp(visitorUnitSO.visitorHitColor, visitorOriginalSpriteColor, currentDamageVisualTime / baseDamageVisualTime);
+            Color color = Color.Lerp(visitorHitColor, visitorOriginalSpriteColor, currentDamageVisualTime / baseDamageVisualTime);
             color.a = 255.0f;
 
             if (visitorSpriteRenderer != null) visitorSpriteRenderer.color = color;
@@ -302,6 +307,7 @@ namespace TeamMAsTD
                 if (visitorSpriteRenderer != null && visitorSpriteRenderer.color != visitorOriginalSpriteColor)
                 {
                     visitorOriginalSpriteColor.a = 255.0f;
+
                     visitorSpriteRenderer.color = visitorOriginalSpriteColor;
                 }
             }
@@ -347,7 +353,9 @@ namespace TeamMAsTD
             if(visitorSpriteRenderer != null)
             {
                 var color = visitorSpriteRenderer.color;
+
                 color.a = currentAppeasementTime / visitorUnitSO.visitorAppeasementTime;
+
                 visitorSpriteRenderer.color = color;
             }
         }
@@ -395,6 +403,9 @@ namespace TeamMAsTD
                 }
 
                 //else
+
+                //set hit color
+                visitorHitColor = projectile.projectileSpriteRenderer.color;
 
                 //set damage to HP
                 currentVisitorHealth -= damage * DamageMultiplier(projectile);

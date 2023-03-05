@@ -16,14 +16,14 @@ namespace TeamMAsTD
 
         [SerializeField]
         [Tooltip("The lowest possible amount of this resource")]
-        private float InitialResourceAmountMin;//in-editor static only data
+        private float initialResourceAmountMin;//in-editor static only data
 
         [field: NonSerialized]
         public float resourceAmountMin { get; private set; } = 0.0f;//runtime non-static data
 
         [SerializeField]
         [Min(0)]
-        private float InitialResourceAmount;//in-editor static only SO data
+        private float initialResourceAmount;//in-editor static only SO data
 
         [field: NonSerialized]
         public float resourceAmount { get; private set; }//runtime non-static data
@@ -31,7 +31,7 @@ namespace TeamMAsTD
         [SerializeField]
         [Tooltip("The highest possible amount of this resource. If value is 0, this resource has an infinite cap.")]
         [Min(0)]
-        private float InitialResourceAmountCap;//in-editor static only SO data
+        private float initialResourceAmountCap;//in-editor static only SO data
 
         [field: NonSerialized]
         public float resourceAmountCap { get; private set; }//runtime non-static data
@@ -115,11 +115,11 @@ namespace TeamMAsTD
 
         void ISerializationCallbackReceiver.OnAfterDeserialize()
         {
-            resourceAmountMin = InitialResourceAmountMin;
+            resourceAmountMin = initialResourceAmountMin;
 
-            resourceAmount = InitialResourceAmount;
+            resourceAmount = initialResourceAmount;
 
-            resourceAmountCap = InitialResourceAmountCap;
+            resourceAmountCap = initialResourceAmountCap;
         }
     }
 }

@@ -10,6 +10,7 @@ namespace TeamMAsTD
     public class TileGlow : MonoBehaviour
     {
         [Header("Tile Glow Config")]
+
         [SerializeField] private Color glowColorPositive = Color.green;
 
         [SerializeField] private Color glowColorNegative = Color.red;
@@ -94,8 +95,14 @@ namespace TeamMAsTD
             //in disable function, isTileGlowing is set to false and all coroutines are stopped.
             DisableTileGlowEffect();
 
-            if (isPositiveGlow) spriteGlowEffectComp.GlowColor = glowColorPositive;
-            else spriteGlowEffectComp.GlowColor = glowColorNegative;
+            if (isPositiveGlow)
+            {
+                spriteGlowEffectComp.GlowColor = glowColorPositive;
+            }
+            else 
+            { 
+                spriteGlowEffectComp.GlowColor = glowColorNegative;
+            }
 
             spriteGlowEffectComp.enabled = true;
 
@@ -117,9 +124,9 @@ namespace TeamMAsTD
                 yield break;
             }
 
-            //Color spriteRendererColor = spriteGlowEffectComp.Renderer.color;
-
             Color glowColor = spriteGlowEffectComp.GlowColor;
+
+            float normalizedTime = 0.0f;
 
             while (isTileGlowing)
             {
@@ -130,15 +137,15 @@ namespace TeamMAsTD
                     {
                         glowCycleTime += Time.fixedDeltaTime;
 
-                        //spriteRendererColor.a = Mathf.Lerp(glowAlphaFrom, glowAlphaTo, glowCycleTime);
+                        normalizedTime = glowCycleTime / glowCycleFrequency;
 
-                        glowColor.a = Mathf.Lerp(glowAlphaFrom, glowAlphaTo, glowCycleTime);
+                        //Debug.Log("NormalizedTime: " + normalizedTime);
 
-                        //spriteGlowEffectComp.Renderer.color = spriteRendererColor;
+                        glowColor.a = Mathf.Lerp(glowAlphaFrom, glowAlphaTo, normalizedTime);
 
                         spriteGlowEffectComp.GlowColor = glowColor;
 
-                        spriteGlowEffectComp.GlowBrightness = Mathf.Lerp(colorBrightnessFrom, colorBrightnessTo, glowCycleTime);
+                        spriteGlowEffectComp.GlowBrightness = Mathf.Lerp(colorBrightnessFrom, colorBrightnessTo, normalizedTime);
 
                         yield return new WaitForFixedUpdate();
                     }
@@ -152,15 +159,13 @@ namespace TeamMAsTD
                     {
                         glowCycleTime -= Time.fixedDeltaTime;
 
-                        //spriteRendererColor.a = Mathf.Lerp(glowAlphaFrom, glowAlphaTo, glowCycleTime);
+                        normalizedTime = glowCycleTime / glowCycleFrequency;
 
-                        glowColor.a = Mathf.Lerp(glowAlphaFrom, glowAlphaTo, glowCycleTime);
-
-                        //spriteGlowEffectComp.Renderer.color = spriteRendererColor;
+                        glowColor.a = Mathf.Lerp(glowAlphaFrom, glowAlphaTo, normalizedTime);
 
                         spriteGlowEffectComp.GlowColor = glowColor;
 
-                        spriteGlowEffectComp.GlowBrightness = Mathf.Lerp(colorBrightnessFrom, colorBrightnessTo, glowCycleTime);
+                        spriteGlowEffectComp.GlowBrightness = Mathf.Lerp(colorBrightnessFrom, colorBrightnessTo, normalizedTime);
 
                         yield return new WaitForFixedUpdate();
                     }

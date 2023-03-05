@@ -5,6 +5,7 @@ using UnityEngine;
 namespace TeamMAsTD
 {
     [DisallowMultipleComponent]
+    [RequireComponent(typeof(SpriteRenderer))]
     public class PlantProjectile : MonoBehaviour
     {
         private PlantProjectileSO plantProjectileSO;
@@ -18,6 +19,8 @@ namespace TeamMAsTD
         private Collider2D projectileCollider2D;
 
         private Rigidbody2D projectileRigidbody2D;
+
+        public SpriteRenderer projectileSpriteRenderer { get; private set; }
 
         private Vector2 projectileStartPos;
 
@@ -33,6 +36,8 @@ namespace TeamMAsTD
             {
                 Debug.LogError("PlantProjectile GameObject: " + name + " is not in PlantProjectile layer!");
             }
+
+            projectileSpriteRenderer = GetComponent<SpriteRenderer>();
             
             CheckProjectileColliderAndRigidbody();
         }

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: HumanEmotionalHealth
   m_EditorClassIdentifier: 
   <resourceName>k__BackingField: HumanEmotionalHealth
-  InitialResourceAmountMin: 0
-  InitialResourceAmount: 50
-  InitialResourceAmountCap: 100
+  initialResourceAmountMin: 0
+  initialResourceAmount: 50
+  initialResourceAmountCap: 100
   <visitorTypeAffectingThisHealth>k__BackingField: 1
