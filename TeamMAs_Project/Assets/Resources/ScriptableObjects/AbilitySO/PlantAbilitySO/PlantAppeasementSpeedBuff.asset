@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf49530e0ab97c9469906252d81eb76e, type: 3}
+  m_Name: PlantAppeasementSpeedBuff
+  m_EditorClassIdentifier: 
+  <abilityName>k__BackingField: PlantAppeasementSpeedBuff
+  <abilityRangeInTiles>k__BackingField: 3
+  initialAbilityCooldownTime: 0
+  initialAbilityChargeTime: 0
+  <abilityUseReservedFor>k__BackingField: 1
+  <abilityOnlyAffect>k__BackingField: 1
+  <abilityAffectsSpecificVisitorType>k__BackingField: 0
+  <abilityAffectsSpecificPlantUnit>k__BackingField: []
+  <abilityAffectsSpecificVisitorUnit>k__BackingField: []
+  <waveToUnlockAbility>k__BackingField: {fileID: 0}
+  initialAbilityLockedOnStart: 1
+  <damageBuffAmount>k__BackingField: 0
+  <healthBuffAmount>k__BackingField: 0
+  <attackSpeedBuffAmount>k__BackingField: 2
+  <cooldownReductionPercentageBuff>k__BackingField: 0
+  <chargeTimeReductionPercentageBuff>k__BackingField: 0
