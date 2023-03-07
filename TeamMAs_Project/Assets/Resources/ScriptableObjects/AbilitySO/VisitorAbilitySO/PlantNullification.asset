@@ -13,18 +13,20 @@ MonoBehaviour:
   m_Name: PlantNullification
   m_EditorClassIdentifier: 
   <abilityName>k__BackingField: PlantNullification
-  <abilityRangeInTiles>k__BackingField: 0
+  <abilityPrefab>k__BackingField: {fileID: 0}
+  initialAbilityRangeInTiles: 0
+  initialAbilityDuration: -1
   initialAbilityCooldownTime: 0
   initialAbilityChargeTime: 0
-  <abilityUseReservedFor>k__BackingField: 2
-  <abilityOnlyAffect>k__BackingField: 1
-  <abilityAffectsSpecificVisitorType>k__BackingField: 0
-  <abilityAffectsSpecificPlantUnit>k__BackingField: []
-  <abilityAffectsSpecificVisitorUnit>k__BackingField: []
+  initialAbilityUseReservedFor: 2
+  initialAbilityOnlyAffect: 1
+  initialAbilityAffectsSpecificVisitorType: 0
+  initialAbilityAffectsSpecificPlantUnit: []
+  initialAbilityAffectsSpecificVisitorUnit: []
   <abilityEffects>k__BackingField:
   - {fileID: 11400000, guid: 798f49c125c462845a76830465673a1e, type: 2}
   <waveToUnlockAbility>k__BackingField: {fileID: 0}
-  initialAbilityLockedOnStart: 1
+  initialAbilityLocked: 1
   <damageDeBuffAmount>k__BackingField: 0
   <healthDeBuffAmount>k__BackingField: 0
   <attackSpeedDeBuffAmount>k__BackingField: 0

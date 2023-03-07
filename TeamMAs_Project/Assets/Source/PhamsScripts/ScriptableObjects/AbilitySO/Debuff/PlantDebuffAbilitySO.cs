@@ -14,22 +14,22 @@ namespace TeamMAsTD
         {
             base.Awake();
 
-            abilityUseReservedFor = AbilityUseReservedFor.VisitorOnly;
+            initialAbilityUseReservedFor = AbilityUseReservedFor.VisitorOnly;
 
-            abilityOnlyAffect = AbilityOnlyAffect.PlantOnly;
+            initialAbilityOnlyAffect = AbilityOnlyAffect.PlantOnly;
 
-            abilityAffectsSpecificVisitorType = VisitorUnitSO.VisitorType.None;
+            initialAbilityAffectsSpecificVisitorType = VisitorUnitSO.VisitorType.None;
         }
 
         protected override void OnValidate()
         {
             base.OnValidate();
 
-            abilityUseReservedFor = AbilityUseReservedFor.VisitorOnly;
+            initialAbilityUseReservedFor = AbilityUseReservedFor.VisitorOnly;
 
-            abilityOnlyAffect = AbilityOnlyAffect.PlantOnly;
+            initialAbilityOnlyAffect = AbilityOnlyAffect.PlantOnly;
 
-            abilityAffectsSpecificVisitorType = VisitorUnitSO.VisitorType.None;
+            initialAbilityAffectsSpecificVisitorType = VisitorUnitSO.VisitorType.None;
         }
 
 #if UNITY_EDITOR

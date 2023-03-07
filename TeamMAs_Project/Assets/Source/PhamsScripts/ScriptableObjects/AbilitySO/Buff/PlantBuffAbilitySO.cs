@@ -12,18 +12,18 @@ namespace TeamMAsTD
         {
             base.Awake();
 
-            abilityUseReservedFor = AbilityUseReservedFor.PlantOnly;
+            initialAbilityUseReservedFor = AbilityUseReservedFor.PlantOnly;
 
-            abilityOnlyAffect = AbilityOnlyAffect.PlantOnly;
+            initialAbilityOnlyAffect = AbilityOnlyAffect.PlantOnly;
         }
 
         protected override void OnValidate()
         {
             base.OnValidate();
 
-            abilityUseReservedFor = AbilityUseReservedFor.PlantOnly;
+            initialAbilityUseReservedFor = AbilityUseReservedFor.PlantOnly;
 
-            abilityOnlyAffect = AbilityOnlyAffect.PlantOnly;
+            initialAbilityOnlyAffect = AbilityOnlyAffect.PlantOnly;
         }
     }
 }
