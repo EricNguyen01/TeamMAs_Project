@@ -26,6 +26,8 @@ namespace TeamMAsTD
 
         protected IUnit unitPossessingAbility;
 
+        protected UnitSO unitPossessingAbilitySO;
+
         protected bool isCharging = false;
 
         protected bool isInCooldown = false;
@@ -41,6 +43,17 @@ namespace TeamMAsTD
             if(abilityScriptableObject == null || unitPossessingAbility == null )
             {
                 Debug.LogError("Ability SO Data or a proper unit that can possess ability: " + name + " is missing. Disabling ability script!");
+
+                enabled = false;
+
+                return;
+            }
+
+            unitPossessingAbilitySO = unitPossessingAbility.GetUnitScriptableObjectData();
+
+            if (unitPossessingAbilitySO == null)
+            {
+                Debug.LogError("Unit ScriptableObject data of ability: " + name + " is missing. Disabling ability script!");
 
                 enabled = false;
 
@@ -92,8 +105,11 @@ namespace TeamMAsTD
             isStopped = false;
 
             //start cooldown right away after begin performing ability
-            //only starts if not already in cooldown
-            if(!isInCooldown) StartCoroutine(AbilityCooldownCoroutine(abilityScriptableObject.abilityCooldownTime));
+            //only starts if not already in cooldown or ability cdr time > 0.0f
+            if (!isInCooldown && abilityScriptableObject.abilityCooldownTime > 0.0f) 
+            { 
+                StartCoroutine(AbilityCooldownCoroutine(abilityScriptableObject.abilityCooldownTime)); 
+            }
 
             ProcessAbilityStart();
 
@@ -114,7 +130,7 @@ namespace TeamMAsTD
             if(abilityScriptableObject.abilityDuration < 0.0f)
             {
                 //ability duration is set to < 0.0f meaning that
-                //ability will be performed infinitely until there's external instruction to stop
+                //ability will be performed infinitely UNTIL there's an EXTERNAL INSTRUCTION to stop
                 return;
             }
 

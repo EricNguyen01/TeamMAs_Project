@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 66154950924848421}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Fill Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -48,7 +48,7 @@ GameObject:
   - component: {fileID: 9196963980052348855}
   - component: {fileID: 4805407303778348261}
   - component: {fileID: 6987995666649201191}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -127,7 +127,8 @@ GameObject:
   - component: {fileID: 6003989832151466817}
   - component: {fileID: 4233241255924856795}
   - component: {fileID: -3264027674580481279}
-  m_Layer: 0
+  - component: {fileID: 9106331440737797623}
+  m_Layer: 9
   m_Name: AH
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -216,7 +217,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <plantUnitScriptableObject>k__BackingField: {fileID: 11400000, guid: 462832fdbbb9cc34d8a23db6909e48c7, type: 2}
-  plantSpawnDestroyEffect: {fileID: 0}
 --- !u!114 &6003989832151466817
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -259,6 +259,32 @@ MonoBehaviour:
   nameTextMeshProComponent: {fileID: 0}
   healthBarSlider: {fileID: 0}
   waterSlider: {fileID: 6422578828115457895}
+--- !u!61 &9106331440737797623
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2090201727753816829}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 0.16, y: 0.16}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!1 &3374456963520985306
 GameObject:
   m_ObjectHideFlags: 0
@@ -270,7 +296,7 @@ GameObject:
   - component: {fileID: 1863838120713444790}
   - component: {fileID: 4825747019235007477}
   - component: {fileID: 7870362207316958662}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -345,7 +371,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4493733361665993497}
   - component: {fileID: 6422578828115457895}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: WaterSlider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -437,7 +463,7 @@ GameObject:
   - component: {fileID: 4260263329143712872}
   - component: {fileID: 5249118691950540029}
   - component: {fileID: 7618928612165756615}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: PlantWorldCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}

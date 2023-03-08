@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cf49530e0ab97c9469906252d81eb76e, type: 3}
-  m_Name: PlantAppeasementBuff
+  m_Name: PlantAppeasementStrenghtBuff
   m_EditorClassIdentifier: 
-  <abilityName>k__BackingField: PlantAppeasementBuff
+  <abilityName>k__BackingField: PlantAppeasementStrengthBuff
   <abilityPrefab>k__BackingField: {fileID: 0}
   initialAbilityRangeInTiles: 3
   initialAbilityDuration: -1
   initialAbilityCooldownTime: 0
   initialAbilityChargeTime: 0
   initialAbilityUseReservedFor: 1
-  initialAbilityOnAffect: 1
+  initialAbilityOnlyAffect: 1
   initialAbilityAffectsSpecificVisitorType: 0
   initialAbilityAffectsSpecificPlantUnit: []
   initialAbilityAffectsSpecificVisitorUnit: []

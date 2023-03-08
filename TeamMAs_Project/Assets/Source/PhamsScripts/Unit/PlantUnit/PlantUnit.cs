@@ -54,10 +54,18 @@ namespace TeamMAsTD
             }
 
             tilePlacedOn = GetComponentInParent<Tile>();
-            if(tilePlacedOn != null)
+
+            if(tilePlacedOn != null && tilePlacedOn.gridParent != null)
             {
+                //convert tile number to float distance in the grid
                 //max atk range = (tileSize * atk range in tiles) + 1/2 tile (to reach the edge of the last tile at max range)
-                plantMaxAttackRange = (tilePlacedOn.gridParent.tileSize * plantUnitScriptableObject.attackRangeInTiles) + (tilePlacedOn.gridParent.tileSize / 2.0f);
+                plantMaxAttackRange = tilePlacedOn.gridParent.GetDistanceFromTileNumber(plantUnitScriptableObject.attackRangeInTiles);
+            }
+            else
+            {
+                //if couldnt get atk range from tile size from the grid, assume that tile size is 1.0f and atk range = #of tiles
+                //(e.g 3 tiles = 3.0f).
+                plantMaxAttackRange = plantUnitScriptableObject.attackRangeInTiles;
             }
 
             plantUnitWorldUI = GetComponent<PlantUnitWorldUI>();
@@ -177,6 +185,16 @@ namespace TeamMAsTD
         public UnitSO GetUnitScriptableObjectData()
         {
             return plantUnitScriptableObject;
+        }
+
+        public Tile GetTileUnitIsOn()
+        {
+            return tilePlacedOn;
+        }
+
+        public Transform GetUnitTransform()
+        {
+            return transform;
         }
     }
 }

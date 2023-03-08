@@ -55,6 +55,11 @@ namespace TeamMAsTD
             return gridArray;
         }
 
+        public float GetDistanceFromTileNumber(int tileNumber)
+        {
+            return (tileSize * tileNumber) + (tileSize / 2.0f);
+        }
+
         //the method below returns the grid array index correspond to the provided tile coordinate in the grid.
         public int GetGridArrayIndexFromTileCoordinate(Vector2 tileCoordInt)
         {

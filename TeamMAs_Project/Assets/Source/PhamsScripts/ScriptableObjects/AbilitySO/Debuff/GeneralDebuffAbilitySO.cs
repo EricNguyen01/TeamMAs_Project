@@ -12,6 +12,11 @@ namespace TeamMAsTD
 
         [field: SerializeField]
         [field: Min(0.0f)]
+        [field: Tooltip("If debuff duration is set to 0.0f, debuff lasts infinitely.")]
+        public float deBuffDuration { get; private set; } = 0.0f;
+
+        [field: SerializeField]
+        [field: Min(0.0f)]
         public float damageDeBuffAmount { get; private set; } = 0.0f;
 
         [field: SerializeField]

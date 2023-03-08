@@ -381,12 +381,46 @@ namespace TeamMAsTD
         }
 
         //IUnit Interface functions....................................................
+
         public UnitSO GetUnitScriptableObjectData()
         {
             return visitorUnitSO;
         }
 
+        public Tile GetTileUnitIsOn()
+        {
+            Tile tileOn = null;
+
+            //cast a 2d ray backward
+            RaycastHit2D hit2DBackward = HelperFunctions.PerformSingleHit2DRaycastInDirection(transform.position, -transform.forward, Mathf.Infinity, "Tile");
+
+            if(hit2DBackward.collider != null)
+            {
+                tileOn = hit2DBackward.collider.GetComponent<Tile>();
+
+                if (tileOn != null) return tileOn;
+            }
+
+            //cast a 2d ray foreward
+            RaycastHit2D hit2DForward = HelperFunctions.PerformSingleHit2DRaycastInDirection(transform.position, transform.forward, Mathf.Infinity, "Tile");
+
+            if (hit2DForward.collider != null)
+            {
+                tileOn = hit2DForward.collider.GetComponent<Tile>();
+
+                if (tileOn != null) return tileOn;
+            }
+
+            return tileOn;
+        }
+
+        public Transform GetUnitTransform()
+        {
+            return transform;
+        }
+
         //IDamageable Interface functions..............................................
+
         public void TakeDamageFrom(object damageCauser, float damage)
         {
             if(damageCauser.GetType() == typeof(PlantProjectile))

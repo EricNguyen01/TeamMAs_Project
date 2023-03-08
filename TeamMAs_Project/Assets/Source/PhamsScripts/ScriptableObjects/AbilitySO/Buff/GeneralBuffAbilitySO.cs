@@ -12,6 +12,11 @@ namespace TeamMAsTD
 
         [field: SerializeField]
         [field: Min(0.0f)]
+        [field: Tooltip("If buff duration is set to 0.0f, buff lasts infinitely.")]
+        public float buffDuration { get; private set; } = 0.0f;
+
+        [field: SerializeField]
+        [field: Min(0.0f)]
         public float damageBuffAmount { get; private set; } = 0.0f;
 
         [field: SerializeField]

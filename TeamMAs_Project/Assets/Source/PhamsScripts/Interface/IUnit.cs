@@ -7,5 +7,9 @@ namespace TeamMAsTD
     public interface IUnit
     {
         public UnitSO GetUnitScriptableObjectData();
+
+        public Transform GetUnitTransform();
+
+        public Tile GetTileUnitIsOn();
     }
 }
