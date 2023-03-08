@@ -5,7 +5,9 @@ using UnityEngine;
 
 namespace TeamMAsTD
 {
-    public abstract class AbilitySO : ScriptableObject, ISerializationCallbackReceiver
+    [System.Serializable]
+    [CreateAssetMenu(menuName = "Ability Data Asset/New Ability")]
+    public class AbilitySO : ScriptableObject, ISerializationCallbackReceiver
     {
         [field: Header("General Ability Data")]
         [field: SerializeField] public string abilityName { get; private set; }
@@ -83,7 +85,7 @@ namespace TeamMAsTD
 
         [field: SerializeField]
         [field: Tooltip("The effects list that this ability can apply onto its targetted units.")]
-        public List<AbilityEffectSO> abilityEffects { get; private set; } = new List<AbilityEffectSO>();
+        public List<AbilityEffectSO> abilityEffects { get; protected set; } = new List<AbilityEffectSO>();
 
         [field: SerializeField]
         [field: Tooltip("Wave that this ability will be unlocked and become usable. If null, unlockable will depend on " +
@@ -95,10 +97,6 @@ namespace TeamMAsTD
 
         [field: NonSerialized]
         public bool abilityLocked { get; private set; } = true;//runtime non-static value
-
-        protected abstract void Awake();
-
-        protected abstract void OnValidate();
 
         public void SetNewAbilityTimeConfigs(float newAbilityDuration = 0.0f, float newAbilityCdrTime = 0.0f, float newAbilityChargeTime = 0.0f)
         {

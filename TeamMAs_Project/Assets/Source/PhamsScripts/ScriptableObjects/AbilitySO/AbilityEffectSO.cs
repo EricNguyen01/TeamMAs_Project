@@ -5,21 +5,21 @@ using UnityEngine;
 namespace TeamMAsTD
 {
     [System.Serializable]
-    [CreateAssetMenu(menuName = "Ability Data Asset/New Ability Effect")]
-    public class AbilityEffectSO : ScriptableObject
+    public abstract class AbilityEffectSO : ScriptableObject
     {
         [field: Header("Ability Effect Data")]
 
         [field: SerializeField]
-        [field: Min(0.0f)]
+        public string abilityEffectName { get; private set; }
+
+        [field: SerializeField]
+        [field: Min(-1.0f)]
+        [field: Tooltip("The duration in which this effect will last. If set to -1 means that this effect will last infinitely.")]
         public float effectDuration = 0.0f;
 
         [field: SerializeField]
-        [field: Min(0.0f)]
-        [field: Tooltip("This field only applies to DamageOverTime (DoT) ability effect type!" +
-        "If set to 0.0f means the ability will only apply 1 tick of damage on first hit then stops. " +
-        "Damage number is gotten from AbilitySO that contains this DoT ability effect SO.")]
-        public float damageOverTimeSpeed = 0.0f;
+        [field: Tooltip("Set effect last duration to be the same as the duration of the ability that produces this effect?")]
+        public bool effectDurationAsAbilityDuration { get; private set; } = true;
 
         [field: SerializeField]
         [field: Min(0)]
@@ -28,11 +28,22 @@ namespace TeamMAsTD
         public int effectAreaInTiles = 0;
 
         [field: SerializeField]
+        [field: Tooltip("Set effect area in tile number the same as the ability range that produces this effect?")]
+        public bool effectRangeAsAbilityRange { get; private set; } = true;
+
+        [field: SerializeField]
         [field: Min(0)]
         [field: Tooltip("The number of units this ability effect can affect. " +
         "0 means infinite number of units that this effect can apply onto.")]
         public int maxUnitsToApplyEffect = 0;
 
-        public enum EffectType { Stunt, Slowed, DoT, KnockedBack, KnockedUp }
+        public enum EffectType { Default, Stunt, Slowed, DoT, KnockedBack, KnockedUp, Buff, Debuff  }
+
+        [field: SerializeField]
+        public EffectType effectType { get; protected set; } = EffectType.Default;
+
+        protected abstract void OnValidate();
+
+        protected abstract void Awake();
     }
 }

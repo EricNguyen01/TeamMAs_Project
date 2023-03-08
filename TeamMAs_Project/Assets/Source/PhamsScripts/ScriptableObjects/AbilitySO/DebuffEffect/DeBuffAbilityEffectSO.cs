@@ -5,15 +5,10 @@ using UnityEngine;
 namespace TeamMAsTD
 {
     [System.Serializable]
-    [CreateAssetMenu(menuName = "Ability Data Asset/DeBuff Ability/General DeBuff Ability")]
-    public class GeneralDebuffAbilitySO : AbilitySO
+    [CreateAssetMenu(menuName = "Ability Effect Data Asset/New DeBuff Effect")]
+    public class DeBuffAbilityEffectSO : AbilityEffectSO
     {
         [field: Header("General DeBuff Ability Data")]
-
-        [field: SerializeField]
-        [field: Min(0.0f)]
-        [field: Tooltip("If debuff duration is set to 0.0f, debuff lasts infinitely.")]
-        public float deBuffDuration { get; private set; } = 0.0f;
 
         [field: SerializeField]
         [field: Min(0.0f)]
@@ -37,12 +32,12 @@ namespace TeamMAsTD
 
         protected override void Awake()
         {
-            
+            effectType = EffectType.Debuff;
         }
 
         protected override void OnValidate()
         {
-            
+            effectType = EffectType.Debuff;
         }
     }
 }

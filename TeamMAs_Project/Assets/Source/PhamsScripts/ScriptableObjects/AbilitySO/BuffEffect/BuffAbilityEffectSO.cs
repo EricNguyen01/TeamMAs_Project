@@ -5,15 +5,10 @@ using UnityEngine;
 namespace TeamMAsTD
 {
     [System.Serializable]
-    [CreateAssetMenu(menuName = "Ability Data Asset/Buff Ability/General Buff Ability")]
-    public class GeneralBuffAbilitySO : AbilitySO
+    [CreateAssetMenu(menuName = "Ability Effect Data Asset/New Buff Effect")]
+    public class BuffAbilityEffectSO : AbilityEffectSO
     {
         [field: Header("General Buff Ability Data")]
-
-        [field: SerializeField]
-        [field: Min(0.0f)]
-        [field: Tooltip("If buff duration is set to 0.0f, buff lasts infinitely.")]
-        public float buffDuration { get; private set; } = 0.0f;
 
         [field: SerializeField]
         [field: Min(0.0f)]
@@ -37,12 +32,12 @@ namespace TeamMAsTD
 
         protected override void Awake()
         {
-            
+            effectType = EffectType.Buff;
         }
 
         protected override void OnValidate()
         {
-            
+            effectType = EffectType.Buff;
         }
     }
 }
