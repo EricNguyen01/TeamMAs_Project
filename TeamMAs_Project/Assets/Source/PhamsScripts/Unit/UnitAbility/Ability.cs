@@ -235,5 +235,64 @@ namespace TeamMAsTD
         }
 
         #endregion
+
+        //This func checks if a unit being targetted by this ability can actually receive it and takes its effects
+        protected bool CanTargetUnitReceivesThisAbility(IUnit targetUnit)
+        {
+            object unitObj = targetUnit.GetUnitObject();
+
+            UnitSO unitSO = targetUnit.GetUnitScriptableObjectData();
+
+            PlantUnitSO plantUnitSO = null;
+
+            VisitorUnitSO visitorUnitSO = null;
+
+            if(unitSO.GetType() == typeof(PlantUnitSO)) plantUnitSO = (PlantUnitSO)unitSO;
+
+            if(unitSO.GetType() == typeof(VisitorUnitSO)) visitorUnitSO = (VisitorUnitSO)unitSO;
+
+            if (unitObj.GetType() == typeof(VisitorUnit))
+            {
+                VisitorUnit visitorUnit = (VisitorUnit)unitObj;
+
+                if (abilityScriptableObject.abilityOnlyAffect == AbilitySO.AbilityOnlyAffect.PlantOnly) return false;
+
+                if(visitorUnitSO != null)
+                {
+                    if (abilityScriptableObject.abilityAffectsSpecificVisitorType != VisitorUnitSO.VisitorType.None)
+                    {
+                        if (abilityScriptableObject.abilityAffectsSpecificVisitorType != visitorUnitSO.visitorType) return false;
+                    }
+
+                    if (abilityScriptableObject.abilityAffectsSpecificVisitorUnit != null && abilityScriptableObject.abilityAffectsSpecificVisitorUnit.Count > 0)
+                    {
+                        for (int i = 0; i < abilityScriptableObject.abilityAffectsSpecificVisitorUnit.Count; i++)
+                        {
+                            if (abilityScriptableObject.abilityAffectsSpecificVisitorUnit[i] == visitorUnitSO) return true;
+                        }
+                    }
+                }
+            }
+
+            if(unitObj.GetType() == typeof(PlantUnit))
+            {
+                PlantUnit plantUnit = (PlantUnit)unitObj;
+
+                if (abilityScriptableObject.abilityOnlyAffect == AbilitySO.AbilityOnlyAffect.VisitorOnly) return false;
+
+                if(plantUnitSO != null)
+                {
+                    if (abilityScriptableObject.abilityAffectsSpecificPlantUnit != null && abilityScriptableObject.abilityAffectsSpecificPlantUnit.Count > 0)
+                    {
+                        for (int i = 0; i < abilityScriptableObject.abilityAffectsSpecificPlantUnit.Count; i++)
+                        {
+                            if (abilityScriptableObject.abilityAffectsSpecificPlantUnit[i] == plantUnitSO) return true;
+                        }
+                    }
+                }
+            }
+
+            return true;
+        }
     }
 }

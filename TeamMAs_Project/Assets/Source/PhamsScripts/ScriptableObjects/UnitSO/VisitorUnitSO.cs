@@ -27,5 +27,22 @@ namespace TeamMAsTD
         [field: SerializeField][field: Min(0)] public int visitorsAppeasedCoinsDrop { get; private set; }
         [field: SerializeField][field: Range(1, 100)] public int chanceToDropCoins { get; private set; }
         [field: SerializeField][field: Range(0, 100)] public int chanceToNotDropCoins { get; private set; }
+
+        public override UnitSO CloneThisUnitSO(UnitSO unitSO)
+        {
+            UnitSO visitorSO = Instantiate(unitSO);
+
+            return visitorSO;
+        }
+
+        public void SetVisitorHealth(float health)
+        {
+            happinessAsHealth = health;
+        }
+
+        public void SetVisitorMoveSpeed(float moveSpeed)
+        {
+            this.moveSpeed = moveSpeed;
+        }
     }
 }

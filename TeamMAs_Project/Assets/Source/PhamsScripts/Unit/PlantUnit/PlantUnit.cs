@@ -187,6 +187,11 @@ namespace TeamMAsTD
             return plantUnitScriptableObject;
         }
 
+        public object GetUnitObject()
+        {
+            return this;
+        }
+
         public Tile GetTileUnitIsOn()
         {
             return tilePlacedOn;

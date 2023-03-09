@@ -13,6 +13,9 @@ namespace TeamMAsTD
         public string abilityEffectName { get; private set; }
 
         [field: SerializeField]
+        public AbilityEffect abilityEffectPrefab { get; private set; }
+
+        [field: SerializeField]
         [field: Min(-1.0f)]
         [field: Tooltip("The duration in which this effect will last. If set to -1 means that this effect will last infinitely.")]
         public float effectDuration = 0.0f;
@@ -37,10 +40,16 @@ namespace TeamMAsTD
         "0 means infinite number of units that this effect can apply onto.")]
         public int maxUnitsToApplyEffect = 0;
 
+        [field: SerializeField]
+        [field: Tooltip("Can multiple instances of this ability effect be applied on the same unit?")]
+        public bool effectStackable { get; private set; } = false;
+
         public enum EffectType { Default, Stunt, Slowed, DoT, KnockedBack, KnockedUp, Buff, Debuff  }
 
         [field: SerializeField]
         public EffectType effectType { get; protected set; } = EffectType.Default;
+
+        public static event System.Action<IUnit, UnitSO> OnAbilityEffectModifiedUnitSO;
 
         protected abstract void OnValidate();
 

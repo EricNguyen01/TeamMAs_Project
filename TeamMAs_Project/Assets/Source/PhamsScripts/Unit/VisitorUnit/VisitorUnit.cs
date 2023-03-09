@@ -387,6 +387,11 @@ namespace TeamMAsTD
             return visitorUnitSO;
         }
 
+        public object GetUnitObject()
+        {
+            return this;
+        }
+
         public Tile GetTileUnitIsOn()
         {
             Tile tileOn = null;

@@ -8,6 +8,8 @@ namespace TeamMAsTD
     {
         public UnitSO GetUnitScriptableObjectData();
 
+        public object GetUnitObject();
+
         public Transform GetUnitTransform();
 
         public Tile GetTileUnitIsOn();

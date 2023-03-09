@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.UI.CanvasScaler;
 
 namespace TeamMAsTD
 {
@@ -21,6 +22,10 @@ namespace TeamMAsTD
         [field: SerializeField]
         [field: Min(0.0f)]
         public float attackSpeedBuffAmount { get; private set; } = 0.0f;
+
+        [field: SerializeField]
+        [field: Min(0.0f)]
+        public float movementSpeedBuffAmount { get; private set; } = 0.0f;
 
         [field: SerializeField]
         [field: Range(0.0f, 1.0f)]

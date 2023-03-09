@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace TeamMAsTD
 {
-    public class UnitSO : ScriptableObject
+    public abstract class UnitSO : ScriptableObject
     {
         [field: Header("General Unit Data")]
         [field: SerializeField] public string displayName { get; private set; }
@@ -14,6 +14,8 @@ namespace TeamMAsTD
         [field: Header("Unit Effects")]
         [field: SerializeField] public GameObject unitSpawnEffectPrefab { get; private set; }
         [field: SerializeField] public GameObject unitDestroyEffectPrefab { get; private set; }
+
+        public abstract UnitSO CloneThisUnitSO(UnitSO unitSO);
 
         public GameObject SpawnUnitEffectGameObject(GameObject effectGO, Transform parentTransform, bool makeChildren, bool activeOnSpawn)
         {

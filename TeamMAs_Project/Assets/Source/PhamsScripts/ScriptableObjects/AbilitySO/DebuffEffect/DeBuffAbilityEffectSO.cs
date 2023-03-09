@@ -23,6 +23,10 @@ namespace TeamMAsTD
         public float attackSpeedDeBuffAmount { get; private set; } = 0.0f;
 
         [field: SerializeField]
+        [field: Min(0.0f)]
+        public float movementSpeedDeBuffAmount { get; private set; } = 0.0f;
+
+        [field: SerializeField]
         [field: Range(0.0f, 1.0f)]
         public float cooldownReductionPercentageDeBuff { get; private set; } = 0.0f;
 
