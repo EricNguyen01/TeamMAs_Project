@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using UnityEngine;
 
 namespace TeamMAsTD
@@ -12,7 +13,9 @@ namespace TeamMAsTD
         [field: Header("General Ability Data")]
         [field: SerializeField] public string abilityName { get; private set; }
 
-        [field: SerializeField] public Ability abilityPrefab { get; private set; }
+        [field: SerializeField]
+        [field: DisallowNull]
+        public Ability abilityPrefab { get; private set; }
 
         [field: SerializeField]
         [field: Min(0)]
@@ -25,8 +28,9 @@ namespace TeamMAsTD
 
         [field: SerializeField]
         [field: Min(-1.0f)]
-        [field: Tooltip("The duration after this ability is casted (order like so: charge time -> ability start -> abilityDuration -> cdr)." +
-        "If value is -1.0f meaning that this ability has infinite duration (e.g a forever lasting aura ability).")]
+        [field: Tooltip("The duration in which this ability will exist after it has started " +
+        "(order like so: charge time (if any) -> ability starts (cdr begins) -> *AbilityDuration* -> ability stops)." +
+        "If value is -1.0f meaning that this ability has infinite duration (e.g a toggle ability that only starts/stops on key pressed).")]
         protected float initialAbilityDuration = 0.0f;//in-editor static value
 
         [field: NonSerialized]

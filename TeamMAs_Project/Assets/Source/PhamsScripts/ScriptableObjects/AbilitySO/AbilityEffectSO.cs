@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using UnityEngine;
 
 namespace TeamMAsTD
@@ -13,11 +14,13 @@ namespace TeamMAsTD
         public string abilityEffectName { get; private set; }
 
         [field: SerializeField]
+        [field: DisallowNull]
         public AbilityEffect abilityEffectPrefab { get; private set; }
 
         [field: SerializeField]
         [field: Min(-1.0f)]
-        [field: Tooltip("The duration in which this effect will last. If set to -1 means that this effect will last infinitely.")]
+        [field: Tooltip("The duration in which this effect will last. " +
+        "If set to -1 means that this effect will last infinitely (e.g a bleed effect that lasts until target is ded).")]
         public float effectDuration = 0.0f;
 
         [field: SerializeField]

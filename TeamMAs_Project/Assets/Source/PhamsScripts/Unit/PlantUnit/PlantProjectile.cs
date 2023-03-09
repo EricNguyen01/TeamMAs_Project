@@ -216,5 +216,19 @@ namespace TeamMAsTD
         {
             targettedVisitorOfProjectile = visitor;
         }
+
+        public void SetPlantProjectileNewPlantUnitSOData(PlantUnitSO plantUnitSO)
+        {
+            if (plantUnitSO == null) return;
+
+            this.plantUnitSO = plantUnitSO;
+        }
+
+        public void SetNewPlantProjectileSOData(PlantProjectileSO plantProjectileSO)
+        {
+            if(plantProjectileSO == null) return;
+
+            this.plantProjectileSO = plantProjectileSO;
+        }
     }
 }

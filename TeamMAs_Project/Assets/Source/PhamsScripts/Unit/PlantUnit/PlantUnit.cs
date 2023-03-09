@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using UnityEngine;
 
 namespace TeamMAsTD
@@ -10,7 +11,9 @@ namespace TeamMAsTD
     public class PlantUnit : MonoBehaviour, IUnit
     {
         [field: Header("Plant Unit SO Data")]
-        [field: SerializeField] public PlantUnitSO plantUnitScriptableObject { get; private set; }
+
+        [field: SerializeField] 
+        public PlantUnitSO plantUnitScriptableObject { get; private set; }
 
         public PlantRangeCircle plantRangeCircle { get; private set; }
 

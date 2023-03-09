@@ -15,6 +15,8 @@ namespace TeamMAsTD
 
         private Transform projectileParentTransform;
 
+        public List<PlantProjectile> plantProjectileList { get; private set; } = new List<PlantProjectile>();
+
         //PlantProjectilePool's constructor
         public PlantProjectilePool(PlantUnit plantUnit, PlantAimShootSystem plantAimShootSystem, PlantProjectileSO plantProjectileSO, Transform plantObjectTransform) : base(plantAimShootSystem, plantProjectileSO.plantProjectilePrefab, plantObjectTransform)
         {
@@ -60,6 +62,8 @@ namespace TeamMAsTD
                 }
 
                 plantProjectileComp.InitializePlantProjectile(plantUnit);
+
+                if(!plantProjectileList.Contains(plantProjectileComp)) plantProjectileList.Add(plantProjectileComp);
             }
 
             return true;

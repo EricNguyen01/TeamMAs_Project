@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using UnityEngine;
 
 namespace TeamMAsTD
@@ -20,11 +21,14 @@ namespace TeamMAsTD
     public abstract class Ability : MonoBehaviour
     {
         [field: Header("Ability Data")]
-        [field: SerializeField] public AbilitySO abilityScriptableObject { get; protected set; }
+
+        [field: SerializeField]
+        [field: DisallowNull]
+        public AbilitySO abilityScriptableObject { get; protected set; }
 
         //INTERNALS...................................................................................
 
-        protected IUnit unitPossessingAbility;
+        public IUnit unitPossessingAbility { get; private set; }
 
         protected UnitSO unitPossessingAbilitySO;
 
