@@ -28,22 +28,6 @@ namespace TeamMAsTD
         public bool effectDurationAsAbilityDuration { get; private set; } = true;
 
         [field: SerializeField]
-        [field: Min(0)]
-        [field: Tooltip("The area of effect range in tile number of this ability effect. " +
-        "If 0 means the AOE range is EXACTLY on the tile where this effect is casted on or landed.")]
-        public int effectAreaInTiles = 0;
-
-        [field: SerializeField]
-        [field: Tooltip("Set effect area in tile number the same as the ability range that produces this effect?")]
-        public bool effectRangeAsAbilityRange { get; private set; } = true;
-
-        [field: SerializeField]
-        [field: Min(0)]
-        [field: Tooltip("The number of units this ability effect can affect. " +
-        "0 means infinite number of units that this effect can apply onto.")]
-        public int maxUnitsToApplyEffect = 0;
-
-        [field: SerializeField]
         [field: Tooltip("Can multiple instances of this ability effect be applied on the same unit?")]
         public bool effectStackable { get; private set; } = false;
 

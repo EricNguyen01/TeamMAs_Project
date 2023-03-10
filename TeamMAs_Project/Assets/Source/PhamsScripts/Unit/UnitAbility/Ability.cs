@@ -40,6 +40,9 @@ namespace TeamMAsTD
 
         protected bool isStopped = false;
 
+        public static event System.Action<Ability> OnAbilityStarted;
+        public static event System.Action<Ability> OnAbilityStopped;
+
         protected virtual void Awake()
         {
             unitPossessingAbility = GetComponentInParent<IUnit>();

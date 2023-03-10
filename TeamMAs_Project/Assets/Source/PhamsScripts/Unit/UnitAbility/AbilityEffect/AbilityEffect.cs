@@ -22,6 +22,8 @@ namespace TeamMAsTD
 
         public IUnit unitBeingAffected { get; private set; }
 
+        private IUnit parentUnit;
+
         public AbilityEffectReceivedInventory abilityEffectInventoryRegisteredTo { get; private set; }
 
         public float currentEffectDuration { get; set; } = 0.0f;
@@ -30,11 +32,25 @@ namespace TeamMAsTD
 
         protected bool effectIsBeingDestroyed { get; private set; } = false;
 
+        protected virtual void OnEnable()
+        {
+            parentUnit = GetComponentInParent<IUnit>();
+
+            if (parentUnit == null)
+            {
+                DestroyEffectWithEffectEndedInvoked(false);
+            }
+
+            Ability.OnAbilityStopped += DestroyEffectOnAbilityStoppedIfApplicable;
+        }
+
         protected virtual void OnDisable()
         {
-            //if obj being affected by this effect is disabled (either being destroyed or just disabled),
+            //if parent unit obj being affected by this effect is disabled (either being destroyed or just disabled),
             //this effect is destroyed regardless
-            DestroyEffect();//check for effect alr destroyed is done inside this func
+            if(!effectIsBeingDestroyed) DestroyEffectWithEffectEndedInvoked(true);
+
+            Ability.OnAbilityStopped -= DestroyEffectOnAbilityStoppedIfApplicable;
         }
 
         protected abstract void OnEffectStarted();
@@ -51,7 +67,7 @@ namespace TeamMAsTD
 
         //EXTERNAL..........................................................................................................
 
-        public void InitializeAbilityEffect(Ability sourceAbility, IUnit unitBeingAffected)
+        public void InitializeAndStartAbilityEffect(Ability sourceAbility, IUnit unitBeingAffected)
         {
             if (abilityEffectSO == null || sourceAbility == null || unitBeingAffected == null) 
             {
@@ -59,6 +75,17 @@ namespace TeamMAsTD
                 "for AbilityEffect: " + name + "to work. Destroying effect!");
 
                 Destroy(gameObject);
+
+                effectIsBeingDestroyed = true;
+
+                return;
+            }
+
+            if(parentUnit != unitBeingAffected)
+            {
+                Debug.LogError("The unit this effect is on is not its original target. Destroying effect!");
+
+                DestroyEffectWithEffectEndedInvoked(false);
 
                 return;
             }
@@ -74,37 +101,49 @@ namespace TeamMAsTD
 
             this.unitBeingAffected = unitBeingAffected;
 
-            currentEffectDuration = abilityEffectSO.effectDuration;
+            float effectDuration = abilityEffectSO.effectDuration;
+
+            if (abilityEffectSO.effectDurationAsAbilityDuration) effectDuration = abilitySOCarriedEffect.abilityDuration;
+
+            currentEffectDuration = effectDuration;
 
             OnEffectStarted();
 
             //if ability effect duration is between the range of -1.0f to 0.0f (and not exactly -1.0f)
             //then it is treated as if it has the duration of 0.0f anyway and will not be updated but rather destroyed immediately.
-            if (abilityEffectSO != null)
+            if (abilityEffectSO.effectDuration > -1.0f && abilityEffectSO.effectDuration <= 0.0f)
             {
-                if(abilityEffectSO.effectDuration > -1.0f && abilityEffectSO.effectDuration <= 0.0f)
-                {
-                    Destroy(gameObject);
+                DestroyEffectWithEffectEndedInvoked(true);
 
-                    return;
-                }
+                return;
             }
 
             //else can now update after start
             canUpdateEffect = true;
         }
 
-        public void DestroyEffect()
+        public void DestroyEffectWithEffectEndedInvoked(bool processOnEffectEnded)
         {
             if (effectIsBeingDestroyed) return;
 
             canUpdateEffect = false;
 
-            OnEffectEnded();
+            if(processOnEffectEnded) OnEffectEnded();
+
+            if (abilityEffectInventoryRegisteredTo != null) abilityEffectInventoryRegisteredTo.RemoveEffect(this);
 
             if (!effectIsBeingDestroyed) effectIsBeingDestroyed = true;
             
             Destroy(gameObject);
+        }
+
+        private void DestroyEffectOnAbilityStoppedIfApplicable(Ability sourceAbility)
+        {
+            if (sourceAbility == null || sourceAbility != abilityCarriedEffect) return;
+
+            if (sourceAbility.abilityScriptableObject == null || abilityEffectSO == null) return;
+
+            if (abilityEffectSO.effectDurationAsAbilityDuration) DestroyEffectWithEffectEndedInvoked(true);
         }
     }
 }

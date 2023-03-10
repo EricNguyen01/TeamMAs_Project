@@ -73,11 +73,7 @@ namespace TeamMAsTD
 
         protected virtual void OnCollisionEnter2D(Collision2D collision)
         {
-            //TODO: have an ability receiver manager that will interact with abilities
-            //when the ability receiver manager receives an ability, it checks for compatibilities and whether it has alr received it before
-            //then if all is good, it creates an ability receiver and adds it to a list of ability receivers
-            //the ability receiver will only do 2 things: apply or unapply ability to unit.
-            //when this or any ability stops, the ability receiver manager should react accordingly and remove/unapply any related ability receivers.
+            
         }
 
         protected virtual void OnCollisionExit2D(Collision2D collision)
