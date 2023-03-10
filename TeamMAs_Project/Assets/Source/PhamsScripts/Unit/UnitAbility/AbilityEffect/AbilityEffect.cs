@@ -90,8 +90,17 @@ namespace TeamMAsTD
                 return;
             }
 
-            abilityEffectInventoryRegisteredTo = unitBeingAffected.GetAbilityEffectReceivedInventory(
-                                                    unitBeingAffected.GetUnitTransform().gameObject);
+            abilityEffectInventoryRegisteredTo = unitBeingAffected.GetAbilityEffectReceivedInventory();
+
+            if(abilityEffectInventoryRegisteredTo == null)
+            {
+                Debug.LogError("The unit this effect is on does not have an AbilityEffectReceivedInventory to process this effect. " +
+                "Destroying effect!");
+
+                DestroyEffectWithEffectEndedInvoked(false);
+
+                return;
+            }
 
             abilityCarriedEffect = sourceAbility;
 

@@ -14,17 +14,7 @@ namespace TeamMAsTD
 
         public Tile GetTileUnitIsOn();
 
-        public AbilityEffectReceivedInventory GetAbilityEffectReceivedInventory(GameObject go)
-        {
-            AbilityEffectReceivedInventory abilityEffectReceivedInventory = go.GetComponent<AbilityEffectReceivedInventory>();
-
-            if (abilityEffectReceivedInventory == null)
-            {
-                abilityEffectReceivedInventory = go.AddComponent<AbilityEffectReceivedInventory>();
-            }
-
-            return abilityEffectReceivedInventory;
-        }
+        public AbilityEffectReceivedInventory GetAbilityEffectReceivedInventory();
 
         public void UpdateUnitSOData(UnitSO replacementUnitSO);
     }

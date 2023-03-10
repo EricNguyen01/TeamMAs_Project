@@ -6,6 +6,7 @@ using UnityEngine;
 namespace TeamMAsTD
 {
     [DisallowMultipleComponent]
+    [RequireComponent(typeof(AbilityEffectReceivedInventory))]
     public class VisitorUnit : MonoBehaviour, IUnit, IDamageable
     {
         [field: SerializeField] public VisitorUnitSO visitorUnitSO { get; private set; }
@@ -13,6 +14,8 @@ namespace TeamMAsTD
         [SerializeField] private HeartEffect heartEffect;
 
         [SerializeField] private GameResourceDropper visitorCoinsDropper;
+
+        private AbilityEffectReceivedInventory abilityEffectReceivedInventory;
 
         public float currentVisitorHealth { get; private set; } = 0.0f;
 
@@ -71,6 +74,13 @@ namespace TeamMAsTD
                 enabled = false;
                 gameObject.SetActive(false);
                 return;
+            }
+
+            abilityEffectReceivedInventory = GetComponent<AbilityEffectReceivedInventory>();
+
+            if(abilityEffectReceivedInventory == null)
+            {
+                abilityEffectReceivedInventory = gameObject.AddComponent<AbilityEffectReceivedInventory>();
             }
 
             baseAppeasementTime = visitorUnitSO.visitorAppeasementTime;
@@ -423,6 +433,11 @@ namespace TeamMAsTD
         public Transform GetUnitTransform()
         {
             return transform;
+        }
+
+        public AbilityEffectReceivedInventory GetAbilityEffectReceivedInventory()
+        {
+            return abilityEffectReceivedInventory;
         }
 
         public void UpdateUnitSOData(UnitSO replacementUnitSO)

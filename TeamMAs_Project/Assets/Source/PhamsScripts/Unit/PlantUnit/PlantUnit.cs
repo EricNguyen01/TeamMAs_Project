@@ -8,6 +8,7 @@ namespace TeamMAsTD
     [DisallowMultipleComponent]
     [RequireComponent(typeof(PlantAimShootSystem))]
     [RequireComponent(typeof(PlantWaterUsageSystem))]
+    [RequireComponent(typeof(AbilityEffectReceivedInventory))]
     public class PlantUnit : MonoBehaviour, IUnit
     {
         [field: Header("Plant Unit SO Data")]
@@ -28,6 +29,8 @@ namespace TeamMAsTD
         public Tile tilePlacedOn { get; private set; }
 
         private SpriteRenderer unitSpriteRenderer;
+
+        private AbilityEffectReceivedInventory abilityEffectReceivedInventory;
 
         public float plantMaxAttackRange { get; private set; } = 1.0f;
 
@@ -69,6 +72,13 @@ namespace TeamMAsTD
                 //if couldnt get atk range from tile size from the grid, assume that tile size is 1.0f and atk range = #of tiles
                 //(e.g 3 tiles = 3.0f).
                 plantMaxAttackRange = plantUnitScriptableObject.attackRangeInTiles;
+            }
+
+            abilityEffectReceivedInventory = GetComponent<AbilityEffectReceivedInventory>();
+
+            if(abilityEffectReceivedInventory == null)
+            {
+                abilityEffectReceivedInventory = gameObject.AddComponent<AbilityEffectReceivedInventory>();
             }
 
             plantUnitWorldUI = GetComponent<PlantUnitWorldUI>();
@@ -205,14 +215,17 @@ namespace TeamMAsTD
             return transform;
         }
 
+        public AbilityEffectReceivedInventory GetAbilityEffectReceivedInventory()
+        {
+            return abilityEffectReceivedInventory;
+        }
+
         //replace the current plant SO with a new one
         public void UpdateUnitSOData(UnitSO replacementUnitSO)
         {
             if (replacementUnitSO == null || replacementUnitSO.GetType() != typeof(PlantUnitSO)) return;
 
             PlantUnitSO replacementPlantSO = (PlantUnitSO)replacementUnitSO;
-
-            if (replacementPlantSO == plantUnitScriptableObject) return;
 
             plantUnitScriptableObject = replacementPlantSO;
 
