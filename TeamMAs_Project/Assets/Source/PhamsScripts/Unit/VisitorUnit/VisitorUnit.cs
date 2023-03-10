@@ -425,6 +425,11 @@ namespace TeamMAsTD
             return transform;
         }
 
+        public void UpdateUnitSOData(UnitSO replacementUnitSO)
+        {
+
+        }
+
         //IDamageable Interface functions..............................................
 
         public void TakeDamageFrom(object damageCauser, float damage)

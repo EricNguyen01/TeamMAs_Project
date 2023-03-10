@@ -1,6 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 namespace TeamMAsTD
@@ -84,7 +84,7 @@ namespace TeamMAsTD
 
             plantAimShootSystem.InitializePlantAimShootSystem(this, plantUnitScriptableObject.plantProjectileSO);
 
-            plantWaterUsageSystem.InitializePlantWaterUsageSystem(this);
+            plantWaterUsageSystem.InitializePlantWaterUsageSystem(this, true);
 
             if(plantUnitScriptableObject != null)
             {
@@ -203,6 +203,24 @@ namespace TeamMAsTD
         public Transform GetUnitTransform()
         {
             return transform;
+        }
+
+        //replace the current plant SO with a new one
+        public void UpdateUnitSOData(UnitSO replacementUnitSO)
+        {
+            if (replacementUnitSO == null || replacementUnitSO.GetType() != typeof(PlantUnitSO)) return;
+
+            PlantUnitSO replacementPlantSO = (PlantUnitSO)replacementUnitSO;
+
+            if (replacementPlantSO == plantUnitScriptableObject) return;
+
+            plantUnitScriptableObject = replacementPlantSO;
+
+            //must re-initialize plant's components upon replacing plant SO:
+
+            plantAimShootSystem.InitializePlantAimShootSystem(this, plantUnitScriptableObject.plantProjectileSO);
+
+            plantWaterUsageSystem.InitializePlantWaterUsageSystem(this, false);//false param is because this is not an awake init
         }
     }
 }

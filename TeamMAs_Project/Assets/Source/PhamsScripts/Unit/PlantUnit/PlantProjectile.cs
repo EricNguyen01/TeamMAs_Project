@@ -217,18 +217,9 @@ namespace TeamMAsTD
             targettedVisitorOfProjectile = visitor;
         }
 
-        public void SetPlantProjectileNewPlantUnitSOData(PlantUnitSO plantUnitSO)
+        public void Completely_UnAssociate_Projectile_WithItsPlant_AndPool()
         {
-            if (plantUnitSO == null) return;
-
-            this.plantUnitSO = plantUnitSO;
-        }
-
-        public void SetNewPlantProjectileSOData(PlantProjectileSO plantProjectileSO)
-        {
-            if(plantProjectileSO == null) return;
-
-            this.plantProjectileSO = plantProjectileSO;
+            plantUnitOfProjectile = null;
         }
     }
 }

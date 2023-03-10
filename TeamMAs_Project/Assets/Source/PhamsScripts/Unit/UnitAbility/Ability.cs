@@ -69,10 +69,23 @@ namespace TeamMAsTD
 
         protected abstract void OnDisable();
 
+        protected virtual void Start()
+        {
+            if(abilityScriptableObject != null)
+            {
+                if(abilityScriptableObject.useOnEquippedIfNotLocked && !abilityScriptableObject.abilityLocked)
+                {
+                    StartAbility();
+                }
+            }
+        }
+
         #region AbilityStart
 
         private bool CanStartAbility()
         {
+            if (abilityScriptableObject.abilityLocked) return false;
+
             if (abilityScriptableObject == null || unitPossessingAbility == null) return false;
 
             if (isCharging || isInCooldown || isUpdating) return false;
@@ -164,6 +177,8 @@ namespace TeamMAsTD
             isStopped = true;
 
             isUpdating = false;
+
+            StopCoroutine(AbilityChargeCoroutine(abilityScriptableObject.abilityChargeTime));
 
             StopCoroutine(AbilityUpdateDurationCoroutine(abilityScriptableObject.abilityDuration));
 

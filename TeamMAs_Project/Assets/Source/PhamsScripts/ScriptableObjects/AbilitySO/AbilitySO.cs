@@ -102,6 +102,9 @@ namespace TeamMAsTD
         [field: NonSerialized]
         public bool abilityLocked { get; private set; } = true;//runtime non-static value
 
+        [field: SerializeField]
+        public bool useOnEquippedIfNotLocked { get; private set; } = false;
+
         public void SetNewAbilityTimeConfigs(float newAbilityDuration = 0.0f, float newAbilityCdrTime = 0.0f, float newAbilityChargeTime = 0.0f)
         {
             if(newAbilityDuration != 0.0f)

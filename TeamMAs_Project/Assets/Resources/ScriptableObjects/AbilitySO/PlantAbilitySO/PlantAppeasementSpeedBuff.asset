@@ -27,3 +27,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 389ab69e520cff14c8cee10ce22185a9, type: 2}
   <waveToUnlockAbility>k__BackingField: {fileID: 0}
   initialAbilityLocked: 1
+  <useOnEquippedIfNotLocked>k__BackingField: 1

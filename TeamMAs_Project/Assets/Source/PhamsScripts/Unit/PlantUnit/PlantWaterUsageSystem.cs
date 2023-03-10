@@ -60,7 +60,7 @@ namespace TeamMAsTD
         }
 
         //This function is called in the Awake method of the PlantUnit that this script attached to
-        public void InitializePlantWaterUsageSystem(PlantUnit plantUnit)
+        public void InitializePlantWaterUsageSystem(PlantUnit plantUnit, bool awakeInit)
         {
             if(plantUnit == null || plantUnit.plantUnitScriptableObject == null)
             {
@@ -72,15 +72,18 @@ namespace TeamMAsTD
 
             plantUnitSO = plantUnit.plantUnitScriptableObject;
 
-            tilePlantedOn = plantUnitLinked.tilePlacedOn;
-
-            plantUnitWorldUI = plantUnitLinked.plantUnitWorldUI;
-
             totalWaterBars = plantUnit.plantUnitScriptableObject.waterBars;
 
-            waterBarsRemaining = totalWaterBars;
+            if (awakeInit)
+            {
+                tilePlantedOn = plantUnitLinked.tilePlacedOn;
 
-            wavesCanSurviveWithoutWater = plantUnit.plantUnitScriptableObject.wavesSurviveWithoutWater;
+                plantUnitWorldUI = plantUnitLinked.plantUnitWorldUI;
+
+                waterBarsRemaining = totalWaterBars;
+
+                wavesCanSurviveWithoutWater = plantUnit.plantUnitScriptableObject.wavesSurviveWithoutWater;
+            }
         }
 
         //Use this func for refilling water using both rain (0 coin cost) and/or the water bucket UI button (coin cost)
