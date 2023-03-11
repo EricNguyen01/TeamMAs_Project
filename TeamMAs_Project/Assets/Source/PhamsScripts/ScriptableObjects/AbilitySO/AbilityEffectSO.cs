@@ -36,7 +36,7 @@ namespace TeamMAsTD
         [field: SerializeField]
         public EffectType effectType { get; protected set; } = EffectType.Default;
 
-        public static event System.Action<IUnit, UnitSO> OnAbilityEffectModifiedUnitSO;
+        //public static event System.Action<IUnit, UnitSO> OnAbilityEffectModifiedUnitSO;
 
         protected abstract void OnValidate();
 

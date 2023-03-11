@@ -316,5 +316,15 @@ namespace TeamMAsTD
 
             return true;
         }
+
+        protected void InvokeOnAbilityStartedEventOn(Ability childAbilityClass)
+        {
+            OnAbilityStarted?.Invoke(childAbilityClass);
+        }
+
+        protected void InvokeOnAbilityStoppedEventOn(Ability childAbilityClass)
+        {
+            OnAbilityStopped?.Invoke(childAbilityClass);
+        }
     }
 }
