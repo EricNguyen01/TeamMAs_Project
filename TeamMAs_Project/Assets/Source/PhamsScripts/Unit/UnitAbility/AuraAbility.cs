@@ -17,7 +17,11 @@ namespace TeamMAsTD
 
         private float auraRange = 0.0f;
 
+        protected bool canCheckForUnitsInAura = true;
+
         protected bool triggerExitEventCheck = true;
+
+        private bool enableTempDisableAuraTriggerCoroutine = true;
 
         private List<AbilityEffectReceivedInventory> DEBUG_effectReceivedInventoriesInAura = new List<AbilityEffectReceivedInventory>();   
 
@@ -43,18 +47,24 @@ namespace TeamMAsTD
 
             auraKinematicRb.collisionDetectionMode = CollisionDetectionMode2D.Continuous;
 
+            auraKinematicRb.useFullKinematicContacts = true;
+
             auraKinematicRb.sleepMode = RigidbodySleepMode2D.NeverSleep;
         }
 
         protected override void OnEnable()
         {
-            auraRange = (float)abilityScriptableObject.abilityRangeInTiles - 0.1f;
+            base.OnEnable();
+
+            auraRange = abilityScriptableObject.abilityRangeInTiles - 0.1f;
 
             if(auraCollider.radius != auraRange) auraCollider.radius = auraRange;
         }
 
         protected override void OnDisable()
         {
+            base.OnDisable();
+
             //Call from Ability base class to stop this aura ability on obj disabled or destroyed
             ForceStopAbility();
         }
@@ -83,6 +93,8 @@ namespace TeamMAsTD
 
         protected virtual void OnTriggerStay2D(Collider2D other)
         {
+            if (!canCheckForUnitsInAura) return;
+
             if (other == null || !other.gameObject.activeInHierarchy) return;
 
             //if(other != null) Debug.Log("A collider is in aura of aura ability of : " + transform.parent.gameObject.name);
@@ -100,6 +112,8 @@ namespace TeamMAsTD
             if(!DEBUG_effectReceivedInventoriesInAura.Contains(abilityEffectReceivedInventory)) DEBUG_effectReceivedInventoriesInAura.Add(abilityEffectReceivedInventory);
 
             abilityEffectReceivedInventory.ReceivedEffectsFromAbility(this);
+
+            if (enableTempDisableAuraTriggerCoroutine) StartCoroutine(TemporaryDisableAuraTriggerCollisionEvent(0.3f));
         }
 
         protected virtual void OnTriggerExit2D(Collider2D other)
@@ -137,6 +151,33 @@ namespace TeamMAsTD
             Gizmos.color = Color.yellow;
 
             if(auraCollider != null) Gizmos.DrawWireSphere(transform.position, auraCollider.radius);
+        }
+
+        //For optimization purposes - we dont want the trigger collision check event to check on every objs and loop through everything 
+        //every frame.
+        private IEnumerator TemporaryDisableAuraTriggerCollisionEvent(float tempDisableTimeSecs)
+        {
+            if (enableTempDisableAuraTriggerCoroutine) enableTempDisableAuraTriggerCoroutine = false;
+
+            //Debug.Log("Temp aura stays on started: " + Time.realtimeSinceStartup);
+
+            yield return new WaitForSeconds(0.01f);
+
+            //Debug.Log("Temp aura stays on stopped: " + Time.realtimeSinceStartup);
+
+            //Debug.Log("Temp disable aura proccess started: " + Time.realtimeSinceStartup);
+
+            if(canCheckForUnitsInAura) canCheckForUnitsInAura = false;
+
+            yield return new WaitForSeconds(tempDisableTimeSecs);
+
+            //Debug.Log("Temp disable aura proccess stopped: " + Time.realtimeSinceStartup);
+
+            canCheckForUnitsInAura = true;
+
+            enableTempDisableAuraTriggerCoroutine = true;
+
+            yield break;
         }
     }
 }

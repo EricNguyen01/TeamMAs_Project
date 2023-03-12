@@ -136,7 +136,7 @@ namespace TeamMAsTD
 
             randomVerticalTravelDistFromStart = randomTravelVert;
 
-            if (popupTime > 0.0f)
+            if (popupTime != 0.0f)
             {
                 this.popupTime = popupTime;
             }
@@ -200,6 +200,13 @@ namespace TeamMAsTD
                 Debug.LogWarning("StatPopup GameObjects spawned from StatPopupPrefab by StatPopupSpawner: " + name + " is missing StatPopup script! " +
                     "Please check if a StatPopup script is attached to the StatPopupPrefab.");
             }
+        }
+
+        public void DetachAndDestroyAllStatPopups()
+        {
+            if (statPopupPool == null) return;
+
+            statPopupPool.DetachAndDestroyAllStatPopupsFromPool();
         }
     }
 }

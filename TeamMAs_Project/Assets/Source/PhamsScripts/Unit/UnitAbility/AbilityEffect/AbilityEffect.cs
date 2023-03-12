@@ -14,6 +14,9 @@ namespace TeamMAsTD
         [field: DisallowNull]
         public AbilityEffectSO abilityEffectSO { get; private set; }
 
+        [field: SerializeField]
+        protected StatPopupSpawner effectStatPopupSpawner { get; private set; }
+
         public Ability abilityCarriedEffect { get; private set; }
 
         public AbilitySO abilitySOCarriedEffect { get; private set; }
@@ -54,6 +57,8 @@ namespace TeamMAsTD
             if (parentUnit == null)
             {
                 DestroyEffectWithEffectEndedInvoked(false);
+
+                return;
             }
 
             Ability.OnAbilityStopped += DestroyEffectOnAbilityStoppedIfApplicable;
@@ -189,6 +194,36 @@ namespace TeamMAsTD
             //Debug.Log("AbilityStoppedDestroyedEventReceivedOn: " + transform.parent.name);
 
             if (abilityEffectSO.effectDurationAsAbilityDuration) DestroyEffectWithEffectEndedInvoked(true);
+        }
+
+        protected virtual void ProcessEffectPopupForBuffEffects(Sprite popupSprite, string popupText, float buffedNumber, float popupTime = 0.0f)
+        {
+            if (!gameObject.scene.isLoaded) return;
+
+            if (effectStatPopupSpawner == null) return;
+
+            if (buffedNumber == 0.0f) return;
+
+            if (popupTime != 0.0f)
+            {
+                effectStatPopupSpawner.SetStatPopupSpawnerConfig(0.0f, 0.0f, 0.0f, 0.0f, 0.0f, popupTime);
+            }
+
+            if (buffedNumber > 0.0f)
+            {
+                effectStatPopupSpawner.PopUp(popupSprite, popupText, true);
+            }
+            else if(buffedNumber < 0.0f)
+            {
+                effectStatPopupSpawner.PopUp(popupSprite, popupText, false);
+            }
+        }
+
+        protected void DetachAndDestroyAllEffectPopups()
+        {
+            if (effectStatPopupSpawner == null) return;
+
+            effectStatPopupSpawner.DetachAndDestroyAllStatPopups();
         }
     }
 }

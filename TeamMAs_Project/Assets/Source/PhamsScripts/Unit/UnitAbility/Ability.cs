@@ -40,6 +40,10 @@ namespace TeamMAsTD
 
         protected bool isStopped = false;
 
+        protected bool isAbilityPendingUnlocked = false;
+
+        protected WaveSO currentWave;
+
         public static event System.Action<Ability> OnAbilityStarted;
         public static event System.Action<Ability> OnAbilityStopped;
 
@@ -70,9 +74,15 @@ namespace TeamMAsTD
             gameObject.layer = unitPossessingAbility.GetUnitLayerMask();
         }
 
-        protected abstract void OnEnable();
+        protected virtual void OnEnable()
+        {
+            WaveSpawner.OnWaveFinished += PendingUnlockAbilityOnWaveEndedIfApplicable;
+        }
 
-        protected abstract void OnDisable();
+        protected virtual void OnDisable()
+        {
+            WaveSpawner.OnWaveFinished -= PendingUnlockAbilityOnWaveEndedIfApplicable;
+        }
 
         protected virtual void Start()
         {
@@ -329,6 +339,21 @@ namespace TeamMAsTD
             //Debug.Log("AbilityStoppedEventInvoked");
 
             OnAbilityStopped?.Invoke(childAbilityClass);
+        }
+
+        private void PendingUnlockAbilityOnWaveEndedIfApplicable(WaveSpawner waveSpawner, int waveNum, bool hasOngoingWave)
+        {
+            if (hasOngoingWave) return;
+
+            if (abilityScriptableObject == null) return;
+
+            if (abilityScriptableObject.waveToUnlockAbility == null) return;
+
+            if (waveSpawner == null) return;
+
+            currentWave = waveSpawner.GetCurrentWave().waveSO;
+
+            if (currentWave == abilityScriptableObject.waveToUnlockAbility) isAbilityPendingUnlocked = true;
         }
     }
 }

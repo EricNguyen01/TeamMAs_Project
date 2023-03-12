@@ -43,7 +43,7 @@ namespace TeamMAsTD
 
                 if (statPopup == null) continue;
 
-                statPopup.InitializeStatPopup(statPopupSpawnerSpawnedThisPool, this);
+                statPopup.InitializeStatPopup(this);
             }
 
             return createAndAddSuccessful;
@@ -111,6 +111,46 @@ namespace TeamMAsTD
         public bool ReturnStatPopupGameObjectToPool(GameObject gameObject)
         {
             return ReturnGameObjectToPool(gameObject);
+        }
+
+        public void DetachAndDestroyAllStatPopupsFromPool()
+        {
+            if (gameObjectsPool == null || gameObjectsPool.Count == 0) return;
+
+            //Debug.Log("DetachDestroyAllStatPopups");
+
+            for(int i = 0; i < gameObjectsPool.Count; i++)
+            {
+                GameObject go = gameObjectsPool[i];
+
+                if (!go.activeInHierarchy)
+                {
+                    gameObjectsPool.Remove(go);
+
+                    MonoBehaviour.Destroy(go);
+
+                    if (i >= gameObjectsPool.Count || gameObjectsPool.Count == 0) return;
+
+                    continue;
+                }
+
+                StatPopup statPopup = go.GetComponent<StatPopup>();
+
+                if(statPopup == null)
+                {
+                    gameObjectsPool.Remove(go);
+
+                    MonoBehaviour.Destroy(go);
+
+                    if (i >= gameObjectsPool.Count || gameObjectsPool.Count == 0) return;
+
+                    continue;
+                }
+
+                statPopup.transform.SetParent(null);
+
+                statPopup.InitializeStatPopup(null);
+            }
         }
     }
 }

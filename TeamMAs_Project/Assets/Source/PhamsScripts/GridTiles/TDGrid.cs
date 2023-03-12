@@ -117,7 +117,7 @@ namespace TeamMAsTD
             {
                 if (!alreadyHasCloverOnGrid)
                 {
-                    Debug.Log("First Clover Planted On Grid!");
+                    //Debug.Log("First Clover Planted On Grid!");
 
                     alreadyHasCloverOnGrid = true;
 

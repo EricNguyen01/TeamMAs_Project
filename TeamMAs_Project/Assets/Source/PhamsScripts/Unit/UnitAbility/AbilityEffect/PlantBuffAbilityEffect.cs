@@ -17,6 +17,8 @@ namespace TeamMAsTD
 
         protected float finalAtkSpeedBuffedAmount = 0.0f;
 
+        protected bool unitWithThisEffectIsBeingUprooted = false;
+
         protected override void Awake()
         {
             base.Awake();
@@ -82,9 +84,18 @@ namespace TeamMAsTD
 
             plantUnitSOReceivedBuff.AddPlantUnitDamage(finalDamageBuffedAmount);
 
+            ProcessEffectPopupForBuffEffects(null, "+" + finalDamageBuffedAmount + " AppeasementSTRENGTH", finalDamageBuffedAmount);
+
             plantUnitSOReceivedBuff.AddPlantAttackSpeed(finalAtkSpeedBuffedAmount);
 
-            if(plantUnitReceivedBuff == null) plantUnitReceivedBuff = (PlantUnit)unitBeingAffected.GetUnitObject();
+            ProcessEffectPopupForBuffEffects(null, "+" + finalAtkSpeedBuffedAmount + " AppeasementSPEED", finalAtkSpeedBuffedAmount);
+
+            if (plantUnitReceivedBuff == null) plantUnitReceivedBuff = (PlantUnit)unitBeingAffected.GetUnitObject();
+
+            if (plantUnitReceivedBuff.tilePlacedOn != null)
+            {
+                plantUnitReceivedBuff.tilePlacedOn.OnPlantUnitUprootedOnTile.AddListener(SubToPlantUnitBeingUprootedOnTileEvent);
+            }
 
             plantUnitReceivedBuff.SetPlantSODebugDataView();
         }
@@ -100,11 +111,29 @@ namespace TeamMAsTD
 
             if (buffAbilityEffectSO == null) return;
 
+            //if this effect is being destroyed because the plant unit being affected by it is being destroyed through being uprooted
+            //no need to do anything here and return
+            if (unitWithThisEffectIsBeingUprooted) return;
+
             plantUnitSOReceivedBuff.RemovePlantUnitDamage(finalDamageBuffedAmount);
+
+            ProcessEffectPopupForBuffEffects(null, "-" + finalDamageBuffedAmount + " AppeasementSTRENGTH", -finalDamageBuffedAmount, 0.8f);
 
             plantUnitSOReceivedBuff.RemovePlantAttackSpeed(finalAtkSpeedBuffedAmount);
 
+            ProcessEffectPopupForBuffEffects(null, "-" + finalAtkSpeedBuffedAmount + " AppeasementSPEED", -finalAtkSpeedBuffedAmount, 0.8f);
+
+            DetachAndDestroyAllEffectPopups();
+
             plantUnitReceivedBuff.SetPlantSODebugDataView();
+        }
+
+        protected void SubToPlantUnitBeingUprootedOnTileEvent(PlantUnit plantUnit, Tile tile)
+        {
+            if(plantUnitReceivedBuff != null && plantUnit == plantUnitReceivedBuff)
+            {
+                unitWithThisEffectIsBeingUprooted = true;
+            }
         }
     }
 }
