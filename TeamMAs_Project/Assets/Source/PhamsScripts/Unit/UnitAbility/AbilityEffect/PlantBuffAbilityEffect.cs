@@ -113,7 +113,15 @@ namespace TeamMAsTD
 
             //if this effect is being destroyed because the plant unit being affected by it is being destroyed through being uprooted
             //no need to do anything here and return
-            if (unitWithThisEffectIsBeingUprooted) return;
+            if (unitWithThisEffectIsBeingUprooted)
+            {
+                if (plantUnitReceivedBuff.tilePlacedOn != null)
+                {
+                    plantUnitReceivedBuff.tilePlacedOn.OnPlantUnitUprootedOnTile.RemoveListener(SubToPlantUnitBeingUprootedOnTileEvent);
+                }
+
+                return;
+            }
 
             plantUnitSOReceivedBuff.RemovePlantUnitDamage(finalDamageBuffedAmount);
 
