@@ -10,29 +10,46 @@ namespace TeamMAsTD
     public class BuffAbilityEffectSO : AbilityEffectSO
     {
         [field: Header("General Buff Ability Data")]
+        [field: Header("Note: Amount Percentages Always Override Normal Amount!")]
+
+        [field: SerializeField]
+        [field: Range(0.0f, 100.0f)]
+        public float damageBuffAmountPercentage { get; private set; } = 0.0f;
 
         [field: SerializeField]
         [field: Min(0.0f)]
         public float damageBuffAmount { get; private set; } = 0.0f;
 
         [field: SerializeField]
+        [field: Range(0.0f, 100.0f)]
+        public float healthBuffAmountPercentage { get; private set; } = 0.0f;
+
+        [field: SerializeField]
         [field: Min(0.0f)]
         public float healthBuffAmount { get; private set; } = 0.0f;
+
+        [field: SerializeField]
+        [field: Range(0.0f, 100.0f)]
+        public float attackSpeedBuffAmountPercentage { get; private set; } = 0.0f;
 
         [field: SerializeField]
         [field: Min(0.0f)]
         public float attackSpeedBuffAmount { get; private set; } = 0.0f;
 
         [field: SerializeField]
+        [field: Range(0.0f, 100.0f)]
+        public float movementSpeedBuffAmountPercentage { get; private set; } = 0.0f;
+
+        [field: SerializeField]
         [field: Min(0.0f)]
         public float movementSpeedBuffAmount { get; private set; } = 0.0f;
 
         [field: SerializeField]
-        [field: Range(0.0f, 1.0f)]
+        [field: Range(0.0f, 100.0f)]
         public float cooldownReductionPercentageBuff { get; private set; } = 0.0f;
 
         [field: SerializeField]
-        [field: Range(0.0f, 1.0f)]
+        [field: Range(0.0f, 100.0f)]
         public float chargeTimeReductionPercentageBuff { get; private set; } = 0.0f;
 
         protected override void Awake()

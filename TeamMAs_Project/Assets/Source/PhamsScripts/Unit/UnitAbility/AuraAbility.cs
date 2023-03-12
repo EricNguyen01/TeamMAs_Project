@@ -23,7 +23,17 @@ namespace TeamMAsTD
 
         protected float currentTimeToCheckForUnitsInAura = 0.0f;
 
+        protected float timeBeforeDisablingAuraCollider = 0.1f;
+
+        protected float currentTimeBeforeDisablingAuraCollider = 0.1f;
+
         private float auraRange = 0.0f;
+
+        protected bool checkingForUnitInAura = true;
+
+        protected bool triggerExitEventCheck = true;
+
+        private List<AbilityEffectReceivedInventory> DEBUG_effectReceivedInventoriesInAura = new List<AbilityEffectReceivedInventory>();   
 
         protected override void Awake()
         {
@@ -42,6 +52,8 @@ namespace TeamMAsTD
                 auraCollider = gameObject.AddComponent<CircleCollider2D>();
             }
 
+            auraCollider.isTrigger = true;
+
             if(auraKinematicRb == null)
             {
                 auraKinematicRb = gameObject.AddComponent<Rigidbody2D>();
@@ -54,7 +66,7 @@ namespace TeamMAsTD
 
         protected override void OnEnable()
         {
-            SetAuraRange();
+            auraRange = abilityScriptableObject.abilityRangeInTiles;
 
             if(auraCollider.radius != auraRange) auraCollider.radius = auraRange;
         }
@@ -65,31 +77,48 @@ namespace TeamMAsTD
             ForceStopAbility();
         }
 
-        //this unity update is belong to this class only and has nothing to do with base class' update functions
-        private void Update()
+        /*private void LateUpdate()
         {
             if (timeToCheckForUnitsInAura <= 0.0f) return;
 
-            if(currentTimeToCheckForUnitsInAura <= 0.0f)
+            if(currentTimeToCheckForUnitsInAura > 0.0f && currentTimeBeforeDisablingAuraCollider <= 0.0f)
             {
-                if (!auraCollider.enabled) auraCollider.enabled = true;
+                currentTimeToCheckForUnitsInAura -= Time.fixedDeltaTime;
 
-                currentTimeToCheckForUnitsInAura = timeToCheckForUnitsInAura;
+                if(currentTimeToCheckForUnitsInAura <= 0.0f)
+                {
+                    currentTimeToCheckForUnitsInAura = 0.0f;
+
+                    if (!checkingForUnitInAura) checkingForUnitInAura = true;
+
+                    currentTimeBeforeDisablingAuraCollider = timeBeforeDisablingAuraCollider;
+                }
 
                 return;
             }
 
-            if(currentTimeToCheckForUnitsInAura > 0.0f)
+            if(currentTimeBeforeDisablingAuraCollider > 0.0f && currentTimeToCheckForUnitsInAura <= 0.0f)
             {
-                if (auraCollider.enabled) auraCollider.enabled = false;
+                currentTimeBeforeDisablingAuraCollider -= Time.fixedDeltaTime;
 
-                currentTimeToCheckForUnitsInAura -= Time.fixedDeltaTime;
+                if(currentTimeBeforeDisablingAuraCollider <= 0.0f)
+                {
+                    currentTimeBeforeDisablingAuraCollider = 0.0f;
+
+                    if (checkingForUnitInAura) checkingForUnitInAura = false;
+
+                    currentTimeToCheckForUnitsInAura = timeToCheckForUnitsInAura;
+                }
+
+                return;
             }
-        }
+        }*/
 
         protected override void ProcessAbilityStart()
         {
             auraCollider.enabled = true;
+
+            checkingForUnitInAura = true;
 
             InvokeOnAbilityStartedEventOn(this);
         }
@@ -102,31 +131,47 @@ namespace TeamMAsTD
 
         protected override void ProcessAbilityEnd()
         {
-            auraCollider.enabled = false;
+            //auraCollider.enabled = false;
+
+            checkingForUnitInAura = false;
+
+            triggerExitEventCheck = false;
 
             InvokeOnAbilityStoppedEventOn(this);
         }
 
         //Aura Collision events............................................................................
 
-        protected virtual void OnCollisionStay2D(Collision2D collision)
+        protected virtual void OnTriggerStay2D(Collider2D other)
         {
-            if (currentTimeToCheckForUnitsInAura > 0.0f) return;
+            if (!checkingForUnitInAura) return;
 
-            IUnit unitInAura = ChecValidUnitAndAuraCollision(collision);
+            if (other == null || !other.gameObject.activeInHierarchy) return;
+
+            //if(other != null) Debug.Log("A collider is in aura of aura ability of : " + transform.parent.gameObject.name);
+
+            IUnit unitInAura = CheckValidUnitAndAuraCollision(other);
 
             if (unitInAura == null) return;
+
+            //Debug.Log("A unit is in aura of aura ability of : " + transform.parent.gameObject.name);
 
             AbilityEffectReceivedInventory abilityEffectReceivedInventory = unitInAura.GetAbilityEffectReceivedInventory();
 
             if (abilityEffectReceivedInventory == null) return;
 
+            if(!DEBUG_effectReceivedInventoriesInAura.Contains(abilityEffectReceivedInventory)) DEBUG_effectReceivedInventoriesInAura.Add(abilityEffectReceivedInventory);
+
             abilityEffectReceivedInventory.ReceivedEffectsFromAbility(this);
         }
 
-        protected virtual void OnCollisionExit2D(Collision2D collision)
+        protected virtual void OnTriggerExit2D(Collider2D other)
         {
-            IUnit unitLeavesAura = ChecValidUnitAndAuraCollision(collision);
+            if (!triggerExitEventCheck) return;
+
+            if (other == null || !other.gameObject.activeInHierarchy) return;
+
+            IUnit unitLeavesAura = CheckValidUnitAndAuraCollision(other);
 
             if(unitLeavesAura == null) return;
 
@@ -134,14 +179,14 @@ namespace TeamMAsTD
 
             if (abilityEffectReceivedInventory == null) return;
 
-            abilityEffectReceivedInventory.RemoveEffectsFromAbility(this);
+            abilityEffectReceivedInventory.RemoveEffectsOfAbility(this);
         }
 
-        protected IUnit ChecValidUnitAndAuraCollision(Collision2D collision)
+        protected IUnit CheckValidUnitAndAuraCollision(Collider2D otherCollider2D)
         {
-            if (collision == null) return null;
+            if (otherCollider2D == null) return null;
 
-            IUnit unitDetected = collision.gameObject.GetComponent<IUnit>();
+            IUnit unitDetected = otherCollider2D.GetComponent<IUnit>();
 
             if (unitDetected == null) return null;
 
@@ -150,28 +195,11 @@ namespace TeamMAsTD
             return unitDetected;
         }
 
-        //Privates and other funcs belong to this class and its children......................................
-        private void SetAuraRange()
+        protected void OnDrawGizmosSelected()
         {
-            if (unitPossessingAbility == null) return;
+            Gizmos.color = Color.yellow;
 
-            if (abilityScriptableObject.abilityRangeInTiles <= 0.0f)
-            {
-                auraRange = 0.0f;
-
-                return;
-            }
-
-            Tile tileUnitIsOn = unitPossessingAbility.GetTileUnitIsOn();
-
-            if (tileUnitIsOn != null && tileUnitIsOn.gridParent != null)
-            {
-                auraRange = tileUnitIsOn.gridParent.GetDistanceFromTileNumber(abilityScriptableObject.abilityRangeInTiles);
-            }
-            else
-            {
-                auraRange = abilityScriptableObject.abilityRangeInTiles;
-            }
+            if(auraCollider != null) Gizmos.DrawWireSphere(transform.position, auraCollider.radius);
         }
     }
 }

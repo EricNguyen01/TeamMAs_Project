@@ -35,14 +35,38 @@ namespace TeamMAsTD
             return visitorSO;
         }
 
-        public void SetVisitorHealth(float health)
+        public void SetSpecificVisitorHealth(float health)
         {
             happinessAsHealth = health;
         }
 
-        public void SetVisitorMoveSpeed(float moveSpeed)
+        public void AddVisitorHealth(float addedHealth)
+        {
+            happinessAsHealth += addedHealth;
+        }
+
+        public void RemoveVisitorHealth(float removedHealth)
+        {
+            happinessAsHealth -= removedHealth;
+
+            if (happinessAsHealth <= 0.0f) happinessAsHealth = 0.0f;
+        }
+
+        public void SetSpecificVisitorMoveSpeed(float moveSpeed)
         {
             this.moveSpeed = moveSpeed;
+        }
+
+        public void AddVisitorMoveSpeed(float moveSpeedIncreased)
+        {
+            moveSpeed += moveSpeedIncreased;
+        }
+
+        public void RemoveVisitorMoveSpeed(float moveSpeedDecreased)
+        {
+            moveSpeed -= moveSpeedDecreased;
+
+            if(moveSpeed <= 0.0f) moveSpeed = 0.0f;
         }
     }
 }

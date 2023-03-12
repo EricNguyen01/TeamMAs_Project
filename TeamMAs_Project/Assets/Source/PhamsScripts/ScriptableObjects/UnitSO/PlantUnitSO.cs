@@ -55,14 +55,42 @@ namespace TeamMAsTD
             return plantSO;
         }
 
-        public void SetPlantUnitDamage(float damage)
+        public void SetSpecificPlantUnitDamage(float damage)
         {
             this.damage = damage;
+
+            if (damage <= 0.0f) damage = 0.0f;
         }
 
-        public void SetPlantUnitAttackSpeed(float atkSpeed)
+        public void AddPlantUnitDamage(float addedDamage)
+        {
+            damage += addedDamage;
+        }
+
+        public void RemovePlantUnitDamage(float removedDamage)
+        {
+            damage -= removedDamage;
+
+            if (damage <= 0.0f) damage = 0.0f;
+        }
+
+        public void SetSpecificPlantUnitAttackSpeed(float atkSpeed)
         {
             attackSpeed = atkSpeed;
+
+            if (attackSpeed <= 0.0f) attackSpeed = 0.0f;
+        }
+
+        public void AddPlantAttackSpeed(float atkSpdIncreaseAmount)
+        {
+            attackSpeed -= atkSpdIncreaseAmount;
+
+            if (attackSpeed <= 0.0f) attackSpeed = 0.0f;
+        }
+
+        public void RemovePlantAttackSpeed(float atkSpdDecreaseAmount)
+        {
+            attackSpeed += atkSpdDecreaseAmount;
         }
     }
 }

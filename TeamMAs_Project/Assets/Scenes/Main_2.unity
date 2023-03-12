@@ -13052,8 +13052,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_EventMask:
     serializedVersion: 2
-    m_Bits: 247
-  m_MaxRayIntersections: 0
+    m_Bits: 115
+  m_MaxRayIntersections: 3
 --- !u!114 &519420034
 MonoBehaviour:
   m_ObjectHideFlags: 0
