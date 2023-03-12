@@ -49,7 +49,6 @@ MonoBehaviour:
   <abilityScriptableObject>k__BackingField: {fileID: 11400000, guid: d9442622bc24b534d8561001f86454d9, type: 2}
   auraCollider: {fileID: 5885909084941173370}
   auraKinematicRb: {fileID: 7930872701250369936}
-  timeToCheckForUnitsInAura: 0.1
 --- !u!58 &5885909084941173370
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -84,6 +83,6 @@ Rigidbody2D:
   m_GravityScale: 1
   m_Material: {fileID: 0}
   m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_SleepingMode: 0
+  m_CollisionDetection: 1
   m_Constraints: 7

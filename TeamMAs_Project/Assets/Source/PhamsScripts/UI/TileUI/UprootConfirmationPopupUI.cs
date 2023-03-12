@@ -16,6 +16,10 @@ namespace TeamMAsTD
 
         [SerializeField][TextArea] private string popupConfirmationMessage;
 
+        [SerializeField] private StatPopupSpawner insufficientFundToUprootPopupPrefab;
+
+        [SerializeField] private Button uprootButton;
+
         //INTERNALS.....................................................................................
 
         private Tile tileWithUnitToUproot;
@@ -43,6 +47,22 @@ namespace TeamMAsTD
                 {
                     uprootPopupMessageText.text = popupConfirmationMessage;
                 }
+            }
+
+            if(insufficientFundToUprootPopupPrefab != null)
+            {
+                GameObject go = null;
+
+                if(uprootButton != null) go = Instantiate(insufficientFundToUprootPopupPrefab.gameObject, uprootButton.transform.position, Quaternion.identity);
+                else go = Instantiate(insufficientFundToUprootPopupPrefab.gameObject, transform.position, Quaternion.identity);
+
+                insufficientFundToUprootPopupPrefab = go.GetComponent<StatPopupSpawner>();
+
+                insufficientFundToUprootPopupPrefab.SetStatPopupSpawnerConfig(0.0f,
+                                                                          0.0f,
+                                                                          0.0f,
+                                                                          0.0f,
+                                                                          1.8f);
             }
         }
 
@@ -108,6 +128,8 @@ namespace TeamMAsTD
                         {
                             tileWithUnitToUproot.UprootingInsufficientFundsEventInvoke();
 
+                            ProcessInsufficientFundToUprootPopup();
+
                             return; 
                         }
 
@@ -138,6 +160,29 @@ namespace TeamMAsTD
             //if the player chooses to keep the unit instead, do nothing and
             //stop showing popup after button pressed
             ShowUprootConfirmationPopup(false);
+        }
+
+        private void ProcessInsufficientFundToUprootPopup()
+        {
+            if (uprootButton == null) return;
+
+            if(insufficientFundToUprootPopupPrefab == null) return;
+
+            float popupOffsetX = insufficientFundToUprootPopupPrefab.GetPopupPositionAfterStartOffsetApplied().x;
+
+            float popupOffsetY = insufficientFundToUprootPopupPrefab.GetPopupPositionAfterStartOffsetApplied().y;
+
+            float offsetToButtonX = uprootButton.transform.position.x - popupOffsetX;
+
+            float offsetToButtonY = uprootButton.transform.position.y - popupOffsetY;
+
+            insufficientFundToUprootPopupPrefab.SetStatPopupSpawnerConfig(offsetToButtonY,
+                                                                          offsetToButtonX,
+                                                                          0.0f,
+                                                                          0.0f,
+                                                                          1.8f);
+
+            insufficientFundToUprootPopupPrefab.PopUp(null, null, false);
         }
     }
 }

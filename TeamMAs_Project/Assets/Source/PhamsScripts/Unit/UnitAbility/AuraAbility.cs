@@ -15,21 +15,7 @@ namespace TeamMAsTD
 
         [SerializeField] protected Rigidbody2D auraKinematicRb;
 
-        [SerializeField]
-        [Min(0.0f)]
-        [Tooltip("The wait time between each aura collider activation to check for any unit within it." +
-        "If set to 0.0f meaning that units in aura are checked every fixed update.")]
-        protected float timeToCheckForUnitsInAura = 0.1f;
-
-        protected float currentTimeToCheckForUnitsInAura = 0.0f;
-
-        protected float timeBeforeDisablingAuraCollider = 0.1f;
-
-        protected float currentTimeBeforeDisablingAuraCollider = 0.1f;
-
         private float auraRange = 0.0f;
-
-        protected bool checkingForUnitInAura = true;
 
         protected bool triggerExitEventCheck = true;
 
@@ -38,14 +24,6 @@ namespace TeamMAsTD
         protected override void Awake()
         {
             base.Awake();
-
-            if(unitPossessingAbility != null )
-            {
-                if(unitPossessingAbility.GetUnitObject().GetType() == typeof(PlantUnit))
-                {
-                    if (timeToCheckForUnitsInAura <= 0.0f) timeToCheckForUnitsInAura = 0.1f;
-                }
-            }
 
             if(auraCollider == null)
             {
@@ -62,11 +40,15 @@ namespace TeamMAsTD
             auraKinematicRb.gravityScale = 0.0f;
 
             auraKinematicRb.isKinematic = true;
+
+            auraKinematicRb.collisionDetectionMode = CollisionDetectionMode2D.Continuous;
+
+            auraKinematicRb.sleepMode = RigidbodySleepMode2D.NeverSleep;
         }
 
         protected override void OnEnable()
         {
-            auraRange = abilityScriptableObject.abilityRangeInTiles;
+            auraRange = (float)abilityScriptableObject.abilityRangeInTiles - 0.1f;
 
             if(auraCollider.radius != auraRange) auraCollider.radius = auraRange;
         }
@@ -77,48 +59,9 @@ namespace TeamMAsTD
             ForceStopAbility();
         }
 
-        /*private void LateUpdate()
-        {
-            if (timeToCheckForUnitsInAura <= 0.0f) return;
-
-            if(currentTimeToCheckForUnitsInAura > 0.0f && currentTimeBeforeDisablingAuraCollider <= 0.0f)
-            {
-                currentTimeToCheckForUnitsInAura -= Time.fixedDeltaTime;
-
-                if(currentTimeToCheckForUnitsInAura <= 0.0f)
-                {
-                    currentTimeToCheckForUnitsInAura = 0.0f;
-
-                    if (!checkingForUnitInAura) checkingForUnitInAura = true;
-
-                    currentTimeBeforeDisablingAuraCollider = timeBeforeDisablingAuraCollider;
-                }
-
-                return;
-            }
-
-            if(currentTimeBeforeDisablingAuraCollider > 0.0f && currentTimeToCheckForUnitsInAura <= 0.0f)
-            {
-                currentTimeBeforeDisablingAuraCollider -= Time.fixedDeltaTime;
-
-                if(currentTimeBeforeDisablingAuraCollider <= 0.0f)
-                {
-                    currentTimeBeforeDisablingAuraCollider = 0.0f;
-
-                    if (checkingForUnitInAura) checkingForUnitInAura = false;
-
-                    currentTimeToCheckForUnitsInAura = timeToCheckForUnitsInAura;
-                }
-
-                return;
-            }
-        }*/
-
         protected override void ProcessAbilityStart()
         {
             auraCollider.enabled = true;
-
-            checkingForUnitInAura = true;
 
             InvokeOnAbilityStartedEventOn(this);
         }
@@ -131,10 +74,6 @@ namespace TeamMAsTD
 
         protected override void ProcessAbilityEnd()
         {
-            //auraCollider.enabled = false;
-
-            checkingForUnitInAura = false;
-
             triggerExitEventCheck = false;
 
             InvokeOnAbilityStoppedEventOn(this);
@@ -144,8 +83,6 @@ namespace TeamMAsTD
 
         protected virtual void OnTriggerStay2D(Collider2D other)
         {
-            if (!checkingForUnitInAura) return;
-
             if (other == null || !other.gameObject.activeInHierarchy) return;
 
             //if(other != null) Debug.Log("A collider is in aura of aura ability of : " + transform.parent.gameObject.name);
