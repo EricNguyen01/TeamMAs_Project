@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 namespace TeamMAsTD
@@ -7,10 +8,13 @@ namespace TeamMAsTD
     [DisallowMultipleComponent]
     [RequireComponent(typeof(PlantAimShootSystem))]
     [RequireComponent(typeof(PlantWaterUsageSystem))]
+    [RequireComponent(typeof(AbilityEffectReceivedInventory))]
     public class PlantUnit : MonoBehaviour, IUnit
     {
         [field: Header("Plant Unit SO Data")]
-        [field: SerializeField] public PlantUnitSO plantUnitScriptableObject { get; private set; }
+
+        [field: SerializeField] 
+        public PlantUnitSO plantUnitScriptableObject { get; private set; }
 
         public PlantRangeCircle plantRangeCircle { get; private set; }
 
@@ -25,6 +29,8 @@ namespace TeamMAsTD
         public Tile tilePlacedOn { get; private set; }
 
         private SpriteRenderer unitSpriteRenderer;
+
+        private AbilityEffectReceivedInventory abilityEffectReceivedInventory;
 
         public float plantMaxAttackRange { get; private set; } = 1.0f;
 
@@ -54,10 +60,25 @@ namespace TeamMAsTD
             }
 
             tilePlacedOn = GetComponentInParent<Tile>();
-            if(tilePlacedOn != null)
+
+            if(tilePlacedOn != null && tilePlacedOn.gridParent != null)
             {
+                //convert tile number to float distance in the grid
                 //max atk range = (tileSize * atk range in tiles) + 1/2 tile (to reach the edge of the last tile at max range)
-                plantMaxAttackRange = (tilePlacedOn.gridParent.tileSize * plantUnitScriptableObject.attackRangeInTiles) + (tilePlacedOn.gridParent.tileSize / 2.0f);
+                plantMaxAttackRange = tilePlacedOn.gridParent.GetDistanceFromTileNumber(plantUnitScriptableObject.attackRangeInTiles);
+            }
+            else
+            {
+                //if couldnt get atk range from tile size from the grid, assume that tile size is 1.0f and atk range = #of tiles
+                //(e.g 3 tiles = 3.0f).
+                plantMaxAttackRange = plantUnitScriptableObject.attackRangeInTiles;
+            }
+
+            abilityEffectReceivedInventory = GetComponent<AbilityEffectReceivedInventory>();
+
+            if(abilityEffectReceivedInventory == null)
+            {
+                abilityEffectReceivedInventory = gameObject.AddComponent<AbilityEffectReceivedInventory>();
             }
 
             plantUnitWorldUI = GetComponent<PlantUnitWorldUI>();
@@ -73,7 +94,14 @@ namespace TeamMAsTD
 
             plantAimShootSystem.InitializePlantAimShootSystem(this, plantUnitScriptableObject.plantProjectileSO);
 
-            plantWaterUsageSystem.InitializePlantWaterUsageSystem(this);
+            plantWaterUsageSystem.InitializePlantWaterUsageSystem(this, true);
+
+            if(plantUnitScriptableObject != null)
+            {
+                GameObject spawnedEffectGO = plantUnitScriptableObject.SpawnUnitEffectGameObject(plantUnitScriptableObject.unitSpawnEffectPrefab, transform, true, true);
+                
+                StartCoroutine(plantUnitScriptableObject.DestroyOnUnitEffectAnimFinishedCoroutine(spawnedEffectGO));
+            }
 
             GetAndSetUnitSprite();
 
@@ -138,6 +166,21 @@ namespace TeamMAsTD
             }
         }
 
+        public void ProcessPlantDestroyEffectFrom(MonoBehaviour caller)
+        {
+            if (caller == null) return;
+
+            if (plantUnitScriptableObject == null) return;
+
+            GameObject spawnedEffectGO = plantUnitScriptableObject.SpawnUnitEffectGameObject(plantUnitScriptableObject.unitDestroyEffectPrefab, transform, false, true);
+            
+            //use other MonoBehavior (e.g Tile this plant on) to call this destroy effect coroutine
+            //since if called by this plant obj which will be destroyed before 
+            //this effect got destroyed, the destroy coroutine will stop as soon as this plant is destroyed
+            //which this effect will then never be destroyed!
+            caller.StartCoroutine(plantUnitScriptableObject.DestroyOnUnitEffectAnimFinishedCoroutine(spawnedEffectGO));
+        }
+
         private void OnDrawGizmosSelected()
         {
             Gizmos.color = Color.red;
@@ -155,6 +198,42 @@ namespace TeamMAsTD
         public UnitSO GetUnitScriptableObjectData()
         {
             return plantUnitScriptableObject;
+        }
+
+        public object GetUnitObject()
+        {
+            return this;
+        }
+
+        public Tile GetTileUnitIsOn()
+        {
+            return tilePlacedOn;
+        }
+
+        public Transform GetUnitTransform()
+        {
+            return transform;
+        }
+
+        public AbilityEffectReceivedInventory GetAbilityEffectReceivedInventory()
+        {
+            return abilityEffectReceivedInventory;
+        }
+
+        //replace the current plant SO with a new one
+        public void UpdateUnitSOData(UnitSO replacementUnitSO)
+        {
+            if (replacementUnitSO == null || replacementUnitSO.GetType() != typeof(PlantUnitSO)) return;
+
+            PlantUnitSO replacementPlantSO = (PlantUnitSO)replacementUnitSO;
+
+            plantUnitScriptableObject = replacementPlantSO;
+
+            //must re-initialize plant's components upon replacing plant SO:
+
+            plantAimShootSystem.InitializePlantAimShootSystem(this, plantUnitScriptableObject.plantProjectileSO);
+
+            plantWaterUsageSystem.InitializePlantWaterUsageSystem(this, false);//false param is because this is not an awake init
         }
     }
 }

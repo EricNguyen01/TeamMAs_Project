@@ -271,7 +271,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 599533699
-  m_SortingOrder: 0
+  m_SortingOrder: 25
   m_TargetDisplay: 0
 --- !u!114 &7304034157779787396
 MonoBehaviour:
@@ -681,6 +681,8 @@ GameObject:
   - component: {fileID: 3071205144696499768}
   - component: {fileID: 6285526868185121444}
   - component: {fileID: 8137925640410980039}
+  - component: {fileID: -5632405630244621304}
+  - component: {fileID: -1201831765329823197}
   m_Layer: 6
   m_Name: Tile
   m_TagString: Untagged
@@ -726,7 +728,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -892,7 +894,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wateringSoundPlayerPrefab: {fileID: 1954455504458609106, guid: 7ea03095a313b0c4292be0f076dce57e, type: 3}
-  insufficientWateringFundStatPopupPrefab: {fileID: 8024300418989073095, guid: f3a373e0118fdc54d85de7d5d9767e8c, type: 3}
+  insufficientWateringFundPopupScaleMultiplier: 1
   OnInsufficientFundsToWater:
     m_PersistentCalls:
       m_Calls: []
@@ -992,6 +994,43 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &-5632405630244621304
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5401990168163722275}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8f6d3c6e4250e84192f5b34ce9e71bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  glowColor: {r: 1, g: 1, b: 1, a: 1}
+  glowBrightness: 2
+  outlineWidth: 2
+  alphaThreshold: 0.005
+  drawOutside: 0
+  enableInstancing: 0
+--- !u!114 &-1201831765329823197
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5401990168163722275}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba61a76fa13f32a459bc021551fa14c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  glowColorPositive: {r: 0.15752934, g: 0.4716981, b: 0.15752934, a: 1}
+  glowColorNegative: {r: 0.9811321, g: 0.03147021, b: 0.03147021, a: 1}
+  glowAlphaFrom: 210
+  glowAlphaTo: 255
+  colorBrightnessFrom: 0.55
+  colorBrightnessTo: 0.7
+  glowCycleFrequency: 1.2
 --- !u!1 &6202609648566256504
 GameObject:
   m_ObjectHideFlags: 0

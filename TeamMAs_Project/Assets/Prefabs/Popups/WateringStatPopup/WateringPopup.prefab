@@ -60,7 +60,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -269,6 +269,9 @@ MonoBehaviour:
   statPopupTextMesh: {fileID: 7512172702897273963}
   positiveStatPopupSprite: {fileID: 0}
   negativeStatPopupSprite: {fileID: 0}
+  statPopupAnimator: {fileID: 0}
+  positiveStatPopupAnimatorOverride: {fileID: 0}
+  negativeStatPopupAnimatorOverride: {fileID: 0}
   positiveStatText: 
   negativeStatText: 
   positiveStatPopupTextColor: {r: 0.16470589, g: 0.62352943, b: 0.85882354, a: 1}

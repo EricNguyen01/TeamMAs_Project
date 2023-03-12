@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2419496077081563963}
   - component: {fileID: 2444034531971933618}
   - component: {fileID: 1108765494799783563}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -85,7 +85,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5593855942594080102}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Fill Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -124,7 +124,7 @@ GameObject:
   - component: {fileID: 7647710927808650414}
   - component: {fileID: 4837759541335045865}
   - component: {fileID: 2402005820240205369}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -199,7 +199,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8061187500246683258}
   - component: {fileID: 930197486966519794}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: WaterSlider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -293,7 +293,8 @@ GameObject:
   - component: {fileID: 2984172582457731264}
   - component: {fileID: -6194113504385561905}
   - component: {fileID: -4424760939810734582}
-  m_Layer: 0
+  - component: {fileID: -8510950018605325461}
+  m_Layer: 9
   m_Name: Grass
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -382,7 +383,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <plantUnitScriptableObject>k__BackingField: {fileID: 11400000, guid: b027c0987efb0b34bada201c95f907f2, type: 2}
-  plantRangeCirclePrefab: {fileID: 7084800912723135991, guid: 19a398b9eb06d5b49927dd43e49faa1a, type: 3}
 --- !u!114 &2984172582457731264
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -425,6 +425,32 @@ MonoBehaviour:
   nameTextMeshProComponent: {fileID: 0}
   healthBarSlider: {fileID: 0}
   waterSlider: {fileID: 930197486966519794}
+--- !u!61 &-8510950018605325461
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7428981930192502170}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1.54, y: 1.54}
+    newSize: {x: 1.54, y: 1.54}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!1 &7826824570791976741
 GameObject:
   m_ObjectHideFlags: 0
@@ -437,7 +463,7 @@ GameObject:
   - component: {fileID: 2324428350134831006}
   - component: {fileID: 4007994451049782928}
   - component: {fileID: 8955223564347801283}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: PlantWorldCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}

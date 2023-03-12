@@ -18,6 +18,8 @@ namespace TeamMAsTD
 
         private List<WaveVisitorTypesLookAheadSlot> waveVisitorTypesLookAheadSlotsList = new List<WaveVisitorTypesLookAheadSlot>();
 
+        private InfoTooltipClickReminderDisplayTimer tooltipClickOnReminderTimer;
+
         private int currentWave = 0;
 
         private bool hasFinishedRaining = false;
@@ -50,6 +52,13 @@ namespace TeamMAsTD
 
                 return;
             }
+
+            tooltipClickOnReminderTimer = GetComponent<InfoTooltipClickReminderDisplayTimer>();
+
+            if(tooltipClickOnReminderTimer == null)
+            {
+                tooltipClickOnReminderTimer = GetComponentInChildren<InfoTooltipClickReminderDisplayTimer>();
+            }
         }
 
         private void OnEnable()
@@ -74,10 +83,13 @@ namespace TeamMAsTD
 
         private void Start()
         {
-            if(waveSpawnerToLookAhead != null)
+            //waveSpawnerToLookAhead reference is checked in Awake()
+            //the below if must be in Start() to avoid execution conflicts with WaveSpawner.cs (waveSpawnerToLookAhead)
+            if (waveSpawnerToLookAhead != null)
             {
-                currentWave = waveSpawnerToLookAhead.currentWave;
+                currentWave = waveSpawnerToLookAhead.currentWave;//get and set current wave number (int)
 
+                //get and update visitor types based on current wave (as an obj NOT int)
                 UpdateVisitorTypesLookAheadUISlotsForWave(waveSpawnerToLookAhead.GetCurrentWave());
             }
         }
@@ -110,6 +122,8 @@ namespace TeamMAsTD
 
             visitorLookAheadSlotScript.UpdateVisitorTypeLookAheadSlot(visitorSO);
 
+            visitorLookAheadSlotScript.RegisterThisSlotUnitTooltipToTooltipClickOnReminder(tooltipClickOnReminderTimer);
+
             waveVisitorTypesLookAheadSlotsList.Add(visitorLookAheadSlotScript);
 
             if (activeOnCreated) visitorLookAheadSlotScript.EnableLookAheadUISlot(true);
@@ -124,6 +138,8 @@ namespace TeamMAsTD
             if (waveVisitorTypesLookAheadSlotsList.Count <= 0)
             {
                 CreateVisitorTypesLookAheadUISlotsForWave(wave, true);
+
+                SetVisitorLookAheadSlotClickOnReminderTimerOnSlotsUpdated();
 
                 return;
             }
@@ -162,6 +178,8 @@ namespace TeamMAsTD
                     waveVisitorTypesLookAheadSlotsList[i].EnableLookAheadUISlot(false);
                 }
 
+                SetVisitorLookAheadSlotClickOnReminderTimerOnSlotsUpdated();
+
                 return;
             }
             //else if the currently created slots are less than this wave's unique visitor types count
@@ -187,6 +205,8 @@ namespace TeamMAsTD
                     //-> add more slots to the current look ahead slots list
                     CreateVisitorTypesSlotsFor(waveUniqueVisitorTypes[i], true);
                 }
+
+                SetVisitorLookAheadSlotClickOnReminderTimerOnSlotsUpdated();
             }
         }
 
@@ -218,6 +238,11 @@ namespace TeamMAsTD
         private IEnumerator VisitorTypesUpdateAfterRainCoroutine(Wave waveToLookAhead)
         {
             SetActiveAllLookAheadSlot(false);
+
+            //close any active visitor type tooltip click-on reminder on updating visitor look ahead slots during rain
+            if(tooltipClickOnReminderTimer != null) tooltipClickOnReminderTimer.CloseTooltipClickReminderForSelectedTooltips();
+
+            if (tooltipClickOnReminderTimer != null) tooltipClickOnReminderTimer.PauseTimer(true);
 
             yield return new WaitUntil(() => hasFinishedRaining);
 
@@ -278,6 +303,45 @@ namespace TeamMAsTD
             }
 
             return true;
+        }
+
+        private void SetVisitorLookAheadSlotClickOnReminderTimerOnSlotsUpdated()
+        {
+            if (tooltipClickOnReminderTimer == null) return;
+
+            //Debug.Log("VisitorLookAhead Tooltip Reminder not null!");
+
+            if (waveVisitorTypesLookAheadSlotsList == null || waveVisitorTypesLookAheadSlotsList.Count == 0) return;
+
+            //Debug.Log("VisitorLookAhead slots list not null!");
+
+            tooltipClickOnReminderTimer.ClearTooltipsThatWillDisplayClickOnReminderList();
+
+            bool hasGottenFirstValidSlot = false;
+
+            for(int i = 0; i <  waveVisitorTypesLookAheadSlotsList.Count; i++)
+            {
+                if (waveVisitorTypesLookAheadSlotsList[i] == null) continue;
+
+                if (!waveVisitorTypesLookAheadSlotsList[i].gameObject.activeInHierarchy) continue;
+
+                if (waveVisitorTypesLookAheadSlotsList[i].unitInfoTooltipEnabler == null)
+                {
+                    //Debug.Log("Visitor Type Slot Unit Tooltip Enabler is null!");
+
+                    continue;
+                }
+
+                hasGottenFirstValidSlot = true;
+
+                tooltipClickOnReminderTimer.SetTooltipThatWillDisplayClickOnReminder(waveVisitorTypesLookAheadSlotsList[i].unitInfoTooltipEnabler);
+
+                //Debug.Log("Visitor Type Slot Tooltip reminder is set!");
+
+                break;
+            }
+
+            if (hasGottenFirstValidSlot) tooltipClickOnReminderTimer.PauseTimer(false);
         }
     }
 }

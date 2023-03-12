@@ -17,7 +17,7 @@ namespace TeamMAsTD
      * Inherit from this base object pool class to use it and to add new features depend on what the pool is being used for!
      */
     [System.Serializable]
-    public class TD_GameObjectPoolBase
+    public abstract class TD_GameObjectPoolBase
     {
         private GameObject gameObjectInPool;
 

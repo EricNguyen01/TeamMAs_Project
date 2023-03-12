@@ -5,13 +5,15 @@ using UnityEngine.EventSystems;
 using UnityEngine.Events;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.WSA;
 
 namespace TeamMAsTD
 {
     [DisallowMultipleComponent]
     public class UnitShopSlotUIDragDrop : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
     {
-        [SerializeField] [Tooltip("The Unit Scriptable Object of this slot.")] private PlantUnitSO slotUnitScriptableObject;
+        [SerializeField] [Tooltip("The Unit Scriptable Object of this slot.")] 
+        private PlantUnitSO slotUnitScriptableObject;
 
         [SerializeField] private Image unitThumbnailImage;
         [SerializeField] private TextMeshProUGUI unitNameDisplay;
@@ -56,6 +58,8 @@ namespace TeamMAsTD
         private RectTransform parentCanvaRect;
 
         private PlantRangeCircle plantRangeCircleIndicator;
+
+        private Tile[] tilesUseForPlantableGlowEffectOnDragDrop;
 
         //PRIVATES.........................................................................
 
@@ -252,6 +256,36 @@ namespace TeamMAsTD
             if (plantRangeCircleIndicator.gameObject.activeInHierarchy) plantRangeCircleIndicator.gameObject.SetActive(false);
         }
 
+        //This function is a little expensive and should not be used in a loop or in many frames consecutively
+        private void FindAndEnableTilePlantableGlowEffect(bool enabled)
+        {
+            if (enabled)
+            {
+                tilesUseForPlantableGlowEffectOnDragDrop = FindObjectsOfType<Tile>();
+
+                if (tilesUseForPlantableGlowEffectOnDragDrop == null || tilesUseForPlantableGlowEffectOnDragDrop.Length == 0) return;
+
+                for(int i = 0; i < tilesUseForPlantableGlowEffectOnDragDrop.Length; i++)
+                {
+                    tilesUseForPlantableGlowEffectOnDragDrop[i].EnablePlantableTileGlowOnPlantDrag(slotUnitScriptableObject, true);
+                }
+
+                return;
+            }
+
+            if (tilesUseForPlantableGlowEffectOnDragDrop == null || tilesUseForPlantableGlowEffectOnDragDrop.Length == 0) return;
+
+            for (int i = 0; i < tilesUseForPlantableGlowEffectOnDragDrop.Length; i++)
+            {
+                tilesUseForPlantableGlowEffectOnDragDrop[i].EnablePlantableTileGlowOnPlantDrag(slotUnitScriptableObject, false);
+            }
+        }
+
+        public PlantUnitSO GetShopSlotPlantUnit()
+        {
+            return slotUnitScriptableObject;
+        }
+
         //UnityEventSystem Drag/Drop Interface functions.........................................
 
         public void OnBeginDrag(PointerEventData eventData)
@@ -271,6 +305,8 @@ namespace TeamMAsTD
             Vector2 worldMousePos = parentCanva.worldCamera.ScreenToWorldPoint(Input.mousePosition);
 
             EnableAndSet_PlantRangeCircle_To_WorldMousePos(worldMousePos, true);
+
+            FindAndEnableTilePlantableGlowEffect(true);
 
             OnStartedDragging?.Invoke();
         }
@@ -312,6 +348,8 @@ namespace TeamMAsTD
             //Check if the mouse is hovered upon anything that is recognized by the EventSystem
             if (eventData.pointerEnter == null)
             {
+                FindAndEnableTilePlantableGlowEffect(false);
+
                 OnDroppedFailed?.Invoke();
                 return;
             }
@@ -321,9 +359,13 @@ namespace TeamMAsTD
 
             if (destinationTile == null)
             {
+                FindAndEnableTilePlantableGlowEffect(false);
+
                 OnDroppedFailed?.Invoke();
                 return;
             }
+
+            FindAndEnableTilePlantableGlowEffect(false);
 
             //Place the unit on the destination tile (placeable conditions are checked within the PlaceUnit function below)
             destinationTile.PlaceUnit(slotUnitScriptableObject);

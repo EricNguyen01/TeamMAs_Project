@@ -14,10 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <displayName>k__BackingField: Hyssop
   <unitPrefab>k__BackingField: {fileID: 2090201727753816829, guid: 7413616505f05f64fa85280265c954c2, type: 3}
+  <unitInfoTooltipImageSprite>k__BackingField: {fileID: 0}
+  <unitSpawnEffectPrefab>k__BackingField: {fileID: 1355123197302658146, guid: f4f8b7672c4ecb146b287056f2e31299, type: 3}
+  <unitDestroyEffectPrefab>k__BackingField: {fileID: 1355123197302658146, guid: f4f8b7672c4ecb146b287056f2e31299, type: 3}
   <unitID>k__BackingField: 651ab286-029d-44dc-8d57-fef73369dd06
   <unitDescription>k__BackingField: 
   <unitThumbnail>k__BackingField: {fileID: 21300000, guid: 920785767db06334798a1622309722b2, type: 3}
-  <plantProjectileSO>k__BackingField: {fileID: 11400000, guid: 700432d60d0410a4482fe445d643989b, type: 2}
+  <plantProjectileSO>k__BackingField: {fileID: 11400000, guid: 4970a3adbb1f09342944a3652baaae08, type: 2}
   <waterBars>k__BackingField: 4
   <wavesSurviveWithoutWater>k__BackingField: 0
   <damage>k__BackingField: 40

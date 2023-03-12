@@ -60,7 +60,7 @@ namespace TeamMAsTD
         }
 
         //This function is called in the Awake method of the PlantUnit that this script attached to
-        public void InitializePlantWaterUsageSystem(PlantUnit plantUnit)
+        public void InitializePlantWaterUsageSystem(PlantUnit plantUnit, bool awakeInit)
         {
             if(plantUnit == null || plantUnit.plantUnitScriptableObject == null)
             {
@@ -72,15 +72,18 @@ namespace TeamMAsTD
 
             plantUnitSO = plantUnit.plantUnitScriptableObject;
 
-            tilePlantedOn = plantUnitLinked.tilePlacedOn;
-
-            plantUnitWorldUI = plantUnitLinked.plantUnitWorldUI;
-
             totalWaterBars = plantUnit.plantUnitScriptableObject.waterBars;
 
-            waterBarsRemaining = totalWaterBars;
+            if (awakeInit)
+            {
+                tilePlantedOn = plantUnitLinked.tilePlacedOn;
 
-            wavesCanSurviveWithoutWater = plantUnit.plantUnitScriptableObject.wavesSurviveWithoutWater;
+                plantUnitWorldUI = plantUnitLinked.plantUnitWorldUI;
+
+                waterBarsRemaining = totalWaterBars;
+
+                wavesCanSurviveWithoutWater = plantUnit.plantUnitScriptableObject.wavesSurviveWithoutWater;
+            }
         }
 
         //Use this func for refilling water using both rain (0 coin cost) and/or the water bucket UI button (coin cost)
@@ -144,9 +147,16 @@ namespace TeamMAsTD
             plantUnitWorldUI.SetWaterSliderValue(waterBarsRemaining, totalWaterBars);
         }
 
-        public void RefillAllWaterBars(int barsPerRefill, int coinCostPerRefill)
+        //This function is for the WaterAll button functionality with the water all bars on each plant option checked.
+        //This function refills all the water bars currently unfilled on this plant
+        //The number of bars can be refilled for each refill time is based on the number of bars per refill in this plant's SO data.
+        public void RefillAllWaterBars()
         {
             if (waterBarsRemaining >= totalWaterBars) return;
+
+            int barsPerRefill = plantUnitSO.waterBarsRefilledPerWatering;
+
+            int coinCostPerRefill = plantUnitSO.wateringCoinsCost;
 
             int barsRefilled = 0;
 
@@ -157,6 +167,36 @@ namespace TeamMAsTD
                 barsRefilled += barsPerRefill;
 
                 RefillWaterBars(barsPerRefill, coinCostPerRefill);
+            }
+        }
+
+        //This function is also for the WaterAll button with the water all bars on each plant option unchecked
+        //This function only refill 1 time only based on the bars per refill per refill instance set in SO data
+        public void RefillPartialWaterBars(int timesToRefill)
+        {
+            if (timesToRefill <= 0) return;
+
+            if (waterBarsRemaining >= totalWaterBars) return;
+
+            int barsPerRefill = plantUnitSO.waterBarsRefilledPerWatering;
+
+            int barsToRefill = totalWaterBars - waterBarsRemaining;
+
+            int coinCostPerRefill = plantUnitSO.wateringCoinsCost;
+
+            int refillTimes = 0;
+
+            int barsRefilled = 0;
+
+            //if either the refill times have exceed the provided times to refill
+            //or all water bars on this plant have been fully filled -> stop refilling water.
+            while(refillTimes < timesToRefill && barsRefilled < barsToRefill)
+            {
+                RefillWaterBars(barsPerRefill, coinCostPerRefill);
+
+                barsRefilled += barsPerRefill;
+
+                refillTimes++;
             }
         }
 
@@ -234,6 +274,27 @@ namespace TeamMAsTD
             if (waterBarsRemaining >= totalWaterBars) return true;
 
             return false;
+        }
+
+        public int GetPartialRefillTotalCoinCost(int refillTime)
+        {
+            //if water is full -> cost nothing
+            if (waterBarsRemaining >= totalWaterBars) return 0;
+
+            int totalBarsNeededRefill = totalWaterBars - waterBarsRemaining;
+
+            int actualRefillTime = 0;
+
+            int barsRefilled = 0;
+
+            while(actualRefillTime < refillTime && barsRefilled < totalBarsNeededRefill)
+            {
+                actualRefillTime++;
+
+                barsRefilled += plantUnitSO.waterBarsRefilledPerWatering;
+            }
+
+            return plantUnitSO.wateringCoinsCost * actualRefillTime;
         }
 
         public int GetFullRefillTotalCoinCosts()

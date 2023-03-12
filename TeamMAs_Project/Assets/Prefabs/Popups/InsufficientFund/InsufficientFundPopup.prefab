@@ -60,7 +60,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -182,7 +182,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 599533699
-  m_SortingOrder: 10
+  m_SortingOrder: 30
   m_TargetDisplay: 0
 --- !u!225 &2253092831701831863
 CanvasGroup:
@@ -264,11 +264,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2c90dd0479bf604f8c0f6e5e5c86bcd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  statPopupWorldUICanvas: {fileID: 5374239132133481435}
   statPopupUIImage: {fileID: 4397547518056734228}
   statPopupTextMesh: {fileID: 7512172702897273963}
   positiveStatPopupSprite: {fileID: 0}
   negativeStatPopupSprite: {fileID: 0}
+  statPopupAnimator: {fileID: 0}
+  positiveStatPopupAnimatorOverride: {fileID: 0}
+  negativeStatPopupAnimatorOverride: {fileID: 0}
   positiveStatText: 
   negativeStatText: Insufficient Funds!
   positiveStatPopupTextColor: {r: 0.16470589, g: 0.62352943, b: 0.85882354, a: 1}
@@ -370,14 +372,14 @@ MonoBehaviour:
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
-  m_fontSizeMin: 0.4
+  m_fontSizeMin: 0.2
   m_fontSizeMax: 1
   m_fontStyle: 1
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
-  m_characterSpacing: 0
-  m_wordSpacing: 0
+  m_characterSpacing: -7.41
+  m_wordSpacing: -10.59
   m_lineSpacing: 0
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8986849751082473494}
   - component: {fileID: 6918266877711106597}
   - component: {fileID: 6486655812789226726}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -88,7 +88,7 @@ GameObject:
   - component: {fileID: 4336051625158196696}
   - component: {fileID: 650612147894124286}
   - component: {fileID: 8089247039006152063}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: PlantWorldCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -188,7 +188,7 @@ GameObject:
   - component: {fileID: 5944135757689693027}
   - component: {fileID: 5356150328971957279}
   - component: {fileID: 2686708082316178613}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -263,7 +263,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6211438648904435978}
   - component: {fileID: 3655559545804631608}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: WaterSlider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -357,7 +357,8 @@ GameObject:
   - component: {fileID: 8309538057782045391}
   - component: {fileID: 6638241418892682812}
   - component: {fileID: 2520248128343537646}
-  m_Layer: 0
+  - component: {fileID: 7709737242226177160}
+  m_Layer: 9
   m_Name: Dandy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -446,7 +447,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <plantUnitScriptableObject>k__BackingField: {fileID: 11400000, guid: ebe49aa0d994d7d488c580c1a9bccd35, type: 2}
-  plantRangeCirclePrefab: {fileID: 7084800912723135991, guid: 19a398b9eb06d5b49927dd43e49faa1a, type: 3}
 --- !u!114 &8309538057782045391
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -489,6 +489,32 @@ MonoBehaviour:
   nameTextMeshProComponent: {fileID: 0}
   healthBarSlider: {fileID: 0}
   waterSlider: {fileID: 3655559545804631608}
+--- !u!61 &7709737242226177160
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7198574875345707434}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1.54, y: 1.54}
+    newSize: {x: 0.16, y: 0.16}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!1 &8208601178185689737
 GameObject:
   m_ObjectHideFlags: 0
@@ -498,7 +524,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4426710111967583136}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Fill Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 namespace TeamMAsTD
@@ -14,6 +15,8 @@ namespace TeamMAsTD
         private PlantAimShootSystem plantAimShoot;
 
         private Transform projectileParentTransform;
+
+        public List<PlantProjectile> plantProjectileList { get; private set; } = new List<PlantProjectile>();
 
         //PlantProjectilePool's constructor
         public PlantProjectilePool(PlantUnit plantUnit, PlantAimShootSystem plantAimShootSystem, PlantProjectileSO plantProjectileSO, Transform plantObjectTransform) : base(plantAimShootSystem, plantProjectileSO.plantProjectilePrefab, plantObjectTransform)
@@ -60,6 +63,8 @@ namespace TeamMAsTD
                 }
 
                 plantProjectileComp.InitializePlantProjectile(plantUnit);
+
+                if(!plantProjectileList.Contains(plantProjectileComp)) plantProjectileList.Add(plantProjectileComp);
             }
 
             return true;
@@ -79,6 +84,44 @@ namespace TeamMAsTD
         public bool ReturnProjectileObjectToPool(GameObject projectileGO)
         {
             return ReturnGameObjectToPool(projectileGO);
+        }
+
+        public void UpdatePlantProjectilePoolData(PlantUnit plantUnit, PlantProjectileSO projectileSO)
+        {
+            if (plantUnit == null || plantUnit.plantAimShootSystem == null || projectileSO == null) return;
+
+            DecommisionOldProjectiles();
+
+            this.plantUnit = plantUnit;
+
+            plantAimShoot = plantUnit.plantAimShootSystem;
+
+            plantProjectileSO = projectileSO;
+
+            CreateAndAddInactivePlantProjectileToPool(15);
+        }
+
+        private void DecommisionOldProjectiles()
+        {
+            if (plantUnit == null) return;
+
+            if (plantProjectileList.Count == 0) return;
+
+            for(int i = 0; i < plantProjectileList.Count; i++)
+            {
+                if (plantProjectileList[i] == null) continue;
+
+                if (!plantProjectileList[i].gameObject.activeInHierarchy)
+                {
+                    MonoBehaviour.Destroy(plantProjectileList[i].gameObject);
+
+                    continue;
+                }
+
+                RemoveGameObjectFromPool(plantProjectileList[i].gameObject);
+
+                plantProjectileList[i].Completely_UnAssociate_Projectile_WithItsPlant_AndPool();
+            }
         }
     }
 }

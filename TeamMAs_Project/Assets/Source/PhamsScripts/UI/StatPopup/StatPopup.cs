@@ -11,19 +11,21 @@ namespace TeamMAsTD
     {
         [Header("Stat Popup UI Components")]
 
-        [SerializeField] private Canvas statPopupWorldUICanvas;
-
         [SerializeField] private Image statPopupUIImage;
 
         [SerializeField] private TextMeshProUGUI statPopupTextMesh;
-
-        private RectTransform statPopupWorldUIRectTransform;
 
         [Header("Stat Popup Config")]
 
         [SerializeField] private Sprite positiveStatPopupSprite;
 
         [SerializeField] private Sprite negativeStatPopupSprite;
+
+        [SerializeField] private Animator statPopupAnimator;
+
+        [SerializeField] private AnimatorOverrideController positiveStatPopupAnimatorOverride;
+
+        [SerializeField] private AnimatorOverrideController negativeStatPopupAnimatorOverride;
 
         [SerializeField] private string positiveStatText;
 
@@ -41,6 +43,8 @@ namespace TeamMAsTD
         
         private Vector3 endPos = Vector3.zero;
 
+        private Vector3 startingLocalScale;
+
         private float popupTravelTime;
 
         private float currentTravelTime = 0.0f;
@@ -49,15 +53,6 @@ namespace TeamMAsTD
 
         private void Awake()
         {
-            if(statPopupWorldUICanvas == null)
-            {
-                statPopupWorldUICanvas = GetComponentInChildren<Canvas>(true);
-            }
-            if(statPopupWorldUICanvas != null)
-            {
-                if(statPopupWorldUICanvas.worldCamera == null) statPopupWorldUICanvas.worldCamera = Camera.main;
-            }
-
             if(statPopupUIImage == null)
             {
                 statPopupUIImage = GetComponentInChildren<Image>(true);
@@ -66,6 +61,15 @@ namespace TeamMAsTD
             {
                 statPopupTextMesh = GetComponentInChildren<TextMeshProUGUI>(true);
             }
+
+            if(statPopupAnimator == null)
+            {
+                statPopupAnimator = GetComponent<Animator>();
+
+                if(statPopupAnimator == null) statPopupAnimator = gameObject.AddComponent<Animator>();
+            }
+
+            startingLocalScale = transform.localScale;
 
             //this script and its object's enabled/disabled status can only be controlled by StatPopupPool.
             //if this script is not spawned by a StatPopupPool, it will always disable the whole gameobject by default on awake.
@@ -183,6 +187,13 @@ namespace TeamMAsTD
 
         public void SetPositiveStatPopupSprite()
         {
+            if(statPopupAnimator != null && positiveStatPopupAnimatorOverride != null)
+            {
+                statPopupAnimator.runtimeAnimatorController = positiveStatPopupAnimatorOverride;
+
+                return;
+            }
+
             if (positiveStatPopupSprite == null) return;
 
             statPopupUIImage.sprite = positiveStatPopupSprite;
@@ -190,6 +201,13 @@ namespace TeamMAsTD
 
         public void SetNegativeStatPopupSprite()
         {
+            if(statPopupAnimator != null && negativeStatPopupAnimatorOverride != null)
+            {
+                statPopupAnimator.runtimeAnimatorController = negativeStatPopupAnimatorOverride;
+
+                return;
+            }
+
             if(negativeStatPopupSprite == null) return;
 
             statPopupUIImage.sprite = negativeStatPopupSprite;
@@ -207,22 +225,11 @@ namespace TeamMAsTD
 
         public void SetStatPopupScaleMultipliers(float multipliers)
         {
-            if (statPopupWorldUICanvas == null) return;
+            if (multipliers <= 0.0f) return;
 
-            if(statPopupWorldUIRectTransform == null)
-            {
-                statPopupWorldUIRectTransform = statPopupWorldUICanvas.GetComponent<RectTransform>();
-            }
+            transform.localScale = startingLocalScale;
 
-            if (statPopupWorldUIRectTransform == null) return;
-
-            if (multipliers == 0) return;
-
-            float sizeXMultiplied = statPopupWorldUIRectTransform.sizeDelta.x * multipliers;
-
-            float sizeYMultiplied = statPopupWorldUIRectTransform.sizeDelta.y * multipliers;
-
-            statPopupWorldUIRectTransform.sizeDelta = new Vector2(sizeXMultiplied, sizeYMultiplied);
+            transform.localScale = new Vector3(transform.localScale.x * multipliers, transform.localScale.y * multipliers, transform.localScale.z);
         }
     }
 }

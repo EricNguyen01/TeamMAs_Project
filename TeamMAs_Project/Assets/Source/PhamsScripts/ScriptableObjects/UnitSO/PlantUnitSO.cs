@@ -15,24 +15,24 @@ namespace TeamMAsTD
 
         [field: Header("Plant Unit Stats")]
         [field: SerializeField] public PlantProjectileSO plantProjectileSO { get; private set; }
-        [field: SerializeField] [field: Min(0)] public int waterBars { get; private set; }
-        [field: SerializeField] [field: Min(0)] public int wavesSurviveWithoutWater { get; private set; } = 1;
-        [field: SerializeField] [field: Min(0.0f)] public float damage { get; private set; }
-        [field: SerializeField] [field: Min(0.0f)] public float attackSpeed { get; private set; }
+        [field: SerializeField][field: Min(0)] public int waterBars { get; private set; }
+        [field: SerializeField][field: Min(0)] public int wavesSurviveWithoutWater { get; private set; } = 1;
+        [field: SerializeField][field: Min(0.0f)] public float damage { get; private set; }
+        [field: SerializeField][field: Min(0.0f)] public float attackSpeed { get; private set; }
 
-        [field: SerializeField] [field: Min(1)]
-        [field: Tooltip("How many tiles this unit's attacks/abilities can reach?")] 
+        [field: SerializeField][field: Min(1)]
+        [field: Tooltip("How many tiles this unit's attacks/abilities can reach?")]
         public int attackRangeInTiles { get; private set; } = 1;
 
         [field: SerializeField]
         public PlantRangeCircle plantRangeCirclePrefab { get; private set; }
 
-        [field: SerializeField] [field: Min(1)]
+        [field: SerializeField][field: Min(1)]
         [field: Tooltip("How many targets this plant unit can attack per attack? 1 = no aoe atk while higher number = aoe.")]
         public int targetsPerAttack { get; private set; } = 1;
 
-        [field: SerializeField] [field: Min(0.0f)] public float humanMultiplier { get; private set; }
-        [field: SerializeField] [field: Min(0.0f)] public float pollinatorMultiplier { get; private set; }
+        [field: SerializeField][field: Min(0.0f)] public float humanMultiplier { get; private set; }
+        [field: SerializeField][field: Min(0.0f)] public float pollinatorMultiplier { get; private set; }
         [field: SerializeField] public bool isPlacableOnPath { get; private set; } = false;
 
         [field: SerializeField] public string[] plantTargetsLayerNames;
@@ -40,12 +40,29 @@ namespace TeamMAsTD
         [SerializeField] public VisitorUnitSO.VisitorType plantTargetsSpecifically = VisitorUnitSO.VisitorType.None;//default
 
         [field: Header("Plant Unit Water Usage and Costs")]
-        [field: SerializeField] [field: Min(0)] public int plantingCoinCost { get; private set; }
-        [field: SerializeField] [field: Min(0)] public int uprootRefundAmount { get; private set; }
-        [field: SerializeField] [field: Min(0)] public int uprootCost { get; private set; }
-        [field: SerializeField] [field: Min(0)] public int uprootHealthCost { get; private set; }
-        [field: SerializeField] [field: Min(0)] public int waterUse { get; private set; }
-        [field: SerializeField] [field: Min(0)] public int waterBarsRefilledPerWatering { get; private set; } = 1;
+        [field: SerializeField][field: Min(0)] public int plantingCoinCost { get; private set; }
+        [field: SerializeField][field: Min(0)] public int uprootRefundAmount { get; private set; }
+        [field: SerializeField][field: Min(0)] public int uprootCost { get; private set; }
+        [field: SerializeField][field: Min(0)] public int uprootHealthCost { get; private set; }
+        [field: SerializeField][field: Min(0)] public int waterUse { get; private set; }
+        [field: SerializeField][field: Min(0)] public int waterBarsRefilledPerWatering { get; private set; } = 1;
         [field: SerializeField][field: Min(0)] public int wateringCoinsCost { get; private set; } = 1;
+
+        public override UnitSO CloneThisUnitSO(UnitSO unitSO)
+        {
+            UnitSO plantSO = Instantiate(unitSO);
+
+            return plantSO;
+        }
+
+        public void SetPlantUnitDamage(float damage)
+        {
+            this.damage = damage;
+        }
+
+        public void SetPlantUnitAttackSpeed(float atkSpeed)
+        {
+            attackSpeed = atkSpeed;
+        }
     }
 }

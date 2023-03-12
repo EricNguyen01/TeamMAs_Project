@@ -1,0 +1,12 @@
+fileFormatVersion: 2
+guid: a56d6fa4e55b2dd4d8318c9decbbc757
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - <spriteTintShader>k__BackingField: {fileID: -6465566751694194690, guid: 53f78526b38ddc7408c38a6b448e80e7, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -14,6 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <displayName>k__BackingField: Ryegrass
   <unitPrefab>k__BackingField: {fileID: 7428981930192502170, guid: d4b98eb2b04cf42468f355c48bdcc27c, type: 3}
+  <unitInfoTooltipImageSprite>k__BackingField: {fileID: 0}
+  <unitSpawnEffectPrefab>k__BackingField: {fileID: 1355123197302658146, guid: f4f8b7672c4ecb146b287056f2e31299, type: 3}
+  <unitDestroyEffectPrefab>k__BackingField: {fileID: 1355123197302658146, guid: f4f8b7672c4ecb146b287056f2e31299, type: 3}
   <unitID>k__BackingField: 13858672-e190-4f63-a6c7-64410cf80c21
   <unitDescription>k__BackingField: 
   <unitThumbnail>k__BackingField: {fileID: 21300000, guid: 8185e193acc5daa4ea20db622a680e96, type: 3}
@@ -34,7 +37,7 @@ MonoBehaviour:
   <plantingCoinCost>k__BackingField: 4
   <uprootRefundAmount>k__BackingField: 0
   <uprootCost>k__BackingField: 0
-  <uprootHealthCost>k__BackingField: 1
+  <uprootHealthCost>k__BackingField: 0
   <waterUse>k__BackingField: 3
   <waterBarsRefilledPerWatering>k__BackingField: 1
   <wateringCoinsCost>k__BackingField: 1

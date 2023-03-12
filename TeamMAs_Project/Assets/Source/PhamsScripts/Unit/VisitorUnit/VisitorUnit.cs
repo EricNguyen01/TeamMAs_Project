@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using UnityEngine;
 
 namespace TeamMAsTD
 {
     [DisallowMultipleComponent]
+    [RequireComponent(typeof(AbilityEffectReceivedInventory))]
     public class VisitorUnit : MonoBehaviour, IUnit, IDamageable
     {
         [field: SerializeField] public VisitorUnitSO visitorUnitSO { get; private set; }
@@ -12,6 +14,8 @@ namespace TeamMAsTD
         [SerializeField] private HeartEffect heartEffect;
 
         [SerializeField] private GameResourceDropper visitorCoinsDropper;
+
+        private AbilityEffectReceivedInventory abilityEffectReceivedInventory;
 
         public float currentVisitorHealth { get; private set; } = 0.0f;
 
@@ -43,9 +47,9 @@ namespace TeamMAsTD
 
         private Color visitorOriginalSpriteColor = Color.white;
 
-        private UnitWorldUI visitorWorldUIComponent;
+        private Color visitorHitColor = Color.white;
 
-        private Animation visitorAnimation;
+        private UnitWorldUI visitorWorldUIComponent;
 
         private Collider2D visitorCollider2D;
     
@@ -72,28 +76,16 @@ namespace TeamMAsTD
                 return;
             }
 
-            //if an appeasement anim clip is provided in visitorUnitSO-> set current appeasement time to that clip's length in seconds
-            if (visitorUnitSO.visitorAppeasementAnimClip != null)
+            abilityEffectReceivedInventory = GetComponent<AbilityEffectReceivedInventory>();
+
+            if(abilityEffectReceivedInventory == null)
             {
-                //need to have an animation component to play appeasenemt anim clip
-                visitorAnimation = GetComponent<Animation>();
-
-                if (visitorAnimation == null)
-                {
-                    visitorAnimation = gameObject.AddComponent<Animation>();
-                }
-
-                baseAppeasementTime = visitorUnitSO.visitorAppeasementAnimClip.length;
-                currentAppeasementTime = visitorUnitSO.visitorAppeasementAnimClip.length;
-
-                visitorAnimation.AddClip(visitorUnitSO.visitorAppeasementAnimClip, "Appease");
+                abilityEffectReceivedInventory = gameObject.AddComponent<AbilityEffectReceivedInventory>();
             }
-            //else set current appeasement time to visitor appeasement time in visitorUnitSO.
-            else
-            {
-                baseAppeasementTime = visitorUnitSO.visitorAppeasementTime;
-                currentAppeasementTime = visitorUnitSO.visitorAppeasementTime;
-            }
+
+            baseAppeasementTime = visitorUnitSO.visitorAppeasementTime;
+
+            currentAppeasementTime = visitorUnitSO.visitorAppeasementTime;
 
             if (heartEffect == null) heartEffect = GetComponentInChildren<HeartEffect>();
 
@@ -209,7 +201,7 @@ namespace TeamMAsTD
             if(Vector2.Distance((Vector2)transform.position, lastTilePos) <= 0.05f)
             {
                 //deals emotional damage
-                VisitorsDealEmotionalDamage();
+                VisitorDealsDissapointmentDamage();
 
                 ProcessVisitorDespawns();
 
@@ -228,20 +220,43 @@ namespace TeamMAsTD
             transform.position = Vector2.MoveTowards(transform.position, currentTileWaypointPos, visitorUnitSO.moveSpeed * Time.deltaTime);
         }
 
-        private void VisitorsDealEmotionalDamage()
+        private void VisitorHealsHealthOnAppeased()
         {
-            if (GameResource.gameResourceInstance == null || GameResource.gameResourceInstance.emotionalHealthSO == null) return;
+            if (GameResource.gameResourceInstance == null || GameResource.gameResourceInstance.emotionalHealthSOTypes == null) return;
+
+            if (GameResource.gameResourceInstance.emotionalHealthSOTypes.Count == 0) return;
 
             if (visitorUnitSO == null) return;
 
-            GameResource.gameResourceInstance.emotionalHealthSO.RemoveResourceAmount(visitorUnitSO.emotionalAttackDamage);
+            for (int i = 0; i < GameResource.gameResourceInstance.emotionalHealthSOTypes.Count; i++)
+            {
+                if (visitorUnitSO.visitorType != GameResource.gameResourceInstance.emotionalHealthSOTypes[i].visitorTypeAffectingThisHealth) continue;
+
+                GameResource.gameResourceInstance.emotionalHealthSOTypes[i].AddResourceAmount(visitorUnitSO.appeasementHealAmount);
+            }
+        }
+
+        private void VisitorDealsDissapointmentDamage()
+        {
+            if (GameResource.gameResourceInstance == null || GameResource.gameResourceInstance.emotionalHealthSOTypes == null) return;
+
+            if(GameResource.gameResourceInstance.emotionalHealthSOTypes.Count == 0) return;
+
+            if (visitorUnitSO == null) return;
+
+            for(int i = 0; i < GameResource.gameResourceInstance.emotionalHealthSOTypes.Count; i++)
+            {
+                if (visitorUnitSO.visitorType != GameResource.gameResourceInstance.emotionalHealthSOTypes[i].visitorTypeAffectingThisHealth) continue;
+
+                GameResource.gameResourceInstance.emotionalHealthSOTypes[i].RemoveResourceAmount(visitorUnitSO.dissapointmentDamage);
+            }
+
+            //GameResource.gameResourceInstance.emotionalHealthSO.RemoveResourceAmount(visitorUnitSO.emotionalAttackDamage);
         }
 
         //This function returns visitor to pool and deregister it from active visitor list in the wave that spawned it.
         private void ProcessVisitorDespawns()
         {
-            if(visitorAnimation != null) visitorAnimation.Stop();
-
             //if either of these are null -> destroy visitor instead
             if(poolContainsThisVisitor == null || waveSpawnedThisVisitor == null)
             {
@@ -278,7 +293,10 @@ namespace TeamMAsTD
             if (visitorSpriteRenderer != null)
             {
                 visitorOriginalSpriteColor.a = 255.0f;
+
                 visitorSpriteRenderer.color = visitorOriginalSpriteColor;
+
+                visitorHitColor = visitorUnitSO.visitorHitColor;
             }
         }
 
@@ -288,7 +306,7 @@ namespace TeamMAsTD
 
             currentDamageVisualTime -= Time.deltaTime;
 
-            Color color = Color.Lerp(visitorUnitSO.visitorHitColor, visitorOriginalSpriteColor, currentDamageVisualTime / baseDamageVisualTime);
+            Color color = Color.Lerp(visitorHitColor, visitorOriginalSpriteColor, currentDamageVisualTime / baseDamageVisualTime);
             color.a = 255.0f;
 
             if (visitorSpriteRenderer != null) visitorSpriteRenderer.color = color;
@@ -300,6 +318,7 @@ namespace TeamMAsTD
                 if (visitorSpriteRenderer != null && visitorSpriteRenderer.color != visitorOriginalSpriteColor)
                 {
                     visitorOriginalSpriteColor.a = 255.0f;
+
                     visitorSpriteRenderer.color = visitorOriginalSpriteColor;
                 }
             }
@@ -319,7 +338,7 @@ namespace TeamMAsTD
             //if during appeasement time...
             //if there's an appease anim clip, it is triggered in TakeDamageFrom() function below...
             //else process procedural appeasment visual only if there's no provided appeasement anim clip in visitorUnitSO.
-            if (visitorUnitSO.visitorAppeasementAnimClip == null) ProcessProceduralAppeasementVisual();
+            ProcessProceduralAppeasementVisual();
 
             //return visitor to pool when appeasement time is up
             if (currentAppeasementTime <= 0.0f)
@@ -345,7 +364,9 @@ namespace TeamMAsTD
             if(visitorSpriteRenderer != null)
             {
                 var color = visitorSpriteRenderer.color;
+
                 color.a = currentAppeasementTime / visitorUnitSO.visitorAppeasementTime;
+
                 visitorSpriteRenderer.color = color;
             }
         }
@@ -371,12 +392,61 @@ namespace TeamMAsTD
         }
 
         //IUnit Interface functions....................................................
+
         public UnitSO GetUnitScriptableObjectData()
         {
             return visitorUnitSO;
         }
 
+        public object GetUnitObject()
+        {
+            return this;
+        }
+
+        public Tile GetTileUnitIsOn()
+        {
+            Tile tileOn = null;
+
+            //cast a 2d ray backward
+            RaycastHit2D hit2DBackward = HelperFunctions.PerformSingleHit2DRaycastInDirection(transform.position, -transform.forward, Mathf.Infinity, "Tile");
+
+            if(hit2DBackward.collider != null)
+            {
+                tileOn = hit2DBackward.collider.GetComponent<Tile>();
+
+                if (tileOn != null) return tileOn;
+            }
+
+            //cast a 2d ray foreward
+            RaycastHit2D hit2DForward = HelperFunctions.PerformSingleHit2DRaycastInDirection(transform.position, transform.forward, Mathf.Infinity, "Tile");
+
+            if (hit2DForward.collider != null)
+            {
+                tileOn = hit2DForward.collider.GetComponent<Tile>();
+
+                if (tileOn != null) return tileOn;
+            }
+
+            return tileOn;
+        }
+
+        public Transform GetUnitTransform()
+        {
+            return transform;
+        }
+
+        public AbilityEffectReceivedInventory GetAbilityEffectReceivedInventory()
+        {
+            return abilityEffectReceivedInventory;
+        }
+
+        public void UpdateUnitSOData(UnitSO replacementUnitSO)
+        {
+
+        }
+
         //IDamageable Interface functions..............................................
+
         public void TakeDamageFrom(object damageCauser, float damage)
         {
             if(damageCauser.GetType() == typeof(PlantProjectile))
@@ -393,6 +463,9 @@ namespace TeamMAsTD
                 }
 
                 //else
+
+                //set hit color
+                visitorHitColor = projectile.projectileSpriteRenderer.color;
 
                 //set damage to HP
                 currentVisitorHealth -= damage * DamageMultiplier(projectile);
@@ -416,15 +489,12 @@ namespace TeamMAsTD
                     heartEffect.gameObject.SetActive(true);
                 }
 
-                //play appease anim clip when happiness dropped below 0.0f.
+                //process visitor appeasement related functions when happiness dropped below 0.0f (or reached 100.0f).
                 if(currentVisitorHealth <= 0.0f)
                 {
                     if (visitorCollider2D != null) visitorCollider2D.enabled = false;
 
-                    if(visitorAnimation != null)
-                    {
-                        visitorAnimation.Play("Appease");
-                    }
+                    VisitorHealsHealthOnAppeased();
 
                     if(visitorCoinsDropper != null)
                     {
@@ -434,8 +504,6 @@ namespace TeamMAsTD
                     OnVisitorAppeased?.Invoke();
                 }
             }
-
-            return;
         }
 
         private float DamageMultiplier(PlantProjectile projectile)

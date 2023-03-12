@@ -17,7 +17,8 @@ namespace TeamMAsTD
     {
         [field: SerializeField] public CoinResourceSO coinResourceSO { get; private set; }
 
-        [field: SerializeField] public EmotionalHealthGameResourceSO emotionalHealthSO { get; private set; }
+        [field: SerializeField] public List<EmotionalHealthGameResourceSO> emotionalHealthSOTypes { get; private set; } = new List<EmotionalHealthGameResourceSO>();
+
         //make new fields for new game resources SO here...
 
         public static GameResource gameResourceInstance;
@@ -34,21 +35,6 @@ namespace TeamMAsTD
 
             gameResourceInstance = this;
             DontDestroyOnLoad(gameObject);
-
-            CheckGameResourceDependencies();
-        }
-
-        private void CheckGameResourceDependencies()
-        {
-            if(coinResourceSO == null)
-            {
-                Debug.LogError("Coin Resource SO reference is missing in GameResource: " + name + "!");
-            }
-
-            if(emotionalHealthSO == null)
-            {
-                Debug.LogError("Emotional Health SO reference is missing in GameResource: " + name + "!");
-            }
         }
     }
 }

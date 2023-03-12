@@ -339,6 +339,8 @@ namespace TeamMAsTD
         //This function is called in the Awake method of the PlantUnit that this script attached to
         public void InitializePlantAimShootSystem(PlantUnit plantUnit, PlantProjectileSO plantProjectileSO)
         {
+            EnablePlantAimShoot(false);
+
             if (plantUnit == null || plantProjectileSO == null || plantProjectileSO.plantProjectilePrefab == null)
             {
                 Debug.LogError("PlantAimShootSystem on PlantUnit: " + name + " is missing vital references upon initialization. Disabling script...");
@@ -352,15 +354,26 @@ namespace TeamMAsTD
 
             this.plantProjectileSO = plantProjectileSO;
 
-            plantProjectilePool = new PlantProjectilePool(plantUnit, this, plantProjectileSO, transform);
+            if(plantProjectilePool == null)
+            {
+                plantProjectilePool = new PlantProjectilePool(plantUnit, this, plantProjectileSO, transform);
 
-            plantProjectilePool.CreateAndAddInactivePlantProjectileToPool(30);
+                plantProjectilePool.CreateAndAddInactivePlantProjectileToPool(15);
+            }
+            else
+            {
+                plantProjectilePool.UpdatePlantProjectilePoolData(plantUnit, plantProjectileSO);
+            }
 
             InitializeNullTargetsList();//no targets at first so target list only contains nulls
+
+            EnablePlantAimShoot(true);
         }
 
         private void InitializeNullTargetsList()//only use this on intialization!
         {
+            if (visitorTargetsList.Count > 0) return;
+
             for(int i = 0; i < plantUnitLinked.plantUnitScriptableObject.targetsPerAttack; i++)
             {
                 visitorTargetsList.Add(null);

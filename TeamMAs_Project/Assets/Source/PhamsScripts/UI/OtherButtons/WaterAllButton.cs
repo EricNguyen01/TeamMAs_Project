@@ -9,9 +9,23 @@ namespace TeamMAsTD
     [DisallowMultipleComponent]
     public class WaterAllButton : MonoBehaviour
     {
+        [Header("Water All Config")]
+        [SerializeField] [Min(1)]
+        [Tooltip("The number of time each plant will be watered. " +
+        "Each time, the number of water bars refilled will be the number set in each plant's SO data.")]
+        private int timesToWaterOnEachPlant = 1;
+
+        [SerializeField]
+        [Tooltip("Water to full for each plant.")]
+        private bool waterAllBarsOnEachPlant = false;
+
+        [SerializeField] private string waterFullMessage;
+
         [Header("Required Components")]
 
         [SerializeField] private StatPopupSpawner insufficientFundToWaterAllPopupPrefab;
+
+        [SerializeField] private float insufficientFundToWaterAllPopupScaleMultiplier = 1.5f;
 
         [SerializeField] private TextMeshProUGUI waterAllCostText;
 
@@ -38,6 +52,12 @@ namespace TeamMAsTD
                 GameObject go = Instantiate(insufficientFundToWaterAllPopupPrefab.gameObject, transform.position, Quaternion.identity);
 
                 insufficientFundToWaterAllPopup = go.GetComponent<StatPopupSpawner>();
+
+                insufficientFundToWaterAllPopup.SetStatPopupSpawnerConfig(0.0f, 
+                                                                          0.0f, 
+                                                                          0.0f, 
+                                                                          0.0f, 
+                                                                          insufficientFundToWaterAllPopupScaleMultiplier);
             }
         }
 
@@ -106,7 +126,14 @@ namespace TeamMAsTD
             {
                 for (int i = 0; i < existingPlantUnits.Count; i++)
                 {
-                    waterAllCoinCosts += existingPlantUnits[i].plantWaterUsageSystem.GetFullRefillTotalCoinCosts();
+                    if (waterAllBarsOnEachPlant)
+                    {
+                        waterAllCoinCosts += existingPlantUnits[i].plantWaterUsageSystem.GetFullRefillTotalCoinCosts();
+                    }
+                    else
+                    {
+                        waterAllCoinCosts += existingPlantUnits[i].plantWaterUsageSystem.GetPartialRefillTotalCoinCost(timesToWaterOnEachPlant);
+                    }
                 }
             }
 
@@ -126,6 +153,14 @@ namespace TeamMAsTD
 
         private void DisplayWaterAllCostText(int waterAllCosts)
         {
+            if(waterAllCosts <= 0)
+            {
+                if(!string.IsNullOrEmpty(waterFullMessage)) waterAllCostText.text = waterFullMessage;
+                else waterAllCostText.text = "Water Full!";
+
+                return;
+            }
+
             waterAllCostText.text = "Cost: " + waterAllCosts.ToString();
         }
 
@@ -134,9 +169,16 @@ namespace TeamMAsTD
             //do not execute this function if water all button is being temporary disabled
             if (waterAllCanvasGroup != null && !waterAllCanvasGroup.interactable) return;
 
-            totalWaterAllCost -= plantUnitReceivedWater.wateringCoinsCost;
+            if (waterAllBarsOnEachPlant)
+            {
+                totalWaterAllCost -= plantUnitReceivedWater.wateringCoinsCost;
 
-            DisplayWaterAllCostText(totalWaterAllCost);
+                DisplayWaterAllCostText(totalWaterAllCost);
+            }
+            else
+            {
+                CheckSufficientFundToWaterAll();
+            }
         }
 
         private void ProcessWaterAllButtonBehaviorsOnRainEnded()
@@ -159,15 +201,14 @@ namespace TeamMAsTD
         {
             if(!CanWaterAll()) return;
 
+            //if total water all cost is less/equal 0 this means that all existing plant are having full water -> no need to water anymore
+            if (totalWaterAllCost <= 0) return;
+
             bool hasPlayedWateringSound = false;
 
             for(int i = 0; i < existingPlantUnits.Count; i++)
             {
                 if (existingPlantUnits[i] == null) continue;
-
-                int barsPerRefill = existingPlantUnits[i].plantUnitScriptableObject.waterBarsRefilledPerWatering;
-
-                int coinCostPerRefill = existingPlantUnits[i].plantUnitScriptableObject.wateringCoinsCost;
 
                 //Play individual plant watering sound from the WateringOnTile script attached to the tiles with plants planted on
                 if (!hasPlayedWateringSound && existingPlantUnits[i].tilePlacedOn != null)
@@ -181,8 +222,16 @@ namespace TeamMAsTD
                     }
                 }
 
-                //refill water bars for each plant water usage system on each plant in scene
-                existingPlantUnits[i].plantWaterUsageSystem.RefillAllWaterBars(barsPerRefill, coinCostPerRefill);
+                //refill water bars for each plant water usage system on all plants in scene
+                if (waterAllBarsOnEachPlant)
+                {
+                    existingPlantUnits[i].plantWaterUsageSystem.RefillAllWaterBars();
+                }
+                else
+                {
+                    existingPlantUnits[i].plantWaterUsageSystem.RefillPartialWaterBars(timesToWaterOnEachPlant);
+                }
+                
             }
         }
 

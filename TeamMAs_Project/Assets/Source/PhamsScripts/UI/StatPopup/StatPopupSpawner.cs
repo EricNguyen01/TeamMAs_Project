@@ -15,36 +15,53 @@ namespace TeamMAsTD
         [field: Header("Popup Config")]
 
         [field: SerializeField]
-        [Tooltip("Scale multipliers to the width and height of the stat popup's Canvas UI Component.")]
-        public float statPopupScaleMultiplier { get; private set; } = 0.0f;
+        [field: Min(0.0f)]
+        [field:Tooltip("Scale multipliers to the width and height of the stat popup's Canvas UI Component.")]
+        public float statPopupScaleMultiplier { get; private set; } = 1.0f;
+
+        private float defaultStatPopupScaleMultiplier = 0.0f;
 
         [SerializeField]
         [Tooltip("Vertical offset from this object's position that this popup will appear from.")]
         protected float startVerticalOffset = 0.0f;
 
+        private float defaultStartVerticalOffset = 0.0f;
+
         [SerializeField]
         [Tooltip("Horizontal offset from this object's position that this popup will appear from.")]
         protected float startHorizontalOffset = 0.0f;
+
+        private float defaultStartHorizontalOffset = 0.0f;
 
         [SerializeField]
         [Tooltip("Vertical distance from this popup's start position that this popup will travel.")]
         protected float verticalDistanceFromStart = 0.7f;
 
+        private float defaultVerticalDistanceFromStart = 0.0f;
+
         [SerializeField]
         [Tooltip("Horizontal distance from this popup's start position that this popup will travel.")]
         protected float horizontalDistFromStart = 0.3f;
+
+        private float defaultHorizontalDistFromStart = 0.0f;
 
         [SerializeField]
         [Tooltip("Calculate a random horizontal distance offset from start pos.")]
         protected bool randomHorizontalTravelDistFromStart = true;
 
+        private bool defaultRandomHorizontalTravelDistFromStart = true;
+
         [SerializeField]
         [Tooltip("Same with random horizontal travel dist but vertical.")]
         protected bool randomVerticalTravelDistFromStart = false;
 
+        private bool defaultRandomVerticalTravelDistFromStart = false;
+
         [SerializeField]
         [Tooltip("The time it takes for popup to move from start to end position.")]
         protected float popupTime = 0.7f;
+
+        private float defaultPopupTime;
 
         [SerializeField]
         [Tooltip("The number of stat popup objects to spawn into a pool before runtime so that they can be enable when needed later")]
@@ -66,6 +83,30 @@ namespace TeamMAsTD
             statPopupPool = new StatPopupPool(this, statPopupPrefab.gameObject, transform);
 
             statPopupPool.CreateAndAddStatPopupsToPool(popupNumberToPool);
+        }
+
+        private void Start()
+        {
+            CaptureDefaultConfigOnStart();
+        }
+
+        private void CaptureDefaultConfigOnStart()
+        {
+            defaultStatPopupScaleMultiplier = statPopupScaleMultiplier;
+
+            defaultStartVerticalOffset = startVerticalOffset; 
+            
+            defaultStartHorizontalOffset = startHorizontalOffset;
+
+            defaultVerticalDistanceFromStart = verticalDistanceFromStart;
+
+            defaultHorizontalDistFromStart = horizontalDistFromStart;
+
+            defaultRandomVerticalTravelDistFromStart = randomVerticalTravelDistFromStart;
+
+            defaultRandomHorizontalTravelDistFromStart = randomHorizontalTravelDistFromStart;
+
+            defaultPopupTime = popupTime;
         }
 
         public void SetStatPopupSpawnerConfig(float startVertOffset = 0.0f, float startHorOffset = 0.0f, float vertDistFromStart = 0.0f, float horDistFromStart = 0.0f, float popupScaleMultiplier = 0.0f, float popupTime = 0.0f, bool randomTravelVert = false, bool randomTravelHor = true)
@@ -101,6 +142,30 @@ namespace TeamMAsTD
             }
         }
 
+        public void ResetStatPopupSpawnerConfigToStartDefault()
+        {
+            statPopupScaleMultiplier = defaultStatPopupScaleMultiplier;
+
+            startVerticalOffset = defaultStartVerticalOffset; 
+            
+            startHorizontalOffset = defaultStartHorizontalOffset;
+
+            verticalDistanceFromStart = defaultVerticalDistanceFromStart;
+
+            horizontalDistFromStart = defaultHorizontalDistFromStart;
+
+            randomVerticalTravelDistFromStart = defaultRandomVerticalTravelDistFromStart;
+
+            randomHorizontalTravelDistFromStart = defaultRandomHorizontalTravelDistFromStart;
+
+            popupTime = defaultPopupTime;
+        }
+
+        public Vector3 GetPopupPositionAfterStartOffsetApplied()
+        {
+            return new Vector3(transform.position.x + startHorizontalOffset, transform.position.y + startVerticalOffset, transform.position.z);
+        }
+
         public virtual void PopUp(Sprite spriteToPopup, string textToPopup, bool isPositivePopup)
         {
             Vector3 popupStartPos = transform.position + new Vector3(startHorizontalOffset, startVerticalOffset, transform.position.z);
@@ -123,12 +188,12 @@ namespace TeamMAsTD
                                                                                                   popupTime);
 
             // sarita (temporary swap between broken heart animation or green heart)
-            if ((name == "GameResourceUIHealthPopupSpawner") && isPositivePopup)
+            /*if ((name == "GameResourceUIHealthPopupSpawner") && isPositivePopup)
             {
                 Animator[] animators = statPopupObj.GetComponentsInChildren<Animator>();
                 foreach (Animator animator in animators)
                     animator.SetTrigger("positive");
-            }
+            }*/
 
             if (statPopupObj == null)
             {

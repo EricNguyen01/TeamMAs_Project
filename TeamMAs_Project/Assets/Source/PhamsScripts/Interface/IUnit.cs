@@ -7,5 +7,15 @@ namespace TeamMAsTD
     public interface IUnit
     {
         public UnitSO GetUnitScriptableObjectData();
+
+        public object GetUnitObject();
+
+        public Transform GetUnitTransform();
+
+        public Tile GetTileUnitIsOn();
+
+        public AbilityEffectReceivedInventory GetAbilityEffectReceivedInventory();
+
+        public void UpdateUnitSOData(UnitSO replacementUnitSO);
     }
 }
