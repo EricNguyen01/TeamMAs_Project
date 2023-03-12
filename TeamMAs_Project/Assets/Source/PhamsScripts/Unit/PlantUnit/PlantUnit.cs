@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Runtime.CompilerServices;
 using UnityEngine;
 
 namespace TeamMAsTD
@@ -34,6 +33,15 @@ namespace TeamMAsTD
 
         public float plantMaxAttackRange { get; private set; } = 1.0f;
 
+        [System.Serializable]
+        private struct PlantDebugData
+        {
+            public float pDamage;
+            public float pAtkSpeed;
+        }
+
+        private PlantDebugData plantDebugData = new PlantDebugData();
+
         //PRIVATES....................................................................
 
         private void Awake()
@@ -58,6 +66,10 @@ namespace TeamMAsTD
                 enabled = false;
                 return;
             }
+
+            plantUnitScriptableObject = Instantiate(plantUnitScriptableObject);
+
+            SetPlantSODebugDataView();
 
             tilePlacedOn = GetComponentInParent<Tile>();
 
@@ -215,6 +227,11 @@ namespace TeamMAsTD
             return transform;
         }
 
+        public LayerMask GetUnitLayerMask()
+        {
+            return gameObject.layer;
+        }
+
         public AbilityEffectReceivedInventory GetAbilityEffectReceivedInventory()
         {
             return abilityEffectReceivedInventory;
@@ -234,6 +251,13 @@ namespace TeamMAsTD
             plantAimShootSystem.InitializePlantAimShootSystem(this, plantUnitScriptableObject.plantProjectileSO);
 
             plantWaterUsageSystem.InitializePlantWaterUsageSystem(this, false);//false param is because this is not an awake init
+        }
+
+        public void SetPlantSODebugDataView()
+        {
+            plantDebugData.pDamage = plantUnitScriptableObject.damage;
+
+            plantDebugData.pAtkSpeed = plantUnitScriptableObject.attackSpeed;
         }
     }
 }

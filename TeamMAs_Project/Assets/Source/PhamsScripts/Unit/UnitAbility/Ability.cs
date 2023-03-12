@@ -66,6 +66,8 @@ namespace TeamMAsTD
 
                 return;
             }
+
+            gameObject.layer = unitPossessingAbility.GetUnitLayerMask();
         }
 
         protected abstract void OnEnable();
@@ -324,6 +326,8 @@ namespace TeamMAsTD
 
         protected void InvokeOnAbilityStoppedEventOn(Ability childAbilityClass)
         {
+            //Debug.Log("AbilityStoppedEventInvoked");
+
             OnAbilityStopped?.Invoke(childAbilityClass);
         }
     }

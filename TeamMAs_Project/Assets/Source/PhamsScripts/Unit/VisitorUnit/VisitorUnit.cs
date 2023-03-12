@@ -76,6 +76,8 @@ namespace TeamMAsTD
                 return;
             }
 
+            visitorUnitSO = Instantiate(visitorUnitSO);
+
             abilityEffectReceivedInventory = GetComponent<AbilityEffectReceivedInventory>();
 
             if(abilityEffectReceivedInventory == null)
@@ -433,6 +435,11 @@ namespace TeamMAsTD
         public Transform GetUnitTransform()
         {
             return transform;
+        }
+
+        public LayerMask GetUnitLayerMask()
+        {
+            return gameObject.layer;
         }
 
         public AbilityEffectReceivedInventory GetAbilityEffectReceivedInventory()
