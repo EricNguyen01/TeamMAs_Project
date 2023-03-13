@@ -128,6 +128,12 @@ namespace TeamMAsTD
             return CanPlaceUnit(plantUnitSO, false);
         }
 
+        //use for external calls ONLY
+        public bool CanPlaceUnit_EXTERNAL(PlantUnitSO plantUnitSO)
+        {
+            return CanPlaceUnit(plantUnitSO, true);
+        }
+
         //The "doChecksOnly" bool is for whether this function should ONLY do the if checks to see if a plant can be planted on this tile
         //or if it should also trigger related events and functions if a plant can/can't be planted
         private bool CanPlaceUnit(PlantUnitSO unitSO, bool doChecksOnly)
