@@ -43,4 +43,5 @@ MonoBehaviour:
   <wateringCoinsCost>k__BackingField: 1
   <canPurchasePlant>k__BackingField: 1
   <plantPurchaseLockOnStart>k__BackingField: 1
-  <waveToUnlockPlantPurchaseAfterFinished>k__BackingField: {fileID: 11400000, guid: 4e57d45113429cd4297df5fad99bebe1, type: 2}
+  <waveToUnlockPlantPurchaseOnWaveFinished>k__BackingField: {fileID: 11400000, guid: 4e57d45113429cd4297df5fad99bebe1, type: 2}
+  <waveToUnlockPlantPurchaseOnWaveStarted>k__BackingField: {fileID: 0}

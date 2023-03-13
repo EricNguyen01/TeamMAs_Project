@@ -55,7 +55,8 @@ namespace TeamMAsTD
 
         [field: SerializeField] public bool canPurchasePlant { get; private set; } = true;
         [field: SerializeField] public bool plantPurchaseLockOnStart { get; private set; } = true;
-        [field: SerializeField] public WaveSO waveToUnlockPlantPurchaseAfterFinished { get; private set; }
+        [field: SerializeField] public WaveSO waveToUnlockPlantPurchaseOnWaveFinished { get; private set; }
+        [field: SerializeField] public WaveSO waveToUnlockPlantPurchaseOnWaveStarted { get; private set; }
 
         public override UnitSO CloneThisUnitSO(UnitSO unitSO)
         {

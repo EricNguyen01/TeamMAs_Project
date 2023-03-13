@@ -69,6 +69,8 @@ namespace TeamMAsTD
 
         private WaveSO currentWaveSO;
 
+        private bool isShopSlotUnlocked = false;
+
         //PRIVATES.........................................................................
 
         private void Awake()
@@ -99,16 +101,20 @@ namespace TeamMAsTD
                 return;
             }
 
+            WaveSpawner.OnWaveStarted += GetCurrentWaveToUnlockShopSlotOnWaveStarted;
+
             WaveSpawner.OnWaveFinished += GetCurrentWaveToUnlockShopSlotOnWaveFinished;
 
             if (!slotUnitScriptableObject.canPurchasePlant)
             {
-                EnableShopSlotCanvasGroup(false);
+                EnableShopSlotCanvasGroup(false, false, 0.5f);
             }
         }
 
         private void OnDestroy()
         {
+            WaveSpawner.OnWaveStarted -= GetCurrentWaveToUnlockShopSlotOnWaveStarted;
+
             WaveSpawner.OnWaveFinished -= GetCurrentWaveToUnlockShopSlotOnWaveFinished;
         }
 
@@ -121,6 +127,12 @@ namespace TeamMAsTD
             if (slotUnitScriptableObject.plantPurchaseLockOnStart)
             {
                 gameObject.SetActive(false);
+            }
+            else
+            {
+                if (!gameObject.activeInHierarchy) gameObject.SetActive(true);
+
+                isShopSlotUnlocked = true;
             }
         }
 
@@ -331,15 +343,24 @@ namespace TeamMAsTD
             }
         }
 
-        private void EnableShopSlotCanvasGroup(bool enabled)
+        private void EnableShopSlotCanvasGroup(bool enabled, bool affectChildrenCanvasGroup, float canvasGroupAlpha = 0.0f)
         {
+            foreach (CanvasGroup cg in GetComponentsInChildren<CanvasGroup>(true))
+            {
+                if (cg == null || cg == shopSlotCanvasGroup) continue;
+
+                if(affectChildrenCanvasGroup) cg.ignoreParentGroups = false;
+                else cg.ignoreParentGroups = true;
+            }
+
             if (enabled)
             {
                 shopSlotCanvasGroup.interactable = true;
 
                 shopSlotCanvasGroup.blocksRaycasts = true;
 
-                shopSlotCanvasGroup.alpha = 1.0f;
+                if(canvasGroupAlpha == 0.0f) shopSlotCanvasGroup.alpha = 1.0f;
+                else shopSlotCanvasGroup.alpha = canvasGroupAlpha;
 
                 return;
             }
@@ -348,12 +369,12 @@ namespace TeamMAsTD
 
             shopSlotCanvasGroup.blocksRaycasts = false;
 
-            shopSlotCanvasGroup.alpha = 0.5f;
+            shopSlotCanvasGroup.alpha = canvasGroupAlpha;
         }
 
-        private void GetCurrentWaveToUnlockShopSlotOnWaveFinished(WaveSpawner waveSpawner, int waveNum, bool hasOngoingWave)
+        private void GetCurrentWaveToUnlockShopSlotOnWaveStarted(WaveSpawner waveSpawner, int waveNum)
         {
-            if (hasOngoingWave) return;
+            if (isShopSlotUnlocked) return;
 
             if (waveSpawner == null) return;
 
@@ -365,9 +386,41 @@ namespace TeamMAsTD
 
             if (currentWaveSO == null) return;
 
-            if(currentWaveSO == slotUnitScriptableObject.waveToUnlockPlantPurchaseAfterFinished)
+            if(slotUnitScriptableObject.waveToUnlockPlantPurchaseOnWaveStarted != null)
             {
-                if (!gameObject.activeInHierarchy) gameObject.SetActive(true);
+                if(currentWaveSO == slotUnitScriptableObject.waveToUnlockPlantPurchaseOnWaveStarted)
+                {
+                    if (!gameObject.activeInHierarchy) gameObject.SetActive(true);
+
+                    isShopSlotUnlocked = true;
+                }
+            }
+        }
+
+        private void GetCurrentWaveToUnlockShopSlotOnWaveFinished(WaveSpawner waveSpawner, int waveNum, bool hasOnGoingWave)
+        {
+            if (hasOnGoingWave) return;
+
+            if (isShopSlotUnlocked) return;
+
+            if (waveSpawner == null) return;
+
+            Wave wave = waveSpawner.GetCurrentWave();
+
+            if (wave == null) return;
+
+            currentWaveSO = wave.waveSO;
+
+            if (currentWaveSO == null) return;
+
+            if (slotUnitScriptableObject.waveToUnlockPlantPurchaseOnWaveFinished != null)
+            {
+                if (currentWaveSO == slotUnitScriptableObject.waveToUnlockPlantPurchaseOnWaveFinished)
+                {
+                    if (!gameObject.activeInHierarchy) gameObject.SetActive(true);
+
+                    isShopSlotUnlocked = true;
+                }
             }
         }
 
