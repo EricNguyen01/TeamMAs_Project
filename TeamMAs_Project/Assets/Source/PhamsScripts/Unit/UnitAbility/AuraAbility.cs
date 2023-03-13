@@ -36,6 +36,8 @@ namespace TeamMAsTD
 
             auraCollider.isTrigger = true;
 
+            auraCollider.enabled = false;
+
             if(auraKinematicRb == null)
             {
                 auraKinematicRb = gameObject.AddComponent<Rigidbody2D>();
@@ -45,11 +47,9 @@ namespace TeamMAsTD
 
             auraKinematicRb.isKinematic = true;
 
-            auraKinematicRb.collisionDetectionMode = CollisionDetectionMode2D.Continuous;
+            auraKinematicRb.collisionDetectionMode = CollisionDetectionMode2D.Discrete;
 
-            auraKinematicRb.useFullKinematicContacts = true;
-
-            auraKinematicRb.sleepMode = RigidbodySleepMode2D.NeverSleep;
+            auraKinematicRb.sleepMode = RigidbodySleepMode2D.StartAsleep;
         }
 
         protected override void OnEnable()
@@ -73,6 +73,12 @@ namespace TeamMAsTD
         {
             auraCollider.enabled = true;
 
+            auraKinematicRb.collisionDetectionMode = CollisionDetectionMode2D.Continuous;
+
+            auraKinematicRb.useFullKinematicContacts = true;
+
+            auraKinematicRb.sleepMode = RigidbodySleepMode2D.NeverSleep;
+
             InvokeOnAbilityStartedEventOn(this);
         }
 
@@ -85,6 +91,12 @@ namespace TeamMAsTD
         protected override void ProcessAbilityEnd()
         {
             triggerExitEventCheck = false;
+
+            auraCollider.enabled = false;
+
+            auraKinematicRb.collisionDetectionMode = CollisionDetectionMode2D.Discrete;
+
+            auraKinematicRb.sleepMode = RigidbodySleepMode2D.StartAsleep;
 
             InvokeOnAbilityStoppedEventOn(this);
         }
