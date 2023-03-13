@@ -59,11 +59,15 @@ namespace TeamMAsTD
         //the Rect Transform of the top most parent UI canva above
         private RectTransform parentCanvaRect;
 
+        private CanvasGroup shopSlotCanvasGroup;
+
         private PlantRangeCircle plantRangeCircleIndicator;
 
         private Tile currentTileBeingDraggedOver;
 
         private Tile[] tilesUseForPlantableGlowEffectOnDragDrop;
+
+        private WaveSO currentWaveSO;
 
         //PRIVATES.........................................................................
 
@@ -77,6 +81,7 @@ namespace TeamMAsTD
                 return;
             }
 
+            GetOrSetShopSlotCanvasGroup();
             SetImageUIRaycastComponent();
             SetUnitShopSlotImageFromUnitSO();
             CheckAndGetDragDropRequirements();
@@ -93,6 +98,18 @@ namespace TeamMAsTD
                 gameObject.SetActive(false);
                 return;
             }
+
+            WaveSpawner.OnWaveFinished += GetCurrentWaveToUnlockShopSlotOnWaveFinished;
+
+            if (!slotUnitScriptableObject.canPurchasePlant)
+            {
+                EnableShopSlotCanvasGroup(false);
+            }
+        }
+
+        private void OnDestroy()
+        {
+            WaveSpawner.OnWaveFinished -= GetCurrentWaveToUnlockShopSlotOnWaveFinished;
         }
 
         private void Start()
@@ -100,6 +117,21 @@ namespace TeamMAsTD
             CreatePlantRangeCircleIndicatorOnStart();
 
             originalDragDropPos = dragDropUIImageObject.transform.localPosition;
+
+            if (slotUnitScriptableObject.plantPurchaseLockOnStart)
+            {
+                gameObject.SetActive(false);
+            }
+        }
+
+        private void GetOrSetShopSlotCanvasGroup()
+        {
+            shopSlotCanvasGroup = GetComponent<CanvasGroup>();
+
+            if(shopSlotCanvasGroup == null)
+            {
+                shopSlotCanvasGroup= gameObject.AddComponent<CanvasGroup>();
+            }
         }
 
         private void SetImageUIRaycastComponent()
@@ -296,6 +328,46 @@ namespace TeamMAsTD
             for (int i = 0; i < tilesUseForPlantableGlowEffectOnDragDrop.Length; i++)
             {
                 tilesUseForPlantableGlowEffectOnDragDrop[i].EnablePlantableTileGlowOnPlantDrag(slotUnitScriptableObject, false);
+            }
+        }
+
+        private void EnableShopSlotCanvasGroup(bool enabled)
+        {
+            if (enabled)
+            {
+                shopSlotCanvasGroup.interactable = true;
+
+                shopSlotCanvasGroup.blocksRaycasts = true;
+
+                shopSlotCanvasGroup.alpha = 1.0f;
+
+                return;
+            }
+
+            shopSlotCanvasGroup.interactable = false;
+
+            shopSlotCanvasGroup.blocksRaycasts = false;
+
+            shopSlotCanvasGroup.alpha = 0.5f;
+        }
+
+        private void GetCurrentWaveToUnlockShopSlotOnWaveFinished(WaveSpawner waveSpawner, int waveNum, bool hasOngoingWave)
+        {
+            if (hasOngoingWave) return;
+
+            if (waveSpawner == null) return;
+
+            Wave wave = waveSpawner.GetCurrentWave();
+
+            if (wave == null) return;
+
+            currentWaveSO = wave.waveSO;
+
+            if (currentWaveSO == null) return;
+
+            if(currentWaveSO == slotUnitScriptableObject.waveToUnlockPlantPurchaseAfterFinished)
+            {
+                if (!gameObject.activeInHierarchy) gameObject.SetActive(true);
             }
         }
 

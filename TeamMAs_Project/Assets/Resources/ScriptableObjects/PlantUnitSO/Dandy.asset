@@ -41,3 +41,6 @@ MonoBehaviour:
   <waterUse>k__BackingField: 2
   <waterBarsRefilledPerWatering>k__BackingField: 1
   <wateringCoinsCost>k__BackingField: 1
+  <canPurchasePlant>k__BackingField: 0
+  <plantPurchaseLockOnStart>k__BackingField: 1
+  <waveToUnlockPlantPurchaseAfterFinished>k__BackingField: {fileID: 11400000, guid: b16765a0bcc07c8478164ec1436adee3, type: 2}

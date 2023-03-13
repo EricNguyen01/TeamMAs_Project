@@ -160,7 +160,7 @@ MonoBehaviour:
     m_Right: 92
     m_Top: 32
     m_Bottom: 32
-  m_ChildAlignment: 0
+  m_ChildAlignment: 1
   m_Spacing: 16
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
