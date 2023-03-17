@@ -12,10 +12,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 388c46f83cbe9b6409961b8a0593a8b7, type: 3}
   m_Name: Wave11
   m_EditorClassIdentifier: 
-  <visitorTypesToSpawnThisWave>k__BackingField: []
+  <visitorTypesToSpawnThisWave>k__BackingField:
+  - visitorType: {fileID: 11400000, guid: 5d9daf08272e8754a8584dfa26f65ed1, type: 2}
+    spawnNumbers: 25
+    spawnChance: 100
+  - visitorType: {fileID: 11400000, guid: 723776edbdfb7a54b9cba63847482b4d, type: 2}
+    spawnNumbers: 4
+    spawnChance: 100
+  - visitorType: {fileID: 11400000, guid: 297fbbaf0eb4b9a4f9e1270ac6e199f4, type: 2}
+    spawnNumbers: 10
+    spawnChance: 100
   <waitTimeToFirstSpawn>k__BackingField: 1
   <waitTimeBetweenSpawn>k__BackingField: 1
   <spawnBossLast>k__BackingField: 1
   <applyVisitorHealthScalingThisWave>k__BackingField: 1
   <visitorHealthScalingMultiplier>k__BackingField: 1
-  <wavePrefab>k__BackingField: {fileID: 8645834345161889101, guid: c73f1936e69f363449489a9695ab3cf4, type: 3}
+  <extraCoinsDropFromWave>k__BackingField: 0
+  <plantsToSpawnOnThisWaveStart>k__BackingField: []

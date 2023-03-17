@@ -16,8 +16,10 @@ MonoBehaviour:
     consecutive year)
   <unitPrefab>k__BackingField: {fileID: 2664338853412353054, guid: 471d44336dcb8fe45b481eba247454de, type: 3}
   <unitInfoTooltipImageSprite>k__BackingField: {fileID: 0}
+  <unitSpawnEffectPrefab>k__BackingField: {fileID: 0}
+  <unitDestroyEffectPrefab>k__BackingField: {fileID: 0}
   <visitorType>k__BackingField: 1
-  <happinessAsHealth>k__BackingField: 100
+  <happinessAsHealth>k__BackingField: 1250
   <moveSpeed>k__BackingField: 1
   <appeasementHealAmount>k__BackingField: 3
   <dissapointmentDamage>k__BackingField: 3
