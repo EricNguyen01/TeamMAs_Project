@@ -28,6 +28,10 @@ namespace TeamMAsTD
 
         [field: SerializeField] public bool showTooltipClickReminderOnStart { get; private set; } = true;
 
+        [SerializeField] private WaveSO waveToShowClickReminderAfterFinished;
+
+        private WaveSO currentWave;
+
         private bool hasATooltipBeenOpenedRecently = false;
 
         private bool shouldStartClickReminderTimer = false;
@@ -41,8 +45,19 @@ namespace TeamMAsTD
             timeUntilNextReminder = Random.Range(timeUntilNextReminderMin, timeUntilNextReminderMax);
         }
 
+        private void OnEnable()
+        {
+            WaveSpawner.OnWaveFinished += GetCurrentWaveOnWaveEndedEvent;
+
+            Rain.OnRainEnded += EnableClickOnReminderAfterRainIfApplicable;
+        }
+
         private void OnDisable()
         {
+            WaveSpawner.OnWaveFinished -= GetCurrentWaveOnWaveEndedEvent;
+
+            Rain.OnRainEnded -= EnableClickOnReminderAfterRainIfApplicable;
+
             StopAllCoroutines();
         }
 
@@ -53,7 +68,7 @@ namespace TeamMAsTD
             //provide this component reference to its children unit info tool tip script comps
             SetReminderTimerReferenceToChildrenTooltipsOnStart();
 
-            if (showTooltipClickReminderOnStart)
+            if (waveToShowClickReminderAfterFinished == null && showTooltipClickReminderOnStart)
             {
                 StartCoroutine(ShowClickOnReminderDelayCoroutine(1.5f));
             }
@@ -293,6 +308,26 @@ namespace TeamMAsTD
             DisplayTooltipClickReminderForSelectedTooltips();
 
             yield break;
+        }
+
+        private void GetCurrentWaveOnWaveEndedEvent(WaveSpawner ws, int wNum, bool hasOngoingWave)
+        {
+            if (ws == null) return;
+
+            if (hasOngoingWave) return;
+
+            currentWave = ws.GetCurrentWave().waveSO;
+        }
+
+        private void EnableClickOnReminderAfterRainIfApplicable(Rain r)
+        {
+            if (waveToShowClickReminderAfterFinished == null) return;
+
+            if (currentWave == null) return;
+
+            if (currentWave != waveToShowClickReminderAfterFinished) return;
+
+            StartCoroutine(ShowClickOnReminderDelayCoroutine(1.0f));
         }
     }
 }

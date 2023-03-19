@@ -25,6 +25,6 @@ MonoBehaviour:
   initialAbilityAffectsSpecificVisitorUnit: []
   <abilityEffects>k__BackingField:
   - {fileID: 11400000, guid: 389ab69e520cff14c8cee10ce22185a9, type: 2}
-  <waveToUnlockAbilityAfterFinished>k__BackingField: {fileID: 11400000, guid: b16765a0bcc07c8478164ec1436adee3, type: 2}
-  initialAbilityLocked: 1
+  <waveToUnlockAbilityAfterFinished>k__BackingField: {fileID: 0}
+  initialAbilityLocked: 0
   <useOnEquippedIfNotLocked>k__BackingField: 1

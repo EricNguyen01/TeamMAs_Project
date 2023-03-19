@@ -55,6 +55,11 @@ MonoBehaviour:
   - {fileID: 11400000, guid: a9c9424915cdef84483821f838f0897c, type: 2}
   - {fileID: 11400000, guid: 1e1fdab6854acec4aae71dd60958bb53, type: 2}
   - {fileID: 11400000, guid: d9a1cd3a012ce074db3771684f18b6a9, type: 2}
+  - {fileID: 11400000, guid: 49a2ebf27512c534e83ea402776a0e87, type: 2}
+  - {fileID: 11400000, guid: 0d5e99c12e0cfae4eb4566246317ca09, type: 2}
+  - {fileID: 11400000, guid: 97dc051cb13e6a7468b3f623bd9eb82c, type: 2}
+  - {fileID: 11400000, guid: 3b242d401cca1cc4da0eaf397eeee49a, type: 2}
+  - {fileID: 11400000, guid: d481b44c52c5d4948b1e361494c5ef39, type: 2}
   waveSpawnerManagerPrefab: {fileID: 1967716630559944052, guid: 7ab7f7b5757ee6a44998073a2c9cd286, type: 3}
   <showDebugLog>k__BackingField: 0
   <showWavesEndHealthProcessDebugLog>k__BackingField: 0

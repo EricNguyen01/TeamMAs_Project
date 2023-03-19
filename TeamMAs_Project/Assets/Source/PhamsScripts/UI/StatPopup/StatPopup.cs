@@ -169,19 +169,28 @@ namespace TeamMAsTD
 
         public void SetStatPopupText(string textPopup)
         {
-            if (statPopupTextMesh != null && !string.IsNullOrEmpty(textPopup)) statPopupTextMesh.text = textPopup;
+            if (statPopupTextMesh != null && !string.IsNullOrEmpty(textPopup)) 
+            {
+                statPopupTextMesh.text = textPopup;
+            }
         }
 
         public void UseDefaultStatPopupText(bool usePositiveText)
         {
             if (usePositiveText)
             {
-                if (statPopupTextMesh != null) statPopupTextMesh.text = positiveStatText;
+                if (statPopupTextMesh != null) 
+                {
+                    statPopupTextMesh.text = positiveStatText;
+                }
 
                 return;
             }
 
-            if (statPopupTextMesh != null) statPopupTextMesh.text = negativeStatText;
+            if (statPopupTextMesh != null) 
+            {
+                statPopupTextMesh.text = negativeStatText;
+            }
         }
 
         public void SetStatPopupTextColor(Color colorToSet)

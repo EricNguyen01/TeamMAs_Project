@@ -26,6 +26,10 @@ namespace TeamMAsTD
 
         [field: SerializeField] public bool autoEnableTooltipOnStart { get; private set; } = false;
 
+        [SerializeField] private WaveSO waveToShowClickReminderAfterFinished;
+
+        private WaveSO currentWave;
+
         [field: SerializeField] public bool toggleTooltipOnClick { get; private set; } = true;
 
         private PointerEventData pointerEventData;
@@ -49,13 +53,27 @@ namespace TeamMAsTD
             //where WaveVisitorLookAhead has not finished initialized this visitor look ahead slot yet,
             //hence, this slot tooltip could receive a null data
             CreateAndInitInfoTooltip();
+
+            WaveSpawner.OnWaveFinished += GetCurrentWaveOnWaveEndedEvent;
+
+            Rain.OnRainEnded += EnableTooltipAfterRainIfApplicable;
+        }
+
+        private void OnDisable()
+        {
+            WaveSpawner.OnWaveFinished -= GetCurrentWaveOnWaveEndedEvent;
+
+            Rain.OnRainEnded -= EnableTooltipAfterRainIfApplicable;
         }
 
         private void Start()
         {
-            EnableInfoTooltipImage(autoEnableTooltipOnStart, false);
+            if(waveToShowClickReminderAfterFinished == null && autoEnableTooltipOnStart)
+            {
+                EnableInfoTooltipImage(true);
 
-            EnableTooltipClickOnReminder(false);
+                EnableTooltipClickOnReminder(false);
+            }
         }
 
         private void CreateAndInitInfoTooltip()
@@ -169,6 +187,26 @@ namespace TeamMAsTD
             }
 
             //after OnDeselect is called, EventSystem's selected object is set to null again so we don't have to reset it manually.
+        }
+
+        private void GetCurrentWaveOnWaveEndedEvent(WaveSpawner ws, int wNum, bool hasOngoingWave)
+        {
+            if (ws == null) return;
+
+            if (hasOngoingWave) return;
+
+            currentWave = ws.GetCurrentWave().waveSO;
+        }
+
+        private void EnableTooltipAfterRainIfApplicable(Rain r)
+        {
+            if (waveToShowClickReminderAfterFinished == null) return;
+
+            if (currentWave == null) return;
+
+            if (currentWave != waveToShowClickReminderAfterFinished) return;
+
+            EnableInfoTooltipImage(true);
         }
     }
 }

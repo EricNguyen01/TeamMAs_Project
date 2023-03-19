@@ -370,6 +370,7 @@ MonoBehaviour:
   waterAllBarsOnEachPlant: 0
   waterFullMessage: 
   insufficientFundToWaterAllPopupPrefab: {fileID: 8024300418989073095, guid: f3a373e0118fdc54d85de7d5d9767e8c, type: 3}
+  insufficientFundToWaterAllPopupScaleMultiplier: 1.5
   waterAllCostText: {fileID: 6433098137989424551}
 --- !u!114 &8777576537966902632
 MonoBehaviour:
@@ -468,7 +469,8 @@ MonoBehaviour:
   <infoTooltipSpawnTransformRef>k__BackingField: {fileID: 8290902730801786148}
   <infoTooltipSpawnOffset>k__BackingField: {x: 0, y: 0}
   <clickReminderAnimOverride>k__BackingField: {fileID: 0}
-  <autoEnableTooltipOnStart>k__BackingField: 1
+  <autoEnableTooltipOnStart>k__BackingField: 0
+  waveToShowClickReminderAfterFinished: {fileID: 11400000, guid: 2cd58fb9ac307fb45b06e9101d3658ed, type: 2}
   <toggleTooltipOnClick>k__BackingField: 0
 --- !u!82 &5125312752845078016
 AudioSource:

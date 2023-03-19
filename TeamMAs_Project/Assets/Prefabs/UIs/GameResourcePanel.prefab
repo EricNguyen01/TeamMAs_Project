@@ -248,6 +248,7 @@ MonoBehaviour:
   resourceAmountText: {fileID: 3403952189450786895}
   displayResourceAmountCap: 1
   gameResourceUIStatPopupSpawner: {fileID: 8024300418989073095, guid: 312d4e6a02524d141bd8cd5c5b7b5206, type: 3}
+  gameResourceUIStatPopupSpawnTransformRef: {fileID: 0}
   showDebugAndErrorLog: 0
 --- !u!1 &3216412137299497360
 GameObject:
@@ -773,6 +774,7 @@ MonoBehaviour:
   resourceAmountText: {fileID: 5322612110409281862}
   displayResourceAmountCap: 0
   gameResourceUIStatPopupSpawner: {fileID: 8024300418989073095, guid: be2a0ac942afe8841bf8cf4a38447cca, type: 3}
+  gameResourceUIStatPopupSpawnTransformRef: {fileID: 0}
   showDebugAndErrorLog: 0
 --- !u!114 &3178582999808846997
 MonoBehaviour:
@@ -791,7 +793,9 @@ MonoBehaviour:
   <infoTooltipSpawnTransformRef>k__BackingField: {fileID: 7060595260308919089}
   <infoTooltipSpawnOffset>k__BackingField: {x: 0, y: 0}
   <clickReminderAnimOverride>k__BackingField: {fileID: 0}
-  <autoEnableTooltipOnStart>k__BackingField: 1
+  <autoEnableTooltipOnStart>k__BackingField: 0
+  waveToShowClickReminderAfterFinished: {fileID: 11400000, guid: 2cd58fb9ac307fb45b06e9101d3658ed, type: 2}
+  <toggleTooltipOnClick>k__BackingField: 0
 --- !u!1 &5322612110599623254
 GameObject:
   m_ObjectHideFlags: 0
