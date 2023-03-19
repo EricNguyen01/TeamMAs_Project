@@ -958,7 +958,7 @@ MonoBehaviour:
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 4.4284554, y: 8.8006525}
+    canvasScrollPosition: {x: 0, y: 35.44525}
     canvasZoom: 0.56425035
   - id: 4
     fields:
@@ -1941,8 +1941,8 @@ MonoBehaviour:
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 0, y: 4.9999957}
-    canvasZoom: 0.39999998
+    canvasScrollPosition: {x: 0, y: 56.896576}
+    canvasZoom: 0.58
   - id: 5
     fields:
     - title: Title
@@ -2235,7 +2235,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: 'NOT THAT ONE!!
+        value: 'Oh... it''s you.
 
           [pic=2]'
         type: 0
@@ -2400,8 +2400,8 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: 'You don''t have a choice. The [em2]bees need flowers[/em2], or we''ll
-          have a disaster on our hands.
+        value: 'I''m here because I have to be. The [em2]bees need flowers[/em2],
+          or we''ll have a disaster on our hands.
 
           [pic=2]'
         type: 0
@@ -3606,7 +3606,7 @@ MonoBehaviour:
       - originConversationID: 7
         originDialogueID: 0
         destinationConversationID: 7
-        destinationDialogueID: 1
+        destinationDialogueID: 2
         isConnector: 0
         priority: 2
       conditionsString: 
@@ -3664,13 +3664,7 @@ MonoBehaviour:
       delaySimStatus: 0
       falseConditionAction: Block
       conditionPriority: 2
-      outgoingLinks:
-      - originConversationID: 7
-        originDialogueID: 1
-        destinationConversationID: 7
-        destinationDialogueID: 2
-        isConnector: 0
-        priority: 2
+      outgoingLinks: []
       conditionsString: 
       userScript: 
       onExecute:
@@ -3678,8 +3672,8 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 200
-        y: 30
+        x: 195.89532
+        y: 79.256
         width: 160
         height: 30
     - id: 2
@@ -4277,8 +4271,8 @@ MonoBehaviour:
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 91.08724, y: 34.95205}
-    canvasZoom: 0.42725033
+    canvasScrollPosition: {x: 0, y: 10.490814}
+    canvasZoom: 0.6672501
   - id: 8
     fields:
     - title: Title
@@ -6015,8 +6009,8 @@ MonoBehaviour:
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 54.294838, y: 31.187176}
-    canvasZoom: 0.42999998
+    canvasScrollPosition: {x: 0, y: 537.2804}
+    canvasZoom: 0.52
   - id: 11
     fields:
     - title: Title
@@ -6565,8 +6559,8 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: 'You''d blame someone for thriving in the environment they were built
-          for?
+        value: 'Hyssop''s built to thrive here, though. Can you really fault them
+          for that?
 
           [pic=2]'
         type: 0
@@ -6722,7 +6716,7 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 33.636353
+        x: 31.912216
         y: 521.8182
         width: 160
         height: 30
@@ -6749,7 +6743,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: 'Water. Space. Love. Anything, really.
+        value: 'Water. Space. Love, maybe?
 
           [pic=2]'
         type: 0
@@ -6783,7 +6777,7 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 33.636353
+        x: 35.96193
         y: 571.8182
         width: 160
         height: 30
@@ -6842,8 +6836,8 @@ MonoBehaviour:
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 5.8695498, y: 314.8156}
-    canvasZoom: 0.46000046
+    canvasScrollPosition: {x: 0, y: 252.29239}
+    canvasZoom: 0.43000045
   - id: 12
     fields:
     - title: Title
