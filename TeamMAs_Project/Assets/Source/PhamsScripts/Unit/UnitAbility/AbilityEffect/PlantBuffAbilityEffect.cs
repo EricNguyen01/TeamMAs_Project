@@ -87,7 +87,7 @@ namespace TeamMAsTD
             ProcessEffectPopupForBuffEffects(null, "+" + finalDamageBuffedAmount + " AppeasementSTRENGTH", finalDamageBuffedAmount);
 
             plantUnitSOReceivedBuff.AddPlantAttackSpeed(finalAtkSpeedBuffedAmount);
-
+            
             ProcessEffectPopupForBuffEffects(null, "+" + finalAtkSpeedBuffedAmount + " AppeasementSPEED", finalAtkSpeedBuffedAmount);
 
             if (plantUnitReceivedBuff == null) plantUnitReceivedBuff = (PlantUnit)unitBeingAffected.GetUnitObject();

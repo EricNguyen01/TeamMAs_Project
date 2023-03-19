@@ -754,6 +754,8 @@ MonoBehaviour:
   <infoTooltipSpawnOffset>k__BackingField: {x: 0, y: 0}
   <clickReminderAnimOverride>k__BackingField: {fileID: 0}
   <autoEnableTooltipOnStart>k__BackingField: 1
+  waveToShowClickReminderAfterFinished: {fileID: 0}
+  <toggleTooltipOnClick>k__BackingField: 0
 --- !u!1 &8186297415328604765
 GameObject:
   m_ObjectHideFlags: 0

@@ -186,6 +186,7 @@ MonoBehaviour:
   timeUntilNextReminderMax: 1000
   timeToCloseReminder: 300
   <showTooltipClickReminderOnStart>k__BackingField: 1
+  waveToShowClickReminderAfterFinished: {fileID: 0}
 --- !u!1 &2542059463325797391
 GameObject:
   m_ObjectHideFlags: 0

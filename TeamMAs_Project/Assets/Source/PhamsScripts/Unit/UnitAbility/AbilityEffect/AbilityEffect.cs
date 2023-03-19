@@ -142,7 +142,7 @@ namespace TeamMAsTD
             if (abilityEffectSO.effectDurationAsAbilityDuration) effectDuration = abilitySOCarriedEffect.abilityDuration;
 
             currentEffectDuration = effectDuration;
-
+            
             OnEffectStarted();
 
             //if ability effect duration is not using value from its carrying ability and,
@@ -208,7 +208,7 @@ namespace TeamMAsTD
             {
                 effectStatPopupSpawner.SetStatPopupSpawnerConfig(0.0f, 0.0f, 0.0f, 0.0f, 0.0f, popupTime);
             }
-
+            
             if (buffedNumber > 0.0f)
             {
                 effectStatPopupSpawner.PopUp(popupSprite, popupText, true);

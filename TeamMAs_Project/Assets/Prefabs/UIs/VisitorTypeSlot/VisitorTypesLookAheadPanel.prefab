@@ -332,3 +332,4 @@ MonoBehaviour:
   timeUntilNextReminderMax: 1000
   timeToCloseReminder: 300
   <showTooltipClickReminderOnStart>k__BackingField: 1
+  waveToShowClickReminderAfterFinished: {fileID: 0}
