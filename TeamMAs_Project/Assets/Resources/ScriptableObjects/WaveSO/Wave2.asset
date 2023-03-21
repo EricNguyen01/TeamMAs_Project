@@ -17,7 +17,7 @@ MonoBehaviour:
     spawnNumbers: 5
     spawnChance: 1
   - visitorType: {fileID: 11400000, guid: 297fbbaf0eb4b9a4f9e1270ac6e199f4, type: 2}
-    spawnNumbers: 2
+    spawnNumbers: 3
     spawnChance: 1
   <waitTimeToFirstSpawn>k__BackingField: 1
   <waitTimeBetweenSpawn>k__BackingField: 1
