@@ -9,11 +9,13 @@ namespace TeamMAsTD
     public class PlantUnitSO : UnitSO
     {
         [field: Header("Plant Unit Data")]
+
         [field: SerializeField] public string unitID { get; private set; } //to be used with saving system
         [field: SerializeField] public string unitDescription { get; private set; }
         [field: SerializeField] public Sprite unitThumbnail { get; private set; }//thumbnail icon sprite to be displayed in shop or other UIs
 
         [field: Header("Plant Unit Stats")]
+
         [field: SerializeField] public PlantProjectileSO plantProjectileSO { get; private set; }
         [field: SerializeField][field: Min(0)] public int waterBars { get; private set; }
         [field: SerializeField][field: Min(0)] public int wavesSurviveWithoutWater { get; private set; } = 1;
@@ -40,6 +42,7 @@ namespace TeamMAsTD
         [SerializeField] public VisitorUnitSO.VisitorType plantTargetsSpecifically = VisitorUnitSO.VisitorType.None;//default
 
         [field: Header("Plant Unit Water Usage and Costs")]
+
         [field: SerializeField][field: Min(0)] public int plantingCoinCost { get; private set; }
         [field: SerializeField][field: Min(0)] public int uprootRefundAmount { get; private set; }
         [field: SerializeField][field: Min(0)] public int uprootCost { get; private set; }
@@ -48,6 +51,13 @@ namespace TeamMAsTD
         [field: SerializeField][field: Min(0)] public int waterBarsRefilledPerWatering { get; private set; } = 1;
         [field: SerializeField][field: Min(0)] public int wateringCoinsCost { get; private set; } = 1;
 
+        [field: Header("Plant Purchase Settings")]
+
+        [field: SerializeField] public bool canPurchasePlant { get; private set; } = true;
+        [field: SerializeField] public bool plantPurchaseLockOnStart { get; private set; } = true;
+        [field: SerializeField] public WaveSO waveToUnlockPlantPurchaseOnWaveFinished { get; private set; }
+        [field: SerializeField] public WaveSO waveToUnlockPlantPurchaseOnWaveStarted { get; private set; }
+
         public override UnitSO CloneThisUnitSO(UnitSO unitSO)
         {
             UnitSO plantSO = Instantiate(unitSO);
@@ -55,14 +65,42 @@ namespace TeamMAsTD
             return plantSO;
         }
 
-        public void SetPlantUnitDamage(float damage)
+        public void SetSpecificPlantUnitDamage(float damage)
         {
             this.damage = damage;
+
+            if (damage <= 0.0f) damage = 0.0f;
         }
 
-        public void SetPlantUnitAttackSpeed(float atkSpeed)
+        public void AddPlantUnitDamage(float addedDamage)
+        {
+            damage += addedDamage;
+        }
+
+        public void RemovePlantUnitDamage(float removedDamage)
+        {
+            damage -= removedDamage;
+
+            if (damage <= 0.0f) damage = 0.0f;
+        }
+
+        public void SetSpecificPlantUnitAttackSpeed(float atkSpeed)
         {
             attackSpeed = atkSpeed;
+
+            if (attackSpeed <= 0.0f) attackSpeed = 0.0f;
+        }
+
+        public void AddPlantAttackSpeed(float atkSpdIncreaseAmount)
+        {
+            attackSpeed -= atkSpdIncreaseAmount;
+
+            if (attackSpeed <= 0.0f) attackSpeed = 0.0f;
+        }
+
+        public void RemovePlantAttackSpeed(float atkSpdDecreaseAmount)
+        {
+            attackSpeed += atkSpdDecreaseAmount;
         }
     }
 }

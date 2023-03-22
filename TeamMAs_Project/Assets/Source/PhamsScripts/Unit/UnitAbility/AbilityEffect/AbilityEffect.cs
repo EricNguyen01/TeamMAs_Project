@@ -14,6 +14,9 @@ namespace TeamMAsTD
         [field: DisallowNull]
         public AbilityEffectSO abilityEffectSO { get; private set; }
 
+        [field: SerializeField]
+        protected StatPopupSpawner effectStatPopupSpawner { get; private set; }
+
         public Ability abilityCarriedEffect { get; private set; }
 
         public AbilitySO abilitySOCarriedEffect { get; private set; }
@@ -24,13 +27,28 @@ namespace TeamMAsTD
 
         private IUnit parentUnit;
 
+        public UnitSO unitBeingAffectedUnitSO { get; private set; }
+
         public AbilityEffectReceivedInventory abilityEffectInventoryRegisteredTo { get; private set; }
 
         public float currentEffectDuration { get; set; } = 0.0f;
 
         protected bool canUpdateEffect { get; private set; } = false;
 
-        protected bool effectIsBeingDestroyed { get; private set; } = false;
+        public bool effectIsBeingDestroyed { get; private set; } = false;
+
+        protected virtual void Awake()
+        {
+            if (abilityEffectSO == null)
+            {
+                Debug.LogError("Missing AbilityEffectSO data" +
+                "for AbilityEffect: " + name + "to work. Destroying effect!");
+
+                DestroyEffectWithEffectEndedInvoked(false);
+
+                return;
+            }
+        }
 
         protected virtual void OnEnable()
         {
@@ -39,6 +57,8 @@ namespace TeamMAsTD
             if (parentUnit == null)
             {
                 DestroyEffectWithEffectEndedInvoked(false);
+
+                return;
             }
 
             Ability.OnAbilityStopped += DestroyEffectOnAbilityStoppedIfApplicable;
@@ -69,25 +89,30 @@ namespace TeamMAsTD
 
         public void InitializeAndStartAbilityEffect(Ability sourceAbility, IUnit unitBeingAffected)
         {
-            if (abilityEffectSO == null || sourceAbility == null || unitBeingAffected == null) 
+            if (sourceAbility == null || unitBeingAffected == null) 
             {
-                Debug.LogError("Missing either AbilityEffectSO or SourceAbilityComponent(Ability.cs), or IUnit TargetUnitToAffect" +
+                Debug.LogError("Missing either SourceAbilityComponent(Ability.cs) or IUnit TargetUnitToAffect" +
                 "for AbilityEffect: " + name + "to work. Destroying effect!");
 
-                Destroy(gameObject);
-
-                effectIsBeingDestroyed = true;
+                DestroyEffectWithEffectEndedInvoked(false);
 
                 return;
             }
 
             if(parentUnit != unitBeingAffected)
             {
-                Debug.LogError("The unit this effect is on is not its original target. Destroying effect!");
+                Debug.LogError("The unit this effect: " + name + " is on is not its original target. Destroying effect!");
 
                 DestroyEffectWithEffectEndedInvoked(false);
 
                 return;
+            }
+
+            unitBeingAffectedUnitSO = unitBeingAffected.GetUnitScriptableObjectData();
+
+            if(unitBeingAffectedUnitSO == null)
+            {
+                Debug.LogError("The unit: " + name + " being affected by this effect: " + name + " doesn't have a UnitSO data.");
             }
 
             abilityEffectInventoryRegisteredTo = unitBeingAffected.GetAbilityEffectReceivedInventory();
@@ -110,38 +135,50 @@ namespace TeamMAsTD
 
             this.unitBeingAffected = unitBeingAffected;
 
+            gameObject.layer = unitBeingAffected.GetUnitLayerMask();
+
             float effectDuration = abilityEffectSO.effectDuration;
 
             if (abilityEffectSO.effectDurationAsAbilityDuration) effectDuration = abilitySOCarriedEffect.abilityDuration;
 
             currentEffectDuration = effectDuration;
-
+            
             OnEffectStarted();
 
+            //if ability effect duration is not using value from its carrying ability and,
             //if ability effect duration is between the range of -1.0f to 0.0f (and not exactly -1.0f)
             //then it is treated as if it has the duration of 0.0f anyway and will not be updated but rather destroyed immediately.
-            if (abilityEffectSO.effectDuration > -1.0f && abilityEffectSO.effectDuration <= 0.0f)
+            if (!abilityEffectSO.effectDurationAsAbilityDuration)
             {
-                DestroyEffectWithEffectEndedInvoked(true);
+                if (abilityEffectSO.effectDuration > -1.0f && abilityEffectSO.effectDuration <= 0.0f)
+                {
+                    if(!effectIsBeingDestroyed) DestroyEffectWithEffectEndedInvoked(true);
 
-                return;
+                    return;
+                }
             }
 
-            //else can now update after start
-            canUpdateEffect = true;
+            //else if not being destroyed during any of the above checks - can now update after start (must be the last line of init)
+            if(!effectIsBeingDestroyed) canUpdateEffect = true;
         }
 
-        public void DestroyEffectWithEffectEndedInvoked(bool processOnEffectEnded)
+        public void DestroyEffectWithEffectEndedInvoked(bool processOnEffectEndedFunc)
         {
             if (effectIsBeingDestroyed) return;
 
+            //IMPORTANT:
+            //This if check below ALWAYS need to be execute BEFORE RemoveEffect() func of abilityEffectReceivedInventory to avoid CONFLICTS!!!
+            if (!effectIsBeingDestroyed) effectIsBeingDestroyed = true;
+
+            //Debug.Log("Effect Is Being Destroyed On: " + transform.parent.gameObject.name);
+
             canUpdateEffect = false;
 
-            if(processOnEffectEnded) OnEffectEnded();
+            if(processOnEffectEndedFunc) OnEffectEnded();
 
             if (abilityEffectInventoryRegisteredTo != null) abilityEffectInventoryRegisteredTo.RemoveEffect(this);
 
-            if (!effectIsBeingDestroyed) effectIsBeingDestroyed = true;
+            abilityEffectInventoryRegisteredTo = null;
             
             Destroy(gameObject);
         }
@@ -152,7 +189,41 @@ namespace TeamMAsTD
 
             if (sourceAbility.abilityScriptableObject == null || abilityEffectSO == null) return;
 
+            if (effectIsBeingDestroyed) return;
+
+            //Debug.Log("AbilityStoppedDestroyedEventReceivedOn: " + transform.parent.name);
+
             if (abilityEffectSO.effectDurationAsAbilityDuration) DestroyEffectWithEffectEndedInvoked(true);
+        }
+
+        protected virtual void ProcessEffectPopupForBuffEffects(Sprite popupSprite, string popupText, float buffedNumber, float popupTime = 0.0f)
+        {
+            if (!gameObject.scene.isLoaded) return;
+
+            if (effectStatPopupSpawner == null) return;
+
+            if (buffedNumber == 0.0f) return;
+
+            if (popupTime != 0.0f)
+            {
+                effectStatPopupSpawner.SetStatPopupSpawnerConfig(0.0f, 0.0f, 0.0f, 0.0f, 0.0f, popupTime);
+            }
+            
+            if (buffedNumber > 0.0f)
+            {
+                effectStatPopupSpawner.PopUp(popupSprite, popupText, true);
+            }
+            else if(buffedNumber < 0.0f)
+            {
+                effectStatPopupSpawner.PopUp(popupSprite, popupText, false);
+            }
+        }
+
+        protected void DetachAndDestroyAllEffectPopups()
+        {
+            if (effectStatPopupSpawner == null) return;
+
+            effectStatPopupSpawner.DetachAndDestroyAllStatPopups();
         }
     }
 }

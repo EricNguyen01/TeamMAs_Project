@@ -62,6 +62,10 @@ namespace TeamMAsTD
                 statPopupTextMesh = GetComponentInChildren<TextMeshProUGUI>(true);
             }
 
+            if (statPopupUIImage != null) statPopupUIImage.raycastTarget = false;
+
+            if(statPopupTextMesh != null) statPopupTextMesh.raycastTarget = false;
+
             if(statPopupAnimator == null)
             {
                 statPopupAnimator = GetComponent<Animator>();
@@ -78,7 +82,7 @@ namespace TeamMAsTD
 
         private void OnEnable()
         {
-            if (statPopupPoolSpawnedThisPopup == null) gameObject.SetActive(false);
+            if (statPopupPoolSpawnedThisPopup == null) Destroy(gameObject);
 
             if(statPopupUIImage != null)
             {
@@ -132,7 +136,7 @@ namespace TeamMAsTD
             }
         }
 
-        public void InitializeStatPopup(StatPopupSpawner statPopupSpawner, StatPopupPool statPopupPool)
+        public void InitializeStatPopup(StatPopupPool statPopupPool)
         {
             statPopupPoolSpawnedThisPopup = statPopupPool;
 
@@ -165,19 +169,28 @@ namespace TeamMAsTD
 
         public void SetStatPopupText(string textPopup)
         {
-            if (statPopupTextMesh != null && !string.IsNullOrEmpty(textPopup)) statPopupTextMesh.text = textPopup;
+            if (statPopupTextMesh != null && !string.IsNullOrEmpty(textPopup)) 
+            {
+                statPopupTextMesh.text = textPopup;
+            }
         }
 
         public void UseDefaultStatPopupText(bool usePositiveText)
         {
             if (usePositiveText)
             {
-                if (statPopupTextMesh != null) statPopupTextMesh.text = positiveStatText;
+                if (statPopupTextMesh != null) 
+                {
+                    statPopupTextMesh.text = positiveStatText;
+                }
 
                 return;
             }
 
-            if (statPopupTextMesh != null) statPopupTextMesh.text = negativeStatText;
+            if (statPopupTextMesh != null) 
+            {
+                statPopupTextMesh.text = negativeStatText;
+            }
         }
 
         public void SetStatPopupTextColor(Color colorToSet)

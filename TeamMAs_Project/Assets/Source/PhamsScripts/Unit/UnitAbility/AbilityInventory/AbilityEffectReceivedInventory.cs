@@ -53,12 +53,16 @@ namespace TeamMAsTD
 
             public void RemoveSpecificSpawnedEffect(AbilityEffect spawnedEffectToRemove)
             {
+                if (spawnedEffectToRemove == null) return;
+
                 //check if this effect slot contains the provided effect to remove, if contains, performs removal
                 if (!effectStackSpawned.Contains(spawnedEffectToRemove)) return;
 
                 effectStackSpawned.Remove(spawnedEffectToRemove);
 
-                spawnedEffectToRemove.DestroyEffectWithEffectEndedInvoked(true);
+                if(!spawnedEffectToRemove.effectIsBeingDestroyed) spawnedEffectToRemove.DestroyEffectWithEffectEndedInvoked(true);
+
+                if(effectStackSpawned != null && effectStackSpawned.Count > 0) effectStackSpawned.RemoveAll(item => item == null);
 
                 //if there are still stacks of effect type slot exist after removing this effect -> return
                 if (effectStackSpawned.Count > 0) return;
@@ -67,43 +71,23 @@ namespace TeamMAsTD
                 RemoveThisEffectSlotCompletely();
             }
 
-            private void RemoveStack(int stackNumRemoved)
-            {
-                if (stackNumRemoved <= 0) return;
-
-                if (effectStackSpawned == null || effectStackSpawned.Count == 0) return;
-
-                bool clearAllStacks = false;
-
-                if (stackNumRemoved >= effectStackSpawned.Count) 
-                { 
-                    stackNumRemoved = effectStackSpawned.Count; 
-
-                    clearAllStacks = true;
-                }
-
-                for(int i = 0; i < stackNumRemoved; i++)
-                {
-                    effectStackSpawned[i].DestroyEffectWithEffectEndedInvoked(true);
-
-                    effectStackSpawned.RemoveAt(i);
-                }
-
-                //if all stacks are pending to be removed -> also remove this effect slot (no stack = no effect on unit)
-                //must ALWAYS be done at the end of this function to avoid infinite recursive loop
-                if (clearAllStacks)
-                {
-                    RemoveThisEffectSlotCompletely();
-                }
-            }
-
             public void RemoveThisEffectSlotCompletely()//treat this as destructor
             {
-                RemoveStack(effectStackSpawned.Count);
+                if(effectStackSpawned != null && effectStackSpawned.Count > 0)
+                {
+                    for (int i = 0; i < effectStackSpawned.Count; i++)
+                    {
+                        if (!effectStackSpawned[i].effectIsBeingDestroyed) effectStackSpawned[i].DestroyEffectWithEffectEndedInvoked(true);
+
+                        if (i >= effectStackSpawned.Count || effectStackSpawned.Count == 0) break;
+                    }
+                }
 
                 effectStackSpawned.Clear();
 
                 effectSOReceived = null;
+
+                if (abilityEffectReceivedInventory == null || abilityEffectReceivedInventory.abilityEffectsReceived == null) return;
 
                 if (abilityEffectReceivedInventory.abilityEffectsReceived.Contains(this))
                 {
@@ -249,7 +233,7 @@ namespace TeamMAsTD
         }
 
         //This function removes all the currently spawned effects of every effect type that was spawned from "sourceAbility"
-        public void RemoveEffectsFromAbility(Ability sourceAbility)
+        public void RemoveEffectsOfAbility(Ability sourceAbility)
         {
             if (sourceAbility == null) return;
 
@@ -258,7 +242,7 @@ namespace TeamMAsTD
             if (sourceAbility.abilityScriptableObject.abilityEffects == null ||
                sourceAbility.abilityScriptableObject.abilityEffects.Count == 0) return;
 
-            if (abilityEffectsReceived.Count == 0) return;
+            if (abilityEffectsReceived == null || abilityEffectsReceived.Count == 0) return;
 
             //start going through every effect type received list
             for(int i = 0; i < abilityEffectsReceived.Count; i++)
@@ -270,6 +254,10 @@ namespace TeamMAsTD
                 //on valid effect type received element, start going through all the spawned effect objects of the current effect type element
                 for(int j = 0; j < abilityEffectsReceived[i].effectStackSpawned.Count; j++)
                 {
+                    //the line below are to avoid out of range exception since we are removing effects as we are looping through the lists
+                    //which the effect lists are actively shrinking and at some point we would be out of range
+                    if (i >= abilityEffectsReceived.Count || abilityEffectsReceived.Count == 0) return;
+
                     if (abilityEffectsReceived[i].effectStackSpawned[j] == null) continue;
 
                     if (abilityEffectsReceived[i].effectStackSpawned[j].abilityCarriedEffect != sourceAbility) continue;
@@ -278,6 +266,13 @@ namespace TeamMAsTD
                     //this func below also checks if the last spawned effect obj of this effect received slot has been removed
                     //and if so, it also removes this slot altogether.
                     abilityEffectsReceived[i].RemoveSpecificSpawnedEffect(abilityEffectsReceived[i].effectStackSpawned[j]);
+
+                    //the two lines below are to avoid out of range exception since we are removing effects as we are looping through the lists
+                    //which the effect lists are actively shrinking and at some point we would be out of range
+                    if (i >= abilityEffectsReceived.Count || abilityEffectsReceived.Count == 0) return;
+
+                    if (j >= abilityEffectsReceived[i].effectStackSpawned.Count || 
+                        abilityEffectsReceived[i].effectStackSpawned.Count == 0) break;
                 }
             }
         }
@@ -333,8 +328,6 @@ namespace TeamMAsTD
             for(int i = 0; i < abilityEffectsReceived.Count; i++)
             {
                 if(abilityEffectsReceived[i] != null) abilityEffectsReceived[i].RemoveThisEffectSlotCompletely();
-
-                abilityEffectsReceived.RemoveAt(i);
             }
 
             abilityEffectsReceived.Clear();

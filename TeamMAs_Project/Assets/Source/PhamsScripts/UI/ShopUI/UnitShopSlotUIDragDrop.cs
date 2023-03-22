@@ -24,6 +24,8 @@ namespace TeamMAsTD
         "Dropping returns the object to its original position.")]
         private Image dragDropUIImageObject;
 
+        private GameObject plantOnTileMockUpVisualizationObj;
+
         [SerializeField] [Range(0.0f, 1.0f)] private float dragDropBlurAmount = 0.6f;
 
         [SerializeField]
@@ -57,9 +59,17 @@ namespace TeamMAsTD
         //the Rect Transform of the top most parent UI canva above
         private RectTransform parentCanvaRect;
 
+        private CanvasGroup shopSlotCanvasGroup;
+
         private PlantRangeCircle plantRangeCircleIndicator;
 
+        private Tile currentTileBeingDraggedOver;
+
         private Tile[] tilesUseForPlantableGlowEffectOnDragDrop;
+
+        private WaveSO currentWaveSO;
+
+        private bool isShopSlotUnlocked = false;
 
         //PRIVATES.........................................................................
 
@@ -73,6 +83,7 @@ namespace TeamMAsTD
                 return;
             }
 
+            GetOrSetShopSlotCanvasGroup();
             SetImageUIRaycastComponent();
             SetUnitShopSlotImageFromUnitSO();
             CheckAndGetDragDropRequirements();
@@ -89,6 +100,22 @@ namespace TeamMAsTD
                 gameObject.SetActive(false);
                 return;
             }
+
+            WaveSpawner.OnWaveStarted += GetCurrentWaveToUnlockShopSlotOnWaveStarted;
+
+            WaveSpawner.OnWaveFinished += GetCurrentWaveToUnlockShopSlotOnWaveFinished;
+
+            if (!slotUnitScriptableObject.canPurchasePlant)
+            {
+                EnableShopSlotCanvasGroup(false, false, 0.5f);
+            }
+        }
+
+        private void OnDestroy()
+        {
+            WaveSpawner.OnWaveStarted -= GetCurrentWaveToUnlockShopSlotOnWaveStarted;
+
+            WaveSpawner.OnWaveFinished -= GetCurrentWaveToUnlockShopSlotOnWaveFinished;
         }
 
         private void Start()
@@ -96,6 +123,27 @@ namespace TeamMAsTD
             CreatePlantRangeCircleIndicatorOnStart();
 
             originalDragDropPos = dragDropUIImageObject.transform.localPosition;
+
+            if (slotUnitScriptableObject.plantPurchaseLockOnStart)
+            {
+                gameObject.SetActive(false);
+            }
+            else
+            {
+                if (!gameObject.activeInHierarchy) gameObject.SetActive(true);
+
+                isShopSlotUnlocked = true;
+            }
+        }
+
+        private void GetOrSetShopSlotCanvasGroup()
+        {
+            shopSlotCanvasGroup = GetComponent<CanvasGroup>();
+
+            if(shopSlotCanvasGroup == null)
+            {
+                shopSlotCanvasGroup= gameObject.AddComponent<CanvasGroup>();
+            }
         }
 
         private void SetImageUIRaycastComponent()
@@ -150,16 +198,21 @@ namespace TeamMAsTD
             }
 
             CanvasGroup dragDropImageUICanvasGroup = dragDropUIImageObject.GetComponent<CanvasGroup>();
+
             if (dragDropImageUICanvasGroup == null)
             {
                 dragDropUIImageObject.gameObject.AddComponent<CanvasGroup>();
             }
-            dragDropImageUICanvasGroup.alpha = dragDropBlurAmount;
 
             SetDragDropSameVisualAsShopSlot();
 
+            CreatePlantOnTileVisualizationMockUpFromDragDropObj(dragDropUIImageObject);
+
+            dragDropImageUICanvasGroup.alpha = dragDropBlurAmount;
+
             //Get top most parent canvas component and canvas rect
             parentCanva = GetComponentInParent<Canvas>();
+
             parentCanvaRect = parentCanva.GetComponent<RectTransform>();
         }
 
@@ -174,6 +227,15 @@ namespace TeamMAsTD
 
             dragDropUIImageObject.sprite = unitThumbnailImage.sprite;
             dragDropUIImageObject.color = unitThumbnailImage.color;
+        }
+
+        private void CreatePlantOnTileVisualizationMockUpFromDragDropObj(Image dragDropUIImageObj)
+        {
+            if (dragDropUIImageObj == null) return;
+
+            plantOnTileMockUpVisualizationObj = Instantiate(dragDropUIImageObj.gameObject, transform);
+
+            plantOnTileMockUpVisualizationObj.transform.localPosition = Vector3.zero;
         }
 
         private void SetNameAndCostForUnitShopSlot()
@@ -281,6 +343,87 @@ namespace TeamMAsTD
             }
         }
 
+        private void EnableShopSlotCanvasGroup(bool enabled, bool affectChildrenCanvasGroup, float canvasGroupAlpha = 0.0f)
+        {
+            foreach (CanvasGroup cg in GetComponentsInChildren<CanvasGroup>(true))
+            {
+                if (cg == null || cg == shopSlotCanvasGroup) continue;
+
+                if(affectChildrenCanvasGroup) cg.ignoreParentGroups = false;
+                else cg.ignoreParentGroups = true;
+            }
+
+            if (enabled)
+            {
+                shopSlotCanvasGroup.interactable = true;
+
+                shopSlotCanvasGroup.blocksRaycasts = true;
+
+                if(canvasGroupAlpha == 0.0f) shopSlotCanvasGroup.alpha = 1.0f;
+                else shopSlotCanvasGroup.alpha = canvasGroupAlpha;
+
+                return;
+            }
+
+            shopSlotCanvasGroup.interactable = false;
+
+            shopSlotCanvasGroup.blocksRaycasts = false;
+
+            shopSlotCanvasGroup.alpha = canvasGroupAlpha;
+        }
+
+        private void GetCurrentWaveToUnlockShopSlotOnWaveStarted(WaveSpawner waveSpawner, int waveNum)
+        {
+            if (isShopSlotUnlocked) return;
+
+            if (waveSpawner == null) return;
+
+            Wave wave = waveSpawner.GetCurrentWave();
+
+            if (wave == null) return;
+
+            currentWaveSO = wave.waveSO;
+
+            if (currentWaveSO == null) return;
+
+            if(slotUnitScriptableObject.waveToUnlockPlantPurchaseOnWaveStarted != null)
+            {
+                if(currentWaveSO == slotUnitScriptableObject.waveToUnlockPlantPurchaseOnWaveStarted)
+                {
+                    if (!gameObject.activeInHierarchy) gameObject.SetActive(true);
+
+                    isShopSlotUnlocked = true;
+                }
+            }
+        }
+
+        private void GetCurrentWaveToUnlockShopSlotOnWaveFinished(WaveSpawner waveSpawner, int waveNum, bool hasOnGoingWave)
+        {
+            if (hasOnGoingWave) return;
+
+            if (isShopSlotUnlocked) return;
+
+            if (waveSpawner == null) return;
+
+            Wave wave = waveSpawner.GetCurrentWave();
+
+            if (wave == null) return;
+
+            currentWaveSO = wave.waveSO;
+
+            if (currentWaveSO == null) return;
+
+            if (slotUnitScriptableObject.waveToUnlockPlantPurchaseOnWaveFinished != null)
+            {
+                if (currentWaveSO == slotUnitScriptableObject.waveToUnlockPlantPurchaseOnWaveFinished)
+                {
+                    if (!gameObject.activeInHierarchy) gameObject.SetActive(true);
+
+                    isShopSlotUnlocked = true;
+                }
+            }
+        }
+
         public PlantUnitSO GetShopSlotPlantUnit()
         {
             return slotUnitScriptableObject;
@@ -296,11 +439,18 @@ namespace TeamMAsTD
 
             dragDropUIImageObject.transform.SetParent(parentCanva.transform);
 
+            ActiveChildrenObjectOfDragDropUIImageObj(true);
+
+            if (plantOnTileMockUpVisualizationObj != null)
+            {
+                plantOnTileMockUpVisualizationObj.transform.SetParent(parentCanva.transform);
+
+                if (plantOnTileMockUpVisualizationObj.activeInHierarchy) plantOnTileMockUpVisualizationObj.SetActive(false);
+            }
+
             unitShopSlotImageRaycastComponent.raycastTarget = false;
 
             EventSystem.current.SetSelectedGameObject(null);
-
-            ActiveChildrenObjectOfDragDropUIImageObj(true);
 
             Vector2 worldMousePos = parentCanva.worldCamera.ScreenToWorldPoint(Input.mousePosition);
 
@@ -324,6 +474,61 @@ namespace TeamMAsTD
             Vector2 worldMousePos = parentCanva.worldCamera.ScreenToWorldPoint(Input.mousePosition);
 
             EnableAndSet_PlantRangeCircle_To_WorldMousePos(worldMousePos, true);
+
+            if (plantOnTileMockUpVisualizationObj == null) return;
+
+            if (eventData.pointerEnter == null)
+            {
+                plantOnTileMockUpVisualizationObj.SetActive(false);
+
+                return;
+            }
+
+            //check if the mouse pointer is on an obj with Tile component attached
+            Tile destinationTile = eventData.pointerEnter.GetComponent<Tile>();
+
+            if (destinationTile == null || !destinationTile.CanPlaceUnit_EXTERNAL(slotUnitScriptableObject))
+            {
+                currentTileBeingDraggedOver = null;
+
+                plantOnTileMockUpVisualizationObj.SetActive(false);
+
+                return;
+            }
+
+            if(!plantOnTileMockUpVisualizationObj.activeInHierarchy) plantOnTileMockUpVisualizationObj.SetActive(true);
+
+            bool shouldProcessMockupPos = false;
+
+            Vector3 tilePosWorld;
+
+            Vector3 tilePosScreenPnt;
+
+            Vector2 tilePosUILocalPnt;
+
+            if (currentTileBeingDraggedOver == null)
+            {
+                currentTileBeingDraggedOver = destinationTile;
+
+                shouldProcessMockupPos = true;
+            }
+            else if (currentTileBeingDraggedOver != destinationTile)
+            {
+                currentTileBeingDraggedOver = destinationTile;
+
+                shouldProcessMockupPos = true;
+            }
+
+            if (!shouldProcessMockupPos) return;
+
+            tilePosWorld = currentTileBeingDraggedOver.transform.position;
+
+            tilePosScreenPnt = parentCanva.worldCamera.WorldToScreenPoint(tilePosWorld);
+
+            RectTransformUtility.ScreenPointToLocalPointInRectangle(parentCanvaRect, tilePosScreenPnt, parentCanva.worldCamera, out tilePosUILocalPnt);
+
+            plantOnTileMockUpVisualizationObj.transform.position = parentCanvaRect.transform.TransformPoint(tilePosUILocalPnt);
+
         }
 
         public void OnEndDrag(PointerEventData eventData)
@@ -337,6 +542,17 @@ namespace TeamMAsTD
             dragDropUIImageObject.transform.localPosition = originalDragDropPos;
 
             dragDropUIImageObject.gameObject.SetActive(false);
+
+            if(currentTileBeingDraggedOver != null) currentTileBeingDraggedOver = null;
+
+            if(plantOnTileMockUpVisualizationObj != null)
+            {
+                if (plantOnTileMockUpVisualizationObj.activeInHierarchy) plantOnTileMockUpVisualizationObj.SetActive(false);
+
+                plantOnTileMockUpVisualizationObj.transform.SetParent(dragDropUIImageObject.transform);
+
+                plantOnTileMockUpVisualizationObj.transform.localPosition = Vector3.zero;
+            }
 
             ActiveChildrenObjectOfDragDropUIImageObj(false);
 

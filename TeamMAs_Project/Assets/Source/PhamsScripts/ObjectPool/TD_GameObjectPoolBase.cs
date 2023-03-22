@@ -137,5 +137,17 @@ namespace TeamMAsTD
 
             gameObjectsPool.Remove(gameObject);
         }
+
+        protected bool HasActiveGameObjects()
+        {
+            if (gameObjectsPool == null || gameObjectsPool.Count == 0) return false;
+
+            for(int i = 0; i < gameObjectsPool.Count; i++)
+            {
+                if (gameObjectsPool[i].activeInHierarchy) return true;
+            }
+
+            return false;
+        }
     }
 }

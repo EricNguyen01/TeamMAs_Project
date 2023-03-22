@@ -12,6 +12,8 @@ namespace TeamMAsTD
 
         public Transform GetUnitTransform();
 
+        public LayerMask GetUnitLayerMask();
+
         public Tile GetTileUnitIsOn();
 
         public AbilityEffectReceivedInventory GetAbilityEffectReceivedInventory();

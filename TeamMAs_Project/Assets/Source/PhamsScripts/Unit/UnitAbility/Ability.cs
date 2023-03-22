@@ -1,6 +1,8 @@
+using PixelCrushers.DialogueSystem;
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
+using System.Security.Cryptography;
 using UnityEngine;
 
 namespace TeamMAsTD
@@ -30,15 +32,21 @@ namespace TeamMAsTD
 
         public IUnit unitPossessingAbility { get; private set; }
 
-        protected UnitSO unitPossessingAbilitySO;
+        protected UnitSO unitPossessingAbilitySO { get; private set; }
 
         protected bool isCharging = false;
 
-        protected bool isInCooldown = false;
+        private bool isInCooldown = false;
 
-        protected bool isUpdating = false;
+        private bool isUpdating = false;
 
-        protected bool isStopped = false;
+        private bool isStopped = true;
+
+        private bool abilityLocked = true;
+
+        private bool isAbilityPendingUnlocked = false;
+
+        private WaveSO currentWave;
 
         public static event System.Action<Ability> OnAbilityStarted;
         public static event System.Action<Ability> OnAbilityStopped;
@@ -66,17 +74,34 @@ namespace TeamMAsTD
 
                 return;
             }
+
+            abilityLocked = abilityScriptableObject.abilityLocked;
+
+            gameObject.layer = unitPossessingAbility.GetUnitLayerMask();
         }
 
-        protected abstract void OnEnable();
+        protected virtual void OnEnable()
+        {
+            if (abilityLocked)
+            {
+                WaveSpawner.OnWaveFinished += PendingUnlockAbilityOnWaveEndedIfApplicable;
 
-        protected abstract void OnDisable();
+                Rain.OnRainEnded += (Rain r) => UnlockAbilityOnRainEndedIfApplicable();
+            }
+        }
+
+        protected virtual void OnDisable()
+        {
+            WaveSpawner.OnWaveFinished -= PendingUnlockAbilityOnWaveEndedIfApplicable;
+
+            Rain.OnRainEnded -= (Rain r) => UnlockAbilityOnRainEndedIfApplicable();
+        }
 
         protected virtual void Start()
         {
             if(abilityScriptableObject != null)
             {
-                if(abilityScriptableObject.useOnEquippedIfNotLocked && !abilityScriptableObject.abilityLocked)
+                if(abilityScriptableObject.useOnEquippedIfNotLocked && !abilityLocked)
                 {
                     StartAbility();
                 }
@@ -87,7 +112,7 @@ namespace TeamMAsTD
 
         private bool CanStartAbility()
         {
-            if (abilityScriptableObject.abilityLocked) return false;
+            if (abilityLocked) return false;
 
             if (abilityScriptableObject == null || unitPossessingAbility == null) return false;
 
@@ -194,6 +219,8 @@ namespace TeamMAsTD
         //To call from external scripts to stop/interupt this ability prematurely
         public void ForceStopAbility()
         {
+            if(isStopped || abilityLocked) return;
+
             StopAbility();
         }
 
@@ -324,7 +351,46 @@ namespace TeamMAsTD
 
         protected void InvokeOnAbilityStoppedEventOn(Ability childAbilityClass)
         {
+            //Debug.Log("AbilityStoppedEventInvoked");
+
             OnAbilityStopped?.Invoke(childAbilityClass);
+        }
+
+        private void PendingUnlockAbilityOnWaveEndedIfApplicable(WaveSpawner waveSpawner, int waveNum, bool hasOngoingWave)
+        {
+            if (hasOngoingWave) return;
+
+            if (abilityScriptableObject == null) return;
+
+            if (abilityScriptableObject.waveToUnlockAbilityAfterFinished == null) return;
+
+            if (waveSpawner == null) return;
+
+            currentWave = waveSpawner.GetCurrentWave().waveSO;
+
+            if (currentWave == abilityScriptableObject.waveToUnlockAbilityAfterFinished) isAbilityPendingUnlocked = true;
+        }
+
+        private void UnlockAbilityOnRainEndedIfApplicable()
+        {
+            if (abilityScriptableObject == null) return;
+
+            if (abilityScriptableObject.waveToUnlockAbilityAfterFinished == null) return;
+
+            if (!isAbilityPendingUnlocked) return;
+
+            if (!abilityScriptableObject.useOnEquippedIfNotLocked) return;
+
+            if (abilityLocked)
+            {
+                abilityScriptableObject.SetAbilityLocked(false);
+
+                abilityLocked = false;
+
+                isAbilityPendingUnlocked = false;
+
+                StartAbility();
+            }
         }
     }
 }

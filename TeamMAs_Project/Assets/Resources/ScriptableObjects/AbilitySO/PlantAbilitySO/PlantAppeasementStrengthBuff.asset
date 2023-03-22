@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: PlantAppeasementStrengthBuff
   m_EditorClassIdentifier: 
   <abilityName>k__BackingField: PlantAppeasementStrengthBuff
-  <abilityPrefab>k__BackingField: {fileID: 0}
+  <abilityPrefab>k__BackingField: {fileID: 3367027101372537960, guid: 45d8dc08cadd64f40a8b1ea1f3a1a64b, type: 3}
   initialAbilityRangeInTiles: 3
   initialAbilityDuration: -1
   initialAbilityCooldownTime: 0
@@ -25,6 +25,6 @@ MonoBehaviour:
   initialAbilityAffectsSpecificVisitorUnit: []
   <abilityEffects>k__BackingField:
   - {fileID: 11400000, guid: e7888bdaab091c647bdd30163d0fc938, type: 2}
-  <waveToUnlockAbility>k__BackingField: {fileID: 0}
+  <waveToUnlockAbilityAfterFinished>k__BackingField: {fileID: 11400000, guid: b16765a0bcc07c8478164ec1436adee3, type: 2}
   initialAbilityLocked: 1
   <useOnEquippedIfNotLocked>k__BackingField: 1

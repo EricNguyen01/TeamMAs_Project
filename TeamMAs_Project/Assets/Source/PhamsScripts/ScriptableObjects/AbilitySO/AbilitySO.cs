@@ -94,7 +94,7 @@ namespace TeamMAsTD
         [field: SerializeField]
         [field: Tooltip("Wave that this ability will be unlocked and become usable. If null, unlockable will depend on " +
         "initialAbilityLockedOnStart status.")]
-        public WaveSO waveToUnlockAbility { get; private set; }
+        public WaveSO waveToUnlockAbilityAfterFinished { get; private set; }
 
         [field: SerializeField]
         protected bool initialAbilityLocked = true;//default static in-editor value
@@ -161,6 +161,11 @@ namespace TeamMAsTD
             {
                 abilityAffectsSpecificVisitorType = visitorType;
             }
+        }
+
+        public void SetAbilityLockStatus(bool isLocked)
+        {
+            abilityLocked = isLocked;
         }
 
         void ISerializationCallbackReceiver.OnBeforeSerialize()

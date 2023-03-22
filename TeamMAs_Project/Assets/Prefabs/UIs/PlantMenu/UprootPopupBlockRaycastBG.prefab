@@ -1076,3 +1076,5 @@ MonoBehaviour:
   uprootPopupCanvasGroup: {fileID: 1634471412416140723}
   uprootPopupMessageText: {fileID: 1634471410607712327}
   popupConfirmationMessage: 
+  insufficientFundToUprootPopupPrefab: {fileID: 8024300418989073095, guid: f3a373e0118fdc54d85de7d5d9767e8c, type: 3}
+  uprootButton: {fileID: 1634471411945778718}

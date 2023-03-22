@@ -68,6 +68,8 @@ namespace TeamMAsTD
                 tile.OnPlantUnitPlantedOnTile.AddListener(RegisteringExisitngPlantUnit);
 
                 tile.OnPlantUnitUprootedOnTile.AddListener(RemovingExistingPlantUnit);
+
+                tile.OnPlantUnitUprootedOnTile.AddListener((PlantUnit pUnit, Tile t) => UpdateCostOnPlantWaterBarsRefilled(pUnit.plantUnitScriptableObject));
             }
 
             WaveSpawner.OnAllWaveSpawned += (WaveSpawner ws, bool b) => TemporaryDisableWaterAll(true);
@@ -87,6 +89,8 @@ namespace TeamMAsTD
                 tile.OnPlantUnitPlantedOnTile.RemoveListener(RegisteringExisitngPlantUnit);
 
                 tile.OnPlantUnitUprootedOnTile.RemoveListener(RemovingExistingPlantUnit);
+
+                tile.OnPlantUnitUprootedOnTile.RemoveListener((PlantUnit pUnit, Tile t) => UpdateCostOnPlantWaterBarsRefilled(pUnit.plantUnitScriptableObject));
             }
 
             WaveSpawner.OnAllWaveSpawned -= (WaveSpawner ws, bool b) => TemporaryDisableWaterAll(true);

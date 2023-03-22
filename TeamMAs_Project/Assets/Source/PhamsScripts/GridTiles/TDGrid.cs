@@ -30,6 +30,8 @@ namespace TeamMAsTD
 
         [SerializeField] private UnityEvent OnFirstCloverPlantedOnGrid;
 
+        [SerializeField] public UnityEvent<PlantUnit> OnFirstPlantPlantedOnGrid;
+
         private List<Tile> unplantedTileList = new List<Tile>();
 
         private bool alreadyHasDandelionOnGrid = false;//for debugging
@@ -84,21 +86,30 @@ namespace TeamMAsTD
         {
             if (gridArray == null || gridArray.Length == 0) return;
 
-            for(int i = 0; i < gridArray.Length; i++)
-            {
-                if (gridArray[i].plantUnitOnTile != null && 
-                    gridArray[i].plantUnitOnTile != plantUnit &&
-                    gridArray[i].plantUnitOnTile.plantUnitScriptableObject.displayName == "Dandelion")
-                {
-                    alreadyHasDandelionOnGrid = true;
-                }
+            bool isFirstPlant = true;
 
-                if (gridArray[i].plantUnitOnTile != null &&
-                    gridArray[i].plantUnitOnTile != plantUnit &&
-                    gridArray[i].plantUnitOnTile.plantUnitScriptableObject.displayName == "Clover")
+            for (int i = 0; i < gridArray.Length; i++)
+            {
+                if(gridArray[i].plantUnitOnTile != null &&
+                   gridArray[i].plantUnitOnTile != plantUnit)
                 {
-                    alreadyHasCloverOnGrid = true;
+                    isFirstPlant = false;
+
+                    if (gridArray[i].plantUnitOnTile.plantUnitScriptableObject.displayName == "Dandelion")
+                    {
+                        alreadyHasDandelionOnGrid = true;
+                    }
+
+                    if (gridArray[i].plantUnitOnTile.plantUnitScriptableObject.displayName == "Clover")
+                    {
+                        alreadyHasCloverOnGrid = true;
+                    }
                 }
+            }
+
+            if (isFirstPlant)
+            {
+                OnFirstPlantPlantedOnGrid?.Invoke(plantUnit);
             }
 
             if (plantUnit.plantUnitScriptableObject.displayName == "Dandelion")
@@ -117,7 +128,7 @@ namespace TeamMAsTD
             {
                 if (!alreadyHasCloverOnGrid)
                 {
-                    Debug.Log("First Clover Planted On Grid!");
+                    //Debug.Log("First Clover Planted On Grid!");
 
                     alreadyHasCloverOnGrid = true;
 

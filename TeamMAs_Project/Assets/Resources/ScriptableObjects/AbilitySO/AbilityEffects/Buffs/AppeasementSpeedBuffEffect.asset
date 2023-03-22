@@ -13,17 +13,18 @@ MonoBehaviour:
   m_Name: AppeasementSpeedBuffEffect
   m_EditorClassIdentifier: 
   <abilityEffectName>k__BackingField: AppeasementSpeedBuffEffect
-  <abilityEffectPrefab>k__BackingField: {fileID: 0}
+  <abilityEffectPrefab>k__BackingField: {fileID: 7022881697104983639, guid: 011b8fa6c71f29444aec6b389510f3ad, type: 3}
   effectDuration: 0
   <effectDurationAsAbilityDuration>k__BackingField: 1
-  effectAreaInTiles: 0
-  <effectRangeAsAbilityRange>k__BackingField: 0
-  maxUnitsToApplyEffect: 0
   <effectStackable>k__BackingField: 0
   <effectType>k__BackingField: 6
+  <damageBuffAmountPercentage>k__BackingField: 0
   <damageBuffAmount>k__BackingField: 0
+  <healthBuffAmountPercentage>k__BackingField: 0
   <healthBuffAmount>k__BackingField: 0
-  <attackSpeedBuffAmount>k__BackingField: 0.2
+  <attackSpeedBuffAmountPercentage>k__BackingField: 10
+  <attackSpeedBuffAmount>k__BackingField: 0
+  <movementSpeedBuffAmountPercentage>k__BackingField: 0
   <movementSpeedBuffAmount>k__BackingField: 0
   <cooldownReductionPercentageBuff>k__BackingField: 0
   <chargeTimeReductionPercentageBuff>k__BackingField: 0
