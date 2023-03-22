@@ -33,7 +33,7 @@ MonoBehaviour:
     spawnChance: 100
   <waitTimeToFirstSpawn>k__BackingField: 1
   <waitTimeBetweenSpawn>k__BackingField: 1
-  <spawnBossLast>k__BackingField: 1
+  <spawnBossLast>k__BackingField: 0
   <applyVisitorHealthScalingThisWave>k__BackingField: 1
   <visitorHealthScalingMultiplier>k__BackingField: 1
   <extraCoinsDropFromWave>k__BackingField: 0
