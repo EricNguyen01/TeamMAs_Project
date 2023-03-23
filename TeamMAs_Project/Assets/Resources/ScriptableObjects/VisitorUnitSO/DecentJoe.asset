@@ -15,9 +15,11 @@ MonoBehaviour:
   <displayName>k__BackingField: DecentJoe
   <unitPrefab>k__BackingField: {fileID: 2664338853412353054, guid: 1488e278c50469d48959c4b7848d8355, type: 3}
   <unitInfoTooltipImageSprite>k__BackingField: {fileID: 0}
+  <unitSpawnEffectPrefab>k__BackingField: {fileID: 0}
+  <unitDestroyEffectPrefab>k__BackingField: {fileID: 0}
   <visitorType>k__BackingField: 1
   <happinessAsHealth>k__BackingField: 650
-  <moveSpeed>k__BackingField: 0.75
+  <moveSpeed>k__BackingField: 0.6
   <appeasementHealAmount>k__BackingField: 1.5
   <dissapointmentDamage>k__BackingField: 1.5
   <isBoss>k__BackingField: 0

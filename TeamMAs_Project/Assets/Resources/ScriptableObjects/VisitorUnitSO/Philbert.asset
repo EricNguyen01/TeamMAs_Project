@@ -10,23 +10,22 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5d7ce314808d10d41b4abd2687275500, type: 3}
-  m_Name: AcclaimedFlorist
+  m_Name: Philbert
   m_EditorClassIdentifier: 
-  <displayName>k__BackingField: Acclaimed Florist (5 out of 5 stars for the 10th
-    consecutive year)
-  <unitPrefab>k__BackingField: {fileID: 2664338853412353054, guid: 471d44336dcb8fe45b481eba247454de, type: 3}
+  <displayName>k__BackingField: Kid
+  <unitPrefab>k__BackingField: {fileID: 2664338853412353054, guid: bfbd909e0c5215742b3d858f29c579da, type: 3}
   <unitInfoTooltipImageSprite>k__BackingField: {fileID: 0}
   <unitSpawnEffectPrefab>k__BackingField: {fileID: 0}
   <unitDestroyEffectPrefab>k__BackingField: {fileID: 0}
   <visitorType>k__BackingField: 1
-  <happinessAsHealth>k__BackingField: 1250
-  <moveSpeed>k__BackingField: 1
+  <happinessAsHealth>k__BackingField: 1300
+  <moveSpeed>k__BackingField: 1.3
   <appeasementHealAmount>k__BackingField: 3
   <dissapointmentDamage>k__BackingField: 3
   <isBoss>k__BackingField: 1
   <visitorHitColor>k__BackingField: {r: 1, g: 0.21960784, b: 0.8117647, a: 1}
   <visitorAppeasementTime>k__BackingField: 2.5
   <coinResourceToDrop>k__BackingField: {fileID: 11400000, guid: 7f0c635957a541840b7d3206387c7a84, type: 2}
-  <visitorsAppeasedCoinsDrop>k__BackingField: 15
+  <visitorsAppeasedCoinsDrop>k__BackingField: 5
   <chanceToDropCoins>k__BackingField: 100
   <chanceToNotDropCoins>k__BackingField: 0

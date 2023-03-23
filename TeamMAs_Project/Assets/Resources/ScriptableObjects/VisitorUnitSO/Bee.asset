@@ -15,9 +15,11 @@ MonoBehaviour:
   <displayName>k__BackingField: Bee
   <unitPrefab>k__BackingField: {fileID: 2664338853412353054, guid: 64086f4c5ed51664f9239dd28dd5ca4c, type: 3}
   <unitInfoTooltipImageSprite>k__BackingField: {fileID: 0}
+  <unitSpawnEffectPrefab>k__BackingField: {fileID: 0}
+  <unitDestroyEffectPrefab>k__BackingField: {fileID: 0}
   <visitorType>k__BackingField: 2
   <happinessAsHealth>k__BackingField: 70
-  <moveSpeed>k__BackingField: 2
+  <moveSpeed>k__BackingField: 2.3
   <appeasementHealAmount>k__BackingField: 0.5
   <dissapointmentDamage>k__BackingField: 0.5
   <isBoss>k__BackingField: 0
