@@ -18,14 +18,14 @@ MonoBehaviour:
   <unitSpawnEffectPrefab>k__BackingField: {fileID: 0}
   <unitDestroyEffectPrefab>k__BackingField: {fileID: 0}
   <visitorType>k__BackingField: 2
-  <happinessAsHealth>k__BackingField: 110
+  <happinessAsHealth>k__BackingField: 700
   <moveSpeed>k__BackingField: 1
-  <appeasementHealAmount>k__BackingField: 0.5
-  <dissapointmentDamage>k__BackingField: 0.5
+  <appeasementHealAmount>k__BackingField: 1.5
+  <dissapointmentDamage>k__BackingField: 1.5
   <isBoss>k__BackingField: 0
   <visitorHitColor>k__BackingField: {r: 1, g: 0.21960784, b: 0.8117647, a: 1}
   <visitorAppeasementTime>k__BackingField: 2.5
   <coinResourceToDrop>k__BackingField: {fileID: 11400000, guid: 7f0c635957a541840b7d3206387c7a84, type: 2}
   <visitorsAppeasedCoinsDrop>k__BackingField: 5
-  <chanceToDropCoins>k__BackingField: 10
-  <chanceToNotDropCoins>k__BackingField: 90
+  <chanceToDropCoins>k__BackingField: 100
+  <chanceToNotDropCoins>k__BackingField: 0
