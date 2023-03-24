@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{fdcb1574-ef20-4a63-9d38-b467e748cd99}">
+		<property name="assetPath">
+			<value>Uprooting.mp3</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>1.0971428571428572</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{161061da-7931-4b7d-a325-e7529be554a0}</destination>
+		</relationship>
+	</object>
+</objects>

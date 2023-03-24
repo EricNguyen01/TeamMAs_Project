@@ -551,8 +551,8 @@ MonoBehaviour:
   switchSettingsMigration: 1
   HasSourceProject: 1
   HasPlatforms: 1
-  sourceProjectPath: ../../../Example/Example.fspro
-  sourceBankPath: ../../../Example/Build
+  sourceProjectPath: ../Example/Example.fspro
+  sourceBankPath: ../Example/Build
   sourceBankPathUnformatted: 
   BankRefreshCooldown: 5
   ShowBankRefreshWindow: 1
