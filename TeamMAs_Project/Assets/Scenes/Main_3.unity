@@ -26008,6 +26008,41 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 992945199}
   m_CullTransparentMesh: 1
+--- !u!1 &996015470 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1339863086565876900, guid: 76c56936b5589c44ca64edd249b2eb3a, type: 3}
+  m_PrefabInstance: {fileID: 1327398326}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &996015473
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 996015470}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -1600340699
+      Data2: 1239286427
+      Data3: 740204470
+      Data4: 2025818666
+    Path: event:/Music
+  Event: 
+  PlayEvent: 1
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1 &1002748423
 GameObject:
   m_ObjectHideFlags: 0
@@ -52793,6 +52828,41 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1841284090}
   m_CullTransparentMesh: 1
+--- !u!1 &1841357267 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1339863086565876900, guid: 76c56936b5589c44ca64edd249b2eb3a, type: 3}
+  m_PrefabInstance: {fileID: 1456546157}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1841357269
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1841357267}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  Event: 
+  PlayEvent: 0
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: -1
+  OverrideMaxDistance: -1
 --- !u!1 &1842071824
 GameObject:
   m_ObjectHideFlags: 0
