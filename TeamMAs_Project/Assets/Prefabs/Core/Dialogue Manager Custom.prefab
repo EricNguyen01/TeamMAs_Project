@@ -13,7 +13,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 125852, guid: 58ac37417e60e534f91138088a3e6f70, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 425660, guid: 58ac37417e60e534f91138088a3e6f70, type: 3}
       propertyPath: m_RootOrder
@@ -84,6 +84,10 @@ PrefabInstance:
       value: SLDKFJSDKLFJSDKLFJSKLDJFSKLJKLSJFDLKSJFSKLFFJLSDFJSDKLFJSKLDKLDJFSDLKFJSJDKLFJSDKLFJSLDKFJSLDFK.
       objectReference: {fileID: 0}
     - target: {fileID: 7170795282184037745, guid: 58ac37417e60e534f91138088a3e6f70, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 2100000, guid: a44a4b378d1061245b38ed3c40303241, type: 3}
+    - target: {fileID: 7170795282184037745, guid: 58ac37417e60e534f91138088a3e6f70, type: 3}
       propertyPath: m_FontData.m_LineSpacing
       value: 1.5
       objectReference: {fileID: 0}
@@ -130,6 +134,14 @@ PrefabInstance:
     - target: {fileID: 7835466489644584494, guid: 58ac37417e60e534f91138088a3e6f70, type: 3}
       propertyPath: m_AnchorMin.x
       value: 0.15272796
+      objectReference: {fileID: 0}
+    - target: {fileID: 8130466967432084197, guid: 58ac37417e60e534f91138088a3e6f70, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 2100000, guid: a44a4b378d1061245b38ed3c40303241, type: 3}
+    - target: {fileID: 8624992686122086818, guid: 58ac37417e60e534f91138088a3e6f70, type: 3}
+      propertyPath: m_Name
+      value: Skip Text
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 58ac37417e60e534f91138088a3e6f70, type: 3}

@@ -358,6 +358,7 @@ GameObject:
   - component: {fileID: 6638241418892682812}
   - component: {fileID: 2520248128343537646}
   - component: {fileID: 7709737242226177160}
+  - component: {fileID: 7990407617178361274}
   m_Layer: 9
   m_Name: Dandy
   m_TagString: Untagged
@@ -423,7 +424,7 @@ SpriteRenderer:
   m_SortingLayerID: -1980168467
   m_SortingLayer: 3
   m_SortingOrder: 5
-  m_Sprite: {fileID: 21300000, guid: 3c0011027be0d1946baabf58741f39e4, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 2b389bc83efd22e41ac6012379063500, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -515,6 +516,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &7990407617178361274
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7198574875345707434}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4459c84b5172c9d4cb0efb251fcec3df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8208601178185689737
 GameObject:
   m_ObjectHideFlags: 0
