@@ -21,6 +21,8 @@ namespace TeamMAsTD
 
         private WaveSO currentWave;
 
+        private Tile tileBeingUsedToDisplayTileMenuTutorialText;
+
         private void Awake()
         {
             if (gridToCheckForFirstPlantPlanted == null || plantMenuClickOnInfoTooltip == null)
@@ -90,6 +92,13 @@ namespace TeamMAsTD
 
                 plantMenuClickOnInfoTooltip.EnableTooltipClickOnReminder(true);
 
+                if(pUnit != null && pUnit.tilePlacedOn != null)
+                {
+                    tileBeingUsedToDisplayTileMenuTutorialText = pUnit.tilePlacedOn;
+
+                    SubToUprootOnTileEventOfTile(tileBeingUsedToDisplayTileMenuTutorialText, true); 
+                }
+
                 StartCoroutine(DisplayTooltipIn(timeToDisplayTutorialTooltip));
 
                 return;
@@ -100,6 +109,11 @@ namespace TeamMAsTD
             plantMenuClickOnInfoTooltip.EnableInfoTooltipImage(false, false);
 
             plantMenuClickOnInfoTooltip.EnableTooltipClickOnReminder(false);
+
+            if (tileBeingUsedToDisplayTileMenuTutorialText != null)
+            { 
+                SubToUprootOnTileEventOfTile(tileBeingUsedToDisplayTileMenuTutorialText, false); 
+            }
         }
 
         private IEnumerator DisplayTooltipIn(float displayTime)
@@ -201,6 +215,20 @@ namespace TeamMAsTD
             EnablePlantMenuClickOnTutorialTooltip(plantsNeedWatering[rand], true);
 
             SubToTileMenuOpenEvent(true);
+        }
+
+        private void SubToUprootOnTileEventOfTile(Tile tile, bool sub)
+        {
+            if(tile == null) return;
+
+            if (sub)
+            {
+                tile.OnPlantUnitUprootedOnTile.AddListener((PlantUnit pUnit, Tile t) => EnablePlantMenuClickOnTutorialTooltip(null, false));
+
+                return;
+            }
+
+            tile.OnPlantUnitUprootedOnTile.RemoveListener((PlantUnit pUnit, Tile t) => EnablePlantMenuClickOnTutorialTooltip(null, false));
         }
     }
 }
