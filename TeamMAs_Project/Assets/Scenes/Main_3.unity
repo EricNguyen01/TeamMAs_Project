@@ -968,6 +968,7 @@ MonoBehaviour:
   OverrideAttenuation: 0
   OverrideMinDistance: 1
   OverrideMaxDistance: 20
+  hasTriggered: 0
 --- !u!114 &15538449
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -998,6 +999,43 @@ MonoBehaviour:
   OverrideAttenuation: 0
   OverrideMinDistance: 1
   OverrideMaxDistance: 20
+  hasTriggered: 0
+--- !u!1 &19579893 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5268446183886847557, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
+  m_PrefabInstance: {fileID: 7663563580318445356}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &19579899
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 19579893}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -55100953
+      Data2: 1318490974
+      Data3: -785644634
+      Data4: -647336184
+    Path: event:/Shop UI Click Sound
+  Event: 
+  PlayEvent: 0
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
+  hasTriggered: 0
 --- !u!1 &23488244
 GameObject:
   m_ObjectHideFlags: 0
@@ -1939,6 +1977,7 @@ MonoBehaviour:
   OverrideAttenuation: 0
   OverrideMinDistance: 1
   OverrideMaxDistance: 20
+  hasTriggered: 0
 --- !u!114 &52810162
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1969,6 +2008,7 @@ MonoBehaviour:
   OverrideAttenuation: 0
   OverrideMinDistance: 1
   OverrideMaxDistance: 20
+  hasTriggered: 0
 --- !u!1 &54894748
 GameObject:
   m_ObjectHideFlags: 0
@@ -2876,6 +2916,42 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 73847979}
   m_CullTransparentMesh: 1
+--- !u!1 &75950588 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8832401155225839074, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
+  m_PrefabInstance: {fileID: 7663563580318445356}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &75950594
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 75950588}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -55100953
+      Data2: 1318490974
+      Data3: -785644634
+      Data4: -647336184
+    Path: event:/Shop UI Click Sound
+  Event: 
+  PlayEvent: 0
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
+  hasTriggered: 0
 --- !u!1 &80206221
 GameObject:
   m_ObjectHideFlags: 0
@@ -3965,6 +4041,7 @@ MonoBehaviour:
   OverrideAttenuation: 0
   OverrideMinDistance: 1
   OverrideMaxDistance: 20
+  hasTriggered: 0
 --- !u!114 &105890057
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3995,6 +4072,7 @@ MonoBehaviour:
   OverrideAttenuation: 0
   OverrideMinDistance: 1
   OverrideMaxDistance: 20
+  hasTriggered: 0
 --- !u!1 &113900457
 GameObject:
   m_ObjectHideFlags: 0
@@ -4833,6 +4911,7 @@ MonoBehaviour:
   OverrideAttenuation: 0
   OverrideMinDistance: 1
   OverrideMaxDistance: 20
+  hasTriggered: 0
 --- !u!114 &121886966
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4863,6 +4942,7 @@ MonoBehaviour:
   OverrideAttenuation: 0
   OverrideMinDistance: 1
   OverrideMaxDistance: 20
+  hasTriggered: 0
 --- !u!1 &134817016
 GameObject:
   m_ObjectHideFlags: 0
@@ -6583,6 +6663,7 @@ MonoBehaviour:
   OverrideAttenuation: 0
   OverrideMinDistance: 1
   OverrideMaxDistance: 20
+  hasTriggered: 0
 --- !u!114 &197177039
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6613,6 +6694,7 @@ MonoBehaviour:
   OverrideAttenuation: 0
   OverrideMinDistance: 1
   OverrideMaxDistance: 20
+  hasTriggered: 0
 --- !u!1 &220711819
 GameObject:
   m_ObjectHideFlags: 0
@@ -9136,6 +9218,7 @@ MonoBehaviour:
   OverrideAttenuation: 0
   OverrideMinDistance: 1
   OverrideMaxDistance: 20
+  hasTriggered: 0
 --- !u!114 &340959701
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9166,6 +9249,7 @@ MonoBehaviour:
   OverrideAttenuation: 0
   OverrideMinDistance: 1
   OverrideMaxDistance: 20
+  hasTriggered: 0
 --- !u!1 &346640569
 GameObject:
   m_ObjectHideFlags: 0
@@ -11563,6 +11647,7 @@ MonoBehaviour:
   OverrideAttenuation: 0
   OverrideMinDistance: 1
   OverrideMaxDistance: 20
+  hasTriggered: 0
 --- !u!114 &456749774
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11593,6 +11678,7 @@ MonoBehaviour:
   OverrideAttenuation: 0
   OverrideMinDistance: 1
   OverrideMaxDistance: 20
+  hasTriggered: 0
 --- !u!1 &465539901
 GameObject:
   m_ObjectHideFlags: 0
@@ -13434,6 +13520,7 @@ MonoBehaviour:
   OverrideAttenuation: 0
   OverrideMinDistance: 1
   OverrideMaxDistance: 20
+  hasTriggered: 0
 --- !u!114 &548260363
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13464,6 +13551,7 @@ MonoBehaviour:
   OverrideAttenuation: 0
   OverrideMinDistance: 1
   OverrideMaxDistance: 20
+  hasTriggered: 0
 --- !u!1 &551824653
 GameObject:
   m_ObjectHideFlags: 0
@@ -13799,6 +13887,7 @@ MonoBehaviour:
   OverrideAttenuation: 0
   OverrideMinDistance: 1
   OverrideMaxDistance: 20
+  hasTriggered: 0
 --- !u!114 &551824665
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13829,6 +13918,7 @@ MonoBehaviour:
   OverrideAttenuation: 0
   OverrideMinDistance: 1
   OverrideMaxDistance: 20
+  hasTriggered: 0
 --- !u!1 &555552359
 GameObject:
   m_ObjectHideFlags: 0
@@ -16066,6 +16156,7 @@ MonoBehaviour:
   OverrideAttenuation: 0
   OverrideMinDistance: 1
   OverrideMaxDistance: 20
+  hasTriggered: 0
 --- !u!114 &686431556
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16096,6 +16187,7 @@ MonoBehaviour:
   OverrideAttenuation: 0
   OverrideMinDistance: 1
   OverrideMaxDistance: 20
+  hasTriggered: 0
 --- !u!1 &688926771
 GameObject:
   m_ObjectHideFlags: 0
@@ -16700,6 +16792,7 @@ MonoBehaviour:
   OverrideAttenuation: 0
   OverrideMinDistance: 1
   OverrideMaxDistance: 20
+  hasTriggered: 0
 --- !u!114 &696377671
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16730,6 +16823,7 @@ MonoBehaviour:
   OverrideAttenuation: 0
   OverrideMinDistance: 1
   OverrideMaxDistance: 20
+  hasTriggered: 0
 --- !u!1 &698404528
 GameObject:
   m_ObjectHideFlags: 0
@@ -17727,6 +17821,7 @@ MonoBehaviour:
   OverrideAttenuation: 0
   OverrideMinDistance: 1
   OverrideMaxDistance: 20
+  hasTriggered: 0
 --- !u!114 &712307776
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17757,6 +17852,7 @@ MonoBehaviour:
   OverrideAttenuation: 0
   OverrideMinDistance: 1
   OverrideMaxDistance: 20
+  hasTriggered: 0
 --- !u!1 &723177472
 GameObject:
   m_ObjectHideFlags: 0
@@ -19478,6 +19574,7 @@ MonoBehaviour:
   OverrideAttenuation: 0
   OverrideMinDistance: 1
   OverrideMaxDistance: 20
+  hasTriggered: 0
 --- !u!114 &782636150
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19508,6 +19605,7 @@ MonoBehaviour:
   OverrideAttenuation: 0
   OverrideMinDistance: 1
   OverrideMaxDistance: 20
+  hasTriggered: 0
 --- !u!1 &788192996
 GameObject:
   m_ObjectHideFlags: 0
@@ -21323,6 +21421,7 @@ MonoBehaviour:
   OverrideAttenuation: 0
   OverrideMinDistance: 1
   OverrideMaxDistance: 20
+  hasTriggered: 0
 --- !u!114 &840555222
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21353,6 +21452,7 @@ MonoBehaviour:
   OverrideAttenuation: 0
   OverrideMinDistance: 1
   OverrideMaxDistance: 20
+  hasTriggered: 0
 --- !u!1 &844561762
 GameObject:
   m_ObjectHideFlags: 0
@@ -21846,6 +21946,7 @@ MonoBehaviour:
   OverrideAttenuation: 0
   OverrideMinDistance: 1
   OverrideMaxDistance: 20
+  hasTriggered: 0
 --- !u!114 &845359708
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21876,6 +21977,7 @@ MonoBehaviour:
   OverrideAttenuation: 0
   OverrideMinDistance: 1
   OverrideMaxDistance: 20
+  hasTriggered: 0
 --- !u!1 &847559294
 GameObject:
   m_ObjectHideFlags: 0
@@ -25552,6 +25654,7 @@ MonoBehaviour:
   OverrideAttenuation: 0
   OverrideMinDistance: 1
   OverrideMaxDistance: 20
+  hasTriggered: 0
 --- !u!114 &979564359
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25582,6 +25685,7 @@ MonoBehaviour:
   OverrideAttenuation: 0
   OverrideMinDistance: 1
   OverrideMaxDistance: 20
+  hasTriggered: 0
 --- !u!1 &985429095
 GameObject:
   m_ObjectHideFlags: 0
@@ -26043,6 +26147,7 @@ MonoBehaviour:
   OverrideAttenuation: 0
   OverrideMinDistance: 1
   OverrideMaxDistance: 20
+  hasTriggered: 0
 --- !u!1 &1002748423
 GameObject:
   m_ObjectHideFlags: 0
@@ -26378,6 +26483,7 @@ MonoBehaviour:
   OverrideAttenuation: 0
   OverrideMinDistance: 1
   OverrideMaxDistance: 20
+  hasTriggered: 0
 --- !u!114 &1002748435
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26408,6 +26514,7 @@ MonoBehaviour:
   OverrideAttenuation: 0
   OverrideMinDistance: 1
   OverrideMaxDistance: 20
+  hasTriggered: 0
 --- !u!1 &1003339634
 GameObject:
   m_ObjectHideFlags: 0
@@ -26819,6 +26926,7 @@ MonoBehaviour:
   OverrideAttenuation: 0
   OverrideMinDistance: 1
   OverrideMaxDistance: 20
+  hasTriggered: 0
 --- !u!114 &1004615132
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26849,6 +26957,7 @@ MonoBehaviour:
   OverrideAttenuation: 0
   OverrideMinDistance: 1
   OverrideMaxDistance: 20
+  hasTriggered: 0
 --- !u!1 &1004875310
 GameObject:
   m_ObjectHideFlags: 0
@@ -28626,6 +28735,7 @@ MonoBehaviour:
   OverrideAttenuation: 0
   OverrideMinDistance: 1
   OverrideMaxDistance: 20
+  hasTriggered: 0
 --- !u!114 &1079170329
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28656,6 +28766,7 @@ MonoBehaviour:
   OverrideAttenuation: 0
   OverrideMinDistance: 1
   OverrideMaxDistance: 20
+  hasTriggered: 0
 --- !u!1 &1085465629
 GameObject:
   m_ObjectHideFlags: 0
@@ -29578,6 +29689,7 @@ MonoBehaviour:
   OverrideAttenuation: 0
   OverrideMinDistance: 1
   OverrideMaxDistance: 20
+  hasTriggered: 0
 --- !u!114 &1107879456
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29608,6 +29720,7 @@ MonoBehaviour:
   OverrideAttenuation: 0
   OverrideMinDistance: 1
   OverrideMaxDistance: 20
+  hasTriggered: 0
 --- !u!1 &1108540433
 GameObject:
   m_ObjectHideFlags: 0
@@ -30152,6 +30265,42 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_HorizontalFit: 0
   m_VerticalFit: 0
+--- !u!1 &1143017985 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8832401154026542292, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
+  m_PrefabInstance: {fileID: 7663563580318445356}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1143017991
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1143017985}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -55100953
+      Data2: 1318490974
+      Data3: -785644634
+      Data4: -647336184
+    Path: event:/Shop UI Click Sound
+  Event: 
+  PlayEvent: 0
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
+  hasTriggered: 0
 --- !u!1 &1155804720
 GameObject:
   m_ObjectHideFlags: 0
@@ -30487,6 +30636,7 @@ MonoBehaviour:
   OverrideAttenuation: 0
   OverrideMinDistance: 1
   OverrideMaxDistance: 20
+  hasTriggered: 0
 --- !u!114 &1155804732
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30517,6 +30667,7 @@ MonoBehaviour:
   OverrideAttenuation: 0
   OverrideMinDistance: 1
   OverrideMaxDistance: 20
+  hasTriggered: 0
 --- !u!1 &1157752894
 GameObject:
   m_ObjectHideFlags: 0
@@ -30987,6 +31138,7 @@ MonoBehaviour:
   OverrideAttenuation: 0
   OverrideMinDistance: 1
   OverrideMaxDistance: 20
+  hasTriggered: 0
 --- !u!114 &1158758398
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -31017,6 +31169,7 @@ MonoBehaviour:
   OverrideAttenuation: 0
   OverrideMinDistance: 1
   OverrideMaxDistance: 20
+  hasTriggered: 0
 --- !u!1 &1170025894
 GameObject:
   m_ObjectHideFlags: 0
@@ -33008,6 +33161,7 @@ MonoBehaviour:
   OverrideAttenuation: 0
   OverrideMinDistance: 1
   OverrideMaxDistance: 20
+  hasTriggered: 0
 --- !u!114 &1232097734
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -33038,6 +33192,7 @@ MonoBehaviour:
   OverrideAttenuation: 0
   OverrideMinDistance: 1
   OverrideMaxDistance: 20
+  hasTriggered: 0
 --- !u!1 &1232348854
 GameObject:
   m_ObjectHideFlags: 0
@@ -33373,6 +33528,7 @@ MonoBehaviour:
   OverrideAttenuation: 0
   OverrideMinDistance: 1
   OverrideMaxDistance: 20
+  hasTriggered: 0
 --- !u!114 &1232348866
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -33403,6 +33559,7 @@ MonoBehaviour:
   OverrideAttenuation: 0
   OverrideMinDistance: 1
   OverrideMaxDistance: 20
+  hasTriggered: 0
 --- !u!1 &1235364935
 GameObject:
   m_ObjectHideFlags: 0
@@ -34351,6 +34508,7 @@ MonoBehaviour:
   OverrideAttenuation: 0
   OverrideMinDistance: 1
   OverrideMaxDistance: 20
+  hasTriggered: 0
 --- !u!114 &1277552505
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -34381,6 +34539,7 @@ MonoBehaviour:
   OverrideAttenuation: 0
   OverrideMinDistance: 1
   OverrideMaxDistance: 20
+  hasTriggered: 0
 --- !u!1 &1278504222
 GameObject:
   m_ObjectHideFlags: 0
@@ -35351,6 +35510,42 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1305490530}
   m_CullTransparentMesh: 1
+--- !u!1 &1307368199 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8832401153954520554, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
+  m_PrefabInstance: {fileID: 7663563580318445356}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1307368205
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1307368199}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -55100953
+      Data2: 1318490974
+      Data3: -785644634
+      Data4: -647336184
+    Path: event:/Shop UI Click Sound
+  Event: 
+  PlayEvent: 0
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
+  hasTriggered: 0
 --- !u!1 &1308701749
 GameObject:
   m_ObjectHideFlags: 0
@@ -37121,6 +37316,7 @@ MonoBehaviour:
   OverrideAttenuation: 0
   OverrideMinDistance: 1
   OverrideMaxDistance: 20
+  hasTriggered: 0
 --- !u!114 &1368556770
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -37151,6 +37347,7 @@ MonoBehaviour:
   OverrideAttenuation: 0
   OverrideMinDistance: 1
   OverrideMaxDistance: 20
+  hasTriggered: 0
 --- !u!1 &1374290633
 GameObject:
   m_ObjectHideFlags: 0
@@ -38174,6 +38371,7 @@ MonoBehaviour:
   OverrideAttenuation: 0
   OverrideMinDistance: 1
   OverrideMaxDistance: 20
+  hasTriggered: 0
 --- !u!114 &1398176870
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -38204,6 +38402,7 @@ MonoBehaviour:
   OverrideAttenuation: 0
   OverrideMinDistance: 1
   OverrideMaxDistance: 20
+  hasTriggered: 0
 --- !u!1 &1403728134
 GameObject:
   m_ObjectHideFlags: 0
@@ -39161,6 +39360,7 @@ MonoBehaviour:
   OverrideAttenuation: 0
   OverrideMinDistance: 1
   OverrideMaxDistance: 20
+  hasTriggered: 0
 --- !u!114 &1435873247
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -39191,6 +39391,7 @@ MonoBehaviour:
   OverrideAttenuation: 0
   OverrideMinDistance: 1
   OverrideMaxDistance: 20
+  hasTriggered: 0
 --- !u!1 &1440447949
 GameObject:
   m_ObjectHideFlags: 0
@@ -39737,6 +39938,7 @@ MonoBehaviour:
   OverrideAttenuation: 0
   OverrideMinDistance: 1
   OverrideMaxDistance: 20
+  hasTriggered: 0
 --- !u!114 &1444773950
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -39767,6 +39969,7 @@ MonoBehaviour:
   OverrideAttenuation: 0
   OverrideMinDistance: 1
   OverrideMaxDistance: 20
+  hasTriggered: 0
 --- !u!1 &1445330509
 GameObject:
   m_ObjectHideFlags: 0
@@ -40102,6 +40305,7 @@ MonoBehaviour:
   OverrideAttenuation: 0
   OverrideMinDistance: 1
   OverrideMaxDistance: 20
+  hasTriggered: 0
 --- !u!114 &1445330521
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -40132,6 +40336,7 @@ MonoBehaviour:
   OverrideAttenuation: 0
   OverrideMinDistance: 1
   OverrideMaxDistance: 20
+  hasTriggered: 0
 --- !u!1 &1446342738
 GameObject:
   m_ObjectHideFlags: 0
@@ -41840,6 +42045,7 @@ MonoBehaviour:
   OverrideAttenuation: 0
   OverrideMinDistance: 1
   OverrideMaxDistance: 20
+  hasTriggered: 0
 --- !u!114 &1491814710
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -41870,6 +42076,7 @@ MonoBehaviour:
   OverrideAttenuation: 0
   OverrideMinDistance: 1
   OverrideMaxDistance: 20
+  hasTriggered: 0
 --- !u!1 &1492716641
 GameObject:
   m_ObjectHideFlags: 0
@@ -43256,6 +43463,7 @@ MonoBehaviour:
   OverrideAttenuation: 0
   OverrideMinDistance: 1
   OverrideMaxDistance: 20
+  hasTriggered: 0
 --- !u!114 &1528747913
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -43286,6 +43494,7 @@ MonoBehaviour:
   OverrideAttenuation: 0
   OverrideMinDistance: 1
   OverrideMaxDistance: 20
+  hasTriggered: 0
 --- !u!1 &1538477355
 GameObject:
   m_ObjectHideFlags: 0
@@ -43621,6 +43830,7 @@ MonoBehaviour:
   OverrideAttenuation: 0
   OverrideMinDistance: 1
   OverrideMaxDistance: 20
+  hasTriggered: 0
 --- !u!114 &1538477367
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -43651,6 +43861,7 @@ MonoBehaviour:
   OverrideAttenuation: 0
   OverrideMinDistance: 1
   OverrideMaxDistance: 20
+  hasTriggered: 0
 --- !u!1 &1543845639
 GameObject:
   m_ObjectHideFlags: 0
@@ -44235,6 +44446,7 @@ MonoBehaviour:
   OverrideAttenuation: 0
   OverrideMinDistance: 1
   OverrideMaxDistance: 20
+  hasTriggered: 0
 --- !u!114 &1554078856
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -44265,6 +44477,7 @@ MonoBehaviour:
   OverrideAttenuation: 0
   OverrideMinDistance: 1
   OverrideMaxDistance: 20
+  hasTriggered: 0
 --- !u!1 &1560932786
 GameObject:
   m_ObjectHideFlags: 0
@@ -44600,6 +44813,7 @@ MonoBehaviour:
   OverrideAttenuation: 0
   OverrideMinDistance: 1
   OverrideMaxDistance: 20
+  hasTriggered: 0
 --- !u!114 &1560932798
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -44630,6 +44844,7 @@ MonoBehaviour:
   OverrideAttenuation: 0
   OverrideMinDistance: 1
   OverrideMaxDistance: 20
+  hasTriggered: 0
 --- !u!1 &1569035813
 GameObject:
   m_ObjectHideFlags: 0
@@ -45903,6 +46118,7 @@ MonoBehaviour:
   OverrideAttenuation: 0
   OverrideMinDistance: 1
   OverrideMaxDistance: 20
+  hasTriggered: 0
 --- !u!114 &1616826391
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -45933,6 +46149,7 @@ MonoBehaviour:
   OverrideAttenuation: 0
   OverrideMinDistance: 1
   OverrideMaxDistance: 20
+  hasTriggered: 0
 --- !u!1 &1618264019
 GameObject:
   m_ObjectHideFlags: 0
@@ -46836,6 +47053,7 @@ MonoBehaviour:
   OverrideAttenuation: 0
   OverrideMinDistance: 1
   OverrideMaxDistance: 20
+  hasTriggered: 0
 --- !u!114 &1640197446
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -46866,6 +47084,7 @@ MonoBehaviour:
   OverrideAttenuation: 0
   OverrideMinDistance: 1
   OverrideMaxDistance: 20
+  hasTriggered: 0
 --- !u!1 &1653593164
 GameObject:
   m_ObjectHideFlags: 0
@@ -47752,6 +47971,7 @@ MonoBehaviour:
   OverrideAttenuation: 0
   OverrideMinDistance: 1
   OverrideMaxDistance: 20
+  hasTriggered: 0
 --- !u!114 &1675363189
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -47782,6 +48002,7 @@ MonoBehaviour:
   OverrideAttenuation: 0
   OverrideMinDistance: 1
   OverrideMaxDistance: 20
+  hasTriggered: 0
 --- !u!1 &1676662823
 GameObject:
   m_ObjectHideFlags: 0
@@ -48596,6 +48817,7 @@ MonoBehaviour:
   OverrideAttenuation: 0
   OverrideMinDistance: 1
   OverrideMaxDistance: 20
+  hasTriggered: 0
 --- !u!114 &1705588434
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -48626,6 +48848,7 @@ MonoBehaviour:
   OverrideAttenuation: 0
   OverrideMinDistance: 1
   OverrideMaxDistance: 20
+  hasTriggered: 0
 --- !u!1 &1707687505
 GameObject:
   m_ObjectHideFlags: 0
@@ -49428,6 +49651,7 @@ MonoBehaviour:
   OverrideAttenuation: 0
   OverrideMinDistance: 1
   OverrideMaxDistance: 20
+  hasTriggered: 0
 --- !u!114 &1727865225
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -49458,6 +49682,7 @@ MonoBehaviour:
   OverrideAttenuation: 0
   OverrideMinDistance: 1
   OverrideMaxDistance: 20
+  hasTriggered: 0
 --- !u!1 &1731786264
 GameObject:
   m_ObjectHideFlags: 0
@@ -49618,6 +49843,42 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_HorizontalFit: 0
   m_VerticalFit: 0
+--- !u!1 &1737587816 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8832401154024209713, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
+  m_PrefabInstance: {fileID: 7663563580318445356}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1737587822
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1737587816}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -55100953
+      Data2: 1318490974
+      Data3: -785644634
+      Data4: -647336184
+    Path: event:/Shop UI Click Sound
+  Event: 
+  PlayEvent: 0
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
+  hasTriggered: 0
 --- !u!1 &1744862628
 GameObject:
   m_ObjectHideFlags: 0
@@ -50191,6 +50452,7 @@ MonoBehaviour:
   OverrideAttenuation: 0
   OverrideMinDistance: 1
   OverrideMaxDistance: 20
+  hasTriggered: 0
 --- !u!114 &1747731299
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -50221,6 +50483,7 @@ MonoBehaviour:
   OverrideAttenuation: 0
   OverrideMinDistance: 1
   OverrideMaxDistance: 20
+  hasTriggered: 0
 --- !u!1 &1749422704
 GameObject:
   m_ObjectHideFlags: 0
@@ -52848,21 +53111,22 @@ MonoBehaviour:
   CollisionTag: 
   EventReference:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: -1600340699
+      Data2: 1239286427
+      Data3: 740204470
+      Data4: 2025818666
+    Path: event:/Music
   Event: 
-  PlayEvent: 0
+  PlayEvent: 1
   StopEvent: 0
   AllowFadeout: 1
   TriggerOnce: 0
   Preload: 0
   Params: []
   OverrideAttenuation: 0
-  OverrideMinDistance: -1
-  OverrideMaxDistance: -1
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
+  hasTriggered: 0
 --- !u!1 &1842071824
 GameObject:
   m_ObjectHideFlags: 0
@@ -54341,6 +54605,7 @@ MonoBehaviour:
   OverrideAttenuation: 0
   OverrideMinDistance: 1
   OverrideMaxDistance: 20
+  hasTriggered: 0
 --- !u!114 &1899135439
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -54371,6 +54636,7 @@ MonoBehaviour:
   OverrideAttenuation: 0
   OverrideMinDistance: 1
   OverrideMaxDistance: 20
+  hasTriggered: 0
 --- !u!1 &1903661666
 GameObject:
   m_ObjectHideFlags: 0
@@ -56102,6 +56368,7 @@ MonoBehaviour:
   OverrideAttenuation: 0
   OverrideMinDistance: 1
   OverrideMaxDistance: 20
+  hasTriggered: 0
 --- !u!114 &1933233879
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -56132,6 +56399,7 @@ MonoBehaviour:
   OverrideAttenuation: 0
   OverrideMinDistance: 1
   OverrideMaxDistance: 20
+  hasTriggered: 0
 --- !u!1 &1938755178
 GameObject:
   m_ObjectHideFlags: 0
@@ -57884,6 +58152,7 @@ MonoBehaviour:
   OverrideAttenuation: 0
   OverrideMinDistance: 1
   OverrideMaxDistance: 20
+  hasTriggered: 0
 --- !u!114 &2005115272
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -57914,6 +58183,7 @@ MonoBehaviour:
   OverrideAttenuation: 0
   OverrideMinDistance: 1
   OverrideMaxDistance: 20
+  hasTriggered: 0
 --- !u!1 &2007624475
 GameObject:
   m_ObjectHideFlags: 0
@@ -59544,6 +59814,7 @@ MonoBehaviour:
   OverrideAttenuation: 0
   OverrideMinDistance: 1
   OverrideMaxDistance: 20
+  hasTriggered: 0
 --- !u!114 &2059737630
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -59574,6 +59845,7 @@ MonoBehaviour:
   OverrideAttenuation: 0
   OverrideMinDistance: 1
   OverrideMaxDistance: 20
+  hasTriggered: 0
 --- !u!1 &2063210966
 GameObject:
   m_ObjectHideFlags: 0
@@ -60043,6 +60315,7 @@ MonoBehaviour:
   OverrideAttenuation: 0
   OverrideMinDistance: 1
   OverrideMaxDistance: 20
+  hasTriggered: 0
 --- !u!114 &2065378687
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -60073,6 +60346,7 @@ MonoBehaviour:
   OverrideAttenuation: 0
   OverrideMinDistance: 1
   OverrideMaxDistance: 20
+  hasTriggered: 0
 --- !u!1 &2067161439
 GameObject:
   m_ObjectHideFlags: 0
@@ -60623,6 +60897,7 @@ MonoBehaviour:
   OverrideAttenuation: 0
   OverrideMinDistance: 1
   OverrideMaxDistance: 20
+  hasTriggered: 0
 --- !u!114 &2070348985
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -60653,6 +60928,7 @@ MonoBehaviour:
   OverrideAttenuation: 0
   OverrideMinDistance: 1
   OverrideMaxDistance: 20
+  hasTriggered: 0
 --- !u!1 &2074125372
 GameObject:
   m_ObjectHideFlags: 0
@@ -61519,6 +61795,7 @@ MonoBehaviour:
   OverrideAttenuation: 0
   OverrideMinDistance: 1
   OverrideMaxDistance: 20
+  hasTriggered: 0
 --- !u!114 &2103963354
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -61549,6 +61826,7 @@ MonoBehaviour:
   OverrideAttenuation: 0
   OverrideMinDistance: 1
   OverrideMaxDistance: 20
+  hasTriggered: 0
 --- !u!1 &2118044403
 GameObject:
   m_ObjectHideFlags: 0
@@ -61884,6 +62162,7 @@ MonoBehaviour:
   OverrideAttenuation: 0
   OverrideMinDistance: 1
   OverrideMaxDistance: 20
+  hasTriggered: 0
 --- !u!114 &2118044415
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -61914,6 +62193,7 @@ MonoBehaviour:
   OverrideAttenuation: 0
   OverrideMinDistance: 1
   OverrideMaxDistance: 20
+  hasTriggered: 0
 --- !u!1 &2122486471
 GameObject:
   m_ObjectHideFlags: 0
@@ -62721,6 +63001,7 @@ MonoBehaviour:
   OverrideAttenuation: 0
   OverrideMinDistance: 1
   OverrideMaxDistance: 20
+  hasTriggered: 0
 --- !u!114 &2133675657
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -62751,6 +63032,7 @@ MonoBehaviour:
   OverrideAttenuation: 0
   OverrideMinDistance: 1
   OverrideMaxDistance: 20
+  hasTriggered: 0
 --- !u!1 &2134226320
 GameObject:
   m_ObjectHideFlags: 0
@@ -64134,6 +64416,102 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1546197182162329650, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
+      propertyPath: OnStartedDragging.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1546197182162329650, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
+      propertyPath: OnStartedDragging.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1737587822}
+    - target: {fileID: 1546197182162329650, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
+      propertyPath: OnStartedDragging.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Play
+      objectReference: {fileID: 0}
+    - target: {fileID: 1546197182162329650, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
+      propertyPath: OnStartedDragging.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: FMODUnity.StudioEventEmitter, FMODUnity
+      objectReference: {fileID: 0}
+    - target: {fileID: 1546197182162329650, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
+      propertyPath: OnStartedDragging.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1546197182162329650, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
+      propertyPath: OnStartedDragging.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 1546197182164666839, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
+      propertyPath: OnStartedDragging.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1546197182164666839, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
+      propertyPath: OnStartedDragging.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1737587822}
+    - target: {fileID: 1546197182164666839, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
+      propertyPath: OnStartedDragging.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Play
+      objectReference: {fileID: 0}
+    - target: {fileID: 1546197182164666839, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
+      propertyPath: OnStartedDragging.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: FMODUnity.StudioEventEmitter, FMODUnity
+      objectReference: {fileID: 0}
+    - target: {fileID: 1546197182164666839, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
+      propertyPath: OnStartedDragging.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1546197182164666839, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
+      propertyPath: OnStartedDragging.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 1546197182625317097, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
+      propertyPath: OnStartedDragging.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1546197182625317097, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
+      propertyPath: OnStartedDragging.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1737587822}
+    - target: {fileID: 1546197182625317097, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
+      propertyPath: OnStartedDragging.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Play
+      objectReference: {fileID: 0}
+    - target: {fileID: 1546197182625317097, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
+      propertyPath: OnStartedDragging.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: FMODUnity.StudioEventEmitter, FMODUnity
+      objectReference: {fileID: 0}
+    - target: {fileID: 1546197182625317097, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
+      propertyPath: OnStartedDragging.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1546197182625317097, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
+      propertyPath: OnStartedDragging.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 1546197183359776993, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
+      propertyPath: OnStartedDragging.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1546197183359776993, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
+      propertyPath: OnStartedDragging.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1737587822}
+    - target: {fileID: 1546197183359776993, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
+      propertyPath: OnStartedDragging.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Play
+      objectReference: {fileID: 0}
+    - target: {fileID: 1546197183359776993, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
+      propertyPath: OnStartedDragging.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: FMODUnity.StudioEventEmitter, FMODUnity
+      objectReference: {fileID: 0}
+    - target: {fileID: 1546197183359776993, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
+      propertyPath: OnStartedDragging.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1546197183359776993, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
+      propertyPath: OnStartedDragging.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 1787284736203990429, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -64157,6 +64535,30 @@ PrefabInstance:
     - target: {fileID: 2205673638908027520, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
       propertyPath: m_AnchorMin.y
       value: 0.024569044
+      objectReference: {fileID: 0}
+    - target: {fileID: 2808711028541776710, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
+      propertyPath: OnStartedDragging.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2808711028541776710, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
+      propertyPath: OnStartedDragging.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1737587822}
+    - target: {fileID: 2808711028541776710, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
+      propertyPath: OnStartedDragging.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Play
+      objectReference: {fileID: 0}
+    - target: {fileID: 2808711028541776710, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
+      propertyPath: OnStartedDragging.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: FMODUnity.StudioEventEmitter, FMODUnity
+      objectReference: {fileID: 0}
+    - target: {fileID: 2808711028541776710, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
+      propertyPath: OnStartedDragging.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2808711028541776710, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
+      propertyPath: OnStartedDragging.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 3272228352036030504, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
       propertyPath: gameResourceUIStatPopupSpawner
@@ -64289,6 +64691,10 @@ PrefabInstance:
     - target: {fileID: 7663563579968728999, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
       propertyPath: m_AnchorMin.y
       value: 0.08209975
+      objectReference: {fileID: 0}
+    - target: {fileID: 7663563579968728999, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.16003418
       objectReference: {fileID: 0}
     - target: {fileID: 7663563580509064064, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
       propertyPath: m_AnchorMax.x
