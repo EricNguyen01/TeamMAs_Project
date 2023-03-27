@@ -15,5 +15,5 @@ MonoBehaviour:
   <resourceName>k__BackingField: HumanEmotionalHealth
   initialResourceAmountMin: 0
   initialResourceAmount: 25
-  initialResourceAmountCap: 110
+  initialResourceAmountCap: 112
   <visitorTypeAffectingThisHealth>k__BackingField: 1
