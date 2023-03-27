@@ -15,11 +15,13 @@ MonoBehaviour:
   <displayName>k__BackingField: Kid
   <unitPrefab>k__BackingField: {fileID: 2664338853412353054, guid: ce5b50caa9719704ca8565ddba7f8051, type: 3}
   <unitInfoTooltipImageSprite>k__BackingField: {fileID: 0}
+  <unitSpawnEffectPrefab>k__BackingField: {fileID: 0}
+  <unitDestroyEffectPrefab>k__BackingField: {fileID: 0}
   <visitorType>k__BackingField: 1
   <happinessAsHealth>k__BackingField: 60
   <moveSpeed>k__BackingField: 1
-  <appeasementHealAmount>k__BackingField: 0.5
-  <dissapointmentDamage>k__BackingField: 0.5
+  <appeasementHealAmount>k__BackingField: 0.25
+  <dissapointmentDamage>k__BackingField: 0.25
   <isBoss>k__BackingField: 0
   <visitorHitColor>k__BackingField: {r: 1, g: 0.21960784, b: 0.8117647, a: 1}
   <visitorAppeasementTime>k__BackingField: 2.5
