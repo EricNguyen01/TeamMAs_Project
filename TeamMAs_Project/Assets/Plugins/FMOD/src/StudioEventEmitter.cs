@@ -27,7 +27,7 @@ namespace FMODUnity
 
         protected FMOD.Studio.EventInstance instance;
 
-        private bool hasTriggered = false;
+        public bool hasTriggered = false;
         private bool isQuitting = false;
         private bool isOneshot = false;
         private List<ParamRef> cachedParams = new List<ParamRef>();
