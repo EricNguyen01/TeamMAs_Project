@@ -64,6 +64,9 @@
 		</relationship>
 	</object>
 	<object class="EventMixerMaster" id="{1c78ef2a-febf-42a1-a75f-5278069a5e9c}">
+		<property name="volume">
+			<value>-8.5</value>
+		</property>
 		<relationship name="effectChain">
 			<destination>{cbabe336-e11c-4e1d-bd60-f21ece792b2b}</destination>
 		</relationship>
@@ -80,6 +83,12 @@
 		</property>
 		<property name="pitch">
 			<value>-0.200000003</value>
+		</property>
+		<property name="looping">
+			<value>true</value>
+		</property>
+		<property name="playCount">
+			<value>20</value>
 		</property>
 		<relationship name="audioFile">
 			<destination>{9be27d2c-8529-476a-ac40-eb8516f196ab}</destination>
