@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
-using FMODUnity;
-using FMOD.Studio;
 
 #if UNITY_EDITOR
 using UnityEditor;
@@ -14,6 +12,7 @@ namespace TeamMAsTD
 {
 #if UNITY_EDITOR
     [CanEditMultipleObjects]
+    [ExecuteInEditMode]
 #endif
     [DisallowMultipleComponent]
     [RequireComponent(typeof(TileMenuAndUprootOnTileUI))]
@@ -67,7 +66,7 @@ namespace TeamMAsTD
 
         public TileGlow tileGlowComp { get; private set; }
 
-        public StudioEventEmitter uprootAudioEventEmitterFMOD { get; private set; }
+        public FMODUnity.StudioEventEmitter uprootAudioEventEmitterFMOD { get; private set; }
 
         //PRIVATES......................................................................
 
@@ -110,7 +109,8 @@ namespace TeamMAsTD
                 thisTileInsufficientFundToPlantStatPopup = statPopupSpawnerGO.GetComponent<StatPopupSpawner>();
             }
 
-            foreach(StudioEventEmitter fmodEventEmitter in GetComponents<StudioEventEmitter>())
+#if UNITY_EDITOR
+            foreach(FMODUnity.StudioEventEmitter fmodEventEmitter in GetComponents<FMODUnity.StudioEventEmitter>())
             {
                 if (fmodEventEmitter.EventReference.Path.Contains("Uproot"))
                 {
@@ -119,6 +119,7 @@ namespace TeamMAsTD
                     break;
                 }
             }
+#endif
         }
 
 #if UNITY_EDITOR
@@ -299,7 +300,7 @@ namespace TeamMAsTD
 
             if (plantUnitSO.unitPrefab == null)
             {
-                Debug.LogError("A plant unit: " + plantUnitSO.displayName + "is being planted on tile: " + name +
+                UnityEngine.Debug.LogError("A plant unit: " + plantUnitSO.displayName + "is being planted on tile: " + name +
                 " without a unit prefab data assigned in the unit scriptable object! Unit placement failed!");
                 return false;
             }
@@ -312,7 +313,7 @@ namespace TeamMAsTD
 
             if (unit == null)
             {
-                Debug.LogError("A plant unit prefab is placed on tile: " + name + " but it has no PlantUnit script attached." +
+                UnityEngine.Debug.LogError("A plant unit prefab is placed on tile: " + name + " but it has no PlantUnit script attached." +
                 "This results in no plant unit being placed!");
 
                 Destroy(unitObj);
@@ -330,7 +331,7 @@ namespace TeamMAsTD
             //coin cost on plant unit planted successful
             if (GameResource.gameResourceInstance == null || GameResource.gameResourceInstance.coinResourceSO == null)
             {
-                Debug.LogError("GameResource Instance with Coin Resource is missing in scene! Planting coins cost won't function!");
+                UnityEngine.Debug.LogError("GameResource Instance with Coin Resource is missing in scene! Planting coins cost won't function!");
             }
             else GameResource.gameResourceInstance.coinResourceSO.RemoveResourceAmount(plantUnitOnTile.plantUnitScriptableObject.plantingCoinCost);
 
