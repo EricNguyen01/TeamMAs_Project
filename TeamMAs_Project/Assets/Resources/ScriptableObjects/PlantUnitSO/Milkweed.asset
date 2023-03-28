@@ -20,7 +20,7 @@ MonoBehaviour:
   <unitID>k__BackingField: 69d9c241-135e-4441-b140-0999d6186126
   <unitDescription>k__BackingField: 
   <unitThumbnail>k__BackingField: {fileID: 21300000, guid: 0ad3ea48a480695469c0c8e452ec4746, type: 3}
-  <plantProjectileSO>k__BackingField: {fileID: 11400000, guid: 4970a3adbb1f09342944a3652baaae08, type: 2}
+  <plantProjectileSO>k__BackingField: {fileID: 11400000, guid: 291d9dbae02f55a438a6f583c63550bc, type: 2}
   <waterBars>k__BackingField: 4
   <wavesSurviveWithoutWater>k__BackingField: 0
   <damage>k__BackingField: 60
@@ -36,12 +36,12 @@ MonoBehaviour:
   plantTargetsSpecifically: 0
   <plantingCoinCost>k__BackingField: 18
   <uprootRefundAmount>k__BackingField: 0
-  <uprootCost>k__BackingField: 0
+  <uprootCost>k__BackingField: 5
   <uprootHealthCost>k__BackingField: 0
   <waterUse>k__BackingField: 3
   <waterBarsRefilledPerWatering>k__BackingField: 1
   <wateringCoinsCost>k__BackingField: 1
   <canPurchasePlant>k__BackingField: 1
   <plantPurchaseLockOnStart>k__BackingField: 1
-  <waveToUnlockPlantPurchaseOnWaveFinished>k__BackingField: {fileID: 11400000, guid: 4e57d45113429cd4297df5fad99bebe1, type: 2}
+  <waveToUnlockPlantPurchaseOnWaveFinished>k__BackingField: {fileID: 11400000, guid: a9c9424915cdef84483821f838f0897c, type: 2}
   <waveToUnlockPlantPurchaseOnWaveStarted>k__BackingField: {fileID: 0}

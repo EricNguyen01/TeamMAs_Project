@@ -19008,6 +19008,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 227679380, guid: d1cdca22ec4708540aa68019e182a7d8, type: 3}
+      propertyPath: conversationNum
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 8732644743540076669, guid: d1cdca22ec4708540aa68019e182a7d8, type: 3}
       propertyPath: m_RootOrder
       value: 6
