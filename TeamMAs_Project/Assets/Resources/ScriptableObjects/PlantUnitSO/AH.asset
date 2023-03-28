@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <displayName>k__BackingField: Hyssop
   <unitPrefab>k__BackingField: {fileID: 2090201727753816829, guid: 7413616505f05f64fa85280265c954c2, type: 3}
-  <unitInfoTooltipImageSprite>k__BackingField: {fileID: 0}
+  <unitInfoTooltipImageSprite>k__BackingField: {fileID: 21300000, guid: e503763cb87aece41bb4baf577d0afc4, type: 3}
   <unitSpawnEffectPrefab>k__BackingField: {fileID: 1355123197302658146, guid: f4f8b7672c4ecb146b287056f2e31299, type: 3}
   <unitDestroyEffectPrefab>k__BackingField: {fileID: 1355123197302658146, guid: f4f8b7672c4ecb146b287056f2e31299, type: 3}
   <unitID>k__BackingField: 651ab286-029d-44dc-8d57-fef73369dd06

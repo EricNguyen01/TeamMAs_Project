@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <displayName>k__BackingField: Ryegrass
   <unitPrefab>k__BackingField: {fileID: 7428981930192502170, guid: d4b98eb2b04cf42468f355c48bdcc27c, type: 3}
-  <unitInfoTooltipImageSprite>k__BackingField: {fileID: 0}
+  <unitInfoTooltipImageSprite>k__BackingField: {fileID: 21300000, guid: 6762874d0d3073a41924142f88542c5a, type: 3}
   <unitSpawnEffectPrefab>k__BackingField: {fileID: 1355123197302658146, guid: f4f8b7672c4ecb146b287056f2e31299, type: 3}
   <unitDestroyEffectPrefab>k__BackingField: {fileID: 1355123197302658146, guid: f4f8b7672c4ecb146b287056f2e31299, type: 3}
   <unitID>k__BackingField: 13858672-e190-4f63-a6c7-64410cf80c21

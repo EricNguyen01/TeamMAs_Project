@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <displayName>k__BackingField: Clover
   <unitPrefab>k__BackingField: {fileID: 3455637724528575129, guid: 529170a0d02545c4dabc3484d23cc29f, type: 3}
-  <unitInfoTooltipImageSprite>k__BackingField: {fileID: 0}
+  <unitInfoTooltipImageSprite>k__BackingField: {fileID: 21300000, guid: d6c246af4f7534146804df2201070f61, type: 3}
   <unitSpawnEffectPrefab>k__BackingField: {fileID: 1355123197302658146, guid: f4f8b7672c4ecb146b287056f2e31299, type: 3}
   <unitDestroyEffectPrefab>k__BackingField: {fileID: 1355123197302658146, guid: f4f8b7672c4ecb146b287056f2e31299, type: 3}
   <unitID>k__BackingField: 44e3801e-11fe-4044-aff8-3a289343bfe3
@@ -43,4 +43,5 @@ MonoBehaviour:
   <wateringCoinsCost>k__BackingField: 1
   <canPurchasePlant>k__BackingField: 1
   <plantPurchaseLockOnStart>k__BackingField: 0
-  <waveToUnlockPlantPurchaseAfterFinished>k__BackingField: {fileID: 0}
+  <waveToUnlockPlantPurchaseOnWaveFinished>k__BackingField: {fileID: 0}
+  <waveToUnlockPlantPurchaseOnWaveStarted>k__BackingField: {fileID: 0}
