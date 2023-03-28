@@ -163,7 +163,7 @@ MonoBehaviour:
       type: 0
       typeString: 
     portrait: {fileID: 0}
-    spritePortrait: {fileID: 21300000, guid: d203dce7a88348a48842559dcf908cf1, type: 3}
+    spritePortrait: {fileID: 21300000, guid: cd8f85df0a35c504eaab2719deadaab0, type: 3}
     alternatePortraits: []
     spritePortraits: []
   - id: 5
@@ -958,8 +958,8 @@ MonoBehaviour:
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 0, y: 35.44525}
-    canvasZoom: 0.56425035
+    canvasScrollPosition: {x: 3.173212, y: 16.747507}
+    canvasZoom: 0.8042501
   - id: 4
     fields:
     - title: Title
@@ -1279,7 +1279,8 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: Click on a planted tile to open the action menu. Do some watering!
+        value: Click on a plant tile to open the action menu. Water costs $1 per
+          bar.
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
@@ -1379,7 +1380,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Actor
-        value: 2
+        value: 5
         type: 5
         typeString: CustomFieldType_Actor
       - title: Conversant
@@ -1497,7 +1498,8 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: You can uproot plants if you click them. But weeds cost $5 to dig.
+        value: Click on a plant tile to open the action menu. You can uproot plants
+          there for $5.
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
@@ -1505,7 +1507,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Priority
-        value: 1
+        value: 0
         type: 1
         typeString: CustomFieldType_Number
       conversationID: 4
@@ -1556,7 +1558,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: Bees like flowers. Humans like popular or pretty plants.
+        value: You can plant, water, and uproot even while visitors are here.
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
@@ -1615,7 +1617,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: Careful, you'll take emotional damage each time a plant dies.
+        value: Some plants, like Grass, use more water than others.
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
@@ -1721,7 +1723,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Actor
-        value: 5
+        value: 2
         type: 5
         typeString: CustomFieldType_Actor
       - title: Conversant
@@ -1774,7 +1776,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Actor
-        value: 5
+        value: 2
         type: 5
         typeString: CustomFieldType_Actor
       - title: Conversant
@@ -1833,7 +1835,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Actor
-        value: 5
+        value: 2
         type: 5
         typeString: CustomFieldType_Actor
       - title: Conversant
@@ -1845,7 +1847,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: Some plants use more water than others.
+        value: 
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
@@ -1941,8 +1943,8 @@ MonoBehaviour:
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 0, y: 56.896576}
-    canvasZoom: 0.58
+    canvasScrollPosition: {x: 155.33954, y: 1.2646363}
+    canvasZoom: 0.6999999
   - id: 5
     fields:
     - title: Title
@@ -1958,7 +1960,7 @@ MonoBehaviour:
       type: 5
       typeString: CustomFieldType_Actor
     - title: Conversant
-      value: 3
+      value: 5
       type: 5
       typeString: CustomFieldType_Actor
     overrideSettings:
@@ -2004,7 +2006,7 @@ MonoBehaviour:
         type: 5
         typeString: CustomFieldType_Actor
       - title: Conversant
-        value: 3
+        value: 5
         type: 5
         typeString: CustomFieldType_Actor
       - title: Menu Text
@@ -2055,7 +2057,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Actor
-        value: 3
+        value: 5
         type: 5
         typeString: CustomFieldType_Actor
       - title: Conversant
@@ -2223,11 +2225,11 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Actor
-        value: 2
+        value: 5
         type: 5
         typeString: CustomFieldType_Actor
       - title: Conversant
-        value: 3
+        value: 2
         type: 5
         typeString: CustomFieldType_Actor
       - title: Menu Text
@@ -2235,7 +2237,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: 'Oh... it''s you.
+        value: 'Hi, I''m Clover. Hey, have we met?
 
           [pic=2]'
         type: 0
@@ -2388,11 +2390,11 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Actor
-        value: 5
+        value: 2
         type: 5
         typeString: CustomFieldType_Actor
       - title: Conversant
-        value: 2
+        value: 5
         type: 5
         typeString: CustomFieldType_Actor
       - title: Menu Text
@@ -2400,8 +2402,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: 'I''m here because I have to be. The [em2]bees need flowers[/em2],
-          or we''ll have a disaster on our hands.
+        value: 'Have we [em1]met?[/em1] You don''t know?
 
           [pic=2]'
         type: 0
@@ -2435,7 +2436,7 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 222.30748
+        x: 220.01915
         y: 114.230774
         width: 160
         height: 30
@@ -2518,8 +2519,8 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: 'Yeah, but the [em2]humans need popular plants[/em2], or we won''t
-          be able to fund our park garden at all...
+        value: 'Um, don''t worry about it. Just [em2]make the pollinators happy[/em2],
+          because I sure won''t.
 
           [pic=2]'
         type: 0
@@ -2539,13 +2540,7 @@ MonoBehaviour:
       delaySimStatus: 0
       falseConditionAction: Block
       conditionPriority: 2
-      outgoingLinks:
-      - originConversationID: 5
-        originDialogueID: 9
-        destinationConversationID: 5
-        destinationDialogueID: 8
-        isConnector: 0
-        priority: 2
+      outgoingLinks: []
       conditionsString: 
       userScript: 
       onExecute:
@@ -2558,8 +2553,8 @@ MonoBehaviour:
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 2.5379114, y: 8.99479}
-    canvasZoom: 0.5140002
+    canvasScrollPosition: {x: 0, y: 1.4993317}
+    canvasZoom: 0.87399995
   - id: 6
     fields:
     - title: Title
@@ -3513,8 +3508,8 @@ MonoBehaviour:
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 12.191288, y: 25.655033}
-    canvasZoom: 0.5470004
+    canvasScrollPosition: {x: 26.088472, y: 6.7733536}
+    canvasZoom: 0.7570002
   - id: 7
     fields:
     - title: Title
@@ -4271,12 +4266,12 @@ MonoBehaviour:
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 0, y: 10.490814}
-    canvasZoom: 0.6672501
+    canvasScrollPosition: {x: 80.9458, y: 4.332652}
+    canvasZoom: 0.78725
   - id: 8
     fields:
     - title: Title
-      value: Wave/5
+      value: Wave/4
       type: 0
       typeString: CustomFieldType_Text
     - title: Description
@@ -4734,7 +4729,7 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 30
+        x: 28.640839
         y: 320
         width: 160
         height: 30
@@ -4793,12 +4788,12 @@ MonoBehaviour:
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 0, y: 3.848938}
-    canvasZoom: 0.4357503
+    canvasScrollPosition: {x: 0, y: 41.16836}
+    canvasZoom: 0.7357501
   - id: 9
     fields:
     - title: Title
-      value: Wave/6 1
+      value: Wave/7
       type: 0
       typeString: CustomFieldType_Text
     - title: Description
@@ -4806,11 +4801,11 @@ MonoBehaviour:
       type: 0
       typeString: CustomFieldType_Text
     - title: Actor
-      value: 2
+      value: 3
       type: 5
       typeString: CustomFieldType_Actor
     - title: Conversant
-      value: 3
+      value: 4
       type: 5
       typeString: CustomFieldType_Actor
     overrideSettings:
@@ -4846,31 +4841,31 @@ MonoBehaviour:
       - title: Title
         value: START
         type: 0
-        typeString: 
+        typeString: CustomFieldType_Text
       - title: Description
         value: 
         type: 0
-        typeString: 
+        typeString: CustomFieldType_Text
       - title: Actor
-        value: 2
+        value: 3
         type: 5
         typeString: CustomFieldType_Actor
       - title: Conversant
-        value: 3
+        value: 4
         type: 5
         typeString: CustomFieldType_Actor
       - title: Menu Text
         value: 
         type: 0
-        typeString: 
+        typeString: CustomFieldType_Text
       - title: Dialogue Text
         value: 
         type: 0
-        typeString: 
+        typeString: CustomFieldType_Text
       - title: Sequence
         value: None()
         type: 0
-        typeString: 
+        typeString: CustomFieldType_Text
       - title: Priority
         value: 0
         type: 1
@@ -4890,7 +4885,7 @@ MonoBehaviour:
         isConnector: 0
         priority: 2
       conditionsString: 
-      userScript: 
+      userScript: Variable["wave"] = Variable["wave"] + 1
       onExecute:
         m_PersistentCalls:
           m_Calls: []
@@ -4915,7 +4910,7 @@ MonoBehaviour:
         type: 5
         typeString: CustomFieldType_Actor
       - title: Conversant
-        value: 2
+        value: 4
         type: 5
         typeString: CustomFieldType_Actor
       - title: Menu Text
@@ -4923,7 +4918,361 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
+        value: Hey, Hyssop.
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Sequence
         value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Priority
+        value: 0
+        type: 1
+        typeString: CustomFieldType_Number
+      conversationID: 9
+      isRoot: 0
+      isGroup: 0
+      nodeColor: 
+      delaySimStatus: 0
+      falseConditionAction: Block
+      conditionPriority: 2
+      outgoingLinks:
+      - originConversationID: 9
+        originDialogueID: 1
+        destinationConversationID: 9
+        destinationDialogueID: 2
+        isConnector: 0
+        priority: 2
+      conditionsString: 
+      userScript: 
+      onExecute:
+        m_PersistentCalls:
+          m_Calls: []
+      canvasRect:
+        serializedVersion: 2
+        x: 30
+        y: 70
+        width: 160
+        height: 30
+    - id: 2
+      fields:
+      - title: Title
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Description
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Actor
+        value: 4
+        type: 5
+        typeString: CustomFieldType_Actor
+      - title: Conversant
+        value: 3
+        type: 5
+        typeString: CustomFieldType_Actor
+      - title: Menu Text
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Dialogue Text
+        value: Good morning, Dandelion. What can I do for you?
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Sequence
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Priority
+        value: 0
+        type: 1
+        typeString: CustomFieldType_Number
+      conversationID: 9
+      isRoot: 0
+      isGroup: 0
+      nodeColor: 
+      delaySimStatus: 0
+      falseConditionAction: Block
+      conditionPriority: 2
+      outgoingLinks:
+      - originConversationID: 9
+        originDialogueID: 2
+        destinationConversationID: 9
+        destinationDialogueID: 3
+        isConnector: 0
+        priority: 2
+      conditionsString: 
+      userScript: 
+      onExecute:
+        m_PersistentCalls:
+          m_Calls: []
+      canvasRect:
+        serializedVersion: 2
+        x: 30
+        y: 120
+        width: 160
+        height: 30
+    - id: 3
+      fields:
+      - title: Title
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Description
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Actor
+        value: 7
+        type: 5
+        typeString: CustomFieldType_Actor
+      - title: Conversant
+        value: 4
+        type: 5
+        typeString: CustomFieldType_Actor
+      - title: Menu Text
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Dialogue Text
+        value: I've decided that I hate Grass more than I hate you. Let's be friends.
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Sequence
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Priority
+        value: 0
+        type: 1
+        typeString: CustomFieldType_Number
+      conversationID: 9
+      isRoot: 0
+      isGroup: 0
+      nodeColor: 
+      delaySimStatus: 0
+      falseConditionAction: Block
+      conditionPriority: 2
+      outgoingLinks:
+      - originConversationID: 9
+        originDialogueID: 3
+        destinationConversationID: 9
+        destinationDialogueID: 4
+        isConnector: 0
+        priority: 2
+      conditionsString: 
+      userScript: 
+      onExecute:
+        m_PersistentCalls:
+          m_Calls: []
+      canvasRect:
+        serializedVersion: 2
+        x: 30
+        y: 170
+        width: 160
+        height: 30
+    - id: 4
+      fields:
+      - title: Title
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Description
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Actor
+        value: 4
+        type: 5
+        typeString: CustomFieldType_Actor
+      - title: Conversant
+        value: 7
+        type: 5
+        typeString: CustomFieldType_Actor
+      - title: Menu Text
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Dialogue Text
+        value: "(Well, when you put it like that\u2026)"
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Sequence
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Priority
+        value: 0
+        type: 1
+        typeString: CustomFieldType_Number
+      conversationID: 9
+      isRoot: 0
+      isGroup: 0
+      nodeColor: 
+      delaySimStatus: 0
+      falseConditionAction: Block
+      conditionPriority: 2
+      outgoingLinks:
+      - originConversationID: 9
+        originDialogueID: 4
+        destinationConversationID: 9
+        destinationDialogueID: 5
+        isConnector: 0
+        priority: 2
+      conditionsString: 
+      userScript: 
+      onExecute:
+        m_PersistentCalls:
+          m_Calls: []
+      canvasRect:
+        serializedVersion: 2
+        x: 30
+        y: 220
+        width: 160
+        height: 30
+    - id: 5
+      fields:
+      - title: Title
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Description
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Actor
+        value: 4
+        type: 5
+        typeString: CustomFieldType_Actor
+      - title: Conversant
+        value: 7
+        type: 5
+        typeString: CustomFieldType_Actor
+      - title: Menu Text
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Dialogue Text
+        value: "I'd be\u2026 happy to? Did something happen between you and Ryegrass?"
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Sequence
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Priority
+        value: 0
+        type: 1
+        typeString: CustomFieldType_Number
+      conversationID: 9
+      isRoot: 0
+      isGroup: 0
+      nodeColor: 
+      delaySimStatus: 0
+      falseConditionAction: Block
+      conditionPriority: 2
+      outgoingLinks:
+      - originConversationID: 9
+        originDialogueID: 5
+        destinationConversationID: 9
+        destinationDialogueID: 6
+        isConnector: 0
+        priority: 2
+      conditionsString: 
+      userScript: 
+      onExecute:
+        m_PersistentCalls:
+          m_Calls: []
+      canvasRect:
+        serializedVersion: 2
+        x: 30
+        y: 270
+        width: 160
+        height: 30
+    - id: 6
+      fields:
+      - title: Title
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Description
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Actor
+        value: 7
+        type: 5
+        typeString: CustomFieldType_Actor
+      - title: Conversant
+        value: 4
+        type: 5
+        typeString: CustomFieldType_Actor
+      - title: Menu Text
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Dialogue Text
+        value: Just the usual. Grass is crazy about humans. I can't stand it.
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Sequence
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Priority
+        value: 0
+        type: 1
+        typeString: CustomFieldType_Number
+      conversationID: 9
+      isRoot: 0
+      isGroup: 0
+      nodeColor: 
+      delaySimStatus: 0
+      falseConditionAction: Block
+      conditionPriority: 2
+      outgoingLinks:
+      - originConversationID: 9
+        originDialogueID: 6
+        destinationConversationID: 9
+        destinationDialogueID: 7
+        isConnector: 0
+        priority: 2
+      conditionsString: 
+      userScript: 
+      onExecute:
+        m_PersistentCalls:
+          m_Calls: []
+      canvasRect:
+        serializedVersion: 2
+        x: 30
+        y: 320
+        width: 160
+        height: 30
+    - id: 7
+      fields:
+      - title: Title
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Description
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Actor
+        value: 4
+        type: 5
+        typeString: CustomFieldType_Actor
+      - title: Conversant
+        value: 7
+        type: 5
+        typeString: CustomFieldType_Actor
+      - title: Menu Text
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Dialogue Text
+        value: I see...
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
@@ -4950,16 +5299,16 @@ MonoBehaviour:
       canvasRect:
         serializedVersion: 2
         x: 30
-        y: 70
+        y: 370
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 0, y: 0}
-    canvasZoom: 1
+    canvasScrollPosition: {x: 0, y: 22.820913}
+    canvasZoom: 0.5800002
   - id: 10
     fields:
     - title: Title
-      value: Wave/6
+      value: Wave/5
       type: 0
       typeString: CustomFieldType_Text
     - title: Description
@@ -6009,12 +6358,12 @@ MonoBehaviour:
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 0, y: 537.2804}
-    canvasZoom: 0.52
+    canvasScrollPosition: {x: 69.82761, y: 219.31046}
+    canvasZoom: 0.5799998
   - id: 11
     fields:
     - title: Title
-      value: Wave/7
+      value: Wave/6
       type: 0
       typeString: CustomFieldType_Text
     - title: Description
@@ -6743,7 +7092,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: 'Water. Space. Love, maybe?
+        value: 'Water? Space? Love, maybe?
 
           [pic=2]'
         type: 0
@@ -6804,8 +7153,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: (Funny, that Grass is worried about that now, but doesn't remember
-          that it took all of that from us first...)
+        value: (You took that from [em1]us[/em1] 200 years ago, but sure...)
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
@@ -6836,8 +7184,8 @@ MonoBehaviour:
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 0, y: 252.29239}
-    canvasZoom: 0.43000045
+    canvasScrollPosition: {x: 15.937176, y: 215.91496}
+    canvasZoom: 0.8199997
   - id: 12
     fields:
     - title: Title
@@ -7868,8 +8216,8 @@ MonoBehaviour:
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 30.405342, y: 27.182514}
-    canvasZoom: 0.3700004
+    canvasScrollPosition: {x: 15.151725, y: 1.1238741}
+    canvasZoom: 0.90999997
   - id: 15
     fields:
     - title: Title
@@ -7975,7 +8323,7 @@ MonoBehaviour:
   - id: 16
     fields:
     - title: Title
-      value: Wave/4
+      value: Wave/Uproot
       type: 0
       typeString: CustomFieldType_Text
     - title: Description
@@ -8380,8 +8728,8 @@ MonoBehaviour:
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 105.61065, y: 53.14822}
-    canvasZoom: 0.5200004
+    canvasScrollPosition: {x: 0, y: 30.14543}
+    canvasZoom: 0.85000014
   - id: 17
     fields:
     - title: Title
@@ -9258,8 +9606,8 @@ MonoBehaviour:
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 0, y: 0}
-    canvasZoom: 0.40000045
+    canvasScrollPosition: {x: 26.377144, y: 104.095695}
+    canvasZoom: 0.6700003
   - id: 18
     fields:
     - title: Title

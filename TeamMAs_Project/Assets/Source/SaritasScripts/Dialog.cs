@@ -5,7 +5,7 @@ namespace TeamMAsTD
 {
     public class Dialog : MonoBehaviour
     {
-        //[SerializeField] string conversation; // the title of the conversation
+        [SerializeField] int conversationNum = 1; // the title of the conversation
 
         /* NOTES
         Using Names in Dialog Text
@@ -45,7 +45,7 @@ namespace TeamMAsTD
             yield return new WaitForSeconds(delayTime);
 
             //DialogueManager.StartConversation(string conversation, Transform actor, Transform conversant); // actor and conversant are optional
-            StartConversation(1);
+            StartConversation(conversationNum);
         }
 
         public void SkipDialog()
