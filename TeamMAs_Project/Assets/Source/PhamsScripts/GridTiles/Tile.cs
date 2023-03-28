@@ -110,7 +110,7 @@ namespace TeamMAsTD
                 thisTileInsufficientFundToPlantStatPopup = statPopupSpawnerGO.GetComponent<StatPopupSpawner>();
             }
 
-            foreach(StudioEventEmitter fmodEventEmitter in GetComponents<StudioEventEmitter>())
+           /* foreach(StudioEventEmitter fmodEventEmitter in GetComponents<StudioEventEmitter>())
             {
                 if (fmodEventEmitter.EventReference.Path.Contains("Uproot"))
                 {
@@ -119,6 +119,7 @@ namespace TeamMAsTD
                     break;
                 }
             }
+           */
         }
 
 #if UNITY_EDITOR

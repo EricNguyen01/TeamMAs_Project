@@ -5,7 +5,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.Events;
 using UnityEngine.UI;
 using TMPro;
-using UnityEngine.WSA;
+//using UnityEngine.WSA;
 
 namespace TeamMAsTD
 {
