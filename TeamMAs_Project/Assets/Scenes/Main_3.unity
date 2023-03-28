@@ -19000,6 +19000,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca55256f202eebb469285b8b09c93107, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  conversationNum: 1
 --- !u!1001 &777917020
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -64017,7 +64018,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "You can click on any individual plant \nto water or uproot!"
+  m_text: Click to Expand
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -64416,6 +64417,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1451926326881674972, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: ecf69c00a329a97488870c4fbd338dfd, type: 3}
     - target: {fileID: 1546197182162329650, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
       propertyPath: OnStartedDragging.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
       value: 1
@@ -64560,6 +64565,10 @@ PrefabInstance:
       propertyPath: OnStartedDragging.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 2980469443758118717, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
+      propertyPath: waveToShowClickReminderAfterFinished
+      value: 
+      objectReference: {fileID: 11400000, guid: b16765a0bcc07c8478164ec1436adee3, type: 2}
     - target: {fileID: 3272228352036030504, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
       propertyPath: gameResourceUIStatPopupSpawner
       value: 
@@ -64672,6 +64681,14 @@ PrefabInstance:
       propertyPath: m_AnchorMin.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6809323818167285528, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 2fb50d6e06dc25c4c9b5cd49cfd8acd8, type: 3}
+    - target: {fileID: 6809323818228570051, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 0ad3ea48a480695469c0c8e452ec4746, type: 3}
     - target: {fileID: 7663563579968728992, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
       propertyPath: waveSpawnerLinkedToButton
       value: 
