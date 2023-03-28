@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
+using FMODUnity;
+using FMOD.Studio;
 
 #if UNITY_EDITOR
 using UnityEditor;
@@ -65,6 +67,8 @@ namespace TeamMAsTD
 
         public TileGlow tileGlowComp { get; private set; }
 
+        public StudioEventEmitter uprootAudioEventEmitterFMOD { get; private set; }
+
         //PRIVATES......................................................................
 
         private void Awake()
@@ -104,6 +108,16 @@ namespace TeamMAsTD
                 statPopupSpawnerGO.transform.localPosition = Vector3.zero;
 
                 thisTileInsufficientFundToPlantStatPopup = statPopupSpawnerGO.GetComponent<StatPopupSpawner>();
+            }
+
+            foreach(StudioEventEmitter fmodEventEmitter in GetComponents<StudioEventEmitter>())
+            {
+                if (fmodEventEmitter.EventReference.Path.Contains("Uproot"))
+                {
+                    uprootAudioEventEmitterFMOD = fmodEventEmitter;
+
+                    break;
+                }
             }
         }
 
@@ -199,17 +213,19 @@ namespace TeamMAsTD
 
         private IEnumerator DisableTileUprootAudioIfAnotherIsPlaying()
         {
-            if (tileAudioSource == null) yield break;
+            if (tileAudioSource == null && uprootAudioEventEmitterFMOD == null) yield break;
 
             Tile[] tilesInGridParent = gridParent.GetGridFlattened2DArray();
 
             if (tilesInGridParent == null || tilesInGridParent.Length == 0) yield break;
 
-            float baseVolume = tileAudioSource.volume;
+            float baseVolume = 0.0f;
+
+            if(tileAudioSource != null) baseVolume = tileAudioSource.volume;
 
             float t = 0.0f;
 
-            while(t <= 0.5f)
+            while(tileAudioSource != null && t <= 0.3f)
             {
                 if (tileAudioSource.volume > 0.0f)
                 {
@@ -217,9 +233,10 @@ namespace TeamMAsTD
                     {
                         if (tilesInGridParent[i] == this) continue;
 
-                        if (tilesInGridParent[i].tileAudioSource == null) continue;
+                        if (tilesInGridParent[i].tileAudioSource == null && 
+                            tilesInGridParent[i].uprootAudioEventEmitterFMOD == null) continue;
 
-                        if (tilesInGridParent[i].tileAudioSource.isPlaying)
+                        if (tilesInGridParent[i].tileAudioSource != null && tilesInGridParent[i].tileAudioSource.isPlaying)
                         {
                             tileAudioSource.volume = 0.0f;
 
@@ -235,7 +252,28 @@ namespace TeamMAsTD
                 yield return new WaitForFixedUpdate();
             }
 
-            tileAudioSource.volume = baseVolume;
+            if(uprootAudioEventEmitterFMOD != null)
+            {
+                for (int i = 0; i < tilesInGridParent.Length; i++)
+                {
+                    if (tilesInGridParent[i].uprootAudioEventEmitterFMOD == null) continue;
+
+                    tilesInGridParent[i].uprootAudioEventEmitterFMOD.TriggerOnce = true;
+                }
+
+                yield return new WaitForSeconds(0.3f);
+
+                for (int i = 0; i < tilesInGridParent.Length; i++)
+                {
+                    if (tilesInGridParent[i].uprootAudioEventEmitterFMOD == null) continue;
+
+                    tilesInGridParent[i].uprootAudioEventEmitterFMOD.TriggerOnce = false;
+
+                    tilesInGridParent[i].uprootAudioEventEmitterFMOD.hasTriggered = false;
+                }
+            }
+
+            if(tileAudioSource != null) tileAudioSource.volume = baseVolume;
 
             yield break;
         }

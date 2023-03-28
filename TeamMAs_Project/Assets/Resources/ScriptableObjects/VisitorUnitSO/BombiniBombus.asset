@@ -17,11 +17,13 @@ MonoBehaviour:
     Enhanced) (Wasp Type) (disambiguation)
   <unitPrefab>k__BackingField: {fileID: 2664338853412353054, guid: 1c8e65037b948a34fb8f5efb93aca94d, type: 3}
   <unitInfoTooltipImageSprite>k__BackingField: {fileID: 0}
+  <unitSpawnEffectPrefab>k__BackingField: {fileID: 0}
+  <unitDestroyEffectPrefab>k__BackingField: {fileID: 0}
   <visitorType>k__BackingField: 2
   <happinessAsHealth>k__BackingField: 650
   <moveSpeed>k__BackingField: 1.4
-  <appeasementHealAmount>k__BackingField: 3
-  <dissapointmentDamage>k__BackingField: 3
+  <appeasementHealAmount>k__BackingField: 2
+  <dissapointmentDamage>k__BackingField: 2
   <isBoss>k__BackingField: 1
   <visitorHitColor>k__BackingField: {r: 1, g: 0.21960784, b: 0.8117647, a: 1}
   <visitorAppeasementTime>k__BackingField: 2.5

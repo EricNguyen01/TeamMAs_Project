@@ -104,7 +104,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db07652560a766142ade56c50fa71482, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <visitorUnitSO>k__BackingField: {fileID: 11400000, guid: 1e8581c24e330ea4292993eaa9ea90ac, type: 2}
+  <visitorUnitSO>k__BackingField: {fileID: 11400000, guid: b9925f4314ca33a4e921a617d4c0d871, type: 2}
   heartEffect: {fileID: 1041970948416258222}
   visitorCoinsDropper: {fileID: 8552645812782753440}
 --- !u!114 &-9081863570021092993

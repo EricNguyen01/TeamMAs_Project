@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{9be27d2c-8529-476a-ac40-eb8516f196ab}">
+		<property name="assetPath">
+			<value>Battle Music 6.2 (Loop).wav</value>
+		</property>
+		<property name="isStreaming">
+			<value>true</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>113.0808843537415</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{161061da-7931-4b7d-a325-e7529be554a0}</destination>
+		</relationship>
+	</object>
+</objects>
