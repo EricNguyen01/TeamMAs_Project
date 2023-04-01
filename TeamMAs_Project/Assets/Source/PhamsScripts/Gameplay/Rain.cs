@@ -13,6 +13,8 @@ namespace TeamMAsTD
 
         [SerializeField] private float rainDuration = 1.5f;
 
+        [SerializeField] private ParticleSystem rainParticleSystem;
+
         //Unity Event
         [SerializeField] private UnityEvent<int> OnRainEndedEvent;
 
@@ -25,6 +27,20 @@ namespace TeamMAsTD
         //sub by TileMenu for temporary disabling menu UI interaction during rain
         public static event System.Action<Rain> OnRainStarted;
         public static event System.Action<Rain> OnRainEnded;
+
+        private void Awake()
+        {
+            if(rainParticleSystem != null)
+            {
+                var rainFxMain = rainParticleSystem.main;
+
+                rainFxMain.playOnAwake = false;
+
+                if(rainParticleSystem.isPlaying) rainParticleSystem.Stop();
+
+                if(!rainParticleSystem.gameObject.activeInHierarchy) rainParticleSystem.gameObject.SetActive(true);
+            }
+        }
 
         private void OnEnable()
         {
@@ -51,13 +67,28 @@ namespace TeamMAsTD
         {
             OnRainStarted?.Invoke(this);
 
-            //if there's rain anim -> play it here...
+            yield return new WaitForSeconds(0.25f);
+
+            //if there's rain anim/particle fx -> play it here...
+            if (rainParticleSystem != null)
+            {
+                if(!rainParticleSystem.isPlaying) rainParticleSystem.Play();
+            }
 
             yield return new WaitForSeconds(rainDuration);
+
+            if (rainParticleSystem != null)
+            {
+                if (rainParticleSystem.isPlaying) rainParticleSystem.Stop();
+            }
+
+            yield return new WaitForSeconds(0.2f);
 
             OnRainEnded?.Invoke(this);
 
             OnRainEndedEvent?.Invoke(currentWaveBeforeRain);
+
+            yield break;
         }
 
         public void TestRainEvent(int waveNum)

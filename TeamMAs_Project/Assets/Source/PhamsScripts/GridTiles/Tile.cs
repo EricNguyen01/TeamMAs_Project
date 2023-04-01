@@ -313,7 +313,7 @@ namespace TeamMAsTD
 
             if (unit == null)
             {
-                UnityEngine.Debug.LogError("A plant unit prefab is placed on tile: " + name + " but it has no PlantUnit script attached." +
+                Debug.LogError("A plant unit prefab is placed on tile: " + name + " but it has no PlantUnit script attached." +
                 "This results in no plant unit being placed!");
 
                 Destroy(unitObj);
@@ -331,7 +331,7 @@ namespace TeamMAsTD
             //coin cost on plant unit planted successful
             if (GameResource.gameResourceInstance == null || GameResource.gameResourceInstance.coinResourceSO == null)
             {
-                UnityEngine.Debug.LogError("GameResource Instance with Coin Resource is missing in scene! Planting coins cost won't function!");
+                Debug.LogError("GameResource Instance with Coin Resource is missing in scene! Planting coins cost won't function!");
             }
             else GameResource.gameResourceInstance.coinResourceSO.RemoveResourceAmount(plantUnitOnTile.plantUnitScriptableObject.plantingCoinCost);
 
