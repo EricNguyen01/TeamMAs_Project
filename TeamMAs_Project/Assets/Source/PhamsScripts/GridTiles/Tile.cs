@@ -66,6 +66,7 @@ namespace TeamMAsTD
 
         public TileGlow tileGlowComp { get; private set; }
 
+        [field: SerializeField] [field: HideInInspector] 
         public FMODUnity.StudioEventEmitter uprootAudioEventEmitterFMOD { get; private set; }
 
         //PRIVATES......................................................................
