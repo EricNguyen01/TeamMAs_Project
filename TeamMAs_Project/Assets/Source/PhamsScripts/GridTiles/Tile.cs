@@ -73,41 +73,44 @@ namespace TeamMAsTD
 
         private void Awake()
         {
-            spriteRenderer = GetComponent<SpriteRenderer>();
-
-            tileAudioSource = GetComponent<AudioSource>();
-
-            wateringOnTileScriptComp = GetComponent<WateringOnTile>();
-
-            if (spriteRenderer == null)
+            if (Application.isPlaying)
             {
-                spriteRenderer = gameObject.AddComponent<SpriteRenderer>();
-            }
+                spriteRenderer = GetComponent<SpriteRenderer>();
 
-            tileGlowComp = GetComponent<TileGlow>();
+                tileAudioSource = GetComponent<AudioSource>();
 
-            if(tileGlowComp == null)
-            {
-                tileGlowComp = gameObject.AddComponent<TileGlow>();
-            }
+                wateringOnTileScriptComp = GetComponent<WateringOnTile>();
 
-            if (drawDebugRuntime)
-            {
-                if (isOccupied) spriteRenderer.color = Color.grey;
-                else spriteRenderer.color = Color.green;
+                if (spriteRenderer == null)
+                {
+                    spriteRenderer = gameObject.AddComponent<SpriteRenderer>();
+                }
 
-                if (is_AI_Path) spriteRenderer.color = Color.white;
-            }
+                tileGlowComp = GetComponent<TileGlow>();
 
-            Attach_TileMenu_And_UprootOnTileUI_ScriptComponentIfNull();
+                if (tileGlowComp == null)
+                {
+                    tileGlowComp = gameObject.AddComponent<TileGlow>();
+                }
 
-            if (insufficientFundToPlantOnTilePopupPrefab != null)
-            {
-                GameObject statPopupSpawnerGO = Instantiate(insufficientFundToPlantOnTilePopupPrefab.gameObject, transform);
+                if (drawDebugRuntime)
+                {
+                    if (isOccupied) spriteRenderer.color = Color.grey;
+                    else spriteRenderer.color = Color.green;
 
-                statPopupSpawnerGO.transform.localPosition = Vector3.zero;
+                    if (is_AI_Path) spriteRenderer.color = Color.white;
+                }
 
-                thisTileInsufficientFundToPlantStatPopup = statPopupSpawnerGO.GetComponent<StatPopupSpawner>();
+                Attach_TileMenu_And_UprootOnTileUI_ScriptComponentIfNull();
+
+                if (insufficientFundToPlantOnTilePopupPrefab != null)
+                {
+                    GameObject statPopupSpawnerGO = Instantiate(insufficientFundToPlantOnTilePopupPrefab.gameObject, transform);
+
+                    statPopupSpawnerGO.transform.localPosition = Vector3.zero;
+
+                    thisTileInsufficientFundToPlantStatPopup = statPopupSpawnerGO.GetComponent<StatPopupSpawner>();
+                }
             }
 
 #if UNITY_EDITOR

@@ -10,10 +10,12 @@ namespace TeamMAsTD
     /*
      * This is the abstract template class for any ability to derive from (DONT ATTACH IT DIRECTLY TO GAMEOBJECT! ONLY ATTACH INHERITED).
      * The ability states and execution order are determined in this class.
-     * Any deriving ability class from this class only needs to deal with and overriding these 3 functions:
+     * Any deriving ability class from this class only needs to deal with and overriding these functions:
      *    - ProcessAbilityStart()
      *    - ProcessAbilityUpdate()
      *    - ProcessAbilityEnd()
+     *    - AbilityChargeCoroutine()
+     *    - InitializeAuraAbilityEffectsOnAwake()
      * 
      * To start or stop ability from outside of this class, just call the public functions:
      *    - StartAbility()
@@ -28,13 +30,25 @@ namespace TeamMAsTD
         [field: DisallowNull]
         public AbilitySO abilityScriptableObject { get; protected set; }
 
+        [Header("Ability Particle Effects")]
+
+        [SerializeField] protected ParticleSystem abilityChargingEffect;
+
+        [SerializeField] protected bool shouldLoopChargingEffect = true;
+
+        [SerializeField] protected ParticleSystem abilityEffect;
+
+        [SerializeField] protected bool shouldLoopEffect = true;
+
         //INTERNALS...................................................................................
 
         public IUnit unitPossessingAbility { get; private set; }
 
         protected UnitSO unitPossessingAbilitySO { get; private set; }
 
-        protected bool isCharging = false;
+        protected int numberOfUnitsAffected = 0;
+
+        private bool isCharging = false;
 
         private bool isInCooldown = false;
 
@@ -78,6 +92,8 @@ namespace TeamMAsTD
             abilityLocked = abilityScriptableObject.abilityLocked;
 
             gameObject.layer = unitPossessingAbility.GetUnitLayerMask();
+
+            InitializeAuraAbilityEffectsOnAwake();
         }
 
         protected virtual void OnEnable()
@@ -228,7 +244,7 @@ namespace TeamMAsTD
 
         #region AbilityCoroutines
 
-        private IEnumerator AbilityChargeCoroutine(float chargeTime)
+        protected virtual IEnumerator AbilityChargeCoroutine(float chargeTime)
         {
             if (isCharging) yield break;
 
@@ -390,6 +406,54 @@ namespace TeamMAsTD
                 isAbilityPendingUnlocked = false;
 
                 StartAbility();
+            }
+        }
+
+        protected virtual void InitializeAuraAbilityEffectsOnAwake()
+        {
+            if (abilityChargingEffect != null)
+            {
+                var auraChargingFxMain = abilityChargingEffect.main;
+
+                auraChargingFxMain.playOnAwake = false;
+
+                auraChargingFxMain.loop = shouldLoopChargingEffect;
+
+                SetLoopForChildrenFXsOf(abilityChargingEffect, shouldLoopChargingEffect);
+
+                abilityChargingEffect.Stop();
+
+                if (!abilityChargingEffect.gameObject.activeInHierarchy) abilityChargingEffect.gameObject.SetActive(true);
+            }
+
+            if (abilityEffect != null)
+            {
+                var auraFxMain = abilityEffect.main;
+
+                auraFxMain.playOnAwake = false;
+
+                auraFxMain.loop = shouldLoopEffect;
+
+                SetLoopForChildrenFXsOf(abilityEffect, shouldLoopEffect);
+
+                abilityEffect.Stop();
+
+                if (!abilityEffect.gameObject.activeInHierarchy) abilityEffect.gameObject.SetActive(true);
+            }
+        }
+
+        protected void SetLoopForChildrenFXsOf(ParticleSystem parentFx, bool shouldLoop)
+        {
+            ParticleSystem[] childFxs = parentFx.GetComponentsInChildren<ParticleSystem>();
+
+            if (childFxs != null && childFxs.Length > 0)
+            {
+                for (int i = 0; i < childFxs.Length; i++)
+                {
+                    var fxMain = childFxs[i].main;
+
+                    fxMain.loop = shouldLoop;
+                }
             }
         }
     }
