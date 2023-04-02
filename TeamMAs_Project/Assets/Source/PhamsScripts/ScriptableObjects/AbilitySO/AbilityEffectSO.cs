@@ -6,7 +6,8 @@ using UnityEngine;
 namespace TeamMAsTD
 {
     [System.Serializable]
-    public abstract class AbilityEffectSO : ScriptableObject
+    [CreateAssetMenu(menuName = "Ability Effect Data Asset/New Default Effect")]
+    public class AbilityEffectSO : ScriptableObject
     {
         [field: Header("Ability Effect Data")]
 
@@ -38,8 +39,14 @@ namespace TeamMAsTD
 
         //public static event System.Action<IUnit, UnitSO> OnAbilityEffectModifiedUnitSO;
 
-        protected abstract void OnValidate();
+        protected virtual void OnValidate()
+        {
 
-        protected abstract void Awake();
+        }
+
+        protected virtual void Awake()
+        {
+
+        }
     }
 }

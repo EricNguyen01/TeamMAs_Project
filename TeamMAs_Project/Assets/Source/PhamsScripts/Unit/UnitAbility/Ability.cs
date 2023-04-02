@@ -11,10 +11,10 @@ namespace TeamMAsTD
      * This is the abstract template class for any ability to derive from (DONT ATTACH IT DIRECTLY TO GAMEOBJECT! ONLY ATTACH INHERITED).
      * The ability states and execution order are determined in this class.
      * Any deriving ability class from this class only needs to deal with and overriding these functions:
+     *    - Unity events functions (Awake, Start, Enable, etc.)
      *    - ProcessAbilityStart()
      *    - ProcessAbilityUpdate()
      *    - ProcessAbilityEnd()
-     *    - AbilityChargeCoroutine()
      *    - InitializeAuraAbilityEffectsOnAwake()
      * 
      * To start or stop ability from outside of this class, just call the public functions:
@@ -48,13 +48,13 @@ namespace TeamMAsTD
 
         protected int numberOfUnitsAffected = 0;
 
-        private bool isCharging = false;
+        protected bool isCharging = false;
 
-        private bool isInCooldown = false;
+        protected bool isInCooldown = false;
 
-        private bool isUpdating = false;
+        protected bool isUpdating = false;
 
-        private bool isStopped = true;
+        protected bool isStopped = true;
 
         private bool abilityLocked = true;
 
@@ -166,11 +166,13 @@ namespace TeamMAsTD
             isStopped = false;
 
             //start cooldown right away after begin performing ability
-            //only starts if not already in cooldown or ability cdr time > 0.0f
+            //only starts cdr if not already in cooldown or ability cdr time > 0.0f
             if (!isInCooldown && abilityScriptableObject.abilityCooldownTime > 0.0f) 
             { 
                 StartCoroutine(AbilityCooldownCoroutine(abilityScriptableObject.abilityCooldownTime)); 
             }
+
+            if (abilityEffect != null) abilityEffect.Play();
 
             ProcessAbilityStart();
 
@@ -178,7 +180,10 @@ namespace TeamMAsTD
         }
 
         //To be edited in inherited classes
-        protected abstract void ProcessAbilityStart();
+        protected virtual void ProcessAbilityStart()
+        {
+            OnAbilityStarted?.Invoke(this);
+        }
 
         #endregion
 
@@ -226,11 +231,16 @@ namespace TeamMAsTD
 
             StopCoroutine(AbilityUpdateDurationCoroutine(abilityScriptableObject.abilityDuration));
 
+            if (abilityEffect != null) abilityEffect.Stop();
+
             ProcessAbilityEnd();
         }
 
         //To be edited in inherited classes
-        protected abstract void ProcessAbilityEnd();
+        protected virtual void ProcessAbilityEnd()
+        {
+            OnAbilityStopped?.Invoke(this);
+        }
 
         //To call from external scripts to stop/interupt this ability prematurely
         public void ForceStopAbility()
@@ -248,11 +258,15 @@ namespace TeamMAsTD
         {
             if (isCharging) yield break;
 
+            if(abilityChargingEffect != null) abilityChargingEffect.Play();
+
             isCharging = true;
 
             yield return new WaitForSeconds(chargeTime);
 
             isCharging = false;
+
+            if (abilityChargingEffect != null) abilityChargingEffect.Stop();
 
             BeginPerformAbility();
 
@@ -358,18 +372,6 @@ namespace TeamMAsTD
             }
 
             return true;
-        }
-
-        protected void InvokeOnAbilityStartedEventOn(Ability childAbilityClass)
-        {
-            OnAbilityStarted?.Invoke(childAbilityClass);
-        }
-
-        protected void InvokeOnAbilityStoppedEventOn(Ability childAbilityClass)
-        {
-            //Debug.Log("AbilityStoppedEventInvoked");
-
-            OnAbilityStopped?.Invoke(childAbilityClass);
         }
 
         private void PendingUnlockAbilityOnWaveEndedIfApplicable(WaveSpawner waveSpawner, int waveNum, bool hasOngoingWave)

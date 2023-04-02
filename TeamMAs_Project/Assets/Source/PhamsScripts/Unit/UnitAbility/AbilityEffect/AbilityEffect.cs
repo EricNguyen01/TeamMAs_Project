@@ -77,9 +77,9 @@ namespace TeamMAsTD
 
         //IMPORTANT:.........................................................................................................
         //If any child ability effect class that has recurring functionality that needs to call this UpdateEffect function
-        //It should create its own UnityUpdate func and call this overrided UpdateEffect() func within Unity's Update().
+        //It should create its own UnityUpdate func.
         //REMEMBER to call DestroyEffect() func on effect finished.
-        protected abstract void OnEffectUpdated();
+        //protected abstract void OnEffectUpdated();
 
         //...................................................................................................................
 

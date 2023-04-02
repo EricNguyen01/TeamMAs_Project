@@ -15,7 +15,7 @@ namespace TeamMAsTD
 
         [SerializeField] protected Rigidbody2D auraKinematicRb;
 
-        private float auraRange = 0.0f;
+        protected float auraRange = 0.0f;
 
         protected bool canCheckForUnitsInAura = true;
 
@@ -69,15 +69,6 @@ namespace TeamMAsTD
             ForceStopAbility();
         }
 
-        protected override IEnumerator AbilityChargeCoroutine(float chargeTime)
-        {
-            if (abilityChargingEffect != null) abilityChargingEffect.Play();
-
-            yield return base.AbilityChargeCoroutine(chargeTime);
-
-            if (abilityChargingEffect != null) abilityChargingEffect.Stop();
-        }
-
         protected override void ProcessAbilityStart()
         {
             auraCollider.enabled = true;
@@ -88,9 +79,7 @@ namespace TeamMAsTD
 
             auraKinematicRb.sleepMode = RigidbodySleepMode2D.NeverSleep;
 
-            if (abilityEffect != null) abilityEffect.Play();
-
-            InvokeOnAbilityStartedEventOn(this);
+            base.ProcessAbilityStart();
         }
 
         protected override void ProcessAbilityUpdate()
@@ -109,14 +98,29 @@ namespace TeamMAsTD
 
             auraKinematicRb.sleepMode = RigidbodySleepMode2D.StartAsleep;
 
-            if (abilityEffect != null) abilityEffect.Stop();
-
-            InvokeOnAbilityStoppedEventOn(this);
+            base.ProcessAbilityEnd();
         }
 
         //Aura Collision events............................................................................
 
+        protected virtual void OnTriggerEnter2D(Collider2D other)
+        {
+
+        }
+
         protected virtual void OnTriggerStay2D(Collider2D other)
+        {
+            ProcessAuraTriggerEnterStay(other);
+
+            if (enableTempDisableAuraTriggerCoroutine) StartCoroutine(TemporaryDisableAuraTriggerCollisionEvent(0.3f));
+        }
+
+        protected virtual void OnTriggerExit2D(Collider2D other)
+        {
+            ProcessAuraTriggerExit(other);
+        }
+
+        protected void ProcessAuraTriggerEnterStay(Collider2D other)
         {
             if (!canCheckForUnitsInAura) return;
 
@@ -155,11 +159,9 @@ namespace TeamMAsTD
             {
                 abilityEffectReceivedInventory.ReceivedEffectsFromAbility(this);
             }
-
-            if (enableTempDisableAuraTriggerCoroutine) StartCoroutine(TemporaryDisableAuraTriggerCollisionEvent(0.3f));
         }
 
-        protected virtual void OnTriggerExit2D(Collider2D other)
+        protected void ProcessAuraTriggerExit(Collider2D other)
         {
             if (!triggerExitEventCheck) return;
 
@@ -167,7 +169,7 @@ namespace TeamMAsTD
 
             IUnit unitLeavesAura = CheckValidUnitAndAuraCollision(other);
 
-            if(unitLeavesAura == null) return;
+            if (unitLeavesAura == null) return;
 
             AbilityEffectReceivedInventory abilityEffectReceivedInventory = unitLeavesAura.GetAbilityEffectReceivedInventory();
 
