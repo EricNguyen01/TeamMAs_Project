@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <displayName>k__BackingField: Bee
   <unitPrefab>k__BackingField: {fileID: 2664338853412353054, guid: 64086f4c5ed51664f9239dd28dd5ca4c, type: 3}
-  <unitInfoTooltipImageSprite>k__BackingField: {fileID: 0}
+  <unitInfoTooltipImageSprite>k__BackingField: {fileID: 21300000, guid: 0bde1e25adaa68e4ca729e226e0e2f4c, type: 3}
   <unitSpawnEffectPrefab>k__BackingField: {fileID: 0}
   <unitDestroyEffectPrefab>k__BackingField: {fileID: 0}
   <visitorType>k__BackingField: 2

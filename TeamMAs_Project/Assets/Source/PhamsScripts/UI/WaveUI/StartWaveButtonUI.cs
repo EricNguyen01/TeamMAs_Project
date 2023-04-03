@@ -24,12 +24,6 @@ namespace TeamMAsTD
 
         private bool isRaining = false;//the raining event after a wave is finished
 
-        // sarita's temp hardcode for unlocking plants. sorry for messing up your code & feel free to change it entirely LOL i don't want to think ever
-        [SerializeField] private Image hyssopShop;
-        [SerializeField] private Image hyssopIcon;
-        [SerializeField] private Image milkweedShop;
-        [SerializeField] private Image milkweedIcon;
-
         private void Awake()
         {
             if (waveSpawnerLinkedToButton == null)
@@ -147,10 +141,6 @@ namespace TeamMAsTD
             //update wave number UI text
             SetStartWaveButtonWaveText();
 
-            // sarita's temporary plant unlocker
-            if (waveSpawnerLinkedToButton.currentWave == 4) UnlockPlant(4); // hyssop
-            else if (waveSpawnerLinkedToButton.currentWave == 9) UnlockPlant(5); // milkweed
-
             //re-enable button
             EnableButton(true);
         }
@@ -184,22 +174,5 @@ namespace TeamMAsTD
 
             SetStartWaveButtonWaveText();
         }
-
-        private void UnlockPlant(int plantIndex)
-        {
-            // unlock hyssop
-            if (plantIndex == 4)
-            {
-                hyssopShop.raycastTarget = true;
-                hyssopIcon.color = new Color(1, 1, 1, 1);
-            }
-            // unlock milkweed
-            else if (plantIndex == 5)
-            {
-                milkweedShop.raycastTarget = true;
-                milkweedIcon.color = new Color(1, 1, 1, 1);
-            }
-        }
-
     }
 }

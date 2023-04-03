@@ -15,7 +15,7 @@ namespace TeamMAsTD
 
         [SerializeField] protected Rigidbody2D auraKinematicRb;
 
-        private float auraRange = 0.0f;
+        protected float auraRange = 0.0f;
 
         protected bool canCheckForUnitsInAura = true;
 
@@ -58,7 +58,7 @@ namespace TeamMAsTD
 
             auraRange = abilityScriptableObject.abilityRangeInTiles - 0.1f;
 
-            if(auraCollider.radius != auraRange) auraCollider.radius = auraRange;
+            auraCollider.radius = auraRange;
         }
 
         protected override void OnDisable()
@@ -79,7 +79,7 @@ namespace TeamMAsTD
 
             auraKinematicRb.sleepMode = RigidbodySleepMode2D.NeverSleep;
 
-            InvokeOnAbilityStartedEventOn(this);
+            base.ProcessAbilityStart();
         }
 
         protected override void ProcessAbilityUpdate()
@@ -98,12 +98,29 @@ namespace TeamMAsTD
 
             auraKinematicRb.sleepMode = RigidbodySleepMode2D.StartAsleep;
 
-            InvokeOnAbilityStoppedEventOn(this);
+            base.ProcessAbilityEnd();
         }
 
         //Aura Collision events............................................................................
 
+        protected virtual void OnTriggerEnter2D(Collider2D other)
+        {
+
+        }
+
         protected virtual void OnTriggerStay2D(Collider2D other)
+        {
+            ProcessAuraTriggerEnterStay(other);
+
+            if (enableTempDisableAuraTriggerCoroutine) StartCoroutine(TemporaryDisableAuraTriggerCollisionEvent(0.3f));
+        }
+
+        protected virtual void OnTriggerExit2D(Collider2D other)
+        {
+            ProcessAuraTriggerExit(other);
+        }
+
+        protected void ProcessAuraTriggerEnterStay(Collider2D other)
         {
             if (!canCheckForUnitsInAura) return;
 
@@ -121,14 +138,30 @@ namespace TeamMAsTD
 
             if (abilityEffectReceivedInventory == null) return;
 
-            if(!DEBUG_effectReceivedInventoriesInAura.Contains(abilityEffectReceivedInventory)) DEBUG_effectReceivedInventoriesInAura.Add(abilityEffectReceivedInventory);
+            //if the unit in aura being checked is a new one (its ability effect received inventory not exists in DEBUG list)
+            if (!DEBUG_effectReceivedInventoriesInAura.Contains(abilityEffectReceivedInventory))
+            {
+                //check if can still affect this unit (maxNumberOfUnitsToAffect = infinite || within max number of units affected)
+                if (abilityScriptableObject.maxNumberOfUnitsToAffect == 0 ||
+                   numberOfUnitsAffected < abilityScriptableObject.maxNumberOfUnitsToAffect)
+                {
+                    //if can still affect, do the below:
 
-            abilityEffectReceivedInventory.ReceivedEffectsFromAbility(this);
+                    DEBUG_effectReceivedInventoriesInAura.Add(abilityEffectReceivedInventory);
 
-            if (enableTempDisableAuraTriggerCoroutine) StartCoroutine(TemporaryDisableAuraTriggerCollisionEvent(0.3f));
+                    abilityEffectReceivedInventory.ReceivedEffectsFromAbility(this);
+
+                    numberOfUnitsAffected++;
+                }
+            }
+            //else if this unit in aura being checked has been checked before
+            else
+            {
+                abilityEffectReceivedInventory.ReceivedEffectsFromAbility(this);
+            }
         }
 
-        protected virtual void OnTriggerExit2D(Collider2D other)
+        protected void ProcessAuraTriggerExit(Collider2D other)
         {
             if (!triggerExitEventCheck) return;
 
@@ -136,13 +169,20 @@ namespace TeamMAsTD
 
             IUnit unitLeavesAura = CheckValidUnitAndAuraCollision(other);
 
-            if(unitLeavesAura == null) return;
+            if (unitLeavesAura == null) return;
 
             AbilityEffectReceivedInventory abilityEffectReceivedInventory = unitLeavesAura.GetAbilityEffectReceivedInventory();
 
             if (abilityEffectReceivedInventory == null) return;
 
-            abilityEffectReceivedInventory.RemoveEffectsOfAbility(this);
+            if (DEBUG_effectReceivedInventoriesInAura.Contains(abilityEffectReceivedInventory))
+            {
+                DEBUG_effectReceivedInventoriesInAura.Remove(abilityEffectReceivedInventory);
+
+                abilityEffectReceivedInventory.RemoveEffectsOfAbility(this);
+
+                numberOfUnitsAffected--;
+            }
         }
 
         protected IUnit CheckValidUnitAndAuraCollision(Collider2D otherCollider2D)

@@ -35,6 +35,8 @@ namespace TeamMAsTD
 
         private bool startFollowingPath = false;
 
+        private bool isInvincible = false;
+
         private float baseAppeasementTime;
 
         private float currentAppeasementTime = 0.0f;
@@ -153,6 +155,8 @@ namespace TeamMAsTD
 
             //reset visitors health, various timers, collider, UI elements, and colors to their original values
             ResetVisitorStatsAndLooks();
+
+            isInvincible = false;//reset invincibility just in case
 
             //start following path
             startFollowingPath = true;
@@ -373,6 +377,16 @@ namespace TeamMAsTD
             }
         }
 
+        public void SetVisitorInvincible(bool shouldBeInvincible)
+        {
+            isInvincible = shouldBeInvincible;
+        }
+
+        public void SetVisitorFollowingPath(bool shouldFollowPath)
+        {
+            startFollowingPath = shouldFollowPath;
+        }
+
         public void SetPoolContainsThisVisitor(VisitorPool visitorPool)
         {
             poolContainsThisVisitor = visitorPool;
@@ -456,7 +470,10 @@ namespace TeamMAsTD
 
         public void TakeDamageFrom(object damageCauser, float damage)
         {
-            if(damageCauser.GetType() == typeof(PlantProjectile))
+            //if is temporary invincible -> dont process damage and exit func
+            if (isInvincible) return;
+
+            if (damageCauser.GetType() == typeof(PlantProjectile))
             {
                 PlantProjectile projectile = (PlantProjectile)damageCauser;
 

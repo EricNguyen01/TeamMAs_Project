@@ -30,6 +30,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6464947373481574015}
+  - {fileID: 8009789368806399300}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -47,6 +48,72 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <abilityEffectSO>k__BackingField: {fileID: 11400000, guid: e7888bdaab091c647bdd30163d0fc938, type: 2}
   <effectStatPopupSpawner>k__BackingField: {fileID: 1181894219534169785}
+--- !u!1001 &35807740287846033
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 2975990922271069057}
+    m_Modifications:
+    - target: {fileID: 8022962682983799765, guid: a07a002dbe56d1647a249a3bd268a8a4, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8022962682983799765, guid: a07a002dbe56d1647a249a3bd268a8a4, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8022962682983799765, guid: a07a002dbe56d1647a249a3bd268a8a4, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8022962682983799765, guid: a07a002dbe56d1647a249a3bd268a8a4, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8022962682983799765, guid: a07a002dbe56d1647a249a3bd268a8a4, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8022962682983799765, guid: a07a002dbe56d1647a249a3bd268a8a4, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8022962682983799765, guid: a07a002dbe56d1647a249a3bd268a8a4, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8022962682983799765, guid: a07a002dbe56d1647a249a3bd268a8a4, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8022962682983799765, guid: a07a002dbe56d1647a249a3bd268a8a4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8022962682983799765, guid: a07a002dbe56d1647a249a3bd268a8a4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8022962682983799765, guid: a07a002dbe56d1647a249a3bd268a8a4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8022962682983799786, guid: a07a002dbe56d1647a249a3bd268a8a4, type: 3}
+      propertyPath: m_Name
+      value: PlantBuffEffectFx
+      objectReference: {fileID: 0}
+    - target: {fileID: 8022962683008411438, guid: a07a002dbe56d1647a249a3bd268a8a4, type: 3}
+      propertyPath: m_Intensity
+      value: 0.09679922
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: a07a002dbe56d1647a249a3bd268a8a4, type: 3}
+--- !u!4 &8009789368806399300 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8022962682983799765, guid: a07a002dbe56d1647a249a3bd268a8a4, type: 3}
+  m_PrefabInstance: {fileID: 35807740287846033}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8817759454135218112
 PrefabInstance:
   m_ObjectHideFlags: 0

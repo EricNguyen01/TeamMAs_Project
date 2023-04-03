@@ -100,11 +100,6 @@ namespace TeamMAsTD
             plantUnitReceivedBuff.SetPlantSODebugDataView();
         }
 
-        protected override void OnEffectUpdated()
-        {
-            
-        }
-
         protected override void OnEffectEnded()
         {
             if (plantUnitSOReceivedBuff == null) return;

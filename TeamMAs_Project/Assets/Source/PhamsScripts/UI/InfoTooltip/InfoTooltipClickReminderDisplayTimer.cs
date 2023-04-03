@@ -68,9 +68,15 @@ namespace TeamMAsTD
             //provide this component reference to its children unit info tool tip script comps
             SetReminderTimerReferenceToChildrenTooltipsOnStart();
 
-            if (waveToShowClickReminderAfterFinished == null && showTooltipClickReminderOnStart)
+            if (waveToShowClickReminderAfterFinished == null)
             {
-                StartCoroutine(ShowClickOnReminderDelayCoroutine(1.5f));
+                if (showTooltipClickReminderOnStart) StartCoroutine(ShowClickOnReminderDelayCoroutine(1.5f));
+            }
+            else 
+            {
+                shouldStartClickReminderTimer = true;
+
+                showTooltipClickReminderOnStart = false; 
             }
         }
 
@@ -129,8 +135,7 @@ namespace TeamMAsTD
             //dont start timer
             if (hasATooltipBeenOpenedRecently || !shouldStartClickReminderTimer)
             {
-                if (currentTimeUntilNextReminder > 0.0f) currentTimeUntilNextReminder = 0.0f;
-
+                //if (currentTimeUntilNextReminder > 0.0f) currentTimeUntilNextReminder = 0.0f;
                 return;
             }
 
@@ -172,16 +177,22 @@ namespace TeamMAsTD
         {
             if (tooltipsToDisplayClickReminder == null || tooltipsToDisplayClickReminder.Count == 0) return;
 
+            bool shouldResetClickReminderTimer = false;
+
             for (int i = 0; i < tooltipsToDisplayClickReminder.Count; i++)
             {
                 if (tooltipsToDisplayClickReminder[i] == null) continue;
 
                 if (!tooltipsToDisplayClickReminder[i].gameObject.activeInHierarchy) continue;
 
+                //if there were click on reminder tooltips opened that were closed -> reset reminder timer
+                //if loop finshed and should reset timer is still false (none reminders were opened and should not reset timer)
+                shouldResetClickReminderTimer = true;
+
                 tooltipsToDisplayClickReminder[i].EnableTooltipClickOnReminder(false);
             }
 
-            ResetTimer();
+            if(shouldResetClickReminderTimer) ResetTimer();
 
             shouldStartClickReminderTimer = true;
         }
@@ -210,7 +221,7 @@ namespace TeamMAsTD
             ResetTimer();
         }
 
-        //stops and resets click-on reminder timer everytime a tooltip that is a child of this timer is opened
+        //stops and resets click-on reminder timer everytime a tooltip that is a child of this timer is opened manually
         public void SetReminderInactiveAndStopTimerOnTooltipOpened(InfoTooltipEnabler tooltipEnabler)
         {
             if(tooltipEnabler == null) return;
@@ -229,7 +240,7 @@ namespace TeamMAsTD
         }
 
         //reverse of the above function: "SetReminderInactiveAndStopTimerOnTooltipOpened()"
-        //when a tooltip that is a child of this timer is closed -> timer will start
+        //when a tooltip that is a child of this timer is closed manually -> timer will start
         //if the players open any tooltip that is a child of this timer within the timer (above function), it's reset
         //else if the timer is finished -> redisplay click-on reminder
         public void StartClickOnReminderTimerOnTooltipClosed(InfoTooltipEnabler tooltipEnabler)
@@ -242,7 +253,7 @@ namespace TeamMAsTD
 
             shouldStartClickReminderTimer = true;
 
-            ResetTimer();
+            //do not reset timer here!!!
         }
 
         private void ResetTimer()
@@ -327,7 +338,7 @@ namespace TeamMAsTD
 
             if (currentWave != waveToShowClickReminderAfterFinished) return;
 
-            StartCoroutine(ShowClickOnReminderDelayCoroutine(1.0f));
+            StartCoroutine(ShowClickOnReminderDelayCoroutine(0.3f));
         }
     }
 }

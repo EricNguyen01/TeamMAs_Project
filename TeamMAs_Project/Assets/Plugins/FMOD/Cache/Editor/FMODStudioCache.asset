@@ -42,12 +42,87 @@ MonoBehaviour:
   Path: ../Example/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638154690526614317
+  lastModified: 638156162960607665
   FileSizes:
   - Name: Desktop
     Value: 932
   Exists: 1
---- !u!114 &-1396407393791401459
+--- !u!114 &-716874835770486226
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Shop UI Click Sound
+  m_EditorClassIdentifier: 
+  Path: event:/Shop UI Click Sound
+  Guid:
+    Data1: -55100953
+    Data2: 1318490974
+    Data3: -785644634
+    Data4: -647336184
+  Banks:
+  - {fileID: 671435691691122460}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 261
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d32cf7c32a3ed8347bac48ef5ed56d82, type: 3}
+  m_Name: FMODStudioCache
+  m_EditorClassIdentifier: 
+  EditorBanks:
+  - {fileID: -3372008438288798223}
+  - {fileID: 671435691691122460}
+  EditorEvents:
+  - {fileID: -8032001119845959545}
+  - {fileID: 1525456728092143958}
+  - {fileID: 4423809576155603154}
+  - {fileID: 872327234392024729}
+  - {fileID: -716874835770486226}
+  EditorParameters: []
+  MasterBanks:
+  - {fileID: 671435691691122460}
+  StringsBanks:
+  - {fileID: -3372008438288798223}
+  cacheTime: 638158964206406894
+  cacheVersion: 131601
+--- !u!114 &671435691691122460
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.bank
+  m_EditorClassIdentifier: 
+  Path: ../Example/Build/Desktop/Master.bank
+  Name: Master
+  StudioPath: bank:/Master
+  lastModified: 638158964206406894
+  FileSizes:
+  - Name: Desktop
+    Value: 1314656
+  Exists: 1
+--- !u!114 &872327234392024729
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -69,59 +144,11 @@ MonoBehaviour:
   - {fileID: 671435691691122460}
   IsStream: 1
   Is3D: 0
-  IsOneShot: 1
+  IsOneShot: 0
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
   Length: 113080
---- !u!114 &11400000
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d32cf7c32a3ed8347bac48ef5ed56d82, type: 3}
-  m_Name: FMODStudioCache
-  m_EditorClassIdentifier: 
-  EditorBanks:
-  - {fileID: -3372008438288798223}
-  - {fileID: 671435691691122460}
-  EditorEvents:
-  - {fileID: -8032001119845959545}
-  - {fileID: 1525456728092143958}
-  - {fileID: 4423809576155603154}
-  - {fileID: -1396407393791401459}
-  - {fileID: 7721415344924108576}
-  EditorParameters: []
-  MasterBanks:
-  - {fileID: 671435691691122460}
-  StringsBanks:
-  - {fileID: -3372008438288798223}
-  cacheTime: 638154690526614317
-  cacheVersion: 131601
---- !u!114 &671435691691122460
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/Master.bank
-  m_EditorClassIdentifier: 
-  Path: ../Example/Build/Desktop/Master.bank
-  Name: Master
-  StudioPath: bank:/Master
-  lastModified: 638154690526594377
-  FileSizes:
-  - Name: Desktop
-    Value: 1314528
-  Exists: 1
 --- !u!114 &1525456728092143958
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -176,30 +203,3 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 1097
---- !u!114 &7721415344924108576
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Shop UI Click Sound
-  m_EditorClassIdentifier: 
-  Path: event:/Shop UI Click Sound
-  Guid:
-    Data1: -55100953
-    Data2: 1318490974
-    Data3: -785644634
-    Data4: -647336184
-  Banks:
-  - {fileID: 671435691691122460}
-  IsStream: 0
-  Is3D: 0
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 261

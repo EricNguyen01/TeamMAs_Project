@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c2e78d05e59ecc4893e641072990619, type: 3}
+  m_Name: PlantProjectileDandelion
+  m_EditorClassIdentifier: 
+  <plantProjectilePrefab>k__BackingField: {fileID: 1245357011178758982, guid: b9105d238dd4e0d40966c85280ee55b2, type: 3}
+  <plantProjectileSpeed>k__BackingField: 5
+  <isHoming>k__BackingField: 1

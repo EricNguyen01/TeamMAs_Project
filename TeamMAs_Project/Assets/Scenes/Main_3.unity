@@ -741,6 +741,7 @@ MonoBehaviour:
   <tileNumInRow>k__BackingField: 9
   <tileNumInColumn>k__BackingField: 4
   <gridParent>k__BackingField: {fileID: 777042338}
+  <uprootAudioEventEmitterFMOD>k__BackingField: {fileID: 15538448}
 --- !u!114 &15538440
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1152,7 +1153,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 95c0e20cb290eb74ca5e4473d934b93a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 63c5e4b63981b744cbaa377c41e4c80b, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -1750,6 +1751,7 @@ MonoBehaviour:
   <tileNumInRow>k__BackingField: 7
   <tileNumInColumn>k__BackingField: 3
   <gridParent>k__BackingField: {fileID: 777042338}
+  <uprootAudioEventEmitterFMOD>k__BackingField: {fileID: 52810161}
 --- !u!114 &52810153
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2898,7 +2900,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 95c0e20cb290eb74ca5e4473d934b93a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 63c5e4b63981b744cbaa377c41e4c80b, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -3688,7 +3690,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 95c0e20cb290eb74ca5e4473d934b93a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 63c5e4b63981b744cbaa377c41e4c80b, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -3814,6 +3816,7 @@ MonoBehaviour:
   <tileNumInRow>k__BackingField: 1
   <tileNumInColumn>k__BackingField: 4
   <gridParent>k__BackingField: {fileID: 777042338}
+  <uprootAudioEventEmitterFMOD>k__BackingField: {fileID: 105890056}
 --- !u!114 &105890048
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4347,7 +4350,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 95c0e20cb290eb74ca5e4473d934b93a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 63c5e4b63981b744cbaa377c41e4c80b, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -4684,6 +4687,7 @@ MonoBehaviour:
   <tileNumInRow>k__BackingField: 0
   <tileNumInColumn>k__BackingField: 0
   <gridParent>k__BackingField: {fileID: 777042338}
+  <uprootAudioEventEmitterFMOD>k__BackingField: {fileID: 121886966}
 --- !u!114 &121886957
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6310,7 +6314,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 95c0e20cb290eb74ca5e4473d934b93a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 63c5e4b63981b744cbaa377c41e4c80b, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -6436,6 +6440,7 @@ MonoBehaviour:
   <tileNumInRow>k__BackingField: 3
   <tileNumInColumn>k__BackingField: 3
   <gridParent>k__BackingField: {fileID: 777042338}
+  <uprootAudioEventEmitterFMOD>k__BackingField: {fileID: 197177038}
 --- !u!114 &197177030
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7645,7 +7650,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 95c0e20cb290eb74ca5e4473d934b93a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 63c5e4b63981b744cbaa377c41e4c80b, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -7779,7 +7784,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 95c0e20cb290eb74ca5e4473d934b93a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 63c5e4b63981b744cbaa377c41e4c80b, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -8731,7 +8736,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 95c0e20cb290eb74ca5e4473d934b93a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 63c5e4b63981b744cbaa377c41e4c80b, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -8865,7 +8870,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 95c0e20cb290eb74ca5e4473d934b93a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 63c5e4b63981b744cbaa377c41e4c80b, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -8991,6 +8996,7 @@ MonoBehaviour:
   <tileNumInRow>k__BackingField: 9
   <tileNumInColumn>k__BackingField: 3
   <gridParent>k__BackingField: {fileID: 777042338}
+  <uprootAudioEventEmitterFMOD>k__BackingField: {fileID: 340959700}
 --- !u!114 &340959692
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9366,7 +9372,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 95c0e20cb290eb74ca5e4473d934b93a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 63c5e4b63981b744cbaa377c41e4c80b, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -10658,7 +10664,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 95c0e20cb290eb74ca5e4473d934b93a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 63c5e4b63981b744cbaa377c41e4c80b, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -11083,7 +11089,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 95c0e20cb290eb74ca5e4473d934b93a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 63c5e4b63981b744cbaa377c41e4c80b, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -11420,6 +11426,7 @@ MonoBehaviour:
   <tileNumInRow>k__BackingField: 0
   <tileNumInColumn>k__BackingField: 2
   <gridParent>k__BackingField: {fileID: 777042338}
+  <uprootAudioEventEmitterFMOD>k__BackingField: {fileID: 456749773}
 --- !u!114 &456749765
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13293,6 +13300,7 @@ MonoBehaviour:
   <tileNumInRow>k__BackingField: 4
   <tileNumInColumn>k__BackingField: 0
   <gridParent>k__BackingField: {fileID: 777042338}
+  <uprootAudioEventEmitterFMOD>k__BackingField: {fileID: 548260362}
 --- !u!114 &548260354
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13660,6 +13668,7 @@ MonoBehaviour:
   <tileNumInRow>k__BackingField: 1
   <tileNumInColumn>k__BackingField: 0
   <gridParent>k__BackingField: {fileID: 777042338}
+  <uprootAudioEventEmitterFMOD>k__BackingField: {fileID: 551824664}
 --- !u!114 &551824656
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14035,7 +14044,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 95c0e20cb290eb74ca5e4473d934b93a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 63c5e4b63981b744cbaa377c41e4c80b, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -14406,7 +14415,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 95c0e20cb290eb74ca5e4473d934b93a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 63c5e4b63981b744cbaa377c41e4c80b, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -15000,7 +15009,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 95c0e20cb290eb74ca5e4473d934b93a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 63c5e4b63981b744cbaa377c41e4c80b, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -15929,6 +15938,7 @@ MonoBehaviour:
   <tileNumInRow>k__BackingField: 5
   <tileNumInColumn>k__BackingField: 2
   <gridParent>k__BackingField: {fileID: 777042338}
+  <uprootAudioEventEmitterFMOD>k__BackingField: {fileID: 686431555}
 --- !u!114 &686431547
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16439,7 +16449,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 95c0e20cb290eb74ca5e4473d934b93a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 63c5e4b63981b744cbaa377c41e4c80b, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -16565,6 +16575,7 @@ MonoBehaviour:
   <tileNumInRow>k__BackingField: 9
   <tileNumInColumn>k__BackingField: 0
   <gridParent>k__BackingField: {fileID: 777042338}
+  <uprootAudioEventEmitterFMOD>k__BackingField: {fileID: 696377670}
 --- !u!114 &696377662
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17594,6 +17605,7 @@ MonoBehaviour:
   <tileNumInRow>k__BackingField: 8
   <tileNumInColumn>k__BackingField: 0
   <gridParent>k__BackingField: {fileID: 777042338}
+  <uprootAudioEventEmitterFMOD>k__BackingField: {fileID: 712307775}
 --- !u!114 &712307767
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18986,7 +18998,7 @@ Transform:
   - {fileID: 340959697}
   - {fileID: 15538445}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &777042340
 MonoBehaviour:
@@ -19000,6 +19012,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca55256f202eebb469285b8b09c93107, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  conversationNum: 1
 --- !u!1001 &777917020
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -19009,7 +19022,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8732644743540076669, guid: d1cdca22ec4708540aa68019e182a7d8, type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8732644743540076669, guid: d1cdca22ec4708540aa68019e182a7d8, type: 3}
       propertyPath: m_LocalPosition.x
@@ -19347,6 +19360,7 @@ MonoBehaviour:
   <tileNumInRow>k__BackingField: 8
   <tileNumInColumn>k__BackingField: 4
   <gridParent>k__BackingField: {fileID: 777042338}
+  <uprootAudioEventEmitterFMOD>k__BackingField: {fileID: 782636149}
 --- !u!114 &782636141
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20091,7 +20105,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 95c0e20cb290eb74ca5e4473d934b93a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 63c5e4b63981b744cbaa377c41e4c80b, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -20887,7 +20901,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 95c0e20cb290eb74ca5e4473d934b93a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 63c5e4b63981b744cbaa377c41e4c80b, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -21068,7 +21082,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 95c0e20cb290eb74ca5e4473d934b93a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 63c5e4b63981b744cbaa377c41e4c80b, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -21194,6 +21208,7 @@ MonoBehaviour:
   <tileNumInRow>k__BackingField: 7
   <tileNumInColumn>k__BackingField: 2
   <gridParent>k__BackingField: {fileID: 777042338}
+  <uprootAudioEventEmitterFMOD>k__BackingField: {fileID: 840555221}
 --- !u!114 &840555213
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21719,6 +21734,7 @@ MonoBehaviour:
   <tileNumInRow>k__BackingField: 6
   <tileNumInColumn>k__BackingField: 1
   <gridParent>k__BackingField: {fileID: 777042338}
+  <uprootAudioEventEmitterFMOD>k__BackingField: {fileID: 845359707}
 --- !u!114 &845359699
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22932,7 +22948,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 95c0e20cb290eb74ca5e4473d934b93a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 63c5e4b63981b744cbaa377c41e4c80b, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -23338,7 +23354,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 95c0e20cb290eb74ca5e4473d934b93a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 63c5e4b63981b744cbaa377c41e4c80b, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -23586,7 +23602,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 95c0e20cb290eb74ca5e4473d934b93a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 63c5e4b63981b744cbaa377c41e4c80b, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -24016,7 +24032,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 95c0e20cb290eb74ca5e4473d934b93a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 63c5e4b63981b744cbaa377c41e4c80b, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -24443,7 +24459,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 95c0e20cb290eb74ca5e4473d934b93a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 63c5e4b63981b744cbaa377c41e4c80b, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -25301,7 +25317,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 95c0e20cb290eb74ca5e4473d934b93a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 63c5e4b63981b744cbaa377c41e4c80b, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -25427,6 +25443,7 @@ MonoBehaviour:
   <tileNumInRow>k__BackingField: 3
   <tileNumInColumn>k__BackingField: 2
   <gridParent>k__BackingField: {fileID: 777042338}
+  <uprootAudioEventEmitterFMOD>k__BackingField: {fileID: 979564358}
 --- !u!114 &979564350
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25802,7 +25819,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 95c0e20cb290eb74ca5e4473d934b93a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 63c5e4b63981b744cbaa377c41e4c80b, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -26094,7 +26111,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 95c0e20cb290eb74ca5e4473d934b93a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 63c5e4b63981b744cbaa377c41e4c80b, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -26256,6 +26273,7 @@ MonoBehaviour:
   <tileNumInRow>k__BackingField: 5
   <tileNumInColumn>k__BackingField: 4
   <gridParent>k__BackingField: {fileID: 777042338}
+  <uprootAudioEventEmitterFMOD>k__BackingField: {fileID: 1002748434}
 --- !u!114 &1002748426
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26699,6 +26717,7 @@ MonoBehaviour:
   <tileNumInRow>k__BackingField: 2
   <tileNumInColumn>k__BackingField: 3
   <gridParent>k__BackingField: {fileID: 777042338}
+  <uprootAudioEventEmitterFMOD>k__BackingField: {fileID: 1004615131}
 --- !u!114 &1004615123
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27431,7 +27450,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 95c0e20cb290eb74ca5e4473d934b93a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 63c5e4b63981b744cbaa377c41e4c80b, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -28013,7 +28032,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 95c0e20cb290eb74ca5e4473d934b93a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 63c5e4b63981b744cbaa377c41e4c80b, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -28508,6 +28527,7 @@ MonoBehaviour:
   <tileNumInRow>k__BackingField: 1
   <tileNumInColumn>k__BackingField: 2
   <gridParent>k__BackingField: {fileID: 777042338}
+  <uprootAudioEventEmitterFMOD>k__BackingField: {fileID: 1079170328}
 --- !u!114 &1079170320
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29462,6 +29482,7 @@ MonoBehaviour:
   <tileNumInRow>k__BackingField: 4
   <tileNumInColumn>k__BackingField: 1
   <gridParent>k__BackingField: {fileID: 777042338}
+  <uprootAudioEventEmitterFMOD>k__BackingField: {fileID: 1107879455}
 --- !u!114 &1107879447
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30409,6 +30430,7 @@ MonoBehaviour:
   <tileNumInRow>k__BackingField: 2
   <tileNumInColumn>k__BackingField: 0
   <gridParent>k__BackingField: {fileID: 777042338}
+  <uprootAudioEventEmitterFMOD>k__BackingField: {fileID: 1155804731}
 --- !u!114 &1155804723
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30911,6 +30933,7 @@ MonoBehaviour:
   <tileNumInRow>k__BackingField: 6
   <tileNumInColumn>k__BackingField: 0
   <gridParent>k__BackingField: {fileID: 777042338}
+  <uprootAudioEventEmitterFMOD>k__BackingField: {fileID: 1158758397}
 --- !u!114 &1158758389
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -31333,7 +31356,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 95c0e20cb290eb74ca5e4473d934b93a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 63c5e4b63981b744cbaa377c41e4c80b, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -31602,7 +31625,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 95c0e20cb290eb74ca5e4473d934b93a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 63c5e4b63981b744cbaa377c41e4c80b, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -32436,7 +32459,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 95c0e20cb290eb74ca5e4473d934b93a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 63c5e4b63981b744cbaa377c41e4c80b, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -32934,6 +32957,7 @@ MonoBehaviour:
   <tileNumInRow>k__BackingField: 5
   <tileNumInColumn>k__BackingField: 1
   <gridParent>k__BackingField: {fileID: 777042338}
+  <uprootAudioEventEmitterFMOD>k__BackingField: {fileID: 1232097733}
 --- !u!114 &1232097725
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -33301,6 +33325,7 @@ MonoBehaviour:
   <tileNumInRow>k__BackingField: 4
   <tileNumInColumn>k__BackingField: 3
   <gridParent>k__BackingField: {fileID: 777042338}
+  <uprootAudioEventEmitterFMOD>k__BackingField: {fileID: 1232348865}
 --- !u!114 &1232348857
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -34281,6 +34306,7 @@ MonoBehaviour:
   <tileNumInRow>k__BackingField: 2
   <tileNumInColumn>k__BackingField: 2
   <gridParent>k__BackingField: {fileID: 777042338}
+  <uprootAudioEventEmitterFMOD>k__BackingField: {fileID: 1277552504}
 --- !u!114 &1277552496
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -34783,7 +34809,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 95c0e20cb290eb74ca5e4473d934b93a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 63c5e4b63981b744cbaa377c41e4c80b, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -35742,7 +35768,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 95c0e20cb290eb74ca5e4473d934b93a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 63c5e4b63981b744cbaa377c41e4c80b, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -37089,6 +37115,7 @@ MonoBehaviour:
   <tileNumInRow>k__BackingField: 4
   <tileNumInColumn>k__BackingField: 2
   <gridParent>k__BackingField: {fileID: 777042338}
+  <uprootAudioEventEmitterFMOD>k__BackingField: {fileID: 1368556769}
 --- !u!114 &1368556761
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -38144,6 +38171,7 @@ MonoBehaviour:
   <tileNumInRow>k__BackingField: 1
   <tileNumInColumn>k__BackingField: 3
   <gridParent>k__BackingField: {fileID: 777042338}
+  <uprootAudioEventEmitterFMOD>k__BackingField: {fileID: 1398176869}
 --- !u!114 &1398176861
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -39133,6 +39161,7 @@ MonoBehaviour:
   <tileNumInRow>k__BackingField: 8
   <tileNumInColumn>k__BackingField: 3
   <gridParent>k__BackingField: {fileID: 777042338}
+  <uprootAudioEventEmitterFMOD>k__BackingField: {fileID: 1435873246}
 --- !u!114 &1435873238
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -39711,6 +39740,7 @@ MonoBehaviour:
   <tileNumInRow>k__BackingField: 9
   <tileNumInColumn>k__BackingField: 2
   <gridParent>k__BackingField: {fileID: 777042338}
+  <uprootAudioEventEmitterFMOD>k__BackingField: {fileID: 1444773949}
 --- !u!114 &1444773941
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -40078,6 +40108,7 @@ MonoBehaviour:
   <tileNumInRow>k__BackingField: 0
   <tileNumInColumn>k__BackingField: 1
   <gridParent>k__BackingField: {fileID: 777042338}
+  <uprootAudioEventEmitterFMOD>k__BackingField: {fileID: 1445330521}
 --- !u!114 &1445330512
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -41286,7 +41317,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 95c0e20cb290eb74ca5e4473d934b93a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 63c5e4b63981b744cbaa377c41e4c80b, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -41818,6 +41849,7 @@ MonoBehaviour:
   <tileNumInRow>k__BackingField: 2
   <tileNumInColumn>k__BackingField: 4
   <gridParent>k__BackingField: {fileID: 777042338}
+  <uprootAudioEventEmitterFMOD>k__BackingField: {fileID: 1491814709}
 --- !u!114 &1491814701
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -43236,6 +43268,7 @@ MonoBehaviour:
   <tileNumInRow>k__BackingField: 8
   <tileNumInColumn>k__BackingField: 1
   <gridParent>k__BackingField: {fileID: 777042338}
+  <uprootAudioEventEmitterFMOD>k__BackingField: {fileID: 1528747912}
 --- !u!114 &1528747904
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -43603,6 +43636,7 @@ MonoBehaviour:
   <tileNumInRow>k__BackingField: 9
   <tileNumInColumn>k__BackingField: 1
   <gridParent>k__BackingField: {fileID: 777042338}
+  <uprootAudioEventEmitterFMOD>k__BackingField: {fileID: 1538477366}
 --- !u!114 &1538477358
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -44219,6 +44253,7 @@ MonoBehaviour:
   <tileNumInRow>k__BackingField: 7
   <tileNumInColumn>k__BackingField: 0
   <gridParent>k__BackingField: {fileID: 777042338}
+  <uprootAudioEventEmitterFMOD>k__BackingField: {fileID: 1554078855}
 --- !u!114 &1554078847
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -44586,6 +44621,7 @@ MonoBehaviour:
   <tileNumInRow>k__BackingField: 2
   <tileNumInColumn>k__BackingField: 1
   <gridParent>k__BackingField: {fileID: 777042338}
+  <uprootAudioEventEmitterFMOD>k__BackingField: {fileID: 1560932797}
 --- !u!114 &1560932789
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -45550,7 +45586,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 95c0e20cb290eb74ca5e4473d934b93a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 63c5e4b63981b744cbaa377c41e4c80b, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -45891,6 +45927,7 @@ MonoBehaviour:
   <tileNumInRow>k__BackingField: 3
   <tileNumInColumn>k__BackingField: 1
   <gridParent>k__BackingField: {fileID: 777042338}
+  <uprootAudioEventEmitterFMOD>k__BackingField: {fileID: 1616826390}
 --- !u!114 &1616826382
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -46826,6 +46863,7 @@ MonoBehaviour:
   <tileNumInRow>k__BackingField: 5
   <tileNumInColumn>k__BackingField: 3
   <gridParent>k__BackingField: {fileID: 777042338}
+  <uprootAudioEventEmitterFMOD>k__BackingField: {fileID: 1640197445}
 --- !u!114 &1640197437
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -47744,6 +47782,7 @@ MonoBehaviour:
   <tileNumInRow>k__BackingField: 7
   <tileNumInColumn>k__BackingField: 1
   <gridParent>k__BackingField: {fileID: 777042338}
+  <uprootAudioEventEmitterFMOD>k__BackingField: {fileID: 1675363188}
 --- !u!114 &1675363180
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -48254,7 +48293,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 95c0e20cb290eb74ca5e4473d934b93a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 63c5e4b63981b744cbaa377c41e4c80b, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -48464,7 +48503,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 95c0e20cb290eb74ca5e4473d934b93a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 63c5e4b63981b744cbaa377c41e4c80b, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -48590,6 +48629,7 @@ MonoBehaviour:
   <tileNumInRow>k__BackingField: 3
   <tileNumInColumn>k__BackingField: 0
   <gridParent>k__BackingField: {fileID: 777042338}
+  <uprootAudioEventEmitterFMOD>k__BackingField: {fileID: 1705588433}
 --- !u!114 &1705588425
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -49424,6 +49464,7 @@ MonoBehaviour:
   <tileNumInRow>k__BackingField: 8
   <tileNumInColumn>k__BackingField: 2
   <gridParent>k__BackingField: {fileID: 777042338}
+  <uprootAudioEventEmitterFMOD>k__BackingField: {fileID: 1727865224}
 --- !u!114 &1727865216
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -50225,6 +50266,7 @@ MonoBehaviour:
   <tileNumInRow>k__BackingField: 6
   <tileNumInColumn>k__BackingField: 4
   <gridParent>k__BackingField: {fileID: 777042338}
+  <uprootAudioEventEmitterFMOD>k__BackingField: {fileID: 1747731298}
 --- !u!114 &1747731290
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -50870,7 +50912,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 95c0e20cb290eb74ca5e4473d934b93a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 63c5e4b63981b744cbaa377c41e4c80b, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -51685,7 +51727,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 95c0e20cb290eb74ca5e4473d934b93a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 63c5e4b63981b744cbaa377c41e4c80b, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -52323,7 +52365,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 95c0e20cb290eb74ca5e4473d934b93a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 63c5e4b63981b744cbaa377c41e4c80b, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -53073,7 +53115,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 95c0e20cb290eb74ca5e4473d934b93a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 63c5e4b63981b744cbaa377c41e4c80b, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -53323,7 +53365,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 95c0e20cb290eb74ca5e4473d934b93a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 63c5e4b63981b744cbaa377c41e4c80b, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -53668,7 +53710,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 95c0e20cb290eb74ca5e4473d934b93a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 63c5e4b63981b744cbaa377c41e4c80b, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -54378,6 +54420,7 @@ MonoBehaviour:
   <tileNumInRow>k__BackingField: 0
   <tileNumInColumn>k__BackingField: 3
   <gridParent>k__BackingField: {fileID: 777042338}
+  <uprootAudioEventEmitterFMOD>k__BackingField: {fileID: 1899135438}
 --- !u!114 &1899135430
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -56141,6 +56184,7 @@ MonoBehaviour:
   <tileNumInRow>k__BackingField: 0
   <tileNumInColumn>k__BackingField: 4
   <gridParent>k__BackingField: {fileID: 777042338}
+  <uprootAudioEventEmitterFMOD>k__BackingField: {fileID: 1933233878}
 --- !u!114 &1933233870
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -56672,7 +56716,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 95c0e20cb290eb74ca5e4473d934b93a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 63c5e4b63981b744cbaa377c41e4c80b, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -57281,7 +57325,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 95c0e20cb290eb74ca5e4473d934b93a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 63c5e4b63981b744cbaa377c41e4c80b, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -57415,7 +57459,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 95c0e20cb290eb74ca5e4473d934b93a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 63c5e4b63981b744cbaa377c41e4c80b, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -57925,6 +57969,7 @@ MonoBehaviour:
   <tileNumInRow>k__BackingField: 3
   <tileNumInColumn>k__BackingField: 4
   <gridParent>k__BackingField: {fileID: 777042338}
+  <uprootAudioEventEmitterFMOD>k__BackingField: {fileID: 2005115271}
 --- !u!114 &2005115263
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -59247,7 +59292,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 95c0e20cb290eb74ca5e4473d934b93a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 63c5e4b63981b744cbaa377c41e4c80b, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -59343,7 +59388,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2058520091
 GameObject:
@@ -59461,7 +59506,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 95c0e20cb290eb74ca5e4473d934b93a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 63c5e4b63981b744cbaa377c41e4c80b, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -59587,6 +59632,7 @@ MonoBehaviour:
   <tileNumInRow>k__BackingField: 7
   <tileNumInColumn>k__BackingField: 4
   <gridParent>k__BackingField: {fileID: 777042338}
+  <uprootAudioEventEmitterFMOD>k__BackingField: {fileID: 2059737629}
 --- !u!114 &2059737621
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -59962,7 +60008,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 95c0e20cb290eb74ca5e4473d934b93a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 63c5e4b63981b744cbaa377c41e4c80b, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -60088,6 +60134,7 @@ MonoBehaviour:
   <tileNumInRow>k__BackingField: 6
   <tileNumInColumn>k__BackingField: 3
   <gridParent>k__BackingField: {fileID: 777042338}
+  <uprootAudioEventEmitterFMOD>k__BackingField: {fileID: 2065378686}
 --- !u!114 &2065378678
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -60670,6 +60717,7 @@ MonoBehaviour:
   <tileNumInRow>k__BackingField: 4
   <tileNumInColumn>k__BackingField: 4
   <gridParent>k__BackingField: {fileID: 777042338}
+  <uprootAudioEventEmitterFMOD>k__BackingField: {fileID: 2070348984}
 --- !u!114 &2070348976
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -61568,6 +61616,7 @@ MonoBehaviour:
   <tileNumInRow>k__BackingField: 1
   <tileNumInColumn>k__BackingField: 1
   <gridParent>k__BackingField: {fileID: 777042338}
+  <uprootAudioEventEmitterFMOD>k__BackingField: {fileID: 2103963353}
 --- !u!114 &2103963345
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -61935,6 +61984,7 @@ MonoBehaviour:
   <tileNumInRow>k__BackingField: 5
   <tileNumInColumn>k__BackingField: 0
   <gridParent>k__BackingField: {fileID: 777042338}
+  <uprootAudioEventEmitterFMOD>k__BackingField: {fileID: 2118044414}
 --- !u!114 &2118044406
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -62774,6 +62824,7 @@ MonoBehaviour:
   <tileNumInRow>k__BackingField: 6
   <tileNumInColumn>k__BackingField: 2
   <gridParent>k__BackingField: {fileID: 777042338}
+  <uprootAudioEventEmitterFMOD>k__BackingField: {fileID: 2133675656}
 --- !u!114 &2133675648
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -64017,7 +64068,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "You can click on any individual plant \nto water or uproot!"
+  m_text: 'Click to
+
+    Open Menu'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -64416,6 +64469,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1451926326881674972, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: ecf69c00a329a97488870c4fbd338dfd, type: 3}
     - target: {fileID: 1546197182162329650, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
       propertyPath: OnStartedDragging.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
       value: 1
@@ -64624,14 +64681,70 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5268446184307478207, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
+      propertyPath: m_Color.b
+      value: 0.53960484
+      objectReference: {fileID: 0}
+    - target: {fileID: 5268446184307478207, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
+      propertyPath: m_Color.g
+      value: 0.8867924
+      objectReference: {fileID: 0}
+    - target: {fileID: 5268446184307478207, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
+      propertyPath: m_Color.r
+      value: 0.7724746
+      objectReference: {fileID: 0}
     - target: {fileID: 5268446184431637945, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5448502760409077406, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 345
+      objectReference: {fileID: 0}
+    - target: {fileID: 5448502761594808232, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 345
+      objectReference: {fileID: 0}
+    - target: {fileID: 5448502761654251158, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 345
+      objectReference: {fileID: 0}
+    - target: {fileID: 6729980828406004652, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0.0000009536743
+      objectReference: {fileID: 0}
+    - target: {fileID: 6729980828406004652, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: -0.00000047683716
+      objectReference: {fileID: 0}
+    - target: {fileID: 6729980828406004652, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6729980828406004652, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -2.7806091
+      value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6731880086570744010, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
+      propertyPath: m_Colors.m_DisabledColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6731880086570744010, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
+      propertyPath: m_Colors.m_DisabledColor.b
+      value: 0.06666667
+      objectReference: {fileID: 0}
+    - target: {fileID: 6731880086570744010, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
+      propertyPath: m_Colors.m_DisabledColor.g
+      value: 0.12941177
+      objectReference: {fileID: 0}
+    - target: {fileID: 6731880086570744010, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
+      propertyPath: m_Colors.m_DisabledColor.r
+      value: 0.25882354
+      objectReference: {fileID: 0}
+    - target: {fileID: 6731880086588993990, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 92d8df3f08e748949b2e07c821a5ec9c, type: 3}
     - target: {fileID: 6731880086588993991, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -64643,6 +64756,22 @@ PrefabInstance:
     - target: {fileID: 6731880086588993991, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
       propertyPath: m_AnchorMin.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6731880086867236576, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
+      propertyPath: m_Colors.m_DisabledColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6731880086867236576, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
+      propertyPath: m_Colors.m_DisabledColor.b
+      value: 0.06666667
+      objectReference: {fileID: 0}
+    - target: {fileID: 6731880086867236576, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
+      propertyPath: m_Colors.m_DisabledColor.g
+      value: 0.12941177
+      objectReference: {fileID: 0}
+    - target: {fileID: 6731880086867236576, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
+      propertyPath: m_Colors.m_DisabledColor.r
+      value: 0.25882354
       objectReference: {fileID: 0}
     - target: {fileID: 6731880086990785988, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
       propertyPath: m_AnchorMax.x
@@ -64660,6 +64789,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6731880087676247480, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 49e362ca44dfdca4885e51237916ddf1, type: 3}
     - target: {fileID: 6731880087676247481, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -64672,6 +64805,14 @@ PrefabInstance:
       propertyPath: m_AnchorMin.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6809323818167285528, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 2fb50d6e06dc25c4c9b5cd49cfd8acd8, type: 3}
+    - target: {fileID: 6809323818228570051, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 0ad3ea48a480695469c0c8e452ec4746, type: 3}
     - target: {fileID: 7663563579968728992, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
       propertyPath: waveSpawnerLinkedToButton
       value: 
@@ -64696,6 +64837,14 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0.16003418
       objectReference: {fileID: 0}
+    - target: {fileID: 7663563580350903429, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 5c95bc2a72192a64bb719010a14b3f77, type: 2}
+    - target: {fileID: 7663563580350903429, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -244629392850006900, guid: 5c95bc2a72192a64bb719010a14b3f77, type: 2}
     - target: {fileID: 7663563580509064064, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
       propertyPath: m_AnchorMax.x
       value: 1
@@ -64704,6 +64853,14 @@ PrefabInstance:
       propertyPath: m_AnchorMin.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7663563580612757598, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 5c95bc2a72192a64bb719010a14b3f77, type: 2}
+    - target: {fileID: 7663563580612757598, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -244629392850006900, guid: 5c95bc2a72192a64bb719010a14b3f77, type: 2}
     - target: {fileID: 7663563581489115495, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
       propertyPath: gameResourceUIStatPopupSpawner
       value: 
@@ -64712,6 +64869,14 @@ PrefabInstance:
       propertyPath: gameResourceUIStatPopupSpawnTransformRef
       value: 
       objectReference: {fileID: 1039532476}
+    - target: {fileID: 7663563581521105977, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
+      propertyPath: m_fontSize
+      value: 54.35
+      objectReference: {fileID: 0}
+    - target: {fileID: 7663563581521105977, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -244629392850006900, guid: 5c95bc2a72192a64bb719010a14b3f77, type: 2}
     - target: {fileID: 7663563581612626002, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
       propertyPath: m_Camera
       value: 
@@ -64726,7 +64891,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7663563581612626003, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7663563581612626003, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
       propertyPath: m_AnchorMax.x
@@ -64808,9 +64973,25 @@ PrefabInstance:
       propertyPath: waveSpawnerToLookAhead
       value: 
       objectReference: {fileID: 7007502426730147584}
+    - target: {fileID: 8652331384326655289, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 345
+      objectReference: {fileID: 0}
+    - target: {fileID: 8800420754615683155, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8800420754615683155, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8800420754615683155, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 10.049995
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8800420754615683155, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8832401153954520555, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
       propertyPath: m_AnchorMax.y

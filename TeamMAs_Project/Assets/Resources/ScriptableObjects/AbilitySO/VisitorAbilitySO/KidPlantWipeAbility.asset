@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2e60922fadcb2346b0383bee95792a3, type: 3}
+  m_Name: KidPlantWipeAbility
+  m_EditorClassIdentifier: 
+  <abilityName>k__BackingField: KidPlantWipeAbility
+  <abilityPrefab>k__BackingField: {fileID: 0}
+  initialAbilityRangeInTiles: 12
+  initialAbilityDuration: 1.15
+  initialAbilityCooldownTime: 0
+  initialAbilityChargeTime: 2
+  initialAbilityUseReservedFor: 2
+  initialAbilityOnlyAffect: 1
+  initialAbilityAffectsSpecificVisitorType: 0
+  initialMaxNumberOfUnitsToAffect: 12
+  initialAbilityAffectsSpecificPlantUnit: []
+  initialAbilityAffectsSpecificVisitorUnit: []
+  <abilityEffects>k__BackingField:
+  - {fileID: 11400000, guid: 70590dd2266a3024b9d242bc950a0f90, type: 2}
+  <waveToUnlockAbilityAfterFinished>k__BackingField: {fileID: 0}
+  initialAbilityLocked: 0
+  <useOnEquippedIfNotLocked>k__BackingField: 1

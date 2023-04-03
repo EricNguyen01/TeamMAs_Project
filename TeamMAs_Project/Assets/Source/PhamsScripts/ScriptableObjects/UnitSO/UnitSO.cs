@@ -48,13 +48,40 @@ namespace TeamMAsTD
 
             Animator effectAnimator = effectGO.GetComponent<Animator>();
 
-            if (effectAnimator == null) yield break;
+            ParticleSystem[] particleSystems = effectGO.GetComponentsInChildren<ParticleSystem>();
 
-            //Debug.Log("NormTime: " + effectAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime + " | Dur: " + effectAnimator.GetCurrentAnimatorStateInfo(0).length);
-            
-            yield return new WaitUntil(() => (effectAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime >= effectAnimator.GetCurrentAnimatorStateInfo(0).length && !effectAnimator.IsInTransition(0)));
-            
-            //Debug.Log("NormTime: " + effectAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime + " | Dur: " + effectAnimator.GetCurrentAnimatorStateInfo(0).length);
+            if (effectAnimator != null)
+            {
+                yield return new WaitUntil(() => (effectAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime >= effectAnimator.GetCurrentAnimatorStateInfo(0).length && !effectAnimator.IsInTransition(0)));
+            }
+
+            bool particleSystemsFinished = false;
+
+            if (particleSystems != null && particleSystems.Length > 0)
+            {
+                while (!particleSystemsFinished)
+                {
+                    for (int i = 0; i < particleSystems.Length; i++)
+                    {
+                        if(i < particleSystems.Length - 1)
+                        {
+                            if (particleSystems[i].main.loop) continue;
+                            else 
+                            { 
+                                if (particleSystems[i].isEmitting) break; 
+                            }
+                        }
+
+                        if (i == particleSystems.Length - 1)
+                        {
+                            if(particleSystems[i].main.loop || !particleSystems[i].isEmitting) particleSystemsFinished = true;
+                        }
+                    }
+
+                    if(!particleSystemsFinished) yield return new WaitForSeconds(0.5f);
+                }
+            }
+            else particleSystemsFinished = true;
             
             Destroy(effectGO);
 

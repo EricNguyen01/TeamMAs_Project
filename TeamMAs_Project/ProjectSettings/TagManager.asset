@@ -3,7 +3,8 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - FxTemporaire
   layers:
   - Default
   - TransparentFX
@@ -52,6 +53,9 @@ TagManager:
     locked: 0
   - name: Visitor
     uniqueID: 1719923375
+    locked: 0
+  - name: Effects
+    uniqueID: 4037356691
     locked: 0
   - name: UI
     uniqueID: 599533699
