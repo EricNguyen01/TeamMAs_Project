@@ -4,22 +4,31 @@ using UnityEngine;
 
 namespace TeamMAsTD
 {
+    [DisallowMultipleComponent]
     public class KidPlantWipeAbility : AuraAbility
     {
+        private float currentWipeAuraExpandTime = 0.0f;
+
         protected override void OnEnable()
         {
             base.OnEnable();
 
-            auraRange = 1.0f;
+            auraRange = 0.5f;
 
             auraCollider.radius = auraRange;
         }
 
         protected override void ProcessAbilityStart()
         {
+            currentWipeAuraExpandTime = 0.0f;
+
+            auraRange = 0.5f;
+
+            auraCollider.radius = auraRange;
+
             //stop visitor carrying this ability from moving upon ability starts/updates
             //also makes visitor temporary invincible
-            if(unitPossessingAbility != null)
+            if (unitPossessingAbility != null)
             {
                 if(unitPossessingAbility.GetUnitObject().GetType() == typeof(VisitorUnit))
                 {
@@ -36,8 +45,24 @@ namespace TeamMAsTD
 
         protected override void ProcessAbilityUpdate()
         {
-            //lerp expand the wipe aura collider ovetime here:
+            if (currentWipeAuraExpandTime < abilityScriptableObject.abilityDuration)
+            {
+                //lerp expand the wipe aura collider ovetime here:
+                auraCollider.radius = Mathf.Lerp(auraRange,
+                                                 abilityScriptableObject.abilityRangeInTiles,
+                                                 currentWipeAuraExpandTime / abilityScriptableObject.abilityDuration);
 
+                currentWipeAuraExpandTime += Time.fixedDeltaTime;
+
+                if (currentWipeAuraExpandTime >= abilityScriptableObject.abilityDuration)
+                {
+                    currentWipeAuraExpandTime = abilityScriptableObject.abilityDuration;
+
+                    auraRange = abilityScriptableObject.abilityRangeInTiles;
+
+                    auraCollider.radius = auraRange;
+                }
+            }
         }
 
         protected override void ProcessAbilityEnd()

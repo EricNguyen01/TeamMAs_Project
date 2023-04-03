@@ -33,7 +33,7 @@ namespace TeamMAsTD
 
         public float currentEffectDuration { get; set; } = 0.0f;
 
-        protected bool canUpdateEffect { get; private set; } = false;
+        //protected bool canUpdateEffect { get; private set; } = false;
 
         public bool effectIsBeingDestroyed { get; private set; } = false;
 
@@ -75,13 +75,7 @@ namespace TeamMAsTD
 
         protected abstract void OnEffectStarted();
 
-        //IMPORTANT:.........................................................................................................
-        //If any child ability effect class that has recurring functionality that needs to call this UpdateEffect function
-        //It should create its own UnityUpdate func.
-        //REMEMBER to call DestroyEffect() func on effect finished.
-        //protected abstract void OnEffectUpdated();
-
-        //...................................................................................................................
+        protected abstract void EffectUpdate();
 
         protected abstract void OnEffectEnded();
 
@@ -145,24 +139,50 @@ namespace TeamMAsTD
             
             OnEffectStarted();
 
-            //if ability effect duration is not using value from its carrying ability and,
-            //if ability effect duration is between the range of -1.0f to 0.0f (and not exactly -1.0f)
-            //then it is treated as if it has the duration of 0.0f anyway and will not be updated but rather destroyed immediately.
             if (!abilityEffectSO.effectDurationAsAbilityDuration)
             {
+                //if ability effect duration is not using value from its carrying ability and,
+                //if ability effect duration is between the range of -1.0f to 0.0f (and not exactly -1.0f)
+                //then it is treated as if it has the duration of 0.0f anyway and will not be updated but rather destroyed immediately.
                 if (abilityEffectSO.effectDuration > -1.0f && abilityEffectSO.effectDuration <= 0.0f)
                 {
                     if(!effectIsBeingDestroyed) DestroyEffectWithEffectEndedInvoked(true);
 
                     return;
                 }
+                else if(abilityEffectSO.effectDuration > 0.0f)
+                {
+                    //else if not being destroyed during any of the above checks
+                    //or if effect duration not equal ability duration
+                    //can now update effect after start (must be the last check of init)
+                    StartCoroutine(AbilityEffectUpdateCoroutine(abilityEffectSO.effectDuration));
+                }
             }
-
-            //else if not being destroyed during any of the above checks - can now update after start (must be the last line of init)
-            if(!effectIsBeingDestroyed) canUpdateEffect = true;
         }
 
-        public void DestroyEffectWithEffectEndedInvoked(bool processOnEffectEndedFunc)
+        private IEnumerator AbilityEffectUpdateCoroutine(float effectDuration)
+        {
+            if (effectIsBeingDestroyed) yield break;
+
+            float time = 0.0f;
+
+            while (time < effectDuration)
+            {
+                if (effectIsBeingDestroyed) yield break;
+
+                time += Time.fixedDeltaTime;
+
+                EffectUpdate();
+
+                yield return new WaitForFixedUpdate();
+            }
+
+            if (!effectIsBeingDestroyed) DestroyEffectWithEffectEndedInvoked(true);
+
+            yield break;
+        }
+
+        public void DestroyEffectWithEffectEndedInvoked(bool callOnEffectEndedFunc)
         {
             if (effectIsBeingDestroyed) return;
 
@@ -172,9 +192,9 @@ namespace TeamMAsTD
 
             //Debug.Log("Effect Is Being Destroyed On: " + transform.parent.gameObject.name);
 
-            canUpdateEffect = false;
+            StopCoroutine(AbilityEffectUpdateCoroutine(abilityEffectSO.effectDuration));
 
-            if(processOnEffectEndedFunc) OnEffectEnded();
+            if(callOnEffectEndedFunc) OnEffectEnded();
 
             if (abilityEffectInventoryRegisteredTo != null) abilityEffectInventoryRegisteredTo.RemoveEffect(this);
 
