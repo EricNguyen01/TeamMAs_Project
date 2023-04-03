@@ -18,7 +18,7 @@ MonoBehaviour:
   <unitSpawnEffectPrefab>k__BackingField: {fileID: 0}
   <unitDestroyEffectPrefab>k__BackingField: {fileID: 0}
   <visitorType>k__BackingField: 1
-  <happinessAsHealth>k__BackingField: 3300
+  <happinessAsHealth>k__BackingField: 1300
   <moveSpeed>k__BackingField: 1.3
   <appeasementHealAmount>k__BackingField: 2
   <dissapointmentDamage>k__BackingField: 2
