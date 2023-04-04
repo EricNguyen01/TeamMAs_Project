@@ -11,6 +11,8 @@ namespace TeamMAsTD
 
         protected Tile tilePlantUnitToWipeOn;
 
+        protected AbilityEffectReceivedInventory plantAbilityEffectReceivedInventory;
+
         protected override void OnEffectStarted()
         {
             if(unitBeingAffected.GetUnitObject().GetType() != typeof(PlantUnit))
@@ -29,41 +31,10 @@ namespace TeamMAsTD
             //The chunk below finds and disables all ability effect stat popup components in all effects that are currently affecting this plant
             //since this plant abt to be wiped out, we have no need to display any effect stat popups anymore
 
-            AbilityEffectReceivedInventory plantAbilityEffectReceivedInventory = plantUnitToWipe.GetAbilityEffectReceivedInventory();
+            plantAbilityEffectReceivedInventory = plantUnitToWipe.GetAbilityEffectReceivedInventory();
 
-            if (plantAbilityEffectReceivedInventory.abilityEffectsReceived != null &&
-               plantAbilityEffectReceivedInventory.abilityEffectsReceived.Count > 0)
-            {
-                for (int i = 0; i < plantAbilityEffectReceivedInventory.abilityEffectsReceived.Count; i++)
-                {
-                    if (plantAbilityEffectReceivedInventory.abilityEffectsReceived[i].effectStackSpawned != null &&
-                        plantAbilityEffectReceivedInventory.abilityEffectsReceived[i].effectStackSpawned.Count > 0)
-                    {
-                        for (int j = 0; j < plantAbilityEffectReceivedInventory.abilityEffectsReceived[i].effectStackSpawned.Count; j++)
-                        {
+            DestroyEffectStatPopupSpawnersOfEffectsOnPlant();
 
-                            AbilityEffect aEffect = plantAbilityEffectReceivedInventory.abilityEffectsReceived[i].effectStackSpawned[j];
-
-                            if (aEffect == null) continue;
-
-                            if (aEffect == this) continue;
-
-                            //if (plantUnitToWipe.tilePlacedOn.name.Contains("3.2")) Debug.Log("EffectFound!");
-
-                            if (aEffect.GetAbilityEffectStatPopupSpawner() != null)
-                            {
-                                //if (plantUnitToWipe.tilePlacedOn.name.Contains("3.2")) Debug.Log("StatPopupSpawnerFound!");
-
-                                aEffect.GetAbilityEffectStatPopupSpawner().disablePopup = true;
-
-                                aEffect.GetAbilityEffectStatPopupSpawner().enabled = false;
-                            }
-                        }
-                    }
-                }
-            }
-
-            //actually disables plant aim shoot and plant abilities which would also trigger effect stat popups which we have disabled above.
             DisablePlantUnitAndItsAbilities(plantUnitToWipe);
 
             //get tile placed on
@@ -77,7 +48,7 @@ namespace TeamMAsTD
 
         protected override void EffectUpdate()
         {
-
+            DestroyEffectStatPopupSpawnersOfEffectsOnPlant();
         }
 
         protected override void OnEffectEnded()
@@ -93,7 +64,7 @@ namespace TeamMAsTD
             }
             else
             {
-                Destroy(plantUnitToWipe);
+                Destroy(plantUnitToWipe, 0.1f);
             }
         }
 
@@ -110,7 +81,43 @@ namespace TeamMAsTD
             {
                 if (ability == null) continue;
 
+                ability.TempDisable_SpawnedAbilityEffects_StatPopupSpawners_Except(this);
+
                 ability.ForceStopAbility();
+            }
+        }
+
+        protected void DestroyEffectStatPopupSpawnersOfEffectsOnPlant()
+        {
+            if (plantAbilityEffectReceivedInventory.abilityEffectsReceived != null &&
+               plantAbilityEffectReceivedInventory.abilityEffectsReceived.Count > 0)
+            {
+                for (int i = 0; i < plantAbilityEffectReceivedInventory.abilityEffectsReceived.Count; i++)
+                {
+                    if (i >= plantAbilityEffectReceivedInventory.abilityEffectsReceived.Count) break;
+
+                    if (plantAbilityEffectReceivedInventory.abilityEffectsReceived[i].effectStackSpawned != null &&
+                        plantAbilityEffectReceivedInventory.abilityEffectsReceived[i].effectStackSpawned.Count > 0)
+                    {
+                        for (int j = 0; j < plantAbilityEffectReceivedInventory.abilityEffectsReceived[i].effectStackSpawned.Count; j++)
+                        {
+                            if (j >= plantAbilityEffectReceivedInventory.abilityEffectsReceived[i].effectStackSpawned.Count) break;
+
+                            AbilityEffect aEffect = plantAbilityEffectReceivedInventory.abilityEffectsReceived[i].effectStackSpawned[j];
+
+                            if (aEffect == null) continue;
+
+                            if (aEffect == this) continue;
+
+                            StatPopupSpawner eStatPopupSpawner = aEffect.GetAbilityEffectStatPopupSpawner();
+
+                            if (eStatPopupSpawner != null)
+                            {
+                                eStatPopupSpawner.DetachAndDestroyAllStatPopupsIncludingSpawner(true);
+                            }
+                        }
+                    }
+                }
             }
         }
     }

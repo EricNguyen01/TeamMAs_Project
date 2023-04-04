@@ -47,7 +47,12 @@ namespace TeamMAsTD
 
                     effectSpawned = abilityEffectReceivedInventory.CreateAndStartEffect(sourceAbilityReceived, effectSOReceived);
 
-                    if (effectSpawned != null) effectStackSpawned.Add(effectSpawned);
+                    if (effectSpawned != null) 
+                    { 
+                        effectStackSpawned.Add(effectSpawned); 
+
+                        sourceAbilityReceived.RegisterAbilityEffectCreatedByThisAbility(effectSpawned);
+                    }
                 }
             }
 
@@ -173,18 +178,6 @@ namespace TeamMAsTD
                     }
                     //else if ability effect is NOT stackable and a same effect type alr existed -> do nothing!
                     else return;
-
-                    /*/if ability effect IS NOT STACKABLE and a same effect type alr existed -> swap the old one with a new one
-
-                    //first remove the old existing effect of same type
-                    abilityEffectsReceived[i].RemoveThisEffectSlotCompletely();
-
-                    //then apply new same type effect
-                    //a new abilityEffectReceived slot is created for this effect
-                    //since it is non-stackable, we are treating it as if it is a new effect being applied after removing the old one.
-                    ApplyEffectStackToSlot(null, sourceAbility, effectSO);
-
-                    return;*/
                 }
             }
 

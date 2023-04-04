@@ -211,13 +211,22 @@ namespace TeamMAsTD
             }
         }
 
-        public void DetachAndDestroyAllStatPopupsIncludingSpawner()
+        public void DetachAndDestroyAllStatPopupsIncludingSpawner(bool shouldDestroyImmediate)
         {
+            if (transform.parent == null) return;
+
             transform.SetParent(null);
 
             if (statPopupPool == null) return;
 
-            if(!enabled)
+            if (shouldDestroyImmediate)
+            {
+                disablePopup = true;
+
+                enabled = false;
+            }
+
+            if(!enabled || disablePopup)
             {
                 StopAllCoroutines();
 

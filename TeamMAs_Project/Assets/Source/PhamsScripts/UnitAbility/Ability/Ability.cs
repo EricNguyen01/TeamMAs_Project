@@ -58,6 +58,8 @@ namespace TeamMAsTD
 
         private WaveSO currentWave;
 
+        private List<AbilityEffect> abilityEffectsCreated = new List<AbilityEffect>();
+
         public static event System.Action<Ability> OnAbilityStarted;
         public static event System.Action<Ability> OnAbilityStopped;
 
@@ -451,6 +453,60 @@ namespace TeamMAsTD
 
                 if (!abilityParticleEffect.gameObject.activeInHierarchy) abilityParticleEffect.gameObject.SetActive(true);
             }
+        }
+
+        public void TempDisable_SpawnedAbilityEffects_StatPopupSpawners_Except(bool disable,
+                                                                               AbilityEffect abilityEffectToExcept = null, 
+                                                                               List<AbilityEffect> abilityEffectsToExcept = null)
+        {
+            if (abilityEffectsCreated == null || abilityEffectsCreated.Count == 0) return;
+
+            for(int i = 0; i < abilityEffectsCreated.Count; i++)
+            {
+                if (abilityEffectsCreated[i] == null) continue;
+
+                if (abilityEffectToExcept != null && abilityEffectsCreated[i] == abilityEffectToExcept) continue;
+
+                if(abilityEffectsToExcept != null && abilityEffectsToExcept.Count > 0)
+                {
+                    if (abilityEffectsToExcept.Contains(abilityEffectsCreated[i])) continue;
+                }
+
+                StatPopupSpawner eStatPopupSpawner = abilityEffectsCreated[i].GetAbilityEffectStatPopupSpawner();
+
+                if (eStatPopupSpawner == null) continue;
+
+                if (disable) eStatPopupSpawner.disablePopup = true;
+                else eStatPopupSpawner.disablePopup = false;
+            }
+        }
+
+        public void RegisterAbilityEffectCreatedByThisAbility(AbilityEffect abilityEffect)
+        {
+            if (abilityEffectsCreated == null) return;
+
+            if (abilityScriptableObject.abilityEffects == null || abilityScriptableObject.abilityEffects.Count == 0) return;
+
+            if (abilityEffect.abilityEffectSO == null) return;
+
+            if (!abilityScriptableObject.abilityEffects.Contains(abilityEffect.abilityEffectSO)) return;
+
+            abilityEffectsCreated.Add(abilityEffect);
+        }
+
+        public void DeRegisterAbilityEffectCreatedByThisAbility(AbilityEffect abilityEffect)
+        {
+            if (abilityEffectsCreated == null) return;
+
+            if (abilityScriptableObject.abilityEffects == null || abilityScriptableObject.abilityEffects.Count == 0) return;
+
+            if (abilityEffect.abilityEffectSO == null) return;
+
+            if (!abilityScriptableObject.abilityEffects.Contains(abilityEffect.abilityEffectSO)) return;
+
+            if (!abilityEffectsCreated.Contains(abilityEffect)) return;
+
+            abilityEffectsCreated.Remove(abilityEffect);
         }
     }
 }

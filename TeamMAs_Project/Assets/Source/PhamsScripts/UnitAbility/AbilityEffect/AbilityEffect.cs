@@ -221,6 +221,8 @@ namespace TeamMAsTD
             if (abilityEffectInventoryRegisteredTo != null) abilityEffectInventoryRegisteredTo.RemoveEffect(this);
 
             abilityEffectInventoryRegisteredTo = null;
+
+            abilityCarriedEffect.DeRegisterAbilityEffectCreatedByThisAbility(this);
             
             Destroy(gameObject);
         }
@@ -297,7 +299,7 @@ namespace TeamMAsTD
 
             if (!gameObject.scene.isLoaded) return;
 
-            effectStatPopupSpawner.DetachAndDestroyAllStatPopupsIncludingSpawner();
+            effectStatPopupSpawner.DetachAndDestroyAllStatPopupsIncludingSpawner(false);
         }
 
         public StatPopupSpawner GetAbilityEffectStatPopupSpawner()
