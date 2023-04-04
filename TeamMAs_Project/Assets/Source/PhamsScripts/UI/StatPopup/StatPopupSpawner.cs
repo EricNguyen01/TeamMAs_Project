@@ -211,6 +211,17 @@ namespace TeamMAsTD
         {
             if (statPopupPool == null) return;
 
+            if (!enabled)
+            {
+                if(statPopupPool.gameObjectsPool != null && statPopupPool.gameObjectsPool.Count > 0)
+                {
+                    for(int i = 0; i < statPopupPool.gameObjectsPool.Count; i++)
+                    {
+                        statPopupPool.gameObjectsPool[i].SetActive(false);
+                    }
+                }
+            }
+
             statPopupPool.DetachAndDestroyAllStatPopupsFromPool();
         }
     }

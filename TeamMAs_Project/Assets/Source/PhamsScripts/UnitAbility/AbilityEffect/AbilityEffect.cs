@@ -17,6 +17,14 @@ namespace TeamMAsTD
         [field: SerializeField]
         protected StatPopupSpawner effectStatPopupSpawner { get; private set; }
 
+        [Header("Ability Effect Particle FXs")]
+
+        [SerializeField] protected ParticleSystem effectStartFx;
+
+        [SerializeField] protected ParticleSystem effectUpdateFx;
+
+
+        //INTERNALS..............................................................................................
         public Ability abilityCarriedEffect { get; private set; }
 
         public AbilitySO abilitySOCarriedEffect { get; private set; }
@@ -31,7 +39,7 @@ namespace TeamMAsTD
 
         public AbilityEffectReceivedInventory abilityEffectInventoryRegisteredTo { get; private set; }
 
-        public float currentEffectDuration { get; set; } = 0.0f;
+        protected float effectDuration { get; private set; } = 0.0f;
 
         //protected bool canUpdateEffect { get; private set; } = false;
 
@@ -107,6 +115,10 @@ namespace TeamMAsTD
             if(unitBeingAffectedUnitSO == null)
             {
                 Debug.LogError("The unit: " + name + " being affected by this effect: " + name + " doesn't have a UnitSO data.");
+
+                DestroyEffectWithEffectEndedInvoked(false);
+
+                return;
             }
 
             abilityEffectInventoryRegisteredTo = unitBeingAffected.GetAbilityEffectReceivedInventory();
@@ -135,8 +147,12 @@ namespace TeamMAsTD
 
             if (abilityEffectSO.effectDurationAsAbilityDuration) effectDuration = abilitySOCarriedEffect.abilityDuration;
 
-            currentEffectDuration = effectDuration;
+            this.effectDuration = effectDuration;
+
+            InitializeAbilityEffectFXs(sourceAbility);
             
+            //only start effect after all data have been initialized
+            //any data not init must be init before effect starts/updates
             OnEffectStarted();
 
             if (!abilityEffectSO.effectDurationAsAbilityDuration)
@@ -150,11 +166,14 @@ namespace TeamMAsTD
 
                     return;
                 }
-                else if(abilityEffectSO.effectDuration > 0.0f)
+
+                if (this.effectDuration > 0.0f)
                 {
+                    if (effectIsBeingDestroyed) return;
+
                     //else if not being destroyed during any of the above checks
-                    //or if effect duration not equal ability duration
-                    //can now update effect after start (must be the last check of init)
+                    //and if effect duration is set to a valid value (>0)
+                    //can now update effect after start (must be the last function of init)
                     StartCoroutine(AbilityEffectUpdateCoroutine(abilityEffectSO.effectDuration));
                 }
             }
@@ -177,7 +196,10 @@ namespace TeamMAsTD
                 yield return new WaitForFixedUpdate();
             }
 
-            if (!effectIsBeingDestroyed) DestroyEffectWithEffectEndedInvoked(true);
+            if (!effectIsBeingDestroyed && !abilityEffectSO.effectDurationAsAbilityDuration)
+            {
+                DestroyEffectWithEffectEndedInvoked(true);
+            }
 
             yield break;
         }
@@ -216,9 +238,37 @@ namespace TeamMAsTD
             if (abilityEffectSO.effectDurationAsAbilityDuration) DestroyEffectWithEffectEndedInvoked(true);
         }
 
+        protected virtual void InitializeAbilityEffectFXs(Ability sourceAbility)
+        {
+            if (sourceAbility == null) return;
+
+            if(effectStartFx != null)
+            {
+                var fxMain = effectStartFx.main;
+
+                fxMain.playOnAwake = false;
+
+                effectStartFx.Stop();
+
+                if (!effectStartFx.gameObject.activeInHierarchy) effectStartFx.gameObject.SetActive(true);
+                
+            }
+
+            if(effectUpdateFx != null)
+            {
+                var fxMain = effectUpdateFx.main;
+
+                fxMain.playOnAwake = false;
+
+                effectUpdateFx.Stop();
+
+                if (!effectUpdateFx.gameObject.activeInHierarchy) effectUpdateFx.gameObject.SetActive(true);
+            }
+        }
+
         protected virtual void ProcessEffectPopupForBuffEffects(Sprite popupSprite, string popupText, float buffedNumber, float popupTime = 0.0f)
         {
-            if (!gameObject.scene.isLoaded) return;
+            if (!gameObject.scene.isLoaded || !effectStatPopupSpawner.enabled) return;
 
             if (effectStatPopupSpawner == null) return;
 
@@ -244,6 +294,11 @@ namespace TeamMAsTD
             if (effectStatPopupSpawner == null) return;
 
             effectStatPopupSpawner.DetachAndDestroyAllStatPopups();
+        }
+
+        public StatPopupSpawner GetAbilityEffectStatPopupSpawner()
+        {
+            return effectStatPopupSpawner;
         }
     }
 }

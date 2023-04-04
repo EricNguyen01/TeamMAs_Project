@@ -61,14 +61,6 @@ namespace TeamMAsTD
             auraCollider.radius = auraRange;
         }
 
-        protected override void OnDisable()
-        {
-            base.OnDisable();
-
-            //Call from Ability base class to stop this aura ability on obj disabled or destroyed
-            ForceStopAbility();
-        }
-
         protected override void ProcessAbilityStart()
         {
             auraCollider.enabled = true;
@@ -136,7 +128,7 @@ namespace TeamMAsTD
 
             AbilityEffectReceivedInventory abilityEffectReceivedInventory = unitInAura.GetAbilityEffectReceivedInventory();
 
-            if (abilityEffectReceivedInventory == null) return;
+            if (abilityEffectReceivedInventory == null || !abilityEffectReceivedInventory.enabled) return;
 
             //if the unit in aura being checked is a new one (its ability effect received inventory not exists in DEBUG list)
             if (!DEBUG_effectReceivedInventoriesInAura.Contains(abilityEffectReceivedInventory))

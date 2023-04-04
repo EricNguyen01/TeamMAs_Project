@@ -32,13 +32,9 @@ namespace TeamMAsTD
 
         [Header("Ability Particle Effects")]
 
-        [SerializeField] protected ParticleSystem abilityChargingEffect;
+        [SerializeField] protected ParticleSystem abilityChargingParticleEffect;
 
-        [SerializeField] protected bool shouldLoopChargingEffect = true;
-
-        [SerializeField] protected ParticleSystem abilityEffect;
-
-        [SerializeField] protected bool shouldLoopEffect = true;
+        [SerializeField] protected ParticleSystem abilityParticleEffect;
 
         //INTERNALS...................................................................................
 
@@ -108,6 +104,8 @@ namespace TeamMAsTD
 
         protected virtual void OnDisable()
         {
+            ForceStopAbility();
+
             WaveSpawner.OnWaveFinished -= PendingUnlockAbilityOnWaveEndedIfApplicable;
 
             Rain.OnRainEnded -= (Rain r) => UnlockAbilityOnRainEndedIfApplicable();
@@ -151,6 +149,8 @@ namespace TeamMAsTD
         {
             if (!CanStartAbility()) return;
 
+            if (!isStopped) return;//if already started (not stopped) dont start again (in case multiple calls to func)
+
             if(abilityScriptableObject.abilityChargeTime <= 0.0f)
             {
                 BeginPerformAbility();
@@ -172,7 +172,7 @@ namespace TeamMAsTD
                 StartCoroutine(AbilityCooldownCoroutine(abilityScriptableObject.abilityCooldownTime)); 
             }
 
-            if (abilityEffect != null) abilityEffect.Play();
+            if (abilityParticleEffect != null) abilityParticleEffect.Play();
 
             ProcessAbilityStart();
 
@@ -227,11 +227,18 @@ namespace TeamMAsTD
 
             isUpdating = false;
 
-            StopCoroutine(AbilityChargeCoroutine(abilityScriptableObject.abilityChargeTime));
+            if (isCharging)
+            {
+                StopCoroutine(AbilityChargeCoroutine(abilityScriptableObject.abilityChargeTime));
+
+                isCharging = false;
+
+                if (abilityChargingParticleEffect != null) abilityChargingParticleEffect.Stop();
+            }
 
             StopCoroutine(AbilityUpdateDurationCoroutine(abilityScriptableObject.abilityDuration));
 
-            if (abilityEffect != null) abilityEffect.Stop();
+            if (abilityParticleEffect != null) abilityParticleEffect.Stop();
 
             ProcessAbilityEnd();
         }
@@ -245,6 +252,15 @@ namespace TeamMAsTD
         //To call from external scripts to stop/interupt this ability prematurely
         public void ForceStopAbility()
         {
+            if (isCharging)
+            {
+                StopCoroutine(AbilityChargeCoroutine(abilityScriptableObject.abilityChargeTime));
+
+                isCharging = false;
+
+                if (abilityChargingParticleEffect != null) abilityChargingParticleEffect.Stop();
+            }
+
             if(isStopped || abilityLocked) return;
 
             StopAbility();
@@ -258,7 +274,7 @@ namespace TeamMAsTD
         {
             if (isCharging) yield break;
 
-            if(abilityChargingEffect != null) abilityChargingEffect.Play();
+            if(abilityChargingParticleEffect != null) abilityChargingParticleEffect.Play();
 
             isCharging = true;
 
@@ -266,7 +282,7 @@ namespace TeamMAsTD
 
             isCharging = false;
 
-            if (abilityChargingEffect != null) abilityChargingEffect.Stop();
+            if (abilityChargingParticleEffect != null) abilityChargingParticleEffect.Stop();
 
             BeginPerformAbility();
 
@@ -308,7 +324,7 @@ namespace TeamMAsTD
 
             isUpdating = false;
 
-            StopAbility();
+            if(!isStopped) StopAbility();
 
             yield break;
         }
@@ -413,49 +429,26 @@ namespace TeamMAsTD
 
         protected virtual void InitializeAuraAbilityEffectsOnAwake()
         {
-            if (abilityChargingEffect != null)
+            if (abilityChargingParticleEffect != null)
             {
-                var auraChargingFxMain = abilityChargingEffect.main;
+                var auraChargingFxMain = abilityChargingParticleEffect.main;
 
                 auraChargingFxMain.playOnAwake = false;
 
-                auraChargingFxMain.loop = shouldLoopChargingEffect;
+                abilityChargingParticleEffect.Stop();
 
-                SetLoopForChildrenFXsOf(abilityChargingEffect, shouldLoopChargingEffect);
-
-                abilityChargingEffect.Stop();
-
-                if (!abilityChargingEffect.gameObject.activeInHierarchy) abilityChargingEffect.gameObject.SetActive(true);
+                if (!abilityChargingParticleEffect.gameObject.activeInHierarchy) abilityChargingParticleEffect.gameObject.SetActive(true);
             }
 
-            if (abilityEffect != null)
+            if (abilityParticleEffect != null)
             {
-                var auraFxMain = abilityEffect.main;
+                var auraFxMain = abilityParticleEffect.main;
 
                 auraFxMain.playOnAwake = false;
 
-                auraFxMain.loop = shouldLoopEffect;
+                abilityParticleEffect.Stop();
 
-                SetLoopForChildrenFXsOf(abilityEffect, shouldLoopEffect);
-
-                abilityEffect.Stop();
-
-                if (!abilityEffect.gameObject.activeInHierarchy) abilityEffect.gameObject.SetActive(true);
-            }
-        }
-
-        protected void SetLoopForChildrenFXsOf(ParticleSystem parentFx, bool shouldLoop)
-        {
-            ParticleSystem[] childFxs = parentFx.GetComponentsInChildren<ParticleSystem>();
-
-            if (childFxs != null && childFxs.Length > 0)
-            {
-                for (int i = 0; i < childFxs.Length; i++)
-                {
-                    var fxMain = childFxs[i].main;
-
-                    fxMain.loop = shouldLoop;
-                }
+                if (!abilityParticleEffect.gameObject.activeInHierarchy) abilityParticleEffect.gameObject.SetActive(true);
             }
         }
     }

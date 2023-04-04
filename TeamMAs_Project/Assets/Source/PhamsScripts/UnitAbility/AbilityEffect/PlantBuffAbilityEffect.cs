@@ -37,10 +37,9 @@ namespace TeamMAsTD
 
             buffAbilityEffectSO = (BuffAbilityEffectSO)abilityEffectSO;
         }
+
         protected override void OnEffectStarted()
         {
-            if (unitBeingAffected == null) return;
-
             if (unitBeingAffectedUnitSO == null)
             {
                 Debug.LogError("The unit: " + name + " being affected by this buff effect: " + name + " doesn't have a UnitSO data. " +

@@ -9,11 +9,17 @@ namespace TeamMAsTD
     {
         private float currentWipeAuraExpandTime = 0.0f;
 
+        private SpriteRenderer visitorUsingAbilitySpriteRenderer;
+
+        private string visitorUsingAbilitySpriteRendererLayerName;
+
+        private int visitorUsingAbilitySpriteRendererLayerOrder;
+
         protected override void OnEnable()
         {
             base.OnEnable();
 
-            auraRange = 0.5f;
+            auraRange = 0.3f;
 
             auraCollider.radius = auraRange;
         }
@@ -37,6 +43,10 @@ namespace TeamMAsTD
                     visitorUnit.SetVisitorInvincible(true);
 
                     visitorUnit.SetVisitorFollowingPath(false);
+
+                    visitorUsingAbilitySpriteRenderer = visitorUnit.GetComponent<SpriteRenderer>();
+
+                    SetVisitorSortingOrderOnTopOfAbility(true);
                 }
             }
 
@@ -77,6 +87,8 @@ namespace TeamMAsTD
                     visitorUnit.SetVisitorInvincible(false);
 
                     visitorUnit.SetVisitorFollowingPath(true);
+
+                    SetVisitorSortingOrderOnTopOfAbility(false);
                 }
             }
 
@@ -98,6 +110,40 @@ namespace TeamMAsTD
         {
             //do not call base function here
             //we want this function to do nothing for this specific ability
+        }
+
+        private void SetVisitorSortingOrderOnTopOfAbility(bool shouldBeOnTop)
+        {
+            if (shouldBeOnTop)
+            {
+                if (visitorUsingAbilitySpriteRenderer != null)
+                {
+                    visitorUsingAbilitySpriteRendererLayerName = visitorUsingAbilitySpriteRenderer.sortingLayerName;
+
+                    visitorUsingAbilitySpriteRendererLayerOrder = visitorUsingAbilitySpriteRenderer.sortingOrder;
+
+                    if (abilityParticleEffect != null)
+                    {
+                        ParticleSystemRenderer pRenderer = abilityParticleEffect.GetComponent<ParticleSystemRenderer>();
+
+                        if (pRenderer != null)
+                        {
+                            visitorUsingAbilitySpriteRenderer.sortingLayerName = pRenderer.sortingLayerName;
+
+                            visitorUsingAbilitySpriteRenderer.sortingOrder = pRenderer.sortingOrder + 5;
+                        }
+                    }
+                }
+
+                return;
+            }
+
+            if (visitorUsingAbilitySpriteRenderer != null)
+            {
+                visitorUsingAbilitySpriteRenderer.sortingLayerName = visitorUsingAbilitySpriteRendererLayerName;
+
+                visitorUsingAbilitySpriteRenderer.sortingOrder = visitorUsingAbilitySpriteRendererLayerOrder;
+            }
         }
     }
 }

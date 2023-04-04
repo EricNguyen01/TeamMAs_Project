@@ -73,7 +73,7 @@ namespace TeamMAsTD
                 return null;
             }
 
-            if (statPopupSpawnerSpawnedThisPool.displayPopupsSeparately)
+            if (statPopupSpawnerSpawnedThisPool.displayPopupsSeparately && statPopupSpawnerSpawnedThisPool.isActiveAndEnabled)
             {
                 if (currentActiveStatPopup != null)
                 {
