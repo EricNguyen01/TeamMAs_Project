@@ -17,7 +17,7 @@ MonoBehaviour:
   initialAbilityRangeInTiles: 12
   initialAbilityDuration: 2.85
   initialAbilityCooldownTime: 0
-  initialAbilityChargeTime: 2.5
+  initialAbilityChargeTime: 2.85
   initialAbilityUseReservedFor: 2
   initialAbilityOnlyAffect: 1
   initialAbilityAffectsSpecificVisitorType: 0
