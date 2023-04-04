@@ -74,6 +74,8 @@ namespace TeamMAsTD
 
         protected StatPopupPool statPopupPool;
 
+        public bool disablePopup { get; set; } = false;
+
         protected virtual void Awake()
         {
             if (statPopupPrefab == null)
@@ -173,6 +175,8 @@ namespace TeamMAsTD
 
         public virtual void PopUp(Sprite spriteToPopup, string textToPopup, bool isPositivePopup)
         {
+            if (!enabled || disablePopup) return;
+
             Vector3 popupStartPos = transform.position + new Vector3(startHorizontalOffset, startVerticalOffset, transform.position.z);
 
             float horDist = horizontalDistFromStart;
@@ -207,22 +211,56 @@ namespace TeamMAsTD
             }
         }
 
-        public void DetachAndDestroyAllStatPopups()
+        public void DetachAndDestroyAllStatPopupsIncludingSpawner()
         {
+            transform.SetParent(null);
+
             if (statPopupPool == null) return;
 
-            if (!enabled)
+            if(!enabled)
             {
+                StopAllCoroutines();
+
                 if(statPopupPool.gameObjectsPool != null && statPopupPool.gameObjectsPool.Count > 0)
                 {
-                    for(int i = 0; i < statPopupPool.gameObjectsPool.Count; i++)
+                    for (int i = 0; i < statPopupPool.gameObjectsPool.Count; i++)
                     {
-                        statPopupPool.gameObjectsPool[i].SetActive(false);
+                        if (statPopupPool.gameObjectsPool[i] != null) Destroy(statPopupPool.gameObjectsPool[i]);
                     }
+
+                    statPopupPool.gameObjectsPool.Clear();
                 }
+
+                Destroy(gameObject);
+
+                return;
+            }
+            //else statPopupPool.DetachAndDestroyAllStatPopupsFromPool();
+
+            StartCoroutine(DestroyOnPopupDelayCoroutineFinished());
+        }
+
+        private IEnumerator DestroyOnPopupDelayCoroutineFinished()
+        {
+            yield return new WaitForSeconds(popupTime);
+
+            yield return new WaitUntil(() => statPopupPool.statPopupDelayCoroutineCount == 0);
+
+            yield return new WaitForSeconds(popupTime);
+
+            if (statPopupPool.gameObjectsPool != null && statPopupPool.gameObjectsPool.Count > 0)
+            {
+                for (int i = 0; i < statPopupPool.gameObjectsPool.Count; i++)
+                {
+                    if (statPopupPool.gameObjectsPool[i] != null) Destroy(statPopupPool.gameObjectsPool[i]);
+                }
+
+                statPopupPool.gameObjectsPool.Clear();
             }
 
-            statPopupPool.DetachAndDestroyAllStatPopupsFromPool();
+            Destroy(gameObject);
+
+            yield break;
         }
     }
 }

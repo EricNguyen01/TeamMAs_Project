@@ -268,9 +268,11 @@ namespace TeamMAsTD
 
         protected virtual void ProcessEffectPopupForBuffEffects(Sprite popupSprite, string popupText, float buffedNumber, float popupTime = 0.0f)
         {
-            if (!gameObject.scene.isLoaded || !effectStatPopupSpawner.enabled) return;
+            if (!gameObject.scene.isLoaded) return;
 
-            if (effectStatPopupSpawner == null) return;
+            if (effectStatPopupSpawner == null || 
+                !effectStatPopupSpawner.enabled || 
+                effectStatPopupSpawner.disablePopup) return;
 
             if (buffedNumber == 0.0f) return;
 
@@ -289,11 +291,13 @@ namespace TeamMAsTD
             }
         }
 
-        protected void DetachAndDestroyAllEffectPopups()
+        protected void DetachAndDestroyAllEffectPopupsIncludingSpawner()
         {
             if (effectStatPopupSpawner == null) return;
 
-            effectStatPopupSpawner.DetachAndDestroyAllStatPopups();
+            if (!gameObject.scene.isLoaded) return;
+
+            effectStatPopupSpawner.DetachAndDestroyAllStatPopupsIncludingSpawner();
         }
 
         public StatPopupSpawner GetAbilityEffectStatPopupSpawner()

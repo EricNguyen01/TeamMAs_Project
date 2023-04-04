@@ -82,7 +82,9 @@ namespace TeamMAsTD
 
         private void OnEnable()
         {
-            if (statPopupPoolSpawnedThisPopup == null) Destroy(gameObject);
+            /*if (statPopupPoolSpawnedThisPopup == null || 
+                statPopupSpawnerSpawnedThisPopup == null ||
+                !statPopupSpawnerSpawnedThisPopup.enabled) Destroy(gameObject);*/
 
             if(statPopupUIImage != null)
             {
@@ -130,7 +132,10 @@ namespace TeamMAsTD
                 currentTravelTime = popupTravelTime;
 
                 //if finished popping up, return this stat popup object to pool through calling below function from its stat popup spawner
-                if (statPopupPoolSpawnedThisPopup != null) statPopupPoolSpawnedThisPopup.ReturnStatPopupGameObjectToPool(gameObject);
+                if (statPopupPoolSpawnedThisPopup != null && statPopupSpawnerSpawnedThisPopup != null)
+                {
+                    statPopupPoolSpawnedThisPopup.ReturnStatPopupGameObjectToPool(gameObject);
+                }
                 //if the stat popup spawner of this stat popup is null->destroy this stat popup game object
                 else Destroy(gameObject);
             }

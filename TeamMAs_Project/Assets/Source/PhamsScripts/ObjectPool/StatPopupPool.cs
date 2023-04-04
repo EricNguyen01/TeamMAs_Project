@@ -18,6 +18,8 @@ namespace TeamMAsTD
 
         private float totalPopupEnableDelayTime = 0.0f;
 
+        public int statPopupDelayCoroutineCount { get; private set; } = 0;
+
         public StatPopupPool(MonoBehaviour scriptSpawnedPool, GameObject gameObjectToPool, Transform parentTransformOfPool) : base(scriptSpawnedPool, gameObjectToPool, parentTransformOfPool)
         {
             if(scriptSpawnedPool != null && scriptSpawnedPool.GetType() == typeof(StatPopupSpawner))
@@ -73,7 +75,9 @@ namespace TeamMAsTD
                 return null;
             }
 
-            if (statPopupSpawnerSpawnedThisPool.displayPopupsSeparately && statPopupSpawnerSpawnedThisPool.isActiveAndEnabled)
+            if (statPopupSpawnerSpawnedThisPool != null && 
+                statPopupSpawnerSpawnedThisPool.displayPopupsSeparately && 
+                statPopupSpawnerSpawnedThisPool.enabled)
             {
                 if (currentActiveStatPopup != null)
                 {
@@ -123,7 +127,7 @@ namespace TeamMAsTD
 
             statPopupObj.transform.SetParent(null);//parent is reset to statPopupSpawner obj transform upon returning to pool
 
-            if (!statPopupObj.activeInHierarchy) statPopupObj.SetActive(true);
+            if (!statPopupObj.activeInHierarchy && statPopupSpawnerSpawnedThisPool.enabled) statPopupObj.SetActive(true);
             
             return statPopupObj;
         }
@@ -141,7 +145,7 @@ namespace TeamMAsTD
             return returnSuccessful;
         }
 
-        public void DetachAndDestroyAllStatPopupsFromPool()
+        /*public void DetachAndDestroyAllStatPopupsFromPool()
         {
             if (gameObjectsPool == null || gameObjectsPool.Count == 0) return;
 
@@ -153,14 +157,14 @@ namespace TeamMAsTD
 
                 if (go == null)
                 {
-                    gameObjectsPool.RemoveAt(i);
+                    gameObjectsPool.Remove(go);
 
                     if (i >= gameObjectsPool.Count || gameObjectsPool.Count == 0) return;
 
                     continue;
                 }
 
-                if (!go.activeInHierarchy)
+                /*if (!go.activeInHierarchy)
                 {
                     gameObjectsPool.Remove(go);
 
@@ -169,9 +173,9 @@ namespace TeamMAsTD
                     if (i >= gameObjectsPool.Count || gameObjectsPool.Count == 0) return;
 
                     continue;
-                }
+                }*/
 
-                StatPopup statPopup = go.GetComponent<StatPopup>();
+                /*StatPopup statPopup = go.GetComponent<StatPopup>();
 
                 if(statPopup == null)
                 {
@@ -188,28 +192,30 @@ namespace TeamMAsTD
 
                 statPopup.InitializeStatPopup(null);
             }
-        }
+
+            gameObjectsPool.Clear();
+        }*/
 
         private IEnumerator DisplayStatPopupDelay(StatPopup statPopup, float delaySec)
         {
             if (statPopup == null) yield break;
 
-            CanvasGroup statPopupCanvasGroup = statPopup.GetComponentInChildren<CanvasGroup>(true);
+            statPopupDelayCoroutineCount++;
 
-            if (statPopupCanvasGroup == null) yield break;
-
-            if (statPopup.enabled) 
+            if (statPopup.gameObject.activeInHierarchy) 
             { 
-                statPopup.enabled = false;
+                statPopup.gameObject.SetActive(false);
 
-                statPopupCanvasGroup.alpha = 0.0f;
+                //statPopupCanvasGroup.alpha = 0.0f;
             }
 
             yield return new WaitForSeconds(delaySec);
 
-            statPopup.enabled = true;
+            statPopup.gameObject.SetActive(true);
 
-            statPopupCanvasGroup.alpha = 1.0f;
+            statPopupDelayCoroutineCount--;
+
+            //statPopupCanvasGroup.alpha = 1.0f;
 
             yield break;
         }

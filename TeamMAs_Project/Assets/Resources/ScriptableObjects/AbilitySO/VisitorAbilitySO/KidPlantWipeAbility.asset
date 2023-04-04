@@ -17,11 +17,11 @@ MonoBehaviour:
   initialAbilityRangeInTiles: 12
   initialAbilityDuration: 2.85
   initialAbilityCooldownTime: 0
-  initialAbilityChargeTime: 2.44
+  initialAbilityChargeTime: 2.5
   initialAbilityUseReservedFor: 2
   initialAbilityOnlyAffect: 1
   initialAbilityAffectsSpecificVisitorType: 0
-  initialMaxNumberOfUnitsToAffect: 12
+  initialMaxNumberOfUnitsToAffect: 14
   initialAbilityAffectsSpecificPlantUnit: []
   initialAbilityAffectsSpecificVisitorUnit: []
   <abilityEffects>k__BackingField:

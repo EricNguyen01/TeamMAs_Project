@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <abilityEffectName>k__BackingField: PlantWipeEffect
   <abilityEffectPrefab>k__BackingField: {fileID: 1458058111723624673, guid: 700c0d14cf9cbd047b5fd47369060dea, type: 3}
-  effectDuration: 1.35
+  effectDuration: 1.86
   <effectDurationAsAbilityDuration>k__BackingField: 0
   <effectStackable>k__BackingField: 0
   <effectType>k__BackingField: 0

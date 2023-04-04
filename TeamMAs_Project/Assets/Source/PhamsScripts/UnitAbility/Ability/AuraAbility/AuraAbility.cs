@@ -63,6 +63,10 @@ namespace TeamMAsTD
 
         protected override void ProcessAbilityStart()
         {
+            canCheckForUnitsInAura = true;
+
+            triggerExitEventCheck = true;
+
             auraCollider.enabled = true;
 
             auraKinematicRb.collisionDetectionMode = CollisionDetectionMode2D.Continuous;
@@ -89,6 +93,8 @@ namespace TeamMAsTD
             auraKinematicRb.collisionDetectionMode = CollisionDetectionMode2D.Discrete;
 
             auraKinematicRb.sleepMode = RigidbodySleepMode2D.StartAsleep;
+
+            DEBUG_effectReceivedInventoriesInAura.Clear();
 
             base.ProcessAbilityEnd();
         }

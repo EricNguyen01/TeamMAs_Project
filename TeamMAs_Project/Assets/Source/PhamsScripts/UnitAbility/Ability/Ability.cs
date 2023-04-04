@@ -100,26 +100,25 @@ namespace TeamMAsTD
 
                 Rain.OnRainEnded += (Rain r) => UnlockAbilityOnRainEndedIfApplicable();
             }
+
+            if (abilityScriptableObject != null)
+            {
+                if (abilityScriptableObject.useOnEquippedIfNotLocked && !abilityLocked)
+                {
+                    StartAbility();
+                }
+            }
         }
 
         protected virtual void OnDisable()
         {
             ForceStopAbility();
 
+            numberOfUnitsAffected = 0;
+
             WaveSpawner.OnWaveFinished -= PendingUnlockAbilityOnWaveEndedIfApplicable;
 
             Rain.OnRainEnded -= (Rain r) => UnlockAbilityOnRainEndedIfApplicable();
-        }
-
-        protected virtual void Start()
-        {
-            if(abilityScriptableObject != null)
-            {
-                if(abilityScriptableObject.useOnEquippedIfNotLocked && !abilityLocked)
-                {
-                    StartAbility();
-                }
-            }
         }
 
         #region AbilityStart
@@ -182,6 +181,8 @@ namespace TeamMAsTD
         //To be edited in inherited classes
         protected virtual void ProcessAbilityStart()
         {
+            numberOfUnitsAffected = 0;
+
             OnAbilityStarted?.Invoke(this);
         }
 

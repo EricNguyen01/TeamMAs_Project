@@ -26,10 +26,50 @@ namespace TeamMAsTD
 
             plantUnitToWipe = (PlantUnit)unitBeingAffected.GetUnitObject();
 
-            //DisablePlantUnitAndItsAbilities(plantUnitToWipe);
+            //The chunk below finds and disables all ability effect stat popup components in all effects that are currently affecting this plant
+            //since this plant abt to be wiped out, we have no need to display any effect stat popups anymore
 
+            AbilityEffectReceivedInventory plantAbilityEffectReceivedInventory = plantUnitToWipe.GetAbilityEffectReceivedInventory();
+
+            if (plantAbilityEffectReceivedInventory.abilityEffectsReceived != null &&
+               plantAbilityEffectReceivedInventory.abilityEffectsReceived.Count > 0)
+            {
+                for (int i = 0; i < plantAbilityEffectReceivedInventory.abilityEffectsReceived.Count; i++)
+                {
+                    if (plantAbilityEffectReceivedInventory.abilityEffectsReceived[i].effectStackSpawned != null &&
+                        plantAbilityEffectReceivedInventory.abilityEffectsReceived[i].effectStackSpawned.Count > 0)
+                    {
+                        for (int j = 0; j < plantAbilityEffectReceivedInventory.abilityEffectsReceived[i].effectStackSpawned.Count; j++)
+                        {
+
+                            AbilityEffect aEffect = plantAbilityEffectReceivedInventory.abilityEffectsReceived[i].effectStackSpawned[j];
+
+                            if (aEffect == null) continue;
+
+                            if (aEffect == this) continue;
+
+                            //if (plantUnitToWipe.tilePlacedOn.name.Contains("3.2")) Debug.Log("EffectFound!");
+
+                            if (aEffect.GetAbilityEffectStatPopupSpawner() != null)
+                            {
+                                //if (plantUnitToWipe.tilePlacedOn.name.Contains("3.2")) Debug.Log("StatPopupSpawnerFound!");
+
+                                aEffect.GetAbilityEffectStatPopupSpawner().disablePopup = true;
+
+                                aEffect.GetAbilityEffectStatPopupSpawner().enabled = false;
+                            }
+                        }
+                    }
+                }
+            }
+
+            //actually disables plant aim shoot and plant abilities which would also trigger effect stat popups which we have disabled above.
+            DisablePlantUnitAndItsAbilities(plantUnitToWipe);
+
+            //get tile placed on
             tilePlantUnitToWipeOn = plantUnitToWipe.tilePlacedOn;
 
+            //process FXs
             if(effectStartFx != null) effectStartFx.Play();
 
             if(effectUpdateFx != null) effectUpdateFx.Play();
@@ -46,37 +86,14 @@ namespace TeamMAsTD
 
             if (effectUpdateFx != null && effectUpdateFx.isEmitting) effectUpdateFx.Stop();
 
-            AbilityEffectReceivedInventory plantAbilityEffectReceivedInventory = plantUnitToWipe.GetAbilityEffectReceivedInventory();
-
-            if(plantAbilityEffectReceivedInventory.abilityEffectsReceived != null && 
-               plantAbilityEffectReceivedInventory.abilityEffectsReceived.Count > 0)
-            {
-                for (int i = 0; i < plantAbilityEffectReceivedInventory.abilityEffectsReceived.Count; i++)
-                {
-                    if (plantAbilityEffectReceivedInventory.abilityEffectsReceived[i].effectStackSpawned != null &&
-                        plantAbilityEffectReceivedInventory.abilityEffectsReceived[i].effectStackSpawned.Count > 0)
-                    {
-                        for(int j = 0; j < plantAbilityEffectReceivedInventory.abilityEffectsReceived[i].effectStackSpawned.Count; j++)
-                        {
-                            if (plantAbilityEffectReceivedInventory.abilityEffectsReceived[i].effectStackSpawned[j] == null) continue;
-
-                            if (plantAbilityEffectReceivedInventory.abilityEffectsReceived[i].effectStackSpawned[j].GetAbilityEffectStatPopupSpawner() == null) continue;
-
-                            plantAbilityEffectReceivedInventory.abilityEffectsReceived[i].effectStackSpawned[j].GetAbilityEffectStatPopupSpawner().enabled = false;
-                        }
-                    }
-                }
-            }
-
-            plantAbilityEffectReceivedInventory.enabled = false;
-
+            //wipes plant off the map
             if (tilePlantUnitToWipeOn != null)
             {
-                //if is pending destroy plant = false meaning that OnEffectEnded is called prematurely due to 
-                //source wipe ability being stopped early (e.g kid is defeated) => thus, wipe won't take effect and plants are safe.
-                //else if is pending destroy plant = true meaning that OnEffectEnded is called after effect has finished 
-                //plants will be wiped!
                 tilePlantUnitToWipeOn.UprootUnit(0.1f);
+            }
+            else
+            {
+                Destroy(plantUnitToWipe);
             }
         }
 

@@ -130,7 +130,7 @@ namespace TeamMAsTD
 
             ProcessEffectPopupForBuffEffects(null, "-" + finalAtkSpeedBuffedAmount + " AppeasementSPEED", -finalAtkSpeedBuffedAmount, 0.8f);
 
-            DetachAndDestroyAllEffectPopups();
+            DetachAndDestroyAllEffectPopupsIncludingSpawner();
 
             plantUnitReceivedBuff.SetPlantSODebugDataView();
         }
