@@ -15,6 +15,8 @@ namespace TeamMAsTD
 
         private int visitorUsingAbilitySpriteRendererLayerOrder;
 
+        private CartoonFX.CFXR_Effect camShakeScript;
+
         protected override void OnEnable()
         {
             base.OnEnable();
@@ -22,6 +24,13 @@ namespace TeamMAsTD
             auraRange = 0.3f;
 
             auraCollider.radius = auraRange;
+
+            if(abilityParticleEffect != null)
+            {
+                camShakeScript = abilityParticleEffect.GetComponent<CartoonFX.CFXR_Effect>();
+
+                if (camShakeScript != null) camShakeScript.enabled = false;
+            }
         }
 
         protected override void ProcessAbilityStart()
@@ -49,6 +58,8 @@ namespace TeamMAsTD
                     SetVisitorSortingOrderOnTopOfAbility(true);
                 }
             }
+
+            if (camShakeScript != null) camShakeScript.enabled = true;
 
             base.ProcessAbilityStart();
         }

@@ -53,6 +53,8 @@ namespace TeamMAsTD
         public static event System.Action<WaveSpawner, int, bool> OnWaveFinished;
         public static event System.Action<WaveSpawner, bool> OnAllWaveSpawned;
 
+        public static event System.Action<WaveSpawner, int, bool> OnWaveJumped;
+
         //PRIVATES...............................................................................
 
         private void Awake()
@@ -393,6 +395,10 @@ namespace TeamMAsTD
 
             currentWave = waveNum;
 
+            bool hasOtherOngoingWaves = FindOtherOnGoingWaves();
+
+            OnWaveJumped?.Invoke(this, currentWave, hasOtherOngoingWaves);
+
             if (startWaveAfterJump) StartWave(waveNum);
         }
 
@@ -444,6 +450,11 @@ namespace TeamMAsTD
             if(targetWaveNum >= wavesList.Count) targetWaveNum = wavesList.Count - 1;
 
             return wavesList[targetWaveNum];
+        }
+
+        public List<Wave> GetWaveSpawnerWaveList()
+        {
+            return wavesList;
         }
     }
 }

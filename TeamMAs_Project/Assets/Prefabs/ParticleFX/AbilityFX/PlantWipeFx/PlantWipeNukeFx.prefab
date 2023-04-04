@@ -4660,13 +4660,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   clearBehavior: 0
   cameraShake:
-    enabled: 0
+    enabled: 1
     useMainCamera: 1
     cameras: []
-    delay: 0
-    duration: 0.6
+    delay: 0.13
+    duration: 2.5
     shakeSpace: 0
-    shakeStrength: {x: 0.1, y: 0.1, z: 0.5}
+    shakeStrength: {x: 0.5, y: 0.5, z: 0.15}
     shakeCurve:
       serializedVersion: 2
       m_Curve:

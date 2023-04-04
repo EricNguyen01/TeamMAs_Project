@@ -392,6 +392,53 @@ namespace TeamMAsTD
                     if (!gameObject.activeInHierarchy) gameObject.SetActive(true);
 
                     isShopSlotUnlocked = true;
+
+                    return;
+                }
+            }
+
+            if (slotUnitScriptableObject.waveToUnlockPlantPurchaseOnWaveStarted == null &&
+                slotUnitScriptableObject.waveToUnlockPlantPurchaseOnWaveFinished == null) return;
+
+            List<Wave> wavesList = waveSpawner.GetWaveSpawnerWaveList();
+
+            int waveNumToUnlock = -1;
+
+            if(wavesList != null && wavesList.Count > 0)
+            {
+                for(int i = 0; i < wavesList.Count; i++)
+                {
+                    if (wavesList == null) continue;
+
+                    if(slotUnitScriptableObject.waveToUnlockPlantPurchaseOnWaveStarted != null)
+                    {
+                        if (wavesList[i].waveSO == slotUnitScriptableObject.waveToUnlockPlantPurchaseOnWaveStarted)
+                        {
+                            waveNumToUnlock = i;
+
+                            break;
+                        }
+                    }
+
+                    if(slotUnitScriptableObject.waveToUnlockPlantPurchaseOnWaveFinished != null)
+                    {
+                        if(wavesList[i].waveSO == slotUnitScriptableObject.waveToUnlockPlantPurchaseOnWaveFinished)
+                        {
+                            waveNumToUnlock = i;
+
+                            break;
+                        }
+                    }
+                }
+            }
+
+            if(waveNumToUnlock >= 0)
+            {
+                if(waveNum >= waveNumToUnlock)
+                {
+                    if (!gameObject.activeInHierarchy) gameObject.SetActive(true);
+
+                    isShopSlotUnlocked = true;
                 }
             }
         }
