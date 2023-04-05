@@ -48,10 +48,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <abilityScriptableObject>k__BackingField: {fileID: 11400000, guid: d9442622bc24b534d8561001f86454d9, type: 2}
-  abilityChargingEffect: {fileID: 0}
-  shouldLoopChargingEffect: 1
-  abilityEffect: {fileID: 4618525851008646575}
-  shouldLoopEffect: 1
+  abilityChargingParticleEffect: {fileID: 0}
+  abilityParticleEffect: {fileID: 4618525851008646575}
   auraCollider: {fileID: 5885909084941173370}
   auraKinematicRb: {fileID: 7930872701250369936}
 --- !u!58 &5885909084941173370
