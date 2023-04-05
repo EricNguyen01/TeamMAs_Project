@@ -14,16 +14,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <visitorTypesToSpawnThisWave>k__BackingField:
   - visitorType: {fileID: 11400000, guid: 5d9daf08272e8754a8584dfa26f65ed1, type: 2}
-    spawnNumbers: 15
+    spawnNumbers: 10
     spawnChance: 1
   - visitorType: {fileID: 11400000, guid: 723776edbdfb7a54b9cba63847482b4d, type: 2}
     spawnNumbers: 3
     spawnChance: 1
   - visitorType: {fileID: 11400000, guid: 297fbbaf0eb4b9a4f9e1270ac6e199f4, type: 2}
-    spawnNumbers: 15
+    spawnNumbers: 10
     spawnChance: 1
   - visitorType: {fileID: 11400000, guid: 1e8581c24e330ea4292993eaa9ea90ac, type: 2}
-    spawnNumbers: 10
+    spawnNumbers: 6
     spawnChance: 1
   - visitorType: {fileID: 11400000, guid: eec1de98e3c7786459e1ed83556faf18, type: 2}
     spawnNumbers: 1
@@ -35,14 +35,14 @@ MonoBehaviour:
     spawnNumbers: 4
     spawnChance: 1
   - visitorType: {fileID: 11400000, guid: b9925f4314ca33a4e921a617d4c0d871, type: 2}
-    spawnNumbers: 4
+    spawnNumbers: 8
     spawnChance: 1
   <waitTimeToFirstSpawn>k__BackingField: 1
   <waitTimeBetweenSpawn>k__BackingField: 1
   <spawnBossLast>k__BackingField: 1
   <applyVisitorHealthScalingThisWave>k__BackingField: 1
   <visitorHealthScalingMultiplier>k__BackingField: 1
-  <extraCoinsDropFromWave>k__BackingField: 0
+  <extraCoinsDropFromWave>k__BackingField: 4
   <plantsToSpawnOnThisWaveStart>k__BackingField:
   - plantUnitSOToSpawn: {fileID: 11400000, guid: ebe49aa0d994d7d488c580c1a9bccd35, type: 2}
     spawnNumbers: 1
