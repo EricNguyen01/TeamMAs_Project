@@ -368,6 +368,8 @@ MonoBehaviour:
   timesToWaterOnEachPlant: 1
   waterAllBarsOnEachPlant: 0
   waterFullMessage: 
+  canWaterAllHighlightColor: {r: 0.4392157, g: 0.93333334, b: 1, a: 1}
+  unableToWaterAllHighlightColor: {r: 1, g: 0.48490566, b: 0.48490566, a: 1}
   insufficientFundToWaterAllPopupPrefab: {fileID: 8024300418989073095, guid: f3a373e0118fdc54d85de7d5d9767e8c, type: 3}
   insufficientFundToWaterAllPopupScaleMultiplier: 1.5
   waterAllCostText: {fileID: 6433098137989424551}
@@ -393,7 +395,7 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_HighlightedColor: {r: 0.4377358, g: 0.9305847, b: 1, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
