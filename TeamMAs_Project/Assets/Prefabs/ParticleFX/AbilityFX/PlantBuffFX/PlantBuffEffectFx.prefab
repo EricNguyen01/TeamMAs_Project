@@ -9880,7 +9880,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1
+      scalar: 2.5
       minScalar: 0.2
       maxCurve:
         serializedVersion: 2
@@ -10049,8 +10049,8 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 0.08
-      minScalar: 0.07
+      scalar: 0.1
+      minScalar: 0.01
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -10365,7 +10365,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     randomizeRotationDirection: 0
-    maxNumParticles: 150
+    maxNumParticles: 20
     customEmitterVelocity: {x: 0, y: 0, z: 0}
     size3D: 0
     rotation3D: 0
@@ -10631,7 +10631,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 150
+      scalar: 50
       minScalar: 10
       maxCurve:
         serializedVersion: 2
@@ -19430,7 +19430,7 @@ MonoBehaviour:
   animatedLights:
   - light: {fileID: 8022962683008411438}
     loop: 1
-    animateIntensity: 1
+    animateIntensity: 0
     intensityStart: 4
     intensityEnd: 2
     intensityDuration: 0.4
@@ -19468,11 +19468,11 @@ MonoBehaviour:
       m_PostInfinity: 2
       m_RotationOrder: 0
     perlinIntensity: 1
-    perlinIntensitySpeed: 2
+    perlinIntensitySpeed: 1
     fadeIn: 1
-    fadeInDuration: 1
+    fadeInDuration: 5
     fadeOut: 1
-    fadeOutDuration: 1
+    fadeOutDuration: 5
     animateRange: 0
     rangeStart: 8
     rangeEnd: 4
