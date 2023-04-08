@@ -20,27 +20,39 @@ namespace TeamMAsTD
         Set Variables
         DialogueLua.SetVariable("name", value);
 
-        Italics
-        [em1]italicized text[/em1]
+        Rich Text
+        Italics: [em1]italicized text[/em1]
+        Yellow Text: [em2]yellow text[em2]
         * customizable in Database -> Database Properties -> Emphasis Settings
+
         */
 
         void Start()
         {
-            StartCoroutine(DialogTest(1f));
+            StartCoroutine(StartFirstConversation(1f));
         }
 
-        void OnConversationStart(Transform actor) // THIS SCRIPT MUST BE ON DIALOGUE MANAGER CUSTOM TO WORK
+        void OnConversationStart(Transform actor) // THIS SCRIPT MUST BE ON THE DIALOGUE MANAGER CUSTOM OBJECT TO WORK
         {
+            DialogueManager.DisplaySettings.subtitleSettings.continueButton = DisplaySettings.SubtitleSettings.ContinueButtonMode.Never;
+            DialogueManager.ConversationView.SetupContinueButton();
+            StartCoroutine(DelayContinueButton(0.4f));
             Time.timeScale = 0;
         }
 
-        void OnConversationEnd(Transform actor) // THIS SCRIPT MUST BE ON DIALOGUE MANAGER CUSTOM TO WORK
+        void OnConversationEnd(Transform actor) // THIS SCRIPT MUST BE ON THE DIALOGUE MANAGER CUSTOM OBJECT TO WORK
         {
             Time.timeScale = 1;
         }
 
-        IEnumerator DialogTest(float delayTime)
+        IEnumerator DelayContinueButton(float delayTime)
+        {
+            yield return new WaitForSecondsRealtime(delayTime);
+            DialogueManager.DisplaySettings.subtitleSettings.continueButton = DisplaySettings.SubtitleSettings.ContinueButtonMode.Always;
+            DialogueManager.ConversationView.SetupContinueButton();
+        }
+
+        IEnumerator StartFirstConversation(float delayTime)
         {
             yield return new WaitForSeconds(delayTime);
 
