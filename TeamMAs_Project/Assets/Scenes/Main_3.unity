@@ -64723,7 +64723,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3210166668731441888, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
       propertyPath: timeSpeedUpStages.Array.size
-      value: 5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3210166668731441888, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
       propertyPath: timeSpeedUpStages.Array.data[0]
@@ -64731,15 +64731,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3210166668731441888, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
       propertyPath: timeSpeedUpStages.Array.data[1]
-      value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 3210166668731441888, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
-      propertyPath: timeSpeedUpStages.Array.data[2]
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3210166668731441888, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
+      propertyPath: timeSpeedUpStages.Array.data[2]
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3210166668731441888, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
       propertyPath: timeSpeedUpStages.Array.data[3]
-      value: 2.5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 3210166668731441888, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
       propertyPath: timeSpeedUpStages.Array.data[4]
@@ -64985,6 +64985,10 @@ PrefabInstance:
       propertyPath: m_AnchorMin.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6739262111631039210, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
+      propertyPath: infoTooltipPrefab
+      value: 
+      objectReference: {fileID: 5149056800383492733, guid: 4af3d5e4f2c382846ad109c19297ecaf, type: 3}
     - target: {fileID: 6809323818167285528, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
       propertyPath: m_Sprite
       value: 
