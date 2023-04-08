@@ -144,7 +144,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 200}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
-  controlID: 96
+  controlID: 56
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -169,7 +169,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 97
+  controlID: 57
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -234,7 +234,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 1
   m_Script: {fileID: 12006, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: ConsoleWindow
+  m_Name: ProjectBrowser
   m_EditorClassIdentifier: 
   m_Children: []
   m_Position:
@@ -243,15 +243,15 @@ MonoBehaviour:
     y: 454.4
     width: 1040.8
     height: 268.4
-  m_MinSize: {x: 101, y: 121}
-  m_MaxSize: {x: 4001, y: 4021}
-  m_ActualView: {fileID: 17}
+  m_MinSize: {x: 231, y: 271}
+  m_MaxSize: {x: 10001, y: 10021}
+  m_ActualView: {fileID: 16}
   m_Panes:
   - {fileID: 16}
   - {fileID: 17}
   - {fileID: 18}
-  m_Selected: 1
-  m_LastSelected: 0
+  m_Selected: 0
+  m_LastSelected: 1
 --- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -400,10 +400,10 @@ MonoBehaviour:
     m_SaveData: []
   m_SceneHierarchy:
     m_TreeViewState:
-      scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 36ecffff
-      m_LastClickedID: -5066
-      m_ExpandedIDs: ecefffff1cf2ffff
+      scrollPos: {x: 0, y: 131.6}
+      m_SelectedIDs: 3e720000
+      m_LastClickedID: 29246
+      m_ExpandedIDs: f2f8ffff22fbffff5e7e00006c7e0000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -674,9 +674,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 4.989061, y: -3.1326838, z: -0.016161213}
+    m_Target: {x: 2.0662541, y: 0.16709778, z: -0.058258116}
     speed: 2
-    m_Value: {x: 4.989061, y: -3.1326838, z: -0.016161213}
+    m_Value: {x: 2.6739469, y: -0.3320363, z: -0.0522402}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -727,9 +727,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 3.0786903
+    m_Target: 7.28838
     speed: 2
-    m_Value: 3.0786903
+    m_Value: 6.6865873
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -944,22 +944,22 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Source/PhamsScripts/UI/OtherUI
+    - Assets/Prefabs/UIs
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Source/PhamsScripts/UI/OtherUI
+  - Assets/Prefabs/UIs
   m_LastFoldersGridSize: -1
   m_LastProjectPath: D:\Unity Projects\GamePractice3\TeamMAs_Project
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 540.6}
-    m_SelectedIDs: e6a50000
-    m_LastClickedID: 42470
-    m_ExpandedIDs: 0000000002a5000004a5000006a5000008a500000aa500005aa5000078a50000c0a5000000ca9a3bffffff7f
+    scrollPos: {x: 0, y: 236.6}
+    m_SelectedIDs: 92ab0000
+    m_LastClickedID: 43922
+    m_ExpandedIDs: 00000000ce9b0000d09b0000d29b0000d49b0000d69b0000769c000092ab0000d2bc0000d6bf000096c1000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -987,7 +987,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 0000000002a5000004a5000006a5000008a500000aa50000
+    m_ExpandedIDs: 00000000ce9b0000d09b0000d29b0000d49b0000d69b0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1012,8 +1012,8 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: 36ecffff
-    m_LastClickedInstanceID: -5066
+    m_SelectedInstanceIDs: 
+    m_LastClickedInstanceID: 0
     m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: c62300005a6d0000ac92000000000000606f00005c5d0000b45d0000365a0000ba010000d80401003484000032840000fa940000448a0000247c0000
     m_RenameOverlay:
@@ -1198,7 +1198,7 @@ MonoBehaviour:
   watches: []
   autoUpdateWatches: 0
   watchUpdateFrequency: 1
-  nextWatchUpdateTime: 5391.0872438
+  nextWatchUpdateTime: 1369.9154382000002
   watchableVariableNames:
   - Actor
   - ActorIndex
@@ -1367,7 +1367,7 @@ MonoBehaviour:
     m_ControlHash: -371814159
     m_PrefName: Preview_InspectorPreview
   m_LastInspectedObjectInstanceID: -1
-  m_LastVerticalScrollValue: 83.20001
+  m_LastVerticalScrollValue: 0
   m_GlobalObjectId: 
   m_InspectorMode: 0
   m_LockTracker:
