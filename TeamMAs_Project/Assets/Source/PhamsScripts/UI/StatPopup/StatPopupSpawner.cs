@@ -74,6 +74,10 @@ namespace TeamMAsTD
 
         protected StatPopupPool statPopupPool;
 
+        public bool disablePopup { get; set; } = false;
+
+        public bool isDetachedAndDestroyed { get; private set; } = false;
+
         protected virtual void Awake()
         {
             if (statPopupPrefab == null)
@@ -173,6 +177,8 @@ namespace TeamMAsTD
 
         public virtual void PopUp(Sprite spriteToPopup, string textToPopup, bool isPositivePopup)
         {
+            if (!enabled || disablePopup) return;
+
             Vector3 popupStartPos = transform.position + new Vector3(startHorizontalOffset, startVerticalOffset, transform.position.z);
 
             float horDist = horizontalDistFromStart;
@@ -207,11 +213,72 @@ namespace TeamMAsTD
             }
         }
 
-        public void DetachAndDestroyAllStatPopups()
+        public void DetachAndDestroyAllStatPopupsIncludingSpawner(bool shouldDestroyImmediate)
         {
-            if (statPopupPool == null) return;
+            if (isDetachedAndDestroyed) return;
 
-            statPopupPool.DetachAndDestroyAllStatPopupsFromPool();
+            transform.SetParent(null);
+
+            if (shouldDestroyImmediate)
+            {
+                disablePopup = true;
+
+                enabled = false;
+            }
+
+            if(!enabled || disablePopup)
+            {
+                isDetachedAndDestroyed = true;
+
+                StopAllCoroutines();
+
+                if(statPopupPool != null)
+                {
+                    if (statPopupPool.gameObjectsPool != null && statPopupPool.gameObjectsPool.Count > 0)
+                    {
+                        for (int i = 0; i < statPopupPool.gameObjectsPool.Count; i++)
+                        {
+                            if (statPopupPool.gameObjectsPool[i] != null) Destroy(statPopupPool.gameObjectsPool[i]);
+                        }
+
+                        statPopupPool.gameObjectsPool.Clear();
+                    }
+                }
+
+                Destroy(gameObject);
+
+                return;
+            }
+
+            StartCoroutine(DestroyOnPopupDelayCoroutineFinished());
+        }
+
+        private IEnumerator DestroyOnPopupDelayCoroutineFinished()
+        {
+            yield return new WaitForSeconds(popupTime);
+
+            yield return new WaitUntil(() => statPopupPool.statPopupDelayCoroutineCount == 0);
+
+            yield return new WaitForSeconds(popupTime);
+
+            isDetachedAndDestroyed = true;
+
+            if(statPopupPool != null)
+            {
+                if (statPopupPool.gameObjectsPool != null && statPopupPool.gameObjectsPool.Count > 0)
+                {
+                    for (int i = 0; i < statPopupPool.gameObjectsPool.Count; i++)
+                    {
+                        if (statPopupPool.gameObjectsPool[i] != null) Destroy(statPopupPool.gameObjectsPool[i]);
+                    }
+
+                    statPopupPool.gameObjectsPool.Clear();
+                }
+            }
+
+            Destroy(gameObject);
+
+            yield break;
         }
     }
 }

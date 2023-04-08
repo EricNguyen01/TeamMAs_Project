@@ -229,7 +229,7 @@ namespace TeamMAsTD
                 //uproot if rounds survived without water = rounds can survive without water
                 if (currentWavesSurvivedWithoutWater >= wavesCanSurviveWithoutWater)
                 {
-                    UprootOnWaterDepleted(1f);
+                    UprootOnWaterDepleted(0.1f);
                 }
             }
         }
@@ -260,7 +260,7 @@ namespace TeamMAsTD
             {
                 if(tile.plantUnitOnTile != null && tile.plantUnitOnTile == plantUnitLinked)
                 {
-                    tile.UprootUnit(0.6f);
+                    tile.UprootUnit(0.1f);
                     return;
                 }
             }

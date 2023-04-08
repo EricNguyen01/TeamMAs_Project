@@ -106,11 +106,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tooltipsToDisplayClickReminder: []
-  timeUntilNextReminderMin: 500
-  timeUntilNextReminderMax: 1000
-  timeToCloseReminder: 300
+  timeUntilNextReminderMin: 300
+  timeUntilNextReminderMax: 600
+  timeToCloseReminder: 250
   <showTooltipClickReminderOnStart>k__BackingField: 1
-  waveToShowClickReminderAfterFinished: {fileID: 0}
+  waveToShowClickReminderAfterFinished: {fileID: 11400000, guid: 2cd58fb9ac307fb45b06e9101d3658ed, type: 2}
 --- !u!1 &2542059463325797391
 GameObject:
   m_ObjectHideFlags: 0
@@ -689,6 +689,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2542059463197841270}
     m_Modifications:
+    - target: {fileID: 180636019716852454, guid: be51dee99d5dc4942855546c15466bf0, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 345
+      objectReference: {fileID: 0}
+    - target: {fileID: 180636019716852454, guid: be51dee99d5dc4942855546c15466bf0, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -20
+      objectReference: {fileID: 0}
     - target: {fileID: 1485040860487661476, guid: be51dee99d5dc4942855546c15466bf0, type: 3}
       propertyPath: infoTooltipPrefab
       value: 

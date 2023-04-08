@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.EventSystems;
 
 namespace TeamMAsTD
 {
     [DisallowMultipleComponent]
-    public class WaterAllButton : MonoBehaviour
+    public class WaterAllButton : MonoBehaviour, IPointerEnterHandler, IPointerDownHandler, IPointerUpHandler
     {
         [Header("Water All Config")]
         [SerializeField] [Min(1)]
@@ -21,6 +22,10 @@ namespace TeamMAsTD
 
         [SerializeField] private string waterFullMessage;
 
+        [SerializeField] private Color canWaterAllHighlightColor;
+
+        [SerializeField] private Color unableToWaterAllHighlightColor;
+
         [Header("Required Components")]
 
         [SerializeField] private StatPopupSpawner insufficientFundToWaterAllPopupPrefab;
@@ -32,6 +37,10 @@ namespace TeamMAsTD
         private StatPopupSpawner insufficientFundToWaterAllPopup;
 
         private CanvasGroup waterAllCanvasGroup;
+
+        private Button waterAllButtonComp;
+
+        private Color defaultWaterAllButtonSelectHighlightColor;
 
         private List<PlantUnit> existingPlantUnits = new List<PlantUnit>();
 
@@ -59,11 +68,35 @@ namespace TeamMAsTD
                                                                           0.0f, 
                                                                           insufficientFundToWaterAllPopupScaleMultiplier);
             }
+
+            waterAllButtonComp = GetComponentInChildren<Button>();
+
+            if (waterAllButtonComp != null) 
+            {
+                var waterAllButtonColors = waterAllButtonComp.colors;
+
+                if (canWaterAllHighlightColor != Color.clear) waterAllButtonColors.highlightedColor = canWaterAllHighlightColor;
+
+                waterAllButtonComp.colors = waterAllButtonColors;
+
+                defaultWaterAllButtonSelectHighlightColor = waterAllButtonComp.colors.highlightedColor; 
+            }
         }
 
         private void OnEnable()
         {
-            foreach(Tile tile in FindObjectsOfType<Tile>())
+            //check for an existing EventSystem and disble script if null
+            if (FindObjectOfType<EventSystem>() == null)
+            {
+                Debug.LogError("Cannot find an EventSystem in the scene. " +
+                "An EventSystem is required for WaterAll button to function. Disabling WaterAllButton!");
+
+                enabled = false;
+
+                return;
+            }
+
+            foreach (Tile tile in FindObjectsOfType<Tile>())
             {
                 tile.OnPlantUnitPlantedOnTile.AddListener(RegisteringExisitngPlantUnit);
 
@@ -103,7 +136,7 @@ namespace TeamMAsTD
             StopAllCoroutines();
         }
 
-        private bool CanWaterAll()
+        private bool CanWaterAll(bool displayInsufficientFundPopup = false)
         {
             //if no plant to water -> do nothing
             if(existingPlantUnits == null || existingPlantUnits.Count == 0) return false;
@@ -113,7 +146,7 @@ namespace TeamMAsTD
             //show insufficient popup if this component is assigned to this button and there's insufficient fund to water
             if (!hasSufficientFund)
             {
-                if (insufficientFundToWaterAllPopup != null)
+                if (displayInsufficientFundPopup && insufficientFundToWaterAllPopup != null)
                 {
                     insufficientFundToWaterAllPopup.PopUp(null, null, false);
                 }
@@ -203,7 +236,7 @@ namespace TeamMAsTD
         
         public void WaterAll()
         {
-            if(!CanWaterAll()) return;
+            if(!CanWaterAll(true)) return;
 
             //if total water all cost is less/equal 0 this means that all existing plant are having full water -> no need to water anymore
             if (totalWaterAllCost <= 0) return;
@@ -269,6 +302,47 @@ namespace TeamMAsTD
             waterAllCanvasGroup.interactable = true;
 
             waterAllCanvasGroup.blocksRaycasts = true;
+        }
+
+        private void ProcessWaterAllButtonSelectHighlightColors()
+        {
+            if (waterAllButtonComp == null) return;
+
+            var waterAllButtonColors = waterAllButtonComp.colors;
+
+            if (!CanWaterAll() || totalWaterAllCost <= 0)
+            {
+                if (unableToWaterAllHighlightColor != Color.clear)
+                {
+                    waterAllButtonColors.highlightedColor = unableToWaterAllHighlightColor;
+                }
+                else
+                {
+                    waterAllButtonColors.highlightedColor = Color.red;
+                }
+            }
+            else if (CanWaterAll() && totalWaterAllCost > 0)
+            {
+                waterAllButtonColors.highlightedColor = defaultWaterAllButtonSelectHighlightColor;
+            }
+
+            waterAllButtonComp.colors = waterAllButtonColors;
+        }
+
+        //Unity UI Event Data Interface functions..............................................................................
+        public void OnPointerEnter(PointerEventData pointerEventData)
+        {
+            ProcessWaterAllButtonSelectHighlightColors();
+        }
+
+        public void OnPointerDown(PointerEventData eventData)
+        {
+            ProcessWaterAllButtonSelectHighlightColors();
+        }
+
+        public void OnPointerUp(PointerEventData eventData)
+        {
+            if (waterAllButtonComp != null) waterAllButtonComp.OnDeselect(eventData);
         }
     }
 }

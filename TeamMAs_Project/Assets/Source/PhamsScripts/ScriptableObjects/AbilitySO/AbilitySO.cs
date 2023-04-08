@@ -38,7 +38,7 @@ namespace TeamMAsTD
 
         [field: SerializeField]
         [field: Min(0.0f)]
-        [field: Tooltip("Cooldown time activates right after abilityDuration and after charge time.")]
+        [field: Tooltip("Cooldown time activates on ability begins performing after charge time.")]
         protected float initialAbilityCooldownTime = 0.0f;//in-editor static value
 
         [field: NonSerialized]
@@ -74,6 +74,15 @@ namespace TeamMAsTD
 
         [field: NonSerialized]
         public VisitorUnitSO.VisitorType abilityAffectsSpecificVisitorType { get; protected set; } = VisitorUnitSO.VisitorType.None;
+
+        [field: SerializeField]
+        [field: Min(0)]
+        [field: Tooltip("The maximum number of units that this ability can affect. " +
+        "If set to 0, ability can affect infinite number of units.")]
+        protected int initialMaxNumberOfUnitsToAffect;
+
+        [field: NonSerialized]
+        public int maxNumberOfUnitsToAffect { get; private set; }
 
         [field: SerializeField]
         protected List<PlantUnitSO> initialAbilityAffectsSpecificPlantUnit = new List<PlantUnitSO>();
@@ -190,6 +199,8 @@ namespace TeamMAsTD
             abilityOnlyAffect = initialAbilityOnlyAffect;
 
             abilityAffectsSpecificVisitorType = initialAbilityAffectsSpecificVisitorType;
+
+            maxNumberOfUnitsToAffect = initialMaxNumberOfUnitsToAffect;
 
             abilityAffectsSpecificPlantUnit = initialAbilityAffectsSpecificPlantUnit;
 

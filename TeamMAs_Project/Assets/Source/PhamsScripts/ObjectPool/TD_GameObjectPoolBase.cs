@@ -144,6 +144,8 @@ namespace TeamMAsTD
 
             for(int i = 0; i < gameObjectsPool.Count; i++)
             {
+                if (gameObjectsPool[i] == null || gameObjectsPool[i].Equals(null)) continue;
+
                 if (gameObjectsPool[i].activeInHierarchy) return true;
             }
 

@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
-using FMODUnity;
-using FMOD.Studio;
 
 #if UNITY_EDITOR
 using UnityEditor;
@@ -14,6 +12,7 @@ namespace TeamMAsTD
 {
 #if UNITY_EDITOR
     [CanEditMultipleObjects]
+    [ExecuteInEditMode]
 #endif
     [DisallowMultipleComponent]
     [RequireComponent(typeof(TileMenuAndUprootOnTileUI))]
@@ -67,50 +66,55 @@ namespace TeamMAsTD
 
         public TileGlow tileGlowComp { get; private set; }
 
-        public StudioEventEmitter uprootAudioEventEmitterFMOD { get; private set; }
+        [field: SerializeField] [field: HideInInspector] 
+        public FMODUnity.StudioEventEmitter uprootAudioEventEmitterFMOD { get; private set; }
 
         //PRIVATES......................................................................
 
         private void Awake()
         {
-            spriteRenderer = GetComponent<SpriteRenderer>();
-
-            tileAudioSource = GetComponent<AudioSource>();
-
-            wateringOnTileScriptComp = GetComponent<WateringOnTile>();
-
-            if (spriteRenderer == null)
+            if (Application.isPlaying)
             {
-                spriteRenderer = gameObject.AddComponent<SpriteRenderer>();
+                spriteRenderer = GetComponent<SpriteRenderer>();
+
+                tileAudioSource = GetComponent<AudioSource>();
+
+                wateringOnTileScriptComp = GetComponent<WateringOnTile>();
+
+                if (spriteRenderer == null)
+                {
+                    spriteRenderer = gameObject.AddComponent<SpriteRenderer>();
+                }
+
+                tileGlowComp = GetComponent<TileGlow>();
+
+                if (tileGlowComp == null)
+                {
+                    tileGlowComp = gameObject.AddComponent<TileGlow>();
+                }
+
+                if (drawDebugRuntime)
+                {
+                    if (isOccupied) spriteRenderer.color = Color.grey;
+                    else spriteRenderer.color = Color.green;
+
+                    if (is_AI_Path) spriteRenderer.color = Color.white;
+                }
+
+                Attach_TileMenu_And_UprootOnTileUI_ScriptComponentIfNull();
+
+                if (insufficientFundToPlantOnTilePopupPrefab != null)
+                {
+                    GameObject statPopupSpawnerGO = Instantiate(insufficientFundToPlantOnTilePopupPrefab.gameObject, transform);
+
+                    statPopupSpawnerGO.transform.localPosition = Vector3.zero;
+
+                    thisTileInsufficientFundToPlantStatPopup = statPopupSpawnerGO.GetComponent<StatPopupSpawner>();
+                }
             }
 
-            tileGlowComp = GetComponent<TileGlow>();
-
-            if(tileGlowComp == null)
-            {
-                tileGlowComp = gameObject.AddComponent<TileGlow>();
-            }
-
-            if (drawDebugRuntime)
-            {
-                if (isOccupied) spriteRenderer.color = Color.grey;
-                else spriteRenderer.color = Color.green;
-
-                if (is_AI_Path) spriteRenderer.color = Color.white;
-            }
-
-            Attach_TileMenu_And_UprootOnTileUI_ScriptComponentIfNull();
-
-            if (insufficientFundToPlantOnTilePopupPrefab != null)
-            {
-                GameObject statPopupSpawnerGO = Instantiate(insufficientFundToPlantOnTilePopupPrefab.gameObject, transform);
-
-                statPopupSpawnerGO.transform.localPosition = Vector3.zero;
-
-                thisTileInsufficientFundToPlantStatPopup = statPopupSpawnerGO.GetComponent<StatPopupSpawner>();
-            }
-
-            foreach(StudioEventEmitter fmodEventEmitter in GetComponents<StudioEventEmitter>())
+#if UNITY_EDITOR
+            foreach(FMODUnity.StudioEventEmitter fmodEventEmitter in GetComponents<FMODUnity.StudioEventEmitter>())
             {
                 if (fmodEventEmitter.EventReference.Path.Contains("Uproot"))
                 {
@@ -119,6 +123,7 @@ namespace TeamMAsTD
                     break;
                 }
             }
+#endif
         }
 
 #if UNITY_EDITOR
@@ -299,7 +304,7 @@ namespace TeamMAsTD
 
             if (plantUnitSO.unitPrefab == null)
             {
-                Debug.LogError("A plant unit: " + plantUnitSO.displayName + "is being planted on tile: " + name +
+                UnityEngine.Debug.LogError("A plant unit: " + plantUnitSO.displayName + "is being planted on tile: " + name +
                 " without a unit prefab data assigned in the unit scriptable object! Unit placement failed!");
                 return false;
             }
@@ -369,7 +374,8 @@ namespace TeamMAsTD
 
             plantUnitOnTile.ProcessPlantDestroyEffectFrom(this);
 
-            Destroy(plantUnitOnTile.gameObject, uprootDelaySec);
+            if (uprootDelaySec == 0.0f) Destroy(plantUnitOnTile.gameObject);
+            else Destroy(plantUnitOnTile.gameObject, uprootDelaySec);
 
             plantUnitOnTile = null;
         }

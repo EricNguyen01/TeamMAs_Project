@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d7ce314808d10d41b4abd2687275500, type: 3}
   m_Name: Philbert
   m_EditorClassIdentifier: 
-  <displayName>k__BackingField: Kid
+  <displayName>k__BackingField: Philbert
   <unitPrefab>k__BackingField: {fileID: 2664338853412353054, guid: bfbd909e0c5215742b3d858f29c579da, type: 3}
   <unitInfoTooltipImageSprite>k__BackingField: {fileID: 21300000, guid: 74740dd95574d0e4eac68e15df2995a9, type: 3}
   <unitSpawnEffectPrefab>k__BackingField: {fileID: 0}

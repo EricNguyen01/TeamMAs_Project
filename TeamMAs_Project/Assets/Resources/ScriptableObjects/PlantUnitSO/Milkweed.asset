@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <displayName>k__BackingField: Milkweed
   <unitPrefab>k__BackingField: {fileID: 7171100457624758856, guid: 2e9d9fb45f7651749958cad9c82a386f, type: 3}
-  <unitInfoTooltipImageSprite>k__BackingField: {fileID: 0}
+  <unitInfoTooltipImageSprite>k__BackingField: {fileID: 21300000, guid: b8f7f962f477fc047bb0de2bb7c1dc20, type: 3}
   <unitSpawnEffectPrefab>k__BackingField: {fileID: 1355123197302658146, guid: f4f8b7672c4ecb146b287056f2e31299, type: 3}
   <unitDestroyEffectPrefab>k__BackingField: {fileID: 1355123197302658146, guid: f4f8b7672c4ecb146b287056f2e31299, type: 3}
   <unitID>k__BackingField: 69d9c241-135e-4441-b140-0999d6186126
@@ -43,5 +43,5 @@ MonoBehaviour:
   <wateringCoinsCost>k__BackingField: 1
   <canPurchasePlant>k__BackingField: 1
   <plantPurchaseLockOnStart>k__BackingField: 1
-  <waveToUnlockPlantPurchaseOnWaveFinished>k__BackingField: {fileID: 11400000, guid: a9c9424915cdef84483821f838f0897c, type: 2}
-  <waveToUnlockPlantPurchaseOnWaveStarted>k__BackingField: {fileID: 0}
+  <waveToUnlockPlantPurchaseOnWaveFinished>k__BackingField: {fileID: 0}
+  <waveToUnlockPlantPurchaseOnWaveStarted>k__BackingField: {fileID: 11400000, guid: a9c9424915cdef84483821f838f0897c, type: 2}

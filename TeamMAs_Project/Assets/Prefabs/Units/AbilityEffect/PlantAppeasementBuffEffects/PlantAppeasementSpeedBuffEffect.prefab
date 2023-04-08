@@ -29,7 +29,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1358642490321696240}
+  - {fileID: 2543948554085582992}
+  - {fileID: 3051253385135901695}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -46,8 +47,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <abilityEffectSO>k__BackingField: {fileID: 11400000, guid: 389ab69e520cff14c8cee10ce22185a9, type: 2}
-  <effectStatPopupSpawner>k__BackingField: {fileID: 6558415063122525494}
---- !u!1001 &3547777431471694927
+  <effectStatPopupSpawner>k__BackingField: {fileID: 7679515181889519702}
+  effectStartFx: {fileID: 0}
+  effectUpdateFx: {fileID: 0}
+--- !u!1001 &48142495255042351
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -98,25 +101,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7653892883803117945, guid: 72a83472eae60564ca448751084a773e, type: 3}
-      propertyPath: <displayPopupsSeparately>k__BackingField
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 8835983879471925127, guid: 72a83472eae60564ca448751084a773e, type: 3}
       propertyPath: m_Name
       value: PlantBuffEffectPopupSpawner
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 72a83472eae60564ca448751084a773e, type: 3}
---- !u!4 &1358642490321696240 stripped
+--- !u!4 &2543948554085582992 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2587004502391706047, guid: 72a83472eae60564ca448751084a773e, type: 3}
-  m_PrefabInstance: {fileID: 3547777431471694927}
+  m_PrefabInstance: {fileID: 48142495255042351}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &6558415063122525494 stripped
+--- !u!114 &7679515181889519702 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7653892883803117945, guid: 72a83472eae60564ca448751084a773e, type: 3}
-  m_PrefabInstance: {fileID: 3547777431471694927}
+  m_PrefabInstance: {fileID: 48142495255042351}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
@@ -124,3 +123,65 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c19b9f42d03e804ab593c9d4f5ba6e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1001 &4976320104171900970
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 6963918841946013814}
+    m_Modifications:
+    - target: {fileID: 8022962682983799765, guid: a07a002dbe56d1647a249a3bd268a8a4, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8022962682983799765, guid: a07a002dbe56d1647a249a3bd268a8a4, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8022962682983799765, guid: a07a002dbe56d1647a249a3bd268a8a4, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8022962682983799765, guid: a07a002dbe56d1647a249a3bd268a8a4, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8022962682983799765, guid: a07a002dbe56d1647a249a3bd268a8a4, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8022962682983799765, guid: a07a002dbe56d1647a249a3bd268a8a4, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8022962682983799765, guid: a07a002dbe56d1647a249a3bd268a8a4, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8022962682983799765, guid: a07a002dbe56d1647a249a3bd268a8a4, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8022962682983799765, guid: a07a002dbe56d1647a249a3bd268a8a4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8022962682983799765, guid: a07a002dbe56d1647a249a3bd268a8a4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8022962682983799765, guid: a07a002dbe56d1647a249a3bd268a8a4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8022962682983799786, guid: a07a002dbe56d1647a249a3bd268a8a4, type: 3}
+      propertyPath: m_Name
+      value: PlantBuffEffectFx
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: a07a002dbe56d1647a249a3bd268a8a4, type: 3}
+--- !u!4 &3051253385135901695 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8022962682983799765, guid: a07a002dbe56d1647a249a3bd268a8a4, type: 3}
+  m_PrefabInstance: {fileID: 4976320104171900970}
+  m_PrefabAsset: {fileID: 0}
