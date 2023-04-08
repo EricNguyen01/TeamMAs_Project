@@ -3,12 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System.Linq;
 
 namespace TeamMAsTD
 {
-#if UNITY_EDITOR
-    [ExecuteInEditMode]
-#endif
     [DisallowMultipleComponent]
     public class TimeSpeedUpButton : MonoBehaviour
     {
@@ -45,28 +43,43 @@ namespace TeamMAsTD
 #if UNITY_EDITOR
         private void OnValidate()
         {
-            //make sure the timeSkipStages list always have
-            //the base and default time (1.0f means normal time speed, no slo-mo, no fastforward)
-            //as its first element
-            if(timeSpeedUpStages == null) timeSpeedUpStages = new List<float>();
+            //on changes made to time speed up stages
+            //the chunk below makes sure the timeSkipStages list always have
+            //the base and default time (1.0f means normal time speed, no slo-mo, no fastforward) as its first element
+            //it also checks for valid time stages
 
             if (timeSpeedUpStages.Count == 0)
             {
                 timeSpeedUpStages.Add(1.0f);
-
-                ResetTimeSpeedToDefault();
             }
             else if(timeSpeedUpStages.Count > 0)
             {
-                if(timeSpeedUpStages.Contains(1.0f))
-                {
-                    timeSpeedUpStages.Remove(1.0f);
-                }
+                //remove any time stage that is smaller than 0.0f (invalid time stage)
+                timeSpeedUpStages.RemoveAll(x => x < 0.0f);
 
-                timeSpeedUpStages.Insert(0, 1.0f);
+                //if time speed up stages are missing 1.0f (the default time) -> add to list
+                if (!timeSpeedUpStages.Contains(1.0f))
+                {
+                    timeSpeedUpStages.Insert(0, 1.0f);
+                }
             }
+            
         }
 #endif
+
+        private void Start()
+        {
+            //always
+            //sort time stages ascending in-place using List.Sort() with a provided Comparison<T> delegate
+            //on start
+            if (timeSpeedUpStages.Count > 1)
+            {
+                timeSpeedUpStages.Sort((x, y) => x.CompareTo(y));
+            }
+
+            //reset time speed to default must be called after the sort function above to avoid bugs!!!
+            ResetTimeSpeedToDefault();
+        }
 
         private void OnEnable()
         {
@@ -79,8 +92,6 @@ namespace TeamMAsTD
             WaveSpawner.OnWaveStarted += (WaveSpawner wp, int waveNum) => TemporaryDisableTimeSpeedUp(false);
 
             Rain.OnRainStarted += (Rain r) => TemporaryDisableTimeSpeedUp(true);
-
-            //Rain.OnRainEnded += (Rain r) => TemporaryDisableTimeSpeedUp(false);
         }
 
         private void OnDisable()
@@ -96,8 +107,6 @@ namespace TeamMAsTD
             WaveSpawner.OnWaveStarted -= (WaveSpawner wp, int waveNum) => TemporaryDisableTimeSpeedUp(false);
 
             Rain.OnRainStarted -= (Rain r) => TemporaryDisableTimeSpeedUp(true);
-
-            //Rain.OnRainEnded -= (Rain r) => TemporaryDisableTimeSpeedUp(false);
         }
 
         public void ToNextTimeSpeedUpStage()
@@ -138,9 +147,19 @@ namespace TeamMAsTD
         {
             if (timeSpeedUpStages == null || timeSpeedUpStages.Count == 0) return;
 
-            if (currentTimeSpeedUpStage == 0 && Time.timeScale == timeSpeedUpStages[0]) return;
+            int defaultTimeStage = 0;
 
-            currentTimeSpeedUpStage = 0;
+            if(timeSpeedUpStages.Count > 1)
+            {
+                while (defaultTimeStage < timeSpeedUpStages.Count)
+                {
+                    if (timeSpeedUpStages[defaultTimeStage] == 1.0f) break;
+
+                    defaultTimeStage++;
+                }
+            }
+
+            currentTimeSpeedUpStage = defaultTimeStage;
 
             DisplayTimeSpeedUpTextUI();
 
@@ -188,7 +207,12 @@ namespace TeamMAsTD
         {
             if (timeSpeedUpTextMeshComp == null) return;
 
-            if (timeSpeedUpStages == null || timeSpeedUpStages.Count == 0) return;
+            if (timeSpeedUpStages == null || timeSpeedUpStages.Count == 0)
+            {
+                timeSpeedUpTextMeshComp.text = "n/a";
+
+                return;
+            }
 
             float timeSpeedUpValue = (float)System.Math.Round(timeSpeedUpStages[currentTimeSpeedUpStage], 1);
 

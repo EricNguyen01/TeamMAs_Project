@@ -64721,6 +64721,42 @@ PrefabInstance:
       propertyPath: OnStartedDragging.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 3210166668731441888, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
+      propertyPath: timeSpeedUpStages.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3210166668731441888, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
+      propertyPath: timeSpeedUpStages.Array.data[0]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3210166668731441888, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
+      propertyPath: timeSpeedUpStages.Array.data[1]
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3210166668731441888, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
+      propertyPath: timeSpeedUpStages.Array.data[2]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3210166668731441888, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
+      propertyPath: timeSpeedUpStages.Array.data[3]
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3210166668731441888, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
+      propertyPath: timeSpeedUpStages.Array.data[4]
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3210166668731441888, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
+      propertyPath: timeSpeedUpStages.Array.data[5]
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3210166668731441888, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
+      propertyPath: timeSpeedUpStages.Array.data[6]
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3210166668731441888, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
+      propertyPath: timeSpeedUpStages.Array.data[7]
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 3217557411540377411, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0.9825209
