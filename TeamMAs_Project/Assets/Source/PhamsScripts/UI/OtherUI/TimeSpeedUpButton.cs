@@ -231,7 +231,7 @@ namespace TeamMAsTD
 
             float timeSpeedUpValue = (float)System.Math.Round(timeSpeedUpStages[currentTimeSpeedUpStage], 1);
 
-            timeSpeedUpTextMeshComp.text = timeSpeedUpValue.ToString();
+            timeSpeedUpTextMeshComp.text = timeSpeedUpValue.ToString() + "x";
         }
     }
 }
