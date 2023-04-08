@@ -26,6 +26,8 @@ namespace TeamMAsTD
 
         private bool hasWaveAlreadyStarted = false;
 
+        private bool hasDialogueStarted = false;
+
         private void Awake()
         {
             if(timeSpeedUpCanvasGroup == null)
@@ -166,9 +168,22 @@ namespace TeamMAsTD
             Time.timeScale = timeSpeedUpStages[currentTimeSpeedUpStage];
         }
 
-        public void TemporaryDisableTimeSpeedUpUnityEvent(bool shouldDisable)
+        public void TemporaryDisableTimeSpeedUpOnDialogueStarts(bool shouldDisable)
         {
-            TemporaryDisableTimeSpeedUp(shouldDisable);
+            if (shouldDisable)
+            {
+                hasDialogueStarted = true;
+
+                Time.timeScale = 0.0f;
+
+                return;
+            }
+
+            hasDialogueStarted = false;
+
+            TemporaryDisableTimeSpeedUp(false, false);
+
+            Time.timeScale = timeSpeedUpStages[currentTimeSpeedUpStage];
         }
 
         public void TemporaryDisableTimeSpeedUp(bool shouldDisable, bool shouldResetTimeSpeed = true)
@@ -190,7 +205,7 @@ namespace TeamMAsTD
                 return;
             }
 
-            if (!isTemporaryDisabled || !hasWaveAlreadyStarted) return;
+            if (!isTemporaryDisabled || !hasWaveAlreadyStarted || hasDialogueStarted) return;
 
             isTemporaryDisabled = false;
 

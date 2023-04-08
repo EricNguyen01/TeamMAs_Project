@@ -19022,11 +19022,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1451666340568421299, guid: d1cdca22ec4708540aa68019e182a7d8, type: 3}
       propertyPath: conversationEvents.onConversationEnd.m_PersistentCalls.m_Calls.Array.size
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1451666340568421299, guid: d1cdca22ec4708540aa68019e182a7d8, type: 3}
       propertyPath: conversationEvents.onConversationStart.m_PersistentCalls.m_Calls.Array.size
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1451666340568421299, guid: d1cdca22ec4708540aa68019e182a7d8, type: 3}
       propertyPath: conversationEvents.onConversationEnd.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
@@ -19050,7 +19050,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1451666340568421299, guid: d1cdca22ec4708540aa68019e182a7d8, type: 3}
       propertyPath: conversationEvents.onConversationEnd.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: TemporaryDisableTimeSpeedUpUnityEvent
+      value: TemporaryDisableTimeSpeedUpOnDialogueStarts
       objectReference: {fileID: 0}
     - target: {fileID: 1451666340568421299, guid: d1cdca22ec4708540aa68019e182a7d8, type: 3}
       propertyPath: conversationEvents.onConversationStart.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
@@ -19058,7 +19058,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1451666340568421299, guid: d1cdca22ec4708540aa68019e182a7d8, type: 3}
       propertyPath: conversationEvents.onConversationStart.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: TemporaryDisableTimeSpeedUpUnityEvent
+      value: TemporaryDisableTimeSpeedUpOnDialogueStarts
       objectReference: {fileID: 0}
     - target: {fileID: 1451666340568421299, guid: d1cdca22ec4708540aa68019e182a7d8, type: 3}
       propertyPath: conversationEvents.onConversationEnd.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
@@ -64499,7 +64499,7 @@ Animator:
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: c4e0e02adfe479f45b74d3a8547152cb, type: 2}
   m_CullingMode: 0
-  m_UpdateMode: 0
+  m_UpdateMode: 2
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
