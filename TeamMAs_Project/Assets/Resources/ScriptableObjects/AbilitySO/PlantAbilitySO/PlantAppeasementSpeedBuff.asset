@@ -14,13 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <abilityName>k__BackingField: PlantAppeasementSpeedBuff
   <abilityPrefab>k__BackingField: {fileID: 3777606310352381695, guid: 6a4c1d1073c83fa4f944b81fe28e2407, type: 3}
-  initialAbilityRangeInTiles: 3
+  initialAbilityRangeInTiles: 2
   initialAbilityDuration: -1
   initialAbilityCooldownTime: 0
   initialAbilityChargeTime: 0
   initialAbilityUseReservedFor: 1
   initialAbilityOnlyAffect: 1
   initialAbilityAffectsSpecificVisitorType: 0
+  initialMaxNumberOfUnitsToAffect: 0
   initialAbilityAffectsSpecificPlantUnit: []
   initialAbilityAffectsSpecificVisitorUnit: []
   <abilityEffects>k__BackingField:
