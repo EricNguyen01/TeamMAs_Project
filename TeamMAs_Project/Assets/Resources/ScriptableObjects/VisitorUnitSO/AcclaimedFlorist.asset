@@ -21,7 +21,7 @@ MonoBehaviour:
   <happinessAsHealth>k__BackingField: 1500
   <moveSpeed>k__BackingField: 1
   <appeasementHealAmount>k__BackingField: 2
-  <dissapointmentDamage>k__BackingField: 2
+  <dissapointmentDamage>k__BackingField: 4
   <isBoss>k__BackingField: 1
   <visitorHitColor>k__BackingField: {r: 1, g: 0.21960784, b: 0.8117647, a: 1}
   <visitorAppeasementTime>k__BackingField: 2.5
