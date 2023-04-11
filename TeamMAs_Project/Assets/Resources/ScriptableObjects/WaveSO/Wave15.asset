@@ -20,7 +20,7 @@ MonoBehaviour:
     spawnNumbers: 2
     spawnChance: 1
   - visitorType: {fileID: 11400000, guid: 297fbbaf0eb4b9a4f9e1270ac6e199f4, type: 2}
-    spawnNumbers: 15
+    spawnNumbers: 5
     spawnChance: 1
   - visitorType: {fileID: 11400000, guid: 1e8581c24e330ea4292993eaa9ea90ac, type: 2}
     spawnNumbers: 2
@@ -29,7 +29,7 @@ MonoBehaviour:
     spawnNumbers: 4
     spawnChance: 1
   - visitorType: {fileID: 11400000, guid: 6a0dd658772fe164889725e1e71e29eb, type: 2}
-    spawnNumbers: 4
+    spawnNumbers: 14
     spawnChance: 1
   - visitorType: {fileID: 11400000, guid: eec1de98e3c7786459e1ed83556faf18, type: 2}
     spawnNumbers: 1
@@ -44,6 +44,6 @@ MonoBehaviour:
   <waitTimeBetweenSpawn>k__BackingField: 1
   <spawnBossLast>k__BackingField: 1
   <applyVisitorHealthScalingThisWave>k__BackingField: 1
-  <visitorHealthScalingMultiplier>k__BackingField: 2.5
+  <visitorHealthScalingMultiplier>k__BackingField: 3
   <extraCoinsDropFromWave>k__BackingField: 4
   <plantsToSpawnOnThisWaveStart>k__BackingField: []
