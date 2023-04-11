@@ -63,19 +63,27 @@ namespace TeamMAsTD
 
         private void OnEnable()
         {
-            WaveSpawner.OnWaveFinished += UpdateVisitorTypesLookAheadOnWaveEvent;
+            WaveSpawner.OnWaveFinished += UpdateVisitorTypesLookAheadOnWaveFinished;
+
+            WaveSpawner.OnWaveJumped += UpdateVisitorTypesLookAheadOnWaveJumped;
+
             WaveSpawner.OnAllWaveSpawned += DisableLookAheadSlotsOnAllWaveSpawned;
 
             Rain.OnRainStarted += (Rain r) => hasFinishedRaining = false;
+
             Rain.OnRainEnded += (Rain r) => hasFinishedRaining = true;
         }
 
         private void OnDisable()
         {
-            WaveSpawner.OnWaveFinished -= UpdateVisitorTypesLookAheadOnWaveEvent;
+            WaveSpawner.OnWaveFinished -= UpdateVisitorTypesLookAheadOnWaveFinished;
+
+            WaveSpawner.OnWaveJumped -= UpdateVisitorTypesLookAheadOnWaveJumped;
+
             WaveSpawner.OnAllWaveSpawned -= DisableLookAheadSlotsOnAllWaveSpawned;
 
             Rain.OnRainStarted -= (Rain r) => hasFinishedRaining = false;
+
             Rain.OnRainEnded -= (Rain r) => hasFinishedRaining = true;
 
             StopAllCoroutines();
@@ -211,7 +219,7 @@ namespace TeamMAsTD
         }
 
         //Base update function for OnWaveFinished event in WaveSpawner.cs
-        private void UpdateVisitorTypesLookAheadOnWaveEvent(WaveSpawner waveSpawner, int waveNum, bool stillHasOngoingWaves)
+        private void UpdateVisitorTypesLookAheadOnWaveFinished(WaveSpawner waveSpawner, int waveNum, bool stillHasOngoingWaves)
         {
             if (waveSpawner == null) return;
 
@@ -233,6 +241,13 @@ namespace TeamMAsTD
             }
 
             StartCoroutine(VisitorTypesUpdateAfterRainCoroutine(waveToLookAhead));
+        }
+
+        private void UpdateVisitorTypesLookAheadOnWaveJumped(WaveSpawner waveSpawner, int waveNum, bool stillHasOngoingWaves)
+        {
+            hasFinishedRaining = true;
+
+            UpdateVisitorTypesLookAheadOnWaveFinished(waveSpawner, waveNum, stillHasOngoingWaves);
         }
 
         private IEnumerator VisitorTypesUpdateAfterRainCoroutine(Wave waveToLookAhead)

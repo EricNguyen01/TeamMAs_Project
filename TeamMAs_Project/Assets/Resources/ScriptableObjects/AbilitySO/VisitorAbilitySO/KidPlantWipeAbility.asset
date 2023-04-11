@@ -13,15 +13,15 @@ MonoBehaviour:
   m_Name: KidPlantWipeAbility
   m_EditorClassIdentifier: 
   <abilityName>k__BackingField: KidPlantWipeAbility
-  <abilityPrefab>k__BackingField: {fileID: 0}
+  <abilityPrefab>k__BackingField: {fileID: 7271819144061754679, guid: 70efdd845965e36478576a8a885d8d7d, type: 3}
   initialAbilityRangeInTiles: 12
-  initialAbilityDuration: 1.15
+  initialAbilityDuration: 2.85
   initialAbilityCooldownTime: 0
-  initialAbilityChargeTime: 2
+  initialAbilityChargeTime: 2.85
   initialAbilityUseReservedFor: 2
   initialAbilityOnlyAffect: 1
   initialAbilityAffectsSpecificVisitorType: 0
-  initialMaxNumberOfUnitsToAffect: 12
+  initialMaxNumberOfUnitsToAffect: 14
   initialAbilityAffectsSpecificPlantUnit: []
   initialAbilityAffectsSpecificVisitorUnit: []
   <abilityEffects>k__BackingField:

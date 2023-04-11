@@ -374,7 +374,8 @@ namespace TeamMAsTD
 
             plantUnitOnTile.ProcessPlantDestroyEffectFrom(this);
 
-            Destroy(plantUnitOnTile.gameObject, uprootDelaySec);
+            if (uprootDelaySec == 0.0f) Destroy(plantUnitOnTile.gameObject);
+            else Destroy(plantUnitOnTile.gameObject, uprootDelaySec);
 
             plantUnitOnTile = null;
         }

@@ -36,6 +36,13 @@ namespace TeamMAsTD
 
         public InfoTooltipClickReminderDisplayTimer clickReminderDisplayTimer { get; private set; }
 
+        private Button infoTooltipButton;
+
+        private void Awake()
+        {
+            infoTooltipButton = GetComponentInChildren<Button>();
+        }
+
         private void OnEnable()
         {
             //check for an existing EventSystem and disble script if null
@@ -110,8 +117,19 @@ namespace TeamMAsTD
         {
             if (infoTooltip == null) return;
 
-            if (!infoTooltip.isTooltipActive) EnableInfoTooltipImage(true);
-            else EnableInfoTooltipImage(false);
+            if (!infoTooltip.isTooltipActive) 
+            { 
+                EnableInfoTooltipImage(true); 
+            }
+            else
+            {
+                EnableInfoTooltipImage(false);
+
+                if(infoTooltipButton != null)
+                {
+                    infoTooltipButton.OnDeselect(pointerEventData);
+                }
+            }
         }
 
         public void EnableInfoTooltipImage(bool enabled, bool setTooltipClickReminderStatus = true)
