@@ -31,14 +31,14 @@ MonoBehaviour:
   - visitorType: {fileID: 11400000, guid: 6a0dd658772fe164889725e1e71e29eb, type: 2}
     spawnNumbers: 2
     spawnChance: 1
-  - visitorType: {fileID: 11400000, guid: fd1a0792591ff2941a1d220db32e785f, type: 2}
+  - visitorType: {fileID: 11400000, guid: ea6738d80b42a744e95a53fa235cddaa, type: 2}
     spawnNumbers: 1
     spawnChance: 1
   <waitTimeToFirstSpawn>k__BackingField: 1
   <waitTimeBetweenSpawn>k__BackingField: 1
   <spawnBossLast>k__BackingField: 1
   <applyVisitorHealthScalingThisWave>k__BackingField: 1
-  <visitorHealthScalingMultiplier>k__BackingField: 1
+  <visitorHealthScalingMultiplier>k__BackingField: 1.5
   <extraCoinsDropFromWave>k__BackingField: 8
   <plantsToSpawnOnThisWaveStart>k__BackingField:
   - plantUnitSOToSpawn: {fileID: 11400000, guid: ebe49aa0d994d7d488c580c1a9bccd35, type: 2}
