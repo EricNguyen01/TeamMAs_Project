@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7271819144061754679}
   - component: {fileID: 6399027580289999581}
   - component: {fileID: 8557102819690320487}
+  - component: {fileID: -5578364370739417715}
   m_Layer: 0
   m_Name: KidPlantWipeAbility
   m_TagString: Untagged
@@ -50,9 +51,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <abilityScriptableObject>k__BackingField: {fileID: 11400000, guid: 6a1fafd2a9b757e419259a16767e38df, type: 2}
   abilityChargingParticleEffect: {fileID: 7963852748741948381}
-  shouldLoopChargingParticleEffect: 1
   abilityParticleEffect: {fileID: 2471274067353544625}
-  shouldLoopParticleEffect: 0
+  abilityEventEmitterFMOD: {fileID: -5578364370739417715}
   auraCollider: {fileID: 6399027580289999581}
   auraKinematicRb: {fileID: 8557102819690320487}
 --- !u!58 &6399027580289999581
@@ -92,6 +92,37 @@ Rigidbody2D:
   m_SleepingMode: 0
   m_CollisionDetection: 1
   m_Constraints: 0
+--- !u!114 &-5578364370739417715
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5993987071624708121}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  Event: 
+  PlayEvent: 0
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: -1
+  OverrideMaxDistance: -1
+  hasTriggered: 0
 --- !u!1001 &1879381648733442835
 PrefabInstance:
   m_ObjectHideFlags: 0

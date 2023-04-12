@@ -61,6 +61,8 @@ namespace TeamMAsTD
 
             if (camShakeScript != null) camShakeScript.enabled = true;
 
+            if (abilityEventEmitterFMOD != null) abilityEventEmitterFMOD.Play();
+
             base.ProcessAbilityStart();
         }
 
@@ -102,6 +104,8 @@ namespace TeamMAsTD
                     SetVisitorSortingOrderOnTopOfAbility(false);
                 }
             }
+
+            if (abilityEventEmitterFMOD != null && abilityEventEmitterFMOD.IsPlaying()) abilityEventEmitterFMOD.Stop();
 
             base.ProcessAbilityEnd();
         }
