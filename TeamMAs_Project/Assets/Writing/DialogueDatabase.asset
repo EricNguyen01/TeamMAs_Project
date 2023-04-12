@@ -133,7 +133,7 @@ MonoBehaviour:
       type: 2
       typeString: CustomFieldType_Boolean
     - title: Display Name
-      value: Lyon
+      value: Lion
       type: 0
       typeString: 
     portrait: {fileID: 0}
