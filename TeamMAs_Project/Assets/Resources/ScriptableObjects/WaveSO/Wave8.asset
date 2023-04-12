@@ -30,10 +30,10 @@ MonoBehaviour:
     spawnChance: 1
   <waitTimeToFirstSpawn>k__BackingField: 1
   <waitTimeBetweenSpawn>k__BackingField: 1
-  <spawnBossLast>k__BackingField: 0
+  <spawnBossLast>k__BackingField: 1
   <applyVisitorHealthScalingThisWave>k__BackingField: 1
   <visitorHealthScalingMultiplier>k__BackingField: 1
-  <extraCoinsDropFromWave>k__BackingField: 4
+  <extraCoinsDropFromWave>k__BackingField: 8
   <plantsToSpawnOnThisWaveStart>k__BackingField:
   - plantUnitSOToSpawn: {fileID: 11400000, guid: ebe49aa0d994d7d488c580c1a9bccd35, type: 2}
     spawnNumbers: 1
