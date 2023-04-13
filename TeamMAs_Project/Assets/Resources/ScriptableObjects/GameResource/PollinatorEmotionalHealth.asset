@@ -15,5 +15,5 @@ MonoBehaviour:
   <resourceName>k__BackingField: PollinatorEmotionalHealth
   initialResourceAmountMin: 0
   initialResourceAmount: 25
-  initialResourceAmountCap: 120
+  initialResourceAmountCap: 122
   <visitorTypeAffectingThisHealth>k__BackingField: 2
