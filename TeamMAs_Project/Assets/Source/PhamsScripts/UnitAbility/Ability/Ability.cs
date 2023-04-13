@@ -36,6 +36,10 @@ namespace TeamMAsTD
 
         [SerializeField] protected ParticleSystem abilityParticleEffect;
 
+        [Header("Ability Sounds")]
+
+        [SerializeField] protected FMODUnity.StudioEventEmitter abilityEventEmitterFMOD;
+
         //INTERNALS...................................................................................
 
         public IUnit unitPossessingAbility { get; private set; }

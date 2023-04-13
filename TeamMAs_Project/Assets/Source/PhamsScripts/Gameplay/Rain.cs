@@ -16,6 +16,7 @@ namespace TeamMAsTD
         [SerializeField] private ParticleSystem rainParticleSystem;
 
         //Unity Event
+        [SerializeField] private UnityEvent OnRainStartedEvent;
         [SerializeField] private UnityEvent<int> OnRainEndedEvent;
 
         //the current wave that just ended right before rain started happening
@@ -68,6 +69,8 @@ namespace TeamMAsTD
             OnRainStarted?.Invoke(this);
 
             yield return new WaitForSeconds(0.25f);
+
+            OnRainStartedEvent?.Invoke();
 
             //if there's rain anim/particle fx -> play it here...
             if (rainParticleSystem != null)

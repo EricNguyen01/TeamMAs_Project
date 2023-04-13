@@ -82,7 +82,7 @@
 	</object>
 	<object class="SingleSound" id="{6eedfbc0-8718-4674-8991-456c188df298}">
 		<property name="length">
-			<value>113.0808843537415</value>
+			<value>114.39482095847089</value>
 		</property>
 		<property name="pitch">
 			<value>-0.200000003</value>
@@ -108,7 +108,7 @@
 			<value>0</value>
 		</property>
 		<property name="length">
-			<value>113.0808843537415</value>
+			<value>114.39482095847089</value>
 		</property>
 		<relationship name="timeline">
 			<destination>{38d3c5e2-2e76-493c-9efe-b18dd3b0d49c}</destination>
