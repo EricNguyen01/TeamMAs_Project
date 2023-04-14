@@ -65097,6 +65097,14 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1972745749921449660, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
+      propertyPath: m_fontSize
+      value: 32
+      objectReference: {fileID: 0}
+    - target: {fileID: 1972745749921449660, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 32
+      objectReference: {fileID: 0}
     - target: {fileID: 2199127071567654328, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
       propertyPath: gameResourceUIStatPopupSpawner
       value: 

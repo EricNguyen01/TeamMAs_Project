@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d7ce314808d10d41b4abd2687275500, type: 3}
   m_Name: B127
   m_EditorClassIdentifier: 
-  <displayName>k__BackingField: Bee
+  <displayName>k__BackingField: Bee (Unhappy)
   <unitPrefab>k__BackingField: {fileID: 2664338853412353054, guid: d583b5c8412bbd745aa414ff87bc7049, type: 3}
   <unitInfoTooltipImageSprite>k__BackingField: {fileID: 21300000, guid: d94f5d8d46fbead4fa9b14d3baee0ea3, type: 3}
   <unitSpawnEffectPrefab>k__BackingField: {fileID: 0}
