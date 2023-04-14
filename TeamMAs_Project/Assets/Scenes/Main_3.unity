@@ -19164,6 +19164,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 227679380, guid: d1cdca22ec4708540aa68019e182a7d8, type: 3}
+      propertyPath: conversationNum
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1451666340568421299, guid: d1cdca22ec4708540aa68019e182a7d8, type: 3}
       propertyPath: conversationEvents.onConversationEnd.m_PersistentCalls.m_Calls.Array.size
       value: 1
