@@ -29,12 +29,12 @@ namespace TeamMAsTD
 
         void OnEnable()
         {
-            TeamMAsTD.WaveSpawner.OnWaveFinished += (WaveSpawner ws, int wn, bool b) => StartConvoOnWave15Finished(wn);
+            TeamMAsTD.WaveSpawner.OnAllWaveSpawned += (WaveSpawner ws, bool b) => StartConvoOnWave15Finished(14);
         }
 
         void OnDisable()
         {
-            TeamMAsTD.WaveSpawner.OnWaveFinished -= (WaveSpawner ws, int wn, bool b) => StartConvoOnWave15Finished(wn);
+            TeamMAsTD.WaveSpawner.OnAllWaveSpawned -= (WaveSpawner ws, bool b) => StartConvoOnWave15Finished(14);
         }
 
         void Start()
@@ -87,7 +87,7 @@ namespace TeamMAsTD
 
         public void StartConvoOnWave15Finished(int waveNum)
         {
-            if (waveNum == 14)
+            if (waveNum >= 14)
             {
                 StartConversation(16);
             }
