@@ -27,6 +27,16 @@ namespace TeamMAsTD
 
         */
 
+        void OnEnable()
+        {
+            TeamMAsTD.WaveSpawner.OnWaveFinished += (WaveSpawner ws, int wn, bool b) => StartConvoOnWave15Finished(wn);
+        }
+
+        void OnDisable()
+        {
+            TeamMAsTD.WaveSpawner.OnWaveFinished -= (WaveSpawner ws, int wn, bool b) => StartConvoOnWave15Finished(wn);
+        }
+
         void Start()
         {
             StartCoroutine(StartFirstConversation(1f));
@@ -73,6 +83,14 @@ namespace TeamMAsTD
         public void StartConversation(int waveNum)
         {
             DialogueManager.StartConversation("Wave/" + (waveNum));
+        }
+
+        public void StartConvoOnWave15Finished(int waveNum)
+        {
+            if (waveNum == 14)
+            {
+                StartConversation(16);
+            }
         }
 
         public void PlantBlocked(PlantUnitSO plant, Tile tile)
