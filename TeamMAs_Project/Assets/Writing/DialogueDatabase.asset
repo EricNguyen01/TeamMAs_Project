@@ -834,7 +834,7 @@ MonoBehaviour:
         typeString: CustomFieldType_Text
       - title: Dialogue Text
         value: 'We''ve got visitors, groundskeeper. We''d better get ready: this
-          pollinator garden won''t plant itself.
+          [em2]pollinator garden[/em2] won''t plant itself.
 
           [pic=2]'
         type: 0
@@ -947,8 +947,8 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: 'I can handle the [em2]humans[/em2], but you''ll need someone else
-          to make the [em2]pollinators[/em2] happy.
+        value: 'I can make the [em2]humans[/em2] happy, but you''ll need someone
+          else to help the [em2]pollinators[/em2].
 
           [pic=2]'
         type: 0
@@ -983,11 +983,11 @@ MonoBehaviour:
       canvasRect:
         serializedVersion: 2
         x: 30
-        y: 120
+        y: 121.34364
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 0, y: 16.79139}
+    canvasScrollPosition: {x: 0, y: 35.602272}
     canvasZoom: 0.7442502
   - id: 4
     fields:
@@ -1692,7 +1692,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Actor
-        value: 2
+        value: 5
         type: 5
         typeString: CustomFieldType_Actor
       - title: Conversant
@@ -1704,7 +1704,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: Looks like the Business Joes will be visiting us a lot now.
+        value: Here, Anise Hyssop can survive on rain alone. Talk about cost-efficient!
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
@@ -2327,7 +2327,7 @@ MonoBehaviour:
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 1026.2295, y: 226.22946}
+    canvasScrollPosition: {x: 893.4427, y: 104.91797}
     canvasZoom: 0.61
   - id: 5
     fields:
@@ -3879,7 +3879,13 @@ MonoBehaviour:
       delaySimStatus: 0
       falseConditionAction: Block
       conditionPriority: 2
-      outgoingLinks: []
+      outgoingLinks:
+      - originConversationID: 6
+        originDialogueID: 15
+        destinationConversationID: 6
+        destinationDialogueID: 16
+        isConnector: 0
+        priority: 2
       conditionsString: 
       userScript: 
       onExecute:
@@ -3891,8 +3897,310 @@ MonoBehaviour:
         y: 169.09087
         width: 160
         height: 30
+    - id: 16
+      fields:
+      - title: Title
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Description
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Actor
+        value: 2
+        type: 5
+        typeString: CustomFieldType_Actor
+      - title: Conversant
+        value: 5
+        type: 5
+        typeString: CustomFieldType_Actor
+      - title: Menu Text
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Dialogue Text
+        value: 'Hey, why does everything cost [em2]water credits[/em2], anyway?
+
+          [pic=2]'
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Sequence
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Priority
+        value: 0
+        type: 1
+        typeString: CustomFieldType_Number
+      conversationID: 6
+      isRoot: 0
+      isGroup: 0
+      nodeColor: 
+      delaySimStatus: 0
+      falseConditionAction: Block
+      conditionPriority: 2
+      outgoingLinks:
+      - originConversationID: 6
+        originDialogueID: 16
+        destinationConversationID: 6
+        destinationDialogueID: 17
+        isConnector: 0
+        priority: 2
+      conditionsString: 
+      userScript: 
+      onExecute:
+        m_PersistentCalls:
+          m_Calls: []
+      canvasRect:
+        serializedVersion: 2
+        x: 237.27261
+        y: 219.09087
+        width: 160
+        height: 30
+    - id: 17
+      fields:
+      - title: Title
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Description
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Actor
+        value: 5
+        type: 5
+        typeString: CustomFieldType_Actor
+      - title: Conversant
+        value: 2
+        type: 5
+        typeString: CustomFieldType_Actor
+      - title: Menu Text
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Dialogue Text
+        value: 'That''s just how money is, now. You know, after the water tax. From
+          the water shortage.
+
+          [pic=2]'
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Sequence
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Priority
+        value: 0
+        type: 1
+        typeString: CustomFieldType_Number
+      conversationID: 6
+      isRoot: 0
+      isGroup: 0
+      nodeColor: 
+      delaySimStatus: 0
+      falseConditionAction: Block
+      conditionPriority: 2
+      outgoingLinks:
+      - originConversationID: 6
+        originDialogueID: 17
+        destinationConversationID: 6
+        destinationDialogueID: 18
+        isConnector: 0
+        priority: 2
+      conditionsString: 
+      userScript: 
+      onExecute:
+        m_PersistentCalls:
+          m_Calls: []
+      canvasRect:
+        serializedVersion: 2
+        x: 237.27261
+        y: 269.09088
+        width: 160
+        height: 30
+    - id: 18
+      fields:
+      - title: Title
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Description
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Actor
+        value: 2
+        type: 5
+        typeString: CustomFieldType_Actor
+      - title: Conversant
+        value: 5
+        type: 5
+        typeString: CustomFieldType_Actor
+      - title: Menu Text
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Dialogue Text
+        value: 'The what?
+
+          [pic=2]'
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Sequence
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Priority
+        value: 0
+        type: 1
+        typeString: CustomFieldType_Number
+      conversationID: 6
+      isRoot: 0
+      isGroup: 0
+      nodeColor: 
+      delaySimStatus: 0
+      falseConditionAction: Block
+      conditionPriority: 2
+      outgoingLinks:
+      - originConversationID: 6
+        originDialogueID: 18
+        destinationConversationID: 6
+        destinationDialogueID: 19
+        isConnector: 0
+        priority: 2
+      conditionsString: 
+      userScript: 
+      onExecute:
+        m_PersistentCalls:
+          m_Calls: []
+      canvasRect:
+        serializedVersion: 2
+        x: 237.27261
+        y: 319.09088
+        width: 160
+        height: 30
+    - id: 19
+      fields:
+      - title: Title
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Description
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Actor
+        value: 5
+        type: 5
+        typeString: CustomFieldType_Actor
+      - title: Conversant
+        value: 2
+        type: 5
+        typeString: CustomFieldType_Actor
+      - title: Menu Text
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Dialogue Text
+        value: 'The... dry spell that everyone''s been suffering from? For the past
+          year? You know what, forget it.
+
+          [pic=2]'
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Sequence
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Priority
+        value: 0
+        type: 1
+        typeString: CustomFieldType_Number
+      conversationID: 6
+      isRoot: 0
+      isGroup: 0
+      nodeColor: 
+      delaySimStatus: 0
+      falseConditionAction: Block
+      conditionPriority: 2
+      outgoingLinks:
+      - originConversationID: 6
+        originDialogueID: 19
+        destinationConversationID: 6
+        destinationDialogueID: 20
+        isConnector: 0
+        priority: 2
+      conditionsString: 
+      userScript: 
+      onExecute:
+        m_PersistentCalls:
+          m_Calls: []
+      canvasRect:
+        serializedVersion: 2
+        x: 237.27261
+        y: 367.76987
+        width: 160
+        height: 30
+    - id: 20
+      fields:
+      - title: Title
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Description
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Actor
+        value: 5
+        type: 5
+        typeString: CustomFieldType_Actor
+      - title: Conversant
+        value: 2
+        type: 5
+        typeString: CustomFieldType_Actor
+      - title: Menu Text
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Dialogue Text
+        value: '(Grass obviously isn''t used to [em2]saving water[/em2], but we''ll
+          have to be careful. Don''t plant more than you can afford.)
+
+          [pic=2]'
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Sequence
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Priority
+        value: 0
+        type: 1
+        typeString: CustomFieldType_Number
+      conversationID: 6
+      isRoot: 0
+      isGroup: 0
+      nodeColor: 
+      delaySimStatus: 0
+      falseConditionAction: Block
+      conditionPriority: 2
+      outgoingLinks: []
+      conditionsString: 
+      userScript: 
+      onExecute:
+        m_PersistentCalls:
+          m_Calls: []
+      canvasRect:
+        serializedVersion: 2
+        x: 237.27261
+        y: 417.76987
+        width: 160
+        height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 26.088472, y: 6.7733536}
+    canvasScrollPosition: {x: 0, y: 41.119484}
     canvasZoom: 0.7570002
   - id: 7
     fields:
@@ -4613,7 +4921,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: "I bring nitrogen from the air to the soil. It\u2019s free fertilizer.\n[pic=2]"
+        value: "I bring nitrogen from the air to the soil. It\u2019s [em2]free fertilizer[/em2].\n[pic=2]"
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
@@ -4650,7 +4958,7 @@ MonoBehaviour:
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 68.243225, y: 136.43811}
+    canvasScrollPosition: {x: 169.8628, y: 93.99811}
     canvasZoom: 0.78725
   - id: 8
     fields:
@@ -7876,7 +8184,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: 'Do you miss Clover lawns, then? '
+        value: 'Do you miss [em2]Clover lawns[/em2], then? '
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
@@ -8206,7 +8514,7 @@ MonoBehaviour:
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 0, y: 46.168114}
+    canvasScrollPosition: {x: 0, y: 0}
     canvasZoom: 0.39999986
   - id: 13
     fields:
@@ -9203,7 +9511,7 @@ MonoBehaviour:
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 0, y: 439.43054}
+    canvasScrollPosition: {x: 3.846161, y: 29.815216}
     canvasZoom: 0.5200001
   - id: 14
     fields:
@@ -9791,7 +10099,7 @@ MonoBehaviour:
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 0, y: 0}
+    canvasScrollPosition: {x: 0, y: 175.40982}
     canvasZoom: 0.6100001
   - id: 15
     fields:
@@ -10461,8 +10769,8 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: "Big words from the most high-maintenance, money-wasting plant I\u2019ve
-          ever met."
+        value: "Big words from the most [em2]high-maintenance[/em2], [em2]money-wasting[/em2]
+          plant I\u2019ve ever met."
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
@@ -10735,7 +11043,7 @@ MonoBehaviour:
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 0, y: 1.4084473}
+    canvasScrollPosition: {x: 0, y: 218.30989}
     canvasZoom: 0.7099998
   - id: 16
     fields:
@@ -10962,7 +11270,7 @@ MonoBehaviour:
       canvasRect:
         serializedVersion: 2
         x: 30
-        y: 120
+        y: 118.18182
         width: 160
         height: 30
     - id: 3
@@ -11145,7 +11453,7 @@ MonoBehaviour:
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 0, y: 0}
+    canvasScrollPosition: {x: 0, y: 36.36357}
     canvasZoom: 0.5500004
   - id: 17
     fields:
@@ -13142,8 +13450,8 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: "I\u2019m not done. I remember you now: two hundred years ago, you
-          took everything from me.\n[pic=3]"
+        value: "I\u2019m not done. It's funny, I remember you now: two hundred years
+          ago, you took everything from me.\n[pic=2]"
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
@@ -13238,7 +13546,7 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 30
+        x: 31.428574
         y: 370
         width: 160
         height: 30
@@ -13422,7 +13730,7 @@ MonoBehaviour:
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 0, y: 195.71414}
+    canvasScrollPosition: {x: 0, y: 371.4283}
     canvasZoom: 0.7000003
   - id: 21
     fields:
@@ -16302,7 +16610,13 @@ MonoBehaviour:
       delaySimStatus: 0
       falseConditionAction: Block
       conditionPriority: 2
-      outgoingLinks: []
+      outgoingLinks:
+      - originConversationID: 23
+        originDialogueID: 26
+        destinationConversationID: 23
+        destinationDialogueID: 27
+        isConnector: 0
+        priority: 2
       conditionsString: 
       userScript: 
       onExecute:
@@ -16314,8 +16628,63 @@ MonoBehaviour:
         y: 1320
         width: 160
         height: 30
+    - id: 27
+      fields:
+      - title: Title
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Description
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Actor
+        value: 2
+        type: 5
+        typeString: CustomFieldType_Actor
+      - title: Conversant
+        value: 6
+        type: 5
+        typeString: CustomFieldType_Actor
+      - title: Menu Text
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Dialogue Text
+        value: '(Thanks for playing!)
+
+          [pic=2]'
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Sequence
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Priority
+        value: 0
+        type: 1
+        typeString: CustomFieldType_Number
+      conversationID: 23
+      isRoot: 0
+      isGroup: 0
+      nodeColor: 
+      delaySimStatus: 0
+      falseConditionAction: Block
+      conditionPriority: 2
+      outgoingLinks: []
+      conditionsString: 
+      userScript: 
+      onExecute:
+        m_PersistentCalls:
+          m_Calls: []
+      canvasRect:
+        serializedVersion: 2
+        x: 30
+        y: 1370
+        width: 160
+        height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 0, y: 932.8564}
+    canvasScrollPosition: {x: 0, y: 1202.8562}
     canvasZoom: 0.7000003
   syncInfo:
     syncActors: 0
