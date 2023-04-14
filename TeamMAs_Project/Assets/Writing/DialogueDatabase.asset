@@ -88,6 +88,7 @@ MonoBehaviour:
     alternatePortraits: []
     spritePortraits:
     - {fileID: 21300000, guid: 0c392e20843f9544b92bcfe000902773, type: 3}
+    - {fileID: 21300000, guid: 3fe79f1713856384589aabe62e8478f5, type: 3}
   - id: 3
     fields:
     - title: Name
@@ -193,6 +194,7 @@ MonoBehaviour:
     alternatePortraits: []
     spritePortraits:
     - {fileID: 21300000, guid: 610643c3750c7d24a99a50609148b0e5, type: 3}
+    - {fileID: 21300000, guid: e7002b5f49885e742a0d82319cf208ab, type: 3}
   - id: 6
     fields:
     - title: Name
@@ -10040,7 +10042,7 @@ MonoBehaviour:
       - title: Dialogue Text
         value: 'HEY! HUMANS! YOU KNOW WHAT THIS GARDEN NEEDS? A [em2]FRESH START[/em2]!
 
-          [pic=2]'
+          [pic=3]'
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
@@ -10161,7 +10163,7 @@ MonoBehaviour:
       - title: Dialogue Text
         value: "Oh, I\u2019m [em1]thinking,[/em1] alright. I [em1]think[/em1] we
           need to [em1][em2]start over[/em2][/em1]. So\u2026 ready or not, HERE IT
-          COMES!\n[pic=2]"
+          COMES!\n[pic=3]"
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
@@ -10520,7 +10522,7 @@ MonoBehaviour:
       - title: Dialogue Text
         value: 'I''LL [em2]TEAR THE WORLD OUT[/em2] BEFORE YOU FORGET THAT!
 
-          [pic=2]'
+          [pic=3]'
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
@@ -10641,7 +10643,7 @@ MonoBehaviour:
       - title: Dialogue Text
         value: 'FINE BY ME! BRING IT!
 
-          [pic=2]'
+          [pic=3]'
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
@@ -12796,7 +12798,7 @@ MonoBehaviour:
       - originConversationID: 20
         originDialogueID: 0
         destinationConversationID: 20
-        destinationDialogueID: 1
+        destinationDialogueID: 2
         isConnector: 0
         priority: 2
       conditionsString: 
@@ -12808,73 +12810,6 @@ MonoBehaviour:
         serializedVersion: 2
         x: 30
         y: 20
-        width: 160
-        height: 30
-    - id: 1
-      fields:
-      - title: Title
-        value: 
-        type: 0
-        typeString: CustomFieldType_Text
-      - title: Description
-        value: 
-        type: 0
-        typeString: CustomFieldType_Text
-      - title: Actor
-        value: 5
-        type: 5
-        typeString: CustomFieldType_Actor
-      - title: Conversant
-        value: 2
-        type: 5
-        typeString: CustomFieldType_Actor
-      - title: Menu Text
-        value: 
-        type: 0
-        typeString: CustomFieldType_Text
-      - title: Dialogue Text
-        value: 'You know, I think I do remember you now.
-
-          [pic=2]'
-        type: 0
-        typeString: CustomFieldType_Text
-      - title: Sequence
-        value: 'SetContinueMode(false);
-
-          SetContinueMode(true)@0.4'
-        type: 0
-        typeString: CustomFieldType_Text
-      - title: Priority
-        value: 0
-        type: 1
-        typeString: CustomFieldType_Number
-      - title: Response Menu Sequence
-        value: 
-        type: 0
-        typeString: 
-      conversationID: 20
-      isRoot: 0
-      isGroup: 0
-      nodeColor: 
-      delaySimStatus: 0
-      falseConditionAction: Block
-      conditionPriority: 2
-      outgoingLinks:
-      - originConversationID: 20
-        originDialogueID: 1
-        destinationConversationID: 20
-        destinationDialogueID: 2
-        isConnector: 0
-        priority: 2
-      conditionsString: 
-      userScript: 
-      onExecute:
-        m_PersistentCalls:
-          m_Calls: []
-      canvasRect:
-        serializedVersion: 2
-        x: 30
-        y: 70
         width: 160
         height: 30
     - id: 2
@@ -12900,10 +12835,10 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: 'Maybe you feel useless in [em1]lawns,[/em1] where people cut you
-          up and parade you around until a new trend starts.
+        value: 'Grass... maybe you feel useless in [em1]lawns,[/em1] where people
+          cut you up and parade you around until a new trend starts.
 
-          [pic=2]'
+          [pic=3]'
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
@@ -12936,7 +12871,7 @@ MonoBehaviour:
       canvasRect:
         serializedVersion: 2
         x: 30
-        y: 120
+        y: 70
         width: 160
         height: 30
     - id: 3
@@ -12963,7 +12898,7 @@ MonoBehaviour:
         typeString: CustomFieldType_Text
       - title: Dialogue Text
         value: "But that\u2019s never been all you are. And you haven\u2019t been
-          left behind. You don't even know your own popularity.\n[pic=2]"
+          left behind. You don't even know your own popularity.\n[pic=3]"
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
@@ -12995,8 +12930,8 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 31.13636
-        y: 168.82352
+        x: 30
+        y: 120
         width: 160
         height: 30
     - id: 4
@@ -13025,7 +12960,7 @@ MonoBehaviour:
         value: 'This is [em1]one pollinator garden.[/em1] Were the 40 million acres
           of lawn in the US not enough for you? Get over yourself.
 
-          [pic=2]'
+          [pic=3]'
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
@@ -13058,7 +12993,7 @@ MonoBehaviour:
       canvasRect:
         serializedVersion: 2
         x: 30
-        y: 220
+        y: 170
         width: 160
         height: 30
     - id: 5
@@ -13119,7 +13054,7 @@ MonoBehaviour:
       canvasRect:
         serializedVersion: 2
         x: 30
-        y: 270
+        y: 220
         width: 160
         height: 30
     - id: 6
@@ -13145,8 +13080,8 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: "I\u2019m not done. I remember now: two hundred years ago, you took
-          everything from me.\n[pic=2]"
+        value: "I\u2019m not done. I remember you now: two hundred years ago, you
+          took everything from me.\n[pic=3]"
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
@@ -13179,7 +13114,7 @@ MonoBehaviour:
       canvasRect:
         serializedVersion: 2
         x: 30
-        y: 320
+        y: 270
         width: 160
         height: 30
     - id: 7
@@ -13242,7 +13177,7 @@ MonoBehaviour:
       canvasRect:
         serializedVersion: 2
         x: 30
-        y: 370
+        y: 320
         width: 160
         height: 30
     - id: 8
@@ -13304,7 +13239,7 @@ MonoBehaviour:
       canvasRect:
         serializedVersion: 2
         x: 30
-        y: 420
+        y: 370
         width: 160
         height: 30
     - id: 9
@@ -13333,7 +13268,7 @@ MonoBehaviour:
         value: 'This garden is the one place where the rest of us can live freely.
           Please don''t take this from us. Just... go home, Grass.
 
-          [pic=2]'
+          [pic=3]'
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
@@ -13359,13 +13294,13 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 32.272736
-        y: 470
+        x: 30
+        y: 421.42856
         width: 160
         height: 30
     entryGroups: []
     canvasScrollPosition: {x: 0, y: 0}
-    canvasZoom: 0.9100001
+    canvasZoom: 0.7000003
   - id: 21
     fields:
     - title: Title
@@ -13427,7 +13362,7 @@ MonoBehaviour:
         type: 5
         typeString: CustomFieldType_Actor
       - title: Conversant
-        value: 5
+        value: 6
         type: 5
         typeString: CustomFieldType_Actor
       - title: Menu Text
@@ -13453,7 +13388,13 @@ MonoBehaviour:
       delaySimStatus: 0
       falseConditionAction: Block
       conditionPriority: 2
-      outgoingLinks: []
+      outgoingLinks:
+      - originConversationID: 21
+        originDialogueID: 0
+        destinationConversationID: 21
+        destinationDialogueID: 1
+        isConnector: 0
+        priority: 2
       conditionsString: 
       userScript: Variable["wave"] = Variable["wave"] + 1
       onExecute:
@@ -13463,6 +13404,59 @@ MonoBehaviour:
         serializedVersion: 2
         x: 30
         y: 20
+        width: 160
+        height: 30
+    - id: 1
+      fields:
+      - title: Title
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Description
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Actor
+        value: 6
+        type: 5
+        typeString: CustomFieldType_Actor
+      - title: Conversant
+        value: 2
+        type: 5
+        typeString: CustomFieldType_Actor
+      - title: Menu Text
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Dialogue Text
+        value: So.
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Sequence
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Priority
+        value: 0
+        type: 1
+        typeString: CustomFieldType_Number
+      conversationID: 21
+      isRoot: 0
+      isGroup: 0
+      nodeColor: 
+      delaySimStatus: 0
+      falseConditionAction: Block
+      conditionPriority: 2
+      outgoingLinks: []
+      conditionsString: 
+      userScript: 
+      onExecute:
+        m_PersistentCalls:
+          m_Calls: []
+      canvasRect:
+        serializedVersion: 2
+        x: 30
+        y: 70
         width: 160
         height: 30
     entryGroups: []
