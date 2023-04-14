@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d7ce314808d10d41b4abd2687275500, type: 3}
   m_Name: ButterflyGeorg
   m_EditorClassIdentifier: 
-  <displayName>k__BackingField: Butterfly Georg
+  <displayName>k__BackingField: Butterflies Georg
   <unitPrefab>k__BackingField: {fileID: 2664338853412353054, guid: 59baf253d5f35bb4fbf4ec302beb7866, type: 3}
   <unitInfoTooltipImageSprite>k__BackingField: {fileID: 21300000, guid: 8598af62508bbd741a3e5c3953babe48, type: 3}
   <unitSpawnEffectPrefab>k__BackingField: {fileID: 0}
