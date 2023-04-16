@@ -97,6 +97,18 @@ namespace TeamMAsTD
         public List<VisitorUnitSO> abilityAffectsSpecificVisitorUnit { get; private set; } = new List<VisitorUnitSO>();
 
         [field: SerializeField]
+        protected List<PlantUnitSO> initialSpecificPlantUnitImmuned = new List<PlantUnitSO>();
+
+        [field: NonSerialized]
+        public List<PlantUnitSO> specificPlantUnitImmuned { get; private set; } = new List<PlantUnitSO>();
+
+        [field: SerializeField]
+        protected List<VisitorUnitSO> initialSpecificVisitorUnitImmuned = new List<VisitorUnitSO>();
+
+        [field: NonSerialized]
+        public List<VisitorUnitSO> specificVisitorUnitImmuned { get; private set; } = new List<VisitorUnitSO>();
+
+        [field: SerializeField]
         [field: Tooltip("The effects list that this ability can apply onto its targetted units.")]
         public List<AbilityEffectSO> abilityEffects { get; protected set; } = new List<AbilityEffectSO>();
 
@@ -205,6 +217,10 @@ namespace TeamMAsTD
             abilityAffectsSpecificPlantUnit = initialAbilityAffectsSpecificPlantUnit;
 
             abilityAffectsSpecificVisitorUnit = initialAbilityAffectsSpecificVisitorUnit;
+
+            specificPlantUnitImmuned = initialSpecificPlantUnitImmuned;
+
+            specificVisitorUnitImmuned = initialSpecificVisitorUnitImmuned;
         }
     }
 }

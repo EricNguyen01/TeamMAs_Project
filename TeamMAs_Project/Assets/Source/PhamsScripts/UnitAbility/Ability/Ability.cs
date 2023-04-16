@@ -355,8 +355,6 @@ namespace TeamMAsTD
 
             if (unitObj.GetType() == typeof(VisitorUnit))
             {
-                VisitorUnit visitorUnit = (VisitorUnit)unitObj;
-
                 if (abilityScriptableObject.abilityOnlyAffect == AbilitySO.AbilityOnlyAffect.PlantOnly) return false;
 
                 if(visitorUnitSO != null)
@@ -366,34 +364,67 @@ namespace TeamMAsTD
                         if (abilityScriptableObject.abilityAffectsSpecificVisitorType != visitorUnitSO.visitorType) return false;
                     }
 
+                    if (abilityScriptableObject.specificVisitorUnitImmuned != null && abilityScriptableObject.specificVisitorUnitImmuned.Count > 0)
+                    {
+                        for (int i = 0; i < abilityScriptableObject.specificVisitorUnitImmuned.Count; i++)
+                        {
+                            if (abilityScriptableObject.specificVisitorUnitImmuned[i] == visitorUnitSO ||
+                                abilityScriptableObject.specificVisitorUnitImmuned[i].Equals(visitorUnitSO) ||
+                                ReferenceEquals(abilityScriptableObject.specificVisitorUnitImmuned[i], visitorUnitSO)) return false;
+                        }
+                    }
+
                     if (abilityScriptableObject.abilityAffectsSpecificVisitorUnit != null && abilityScriptableObject.abilityAffectsSpecificVisitorUnit.Count > 0)
                     {
                         for (int i = 0; i < abilityScriptableObject.abilityAffectsSpecificVisitorUnit.Count; i++)
                         {
-                            if (abilityScriptableObject.abilityAffectsSpecificVisitorUnit[i] == visitorUnitSO) return true;
+                            if (abilityScriptableObject.abilityAffectsSpecificVisitorUnit[i] == visitorUnitSO ||
+                                abilityScriptableObject.abilityAffectsSpecificVisitorUnit[i].Equals(visitorUnitSO) ||
+                                ReferenceEquals(abilityScriptableObject.abilityAffectsSpecificVisitorUnit[i], visitorUnitSO)) return true;
                         }
+
+                        return false;
                     }
                 }
             }
 
             if(unitObj.GetType() == typeof(PlantUnit))
             {
-                PlantUnit plantUnit = (PlantUnit)unitObj;
-
                 if (abilityScriptableObject.abilityOnlyAffect == AbilitySO.AbilityOnlyAffect.VisitorOnly) return false;
 
                 if(plantUnitSO != null)
                 {
+                    if (abilityScriptableObject.specificPlantUnitImmuned != null && abilityScriptableObject.specificPlantUnitImmuned.Count > 0)
+                    {
+                        for (int i = 0; i < abilityScriptableObject.specificPlantUnitImmuned.Count; i++)
+                        {
+                            if (abilityScriptableObject.specificPlantUnitImmuned[i] == plantUnitSO ||
+                                abilityScriptableObject.specificPlantUnitImmuned[i].Equals(plantUnitSO) ||
+                                ReferenceEquals(abilityScriptableObject.specificPlantUnitImmuned[i], plantUnitSO) ||
+                                abilityScriptableObject.specificPlantUnitImmuned[i].unitID == plantUnitSO.unitID)
+                            {
+                                //if (name.Contains("Kid")) Debug.Log("Plant: " + plantUnitSO.name + " is immuned to this ability.");
+
+                                return false;
+                            }
+                        }
+                    }
+
                     if (abilityScriptableObject.abilityAffectsSpecificPlantUnit != null && abilityScriptableObject.abilityAffectsSpecificPlantUnit.Count > 0)
                     {
                         for (int i = 0; i < abilityScriptableObject.abilityAffectsSpecificPlantUnit.Count; i++)
                         {
-                            if (abilityScriptableObject.abilityAffectsSpecificPlantUnit[i] == plantUnitSO) return true;
+                            if (abilityScriptableObject.abilityAffectsSpecificPlantUnit[i] == plantUnitSO ||
+                                abilityScriptableObject.abilityAffectsSpecificPlantUnit[i].Equals(plantUnitSO) ||
+                                ReferenceEquals(abilityScriptableObject.abilityAffectsSpecificPlantUnit[i], plantUnitSO) ||
+                                abilityScriptableObject.abilityAffectsSpecificPlantUnit[i].unitID == plantUnitSO.unitID) return true;
                         }
+
+                        return false;
                     }
                 }
             }
-
+            
             return true;
         }
 

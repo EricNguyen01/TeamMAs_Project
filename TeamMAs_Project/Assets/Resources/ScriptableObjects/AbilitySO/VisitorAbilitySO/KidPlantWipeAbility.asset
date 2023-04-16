@@ -24,6 +24,9 @@ MonoBehaviour:
   initialMaxNumberOfUnitsToAffect: 14
   initialAbilityAffectsSpecificPlantUnit: []
   initialAbilityAffectsSpecificVisitorUnit: []
+  initialSpecificPlantUnitImmuned:
+  - {fileID: 11400000, guid: fc94d0fdc5f03f84f9a5e5adc012486b, type: 2}
+  initialSpecificVisitorUnitImmuned: []
   <abilityEffects>k__BackingField:
   - {fileID: 11400000, guid: 70590dd2266a3024b9d242bc950a0f90, type: 2}
   <waveToUnlockAbilityAfterFinished>k__BackingField: {fileID: 0}

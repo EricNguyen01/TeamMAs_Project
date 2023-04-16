@@ -69,6 +69,8 @@ namespace TeamMAsTD
 
             plantUnitScriptableObject = Instantiate(plantUnitScriptableObject);
 
+            //Debug.Log("PlantUnitID: " + plantUnitScriptableObject.unitID);
+
             SetPlantSODebugDataView();
 
             tilePlacedOn = GetComponentInParent<Tile>();

@@ -6,11 +6,11 @@ namespace TeamMAsTD
 {
     [System.Serializable]
     [CreateAssetMenu(menuName = "Plant Unit Data Asset/New Plant Unit")]
-    public class PlantUnitSO : UnitSO
+    public class PlantUnitSO : UnitSO, ISerializationCallbackReceiver
     {
         [field: Header("Plant Unit Data")]
 
-        [field: SerializeField] public string unitID { get; private set; } //to be used with saving system
+        [field: SerializeField] public string unitID { get; private set; }
         [field: SerializeField] public string unitDescription { get; private set; }
         [field: SerializeField] public Sprite unitThumbnail { get; private set; }//thumbnail icon sprite to be displayed in shop or other UIs
 
@@ -101,6 +101,20 @@ namespace TeamMAsTD
         public void RemovePlantAttackSpeed(float atkSpdDecreaseAmount)
         {
             attackSpeed += atkSpdDecreaseAmount;
+        }
+
+        void ISerializationCallbackReceiver.OnBeforeSerialize()
+        {
+            // Generate and save a new UUID if this is blank.
+            if (string.IsNullOrWhiteSpace(unitID))
+            {
+                unitID = System.Guid.NewGuid().ToString();
+            }
+        }
+
+        void ISerializationCallbackReceiver.OnAfterDeserialize()
+        {
+            
         }
     }
 }
