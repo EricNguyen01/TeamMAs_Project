@@ -64905,7 +64905,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
 --- !u!95 &7130335625166517181
 Animator:
-  serializedVersion: 4
+  serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -64922,7 +64922,8 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &7252496874311999279
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -65641,6 +65642,10 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 519420031}
+    - target: {fileID: 7663563581612626002, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7663563581612626003, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
       propertyPath: m_Pivot.x
       value: 0
