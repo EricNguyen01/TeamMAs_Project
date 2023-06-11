@@ -132,6 +132,7 @@ GameObject:
   - component: {fileID: 1885283636960402867}
   - component: {fileID: 8723742223430026237}
   - component: {fileID: 192653860754856720}
+  - component: {fileID: 3918139430953551092}
   m_Layer: 5
   m_Name: Barks
   m_TagString: Untagged
@@ -263,6 +264,21 @@ MonoBehaviour:
   minSeconds: 1
   maxSeconds: 2
   target: {fileID: 0}
+--- !u!114 &3918139430953551092
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1228421060994794847}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f83716641ba6d2f49a119a23d9ef7c8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shakeStrength: {x: 12, y: 12, z: 12}
+  shakeVibrato: 6
+  shakeDuration: 0.6
 --- !u!1 &2240217968776451120
 GameObject:
   m_ObjectHideFlags: 0
@@ -274,6 +290,8 @@ GameObject:
   - component: {fileID: 3033703517766025093}
   - component: {fileID: 4509016784122651087}
   - component: {fileID: 6315261592743041290}
+  - component: {fileID: 8611953477811476661}
+  - component: {fileID: 260857270051422389}
   m_Layer: 0
   m_Name: Portrait
   m_TagString: Untagged
@@ -339,6 +357,34 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &8611953477811476661
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2240217968776451120}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b1becd26897c6e4dbe5fcfacab0f9e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  jumpHeight: 18
+  jumpPower: 10
+  jumpDuration: 0.6
+--- !u!114 &260857270051422389
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2240217968776451120}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c08c24e4e15add84088eb2b633b42e52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textMeshProUGUI: {fileID: 8205453728837324731}
 --- !u!1 &2979725360885361024
 GameObject:
   m_ObjectHideFlags: 0
@@ -744,7 +790,7 @@ CanvasGroup:
   m_IgnoreParentGroups: 0
 --- !u!95 &6035721381966872954
 Animator:
-  serializedVersion: 4
+  serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -761,4 +807,5 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

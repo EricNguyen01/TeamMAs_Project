@@ -135,6 +135,7 @@ GameObject:
   - component: {fileID: 3453693}
   - component: {fileID: 3453692}
   - component: {fileID: 3453691}
+  - component: {fileID: 3453694}
   m_Layer: 5
   m_Name: UprootButton
   m_TagString: Untagged
@@ -281,6 +282,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3453689}
   m_CullTransparentMesh: 1
+--- !u!114 &3453694
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3453689}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  expandValue: 0.25
+  expandDuration: 0.25
 --- !u!1 &6581730
 GameObject:
   m_ObjectHideFlags: 0
@@ -373,6 +388,7 @@ GameObject:
   - component: {fileID: 7191310}
   - component: {fileID: 7191309}
   - component: {fileID: 7191308}
+  - component: {fileID: 7191311}
   m_Layer: 5
   m_Name: UprootButton
   m_TagString: Untagged
@@ -519,6 +535,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7191306}
   m_CullTransparentMesh: 1
+--- !u!114 &7191311
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7191306}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  expandValue: 0.25
+  expandDuration: 0.25
 --- !u!1 &12696937
 GameObject:
   m_ObjectHideFlags: 0
@@ -700,6 +730,30 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: TeamMAsTD.Dialog, Assembly-CSharp
         m_MethodName: PlantBlocked
         m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 298916623}
+        m_TargetAssemblyTypeName: TeamMAsTD.UIJumpFx, Assembly-CSharp
+        m_MethodName: ProcessUIJump
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1115374083}
+        m_TargetAssemblyTypeName: TeamMAsTD.UIShakeFx, Assembly-CSharp
+        m_MethodName: ProcessUIShake
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1013,6 +1067,7 @@ GameObject:
   - component: {fileID: 23488249}
   - component: {fileID: 23488248}
   - component: {fileID: 23488247}
+  - component: {fileID: 23488250}
   m_Layer: 5
   m_Name: WateringButton
   m_TagString: Untagged
@@ -1135,6 +1190,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 23488244}
   m_CullTransparentMesh: 1
+--- !u!114 &23488250
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 23488244}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  expandValue: 0.25
+  expandDuration: 0.25
 --- !u!1 &24536982
 GameObject:
   m_ObjectHideFlags: 0
@@ -1147,6 +1216,7 @@ GameObject:
   - component: {fileID: 24536986}
   - component: {fileID: 24536985}
   - component: {fileID: 24536984}
+  - component: {fileID: 24536987}
   m_Layer: 5
   m_Name: UprootButton
   m_TagString: Untagged
@@ -1293,6 +1363,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 24536982}
   m_CullTransparentMesh: 1
+--- !u!114 &24536987
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 24536982}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  expandValue: 0.25
+  expandDuration: 0.25
 --- !u!1 &30385842
 GameObject:
   m_ObjectHideFlags: 0
@@ -1305,6 +1389,7 @@ GameObject:
   - component: {fileID: 30385846}
   - component: {fileID: 30385845}
   - component: {fileID: 30385844}
+  - component: {fileID: 30385847}
   m_Layer: 5
   m_Name: UprootButton
   m_TagString: Untagged
@@ -1451,6 +1536,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 30385842}
   m_CullTransparentMesh: 1
+--- !u!114 &30385847
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 30385842}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  expandValue: 0.25
+  expandDuration: 0.25
 --- !u!1 &36305204
 GameObject:
   m_ObjectHideFlags: 0
@@ -1674,6 +1773,30 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: TeamMAsTD.Dialog, Assembly-CSharp
         m_MethodName: PlantBlocked
         m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 298916623}
+        m_TargetAssemblyTypeName: TeamMAsTD.UIJumpFx, Assembly-CSharp
+        m_MethodName: ProcessUIJump
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1115374083}
+        m_TargetAssemblyTypeName: TeamMAsTD.UIShakeFx, Assembly-CSharp
+        m_MethodName: ProcessUIShake
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -2796,6 +2919,7 @@ GameObject:
   - component: {fileID: 73847984}
   - component: {fileID: 73847983}
   - component: {fileID: 73847982}
+  - component: {fileID: 73847985}
   m_Layer: 5
   m_Name: WateringButton
   m_TagString: Untagged
@@ -2918,6 +3042,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 73847979}
   m_CullTransparentMesh: 1
+--- !u!114 &73847985
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 73847979}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  expandValue: 0.25
+  expandDuration: 0.25
 --- !u!1 &80206221
 GameObject:
   m_ObjectHideFlags: 0
@@ -3550,6 +3688,7 @@ GameObject:
   - component: {fileID: 99309822}
   - component: {fileID: 99309821}
   - component: {fileID: 99309820}
+  - component: {fileID: 99309823}
   m_Layer: 5
   m_Name: WateringButton
   m_TagString: Untagged
@@ -3672,6 +3811,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 99309817}
   m_CullTransparentMesh: 1
+--- !u!114 &99309823
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 99309817}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  expandValue: 0.25
+  expandDuration: 0.25
 --- !u!1 &105890045
 GameObject:
   m_ObjectHideFlags: 0
@@ -3739,6 +3892,30 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: TeamMAsTD.Dialog, Assembly-CSharp
         m_MethodName: PlantBlocked
         m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 298916623}
+        m_TargetAssemblyTypeName: TeamMAsTD.UIJumpFx, Assembly-CSharp
+        m_MethodName: ProcessUIJump
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1115374083}
+        m_TargetAssemblyTypeName: TeamMAsTD.UIShakeFx, Assembly-CSharp
+        m_MethodName: ProcessUIShake
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -4052,6 +4229,7 @@ GameObject:
   - component: {fileID: 113900461}
   - component: {fileID: 113900460}
   - component: {fileID: 113900459}
+  - component: {fileID: 113900462}
   m_Layer: 5
   m_Name: UprootButton
   m_TagString: Untagged
@@ -4198,6 +4376,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 113900457}
   m_CullTransparentMesh: 1
+--- !u!114 &113900462
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 113900457}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  expandValue: 0.25
+  expandDuration: 0.25
 --- !u!1 &114095313
 GameObject:
   m_ObjectHideFlags: 0
@@ -4210,6 +4402,7 @@ GameObject:
   - component: {fileID: 114095318}
   - component: {fileID: 114095317}
   - component: {fileID: 114095316}
+  - component: {fileID: 114095319}
   m_Layer: 5
   m_Name: WateringButton
   m_TagString: Untagged
@@ -4332,6 +4525,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 114095313}
   m_CullTransparentMesh: 1
+--- !u!114 &114095319
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 114095313}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  expandValue: 0.25
+  expandDuration: 0.25
 --- !u!1 &117016539
 GameObject:
   m_ObjectHideFlags: 0
@@ -4610,6 +4817,30 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: TeamMAsTD.Dialog, Assembly-CSharp
         m_MethodName: PlantBlocked
         m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 298916623}
+        m_TargetAssemblyTypeName: TeamMAsTD.UIJumpFx, Assembly-CSharp
+        m_MethodName: ProcessUIJump
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1115374083}
+        m_TargetAssemblyTypeName: TeamMAsTD.UIShakeFx, Assembly-CSharp
+        m_MethodName: ProcessUIShake
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -6210,6 +6441,7 @@ GameObject:
   - component: {fileID: 195332686}
   - component: {fileID: 195332685}
   - component: {fileID: 195332684}
+  - component: {fileID: 195332687}
   m_Layer: 5
   m_Name: WateringButton
   m_TagString: Untagged
@@ -6332,6 +6564,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 195332681}
   m_CullTransparentMesh: 1
+--- !u!114 &195332687
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 195332681}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  expandValue: 0.25
+  expandDuration: 0.25
 --- !u!1 &197177027
 GameObject:
   m_ObjectHideFlags: 0
@@ -6399,6 +6645,30 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: TeamMAsTD.Dialog, Assembly-CSharp
         m_MethodName: PlantBlocked
         m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 298916623}
+        m_TargetAssemblyTypeName: TeamMAsTD.UIJumpFx, Assembly-CSharp
+        m_MethodName: ProcessUIJump
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1115374083}
+        m_TargetAssemblyTypeName: TeamMAsTD.UIShakeFx, Assembly-CSharp
+        m_MethodName: ProcessUIShake
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -7546,6 +7816,7 @@ GameObject:
   - component: {fileID: 258979586}
   - component: {fileID: 258979585}
   - component: {fileID: 258979584}
+  - component: {fileID: 258979587}
   m_Layer: 5
   m_Name: WateringButton
   m_TagString: Untagged
@@ -7668,6 +7939,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 258979581}
   m_CullTransparentMesh: 1
+--- !u!114 &258979587
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 258979581}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  expandValue: 0.25
+  expandDuration: 0.25
 --- !u!1 &263047187
 GameObject:
   m_ObjectHideFlags: 0
@@ -7680,6 +7965,7 @@ GameObject:
   - component: {fileID: 263047192}
   - component: {fileID: 263047191}
   - component: {fileID: 263047190}
+  - component: {fileID: 263047193}
   m_Layer: 5
   m_Name: WateringButton
   m_TagString: Untagged
@@ -7802,6 +8088,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 263047187}
   m_CullTransparentMesh: 1
+--- !u!114 &263047193
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 263047187}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  expandValue: 0.25
+  expandDuration: 0.25
 --- !u!1 &263894978
 GameObject:
   m_ObjectHideFlags: 0
@@ -8254,6 +8554,17 @@ RectTransform:
   m_AnchoredPosition: {x: 0.015, y: 0.7518}
   m_SizeDelta: {x: 2.8088, y: 2.5096}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &298916623 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6958088671034497795, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
+  m_PrefabInstance: {fileID: 7663563580318445356}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b1becd26897c6e4dbe5fcfacab0f9e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &312357535
 GameObject:
   m_ObjectHideFlags: 0
@@ -8313,6 +8624,7 @@ GameObject:
   - component: {fileID: 326817636}
   - component: {fileID: 326817635}
   - component: {fileID: 326817634}
+  - component: {fileID: 326817637}
   m_Layer: 5
   m_Name: UprootButton
   m_TagString: Untagged
@@ -8459,6 +8771,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 326817632}
   m_CullTransparentMesh: 1
+--- !u!114 &326817637
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 326817632}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  expandValue: 0.25
+  expandDuration: 0.25
 --- !u!1 &327709969
 GameObject:
   m_ObjectHideFlags: 0
@@ -8632,6 +8958,7 @@ GameObject:
   - component: {fileID: 334411509}
   - component: {fileID: 334411508}
   - component: {fileID: 334411507}
+  - component: {fileID: 334411510}
   m_Layer: 5
   m_Name: WateringButton
   m_TagString: Untagged
@@ -8754,6 +9081,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 334411504}
   m_CullTransparentMesh: 1
+--- !u!114 &334411510
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 334411504}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  expandValue: 0.25
+  expandDuration: 0.25
 --- !u!1 &339276305
 GameObject:
   m_ObjectHideFlags: 0
@@ -8766,6 +9107,7 @@ GameObject:
   - component: {fileID: 339276310}
   - component: {fileID: 339276309}
   - component: {fileID: 339276308}
+  - component: {fileID: 339276311}
   m_Layer: 5
   m_Name: WateringButton
   m_TagString: Untagged
@@ -8888,6 +9230,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 339276305}
   m_CullTransparentMesh: 1
+--- !u!114 &339276311
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 339276305}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  expandValue: 0.25
+  expandDuration: 0.25
 --- !u!1 &340959689
 GameObject:
   m_ObjectHideFlags: 0
@@ -8955,6 +9311,30 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: TeamMAsTD.Dialog, Assembly-CSharp
         m_MethodName: PlantBlocked
         m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 298916623}
+        m_TargetAssemblyTypeName: TeamMAsTD.UIJumpFx, Assembly-CSharp
+        m_MethodName: ProcessUIJump
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1115374083}
+        m_TargetAssemblyTypeName: TeamMAsTD.UIShakeFx, Assembly-CSharp
+        m_MethodName: ProcessUIShake
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -9268,6 +9648,7 @@ GameObject:
   - component: {fileID: 346640574}
   - component: {fileID: 346640573}
   - component: {fileID: 346640572}
+  - component: {fileID: 346640575}
   m_Layer: 5
   m_Name: WateringButton
   m_TagString: Untagged
@@ -9390,6 +9771,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 346640569}
   m_CullTransparentMesh: 1
+--- !u!114 &346640575
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 346640569}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  expandValue: 0.25
+  expandDuration: 0.25
 --- !u!1 &350360497
 GameObject:
   m_ObjectHideFlags: 0
@@ -10191,6 +10586,7 @@ GameObject:
   - component: {fileID: 420768193}
   - component: {fileID: 420768192}
   - component: {fileID: 420768191}
+  - component: {fileID: 420768194}
   m_Layer: 5
   m_Name: UprootButton
   m_TagString: Untagged
@@ -10337,6 +10733,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 420768189}
   m_CullTransparentMesh: 1
+--- !u!114 &420768194
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 420768189}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  expandValue: 0.25
+  expandDuration: 0.25
 --- !u!1 &422080711
 GameObject:
   m_ObjectHideFlags: 0
@@ -10560,6 +10970,7 @@ GameObject:
   - component: {fileID: 431485356}
   - component: {fileID: 431485355}
   - component: {fileID: 431485354}
+  - component: {fileID: 431485357}
   m_Layer: 5
   m_Name: WateringButton
   m_TagString: Untagged
@@ -10682,6 +11093,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 431485351}
   m_CullTransparentMesh: 1
+--- !u!114 &431485357
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 431485351}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  expandValue: 0.25
+  expandDuration: 0.25
 --- !u!1 &434893823
 GameObject:
   m_ObjectHideFlags: 0
@@ -10985,6 +11410,7 @@ GameObject:
   - component: {fileID: 445822391}
   - component: {fileID: 445822390}
   - component: {fileID: 445822389}
+  - component: {fileID: 445822392}
   m_Layer: 5
   m_Name: WateringButton
   m_TagString: Untagged
@@ -11107,6 +11533,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 445822386}
   m_CullTransparentMesh: 1
+--- !u!114 &445822392
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 445822386}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  expandValue: 0.25
+  expandDuration: 0.25
 --- !u!1 &447654945
 GameObject:
   m_ObjectHideFlags: 0
@@ -11385,6 +11825,30 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: TeamMAsTD.Dialog, Assembly-CSharp
         m_MethodName: PlantBlocked
         m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 298916623}
+        m_TargetAssemblyTypeName: TeamMAsTD.UIJumpFx, Assembly-CSharp
+        m_MethodName: ProcessUIJump
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1115374083}
+        m_TargetAssemblyTypeName: TeamMAsTD.UIShakeFx, Assembly-CSharp
+        m_MethodName: ProcessUIShake
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -13046,6 +13510,7 @@ GameObject:
   - component: {fileID: 543465940}
   - component: {fileID: 543465939}
   - component: {fileID: 543465938}
+  - component: {fileID: 543465941}
   m_Layer: 5
   m_Name: UprootButton
   m_TagString: Untagged
@@ -13192,6 +13657,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 543465936}
   m_CullTransparentMesh: 1
+--- !u!114 &543465941
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 543465936}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  expandValue: 0.25
+  expandDuration: 0.25
 --- !u!1 &548260351
 GameObject:
   m_ObjectHideFlags: 0
@@ -13259,6 +13738,30 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: TeamMAsTD.Dialog, Assembly-CSharp
         m_MethodName: PlantBlocked
         m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 298916623}
+        m_TargetAssemblyTypeName: TeamMAsTD.UIJumpFx, Assembly-CSharp
+        m_MethodName: ProcessUIJump
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1115374083}
+        m_TargetAssemblyTypeName: TeamMAsTD.UIShakeFx, Assembly-CSharp
+        m_MethodName: ProcessUIShake
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -13635,6 +14138,30 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 298916623}
+        m_TargetAssemblyTypeName: TeamMAsTD.UIJumpFx, Assembly-CSharp
+        m_MethodName: ProcessUIJump
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1115374083}
+        m_TargetAssemblyTypeName: TeamMAsTD.UIShakeFx, Assembly-CSharp
+        m_MethodName: ProcessUIShake
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnPlantUnitUprootedOnTile:
     m_PersistentCalls:
       m_Calls:
@@ -13940,6 +14467,7 @@ GameObject:
   - component: {fileID: 555552364}
   - component: {fileID: 555552363}
   - component: {fileID: 555552362}
+  - component: {fileID: 555552365}
   m_Layer: 5
   m_Name: WateringButton
   m_TagString: Untagged
@@ -14062,6 +14590,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 555552359}
   m_CullTransparentMesh: 1
+--- !u!114 &555552365
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 555552359}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  expandValue: 0.25
+  expandDuration: 0.25
 --- !u!1 &556831813
 GameObject:
   m_ObjectHideFlags: 0
@@ -14311,6 +14853,7 @@ GameObject:
   - component: {fileID: 575070388}
   - component: {fileID: 575070387}
   - component: {fileID: 575070386}
+  - component: {fileID: 575070389}
   m_Layer: 5
   m_Name: WateringButton
   m_TagString: Untagged
@@ -14433,6 +14976,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 575070383}
   m_CullTransparentMesh: 1
+--- !u!114 &575070389
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 575070383}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  expandValue: 0.25
+  expandDuration: 0.25
 --- !u!1 &576190322
 GameObject:
   m_ObjectHideFlags: 0
@@ -14905,6 +15462,7 @@ GameObject:
   - component: {fileID: 593970704}
   - component: {fileID: 593970703}
   - component: {fileID: 593970702}
+  - component: {fileID: 593970705}
   m_Layer: 5
   m_Name: WateringButton
   m_TagString: Untagged
@@ -15027,6 +15585,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 593970699}
   m_CullTransparentMesh: 1
+--- !u!114 &593970705
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 593970699}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  expandValue: 0.25
+  expandDuration: 0.25
 --- !u!1 &604943270 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7663563580719845990, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
@@ -15515,6 +16087,7 @@ GameObject:
   - component: {fileID: 661721654}
   - component: {fileID: 661721653}
   - component: {fileID: 661721652}
+  - component: {fileID: 661721655}
   m_Layer: 5
   m_Name: UprootButton
   m_TagString: Untagged
@@ -15661,6 +16234,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 661721650}
   m_CullTransparentMesh: 1
+--- !u!114 &661721655
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 661721650}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  expandValue: 0.25
+  expandDuration: 0.25
 --- !u!1 &669428822
 GameObject:
   m_ObjectHideFlags: 0
@@ -15673,6 +16260,7 @@ GameObject:
   - component: {fileID: 669428826}
   - component: {fileID: 669428825}
   - component: {fileID: 669428824}
+  - component: {fileID: 669428827}
   m_Layer: 5
   m_Name: UprootButton
   m_TagString: Untagged
@@ -15819,6 +16407,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 669428822}
   m_CullTransparentMesh: 1
+--- !u!114 &669428827
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 669428822}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  expandValue: 0.25
+  expandDuration: 0.25
 --- !u!1 &677767238
 GameObject:
   m_ObjectHideFlags: 0
@@ -15933,6 +16535,30 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: TeamMAsTD.Dialog, Assembly-CSharp
         m_MethodName: PlantBlocked
         m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 298916623}
+        m_TargetAssemblyTypeName: TeamMAsTD.UIJumpFx, Assembly-CSharp
+        m_MethodName: ProcessUIJump
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1115374083}
+        m_TargetAssemblyTypeName: TeamMAsTD.UIShakeFx, Assembly-CSharp
+        m_MethodName: ProcessUIShake
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -16381,6 +17007,7 @@ GameObject:
   - component: {fileID: 695333752}
   - component: {fileID: 695333751}
   - component: {fileID: 695333750}
+  - component: {fileID: 695333753}
   m_Layer: 5
   m_Name: WateringButton
   m_TagString: Untagged
@@ -16503,6 +17130,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 695333747}
   m_CullTransparentMesh: 1
+--- !u!114 &695333753
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 695333747}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  expandValue: 0.25
+  expandDuration: 0.25
 --- !u!1 &696377659
 GameObject:
   m_ObjectHideFlags: 0
@@ -16570,6 +17211,30 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: TeamMAsTD.Dialog, Assembly-CSharp
         m_MethodName: PlantBlocked
         m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 298916623}
+        m_TargetAssemblyTypeName: TeamMAsTD.UIJumpFx, Assembly-CSharp
+        m_MethodName: ProcessUIJump
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1115374083}
+        m_TargetAssemblyTypeName: TeamMAsTD.UIShakeFx, Assembly-CSharp
+        m_MethodName: ProcessUIShake
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -17265,6 +17930,7 @@ GameObject:
   - component: {fileID: 709237395}
   - component: {fileID: 709237394}
   - component: {fileID: 709237393}
+  - component: {fileID: 709237396}
   m_Layer: 5
   m_Name: UprootButton
   m_TagString: Untagged
@@ -17411,6 +18077,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 709237391}
   m_CullTransparentMesh: 1
+--- !u!114 &709237396
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 709237391}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  expandValue: 0.25
+  expandDuration: 0.25
 --- !u!1 &712099943
 GameObject:
   m_ObjectHideFlags: 0
@@ -17423,6 +18103,7 @@ GameObject:
   - component: {fileID: 712099947}
   - component: {fileID: 712099946}
   - component: {fileID: 712099945}
+  - component: {fileID: 712099948}
   m_Layer: 5
   m_Name: UprootButton
   m_TagString: Untagged
@@ -17569,6 +18250,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 712099943}
   m_CullTransparentMesh: 1
+--- !u!114 &712099948
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 712099943}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  expandValue: 0.25
+  expandDuration: 0.25
 --- !u!1 &712307764
 GameObject:
   m_ObjectHideFlags: 0
@@ -17636,6 +18331,30 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: TeamMAsTD.Dialog, Assembly-CSharp
         m_MethodName: PlantBlocked
         m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 298916623}
+        m_TargetAssemblyTypeName: TeamMAsTD.UIJumpFx, Assembly-CSharp
+        m_MethodName: ProcessUIJump
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1115374083}
+        m_TargetAssemblyTypeName: TeamMAsTD.UIShakeFx, Assembly-CSharp
+        m_MethodName: ProcessUIShake
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -17949,6 +18668,7 @@ GameObject:
   - component: {fileID: 723177476}
   - component: {fileID: 723177475}
   - component: {fileID: 723177474}
+  - component: {fileID: 723177477}
   m_Layer: 5
   m_Name: UprootButton
   m_TagString: Untagged
@@ -18095,6 +18815,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 723177472}
   m_CullTransparentMesh: 1
+--- !u!114 &723177477
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 723177472}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  expandValue: 0.25
+  expandDuration: 0.25
 --- !u!1 &733378994
 GameObject:
   m_ObjectHideFlags: 0
@@ -19093,8 +19827,48 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1451666340568421299, guid: d1cdca22ec4708540aa68019e182a7d8, type: 3}
+      propertyPath: barkEvents.onBarkEnd.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1451666340568421299, guid: d1cdca22ec4708540aa68019e182a7d8, type: 3}
+      propertyPath: barkEvents.onBarkStart.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1451666340568421299, guid: d1cdca22ec4708540aa68019e182a7d8, type: 3}
+      propertyPath: barkEvents.onBarkEnd.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1451666340568421299, guid: d1cdca22ec4708540aa68019e182a7d8, type: 3}
+      propertyPath: barkEvents.onBarkEnd.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 298916623}
+    - target: {fileID: 1451666340568421299, guid: d1cdca22ec4708540aa68019e182a7d8, type: 3}
+      propertyPath: barkEvents.onBarkStart.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1451666340568421299, guid: d1cdca22ec4708540aa68019e182a7d8, type: 3}
+      propertyPath: barkEvents.onBarkStart.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 298916623}
+    - target: {fileID: 1451666340568421299, guid: d1cdca22ec4708540aa68019e182a7d8, type: 3}
+      propertyPath: barkEvents.onBarkEnd.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1451666340568421299, guid: d1cdca22ec4708540aa68019e182a7d8, type: 3}
+      propertyPath: barkEvents.onBarkEnd.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ProcessUIJump
+      objectReference: {fileID: 0}
+    - target: {fileID: 1451666340568421299, guid: d1cdca22ec4708540aa68019e182a7d8, type: 3}
       propertyPath: conversationEvents.onConversationEnd.m_PersistentCalls.m_Calls.Array.size
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1451666340568421299, guid: d1cdca22ec4708540aa68019e182a7d8, type: 3}
+      propertyPath: barkEvents.onBarkStart.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1451666340568421299, guid: d1cdca22ec4708540aa68019e182a7d8, type: 3}
+      propertyPath: barkEvents.onBarkStart.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ProcessUIJump
       objectReference: {fileID: 0}
     - target: {fileID: 1451666340568421299, guid: d1cdca22ec4708540aa68019e182a7d8, type: 3}
       propertyPath: conversationEvents.onConversationStart.m_PersistentCalls.m_Calls.Array.size
@@ -19105,12 +19879,20 @@ PrefabInstance:
       value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 1451666340568421299, guid: d1cdca22ec4708540aa68019e182a7d8, type: 3}
+      propertyPath: barkEvents.onBarkEnd.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: TeamMAsTD.UIJumpFx, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 1451666340568421299, guid: d1cdca22ec4708540aa68019e182a7d8, type: 3}
       propertyPath: conversationEvents.onConversationEnd.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 7663563580318445357}
     - target: {fileID: 1451666340568421299, guid: d1cdca22ec4708540aa68019e182a7d8, type: 3}
       propertyPath: conversationEvents.onConversationStart.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1451666340568421299, guid: d1cdca22ec4708540aa68019e182a7d8, type: 3}
+      propertyPath: barkEvents.onBarkStart.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: TeamMAsTD.UIJumpFx, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 1451666340568421299, guid: d1cdca22ec4708540aa68019e182a7d8, type: 3}
       propertyPath: conversationEvents.onConversationStart.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -19141,8 +19923,16 @@ PrefabInstance:
       value: TeamMAsTD.TimeSpeedUpButton, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 1451666340568421299, guid: d1cdca22ec4708540aa68019e182a7d8, type: 3}
+      propertyPath: barkEvents.onBarkEnd.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 1451666340568421299, guid: d1cdca22ec4708540aa68019e182a7d8, type: 3}
       propertyPath: conversationEvents.onConversationStart.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_BoolArgument
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1451666340568421299, guid: d1cdca22ec4708540aa68019e182a7d8, type: 3}
+      propertyPath: barkEvents.onBarkStart.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 1451666340568421299, guid: d1cdca22ec4708540aa68019e182a7d8, type: 3}
       propertyPath: conversationEvents.onConversationEnd.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
@@ -19199,6 +19989,14 @@ PrefabInstance:
     - target: {fileID: 8732644743540172125, guid: d1cdca22ec4708540aa68019e182a7d8, type: 3}
       propertyPath: m_Name
       value: Dialogue Manager Custom
+      objectReference: {fileID: 0}
+    - target: {fileID: 8732644743546886105, guid: d1cdca22ec4708540aa68019e182a7d8, type: 3}
+      propertyPath: displaySettings.barkSettings.minBarkSeconds
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8732644743546886105, guid: d1cdca22ec4708540aa68019e182a7d8, type: 3}
+      propertyPath: displaySettings.barkSettings.allowBarksDuringConversations
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d1cdca22ec4708540aa68019e182a7d8, type: 3}
@@ -19451,6 +20249,30 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: TeamMAsTD.Dialog, Assembly-CSharp
         m_MethodName: PlantBlocked
         m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 298916623}
+        m_TargetAssemblyTypeName: TeamMAsTD.UIJumpFx, Assembly-CSharp
+        m_MethodName: ProcessUIJump
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1115374083}
+        m_TargetAssemblyTypeName: TeamMAsTD.UIShakeFx, Assembly-CSharp
+        m_MethodName: ProcessUIShake
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -19899,6 +20721,7 @@ GameObject:
   - component: {fileID: 789716006}
   - component: {fileID: 789716005}
   - component: {fileID: 789716004}
+  - component: {fileID: 789716007}
   m_Layer: 5
   m_Name: UprootButton
   m_TagString: Untagged
@@ -20045,6 +20868,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 789716002}
   m_CullTransparentMesh: 1
+--- !u!114 &789716007
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 789716002}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  expandValue: 0.25
+  expandDuration: 0.25
 --- !u!1 &790578195
 GameObject:
   m_ObjectHideFlags: 0
@@ -20133,6 +20970,7 @@ GameObject:
   - component: {fileID: 795717529}
   - component: {fileID: 795717528}
   - component: {fileID: 795717527}
+  - component: {fileID: 795717530}
   m_Layer: 5
   m_Name: WateringButton
   m_TagString: Untagged
@@ -20255,6 +21093,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 795717524}
   m_CullTransparentMesh: 1
+--- !u!114 &795717530
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 795717524}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  expandValue: 0.25
+  expandDuration: 0.25
 --- !u!1 &801106473
 GameObject:
   m_ObjectHideFlags: 0
@@ -20347,6 +21199,7 @@ GameObject:
   - component: {fileID: 805083219}
   - component: {fileID: 805083218}
   - component: {fileID: 805083217}
+  - component: {fileID: 805083220}
   m_Layer: 5
   m_Name: UprootButton
   m_TagString: Untagged
@@ -20493,6 +21346,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 805083215}
   m_CullTransparentMesh: 1
+--- !u!114 &805083220
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 805083215}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  expandValue: 0.25
+  expandDuration: 0.25
 --- !u!1 &806193131
 GameObject:
   m_ObjectHideFlags: 0
@@ -20581,6 +21448,7 @@ GameObject:
   - component: {fileID: 806928376}
   - component: {fileID: 806928375}
   - component: {fileID: 806928374}
+  - component: {fileID: 806928377}
   m_Layer: 5
   m_Name: UprootButton
   m_TagString: Untagged
@@ -20727,6 +21595,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 806928372}
   m_CullTransparentMesh: 1
+--- !u!114 &806928377
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 806928372}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  expandValue: 0.25
+  expandDuration: 0.25
 --- !u!1 &812469415
 GameObject:
   m_ObjectHideFlags: 0
@@ -20929,6 +21811,7 @@ GameObject:
   - component: {fileID: 824432092}
   - component: {fileID: 824432091}
   - component: {fileID: 824432090}
+  - component: {fileID: 824432093}
   m_Layer: 5
   m_Name: WateringButton
   m_TagString: Untagged
@@ -21051,6 +21934,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 824432087}
   m_CullTransparentMesh: 1
+--- !u!114 &824432093
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 824432087}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  expandValue: 0.25
+  expandDuration: 0.25
 --- !u!1 &826246790
 GameObject:
   m_ObjectHideFlags: 0
@@ -21098,6 +21995,51 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 826246790}
   m_CullTransparentMesh: 1
+--- !u!1 &827087115
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 827087117}
+  - component: {fileID: 827087116}
+  m_Layer: 0
+  m_Name: Dialogue System Scene Events
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &827087116
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 827087115}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca55201633b97d3408f439eb84ecb249, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueEntrySceneEvents: []
+--- !u!4 &827087117
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 827087115}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 19
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &828823716
 GameObject:
   m_ObjectHideFlags: 0
@@ -21110,6 +22052,7 @@ GameObject:
   - component: {fileID: 828823721}
   - component: {fileID: 828823720}
   - component: {fileID: 828823719}
+  - component: {fileID: 828823722}
   m_Layer: 5
   m_Name: WateringButton
   m_TagString: Untagged
@@ -21232,6 +22175,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 828823716}
   m_CullTransparentMesh: 1
+--- !u!114 &828823722
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 828823716}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  expandValue: 0.25
+  expandDuration: 0.25
 --- !u!1 &840555210
 GameObject:
   m_ObjectHideFlags: 0
@@ -21299,6 +22256,30 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: TeamMAsTD.Dialog, Assembly-CSharp
         m_MethodName: PlantBlocked
         m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 298916623}
+        m_TargetAssemblyTypeName: TeamMAsTD.UIJumpFx, Assembly-CSharp
+        m_MethodName: ProcessUIJump
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1115374083}
+        m_TargetAssemblyTypeName: TeamMAsTD.UIShakeFx, Assembly-CSharp
+        m_MethodName: ProcessUIShake
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -21612,6 +22593,7 @@ GameObject:
   - component: {fileID: 844561766}
   - component: {fileID: 844561765}
   - component: {fileID: 844561764}
+  - component: {fileID: 844561767}
   m_Layer: 5
   m_Name: UprootButton
   m_TagString: Untagged
@@ -21758,6 +22740,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 844561762}
   m_CullTransparentMesh: 1
+--- !u!114 &844561767
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 844561762}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  expandValue: 0.25
+  expandDuration: 0.25
 --- !u!1 &845359696
 GameObject:
   m_ObjectHideFlags: 0
@@ -21825,6 +22821,30 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: TeamMAsTD.Dialog, Assembly-CSharp
         m_MethodName: PlantBlocked
         m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 298916623}
+        m_TargetAssemblyTypeName: TeamMAsTD.UIJumpFx, Assembly-CSharp
+        m_MethodName: ProcessUIJump
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1115374083}
+        m_TargetAssemblyTypeName: TeamMAsTD.UIShakeFx, Assembly-CSharp
+        m_MethodName: ProcessUIShake
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -22818,6 +23838,7 @@ GameObject:
   - component: {fileID: 886055941}
   - component: {fileID: 886055940}
   - component: {fileID: 886055939}
+  - component: {fileID: 886055942}
   m_Layer: 5
   m_Name: UprootButton
   m_TagString: Untagged
@@ -22964,6 +23985,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 886055937}
   m_CullTransparentMesh: 1
+--- !u!114 &886055942
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 886055937}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  expandValue: 0.25
+  expandDuration: 0.25
 --- !u!1 &886245908
 GameObject:
   m_ObjectHideFlags: 0
@@ -22976,6 +24011,7 @@ GameObject:
   - component: {fileID: 886245913}
   - component: {fileID: 886245912}
   - component: {fileID: 886245911}
+  - component: {fileID: 886245914}
   m_Layer: 5
   m_Name: WateringButton
   m_TagString: Untagged
@@ -23098,6 +24134,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 886245908}
   m_CullTransparentMesh: 1
+--- !u!114 &886245914
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 886245908}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  expandValue: 0.25
+  expandDuration: 0.25
 --- !u!1 &889641572
 GameObject:
   m_ObjectHideFlags: 0
@@ -23224,6 +24274,7 @@ GameObject:
   - component: {fileID: 891137512}
   - component: {fileID: 891137511}
   - component: {fileID: 891137510}
+  - component: {fileID: 891137513}
   m_Layer: 5
   m_Name: UprootButton
   m_TagString: Untagged
@@ -23370,6 +24421,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 891137508}
   m_CullTransparentMesh: 1
+--- !u!114 &891137513
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 891137508}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  expandValue: 0.25
+  expandDuration: 0.25
 --- !u!1 &898950360
 GameObject:
   m_ObjectHideFlags: 0
@@ -23382,6 +24447,7 @@ GameObject:
   - component: {fileID: 898950365}
   - component: {fileID: 898950364}
   - component: {fileID: 898950363}
+  - component: {fileID: 898950366}
   m_Layer: 5
   m_Name: WateringButton
   m_TagString: Untagged
@@ -23504,6 +24570,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 898950360}
   m_CullTransparentMesh: 1
+--- !u!114 &898950366
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 898950360}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  expandValue: 0.25
+  expandDuration: 0.25
 --- !u!1 &902644738
 GameObject:
   m_ObjectHideFlags: 0
@@ -23630,6 +24710,7 @@ GameObject:
   - component: {fileID: 902770464}
   - component: {fileID: 902770463}
   - component: {fileID: 902770462}
+  - component: {fileID: 902770465}
   m_Layer: 5
   m_Name: WateringButton
   m_TagString: Untagged
@@ -23752,6 +24833,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 902770459}
   m_CullTransparentMesh: 1
+--- !u!114 &902770465
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 902770459}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  expandValue: 0.25
+  expandDuration: 0.25
 --- !u!1 &905116812
 GameObject:
   m_ObjectHideFlags: 0
@@ -24060,6 +25155,7 @@ GameObject:
   - component: {fileID: 920615901}
   - component: {fileID: 920615900}
   - component: {fileID: 920615899}
+  - component: {fileID: 920615902}
   m_Layer: 5
   m_Name: WateringButton
   m_TagString: Untagged
@@ -24182,6 +25278,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 920615896}
   m_CullTransparentMesh: 1
+--- !u!114 &920615902
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 920615896}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  expandValue: 0.25
+  expandDuration: 0.25
 --- !u!1 &923003476
 GameObject:
   m_ObjectHideFlags: 0
@@ -24194,6 +25304,7 @@ GameObject:
   - component: {fileID: 923003480}
   - component: {fileID: 923003479}
   - component: {fileID: 923003478}
+  - component: {fileID: 923003481}
   m_Layer: 5
   m_Name: UprootButton
   m_TagString: Untagged
@@ -24340,6 +25451,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 923003476}
   m_CullTransparentMesh: 1
+--- !u!114 &923003481
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 923003476}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  expandValue: 0.25
+  expandDuration: 0.25
 --- !u!1 &924808186
 GameObject:
   m_ObjectHideFlags: 0
@@ -24487,6 +25612,7 @@ GameObject:
   - component: {fileID: 926532304}
   - component: {fileID: 926532303}
   - component: {fileID: 926532302}
+  - component: {fileID: 926532305}
   m_Layer: 5
   m_Name: WateringButton
   m_TagString: Untagged
@@ -24609,6 +25735,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 926532299}
   m_CullTransparentMesh: 1
+--- !u!114 &926532305
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 926532299}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  expandValue: 0.25
+  expandDuration: 0.25
 --- !u!1 &929396797 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7761321396890096639, guid: 38bc26e58d6581b4f926aa6fe208ddad, type: 3}
@@ -24792,6 +25932,7 @@ GameObject:
   - component: {fileID: 955489154}
   - component: {fileID: 955489153}
   - component: {fileID: 955489152}
+  - component: {fileID: 955489155}
   m_Layer: 5
   m_Name: UprootButton
   m_TagString: Untagged
@@ -24938,6 +26079,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 955489150}
   m_CullTransparentMesh: 1
+--- !u!114 &955489155
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 955489150}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  expandValue: 0.25
+  expandDuration: 0.25
 --- !u!1 &967265388
 GameObject:
   m_ObjectHideFlags: 0
@@ -25381,6 +26536,7 @@ GameObject:
   - component: {fileID: 976973646}
   - component: {fileID: 976973645}
   - component: {fileID: 976973644}
+  - component: {fileID: 976973647}
   m_Layer: 5
   m_Name: WateringButton
   m_TagString: Untagged
@@ -25503,6 +26659,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 976973641}
   m_CullTransparentMesh: 1
+--- !u!114 &976973647
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 976973641}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  expandValue: 0.25
+  expandDuration: 0.25
 --- !u!1 &979564347
 GameObject:
   m_ObjectHideFlags: 0
@@ -25570,6 +26740,30 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: TeamMAsTD.Dialog, Assembly-CSharp
         m_MethodName: PlantBlocked
         m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 298916623}
+        m_TargetAssemblyTypeName: TeamMAsTD.UIJumpFx, Assembly-CSharp
+        m_MethodName: ProcessUIJump
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1115374083}
+        m_TargetAssemblyTypeName: TeamMAsTD.UIShakeFx, Assembly-CSharp
+        m_MethodName: ProcessUIShake
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -25883,6 +27077,7 @@ GameObject:
   - component: {fileID: 985429100}
   - component: {fileID: 985429099}
   - component: {fileID: 985429098}
+  - component: {fileID: 985429101}
   m_Layer: 5
   m_Name: WateringButton
   m_TagString: Untagged
@@ -26005,6 +27200,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 985429095}
   m_CullTransparentMesh: 1
+--- !u!114 &985429101
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 985429095}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  expandValue: 0.25
+  expandDuration: 0.25
 --- !u!1 &989619131
 GameObject:
   m_ObjectHideFlags: 0
@@ -26017,6 +27226,7 @@ GameObject:
   - component: {fileID: 989619135}
   - component: {fileID: 989619134}
   - component: {fileID: 989619133}
+  - component: {fileID: 989619136}
   m_Layer: 5
   m_Name: UprootButton
   m_TagString: Untagged
@@ -26163,6 +27373,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 989619131}
   m_CullTransparentMesh: 1
+--- !u!114 &989619136
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 989619131}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  expandValue: 0.25
+  expandDuration: 0.25
 --- !u!1 &992945199
 GameObject:
   m_ObjectHideFlags: 0
@@ -26175,6 +27399,7 @@ GameObject:
   - component: {fileID: 992945204}
   - component: {fileID: 992945203}
   - component: {fileID: 992945202}
+  - component: {fileID: 992945205}
   m_Layer: 5
   m_Name: WateringButton
   m_TagString: Untagged
@@ -26297,6 +27522,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 992945199}
   m_CullTransparentMesh: 1
+--- !u!114 &992945205
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 992945199}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  expandValue: 0.25
+  expandDuration: 0.25
 --- !u!1 &996015470 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1339863086565876900, guid: 76c56936b5589c44ca64edd249b2eb3a, type: 3}
@@ -26400,6 +27639,30 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: TeamMAsTD.Dialog, Assembly-CSharp
         m_MethodName: PlantBlocked
         m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 298916623}
+        m_TargetAssemblyTypeName: TeamMAsTD.UIJumpFx, Assembly-CSharp
+        m_MethodName: ProcessUIJump
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1115374083}
+        m_TargetAssemblyTypeName: TeamMAsTD.UIShakeFx, Assembly-CSharp
+        m_MethodName: ProcessUIShake
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -26852,6 +28115,30 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 298916623}
+        m_TargetAssemblyTypeName: TeamMAsTD.UIJumpFx, Assembly-CSharp
+        m_MethodName: ProcessUIJump
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1115374083}
+        m_TargetAssemblyTypeName: TeamMAsTD.UIShakeFx, Assembly-CSharp
+        m_MethodName: ProcessUIShake
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnPlantUnitUprootedOnTile:
     m_PersistentCalls:
       m_Calls:
@@ -27157,6 +28444,7 @@ GameObject:
   - component: {fileID: 1004875314}
   - component: {fileID: 1004875313}
   - component: {fileID: 1004875312}
+  - component: {fileID: 1004875315}
   m_Layer: 5
   m_Name: UprootButton
   m_TagString: Untagged
@@ -27303,6 +28591,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1004875310}
   m_CullTransparentMesh: 1
+--- !u!114 &1004875315
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1004875310}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  expandValue: 0.25
+  expandDuration: 0.25
 --- !u!1 &1007270509
 GameObject:
   m_ObjectHideFlags: 0
@@ -27514,6 +28816,7 @@ GameObject:
   - component: {fileID: 1017176769}
   - component: {fileID: 1017176768}
   - component: {fileID: 1017176767}
+  - component: {fileID: 1017176770}
   m_Layer: 5
   m_Name: WateringButton
   m_TagString: Untagged
@@ -27636,6 +28939,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1017176764}
   m_CullTransparentMesh: 1
+--- !u!114 &1017176770
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1017176764}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  expandValue: 0.25
+  expandDuration: 0.25
 --- !u!1 &1018865742
 GameObject:
   m_ObjectHideFlags: 0
@@ -27922,6 +29239,7 @@ GameObject:
   - component: {fileID: 1030849397}
   - component: {fileID: 1030849396}
   - component: {fileID: 1030849395}
+  - component: {fileID: 1030849398}
   m_Layer: 5
   m_Name: UprootButton
   m_TagString: Untagged
@@ -28068,6 +29386,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1030849393}
   m_CullTransparentMesh: 1
+--- !u!114 &1030849398
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1030849393}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  expandValue: 0.25
+  expandDuration: 0.25
 --- !u!114 &1039532475 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8024300418989073095, guid: be2a0ac942afe8841bf8cf4a38447cca, type: 3}
@@ -28096,6 +29428,7 @@ GameObject:
   - component: {fileID: 1040660548}
   - component: {fileID: 1040660547}
   - component: {fileID: 1040660546}
+  - component: {fileID: 1040660549}
   m_Layer: 5
   m_Name: WateringButton
   m_TagString: Untagged
@@ -28218,6 +29551,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1040660543}
   m_CullTransparentMesh: 1
+--- !u!114 &1040660549
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1040660543}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  expandValue: 0.25
+  expandDuration: 0.25
 --- !u!1 &1050068446
 GameObject:
   m_ObjectHideFlags: 0
@@ -28477,6 +29824,7 @@ GameObject:
   - component: {fileID: 1077017683}
   - component: {fileID: 1077017682}
   - component: {fileID: 1077017681}
+  - component: {fileID: 1077017684}
   m_Layer: 5
   m_Name: UprootButton
   m_TagString: Untagged
@@ -28623,6 +29971,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1077017679}
   m_CullTransparentMesh: 1
+--- !u!114 &1077017684
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1077017679}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  expandValue: 0.25
+  expandDuration: 0.25
 --- !u!1 &1079170317
 GameObject:
   m_ObjectHideFlags: 0
@@ -28690,6 +30052,30 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: TeamMAsTD.Dialog, Assembly-CSharp
         m_MethodName: PlantBlocked
         m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 298916623}
+        m_TargetAssemblyTypeName: TeamMAsTD.UIJumpFx, Assembly-CSharp
+        m_MethodName: ProcessUIJump
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1115374083}
+        m_TargetAssemblyTypeName: TeamMAsTD.UIShakeFx, Assembly-CSharp
+        m_MethodName: ProcessUIShake
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -29653,6 +31039,30 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 298916623}
+        m_TargetAssemblyTypeName: TeamMAsTD.UIJumpFx, Assembly-CSharp
+        m_MethodName: ProcessUIJump
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1115374083}
+        m_TargetAssemblyTypeName: TeamMAsTD.UIShakeFx, Assembly-CSharp
+        m_MethodName: ProcessUIShake
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnPlantUnitUprootedOnTile:
     m_PersistentCalls:
       m_Calls:
@@ -30330,6 +31740,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1114340718}
   m_CullTransparentMesh: 1
+--- !u!114 &1115374083 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2410500870047975234, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
+  m_PrefabInstance: {fileID: 7663563580318445356}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f83716641ba6d2f49a119a23d9ef7c8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1124168820
 GameObject:
   m_ObjectHideFlags: 0
@@ -30557,6 +31978,30 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: TeamMAsTD.Dialog, Assembly-CSharp
         m_MethodName: PlantBlocked
         m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 298916623}
+        m_TargetAssemblyTypeName: TeamMAsTD.UIJumpFx, Assembly-CSharp
+        m_MethodName: ProcessUIJump
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1115374083}
+        m_TargetAssemblyTypeName: TeamMAsTD.UIShakeFx, Assembly-CSharp
+        m_MethodName: ProcessUIShake
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -31068,6 +32513,30 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 298916623}
+        m_TargetAssemblyTypeName: TeamMAsTD.UIJumpFx, Assembly-CSharp
+        m_MethodName: ProcessUIJump
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1115374083}
+        m_TargetAssemblyTypeName: TeamMAsTD.UIShakeFx, Assembly-CSharp
+        m_MethodName: ProcessUIShake
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnPlantUnitUprootedOnTile:
     m_PersistentCalls:
       m_Calls:
@@ -31420,6 +32889,7 @@ GameObject:
   - component: {fileID: 1171490534}
   - component: {fileID: 1171490533}
   - component: {fileID: 1171490532}
+  - component: {fileID: 1171490535}
   m_Layer: 5
   m_Name: WateringButton
   m_TagString: Untagged
@@ -31542,6 +33012,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1171490529}
   m_CullTransparentMesh: 1
+--- !u!114 &1171490535
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1171490529}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  expandValue: 0.25
+  expandDuration: 0.25
 --- !u!1 &1183101711
 GameObject:
   m_ObjectHideFlags: 0
@@ -31689,6 +33173,7 @@ GameObject:
   - component: {fileID: 1183787852}
   - component: {fileID: 1183787851}
   - component: {fileID: 1183787850}
+  - component: {fileID: 1183787853}
   m_Layer: 5
   m_Name: WateringButton
   m_TagString: Untagged
@@ -31811,6 +33296,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1183787847}
   m_CullTransparentMesh: 1
+--- !u!114 &1183787853
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1183787847}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  expandValue: 0.25
+  expandDuration: 0.25
 --- !u!1 &1185341619
 GameObject:
   m_ObjectHideFlags: 0
@@ -31823,6 +33322,7 @@ GameObject:
   - component: {fileID: 1185341623}
   - component: {fileID: 1185341622}
   - component: {fileID: 1185341621}
+  - component: {fileID: 1185341624}
   m_Layer: 5
   m_Name: UprootButton
   m_TagString: Untagged
@@ -31969,6 +33469,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1185341619}
   m_CullTransparentMesh: 1
+--- !u!114 &1185341624
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1185341619}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  expandValue: 0.25
+  expandDuration: 0.25
 --- !u!1 &1186741398
 GameObject:
   m_ObjectHideFlags: 0
@@ -32230,6 +33744,7 @@ GameObject:
   - component: {fileID: 1198875842}
   - component: {fileID: 1198875841}
   - component: {fileID: 1198875840}
+  - component: {fileID: 1198875843}
   m_Layer: 5
   m_Name: UprootButton
   m_TagString: Untagged
@@ -32376,6 +33891,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1198875838}
   m_CullTransparentMesh: 1
+--- !u!114 &1198875843
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1198875838}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  expandValue: 0.25
+  expandDuration: 0.25
 --- !u!1 &1203595860
 GameObject:
   m_ObjectHideFlags: 0
@@ -32523,6 +34052,7 @@ GameObject:
   - component: {fileID: 1207065165}
   - component: {fileID: 1207065164}
   - component: {fileID: 1207065163}
+  - component: {fileID: 1207065166}
   m_Layer: 5
   m_Name: WateringButton
   m_TagString: Untagged
@@ -32645,6 +34175,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1207065160}
   m_CullTransparentMesh: 1
+--- !u!114 &1207065166
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1207065160}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  expandValue: 0.25
+  expandDuration: 0.25
 --- !u!1 &1220095774
 GameObject:
   m_ObjectHideFlags: 0
@@ -33092,6 +34636,30 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 298916623}
+        m_TargetAssemblyTypeName: TeamMAsTD.UIJumpFx, Assembly-CSharp
+        m_MethodName: ProcessUIJump
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1115374083}
+        m_TargetAssemblyTypeName: TeamMAsTD.UIShakeFx, Assembly-CSharp
+        m_MethodName: ProcessUIShake
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnPlantUnitUprootedOnTile:
     m_PersistentCalls:
       m_Calls:
@@ -33452,6 +35020,30 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: TeamMAsTD.Dialog, Assembly-CSharp
         m_MethodName: PlantBlocked
         m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 298916623}
+        m_TargetAssemblyTypeName: TeamMAsTD.UIJumpFx, Assembly-CSharp
+        m_MethodName: ProcessUIJump
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1115374083}
+        m_TargetAssemblyTypeName: TeamMAsTD.UIShakeFx, Assembly-CSharp
+        m_MethodName: ProcessUIShake
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -34441,6 +36033,30 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 298916623}
+        m_TargetAssemblyTypeName: TeamMAsTD.UIJumpFx, Assembly-CSharp
+        m_MethodName: ProcessUIJump
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1115374083}
+        m_TargetAssemblyTypeName: TeamMAsTD.UIShakeFx, Assembly-CSharp
+        m_MethodName: ProcessUIShake
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnPlantUnitUprootedOnTile:
     m_PersistentCalls:
       m_Calls:
@@ -34873,6 +36489,7 @@ GameObject:
   - component: {fileID: 1281991621}
   - component: {fileID: 1281991620}
   - component: {fileID: 1281991619}
+  - component: {fileID: 1281991622}
   m_Layer: 5
   m_Name: WateringButton
   m_TagString: Untagged
@@ -34995,6 +36612,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1281991616}
   m_CullTransparentMesh: 1
+--- !u!114 &1281991622
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1281991616}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  expandValue: 0.25
+  expandDuration: 0.25
 --- !u!1 &1286921733
 GameObject:
   m_ObjectHideFlags: 0
@@ -35007,6 +36638,7 @@ GameObject:
   - component: {fileID: 1286921737}
   - component: {fileID: 1286921736}
   - component: {fileID: 1286921735}
+  - component: {fileID: 1286921738}
   m_Layer: 5
   m_Name: UprootButton
   m_TagString: Untagged
@@ -35153,6 +36785,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1286921733}
   m_CullTransparentMesh: 1
+--- !u!114 &1286921738
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1286921733}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  expandValue: 0.25
+  expandDuration: 0.25
 --- !u!1 &1287577936
 GameObject:
   m_ObjectHideFlags: 0
@@ -35412,6 +37058,7 @@ GameObject:
   - component: {fileID: 1302423001}
   - component: {fileID: 1302423000}
   - component: {fileID: 1302422999}
+  - component: {fileID: 1302423002}
   m_Layer: 5
   m_Name: UprootButton
   m_TagString: Untagged
@@ -35558,6 +37205,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1302422997}
   m_CullTransparentMesh: 1
+--- !u!114 &1302423002
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1302422997}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  expandValue: 0.25
+  expandDuration: 0.25
 --- !u!1 &1302779612
 GameObject:
   m_ObjectHideFlags: 0
@@ -35832,6 +37493,7 @@ GameObject:
   - component: {fileID: 1308805874}
   - component: {fileID: 1308805873}
   - component: {fileID: 1308805872}
+  - component: {fileID: 1308805875}
   m_Layer: 5
   m_Name: WateringButton
   m_TagString: Untagged
@@ -35954,6 +37616,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1308805869}
   m_CullTransparentMesh: 1
+--- !u!114 &1308805875
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1308805869}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  expandValue: 0.25
+  expandDuration: 0.25
 --- !u!1 &1312762810
 GameObject:
   m_ObjectHideFlags: 0
@@ -36316,6 +37992,7 @@ GameObject:
   - component: {fileID: 1323684789}
   - component: {fileID: 1323684788}
   - component: {fileID: 1323684787}
+  - component: {fileID: 1323684790}
   m_Layer: 5
   m_Name: UprootButton
   m_TagString: Untagged
@@ -36462,6 +38139,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1323684785}
   m_CullTransparentMesh: 1
+--- !u!114 &1323684790
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1323684785}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  expandValue: 0.25
+  expandDuration: 0.25
 --- !u!1 &1324307679
 GameObject:
   m_ObjectHideFlags: 0
@@ -37250,6 +38941,30 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 298916623}
+        m_TargetAssemblyTypeName: TeamMAsTD.UIJumpFx, Assembly-CSharp
+        m_MethodName: ProcessUIJump
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1115374083}
+        m_TargetAssemblyTypeName: TeamMAsTD.UIShakeFx, Assembly-CSharp
+        m_MethodName: ProcessUIShake
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnPlantUnitUprootedOnTile:
     m_PersistentCalls:
       m_Calls:
@@ -37602,6 +39317,7 @@ GameObject:
   - component: {fileID: 1382189158}
   - component: {fileID: 1382189157}
   - component: {fileID: 1382189156}
+  - component: {fileID: 1382189159}
   m_Layer: 5
   m_Name: UprootButton
   m_TagString: Untagged
@@ -37748,6 +39464,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1382189154}
   m_CullTransparentMesh: 1
+--- !u!114 &1382189159
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1382189154}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  expandValue: 0.25
+  expandDuration: 0.25
 --- !u!1 &1383009402
 GameObject:
   m_ObjectHideFlags: 0
@@ -37971,6 +39701,7 @@ GameObject:
   - component: {fileID: 1390796880}
   - component: {fileID: 1390796879}
   - component: {fileID: 1390796878}
+  - component: {fileID: 1390796881}
   m_Layer: 5
   m_Name: UprootButton
   m_TagString: Untagged
@@ -38117,6 +39848,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1390796876}
   m_CullTransparentMesh: 1
+--- !u!114 &1390796881
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1390796876}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  expandValue: 0.25
+  expandDuration: 0.25
 --- !u!1 &1391704923
 GameObject:
   m_ObjectHideFlags: 0
@@ -38298,6 +40043,30 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: TeamMAsTD.Dialog, Assembly-CSharp
         m_MethodName: PlantBlocked
         m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 298916623}
+        m_TargetAssemblyTypeName: TeamMAsTD.UIJumpFx, Assembly-CSharp
+        m_MethodName: ProcessUIJump
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1115374083}
+        m_TargetAssemblyTypeName: TeamMAsTD.UIShakeFx, Assembly-CSharp
+        m_MethodName: ProcessUIShake
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -39075,6 +40844,7 @@ GameObject:
   - component: {fileID: 1430479553}
   - component: {fileID: 1430479552}
   - component: {fileID: 1430479551}
+  - component: {fileID: 1430479554}
   m_Layer: 5
   m_Name: UprootButton
   m_TagString: Untagged
@@ -39221,6 +40991,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1430479549}
   m_CullTransparentMesh: 1
+--- !u!114 &1430479554
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1430479549}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  expandValue: 0.25
+  expandDuration: 0.25
 --- !u!1 &1435873235
 GameObject:
   m_ObjectHideFlags: 0
@@ -39288,6 +41072,30 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: TeamMAsTD.Dialog, Assembly-CSharp
         m_MethodName: PlantBlocked
         m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 298916623}
+        m_TargetAssemblyTypeName: TeamMAsTD.UIJumpFx, Assembly-CSharp
+        m_MethodName: ProcessUIJump
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1115374083}
+        m_TargetAssemblyTypeName: TeamMAsTD.UIShakeFx, Assembly-CSharp
+        m_MethodName: ProcessUIShake
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -39875,6 +41683,30 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 298916623}
+        m_TargetAssemblyTypeName: TeamMAsTD.UIJumpFx, Assembly-CSharp
+        m_MethodName: ProcessUIJump
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1115374083}
+        m_TargetAssemblyTypeName: TeamMAsTD.UIShakeFx, Assembly-CSharp
+        m_MethodName: ProcessUIShake
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnPlantUnitUprootedOnTile:
     m_PersistentCalls:
       m_Calls:
@@ -40235,6 +42067,30 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: TeamMAsTD.Dialog, Assembly-CSharp
         m_MethodName: PlantBlocked
         m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 298916623}
+        m_TargetAssemblyTypeName: TeamMAsTD.UIJumpFx, Assembly-CSharp
+        m_MethodName: ProcessUIJump
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1115374083}
+        m_TargetAssemblyTypeName: TeamMAsTD.UIShakeFx, Assembly-CSharp
+        m_MethodName: ProcessUIShake
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -41169,6 +43025,7 @@ GameObject:
   - component: {fileID: 1464468446}
   - component: {fileID: 1464468445}
   - component: {fileID: 1464468444}
+  - component: {fileID: 1464468447}
   m_Layer: 5
   m_Name: UprootButton
   m_TagString: Untagged
@@ -41315,6 +43172,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1464468442}
   m_CullTransparentMesh: 1
+--- !u!114 &1464468447
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1464468442}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  expandValue: 0.25
+  expandDuration: 0.25
 --- !u!1 &1466278463
 GameObject:
   m_ObjectHideFlags: 0
@@ -41403,6 +43274,7 @@ GameObject:
   - component: {fileID: 1466486692}
   - component: {fileID: 1466486691}
   - component: {fileID: 1466486690}
+  - component: {fileID: 1466486693}
   m_Layer: 5
   m_Name: WateringButton
   m_TagString: Untagged
@@ -41525,6 +43397,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1466486687}
   m_CullTransparentMesh: 1
+--- !u!114 &1466486693
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1466486687}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  expandValue: 0.25
+  expandDuration: 0.25
 --- !u!1 &1470944022
 GameObject:
   m_ObjectHideFlags: 0
@@ -41998,6 +43884,30 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: TeamMAsTD.Dialog, Assembly-CSharp
         m_MethodName: PlantBlocked
         m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 298916623}
+        m_TargetAssemblyTypeName: TeamMAsTD.UIJumpFx, Assembly-CSharp
+        m_MethodName: ProcessUIJump
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1115374083}
+        m_TargetAssemblyTypeName: TeamMAsTD.UIShakeFx, Assembly-CSharp
+        m_MethodName: ProcessUIShake
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -42831,6 +44741,7 @@ GameObject:
   - component: {fileID: 1500836482}
   - component: {fileID: 1500836481}
   - component: {fileID: 1500836480}
+  - component: {fileID: 1500836483}
   m_Layer: 5
   m_Name: UprootButton
   m_TagString: Untagged
@@ -42977,6 +44888,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1500836478}
   m_CullTransparentMesh: 1
+--- !u!114 &1500836483
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1500836478}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  expandValue: 0.25
+  expandDuration: 0.25
 --- !u!1 &1501252048
 GameObject:
   m_ObjectHideFlags: 0
@@ -43124,6 +45049,7 @@ GameObject:
   - component: {fileID: 1511704948}
   - component: {fileID: 1511704947}
   - component: {fileID: 1511704946}
+  - component: {fileID: 1511704949}
   m_Layer: 5
   m_Name: UprootButton
   m_TagString: Untagged
@@ -43270,6 +45196,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1511704944}
   m_CullTransparentMesh: 1
+--- !u!114 &1511704949
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1511704944}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  expandValue: 0.25
+  expandDuration: 0.25
 --- !u!1 &1514582679
 GameObject:
   m_ObjectHideFlags: 0
@@ -43417,6 +45357,30 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: TeamMAsTD.Dialog, Assembly-CSharp
         m_MethodName: PlantBlocked
         m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 298916623}
+        m_TargetAssemblyTypeName: TeamMAsTD.UIJumpFx, Assembly-CSharp
+        m_MethodName: ProcessUIJump
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1115374083}
+        m_TargetAssemblyTypeName: TeamMAsTD.UIShakeFx, Assembly-CSharp
+        m_MethodName: ProcessUIShake
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -43785,6 +45749,30 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: TeamMAsTD.Dialog, Assembly-CSharp
         m_MethodName: PlantBlocked
         m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 298916623}
+        m_TargetAssemblyTypeName: TeamMAsTD.UIJumpFx, Assembly-CSharp
+        m_MethodName: ProcessUIJump
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1115374083}
+        m_TargetAssemblyTypeName: TeamMAsTD.UIShakeFx, Assembly-CSharp
+        m_MethodName: ProcessUIShake
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -44410,6 +46398,30 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 298916623}
+        m_TargetAssemblyTypeName: TeamMAsTD.UIJumpFx, Assembly-CSharp
+        m_MethodName: ProcessUIJump
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1115374083}
+        m_TargetAssemblyTypeName: TeamMAsTD.UIShakeFx, Assembly-CSharp
+        m_MethodName: ProcessUIShake
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnPlantUnitUprootedOnTile:
     m_PersistentCalls:
       m_Calls:
@@ -44770,6 +46782,30 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: TeamMAsTD.Dialog, Assembly-CSharp
         m_MethodName: PlantBlocked
         m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 298916623}
+        m_TargetAssemblyTypeName: TeamMAsTD.UIJumpFx, Assembly-CSharp
+        m_MethodName: ProcessUIJump
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1115374083}
+        m_TargetAssemblyTypeName: TeamMAsTD.UIShakeFx, Assembly-CSharp
+        m_MethodName: ProcessUIShake
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -45708,6 +47744,7 @@ GameObject:
   - component: {fileID: 1612281053}
   - component: {fileID: 1612281052}
   - component: {fileID: 1612281051}
+  - component: {fileID: 1612281054}
   m_Layer: 5
   m_Name: WateringButton
   m_TagString: Untagged
@@ -45830,6 +47867,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1612281048}
   m_CullTransparentMesh: 1
+--- !u!114 &1612281054
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1612281048}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  expandValue: 0.25
+  expandDuration: 0.25
 --- !u!1 &1612599134
 GameObject:
   m_ObjectHideFlags: 0
@@ -46112,6 +48163,30 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: TeamMAsTD.Dialog, Assembly-CSharp
         m_MethodName: PlantBlocked
         m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 298916623}
+        m_TargetAssemblyTypeName: TeamMAsTD.UIJumpFx, Assembly-CSharp
+        m_MethodName: ProcessUIJump
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1115374083}
+        m_TargetAssemblyTypeName: TeamMAsTD.UIShakeFx, Assembly-CSharp
+        m_MethodName: ProcessUIShake
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -46788,6 +48863,7 @@ GameObject:
   - component: {fileID: 1630461100}
   - component: {fileID: 1630461099}
   - component: {fileID: 1630461098}
+  - component: {fileID: 1630461101}
   m_Layer: 5
   m_Name: UprootButton
   m_TagString: Untagged
@@ -46934,6 +49010,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1630461096}
   m_CullTransparentMesh: 1
+--- !u!114 &1630461101
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1630461096}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  expandValue: 0.25
+  expandDuration: 0.25
 --- !u!1 &1636299093
 GameObject:
   m_ObjectHideFlags: 0
@@ -47048,6 +49138,30 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: TeamMAsTD.Dialog, Assembly-CSharp
         m_MethodName: PlantBlocked
         m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 298916623}
+        m_TargetAssemblyTypeName: TeamMAsTD.UIJumpFx, Assembly-CSharp
+        m_MethodName: ProcessUIJump
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1115374083}
+        m_TargetAssemblyTypeName: TeamMAsTD.UIShakeFx, Assembly-CSharp
+        m_MethodName: ProcessUIShake
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -47361,6 +49475,7 @@ GameObject:
   - component: {fileID: 1653593168}
   - component: {fileID: 1653593167}
   - component: {fileID: 1653593166}
+  - component: {fileID: 1653593169}
   m_Layer: 5
   m_Name: UprootButton
   m_TagString: Untagged
@@ -47507,6 +49622,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1653593164}
   m_CullTransparentMesh: 1
+--- !u!114 &1653593169
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1653593164}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  expandValue: 0.25
+  expandDuration: 0.25
 --- !u!1 &1662203883
 GameObject:
   m_ObjectHideFlags: 0
@@ -47975,6 +50104,30 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 298916623}
+        m_TargetAssemblyTypeName: TeamMAsTD.UIJumpFx, Assembly-CSharp
+        m_MethodName: ProcessUIJump
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1115374083}
+        m_TargetAssemblyTypeName: TeamMAsTD.UIShakeFx, Assembly-CSharp
+        m_MethodName: ProcessUIShake
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnPlantUnitUprootedOnTile:
     m_PersistentCalls:
       m_Calls:
@@ -48415,6 +50568,7 @@ GameObject:
   - component: {fileID: 1678051792}
   - component: {fileID: 1678051791}
   - component: {fileID: 1678051790}
+  - component: {fileID: 1678051793}
   m_Layer: 5
   m_Name: WateringButton
   m_TagString: Untagged
@@ -48537,6 +50691,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1678051787}
   m_CullTransparentMesh: 1
+--- !u!114 &1678051793
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1678051787}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  expandValue: 0.25
+  expandDuration: 0.25
 --- !u!1 &1688630476
 GameObject:
   m_ObjectHideFlags: 0
@@ -48625,6 +50793,7 @@ GameObject:
   - component: {fileID: 1705013227}
   - component: {fileID: 1705013226}
   - component: {fileID: 1705013225}
+  - component: {fileID: 1705013228}
   m_Layer: 5
   m_Name: WateringButton
   m_TagString: Untagged
@@ -48747,6 +50916,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1705013222}
   m_CullTransparentMesh: 1
+--- !u!114 &1705013228
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1705013222}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  expandValue: 0.25
+  expandDuration: 0.25
 --- !u!1 &1705588422
 GameObject:
   m_ObjectHideFlags: 0
@@ -48814,6 +50997,30 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: TeamMAsTD.Dialog, Assembly-CSharp
         m_MethodName: PlantBlocked
         m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 298916623}
+        m_TargetAssemblyTypeName: TeamMAsTD.UIJumpFx, Assembly-CSharp
+        m_MethodName: ProcessUIJump
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1115374083}
+        m_TargetAssemblyTypeName: TeamMAsTD.UIShakeFx, Assembly-CSharp
+        m_MethodName: ProcessUIShake
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -49127,6 +51334,7 @@ GameObject:
   - component: {fileID: 1707687509}
   - component: {fileID: 1707687508}
   - component: {fileID: 1707687507}
+  - component: {fileID: 1707687510}
   m_Layer: 5
   m_Name: UprootButton
   m_TagString: Untagged
@@ -49273,6 +51481,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1707687505}
   m_CullTransparentMesh: 1
+--- !u!114 &1707687510
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1707687505}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  expandValue: 0.25
+  expandDuration: 0.25
 --- !u!1 &1711441004
 GameObject:
   m_ObjectHideFlags: 0
@@ -49649,6 +51871,30 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: TeamMAsTD.Dialog, Assembly-CSharp
         m_MethodName: PlantBlocked
         m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 298916623}
+        m_TargetAssemblyTypeName: TeamMAsTD.UIJumpFx, Assembly-CSharp
+        m_MethodName: ProcessUIJump
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1115374083}
+        m_TargetAssemblyTypeName: TeamMAsTD.UIShakeFx, Assembly-CSharp
+        m_MethodName: ProcessUIShake
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -50213,6 +52459,7 @@ GameObject:
   - component: {fileID: 1747599968}
   - component: {fileID: 1747599967}
   - component: {fileID: 1747599966}
+  - component: {fileID: 1747599969}
   m_Layer: 5
   m_Name: UprootButton
   m_TagString: Untagged
@@ -50359,6 +52606,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1747599964}
   m_CullTransparentMesh: 1
+--- !u!114 &1747599969
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1747599964}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  expandValue: 0.25
+  expandDuration: 0.25
 --- !u!1 &1747731287
 GameObject:
   m_ObjectHideFlags: 0
@@ -50426,6 +52687,30 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: TeamMAsTD.Dialog, Assembly-CSharp
         m_MethodName: PlantBlocked
         m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 298916623}
+        m_TargetAssemblyTypeName: TeamMAsTD.UIJumpFx, Assembly-CSharp
+        m_MethodName: ProcessUIJump
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1115374083}
+        m_TargetAssemblyTypeName: TeamMAsTD.UIShakeFx, Assembly-CSharp
+        m_MethodName: ProcessUIShake
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -51009,6 +53294,7 @@ GameObject:
   - component: {fileID: 1758396829}
   - component: {fileID: 1758396828}
   - component: {fileID: 1758396827}
+  - component: {fileID: 1758396830}
   m_Layer: 5
   m_Name: WateringButton
   m_TagString: Untagged
@@ -51131,6 +53417,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1758396824}
   m_CullTransparentMesh: 1
+--- !u!114 &1758396830
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1758396824}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  expandValue: 0.25
+  expandDuration: 0.25
 --- !u!1 &1765167584
 GameObject:
   m_ObjectHideFlags: 0
@@ -51824,6 +54124,7 @@ GameObject:
   - component: {fileID: 1803679549}
   - component: {fileID: 1803679548}
   - component: {fileID: 1803679547}
+  - component: {fileID: 1803679550}
   m_Layer: 5
   m_Name: WateringButton
   m_TagString: Untagged
@@ -51946,6 +54247,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1803679544}
   m_CullTransparentMesh: 1
+--- !u!114 &1803679550
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1803679544}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  expandValue: 0.25
+  expandDuration: 0.25
 --- !u!1 &1817200644
 GameObject:
   m_ObjectHideFlags: 0
@@ -52093,6 +54408,7 @@ GameObject:
   - component: {fileID: 1817262293}
   - component: {fileID: 1817262292}
   - component: {fileID: 1817262291}
+  - component: {fileID: 1817262294}
   m_Layer: 5
   m_Name: UprootButton
   m_TagString: Untagged
@@ -52239,6 +54555,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1817262289}
   m_CullTransparentMesh: 1
+--- !u!114 &1817262294
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1817262289}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  expandValue: 0.25
+  expandDuration: 0.25
 --- !u!1 &1818967926
 GameObject:
   m_ObjectHideFlags: 0
@@ -52462,6 +54792,7 @@ GameObject:
   - component: {fileID: 1821036589}
   - component: {fileID: 1821036588}
   - component: {fileID: 1821036587}
+  - component: {fileID: 1821036590}
   m_Layer: 5
   m_Name: WateringButton
   m_TagString: Untagged
@@ -52584,6 +54915,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1821036584}
   m_CullTransparentMesh: 1
+--- !u!114 &1821036590
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1821036584}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  expandValue: 0.25
+  expandDuration: 0.25
 --- !u!1 &1822535765
 GameObject:
   m_ObjectHideFlags: 0
@@ -53212,6 +55557,7 @@ GameObject:
   - component: {fileID: 1841284095}
   - component: {fileID: 1841284094}
   - component: {fileID: 1841284093}
+  - component: {fileID: 1841284096}
   m_Layer: 5
   m_Name: WateringButton
   m_TagString: Untagged
@@ -53334,6 +55680,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1841284090}
   m_CullTransparentMesh: 1
+--- !u!114 &1841284096
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1841284090}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  expandValue: 0.25
+  expandDuration: 0.25
 --- !u!1 &1841357267 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1339863086565876900, guid: 76c56936b5589c44ca64edd249b2eb3a, type: 3}
@@ -53462,6 +55822,7 @@ GameObject:
   - component: {fileID: 1852376504}
   - component: {fileID: 1852376503}
   - component: {fileID: 1852376502}
+  - component: {fileID: 1852376505}
   m_Layer: 5
   m_Name: WateringButton
   m_TagString: Untagged
@@ -53584,6 +55945,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1852376499}
   m_CullTransparentMesh: 1
+--- !u!114 &1852376505
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1852376499}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  expandValue: 0.25
+  expandDuration: 0.25
 --- !u!1 &1858257629
 GameObject:
   m_ObjectHideFlags: 0
@@ -53807,6 +56182,7 @@ GameObject:
   - component: {fileID: 1870605063}
   - component: {fileID: 1870605062}
   - component: {fileID: 1870605061}
+  - component: {fileID: 1870605064}
   m_Layer: 5
   m_Name: WateringButton
   m_TagString: Untagged
@@ -53929,6 +56305,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1870605058}
   m_CullTransparentMesh: 1
+--- !u!114 &1870605064
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1870605058}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  expandValue: 0.25
+  expandDuration: 0.25
 --- !u!1 &1877727360
 GameObject:
   m_ObjectHideFlags: 0
@@ -54140,6 +56530,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1880706929}
   m_CullTransparentMesh: 1
+--- !u!114 &1881164296 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9179352730934359417, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
+  m_PrefabInstance: {fileID: 7663563580318445356}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7fd026c61b574d46a52d87a3e33e2c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1887494215
 GameObject:
   m_ObjectHideFlags: 0
@@ -54152,6 +56553,7 @@ GameObject:
   - component: {fileID: 1887494219}
   - component: {fileID: 1887494218}
   - component: {fileID: 1887494217}
+  - component: {fileID: 1887494220}
   m_Layer: 5
   m_Name: UprootButton
   m_TagString: Untagged
@@ -54298,6 +56700,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1887494215}
   m_CullTransparentMesh: 1
+--- !u!114 &1887494220
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1887494215}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  expandValue: 0.25
+  expandDuration: 0.25
 --- !u!1 &1889125672
 GameObject:
   m_ObjectHideFlags: 0
@@ -54580,6 +56996,30 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: TeamMAsTD.Dialog, Assembly-CSharp
         m_MethodName: PlantBlocked
         m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 298916623}
+        m_TargetAssemblyTypeName: TeamMAsTD.UIJumpFx, Assembly-CSharp
+        m_MethodName: ProcessUIJump
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1115374083}
+        m_TargetAssemblyTypeName: TeamMAsTD.UIShakeFx, Assembly-CSharp
+        m_MethodName: ProcessUIShake
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -54973,6 +57413,7 @@ GameObject:
   - component: {fileID: 1904102206}
   - component: {fileID: 1904102205}
   - component: {fileID: 1904102204}
+  - component: {fileID: 1904102207}
   m_Layer: 5
   m_Name: UprootButton
   m_TagString: Untagged
@@ -55119,6 +57560,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1904102202}
   m_CullTransparentMesh: 1
+--- !u!114 &1904102207
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1904102202}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  expandValue: 0.25
+  expandDuration: 0.25
 --- !u!1 &1906350236
 GameObject:
   m_ObjectHideFlags: 0
@@ -55633,6 +58088,7 @@ GameObject:
   - component: {fileID: 1922072188}
   - component: {fileID: 1922072187}
   - component: {fileID: 1922072186}
+  - component: {fileID: 1922072189}
   m_Layer: 5
   m_Name: UprootButton
   m_TagString: Untagged
@@ -55779,6 +58235,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1922072184}
   m_CullTransparentMesh: 1
+--- !u!114 &1922072189
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1922072184}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  expandValue: 0.25
+  expandDuration: 0.25
 --- !u!1 &1923448482
 GameObject:
   m_ObjectHideFlags: 0
@@ -56352,6 +58822,30 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 298916623}
+        m_TargetAssemblyTypeName: TeamMAsTD.UIJumpFx, Assembly-CSharp
+        m_MethodName: ProcessUIJump
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1115374083}
+        m_TargetAssemblyTypeName: TeamMAsTD.UIShakeFx, Assembly-CSharp
+        m_MethodName: ProcessUIShake
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnPlantUnitUprootedOnTile:
     m_PersistentCalls:
       m_Calls:
@@ -56813,6 +59307,7 @@ GameObject:
   - component: {fileID: 1946586884}
   - component: {fileID: 1946586883}
   - component: {fileID: 1946586882}
+  - component: {fileID: 1946586885}
   m_Layer: 5
   m_Name: WateringButton
   m_TagString: Untagged
@@ -56935,6 +59430,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1946586879}
   m_CullTransparentMesh: 1
+--- !u!114 &1946586885
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1946586879}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  expandValue: 0.25
+  expandDuration: 0.25
 --- !u!1 &1955639775
 GameObject:
   m_ObjectHideFlags: 0
@@ -57264,6 +59773,7 @@ GameObject:
   - component: {fileID: 1979068724}
   - component: {fileID: 1979068723}
   - component: {fileID: 1979068722}
+  - component: {fileID: 1979068725}
   m_Layer: 5
   m_Name: UprootButton
   m_TagString: Untagged
@@ -57410,6 +59920,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1979068720}
   m_CullTransparentMesh: 1
+--- !u!114 &1979068725
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1979068720}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  expandValue: 0.25
+  expandDuration: 0.25
 --- !u!1 &1983007210
 GameObject:
   m_ObjectHideFlags: 0
@@ -57422,6 +59946,7 @@ GameObject:
   - component: {fileID: 1983007215}
   - component: {fileID: 1983007214}
   - component: {fileID: 1983007213}
+  - component: {fileID: 1983007216}
   m_Layer: 5
   m_Name: WateringButton
   m_TagString: Untagged
@@ -57544,6 +60069,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1983007210}
   m_CullTransparentMesh: 1
+--- !u!114 &1983007216
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1983007210}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  expandValue: 0.25
+  expandDuration: 0.25
 --- !u!1 &1997207009
 GameObject:
   m_ObjectHideFlags: 0
@@ -57556,6 +60095,7 @@ GameObject:
   - component: {fileID: 1997207014}
   - component: {fileID: 1997207013}
   - component: {fileID: 1997207012}
+  - component: {fileID: 1997207015}
   m_Layer: 5
   m_Name: WateringButton
   m_TagString: Untagged
@@ -57678,6 +60218,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1997207009}
   m_CullTransparentMesh: 1
+--- !u!114 &1997207015
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1997207009}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  expandValue: 0.25
+  expandDuration: 0.25
 --- !u!1 &2000986108
 GameObject:
   m_ObjectHideFlags: 0
@@ -58129,6 +60683,30 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: TeamMAsTD.Dialog, Assembly-CSharp
         m_MethodName: PlantBlocked
         m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 298916623}
+        m_TargetAssemblyTypeName: TeamMAsTD.UIJumpFx, Assembly-CSharp
+        m_MethodName: ProcessUIJump
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1115374083}
+        m_TargetAssemblyTypeName: TeamMAsTD.UIShakeFx, Assembly-CSharp
+        m_MethodName: ProcessUIShake
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -59389,6 +61967,7 @@ GameObject:
   - component: {fileID: 2052621573}
   - component: {fileID: 2052621572}
   - component: {fileID: 2052621571}
+  - component: {fileID: 2052621574}
   m_Layer: 5
   m_Name: WateringButton
   m_TagString: Untagged
@@ -59511,6 +62090,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2052621568}
   m_CullTransparentMesh: 1
+--- !u!114 &2052621574
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2052621568}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  expandValue: 0.25
+  expandDuration: 0.25
 --- !u!1 &2057019667
 GameObject:
   m_ObjectHideFlags: 0
@@ -59603,6 +62196,7 @@ GameObject:
   - component: {fileID: 2058520096}
   - component: {fileID: 2058520095}
   - component: {fileID: 2058520094}
+  - component: {fileID: 2058520097}
   m_Layer: 5
   m_Name: WateringButton
   m_TagString: Untagged
@@ -59725,6 +62319,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2058520091}
   m_CullTransparentMesh: 1
+--- !u!114 &2058520097
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2058520091}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  expandValue: 0.25
+  expandDuration: 0.25
 --- !u!1 &2059737618
 GameObject:
   m_ObjectHideFlags: 0
@@ -59792,6 +62400,30 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: TeamMAsTD.Dialog, Assembly-CSharp
         m_MethodName: PlantBlocked
         m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 298916623}
+        m_TargetAssemblyTypeName: TeamMAsTD.UIJumpFx, Assembly-CSharp
+        m_MethodName: ProcessUIJump
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1115374083}
+        m_TargetAssemblyTypeName: TeamMAsTD.UIShakeFx, Assembly-CSharp
+        m_MethodName: ProcessUIShake
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -60105,6 +62737,7 @@ GameObject:
   - component: {fileID: 2063210971}
   - component: {fileID: 2063210970}
   - component: {fileID: 2063210969}
+  - component: {fileID: 2063210972}
   m_Layer: 5
   m_Name: WateringButton
   m_TagString: Untagged
@@ -60227,6 +62860,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2063210966}
   m_CullTransparentMesh: 1
+--- !u!114 &2063210972
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2063210966}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  expandValue: 0.25
+  expandDuration: 0.25
 --- !u!1 &2065378675
 GameObject:
   m_ObjectHideFlags: 0
@@ -60294,6 +62941,30 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: TeamMAsTD.Dialog, Assembly-CSharp
         m_MethodName: PlantBlocked
         m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 298916623}
+        m_TargetAssemblyTypeName: TeamMAsTD.UIJumpFx, Assembly-CSharp
+        m_MethodName: ProcessUIJump
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1115374083}
+        m_TargetAssemblyTypeName: TeamMAsTD.UIShakeFx, Assembly-CSharp
+        m_MethodName: ProcessUIShake
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -60885,6 +63556,30 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 298916623}
+        m_TargetAssemblyTypeName: TeamMAsTD.UIJumpFx, Assembly-CSharp
+        m_MethodName: ProcessUIJump
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1115374083}
+        m_TargetAssemblyTypeName: TeamMAsTD.UIShakeFx, Assembly-CSharp
+        m_MethodName: ProcessUIShake
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnPlantUnitUprootedOnTile:
     m_PersistentCalls:
       m_Calls:
@@ -61270,6 +63965,7 @@ GameObject:
   - component: {fileID: 2089450485}
   - component: {fileID: 2089450484}
   - component: {fileID: 2089450483}
+  - component: {fileID: 2089450486}
   m_Layer: 5
   m_Name: UprootButton
   m_TagString: Untagged
@@ -61416,6 +64112,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2089450481}
   m_CullTransparentMesh: 1
+--- !u!114 &2089450486
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2089450481}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  expandValue: 0.25
+  expandDuration: 0.25
 --- !u!1 &2093291935
 GameObject:
   m_ObjectHideFlags: 0
@@ -61563,6 +64273,7 @@ GameObject:
   - component: {fileID: 2103665247}
   - component: {fileID: 2103665246}
   - component: {fileID: 2103665245}
+  - component: {fileID: 2103665248}
   m_Layer: 5
   m_Name: UprootButton
   m_TagString: Untagged
@@ -61709,6 +64420,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2103665243}
   m_CullTransparentMesh: 1
+--- !u!114 &2103665248
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2103665243}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  expandValue: 0.25
+  expandDuration: 0.25
 --- !u!1 &2103963342
 GameObject:
   m_ObjectHideFlags: 0
@@ -61776,6 +64501,30 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: TeamMAsTD.Dialog, Assembly-CSharp
         m_MethodName: PlantBlocked
         m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 298916623}
+        m_TargetAssemblyTypeName: TeamMAsTD.UIJumpFx, Assembly-CSharp
+        m_MethodName: ProcessUIJump
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1115374083}
+        m_TargetAssemblyTypeName: TeamMAsTD.UIShakeFx, Assembly-CSharp
+        m_MethodName: ProcessUIShake
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -62188,6 +64937,30 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 298916623}
+        m_TargetAssemblyTypeName: TeamMAsTD.UIJumpFx, Assembly-CSharp
+        m_MethodName: ProcessUIJump
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1115374083}
+        m_TargetAssemblyTypeName: TeamMAsTD.UIShakeFx, Assembly-CSharp
+        m_MethodName: ProcessUIShake
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnPlantUnitUprootedOnTile:
     m_PersistentCalls:
       m_Calls:
@@ -62493,6 +65266,7 @@ GameObject:
   - component: {fileID: 2122486475}
   - component: {fileID: 2122486474}
   - component: {fileID: 2122486473}
+  - component: {fileID: 2122486476}
   m_Layer: 5
   m_Name: UprootButton
   m_TagString: Untagged
@@ -62639,6 +65413,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2122486471}
   m_CullTransparentMesh: 1
+--- !u!114 &2122486476
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2122486471}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  expandValue: 0.25
+  expandDuration: 0.25
 --- !u!1 &2123410193
 GameObject:
   m_ObjectHideFlags: 0
@@ -62651,6 +65439,7 @@ GameObject:
   - component: {fileID: 2123410197}
   - component: {fileID: 2123410196}
   - component: {fileID: 2123410195}
+  - component: {fileID: 2123410198}
   m_Layer: 5
   m_Name: UprootButton
   m_TagString: Untagged
@@ -62797,6 +65586,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2123410193}
   m_CullTransparentMesh: 1
+--- !u!114 &2123410198
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2123410193}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  expandValue: 0.25
+  expandDuration: 0.25
 --- !u!1 &2125657852
 GameObject:
   m_ObjectHideFlags: 0
@@ -63020,6 +65823,30 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: TeamMAsTD.Dialog, Assembly-CSharp
         m_MethodName: PlantBlocked
         m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 298916623}
+        m_TargetAssemblyTypeName: TeamMAsTD.UIJumpFx, Assembly-CSharp
+        m_MethodName: ProcessUIJump
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1115374083}
+        m_TargetAssemblyTypeName: TeamMAsTD.UIShakeFx, Assembly-CSharp
+        m_MethodName: ProcessUIShake
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -63548,6 +66375,7 @@ GameObject:
   - component: {fileID: 2139712211}
   - component: {fileID: 2139712210}
   - component: {fileID: 2139712209}
+  - component: {fileID: 2139712212}
   m_Layer: 5
   m_Name: UprootButton
   m_TagString: Untagged
@@ -63694,6 +66522,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2139712207}
   m_CullTransparentMesh: 1
+--- !u!114 &2139712212
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2139712207}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  expandValue: 0.25
+  expandDuration: 0.25
 --- !u!1 &2144636676
 GameObject:
   m_ObjectHideFlags: 0
@@ -64871,6 +67713,18 @@ PrefabInstance:
       propertyPath: OnStartedDragging.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 1567155238411720870, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
+      propertyPath: barkOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1567155238411720870, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
+      propertyPath: maxSeconds
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1567155238411720870, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
+      propertyPath: minSeconds
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1787284736203990429, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -65487,6 +68341,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameUICanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 7663563581670964556, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0.22991943
+      objectReference: {fileID: 0}
     - target: {fileID: 8126860847606670836, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
       propertyPath: m_Colors.m_HighlightedColor.b
       value: 0.33333334
@@ -65664,11 +68522,23 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8716828499933514812, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8716828499933514812, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 1447359574}
     - target: {fileID: 8716828499933514812, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Target
+      value: 
+      objectReference: {fileID: 1881164296}
+    - target: {fileID: 8716828499933514812, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8716828499933514812, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_CallState
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8716828499933514812, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
@@ -65677,6 +68547,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8716828499933514812, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: FMODUnity.StudioEventEmitter, FMODUnity
+      objectReference: {fileID: 0}
+    - target: {fileID: 8716828499933514812, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_TargetAssemblyTypeName
       value: FMODUnity.StudioEventEmitter, FMODUnity
       objectReference: {fileID: 0}
     - target: {fileID: 8716828499933514812, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}

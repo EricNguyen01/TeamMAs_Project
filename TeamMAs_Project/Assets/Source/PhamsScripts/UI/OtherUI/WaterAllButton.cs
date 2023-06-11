@@ -46,6 +46,8 @@ namespace TeamMAsTD
 
         private int totalWaterAllCost = 0;
 
+        private UIShakeFx UI_ShakeFx;
+
         private void Awake()
         {
             if(waterAllCanvasGroup == null)
@@ -81,6 +83,10 @@ namespace TeamMAsTD
 
                 defaultWaterAllButtonSelectHighlightColor = waterAllButtonComp.colors.highlightedColor; 
             }
+
+            UI_ShakeFx = GetComponent<UIShakeFx>();
+
+            if(UI_ShakeFx == null) UI_ShakeFx = gameObject.AddComponent<UIShakeFx>();
         }
 
         private void OnEnable()
@@ -236,10 +242,14 @@ namespace TeamMAsTD
         
         public void WaterAll()
         {
-            if(!CanWaterAll(true)) return;
-
+            //if no sufficient funds OR
             //if total water all cost is less/equal 0 this means that all existing plant are having full water -> no need to water anymore
-            if (totalWaterAllCost <= 0) return;
+            if (!CanWaterAll(true) || totalWaterAllCost <= 0)
+            {
+                UI_ShakeFx.ProcessUIShake();
+
+                return;
+            }
 
             bool hasPlayedWateringSound = false;
 

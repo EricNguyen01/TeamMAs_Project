@@ -70,6 +70,8 @@ namespace TeamMAsTD
 
         private bool isShopSlotUnlocked = false;
 
+        private Vector2 dragDropUIImageObjectBaseRectSize;
+
         //PRIVATES.........................................................................
 
         private void Awake()
@@ -195,6 +197,8 @@ namespace TeamMAsTD
                 enabled = false;
                 return;
             }
+
+            dragDropUIImageObjectBaseRectSize = dragDropUIImageObject.rectTransform.sizeDelta;
 
             CanvasGroup dragDropImageUICanvasGroup = dragDropUIImageObject.GetComponent<CanvasGroup>();
 
@@ -480,6 +484,7 @@ namespace TeamMAsTD
         public void OnBeginDrag(PointerEventData eventData)
         {
             //On click and hold the mouse on the unit shop slot UI image:
+            dragDropUIImageObject.rectTransform.sizeDelta = dragDropUIImageObjectBaseRectSize;
 
             if(!dragDropUIImageObject.gameObject.activeInHierarchy) dragDropUIImageObject.gameObject.SetActive(true);
 

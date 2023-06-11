@@ -114,7 +114,6 @@ namespace PixelCrushers.DialogueSystem
     /// </summary>
     public static class BarkController
     {
-
         private static Dictionary<Transform, int> currentBarkPriority = new Dictionary<Transform, int>();
 
         /// <summary>
@@ -230,7 +229,6 @@ namespace PixelCrushers.DialogueSystem
 
                         if (DialogueDebug.logInfo) Debug.Log(string.Format("{0}: Bark (speaker={1}, listener={2}): '{3}'", new System.Object[] { DialogueDebug.Prefix, speaker, listener, barkState.subtitle.formattedText.text }), speaker);
                         InformParticipantsLine(DialogueSystemMessages.OnBarkLine, speaker, barkState.subtitle);
-
                         // Show the bark subtitle:
                         if (((barkUI == null) || !(barkUI as MonoBehaviour).enabled) && DialogueDebug.logWarnings) Debug.LogWarning(string.Format("{0}: Bark (speaker={1}, listener={2}): '{3}' bark UI is null or disabled", new System.Object[] { DialogueDebug.Prefix, speaker, listener, barkState.subtitle.formattedText.text }), speaker);
                         if ((barkUI != null) && (barkUI as MonoBehaviour).enabled)
