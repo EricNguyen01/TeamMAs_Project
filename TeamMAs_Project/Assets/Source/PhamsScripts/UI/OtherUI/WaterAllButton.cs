@@ -314,15 +314,23 @@ namespace TeamMAsTD
             {
                 if (unableToWaterAllHighlightColor != Color.clear)
                 {
+                    unableToWaterAllHighlightColor.a = 255f;
+
                     waterAllButtonColors.highlightedColor = unableToWaterAllHighlightColor;
                 }
                 else
                 {
-                    waterAllButtonColors.highlightedColor = Color.red;
+                    Color unableToWaterColor = Color.red;
+
+                    unableToWaterColor.a = 255f;
+
+                    waterAllButtonColors.highlightedColor = unableToWaterColor;
                 }
             }
             else if (CanWaterAll() && totalWaterAllCost > 0)
             {
+                defaultWaterAllButtonSelectHighlightColor.a = 255f;
+
                 waterAllButtonColors.highlightedColor = defaultWaterAllButtonSelectHighlightColor;
             }
 

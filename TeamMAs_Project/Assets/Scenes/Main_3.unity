@@ -97,7 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000000, guid: 85c53cd9dc8c29841afa41602524df87, type: 2}
   m_LightingSettings: {fileID: 0}
 --- !u!196 &4
 NavMeshSettings:
@@ -990,42 +990,6 @@ MonoBehaviour:
       Data3: 1911237524
       Data4: -1072881373
     Path: event:/Planting
-  Event: 
-  PlayEvent: 0
-  StopEvent: 0
-  AllowFadeout: 1
-  TriggerOnce: 0
-  Preload: 0
-  Params: []
-  OverrideAttenuation: 0
-  OverrideMinDistance: 1
-  OverrideMaxDistance: 20
-  hasTriggered: 0
---- !u!1 &19579893 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5268446183886847557, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
-  m_PrefabInstance: {fileID: 7663563580318445356}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &19579899
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 19579893}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CollisionTag: 
-  EventReference:
-    Guid:
-      Data1: -55100953
-      Data2: 1318490974
-      Data3: -785644634
-      Data4: -647336184
-    Path: event:/Shop UI Click Sound
   Event: 
   PlayEvent: 0
   StopEvent: 0
@@ -2954,42 +2918,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 73847979}
   m_CullTransparentMesh: 1
---- !u!1 &75950588 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8832401155225839074, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
-  m_PrefabInstance: {fileID: 7663563580318445356}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &75950594
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 75950588}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CollisionTag: 
-  EventReference:
-    Guid:
-      Data1: -55100953
-      Data2: 1318490974
-      Data3: -785644634
-      Data4: -647336184
-    Path: event:/Shop UI Click Sound
-  Event: 
-  PlayEvent: 0
-  StopEvent: 0
-  AllowFadeout: 1
-  TriggerOnce: 0
-  Preload: 0
-  Params: []
-  OverrideAttenuation: 0
-  OverrideMinDistance: 1
-  OverrideMaxDistance: 20
-  hasTriggered: 0
 --- !u!1 &80206221
 GameObject:
   m_ObjectHideFlags: 0
@@ -30562,42 +30490,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_HorizontalFit: 0
   m_VerticalFit: 0
---- !u!1 &1143017985 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8832401154026542292, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
-  m_PrefabInstance: {fileID: 7663563580318445356}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1143017991
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1143017985}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CollisionTag: 
-  EventReference:
-    Guid:
-      Data1: -55100953
-      Data2: 1318490974
-      Data3: -785644634
-      Data4: -647336184
-    Path: event:/Shop UI Click Sound
-  Event: 
-  PlayEvent: 0
-  StopEvent: 0
-  AllowFadeout: 1
-  TriggerOnce: 0
-  Preload: 0
-  Params: []
-  OverrideAttenuation: 0
-  OverrideMinDistance: 1
-  OverrideMaxDistance: 20
-  hasTriggered: 0
 --- !u!1 &1155804720
 GameObject:
   m_ObjectHideFlags: 0
@@ -35848,42 +35740,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1305490530}
   m_CullTransparentMesh: 1
---- !u!1 &1307368199 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8832401153954520554, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
-  m_PrefabInstance: {fileID: 7663563580318445356}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1307368205
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1307368199}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CollisionTag: 
-  EventReference:
-    Guid:
-      Data1: -55100953
-      Data2: 1318490974
-      Data3: -785644634
-      Data4: -647336184
-    Path: event:/Shop UI Click Sound
-  Event: 
-  PlayEvent: 0
-  StopEvent: 0
-  AllowFadeout: 1
-  TriggerOnce: 0
-  Preload: 0
-  Params: []
-  OverrideAttenuation: 0
-  OverrideMinDistance: 1
-  OverrideMaxDistance: 20
-  hasTriggered: 0
 --- !u!1 &1308701749
 GameObject:
   m_ObjectHideFlags: 0
@@ -40815,42 +40671,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1446342738}
   m_CullTransparentMesh: 1
---- !u!1 &1447359569 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7095892632901702612, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
+--- !u!114 &1447359574 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4716880220076810204, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
   m_PrefabInstance: {fileID: 7663563580318445356}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1447359574
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1447359569}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CollisionTag: 
-  EventReference:
-    Guid:
-      Data1: 1828641452
-      Data2: 1198777130
-      Data3: -1755928430
-      Data4: 60334964
-    Path: event:/Speed Button Click
-  Event: 
-  PlayEvent: 0
-  StopEvent: 0
-  AllowFadeout: 1
-  TriggerOnce: 0
-  Preload: 0
-  Params: []
-  OverrideAttenuation: 0
-  OverrideMinDistance: 1
-  OverrideMaxDistance: 20
-  hasTriggered: 0
 --- !u!1 &1447742743
 GameObject:
   m_ObjectHideFlags: 0
@@ -41033,42 +40864,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1456000174 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3873584544686698150, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
+--- !u!114 &1456000179 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5854499375274806303, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
   m_PrefabInstance: {fileID: 7663563580318445356}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1456000179
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1456000174}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CollisionTag: 
-  EventReference:
-    Guid:
-      Data1: 1828641452
-      Data2: 1198777130
-      Data3: -1755928430
-      Data4: 60334964
-    Path: event:/Speed Button Click
-  Event: 
-  PlayEvent: 0
-  StopEvent: 0
-  AllowFadeout: 1
-  TriggerOnce: 0
-  Preload: 0
-  Params: []
-  OverrideAttenuation: 0
-  OverrideMinDistance: 1
-  OverrideMaxDistance: 20
-  hasTriggered: 0
 --- !u!1001 &1456546157
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -50304,42 +50110,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_HorizontalFit: 0
   m_VerticalFit: 0
---- !u!1 &1737587816 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8832401154024209713, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
+--- !u!114 &1737587822 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1175772473744101498, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
   m_PrefabInstance: {fileID: 7663563580318445356}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1737587822
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1737587816}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CollisionTag: 
-  EventReference:
-    Guid:
-      Data1: -55100953
-      Data2: 1318490974
-      Data3: -785644634
-      Data4: -647336184
-    Path: event:/Shop UI Click Sound
-  Event: 
-  PlayEvent: 0
-  StopEvent: 0
-  AllowFadeout: 1
-  TriggerOnce: 0
-  Preload: 0
-  Params: []
-  OverrideAttenuation: 0
-  OverrideMinDistance: 1
-  OverrideMaxDistance: 20
-  hasTriggered: 0
 --- !u!1 &1744862628
 GameObject:
   m_ObjectHideFlags: 0
@@ -65147,22 +64928,6 @@ PrefabInstance:
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 3210166668731441888, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
-      propertyPath: timeSpeedUpStages.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 3210166668731441888, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
-      propertyPath: timeSpeedUpStages.Array.data[0]
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3210166668731441888, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
-      propertyPath: timeSpeedUpStages.Array.data[1]
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3210166668731441888, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
-      propertyPath: timeSpeedUpStages.Array.data[2]
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 3210166668731441888, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
       propertyPath: timeSpeedUpStages.Array.data[3]
       value: 4
       objectReference: {fileID: 0}
@@ -65320,7 +65085,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5268446183886847556, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 235.67563
       objectReference: {fileID: 0}
     - target: {fileID: 5268446183886847556, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -65495,24 +65260,12 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 7007502426730147584}
     - target: {fileID: 7663563579968728999, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0.98873305
+      propertyPath: m_LocalPosition.x
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7663563579968728999, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0.1939714
-      objectReference: {fileID: 0}
-    - target: {fileID: 7663563579968728999, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
-      propertyPath: m_AnchorMin.x
-      value: 0.79372686
-      objectReference: {fileID: 0}
-    - target: {fileID: 7663563579968728999, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0.100737765
-      objectReference: {fileID: 0}
-    - target: {fileID: 7663563579968728999, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0.16003418
+      propertyPath: m_LocalPosition.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7663563580159698439, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
@@ -65956,7 +65709,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8832401153954520555, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 235.67563
       objectReference: {fileID: 0}
     - target: {fileID: 8832401153954520555, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -65976,7 +65729,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8832401154024209712, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 235.67563
       objectReference: {fileID: 0}
     - target: {fileID: 8832401154024209712, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -65996,7 +65749,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8832401154026542293, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 235.67563
       objectReference: {fileID: 0}
     - target: {fileID: 8832401154026542293, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -66016,7 +65769,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8832401155225839075, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 235.67563
       objectReference: {fileID: 0}
     - target: {fileID: 8832401155225839075, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
       propertyPath: m_AnchoredPosition.x

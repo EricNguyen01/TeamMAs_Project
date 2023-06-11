@@ -88,7 +88,7 @@ MonoBehaviour:
   m_Spacing: 16
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
-  m_ChildControlWidth: 1
+  m_ChildControlWidth: 0
   m_ChildControlHeight: 1
   m_ChildScaleWidth: 1
   m_ChildScaleHeight: 1
@@ -359,6 +359,42 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 180636019716852454, guid: be51dee99d5dc4942855546c15466bf0, type: 3}
   m_PrefabInstance: {fileID: 1209370933106607376}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2542059463708966026 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3715392631770610074, guid: be51dee99d5dc4942855546c15466bf0, type: 3}
+  m_PrefabInstance: {fileID: 1209370933106607376}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &6262570158808304660
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2542059463708966026}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -55100953
+      Data2: 1318490974
+      Data3: -785644634
+      Data4: -647336184
+    Path: event:/Shop UI Click Sound
+  Event: 
+  PlayEvent: 0
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
+  hasTriggered: 0
 --- !u!224 &2542059463708966027 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3715392631770610075, guid: be51dee99d5dc4942855546c15466bf0, type: 3}
@@ -510,6 +546,42 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 3715392631770610075, guid: be51dee99d5dc4942855546c15466bf0, type: 3}
   m_PrefabInstance: {fileID: 2542059463966891703}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1209370933322639149 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3715392631770610074, guid: be51dee99d5dc4942855546c15466bf0, type: 3}
+  m_PrefabInstance: {fileID: 2542059463966891703}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &6494439811977480757
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1209370933322639149}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -55100953
+      Data2: 1318490974
+      Data3: -785644634
+      Data4: -647336184
+    Path: event:/Shop UI Click Sound
+  Event: 
+  PlayEvent: 0
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
+  hasTriggered: 0
 --- !u!224 &2433784508205995089 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 180636019716852454, guid: be51dee99d5dc4942855546c15466bf0, type: 3}
@@ -677,6 +749,42 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 3715392631770610075, guid: be51dee99d5dc4942855546c15466bf0, type: 3}
   m_PrefabInstance: {fileID: 2542059464817862335}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1209370932069080869 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3715392631770610074, guid: be51dee99d5dc4942855546c15466bf0, type: 3}
+  m_PrefabInstance: {fileID: 2542059464817862335}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &5803998109771571957
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1209370932069080869}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -55100953
+      Data2: 1318490974
+      Data3: -785644634
+      Data4: -647336184
+    Path: event:/Shop UI Click Sound
+  Event: 
+  PlayEvent: 0
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
+  hasTriggered: 0
 --- !u!224 &2433784509468929113 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 180636019716852454, guid: be51dee99d5dc4942855546c15466bf0, type: 3}
@@ -847,6 +955,42 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: be51dee99d5dc4942855546c15466bf0, type: 3}
+--- !u!1 &1209370932406157310 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3715392631770610074, guid: be51dee99d5dc4942855546c15466bf0, type: 3}
+  m_PrefabInstance: {fileID: 2542059465147549284}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &8794224595246748341
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1209370932406157310}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -55100953
+      Data2: 1318490974
+      Data3: -785644634
+      Data4: -647336184
+    Path: event:/Shop UI Click Sound
+  Event: 
+  PlayEvent: 0
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
+  hasTriggered: 0
 --- !u!224 &1209370932406157311 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3715392631770610075, guid: be51dee99d5dc4942855546c15466bf0, type: 3}
@@ -1019,6 +1163,42 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 3715392631770610075, guid: be51dee99d5dc4942855546c15466bf0, type: 3}
   m_PrefabInstance: {fileID: 2542059465160945537}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1209370932395382299 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3715392631770610074, guid: be51dee99d5dc4942855546c15466bf0, type: 3}
+  m_PrefabInstance: {fileID: 2542059465160945537}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &6914486951600441178
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1209370932395382299}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -55100953
+      Data2: 1318490974
+      Data3: -785644634
+      Data4: -647336184
+    Path: event:/Shop UI Click Sound
+  Event: 
+  PlayEvent: 0
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
+  hasTriggered: 0
 --- !u!224 &2433784509121652071 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 180636019716852454, guid: be51dee99d5dc4942855546c15466bf0, type: 3}

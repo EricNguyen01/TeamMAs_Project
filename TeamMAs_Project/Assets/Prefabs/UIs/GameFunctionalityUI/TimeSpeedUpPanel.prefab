@@ -224,6 +224,8 @@ GameObject:
   - component: {fileID: 1805344484595350488}
   - component: {fileID: 3090430003395701191}
   - component: {fileID: 3179516760319155461}
+  - component: {fileID: 1554363517477195493}
+  - component: {fileID: 3135649241736291392}
   m_Layer: 5
   m_Name: TimeSpeedUpForwardButton
   m_TagString: Untagged
@@ -345,6 +347,52 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &1554363517477195493
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3935618526019732205}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 1828641452
+      Data2: 1198777130
+      Data3: -1755928430
+      Data4: 60334964
+    Path: event:/Speed Button Click
+  Event: 
+  PlayEvent: 0
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
+  hasTriggered: 0
+--- !u!114 &3135649241736291392
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3935618526019732205}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7fd026c61b574d46a52d87a3e33e2c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hoverMoveDir: 4
+  moveDistance: 8.5
+  moveDuration: 0.25
 --- !u!1 &7000335917043875743
 GameObject:
   m_ObjectHideFlags: 0
@@ -357,6 +405,8 @@ GameObject:
   - component: {fileID: 4823704426565795928}
   - component: {fileID: 2121065064336720812}
   - component: {fileID: 7106353480748885789}
+  - component: {fileID: 421316201016253734}
+  - component: {fileID: 2243818285358907249}
   m_Layer: 5
   m_Name: TimeSlowDownButton
   m_TagString: Untagged
@@ -478,6 +528,52 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &421316201016253734
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7000335917043875743}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 1828641452
+      Data2: 1198777130
+      Data3: -1755928430
+      Data4: 60334964
+    Path: event:/Speed Button Click
+  Event: 
+  PlayEvent: 0
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
+  hasTriggered: 0
+--- !u!114 &2243818285358907249
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7000335917043875743}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7fd026c61b574d46a52d87a3e33e2c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hoverMoveDir: 3
+  moveDistance: 8.5
+  moveDuration: 0.25
 --- !u!1 &8665070374301109883
 GameObject:
   m_ObjectHideFlags: 0
@@ -554,9 +650,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeSpeedUpStages:
   - 1
-  - 1.5
   - 2
-  - 2.5
   - 4
   timeSpeedUpCanvasGroup: {fileID: 8665070374301109885}
   timeSpeedUpTextMeshComp: {fileID: 6264933848181015426}

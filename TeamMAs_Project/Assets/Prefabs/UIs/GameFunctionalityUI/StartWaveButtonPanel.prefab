@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8532963186734203987}
   - component: {fileID: 8532963186734203984}
   - component: {fileID: 8532963186734203985}
+  - component: {fileID: 6927900921715592045}
   m_Layer: 5
   m_Name: StartWaveButtonPanel
   m_TagString: Untagged
@@ -35,10 +36,10 @@ RectTransform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.77900004, y: 0.033223122}
-  m_AnchorMax: {x: 0.94954175, y: 0.18844625}
-  m_AnchoredPosition: {x: -1.5, y: 0.15997314}
-  m_SizeDelta: {x: -3, y: 0.34000015}
+  m_AnchorMin: {x: 0.7973515, y: 0.0998889}
+  m_AnchorMax: {x: 0.9861667, y: 0.193}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8532963186734203987
 CanvasRenderer:
@@ -75,10 +76,20 @@ MonoBehaviour:
   waveSpawnerLinkedToButton: {fileID: 0}
   startWaveButtonText: {fileID: 8532963187113107090}
   startedAtWave_1: 1
-  hyssopShop: {fileID: 0}
-  hyssopIcon: {fileID: 0}
-  milkweedShop: {fileID: 0}
-  milkweedIcon: {fileID: 0}
+--- !u!114 &6927900921715592045
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8532963186734203991}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  expandValue: 25
+  expandDuration: 0.25
 --- !u!1 &8532963187113107088
 GameObject:
   m_ObjectHideFlags: 0

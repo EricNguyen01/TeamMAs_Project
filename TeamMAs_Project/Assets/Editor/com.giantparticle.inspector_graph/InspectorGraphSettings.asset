@@ -1,0 +1,44 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e98e4fe4c4a4e3cbfc89527164dac30, type: 3}
+  m_Name: InspectorGraphSettings
+  m_EditorClassIdentifier: 
+  _maxPreviewWindows: 50
+  _maxWindows: 100
+  _referenceColors:
+  - _referenceType:
+      Value: 1
+    _normalColor: {r: 1, g: 1, b: 1, a: 0.5}
+    _highlightedColor: {r: 1, g: 1, b: 1, a: 1}
+  - _referenceType:
+      Value: 2
+    _normalColor: {r: 0, g: 1, b: 1, a: 0.5}
+    _highlightedColor: {r: 0, g: 1, b: 1, a: 1}
+  _filters:
+  - _fullyQualifiedName: UnityEngine.GameObject
+    _showType: 1
+    _expandType: 0
+  - _fullyQualifiedName: UnityEditor.MonoScript
+    _showType: 0
+    _expandType: 0
+  - _fullyQualifiedName: UnityEngine.U2D.SpriteAtlas
+    _showType: 1
+    _expandType: 0
+  _defaultWindowSize:
+  - _targetMode: 2
+    _targetSize: {x: 300, y: 300}
+  - _targetMode: 0
+    _targetSize: {x: 300, y: 300}
+  - _targetMode: 3
+    _targetSize: {x: 300, y: 130}
+  - _targetMode: 1
+    _targetSize: {x: 400, y: 300}
