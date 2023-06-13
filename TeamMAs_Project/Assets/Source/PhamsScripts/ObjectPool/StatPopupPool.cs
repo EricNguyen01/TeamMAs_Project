@@ -145,57 +145,6 @@ namespace TeamMAsTD
             return returnSuccessful;
         }
 
-        /*public void DetachAndDestroyAllStatPopupsFromPool()
-        {
-            if (gameObjectsPool == null || gameObjectsPool.Count == 0) return;
-
-            //Debug.Log("DetachDestroyAllStatPopups");
-
-            for(int i = 0; i < gameObjectsPool.Count; i++)
-            {
-                GameObject go = gameObjectsPool[i];
-
-                if (go == null)
-                {
-                    gameObjectsPool.Remove(go);
-
-                    if (i >= gameObjectsPool.Count || gameObjectsPool.Count == 0) return;
-
-                    continue;
-                }
-
-                /*if (!go.activeInHierarchy)
-                {
-                    gameObjectsPool.Remove(go);
-
-                    MonoBehaviour.Destroy(go);
-
-                    if (i >= gameObjectsPool.Count || gameObjectsPool.Count == 0) return;
-
-                    continue;
-                }*/
-
-                /*StatPopup statPopup = go.GetComponent<StatPopup>();
-
-                if(statPopup == null)
-                {
-                    gameObjectsPool.Remove(go);
-
-                    MonoBehaviour.Destroy(go);
-
-                    if (i >= gameObjectsPool.Count || gameObjectsPool.Count == 0) return;
-
-                    continue;
-                }
-
-                statPopup.transform.SetParent(null);
-
-                statPopup.InitializeStatPopup(null);
-            }
-
-            gameObjectsPool.Clear();
-        }*/
-
         private IEnumerator DisplayStatPopupDelay(StatPopup statPopup, float delaySec)
         {
             if (statPopup == null) yield break;

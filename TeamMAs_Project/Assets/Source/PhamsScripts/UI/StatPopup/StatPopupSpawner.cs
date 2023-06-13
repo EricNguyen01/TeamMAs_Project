@@ -198,14 +198,6 @@ namespace TeamMAsTD
                                                                                                   popupEndPos,
                                                                                                   popupTime);
 
-            // sarita (temporary swap between broken heart animation or green heart)
-            /*if ((name == "GameResourceUIHealthPopupSpawner") && isPositivePopup)
-            {
-                Animator[] animators = statPopupObj.GetComponentsInChildren<Animator>();
-                foreach (Animator animator in animators)
-                    animator.SetTrigger("positive");
-            }*/
-
             if (statPopupObj == null)
             {
                 Debug.LogWarning("StatPopup GameObjects spawned from StatPopupPrefab by StatPopupSpawner: " + name + " is missing StatPopup script! " +
@@ -255,13 +247,13 @@ namespace TeamMAsTD
 
         private IEnumerator DestroyOnPopupDelayCoroutineFinished()
         {
+            isDetachedAndDestroyed = true;
+
             yield return new WaitForSeconds(popupTime);
 
             yield return new WaitUntil(() => statPopupPool.statPopupDelayCoroutineCount == 0);
 
-            yield return new WaitForSeconds(popupTime);
-
-            isDetachedAndDestroyed = true;
+            yield return new WaitForSeconds(popupTime / 1.5f);
 
             if(statPopupPool != null)
             {
