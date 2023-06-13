@@ -224,20 +224,7 @@ namespace TeamMAsTD
 
                 StopAllCoroutines();
 
-                if(statPopupPool != null)
-                {
-                    if (statPopupPool.gameObjectsPool != null && statPopupPool.gameObjectsPool.Count > 0)
-                    {
-                        for (int i = 0; i < statPopupPool.gameObjectsPool.Count; i++)
-                        {
-                            if (statPopupPool.gameObjectsPool[i] != null) Destroy(statPopupPool.gameObjectsPool[i]);
-                        }
-
-                        statPopupPool.gameObjectsPool.Clear();
-                    }
-                }
-
-                Destroy(gameObject);
+                DestroyStatPopupPoolAndSpawner();
 
                 return;
             }
@@ -253,9 +240,16 @@ namespace TeamMAsTD
 
             yield return new WaitUntil(() => statPopupPool.statPopupDelayCoroutineCount == 0);
 
-            yield return new WaitForSeconds(popupTime / 1.5f);
+            yield return new WaitForSeconds(popupTime);
 
-            if(statPopupPool != null)
+            DestroyStatPopupPoolAndSpawner();
+
+            yield break;
+        }
+
+        private void DestroyStatPopupPoolAndSpawner()
+        {
+            if (statPopupPool != null)
             {
                 if (statPopupPool.gameObjectsPool != null && statPopupPool.gameObjectsPool.Count > 0)
                 {
@@ -269,8 +263,6 @@ namespace TeamMAsTD
             }
 
             Destroy(gameObject);
-
-            yield break;
         }
     }
 }
