@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace TeamMAsTD
 {
-    public class UIShakeFx : MonoBehaviour
+    public class UIShakeFx : UITweenBase
     {
         [Header("UI Shake FX Settings")]
 
@@ -13,26 +13,25 @@ namespace TeamMAsTD
 
         [SerializeField] private int shakeVibrato = 5;
 
-        [SerializeField] private float shakeDuration = 0.5f;
-
         //INTERNALS...............................................
-
-        private RectTransform rectTransform;
 
         private Vector2 baseAnchoredPos;
 
         private bool alreadyShook = false;
 
-        private void Awake()
+        protected override void Awake()
         {
-            rectTransform = GetComponent<RectTransform>();
-
-            if (!rectTransform) enabled = false;
+            base.Awake();
 
             baseAnchoredPos = rectTransform.anchoredPosition;
         }
 
-        public void ProcessUIShake()
+        public override void RunTween()
+        {
+            ProcessUIShake();
+        }
+
+        protected virtual void ProcessUIShake()
         {
             if (!rectTransform || alreadyShook) return;
 
@@ -43,9 +42,9 @@ namespace TeamMAsTD
         {
             alreadyShook = true;
 
-            rectTransform.DOShakeAnchorPos(shakeDuration, shakeStrength, shakeVibrato, 50.0f, false, true, ShakeRandomnessMode.Harmonic);
+            rectTransform.DOShakeAnchorPos(tweenDuration, shakeStrength, shakeVibrato, 50.0f, false, true, ShakeRandomnessMode.Harmonic);
 
-            yield return new WaitForSeconds(shakeDuration);
+            yield return new WaitForSeconds(tweenDuration);
 
             alreadyShook = false;
         }

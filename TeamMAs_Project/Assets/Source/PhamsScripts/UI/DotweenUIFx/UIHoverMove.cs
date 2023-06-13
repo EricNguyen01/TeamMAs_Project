@@ -16,8 +16,6 @@ namespace TeamMAsTD
 
         [SerializeField] private float moveDistance = 1.0f;
 
-        [SerializeField] private float moveDuration = 0.25f;
-
         //INTERNALS....................................................
 
         private Vector2 baseAnchorPos;
@@ -29,14 +27,24 @@ namespace TeamMAsTD
             baseAnchorPos = rectTransform.anchoredPosition;
         }
 
+        public override void RunTween()
+        {
+            UIMoveOnClick();
+        }
+
+        protected virtual void UIMoveOnClick()
+        {
+
+        }
+
         public override void OnPointerEnter(PointerEventData eventData)
         {
-            rectTransform.DOAnchorPos(FinalMoveToPosition(), moveDuration);
+            rectTransform.DOAnchorPos(FinalMoveToPosition(), tweenDuration);
         }
 
         public override void OnPointerExit(PointerEventData eventData)
         {
-            rectTransform.DOAnchorPos(baseAnchorPos, moveDuration);
+            rectTransform.DOAnchorPos(baseAnchorPos, tweenDuration);
         }
 
         protected Vector2 FinalMoveToPosition()

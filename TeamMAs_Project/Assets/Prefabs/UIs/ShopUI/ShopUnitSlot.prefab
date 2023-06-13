@@ -1084,5 +1084,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  UI_TweenExecuteMode: 1
   expandValue: 50
-  expandDuration: 0.25

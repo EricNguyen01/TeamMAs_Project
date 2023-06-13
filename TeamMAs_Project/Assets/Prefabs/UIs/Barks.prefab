@@ -276,9 +276,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f83716641ba6d2f49a119a23d9ef7c8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  UI_TweenExecuteMode: 3
+  tweenDuration: 0.6
   shakeStrength: {x: 12, y: 12, z: 12}
   shakeVibrato: 6
-  shakeDuration: 0.6
 --- !u!1 &2240217968776451120
 GameObject:
   m_ObjectHideFlags: 0
@@ -369,9 +370,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b1becd26897c6e4dbe5fcfacab0f9e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  UI_TweenExecuteMode: 3
+  tweenDuration: 0.6
   jumpHeight: 18
   jumpPower: 10
-  jumpDuration: 0.6
 --- !u!114 &260857270051422389
 MonoBehaviour:
   m_ObjectHideFlags: 0

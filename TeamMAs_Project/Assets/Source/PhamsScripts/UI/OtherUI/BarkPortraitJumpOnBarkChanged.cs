@@ -67,9 +67,9 @@ namespace TeamMAsTD
             {
                 if (textMeshProUGUI.text != textMeshProText)
                 {
-                    UI_JumpFX.ProcessUIJump();
+                    UI_JumpFX.RunTween();
 
-                    if (parentUIShakeFx) parentUIShakeFx.ProcessUIShake();
+                    if (parentUIShakeFx) parentUIShakeFx.RunTween();
 
                     textMeshProText = textMeshProUGUI.text;
                 }

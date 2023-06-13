@@ -12,8 +12,6 @@ namespace TeamMAsTD
         [Header("UI Hover Expand Settings")]
         [SerializeField] private float expandValue = 1.0f;
 
-        [SerializeField] private float expandDuration = 0.25f;
-
         //INTERNALS........................................................
 
         private Vector2 baseSizeDelta;
@@ -25,16 +23,22 @@ namespace TeamMAsTD
             baseSizeDelta = rectTransform.sizeDelta;
         }
 
+        public override void RunTween()
+        {
+            //do nothing
+            //this is a hover tween action so tween only executes on hovered (OnPointerEnter and OnPointerExit below)
+        }
+
         public override void OnPointerEnter(PointerEventData eventData)
         {
             Vector2 expandedSize = new Vector2(baseSizeDelta.x + expandValue, baseSizeDelta.y + expandValue);
 
-            rectTransform.DOSizeDelta(expandedSize, expandDuration);
+            rectTransform.DOSizeDelta(expandedSize, tweenDuration);
         }
 
         public override void OnPointerExit(PointerEventData eventData)
         {
-            rectTransform.DOSizeDelta(baseSizeDelta, expandDuration);
+            rectTransform.DOSizeDelta(baseSizeDelta, tweenDuration);
         }
     }
 }

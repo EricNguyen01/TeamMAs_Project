@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 namespace TeamMAsTD
 {
-    public class UIJumpFx : MonoBehaviour
+    public class UIJumpFx :UITweenBase
     {
         [Header("UI Jump FX Settings")]
 
@@ -14,26 +14,25 @@ namespace TeamMAsTD
 
         [SerializeField] private float jumpPower = 1.0f;
 
-        [SerializeField] private float jumpDuration = 0.5f;
-
         //INTERNALS...............................................
-
-        private RectTransform rectTransform;
 
         private Vector2 baseAnchoredPos;
 
         private bool alreadyJumped = false;
 
-        private void Awake()
+        protected override void Awake()
         {
-            rectTransform = GetComponent<RectTransform>();
-
-            if(!rectTransform) enabled = false;
+            base.Awake();
 
             baseAnchoredPos = rectTransform.anchoredPosition;
         }
 
-        public void ProcessUIJump()
+        public override void RunTween()
+        {
+            ProcessUIJump();
+        }
+
+        protected virtual void ProcessUIJump()
         {
             if (!rectTransform || alreadyJumped) return;
 
@@ -44,9 +43,9 @@ namespace TeamMAsTD
         {
             alreadyJumped = true;
 
-            rectTransform.DOJumpAnchorPos(new Vector2(baseAnchoredPos.x, baseAnchoredPos.y + jumpHeight), jumpPower, 2, jumpDuration);
+            rectTransform.DOJumpAnchorPos(new Vector2(baseAnchoredPos.x, baseAnchoredPos.y + jumpHeight), jumpPower, 2, tweenDuration);
 
-            yield return new WaitForSeconds(jumpDuration);
+            yield return new WaitForSeconds(tweenDuration);
 
             alreadyJumped = false;
         }
