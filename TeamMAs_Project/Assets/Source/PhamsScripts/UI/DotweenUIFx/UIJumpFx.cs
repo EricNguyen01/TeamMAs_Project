@@ -14,19 +14,6 @@ namespace TeamMAsTD
 
         [SerializeField] private float jumpPower = 1.0f;
 
-        //INTERNALS...............................................
-
-        private Vector2 baseAnchoredPos;
-
-        private bool alreadyJumped = false;
-
-        protected override void Awake()
-        {
-            base.Awake();
-
-            baseAnchoredPos = rectTransform.anchoredPosition;
-        }
-
         public override void RunTween()
         {
             ProcessUIJump();
@@ -34,21 +21,20 @@ namespace TeamMAsTD
 
         protected virtual void ProcessUIJump()
         {
-            if (!rectTransform || alreadyJumped) return;
+            if (!rectTransform || alreadyPerformedTween) return;
 
             StartCoroutine(JumpCoroutine());
         }
 
         private IEnumerator JumpCoroutine()
         {
-            alreadyJumped = true;
+            alreadyPerformedTween = true;
 
             rectTransform.DOJumpAnchorPos(new Vector2(baseAnchoredPos.x, baseAnchoredPos.y + jumpHeight), jumpPower, 2, tweenDuration);
 
             yield return new WaitForSeconds(tweenDuration);
 
-            alreadyJumped = false;
+            alreadyPerformedTween = false;
         }
-
     }
 }

@@ -16,13 +16,30 @@ namespace TeamMAsTD
 
         [SerializeField] protected float tweenDuration = 0.5f;
 
+        //INTERNALS......................................................................
+
         protected RectTransform rectTransform;
+
+        protected Vector2 baseAnchoredPos;
+
+        protected Vector2 baseSizeDelta;
+
+        protected bool alreadyPerformedTween = false;
 
         protected virtual void Awake()
         {
             rectTransform = GetComponent<RectTransform>();
 
-            if (!rectTransform) enabled = false;
+            if (!rectTransform)
+            {
+                enabled = false;
+
+                return;
+            }
+
+            baseAnchoredPos = rectTransform.anchoredPosition;
+
+            baseSizeDelta = rectTransform.sizeDelta;
         }
 
         public abstract void RunTween();

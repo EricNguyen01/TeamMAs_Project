@@ -12,17 +12,6 @@ namespace TeamMAsTD
         [Header("UI Hover Expand Settings")]
         [SerializeField] private float expandValue = 1.0f;
 
-        //INTERNALS........................................................
-
-        private Vector2 baseSizeDelta;
-
-        protected override void Awake()
-        {
-            base.Awake();
-
-            baseSizeDelta = rectTransform.sizeDelta;
-        }
-
         public override void RunTween()
         {
             //do nothing

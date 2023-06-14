@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace TeamMAsTD
 {
@@ -12,13 +13,25 @@ namespace TeamMAsTD
     {
         private enum UITweenSequenceRunMode { InOrder, Simultaneously }
 
+        private struct TweenStruct
+        {
+            public UITweenBase tween;
+
+            public float startDelaySec;
+        }
+
         [Header("Tween Sequence Setup")]
 
         [SerializeField]
         private UITweenSequenceRunMode UI_TweenSequenceRunMode = UITweenSequenceRunMode.InOrder;
 
         [SerializeField]
-        private UITweenBase[] tweensInSequence;
+        private TweenStruct[] tweensInSequence;
+
+        [Header("Tween Sequence Unity Event")]
+
+        [SerializeField]
+        private UnityEvent OnTweenSequenceCompleted;
 
         //INTERNALS..............................................................................
 
@@ -44,10 +57,41 @@ namespace TeamMAsTD
 
             for(int i = 0; i < tweensInSequence.Length; i++)
             {
-                totalDuration += tweensInSequence[i].GetTweenDuration();
+                totalDuration += tweensInSequence[i].tween.GetTweenDuration();
             }
 
             return totalDuration;
+        }
+
+        private IEnumerator TweenSequenceCoroutine()
+        {
+            if (tweensInSequence == null || tweensInSequence.Length == 0) yield break;
+
+            for(int i = 0; i < tweensInSequence.Length; i++)
+            {
+                if (tweensInSequence[i].Equals(null) || !tweensInSequence[i].tween) continue;
+
+                if (tweensInSequence[i].startDelaySec > 0.0f)
+                {
+                    yield return new WaitForSeconds(tweensInSequence[i].startDelaySec);
+                }
+
+                tweensInSequence[i].tween.RunTween();
+
+                if (UI_TweenSequenceRunMode == UITweenSequenceRunMode.InOrder)
+                {
+                    yield return new WaitForSeconds(tweensInSequence[i].tween.GetTweenDuration());
+                }
+            }
+
+            OnTweenSequenceCompleted?.Invoke();
+
+            yield break;
+        }
+
+        public void RunTweenSequence()
+        {
+            StartCoroutine(TweenSequenceCoroutine());
         }
     }
 }

@@ -13,19 +13,6 @@ namespace TeamMAsTD
 
         [SerializeField] private int shakeVibrato = 5;
 
-        //INTERNALS...............................................
-
-        private Vector2 baseAnchoredPos;
-
-        private bool alreadyShook = false;
-
-        protected override void Awake()
-        {
-            base.Awake();
-
-            baseAnchoredPos = rectTransform.anchoredPosition;
-        }
-
         public override void RunTween()
         {
             ProcessUIShake();
@@ -33,20 +20,20 @@ namespace TeamMAsTD
 
         protected virtual void ProcessUIShake()
         {
-            if (!rectTransform || alreadyShook) return;
+            if (!rectTransform || alreadyPerformedTween) return;
 
             StartCoroutine(ShakeCoroutine());
         }
 
         private IEnumerator ShakeCoroutine()
         {
-            alreadyShook = true;
+            alreadyPerformedTween = true;
 
             rectTransform.DOShakeAnchorPos(tweenDuration, shakeStrength, shakeVibrato, 50.0f, false, true, ShakeRandomnessMode.Harmonic);
 
             yield return new WaitForSeconds(tweenDuration);
 
-            alreadyShook = false;
+            alreadyPerformedTween = false;
         }
     }
 }

@@ -16,17 +16,6 @@ namespace TeamMAsTD
 
         [SerializeField] private float moveDistance = 1.0f;
 
-        //INTERNALS....................................................
-
-        private Vector2 baseAnchorPos;
-
-        protected override void Awake()
-        {
-            base.Awake();
-
-            baseAnchorPos = rectTransform.anchoredPosition;
-        }
-
         public override void RunTween()
         {
             UIMoveOnClick();
@@ -44,7 +33,7 @@ namespace TeamMAsTD
 
         public override void OnPointerExit(PointerEventData eventData)
         {
-            rectTransform.DOAnchorPos(baseAnchorPos, tweenDuration);
+            rectTransform.DOAnchorPos(baseAnchoredPos, tweenDuration);
         }
 
         protected Vector2 FinalMoveToPosition()
@@ -55,16 +44,16 @@ namespace TeamMAsTD
                     return Vector2.zero;
 
                 case UIHoverMoveDir.Up:
-                    return new Vector2(baseAnchorPos.x, baseAnchorPos.y + moveDistance);
+                    return new Vector2(baseAnchoredPos.x, baseAnchoredPos.y + moveDistance);
 
                 case UIHoverMoveDir.Down:
-                    return new Vector2(baseAnchorPos.x, baseAnchorPos.y - moveDistance);
+                    return new Vector2(baseAnchoredPos.x, baseAnchoredPos.y - moveDistance);
 
                 case UIHoverMoveDir.Left:
-                    return new Vector2(baseAnchorPos.x - moveDistance, baseAnchorPos.y);
+                    return new Vector2(baseAnchoredPos.x - moveDistance, baseAnchoredPos.y);
 
                 case UIHoverMoveDir.Right:
-                    return new Vector2(baseAnchorPos.x + moveDistance, baseAnchorPos.y);
+                    return new Vector2(baseAnchoredPos.x + moveDistance, baseAnchoredPos.y);
 
                 default: return Vector2.zero;
             }
