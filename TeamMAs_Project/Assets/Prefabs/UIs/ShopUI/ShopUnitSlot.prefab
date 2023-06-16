@@ -654,6 +654,7 @@ GameObject:
   - component: {fileID: 4167288734198251908}
   - component: {fileID: 1485040860487661476}
   - component: {fileID: 3977114684487922220}
+  - component: {fileID: 4405750141554077907}
   m_Layer: 5
   m_Name: PlantTooltipButton
   m_TagString: Untagged
@@ -796,6 +797,22 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 1
+--- !u!114 &4405750141554077907
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3220088215175911581}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UI_TweenExecuteMode: 1
+  tweenDuration: 0.6
+  expandValue: 4
+  expandStartDelay: 0
 --- !u!1 &3715392631093969825
 GameObject:
   m_ObjectHideFlags: 0
@@ -1085,4 +1102,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UI_TweenExecuteMode: 1
+  tweenDuration: 0.5
   expandValue: 50
+  expandStartDelay: 0

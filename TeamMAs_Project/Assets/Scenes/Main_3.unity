@@ -297,6 +297,7 @@ MonoBehaviour:
   UI_TweenExecuteMode: 0
   tweenDuration: 0.5
   expandValue: 0.25
+  expandStartDelay: 0
 --- !u!1 &6581730
 GameObject:
   m_ObjectHideFlags: 0
@@ -551,6 +552,7 @@ MonoBehaviour:
   UI_TweenExecuteMode: 0
   tweenDuration: 0.5
   expandValue: 0.25
+  expandStartDelay: 0
 --- !u!1 &12696937
 GameObject:
   m_ObjectHideFlags: 0
@@ -1207,6 +1209,7 @@ MonoBehaviour:
   UI_TweenExecuteMode: 0
   tweenDuration: 0.5
   expandValue: 0.25
+  expandStartDelay: 0
 --- !u!1 &24536982
 GameObject:
   m_ObjectHideFlags: 0
@@ -1381,6 +1384,7 @@ MonoBehaviour:
   UI_TweenExecuteMode: 0
   tweenDuration: 0.5
   expandValue: 0.25
+  expandStartDelay: 0
 --- !u!1 &30385842
 GameObject:
   m_ObjectHideFlags: 0
@@ -1555,6 +1559,7 @@ MonoBehaviour:
   UI_TweenExecuteMode: 0
   tweenDuration: 0.5
   expandValue: 0.25
+  expandStartDelay: 0
 --- !u!1 &36305204
 GameObject:
   m_ObjectHideFlags: 0
@@ -3062,6 +3067,7 @@ MonoBehaviour:
   UI_TweenExecuteMode: 0
   tweenDuration: 0.5
   expandValue: 0.25
+  expandStartDelay: 0
 --- !u!1 &80206221
 GameObject:
   m_ObjectHideFlags: 0
@@ -3832,6 +3838,7 @@ MonoBehaviour:
   UI_TweenExecuteMode: 0
   tweenDuration: 0.5
   expandValue: 0.25
+  expandStartDelay: 0
 --- !u!1 &105890045
 GameObject:
   m_ObjectHideFlags: 0
@@ -4398,6 +4405,7 @@ MonoBehaviour:
   UI_TweenExecuteMode: 0
   tweenDuration: 0.5
   expandValue: 0.25
+  expandStartDelay: 0
 --- !u!1 &114095313
 GameObject:
   m_ObjectHideFlags: 0
@@ -4548,6 +4556,7 @@ MonoBehaviour:
   UI_TweenExecuteMode: 0
   tweenDuration: 0.5
   expandValue: 0.25
+  expandStartDelay: 0
 --- !u!1 &117016539
 GameObject:
   m_ObjectHideFlags: 0
@@ -6588,6 +6597,7 @@ MonoBehaviour:
   UI_TweenExecuteMode: 0
   tweenDuration: 0.5
   expandValue: 0.25
+  expandStartDelay: 0
 --- !u!1 &197177027
 GameObject:
   m_ObjectHideFlags: 0
@@ -7964,6 +7974,7 @@ MonoBehaviour:
   UI_TweenExecuteMode: 0
   tweenDuration: 0.5
   expandValue: 0.25
+  expandStartDelay: 0
 --- !u!1 &263047187
 GameObject:
   m_ObjectHideFlags: 0
@@ -8114,6 +8125,7 @@ MonoBehaviour:
   UI_TweenExecuteMode: 0
   tweenDuration: 0.5
   expandValue: 0.25
+  expandStartDelay: 0
 --- !u!1 &263894978
 GameObject:
   m_ObjectHideFlags: 0
@@ -8798,6 +8810,7 @@ MonoBehaviour:
   UI_TweenExecuteMode: 0
   tweenDuration: 0.5
   expandValue: 0.25
+  expandStartDelay: 0
 --- !u!1 &327709969
 GameObject:
   m_ObjectHideFlags: 0
@@ -9109,6 +9122,7 @@ MonoBehaviour:
   UI_TweenExecuteMode: 0
   tweenDuration: 0.5
   expandValue: 0.25
+  expandStartDelay: 0
 --- !u!1 &339276305
 GameObject:
   m_ObjectHideFlags: 0
@@ -9259,6 +9273,7 @@ MonoBehaviour:
   UI_TweenExecuteMode: 0
   tweenDuration: 0.5
   expandValue: 0.25
+  expandStartDelay: 0
 --- !u!1 &340959689
 GameObject:
   m_ObjectHideFlags: 0
@@ -9801,6 +9816,7 @@ MonoBehaviour:
   UI_TweenExecuteMode: 0
   tweenDuration: 0.5
   expandValue: 0.25
+  expandStartDelay: 0
 --- !u!1 &350360497
 GameObject:
   m_ObjectHideFlags: 0
@@ -10764,6 +10780,7 @@ MonoBehaviour:
   UI_TweenExecuteMode: 0
   tweenDuration: 0.5
   expandValue: 0.25
+  expandStartDelay: 0
 --- !u!1 &422080711
 GameObject:
   m_ObjectHideFlags: 0
@@ -11125,6 +11142,7 @@ MonoBehaviour:
   UI_TweenExecuteMode: 0
   tweenDuration: 0.5
   expandValue: 0.25
+  expandStartDelay: 0
 --- !u!1 &434893823
 GameObject:
   m_ObjectHideFlags: 0
@@ -11566,6 +11584,7 @@ MonoBehaviour:
   UI_TweenExecuteMode: 0
   tweenDuration: 0.5
   expandValue: 0.25
+  expandStartDelay: 0
 --- !u!1 &447654945
 GameObject:
   m_ObjectHideFlags: 0
@@ -13691,6 +13710,7 @@ MonoBehaviour:
   UI_TweenExecuteMode: 0
   tweenDuration: 0.5
   expandValue: 0.25
+  expandStartDelay: 0
 --- !u!1 &548260351
 GameObject:
   m_ObjectHideFlags: 0
@@ -14625,6 +14645,7 @@ MonoBehaviour:
   UI_TweenExecuteMode: 0
   tweenDuration: 0.5
   expandValue: 0.25
+  expandStartDelay: 0
 --- !u!1 &556831813
 GameObject:
   m_ObjectHideFlags: 0
@@ -15012,6 +15033,7 @@ MonoBehaviour:
   UI_TweenExecuteMode: 0
   tweenDuration: 0.5
   expandValue: 0.25
+  expandStartDelay: 0
 --- !u!1 &576190322
 GameObject:
   m_ObjectHideFlags: 0
@@ -15622,6 +15644,7 @@ MonoBehaviour:
   UI_TweenExecuteMode: 0
   tweenDuration: 0.5
   expandValue: 0.25
+  expandStartDelay: 0
 --- !u!1 &604943270 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7663563580719845990, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
@@ -16272,6 +16295,7 @@ MonoBehaviour:
   UI_TweenExecuteMode: 0
   tweenDuration: 0.5
   expandValue: 0.25
+  expandStartDelay: 0
 --- !u!1 &669428822
 GameObject:
   m_ObjectHideFlags: 0
@@ -16446,6 +16470,7 @@ MonoBehaviour:
   UI_TweenExecuteMode: 0
   tweenDuration: 0.5
   expandValue: 0.25
+  expandStartDelay: 0
 --- !u!1 &677767238
 GameObject:
   m_ObjectHideFlags: 0
@@ -17170,6 +17195,7 @@ MonoBehaviour:
   UI_TweenExecuteMode: 0
   tweenDuration: 0.5
   expandValue: 0.25
+  expandStartDelay: 0
 --- !u!1 &696377659
 GameObject:
   m_ObjectHideFlags: 0
@@ -18118,6 +18144,7 @@ MonoBehaviour:
   UI_TweenExecuteMode: 0
   tweenDuration: 0.5
   expandValue: 0.25
+  expandStartDelay: 0
 --- !u!1 &712099943
 GameObject:
   m_ObjectHideFlags: 0
@@ -18292,6 +18319,7 @@ MonoBehaviour:
   UI_TweenExecuteMode: 0
   tweenDuration: 0.5
   expandValue: 0.25
+  expandStartDelay: 0
 --- !u!1 &712307764
 GameObject:
   m_ObjectHideFlags: 0
@@ -18858,6 +18886,7 @@ MonoBehaviour:
   UI_TweenExecuteMode: 0
   tweenDuration: 0.5
   expandValue: 0.25
+  expandStartDelay: 0
 --- !u!1 &733378994
 GameObject:
   m_ObjectHideFlags: 0
@@ -20912,6 +20941,7 @@ MonoBehaviour:
   UI_TweenExecuteMode: 0
   tweenDuration: 0.5
   expandValue: 0.25
+  expandStartDelay: 0
 --- !u!1 &790578195
 GameObject:
   m_ObjectHideFlags: 0
@@ -21138,6 +21168,7 @@ MonoBehaviour:
   UI_TweenExecuteMode: 0
   tweenDuration: 0.5
   expandValue: 0.25
+  expandStartDelay: 0
 --- !u!1 &801106473
 GameObject:
   m_ObjectHideFlags: 0
@@ -21392,6 +21423,7 @@ MonoBehaviour:
   UI_TweenExecuteMode: 0
   tweenDuration: 0.5
   expandValue: 0.25
+  expandStartDelay: 0
 --- !u!1 &806193131
 GameObject:
   m_ObjectHideFlags: 0
@@ -21642,6 +21674,7 @@ MonoBehaviour:
   UI_TweenExecuteMode: 0
   tweenDuration: 0.5
   expandValue: 0.25
+  expandStartDelay: 0
 --- !u!1 &812469415
 GameObject:
   m_ObjectHideFlags: 0
@@ -21982,6 +22015,7 @@ MonoBehaviour:
   UI_TweenExecuteMode: 0
   tweenDuration: 0.5
   expandValue: 0.25
+  expandStartDelay: 0
 --- !u!1 &826246790
 GameObject:
   m_ObjectHideFlags: 0
@@ -22224,6 +22258,7 @@ MonoBehaviour:
   UI_TweenExecuteMode: 0
   tweenDuration: 0.5
   expandValue: 0.25
+  expandStartDelay: 0
 --- !u!1 &840555210
 GameObject:
   m_ObjectHideFlags: 0
@@ -22790,6 +22825,7 @@ MonoBehaviour:
   UI_TweenExecuteMode: 0
   tweenDuration: 0.5
   expandValue: 0.25
+  expandStartDelay: 0
 --- !u!1 &845359696
 GameObject:
   m_ObjectHideFlags: 0
@@ -24036,6 +24072,7 @@ MonoBehaviour:
   UI_TweenExecuteMode: 0
   tweenDuration: 0.5
   expandValue: 0.25
+  expandStartDelay: 0
 --- !u!1 &886245908
 GameObject:
   m_ObjectHideFlags: 0
@@ -24186,6 +24223,7 @@ MonoBehaviour:
   UI_TweenExecuteMode: 0
   tweenDuration: 0.5
   expandValue: 0.25
+  expandStartDelay: 0
 --- !u!1 &889641572
 GameObject:
   m_ObjectHideFlags: 0
@@ -24474,6 +24512,7 @@ MonoBehaviour:
   UI_TweenExecuteMode: 0
   tweenDuration: 0.5
   expandValue: 0.25
+  expandStartDelay: 0
 --- !u!1 &898950360
 GameObject:
   m_ObjectHideFlags: 0
@@ -24624,6 +24663,7 @@ MonoBehaviour:
   UI_TweenExecuteMode: 0
   tweenDuration: 0.5
   expandValue: 0.25
+  expandStartDelay: 0
 --- !u!1 &902644738
 GameObject:
   m_ObjectHideFlags: 0
@@ -24888,6 +24928,7 @@ MonoBehaviour:
   UI_TweenExecuteMode: 0
   tweenDuration: 0.5
   expandValue: 0.25
+  expandStartDelay: 0
 --- !u!1 &905116812
 GameObject:
   m_ObjectHideFlags: 0
@@ -25334,6 +25375,7 @@ MonoBehaviour:
   UI_TweenExecuteMode: 0
   tweenDuration: 0.5
   expandValue: 0.25
+  expandStartDelay: 0
 --- !u!1 &923003476
 GameObject:
   m_ObjectHideFlags: 0
@@ -25508,6 +25550,7 @@ MonoBehaviour:
   UI_TweenExecuteMode: 0
   tweenDuration: 0.5
   expandValue: 0.25
+  expandStartDelay: 0
 --- !u!1 &924808186
 GameObject:
   m_ObjectHideFlags: 0
@@ -25793,6 +25836,7 @@ MonoBehaviour:
   UI_TweenExecuteMode: 0
   tweenDuration: 0.5
   expandValue: 0.25
+  expandStartDelay: 0
 --- !u!1 &929396797 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7761321396890096639, guid: 38bc26e58d6581b4f926aa6fe208ddad, type: 3}
@@ -26138,6 +26182,7 @@ MonoBehaviour:
   UI_TweenExecuteMode: 0
   tweenDuration: 0.5
   expandValue: 0.25
+  expandStartDelay: 0
 --- !u!1 &967265388
 GameObject:
   m_ObjectHideFlags: 0
@@ -26719,6 +26764,7 @@ MonoBehaviour:
   UI_TweenExecuteMode: 0
   tweenDuration: 0.5
   expandValue: 0.25
+  expandStartDelay: 0
 --- !u!1 &979564347
 GameObject:
   m_ObjectHideFlags: 0
@@ -27261,6 +27307,7 @@ MonoBehaviour:
   UI_TweenExecuteMode: 0
   tweenDuration: 0.5
   expandValue: 0.25
+  expandStartDelay: 0
 --- !u!1 &989619131
 GameObject:
   m_ObjectHideFlags: 0
@@ -27435,6 +27482,7 @@ MonoBehaviour:
   UI_TweenExecuteMode: 0
   tweenDuration: 0.5
   expandValue: 0.25
+  expandStartDelay: 0
 --- !u!1 &992945199
 GameObject:
   m_ObjectHideFlags: 0
@@ -27585,6 +27633,7 @@ MonoBehaviour:
   UI_TweenExecuteMode: 0
   tweenDuration: 0.5
   expandValue: 0.25
+  expandStartDelay: 0
 --- !u!1 &996015470 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1339863086565876900, guid: 76c56936b5589c44ca64edd249b2eb3a, type: 3}
@@ -28655,6 +28704,7 @@ MonoBehaviour:
   UI_TweenExecuteMode: 0
   tweenDuration: 0.5
   expandValue: 0.25
+  expandStartDelay: 0
 --- !u!1 &1007270509
 GameObject:
   m_ObjectHideFlags: 0
@@ -29004,6 +29054,7 @@ MonoBehaviour:
   UI_TweenExecuteMode: 0
   tweenDuration: 0.5
   expandValue: 0.25
+  expandStartDelay: 0
 --- !u!1 &1018865742
 GameObject:
   m_ObjectHideFlags: 0
@@ -29452,6 +29503,7 @@ MonoBehaviour:
   UI_TweenExecuteMode: 0
   tweenDuration: 0.5
   expandValue: 0.25
+  expandStartDelay: 0
 --- !u!114 &1039532475 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8024300418989073095, guid: be2a0ac942afe8841bf8cf4a38447cca, type: 3}
@@ -29618,6 +29670,7 @@ MonoBehaviour:
   UI_TweenExecuteMode: 0
   tweenDuration: 0.5
   expandValue: 0.25
+  expandStartDelay: 0
 --- !u!1 &1050068446
 GameObject:
   m_ObjectHideFlags: 0
@@ -30039,6 +30092,7 @@ MonoBehaviour:
   UI_TweenExecuteMode: 0
   tweenDuration: 0.5
   expandValue: 0.25
+  expandStartDelay: 0
 --- !u!1 &1079170317
 GameObject:
   m_ObjectHideFlags: 0
@@ -33081,6 +33135,7 @@ MonoBehaviour:
   UI_TweenExecuteMode: 0
   tweenDuration: 0.5
   expandValue: 0.25
+  expandStartDelay: 0
 --- !u!1 &1183101711
 GameObject:
   m_ObjectHideFlags: 0
@@ -33366,6 +33421,7 @@ MonoBehaviour:
   UI_TweenExecuteMode: 0
   tweenDuration: 0.5
   expandValue: 0.25
+  expandStartDelay: 0
 --- !u!1 &1185341619
 GameObject:
   m_ObjectHideFlags: 0
@@ -33540,6 +33596,7 @@ MonoBehaviour:
   UI_TweenExecuteMode: 0
   tweenDuration: 0.5
   expandValue: 0.25
+  expandStartDelay: 0
 --- !u!1 &1186741398
 GameObject:
   m_ObjectHideFlags: 0
@@ -33963,6 +34020,7 @@ MonoBehaviour:
   UI_TweenExecuteMode: 0
   tweenDuration: 0.5
   expandValue: 0.25
+  expandStartDelay: 0
 --- !u!1 &1203595860
 GameObject:
   m_ObjectHideFlags: 0
@@ -34248,6 +34306,7 @@ MonoBehaviour:
   UI_TweenExecuteMode: 0
   tweenDuration: 0.5
   expandValue: 0.25
+  expandStartDelay: 0
 --- !u!1 &1220095774
 GameObject:
   m_ObjectHideFlags: 0
@@ -36686,6 +36745,7 @@ MonoBehaviour:
   UI_TweenExecuteMode: 0
   tweenDuration: 0.5
   expandValue: 0.25
+  expandStartDelay: 0
 --- !u!1 &1286921733
 GameObject:
   m_ObjectHideFlags: 0
@@ -36860,6 +36920,7 @@ MonoBehaviour:
   UI_TweenExecuteMode: 0
   tweenDuration: 0.5
   expandValue: 0.25
+  expandStartDelay: 0
 --- !u!1 &1287577936
 GameObject:
   m_ObjectHideFlags: 0
@@ -37281,6 +37342,7 @@ MonoBehaviour:
   UI_TweenExecuteMode: 0
   tweenDuration: 0.5
   expandValue: 0.25
+  expandStartDelay: 0
 --- !u!1 &1302779612
 GameObject:
   m_ObjectHideFlags: 0
@@ -37693,6 +37755,7 @@ MonoBehaviour:
   UI_TweenExecuteMode: 0
   tweenDuration: 0.5
   expandValue: 0.25
+  expandStartDelay: 0
 --- !u!1 &1312762810
 GameObject:
   m_ObjectHideFlags: 0
@@ -38217,6 +38280,7 @@ MonoBehaviour:
   UI_TweenExecuteMode: 0
   tweenDuration: 0.5
   expandValue: 0.25
+  expandStartDelay: 0
 --- !u!1 &1324307679
 GameObject:
   m_ObjectHideFlags: 0
@@ -39543,6 +39607,7 @@ MonoBehaviour:
   UI_TweenExecuteMode: 0
   tweenDuration: 0.5
   expandValue: 0.25
+  expandStartDelay: 0
 --- !u!1 &1383009402
 GameObject:
   m_ObjectHideFlags: 0
@@ -39928,6 +39993,7 @@ MonoBehaviour:
   UI_TweenExecuteMode: 0
   tweenDuration: 0.5
   expandValue: 0.25
+  expandStartDelay: 0
 --- !u!1 &1391704923
 GameObject:
   m_ObjectHideFlags: 0
@@ -41072,6 +41138,7 @@ MonoBehaviour:
   UI_TweenExecuteMode: 0
   tweenDuration: 0.5
   expandValue: 0.25
+  expandStartDelay: 0
 --- !u!1 &1435873235
 GameObject:
   m_ObjectHideFlags: 0
@@ -43254,6 +43321,7 @@ MonoBehaviour:
   UI_TweenExecuteMode: 0
   tweenDuration: 0.5
   expandValue: 0.25
+  expandStartDelay: 0
 --- !u!1 &1466278463
 GameObject:
   m_ObjectHideFlags: 0
@@ -43480,6 +43548,7 @@ MonoBehaviour:
   UI_TweenExecuteMode: 0
   tweenDuration: 0.5
   expandValue: 0.25
+  expandStartDelay: 0
 --- !u!1 &1470944022
 GameObject:
   m_ObjectHideFlags: 0
@@ -44972,6 +45041,7 @@ MonoBehaviour:
   UI_TweenExecuteMode: 0
   tweenDuration: 0.5
   expandValue: 0.25
+  expandStartDelay: 0
 --- !u!1 &1501252048
 GameObject:
   m_ObjectHideFlags: 0
@@ -45281,6 +45351,7 @@ MonoBehaviour:
   UI_TweenExecuteMode: 0
   tweenDuration: 0.5
   expandValue: 0.25
+  expandStartDelay: 0
 --- !u!1 &1514582679
 GameObject:
   m_ObjectHideFlags: 0
@@ -47953,6 +48024,7 @@ MonoBehaviour:
   UI_TweenExecuteMode: 0
   tweenDuration: 0.5
   expandValue: 0.25
+  expandStartDelay: 0
 --- !u!1 &1612599134
 GameObject:
   m_ObjectHideFlags: 0
@@ -49097,6 +49169,7 @@ MonoBehaviour:
   UI_TweenExecuteMode: 0
   tweenDuration: 0.5
   expandValue: 0.25
+  expandStartDelay: 0
 --- !u!1 &1636299093
 GameObject:
   m_ObjectHideFlags: 0
@@ -49710,6 +49783,7 @@ MonoBehaviour:
   UI_TweenExecuteMode: 0
   tweenDuration: 0.5
   expandValue: 0.25
+  expandStartDelay: 0
 --- !u!1 &1662203883
 GameObject:
   m_ObjectHideFlags: 0
@@ -50780,6 +50854,7 @@ MonoBehaviour:
   UI_TweenExecuteMode: 0
   tweenDuration: 0.5
   expandValue: 0.25
+  expandStartDelay: 0
 --- !u!1 &1688630476
 GameObject:
   m_ObjectHideFlags: 0
@@ -51006,6 +51081,7 @@ MonoBehaviour:
   UI_TweenExecuteMode: 0
   tweenDuration: 0.5
   expandValue: 0.25
+  expandStartDelay: 0
 --- !u!1 &1705588422
 GameObject:
   m_ObjectHideFlags: 0
@@ -51572,6 +51648,7 @@ MonoBehaviour:
   UI_TweenExecuteMode: 0
   tweenDuration: 0.5
   expandValue: 0.25
+  expandStartDelay: 0
 --- !u!1 &1711441004
 GameObject:
   m_ObjectHideFlags: 0
@@ -52698,6 +52775,7 @@ MonoBehaviour:
   UI_TweenExecuteMode: 0
   tweenDuration: 0.5
   expandValue: 0.25
+  expandStartDelay: 0
 --- !u!1 &1747731287
 GameObject:
   m_ObjectHideFlags: 0
@@ -53510,6 +53588,7 @@ MonoBehaviour:
   UI_TweenExecuteMode: 0
   tweenDuration: 0.5
   expandValue: 0.25
+  expandStartDelay: 0
 --- !u!1 &1765167584
 GameObject:
   m_ObjectHideFlags: 0
@@ -53684,11 +53763,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4849456886206888304, guid: 312d4e6a02524d141bd8cd5c5b7b5206, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 7.82
+      value: 7.65
       objectReference: {fileID: 0}
     - target: {fileID: 4849456886206888304, guid: 312d4e6a02524d141bd8cd5c5b7b5206, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.65
+      value: -3.06
       objectReference: {fileID: 0}
     - target: {fileID: 4849456886206888304, guid: 312d4e6a02524d141bd8cd5c5b7b5206, type: 3}
       propertyPath: m_LocalPosition.z
@@ -54341,6 +54420,7 @@ MonoBehaviour:
   UI_TweenExecuteMode: 0
   tweenDuration: 0.5
   expandValue: 0.25
+  expandStartDelay: 0
 --- !u!1 &1817200644
 GameObject:
   m_ObjectHideFlags: 0
@@ -54650,6 +54730,7 @@ MonoBehaviour:
   UI_TweenExecuteMode: 0
   tweenDuration: 0.5
   expandValue: 0.25
+  expandStartDelay: 0
 --- !u!1 &1818967926
 GameObject:
   m_ObjectHideFlags: 0
@@ -55011,6 +55092,7 @@ MonoBehaviour:
   UI_TweenExecuteMode: 0
   tweenDuration: 0.5
   expandValue: 0.25
+  expandStartDelay: 0
 --- !u!1 &1822535765
 GameObject:
   m_ObjectHideFlags: 0
@@ -55777,6 +55859,7 @@ MonoBehaviour:
   UI_TweenExecuteMode: 0
   tweenDuration: 0.5
   expandValue: 0.25
+  expandStartDelay: 0
 --- !u!1 &1841357267 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1339863086565876900, guid: 76c56936b5589c44ca64edd249b2eb3a, type: 3}
@@ -56043,6 +56126,7 @@ MonoBehaviour:
   UI_TweenExecuteMode: 0
   tweenDuration: 0.5
   expandValue: 0.25
+  expandStartDelay: 0
 --- !u!1 &1858257629
 GameObject:
   m_ObjectHideFlags: 0
@@ -56404,6 +56488,7 @@ MonoBehaviour:
   UI_TweenExecuteMode: 0
   tweenDuration: 0.5
   expandValue: 0.25
+  expandStartDelay: 0
 --- !u!1 &1877727360
 GameObject:
   m_ObjectHideFlags: 0
@@ -56800,6 +56885,7 @@ MonoBehaviour:
   UI_TweenExecuteMode: 0
   tweenDuration: 0.5
   expandValue: 0.25
+  expandStartDelay: 0
 --- !u!1 &1889125672
 GameObject:
   m_ObjectHideFlags: 0
@@ -57661,6 +57747,7 @@ MonoBehaviour:
   UI_TweenExecuteMode: 0
   tweenDuration: 0.5
   expandValue: 0.25
+  expandStartDelay: 0
 --- !u!1 &1906350236
 GameObject:
   m_ObjectHideFlags: 0
@@ -58337,6 +58424,7 @@ MonoBehaviour:
   UI_TweenExecuteMode: 0
   tweenDuration: 0.5
   expandValue: 0.25
+  expandStartDelay: 0
 --- !u!1 &1923448482
 GameObject:
   m_ObjectHideFlags: 0
@@ -59533,6 +59621,7 @@ MonoBehaviour:
   UI_TweenExecuteMode: 0
   tweenDuration: 0.5
   expandValue: 0.25
+  expandStartDelay: 0
 --- !u!1 &1955639775
 GameObject:
   m_ObjectHideFlags: 0
@@ -60024,6 +60113,7 @@ MonoBehaviour:
   UI_TweenExecuteMode: 0
   tweenDuration: 0.5
   expandValue: 0.25
+  expandStartDelay: 0
 --- !u!1 &1983007210
 GameObject:
   m_ObjectHideFlags: 0
@@ -60174,6 +60264,7 @@ MonoBehaviour:
   UI_TweenExecuteMode: 0
   tweenDuration: 0.5
   expandValue: 0.25
+  expandStartDelay: 0
 --- !u!1 &1997207009
 GameObject:
   m_ObjectHideFlags: 0
@@ -60324,6 +60415,7 @@ MonoBehaviour:
   UI_TweenExecuteMode: 0
   tweenDuration: 0.5
   expandValue: 0.25
+  expandStartDelay: 0
 --- !u!1 &2000986108
 GameObject:
   m_ObjectHideFlags: 0
@@ -62197,6 +62289,7 @@ MonoBehaviour:
   UI_TweenExecuteMode: 0
   tweenDuration: 0.5
   expandValue: 0.25
+  expandStartDelay: 0
 --- !u!1 &2057019667
 GameObject:
   m_ObjectHideFlags: 0
@@ -62427,6 +62520,7 @@ MonoBehaviour:
   UI_TweenExecuteMode: 0
   tweenDuration: 0.5
   expandValue: 0.25
+  expandStartDelay: 0
 --- !u!1 &2059737618
 GameObject:
   m_ObjectHideFlags: 0
@@ -62969,6 +63063,7 @@ MonoBehaviour:
   UI_TweenExecuteMode: 0
   tweenDuration: 0.5
   expandValue: 0.25
+  expandStartDelay: 0
 --- !u!1 &2065378675
 GameObject:
   m_ObjectHideFlags: 0
@@ -64222,6 +64317,7 @@ MonoBehaviour:
   UI_TweenExecuteMode: 0
   tweenDuration: 0.5
   expandValue: 0.25
+  expandStartDelay: 0
 --- !u!1 &2093291935
 GameObject:
   m_ObjectHideFlags: 0
@@ -64531,6 +64627,7 @@ MonoBehaviour:
   UI_TweenExecuteMode: 0
   tweenDuration: 0.5
   expandValue: 0.25
+  expandStartDelay: 0
 --- !u!1 &2103963342
 GameObject:
   m_ObjectHideFlags: 0
@@ -65525,6 +65622,7 @@ MonoBehaviour:
   UI_TweenExecuteMode: 0
   tweenDuration: 0.5
   expandValue: 0.25
+  expandStartDelay: 0
 --- !u!1 &2123410193
 GameObject:
   m_ObjectHideFlags: 0
@@ -65699,6 +65797,7 @@ MonoBehaviour:
   UI_TweenExecuteMode: 0
   tweenDuration: 0.5
   expandValue: 0.25
+  expandStartDelay: 0
 --- !u!1 &2125657852
 GameObject:
   m_ObjectHideFlags: 0
@@ -66636,6 +66735,7 @@ MonoBehaviour:
   UI_TweenExecuteMode: 0
   tweenDuration: 0.5
   expandValue: 0.25
+  expandStartDelay: 0
 --- !u!1 &2144636676
 GameObject:
   m_ObjectHideFlags: 0
@@ -68328,6 +68428,18 @@ PrefabInstance:
     - target: {fileID: 7663563580719845984, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 7663563581319725106, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.6801758
+      objectReference: {fileID: 0}
+    - target: {fileID: 7663563581319725106, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -0.15002441
+      objectReference: {fileID: 0}
+    - target: {fileID: 7663563581489115492, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.4199829
       objectReference: {fileID: 0}
     - target: {fileID: 7663563581489115495, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
       propertyPath: gameResourceUIStatPopupSpawner

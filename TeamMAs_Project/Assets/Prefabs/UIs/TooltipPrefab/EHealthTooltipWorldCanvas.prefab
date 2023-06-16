@@ -96,7 +96,7 @@ MonoBehaviour:
   m_fontSize: 24
   m_fontSizeBase: 24
   m_fontWeight: 400
-  m_enableAutoSizing: 0
+  m_enableAutoSizing: 1
   m_fontSizeMin: 1
   m_fontSizeMax: 25
   m_fontStyle: 0
@@ -274,7 +274,7 @@ MonoBehaviour:
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!95 &4694755098197839599
 Animator:
-  serializedVersion: 4
+  serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -291,7 +291,8 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &2941403298422026914
 GameObject:
   m_ObjectHideFlags: 0
@@ -303,6 +304,7 @@ GameObject:
   - component: {fileID: 3741117190349375839}
   - component: {fileID: 5666353629100018574}
   - component: {fileID: 5274419416669225931}
+  - component: {fileID: 6716186120546400265}
   m_Layer: 5
   m_Name: EHealthTooltipInfoImage
   m_TagString: Untagged
@@ -370,6 +372,22 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &6716186120546400265
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2941403298422026914}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UI_TweenExecuteMode: 3
+  tweenDuration: 0.8
+  expandValue: 14
+  expandStartDelay: 0
 --- !u!1 &3637978333142235788
 GameObject:
   m_ObjectHideFlags: 0
@@ -466,7 +484,7 @@ MonoBehaviour:
   m_fontSize: 24
   m_fontSizeBase: 24
   m_fontWeight: 400
-  m_enableAutoSizing: 0
+  m_enableAutoSizing: 1
   m_fontSizeMin: 2
   m_fontSizeMax: 20
   m_fontStyle: 0
@@ -565,6 +583,7 @@ GameObject:
   - component: {fileID: 4600005315117720946}
   - component: {fileID: 5228592918958325878}
   - component: {fileID: 1689315915707581034}
+  - component: {fileID: 3779562304928949456}
   m_Layer: 5
   m_Name: GotItButton
   m_TagString: Untagged
@@ -730,6 +749,22 @@ MonoBehaviour:
   OverrideMinDistance: 1
   OverrideMaxDistance: 20
   hasTriggered: 0
+--- !u!114 &3779562304928949456
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6601015110175591328}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UI_TweenExecuteMode: 3
+  tweenDuration: 0.8
+  expandValue: 14
+  expandStartDelay: 0
 --- !u!1 &7564045068594322292
 GameObject:
   m_ObjectHideFlags: 0
@@ -815,7 +850,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
+  m_PresetInfoIsWorld: 1
 --- !u!114 &5715589965781146489
 MonoBehaviour:
   m_ObjectHideFlags: 0

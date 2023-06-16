@@ -7,7 +7,7 @@ namespace TeamMAsTD
 {
     public abstract class UITweenBase : MonoBehaviour
     {
-        protected enum UITweenExecuteMode { ClickOnly, HoverOnly, ClickAndHover, Internal }
+        protected enum UITweenExecuteMode { ClickOnly, HoverOnly, ClickAndHover, Auto }
 
         [Header("UI Tween General Settings")]
 
@@ -40,6 +40,21 @@ namespace TeamMAsTD
             baseAnchoredPos = rectTransform.anchoredPosition;
 
             baseSizeDelta = rectTransform.sizeDelta;
+        }
+
+        protected virtual void OnEnable() 
+        { 
+
+        }
+
+        protected virtual void OnDisable() 
+        {
+
+        }
+
+        protected virtual void Start()
+        {
+
         }
 
         public abstract void RunTween();
