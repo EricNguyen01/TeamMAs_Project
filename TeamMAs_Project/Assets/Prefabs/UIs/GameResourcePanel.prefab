@@ -87,8 +87,9 @@ GameObject:
   - component: {fileID: 1618982120}
   - component: {fileID: 1618982122}
   - component: {fileID: 1618982121}
+  - component: {fileID: 5599481201413161452}
   m_Layer: 5
-  m_Name: Image
+  m_Name: WaterCreditIcon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -152,6 +153,22 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &5599481201413161452
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1618982119}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f83716641ba6d2f49a119a23d9ef7c8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UI_TweenExecuteMode: 4
+  tweenDuration: 0.5
+  shakeStrength: {x: 4, y: 14, z: 0}
+  shakeVibrato: 7
 --- !u!1 &1988533623866361764
 GameObject:
   m_ObjectHideFlags: 0
@@ -170,7 +187,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &5883281028228278699
 RectTransform:
   m_ObjectHideFlags: 0

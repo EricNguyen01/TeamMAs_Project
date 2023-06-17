@@ -7,11 +7,13 @@ namespace TeamMAsTD
 {
     public abstract class UITweenBase : MonoBehaviour
     {
-        protected enum UITweenExecuteMode { ClickOnly, HoverOnly, ClickAndHover, Auto }
+        protected enum UITweenExecuteMode { ClickOnly, HoverOnly, ClickAndHover, Auto, Internal }
 
         [Header("UI Tween General Settings")]
 
         [SerializeField]
+        [Tooltip("Auto: the tween or tween cycle will be performed and looped automatically on component enabled.\n" +
+        "Internal: the tween will be processed internally.")]
         protected UITweenExecuteMode UI_TweenExecuteMode = UITweenExecuteMode.ClickOnly;
 
         [SerializeField] protected float tweenDuration = 0.5f;

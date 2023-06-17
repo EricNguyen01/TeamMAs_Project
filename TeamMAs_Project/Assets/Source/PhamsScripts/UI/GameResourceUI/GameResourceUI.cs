@@ -33,6 +33,10 @@ namespace TeamMAsTD
 
         [SerializeField] protected bool showDebugAndErrorLog = false;
 
+        //INTERNALS..........................................................................
+
+        private UITweenBase[] childrenUITweenComps;
+
         protected virtual void Awake()
         {
             if(gameResourceSO == null)
@@ -61,6 +65,8 @@ namespace TeamMAsTD
 
                 gameResourceUIStatPopupSpawner = GO.GetComponent<StatPopupSpawner>();
             }
+
+            childrenUITweenComps = GetComponentsInChildren<UITweenBase>();
         }
 
         protected virtual void OnEnable()
@@ -127,7 +133,20 @@ namespace TeamMAsTD
 
             float updatedResourceAmount = gameResourceSO.resourceAmount;
 
-            if (updatedResourceAmount == currentResourceAmount || Mathf.Abs(updatedResourceAmount - currentResourceAmount) <= Mathf.Epsilon) return;
+            if (updatedResourceAmount == currentResourceAmount || Mathf.Abs(updatedResourceAmount - currentResourceAmount) <= Mathf.Epsilon)
+            {
+                return;
+            }
+            else if(updatedResourceAmount != currentResourceAmount || Mathf.Abs(updatedResourceAmount - currentResourceAmount) > Mathf.Epsilon)
+            {
+                if(childrenUITweenComps != null && childrenUITweenComps.Length > 0)
+                {
+                    for(int i = 0; i < childrenUITweenComps.Length; i++)
+                    {
+                        childrenUITweenComps[i].RunTween();
+                    }
+                }
+            }
 
             if(updatedResourceAmount > currentResourceAmount)
             {

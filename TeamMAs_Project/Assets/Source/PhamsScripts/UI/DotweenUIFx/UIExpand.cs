@@ -7,32 +7,28 @@ using UnityEngine.UI;
 
 namespace TeamMAsTD
 {
-    public class UIExpand : UIHover
+    public class UIExpand : UIHover, ILayoutSelfController
     {
         [Header("UI Hover Expand Settings")]
 
-        [SerializeField] private float expandValue = 1.0f;
+        [SerializeField] protected float expandValue = 1.0f;
 
         [SerializeField]
         [Tooltip("The delay in seconds before new expand cycle begins. " +
         "If set to 0, repeat expand immediately after current expand duration ends." +
         "Only works with Auto UITweenExecuteMode!")]
-        private float expandStartDelay = 0.0f;
+        protected float expandStartDelay = 0.0f;
 
         //INTERNALS............................................................................
 
-        private Vector2 expandedSize;
+        protected Vector2 expandedSize;
 
-        protected override void Awake()
+
+        protected override void OnEnable()
         {
-            base.Awake();
+            base.OnEnable();
 
             expandedSize = new Vector2(baseSizeDelta.x + expandValue, baseSizeDelta.y + expandValue);
-        }
-
-        protected override void Start()
-        {
-            base.Start();
 
             if (UI_TweenExecuteMode == UITweenExecuteMode.Auto)
             {
@@ -60,7 +56,7 @@ namespace TeamMAsTD
             rectTransform.DOSizeDelta(baseSizeDelta, tweenDuration);
         }
 
-        private IEnumerator AutoExpandCycleLoopCoroutine()
+        protected virtual IEnumerator AutoExpandCycleLoopCoroutine()
         {
             //only do auto expand while in auto ui tween mode
 
@@ -79,6 +75,16 @@ namespace TeamMAsTD
             //if not in auto mode -> break and exit coroutine
 
             yield break;
+        }
+
+        public void SetLayoutHorizontal()
+        {
+            
+        }
+
+        public void SetLayoutVertical()
+        {
+            
         }
     }
 }
