@@ -32,36 +32,42 @@ namespace TeamMAsTD
 
             if (UI_TweenExecuteMode == UITweenExecuteMode.Auto)
             {
-                StartCoroutine(AutoExpandCycleLoopCoroutine());
+                StartCoroutine(AutoExpandCycleLoopCoroutine(true));//auto loop tween cycle
             }
         }
 
         public override void RunTweenInternal()
         {
-            //do nothing
-            //this is a hover tween action so tween only executes on hovered (OnPointerEnter and OnPointerExit below)
+            AutoExpandCycleLoopCoroutine(false);//do tween cycle once without loop
         }
 
+        //hover on
         public override void OnPointerEnter(PointerEventData eventData)
         {
+            if (!rectTransform) return;
+
             //on pointer enter -> expand size
 
-            rectTransform.DOSizeDelta(expandedSize, tweenDuration);
+            if (UI_TweenExecuteMode == UITweenExecuteMode.HoverOnly || UI_TweenExecuteMode == UITweenExecuteMode.ClickAndHover)
+            {
+                rectTransform.DOSizeDelta(expandedSize, tweenDuration);
+            }
         }
 
+        //hover off
         public override void OnPointerExit(PointerEventData eventData)
         {
+            if (!rectTransform) return;
+
             //on pointer exit -> collapse to original size
 
-            rectTransform.DOSizeDelta(baseSizeDelta, tweenDuration);
+            if (UI_TweenExecuteMode == UITweenExecuteMode.HoverOnly || UI_TweenExecuteMode == UITweenExecuteMode.ClickAndHover)
+            {
+                rectTransform.DOSizeDelta(baseSizeDelta, tweenDuration);
+            }
         }
 
-        public override void OnPointerDown(PointerEventData eventData)
-        {
-            
-        }
-
-        protected virtual IEnumerator AutoExpandCycleLoopCoroutine()
+        protected virtual IEnumerator AutoExpandCycleLoopCoroutine(bool doLoop)
         {
             //only do auto expand while in auto ui tween mode
 
@@ -72,6 +78,8 @@ namespace TeamMAsTD
 
                 //collapse to original size and wait for collapse async operation to finish
                 yield return rectTransform.DOSizeDelta(baseSizeDelta, tweenDuration).WaitForCompletion();
+
+                if(!doLoop) break;
 
                 //if expand start delay is > 0.0f -> wait for this number of seconds before looping expand cycle again
                 if (expandStartDelay > 0.0f) yield return new WaitForSeconds(expandStartDelay);

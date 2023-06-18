@@ -1,7 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
 using UnityEngine.UI;
+using PixelCrushers;
+using PixelCrushers.DialogueSystem;
 
 namespace TeamMAsTD
 {
@@ -73,6 +76,8 @@ namespace TeamMAsTD
             {
                 EnablePauseMenuCanvasGroup(false);
 
+                if (DialogueManager.isConversationActive) return;
+
                 StopCoroutine(CheckAndStopTimeCoroutine());
 
                 if(Time.timeScale != timeScaleBeforePause) Time.timeScale = timeScaleBeforePause;
@@ -83,6 +88,8 @@ namespace TeamMAsTD
             //else if closed -> then open 
 
             EnablePauseMenuCanvasGroup(true);
+
+            if (DialogueManager.isConversationActive) return;
 
             StartCoroutine(CheckAndStopTimeCoroutine());
         }

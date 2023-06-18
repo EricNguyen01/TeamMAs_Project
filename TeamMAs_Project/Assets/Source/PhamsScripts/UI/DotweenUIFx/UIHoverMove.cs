@@ -23,22 +23,40 @@ namespace TeamMAsTD
 
         protected virtual void UIMoveOnClick()
         {
+            if (!rectTransform || alreadyPerformedTween) return;
 
+            StartCoroutine(UIMoveCycleCoroutine());
+        }
+
+        protected IEnumerator UIMoveCycleCoroutine()
+        {
+            alreadyPerformedTween = true;
+
+            yield return rectTransform.DOAnchorPos(FinalMoveToPosition(), tweenDuration).WaitForCompletion();
+
+            yield return rectTransform.DOAnchorPos(baseAnchoredPos, tweenDuration).WaitForCompletion();
+
+            alreadyPerformedTween = false;
         }
 
         public override void OnPointerEnter(PointerEventData eventData)
         {
-            rectTransform.DOAnchorPos(FinalMoveToPosition(), tweenDuration);
+            if (!rectTransform) return;
+
+            if (UI_TweenExecuteMode == UITweenExecuteMode.HoverOnly || UI_TweenExecuteMode == UITweenExecuteMode.ClickAndHover)
+            {
+                rectTransform.DOAnchorPos(FinalMoveToPosition(), tweenDuration);
+            }
         }
 
         public override void OnPointerExit(PointerEventData eventData)
         {
-            rectTransform.DOAnchorPos(baseAnchoredPos, tweenDuration);
-        }
+            if(!rectTransform) return;
 
-        public override void OnPointerDown(PointerEventData eventData)
-        {
-
+            if (UI_TweenExecuteMode == UITweenExecuteMode.HoverOnly || UI_TweenExecuteMode == UITweenExecuteMode.ClickAndHover)
+            {
+                rectTransform.DOAnchorPos(baseAnchoredPos, tweenDuration);
+            }
         }
 
         protected Vector2 FinalMoveToPosition()

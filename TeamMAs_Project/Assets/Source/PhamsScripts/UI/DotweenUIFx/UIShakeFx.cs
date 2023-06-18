@@ -30,26 +30,35 @@ namespace TeamMAsTD
         {
             alreadyPerformedTween = true;
 
-            rectTransform.DOShakeAnchorPos(tweenDuration, shakeStrength, shakeVibrato, 50.0f, false, true, ShakeRandomnessMode.Harmonic);
-
-            yield return new WaitForSeconds(tweenDuration);
+            yield return rectTransform.DOShakeAnchorPos(tweenDuration, 
+                                                        shakeStrength, 
+                                                        shakeVibrato, 
+                                                        50.0f, 
+                                                        false, 
+                                                        true, 
+                                                        ShakeRandomnessMode.Harmonic).WaitForCompletion();
 
             alreadyPerformedTween = false;
         }
 
         public override void OnPointerEnter(PointerEventData eventData)
         {
-            
+            if (!rectTransform) return;
+
+            if (UI_TweenExecuteMode == UITweenExecuteMode.HoverOnly || UI_TweenExecuteMode == UITweenExecuteMode.ClickAndHover)
+            {
+
+            }
         }
 
         public override void OnPointerExit(PointerEventData eventData)
         {
-            
-        }
+            if (!rectTransform) return;
 
-        public override void OnPointerDown(PointerEventData eventData)
-        {
-            
+            if (UI_TweenExecuteMode == UITweenExecuteMode.HoverOnly || UI_TweenExecuteMode == UITweenExecuteMode.ClickAndHover)
+            {
+
+            }
         }
     }
 }

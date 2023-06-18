@@ -31,26 +31,32 @@ namespace TeamMAsTD
         {
             alreadyPerformedTween = true;
 
-            rectTransform.DOJumpAnchorPos(new Vector2(baseAnchoredPos.x, baseAnchoredPos.y + jumpHeight), jumpPower, 2, tweenDuration);
-
-            yield return new WaitForSeconds(tweenDuration);
+            yield return rectTransform.DOJumpAnchorPos(new Vector2(baseAnchoredPos.x, baseAnchoredPos.y + jumpHeight), 
+                                                       jumpPower, 
+                                                       2, 
+                                                       tweenDuration).WaitForCompletion();
 
             alreadyPerformedTween = false;
         }
 
-        public override void OnPointerDown(PointerEventData eventData)
-        {
-
-        }
-
         public override void OnPointerEnter(PointerEventData eventData)
         {
+            if (!rectTransform) return;
 
+            if (UI_TweenExecuteMode == UITweenExecuteMode.HoverOnly || UI_TweenExecuteMode == UITweenExecuteMode.ClickAndHover)
+            {
+
+            }
         }
 
         public override void OnPointerExit(PointerEventData eventData)
         {
+            if (!rectTransform) return;
 
+            if (UI_TweenExecuteMode == UITweenExecuteMode.HoverOnly || UI_TweenExecuteMode == UITweenExecuteMode.ClickAndHover)
+            {
+
+            }
         }
     }
 }

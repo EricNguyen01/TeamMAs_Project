@@ -203,7 +203,7 @@ MonoBehaviour:
     onConversationEnd:
       m_PersistentCalls:
         m_Calls: []
-    runOnConversationEndEventsAtEndOfFrame: 0
+    runOnConversationEndEventsAtEndOfFrame: 1
     onConversationCancelled:
       m_PersistentCalls:
         m_Calls: []

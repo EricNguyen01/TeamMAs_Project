@@ -70,6 +70,11 @@ namespace TeamMAsTD
         public abstract void OnPointerEnter(PointerEventData eventData);//hover on
         public abstract void OnPointerExit(PointerEventData eventData);//hover off
 
-        public abstract void OnPointerDown(PointerEventData eventData);//click on
+        public virtual void OnPointerDown(PointerEventData eventData)//click on
+        {
+            if (UI_TweenExecuteMode != UITweenExecuteMode.ClickOnly || UI_TweenExecuteMode != UITweenExecuteMode.ClickAndHover) return;
+
+            RunTweenInternal();
+        }
     }
 }
