@@ -16,13 +16,25 @@ namespace TeamMAsTD
 
         [SerializeField] private float moveDistance = 1.0f;
 
-        public override void RunTweenInternal()
+        protected override void OnEnable()
         {
-            UIMoveOnClick();
+            base.OnEnable();
+
+            if (rectTransform && UI_TweenExecuteMode == UITweenExecuteMode.Auto)
+            {
+                StartCoroutine(AutoMoveCycleLoopCoroutine());
+            }
         }
 
-        protected virtual void UIMoveOnClick()
+        public override void RunTweenInternal()
         {
+            ProcessUIMoveTweenCycleOnce();
+        }
+
+        protected virtual void ProcessUIMoveTweenCycleOnce()
+        {
+            if (UI_TweenExecuteMode == UITweenExecuteMode.Auto) return;
+
             if (!rectTransform || alreadyPerformedTween) return;
 
             StartCoroutine(UIMoveCycleCoroutine());
@@ -39,9 +51,28 @@ namespace TeamMAsTD
             alreadyPerformedTween = false;
         }
 
+        protected IEnumerator AutoMoveCycleLoopCoroutine()
+        {
+            //only do move cycle while in auto ui tween mode
+
+            while (UI_TweenExecuteMode == UITweenExecuteMode.Auto)
+            {
+                yield return UIMoveCycleCoroutine();
+
+                //if expand start delay is > 0.0f -> wait for this number of seconds before looping expand cycle again
+                if (tweenAutoStartDelay > 0.0f) yield return new WaitForSeconds(tweenAutoStartDelay);
+            }
+
+            //if not in auto mode -> break and exit coroutine
+
+            yield break;
+        }
+
         public override void OnPointerEnter(PointerEventData eventData)
         {
             if (!rectTransform) return;
+
+            if (UI_TweenExecuteMode == UITweenExecuteMode.Auto) return;
 
             if (UI_TweenExecuteMode == UITweenExecuteMode.HoverOnly || UI_TweenExecuteMode == UITweenExecuteMode.ClickAndHover)
             {
@@ -52,6 +83,8 @@ namespace TeamMAsTD
         public override void OnPointerExit(PointerEventData eventData)
         {
             if(!rectTransform) return;
+
+            if (UI_TweenExecuteMode == UITweenExecuteMode.Auto) return;
 
             if (UI_TweenExecuteMode == UITweenExecuteMode.HoverOnly || UI_TweenExecuteMode == UITweenExecuteMode.ClickAndHover)
             {

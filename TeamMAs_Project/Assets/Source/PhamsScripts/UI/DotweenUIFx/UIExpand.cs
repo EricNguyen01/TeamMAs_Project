@@ -13,12 +13,6 @@ namespace TeamMAsTD
 
         [SerializeField] protected float expandValue = 1.0f;
 
-        [SerializeField]
-        [Tooltip("The delay in seconds before new expand cycle begins. " +
-        "If set to 0, repeat expand immediately after current expand duration ends." +
-        "Only works with Auto UITweenExecuteMode!")]
-        protected float expandStartDelay = 0.0f;
-
         //INTERNALS............................................................................
 
         protected Vector2 expandedSize;
@@ -30,21 +24,27 @@ namespace TeamMAsTD
 
             expandedSize = new Vector2(baseSizeDelta.x + expandValue, baseSizeDelta.y + expandValue);
 
-            if (UI_TweenExecuteMode == UITweenExecuteMode.Auto)
+            if (rectTransform && UI_TweenExecuteMode == UITweenExecuteMode.Auto)
             {
-                StartCoroutine(AutoExpandCycleLoopCoroutine(true));//auto loop tween cycle
+                StartCoroutine(AutoExpandCycleLoopCoroutine());//auto loop tween cycle
             }
         }
 
         public override void RunTweenInternal()
         {
-            AutoExpandCycleLoopCoroutine(false);//do tween cycle once without loop
+            if (UI_TweenExecuteMode == UITweenExecuteMode.Auto) return;
+
+            if (!rectTransform || alreadyPerformedTween) return;
+
+            StartCoroutine(AutoExpandCycleCoroutine());//do tween cycle once without loop
         }
 
         //hover on
         public override void OnPointerEnter(PointerEventData eventData)
         {
             if (!rectTransform) return;
+
+            if (UI_TweenExecuteMode == UITweenExecuteMode.Auto) return;
 
             //on pointer enter -> expand size
 
@@ -59,6 +59,8 @@ namespace TeamMAsTD
         {
             if (!rectTransform) return;
 
+            if (UI_TweenExecuteMode == UITweenExecuteMode.Auto) return;
+
             //on pointer exit -> collapse to original size
 
             if (UI_TweenExecuteMode == UITweenExecuteMode.HoverOnly || UI_TweenExecuteMode == UITweenExecuteMode.ClickAndHover)
@@ -67,22 +69,29 @@ namespace TeamMAsTD
             }
         }
 
-        protected virtual IEnumerator AutoExpandCycleLoopCoroutine(bool doLoop)
+        protected IEnumerator AutoExpandCycleCoroutine()
+        {
+            alreadyPerformedTween = true;
+
+            //wait for expand operation to finish async
+            yield return rectTransform.DOSizeDelta(expandedSize, tweenDuration).WaitForCompletion();
+
+            //collapse to original size and wait for collapse async operation to finish
+            yield return rectTransform.DOSizeDelta(baseSizeDelta, tweenDuration).WaitForCompletion();
+
+            alreadyPerformedTween = false;
+        }
+
+        protected IEnumerator AutoExpandCycleLoopCoroutine()
         {
             //only do auto expand while in auto ui tween mode
 
             while (UI_TweenExecuteMode == UITweenExecuteMode.Auto)
             {
-                //wait for expand operation to finish async
-                yield return rectTransform.DOSizeDelta(expandedSize, tweenDuration).WaitForCompletion();
-
-                //collapse to original size and wait for collapse async operation to finish
-                yield return rectTransform.DOSizeDelta(baseSizeDelta, tweenDuration).WaitForCompletion();
-
-                if(!doLoop) break;
+                yield return AutoExpandCycleCoroutine();
 
                 //if expand start delay is > 0.0f -> wait for this number of seconds before looping expand cycle again
-                if (expandStartDelay > 0.0f) yield return new WaitForSeconds(expandStartDelay);
+                if (tweenAutoStartDelay > 0.0f) yield return new WaitForSeconds(tweenAutoStartDelay);
             }
 
             //if not in auto mode -> break and exit coroutine

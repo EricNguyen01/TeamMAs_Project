@@ -15,19 +15,31 @@ namespace TeamMAsTD
 
         [SerializeField] private float jumpPower = 1.0f;
 
-        public override void RunTweenInternal()
+        protected override void OnEnable()
         {
-            ProcessUIJump();
+            base.OnEnable();
+
+            if (rectTransform && UI_TweenExecuteMode == UITweenExecuteMode.Auto)
+            {
+                StartCoroutine(AutoJumpLoopCoroutine());
+            }
         }
 
-        protected virtual void ProcessUIJump()
+        public override void RunTweenInternal()
         {
+            ProcessUIJumpCycleOnce();
+        }
+
+        protected virtual void ProcessUIJumpCycleOnce()
+        {
+            if (UI_TweenExecuteMode == UITweenExecuteMode.Auto) return;
+
             if (!rectTransform || alreadyPerformedTween) return;
 
             StartCoroutine(JumpCoroutine());
         }
 
-        private IEnumerator JumpCoroutine()
+        protected IEnumerator JumpCoroutine()
         {
             alreadyPerformedTween = true;
 
@@ -39,19 +51,40 @@ namespace TeamMAsTD
             alreadyPerformedTween = false;
         }
 
+        protected IEnumerator AutoJumpLoopCoroutine()
+        {
+            //only do auto jump while in auto ui tween mode
+
+            while (UI_TweenExecuteMode == UITweenExecuteMode.Auto)
+            {
+                yield return JumpCoroutine();
+
+                //if expand start delay is > 0.0f -> wait for this number of seconds before looping expand cycle again
+                if (tweenAutoStartDelay > 0.0f) yield return new WaitForSeconds(tweenAutoStartDelay);
+            }
+
+            //if not in auto mode -> break and exit coroutine
+
+            yield break;
+        }
+
         public override void OnPointerEnter(PointerEventData eventData)
         {
             if (!rectTransform) return;
 
+            if (UI_TweenExecuteMode == UITweenExecuteMode.Auto) return;
+
             if (UI_TweenExecuteMode == UITweenExecuteMode.HoverOnly || UI_TweenExecuteMode == UITweenExecuteMode.ClickAndHover)
             {
-
+                ProcessUIJumpCycleOnce();
             }
         }
 
         public override void OnPointerExit(PointerEventData eventData)
         {
             if (!rectTransform) return;
+
+            if (UI_TweenExecuteMode == UITweenExecuteMode.Auto) return;
 
             if (UI_TweenExecuteMode == UITweenExecuteMode.HoverOnly || UI_TweenExecuteMode == UITweenExecuteMode.ClickAndHover)
             {

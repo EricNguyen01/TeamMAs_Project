@@ -19,6 +19,12 @@ namespace TeamMAsTD
 
         [SerializeField] protected float tweenDuration = 0.5f;
 
+        [SerializeField]
+        [Tooltip("The delay in seconds before new expand cycle begins. " +
+        "If set to 0, repeat expand immediately after current expand duration ends." +
+        "Only works with Auto UITweenExecuteMode!")]
+        protected float tweenAutoStartDelay = 0.0f;
+
         //INTERNALS......................................................................
 
         protected RectTransform rectTransform;

@@ -9,6 +9,10 @@ namespace TeamMAsTD
 {
     public class UIRotate : UITweenBase
     {
+        [Header("UI Rotate General Settings")]
+
+        [SerializeField] private float rotateDegrees;
+
         public override void RunTweenInternal()
         {
             
