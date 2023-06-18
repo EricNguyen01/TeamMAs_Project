@@ -26,10 +26,10 @@ namespace TeamMAsTD
 
         public override void RunTweenInternal()
         {
-            ProcessUIShake();
+            ProcessUIShakeTweenCycleOnce();
         }
 
-        protected virtual void ProcessUIShake()
+        protected virtual void ProcessUIShakeTweenCycleOnce()
         {
             if (UI_TweenExecuteMode == UITweenExecuteMode.Auto) return;
 
@@ -74,7 +74,7 @@ namespace TeamMAsTD
 
             if (UI_TweenExecuteMode == UITweenExecuteMode.HoverOnly || UI_TweenExecuteMode == UITweenExecuteMode.ClickAndHover)
             {
-                ProcessUIShake();
+                ProcessUIShakeTweenCycleOnce();
             }
         }
 

@@ -32,11 +32,16 @@ namespace TeamMAsTD
 
         public override void RunTweenInternal()
         {
+            ProcessUIExpandCycleOnce();
+        }
+
+        protected virtual void ProcessUIExpandCycleOnce()
+        {
             if (UI_TweenExecuteMode == UITweenExecuteMode.Auto) return;
 
             if (!rectTransform || alreadyPerformedTween) return;
 
-            StartCoroutine(AutoExpandCycleCoroutine());//do tween cycle once without loop
+            StartCoroutine(UIExpandCoroutine());//do tween cycle once without loop
         }
 
         //hover on
@@ -69,7 +74,7 @@ namespace TeamMAsTD
             }
         }
 
-        protected IEnumerator AutoExpandCycleCoroutine()
+        protected IEnumerator UIExpandCoroutine()
         {
             alreadyPerformedTween = true;
 
@@ -88,7 +93,7 @@ namespace TeamMAsTD
 
             while (UI_TweenExecuteMode == UITweenExecuteMode.Auto)
             {
-                yield return AutoExpandCycleCoroutine();
+                yield return UIExpandCoroutine();
 
                 //if expand start delay is > 0.0f -> wait for this number of seconds before looping expand cycle again
                 if (tweenAutoStartDelay > 0.0f) yield return new WaitForSeconds(tweenAutoStartDelay);
