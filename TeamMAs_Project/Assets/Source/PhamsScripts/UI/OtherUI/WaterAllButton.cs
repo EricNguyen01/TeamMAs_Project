@@ -246,7 +246,7 @@ namespace TeamMAsTD
             //if total water all cost is less/equal 0 this means that all existing plant are having full water -> no need to water anymore
             if (!CanWaterAll(true) || totalWaterAllCost <= 0)
             {
-                UI_ShakeFx.RunTween();
+                UI_ShakeFx.RunTweenInternal();
 
                 return;
             }

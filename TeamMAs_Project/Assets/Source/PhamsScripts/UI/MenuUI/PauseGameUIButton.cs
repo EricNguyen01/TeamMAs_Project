@@ -18,6 +18,8 @@ namespace TeamMAsTD
 
         private bool pauseMenuOpened = false;
 
+        private float timeScaleBeforePause = 0.0f;
+
         private void Awake()
         {
             if (!pauseMenuCanvasGroup)
@@ -30,6 +32,13 @@ namespace TeamMAsTD
             }
 
             EnablePauseMenuCanvasGroup(false);
+        }
+
+        private void OnDisable()
+        {
+            StopCoroutine(CheckAndStopTimeCoroutine());
+
+            if (Time.timeScale != timeScaleBeforePause) Time.timeScale = timeScaleBeforePause;
         }
 
         private void EnablePauseMenuCanvasGroup(bool enabled)
@@ -60,14 +69,40 @@ namespace TeamMAsTD
 
         public void TogglePauseMenu()
         {
-            if(pauseMenuOpened)
+            if(pauseMenuOpened) //if opened -> then close
             {
                 EnablePauseMenuCanvasGroup(false);
+
+                StopCoroutine(CheckAndStopTimeCoroutine());
+
+                if(Time.timeScale != timeScaleBeforePause) Time.timeScale = timeScaleBeforePause;
 
                 return;
             }
 
+            //else if closed -> then open 
+
             EnablePauseMenuCanvasGroup(true);
+
+            StartCoroutine(CheckAndStopTimeCoroutine());
+        }
+
+        private IEnumerator CheckAndStopTimeCoroutine()
+        {
+            timeScaleBeforePause = Time.timeScale;
+
+            if (Time.timeScale > 0.0f) Time.timeScale = 0.0f;
+
+            while (pauseMenuOpened)
+            {
+                if(Time.timeScale > 0.0f) Time.timeScale = 0.0f;
+
+                yield return new WaitForFixedUpdate();
+            }
+
+            Time.timeScale = timeScaleBeforePause;
+
+            yield break;
         }
     }
 }

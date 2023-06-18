@@ -2,10 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using UnityEngine.EventSystems;
 
 namespace TeamMAsTD
 {
-    public abstract class UITweenBase : MonoBehaviour
+    public abstract class UITweenBase : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler
     {
         protected enum UITweenExecuteMode { ClickOnly, HoverOnly, ClickAndHover, Auto, Internal }
 
@@ -59,11 +60,16 @@ namespace TeamMAsTD
 
         }
 
-        public abstract void RunTween();
+        public abstract void RunTweenInternal();
 
         public float GetTweenDuration()
         {
             return tweenDuration;
         }
+
+        public abstract void OnPointerEnter(PointerEventData eventData);//hover on
+        public abstract void OnPointerExit(PointerEventData eventData);//hover off
+
+        public abstract void OnPointerDown(PointerEventData eventData);//click on
     }
 }

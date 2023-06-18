@@ -2,6 +2,7 @@ using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 namespace TeamMAsTD
@@ -14,7 +15,7 @@ namespace TeamMAsTD
 
         [SerializeField] private float jumpPower = 1.0f;
 
-        public override void RunTween()
+        public override void RunTweenInternal()
         {
             ProcessUIJump();
         }
@@ -35,6 +36,21 @@ namespace TeamMAsTD
             yield return new WaitForSeconds(tweenDuration);
 
             alreadyPerformedTween = false;
+        }
+
+        public override void OnPointerDown(PointerEventData eventData)
+        {
+
+        }
+
+        public override void OnPointerEnter(PointerEventData eventData)
+        {
+
+        }
+
+        public override void OnPointerExit(PointerEventData eventData)
+        {
+
         }
     }
 }

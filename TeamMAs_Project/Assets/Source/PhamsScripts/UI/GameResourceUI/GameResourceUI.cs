@@ -143,7 +143,7 @@ namespace TeamMAsTD
                 {
                     for(int i = 0; i < childrenUITweenComps.Length; i++)
                     {
-                        childrenUITweenComps[i].RunTween();
+                        childrenUITweenComps[i].RunTweenInternal();
                     }
                 }
             }

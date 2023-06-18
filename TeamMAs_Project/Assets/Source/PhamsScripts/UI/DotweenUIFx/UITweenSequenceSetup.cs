@@ -76,7 +76,7 @@ namespace TeamMAsTD
                     yield return new WaitForSeconds(tweensInSequence[i].startDelaySec);
                 }
 
-                tweensInSequence[i].tween.RunTween();
+                tweensInSequence[i].tween.RunTweenInternal();
 
                 if (UI_TweenSequenceRunMode == UITweenSequenceRunMode.InOrder)
                 {

@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 
 namespace TeamMAsTD
 {
-    public class UIHoverMove : UIHover
+    public class UIHoverMove : UITweenBase
     {
         private enum UIHoverMoveDir { None, Up, Down, Left, Right }
 
@@ -16,7 +16,7 @@ namespace TeamMAsTD
 
         [SerializeField] private float moveDistance = 1.0f;
 
-        public override void RunTween()
+        public override void RunTweenInternal()
         {
             UIMoveOnClick();
         }
@@ -34,6 +34,11 @@ namespace TeamMAsTD
         public override void OnPointerExit(PointerEventData eventData)
         {
             rectTransform.DOAnchorPos(baseAnchoredPos, tweenDuration);
+        }
+
+        public override void OnPointerDown(PointerEventData eventData)
+        {
+
         }
 
         protected Vector2 FinalMoveToPosition()

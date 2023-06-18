@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 namespace TeamMAsTD
 {
-    public class UIExpand : UIHover, ILayoutSelfController
+    public class UIExpand : UITweenBase
     {
         [Header("UI Hover Expand Settings")]
 
@@ -36,7 +36,7 @@ namespace TeamMAsTD
             }
         }
 
-        public override void RunTween()
+        public override void RunTweenInternal()
         {
             //do nothing
             //this is a hover tween action so tween only executes on hovered (OnPointerEnter and OnPointerExit below)
@@ -54,6 +54,11 @@ namespace TeamMAsTD
             //on pointer exit -> collapse to original size
 
             rectTransform.DOSizeDelta(baseSizeDelta, tweenDuration);
+        }
+
+        public override void OnPointerDown(PointerEventData eventData)
+        {
+            
         }
 
         protected virtual IEnumerator AutoExpandCycleLoopCoroutine()
@@ -75,16 +80,6 @@ namespace TeamMAsTD
             //if not in auto mode -> break and exit coroutine
 
             yield break;
-        }
-
-        public void SetLayoutHorizontal()
-        {
-            
-        }
-
-        public void SetLayoutVertical()
-        {
-            
         }
     }
 }
