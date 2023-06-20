@@ -294,9 +294,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UI_TweenExecuteMode: 0
+  UI_TweenExecuteMode: 1
   tweenDuration: 0.5
   tweenAutoStartDelay: 0
+  isIndependentTimeScale: 0
   expandValue: 0.25
 --- !u!1 &6581730
 GameObject:
@@ -549,9 +550,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UI_TweenExecuteMode: 0
+  UI_TweenExecuteMode: 1
   tweenDuration: 0.5
   tweenAutoStartDelay: 0
+  isIndependentTimeScale: 0
   expandValue: 0.25
 --- !u!1 &12696937
 GameObject:
@@ -743,8 +745,8 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 298916623}
-        m_TargetAssemblyTypeName: TeamMAsTD.UIJumpFx, Assembly-CSharp
-        m_MethodName: ProcessUIJump
+        m_TargetAssemblyTypeName: TeamMAsTD.UITweenBase, Assembly-CSharp
+        m_MethodName: RunTweenInternal
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -755,8 +757,8 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 1115374083}
-        m_TargetAssemblyTypeName: TeamMAsTD.UIShakeFx, Assembly-CSharp
-        m_MethodName: ProcessUIShake
+        m_TargetAssemblyTypeName: TeamMAsTD.UITweenBase, Assembly-CSharp
+        m_MethodName: RunTweenInternal
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1206,9 +1208,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UI_TweenExecuteMode: 0
+  UI_TweenExecuteMode: 1
   tweenDuration: 0.5
   tweenAutoStartDelay: 0
+  isIndependentTimeScale: 0
   expandValue: 0.25
 --- !u!1 &24536982
 GameObject:
@@ -1381,9 +1384,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UI_TweenExecuteMode: 0
+  UI_TweenExecuteMode: 1
   tweenDuration: 0.5
   tweenAutoStartDelay: 0
+  isIndependentTimeScale: 0
   expandValue: 0.25
 --- !u!1 &30385842
 GameObject:
@@ -1556,9 +1560,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UI_TweenExecuteMode: 0
+  UI_TweenExecuteMode: 1
   tweenDuration: 0.5
   tweenAutoStartDelay: 0
+  isIndependentTimeScale: 0
   expandValue: 0.25
 --- !u!1 &36305204
 GameObject:
@@ -1792,8 +1797,8 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 298916623}
-        m_TargetAssemblyTypeName: TeamMAsTD.UIJumpFx, Assembly-CSharp
-        m_MethodName: ProcessUIJump
+        m_TargetAssemblyTypeName: TeamMAsTD.UITweenBase, Assembly-CSharp
+        m_MethodName: RunTweenInternal
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1804,8 +1809,8 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 1115374083}
-        m_TargetAssemblyTypeName: TeamMAsTD.UIShakeFx, Assembly-CSharp
-        m_MethodName: ProcessUIShake
+        m_TargetAssemblyTypeName: TeamMAsTD.UITweenBase, Assembly-CSharp
+        m_MethodName: RunTweenInternal
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3064,9 +3069,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UI_TweenExecuteMode: 0
+  UI_TweenExecuteMode: 1
   tweenDuration: 0.5
   tweenAutoStartDelay: 0
+  isIndependentTimeScale: 0
   expandValue: 0.25
 --- !u!1 &80206221
 GameObject:
@@ -3835,9 +3841,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UI_TweenExecuteMode: 0
+  UI_TweenExecuteMode: 1
   tweenDuration: 0.5
   tweenAutoStartDelay: 0
+  isIndependentTimeScale: 0
   expandValue: 0.25
 --- !u!1 &105890045
 GameObject:
@@ -3915,8 +3922,8 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 298916623}
-        m_TargetAssemblyTypeName: TeamMAsTD.UIJumpFx, Assembly-CSharp
-        m_MethodName: ProcessUIJump
+        m_TargetAssemblyTypeName: TeamMAsTD.UITweenBase, Assembly-CSharp
+        m_MethodName: RunTweenInternal
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3927,8 +3934,8 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 1115374083}
-        m_TargetAssemblyTypeName: TeamMAsTD.UIShakeFx, Assembly-CSharp
-        m_MethodName: ProcessUIShake
+        m_TargetAssemblyTypeName: TeamMAsTD.UITweenBase, Assembly-CSharp
+        m_MethodName: RunTweenInternal
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4402,9 +4409,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UI_TweenExecuteMode: 0
+  UI_TweenExecuteMode: 1
   tweenDuration: 0.5
   tweenAutoStartDelay: 0
+  isIndependentTimeScale: 0
   expandValue: 0.25
 --- !u!1 &114095313
 GameObject:
@@ -4553,9 +4561,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UI_TweenExecuteMode: 0
+  UI_TweenExecuteMode: 1
   tweenDuration: 0.5
   tweenAutoStartDelay: 0
+  isIndependentTimeScale: 0
   expandValue: 0.25
 --- !u!1 &117016539
 GameObject:
@@ -4844,8 +4853,8 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 298916623}
-        m_TargetAssemblyTypeName: TeamMAsTD.UIJumpFx, Assembly-CSharp
-        m_MethodName: ProcessUIJump
+        m_TargetAssemblyTypeName: TeamMAsTD.UITweenBase, Assembly-CSharp
+        m_MethodName: RunTweenInternal
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4856,8 +4865,8 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 1115374083}
-        m_TargetAssemblyTypeName: TeamMAsTD.UIShakeFx, Assembly-CSharp
-        m_MethodName: ProcessUIShake
+        m_TargetAssemblyTypeName: TeamMAsTD.UITweenBase, Assembly-CSharp
+        m_MethodName: RunTweenInternal
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6594,9 +6603,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UI_TweenExecuteMode: 0
+  UI_TweenExecuteMode: 1
   tweenDuration: 0.5
   tweenAutoStartDelay: 0
+  isIndependentTimeScale: 0
   expandValue: 0.25
 --- !u!1 &197177027
 GameObject:
@@ -6674,8 +6684,8 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 298916623}
-        m_TargetAssemblyTypeName: TeamMAsTD.UIJumpFx, Assembly-CSharp
-        m_MethodName: ProcessUIJump
+        m_TargetAssemblyTypeName: TeamMAsTD.UITweenBase, Assembly-CSharp
+        m_MethodName: RunTweenInternal
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6686,8 +6696,8 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 1115374083}
-        m_TargetAssemblyTypeName: TeamMAsTD.UIShakeFx, Assembly-CSharp
-        m_MethodName: ProcessUIShake
+        m_TargetAssemblyTypeName: TeamMAsTD.UITweenBase, Assembly-CSharp
+        m_MethodName: RunTweenInternal
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -7971,9 +7981,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UI_TweenExecuteMode: 0
+  UI_TweenExecuteMode: 1
   tweenDuration: 0.5
   tweenAutoStartDelay: 0
+  isIndependentTimeScale: 0
   expandValue: 0.25
 --- !u!1 &263047187
 GameObject:
@@ -8122,9 +8133,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UI_TweenExecuteMode: 0
+  UI_TweenExecuteMode: 1
   tweenDuration: 0.5
   tweenAutoStartDelay: 0
+  isIndependentTimeScale: 0
   expandValue: 0.25
 --- !u!1 &263894978
 GameObject:
@@ -8807,9 +8819,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UI_TweenExecuteMode: 0
+  UI_TweenExecuteMode: 1
   tweenDuration: 0.5
   tweenAutoStartDelay: 0
+  isIndependentTimeScale: 0
   expandValue: 0.25
 --- !u!1 &327709969
 GameObject:
@@ -9119,9 +9132,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UI_TweenExecuteMode: 0
+  UI_TweenExecuteMode: 1
   tweenDuration: 0.5
   tweenAutoStartDelay: 0
+  isIndependentTimeScale: 0
   expandValue: 0.25
 --- !u!1 &339276305
 GameObject:
@@ -9270,9 +9284,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UI_TweenExecuteMode: 0
+  UI_TweenExecuteMode: 1
   tweenDuration: 0.5
   tweenAutoStartDelay: 0
+  isIndependentTimeScale: 0
   expandValue: 0.25
 --- !u!1 &340959689
 GameObject:
@@ -9350,8 +9365,8 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 298916623}
-        m_TargetAssemblyTypeName: TeamMAsTD.UIJumpFx, Assembly-CSharp
-        m_MethodName: ProcessUIJump
+        m_TargetAssemblyTypeName: TeamMAsTD.UITweenBase, Assembly-CSharp
+        m_MethodName: RunTweenInternal
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -9362,8 +9377,8 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 1115374083}
-        m_TargetAssemblyTypeName: TeamMAsTD.UIShakeFx, Assembly-CSharp
-        m_MethodName: ProcessUIShake
+        m_TargetAssemblyTypeName: TeamMAsTD.UITweenBase, Assembly-CSharp
+        m_MethodName: RunTweenInternal
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -9813,9 +9828,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UI_TweenExecuteMode: 0
+  UI_TweenExecuteMode: 1
   tweenDuration: 0.5
   tweenAutoStartDelay: 0
+  isIndependentTimeScale: 0
   expandValue: 0.25
 --- !u!1 &350360497
 GameObject:
@@ -10777,9 +10793,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UI_TweenExecuteMode: 0
+  UI_TweenExecuteMode: 1
   tweenDuration: 0.5
   tweenAutoStartDelay: 0
+  isIndependentTimeScale: 0
   expandValue: 0.25
 --- !u!1 &422080711
 GameObject:
@@ -11139,9 +11156,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UI_TweenExecuteMode: 0
+  UI_TweenExecuteMode: 1
   tweenDuration: 0.5
   tweenAutoStartDelay: 0
+  isIndependentTimeScale: 0
   expandValue: 0.25
 --- !u!1 &434893823
 GameObject:
@@ -11581,9 +11599,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UI_TweenExecuteMode: 0
+  UI_TweenExecuteMode: 1
   tweenDuration: 0.5
   tweenAutoStartDelay: 0
+  isIndependentTimeScale: 0
   expandValue: 0.25
 --- !u!1 &447654945
 GameObject:
@@ -11872,8 +11891,8 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 298916623}
-        m_TargetAssemblyTypeName: TeamMAsTD.UIJumpFx, Assembly-CSharp
-        m_MethodName: ProcessUIJump
+        m_TargetAssemblyTypeName: TeamMAsTD.UITweenBase, Assembly-CSharp
+        m_MethodName: RunTweenInternal
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -11884,8 +11903,8 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 1115374083}
-        m_TargetAssemblyTypeName: TeamMAsTD.UIShakeFx, Assembly-CSharp
-        m_MethodName: ProcessUIShake
+        m_TargetAssemblyTypeName: TeamMAsTD.UITweenBase, Assembly-CSharp
+        m_MethodName: RunTweenInternal
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -13707,9 +13726,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UI_TweenExecuteMode: 0
+  UI_TweenExecuteMode: 1
   tweenDuration: 0.5
   tweenAutoStartDelay: 0
+  isIndependentTimeScale: 0
   expandValue: 0.25
 --- !u!1 &548260351
 GameObject:
@@ -13787,8 +13807,8 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 298916623}
-        m_TargetAssemblyTypeName: TeamMAsTD.UIJumpFx, Assembly-CSharp
-        m_MethodName: ProcessUIJump
+        m_TargetAssemblyTypeName: TeamMAsTD.UITweenBase, Assembly-CSharp
+        m_MethodName: RunTweenInternal
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -13799,8 +13819,8 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 1115374083}
-        m_TargetAssemblyTypeName: TeamMAsTD.UIShakeFx, Assembly-CSharp
-        m_MethodName: ProcessUIShake
+        m_TargetAssemblyTypeName: TeamMAsTD.UITweenBase, Assembly-CSharp
+        m_MethodName: RunTweenInternal
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -14179,8 +14199,8 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 298916623}
-        m_TargetAssemblyTypeName: TeamMAsTD.UIJumpFx, Assembly-CSharp
-        m_MethodName: ProcessUIJump
+        m_TargetAssemblyTypeName: TeamMAsTD.UITweenBase, Assembly-CSharp
+        m_MethodName: RunTweenInternal
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -14191,8 +14211,8 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 1115374083}
-        m_TargetAssemblyTypeName: TeamMAsTD.UIShakeFx, Assembly-CSharp
-        m_MethodName: ProcessUIShake
+        m_TargetAssemblyTypeName: TeamMAsTD.UITweenBase, Assembly-CSharp
+        m_MethodName: RunTweenInternal
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -14642,9 +14662,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UI_TweenExecuteMode: 0
+  UI_TweenExecuteMode: 1
   tweenDuration: 0.5
   tweenAutoStartDelay: 0
+  isIndependentTimeScale: 0
   expandValue: 0.25
 --- !u!1 &556831813
 GameObject:
@@ -15030,9 +15051,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UI_TweenExecuteMode: 0
+  UI_TweenExecuteMode: 1
   tweenDuration: 0.5
   tweenAutoStartDelay: 0
+  isIndependentTimeScale: 0
   expandValue: 0.25
 --- !u!1 &576190322
 GameObject:
@@ -15641,9 +15663,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UI_TweenExecuteMode: 0
+  UI_TweenExecuteMode: 1
   tweenDuration: 0.5
   tweenAutoStartDelay: 0
+  isIndependentTimeScale: 0
   expandValue: 0.25
 --- !u!1 &604943270 stripped
 GameObject:
@@ -16292,9 +16315,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UI_TweenExecuteMode: 0
+  UI_TweenExecuteMode: 1
   tweenDuration: 0.5
   tweenAutoStartDelay: 0
+  isIndependentTimeScale: 0
   expandValue: 0.25
 --- !u!1 &669428822
 GameObject:
@@ -16467,9 +16491,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UI_TweenExecuteMode: 0
+  UI_TweenExecuteMode: 1
   tweenDuration: 0.5
   tweenAutoStartDelay: 0
+  isIndependentTimeScale: 0
   expandValue: 0.25
 --- !u!1 &677767238
 GameObject:
@@ -16594,8 +16619,8 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 298916623}
-        m_TargetAssemblyTypeName: TeamMAsTD.UIJumpFx, Assembly-CSharp
-        m_MethodName: ProcessUIJump
+        m_TargetAssemblyTypeName: TeamMAsTD.UITweenBase, Assembly-CSharp
+        m_MethodName: RunTweenInternal
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -16606,8 +16631,8 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 1115374083}
-        m_TargetAssemblyTypeName: TeamMAsTD.UIShakeFx, Assembly-CSharp
-        m_MethodName: ProcessUIShake
+        m_TargetAssemblyTypeName: TeamMAsTD.UITweenBase, Assembly-CSharp
+        m_MethodName: RunTweenInternal
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -17192,9 +17217,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UI_TweenExecuteMode: 0
+  UI_TweenExecuteMode: 1
   tweenDuration: 0.5
   tweenAutoStartDelay: 0
+  isIndependentTimeScale: 0
   expandValue: 0.25
 --- !u!1 &696377659
 GameObject:
@@ -17272,8 +17298,8 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 298916623}
-        m_TargetAssemblyTypeName: TeamMAsTD.UIJumpFx, Assembly-CSharp
-        m_MethodName: ProcessUIJump
+        m_TargetAssemblyTypeName: TeamMAsTD.UITweenBase, Assembly-CSharp
+        m_MethodName: RunTweenInternal
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -17284,8 +17310,8 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 1115374083}
-        m_TargetAssemblyTypeName: TeamMAsTD.UIShakeFx, Assembly-CSharp
-        m_MethodName: ProcessUIShake
+        m_TargetAssemblyTypeName: TeamMAsTD.UITweenBase, Assembly-CSharp
+        m_MethodName: RunTweenInternal
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -18141,9 +18167,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UI_TweenExecuteMode: 0
+  UI_TweenExecuteMode: 1
   tweenDuration: 0.5
   tweenAutoStartDelay: 0
+  isIndependentTimeScale: 0
   expandValue: 0.25
 --- !u!1 &712099943
 GameObject:
@@ -18316,9 +18343,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UI_TweenExecuteMode: 0
+  UI_TweenExecuteMode: 1
   tweenDuration: 0.5
   tweenAutoStartDelay: 0
+  isIndependentTimeScale: 0
   expandValue: 0.25
 --- !u!1 &712307764
 GameObject:
@@ -18396,8 +18424,8 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 298916623}
-        m_TargetAssemblyTypeName: TeamMAsTD.UIJumpFx, Assembly-CSharp
-        m_MethodName: ProcessUIJump
+        m_TargetAssemblyTypeName: TeamMAsTD.UITweenBase, Assembly-CSharp
+        m_MethodName: RunTweenInternal
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -18408,8 +18436,8 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 1115374083}
-        m_TargetAssemblyTypeName: TeamMAsTD.UIShakeFx, Assembly-CSharp
-        m_MethodName: ProcessUIShake
+        m_TargetAssemblyTypeName: TeamMAsTD.UITweenBase, Assembly-CSharp
+        m_MethodName: RunTweenInternal
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -18883,9 +18911,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UI_TweenExecuteMode: 0
+  UI_TweenExecuteMode: 1
   tweenDuration: 0.5
   tweenAutoStartDelay: 0
+  isIndependentTimeScale: 0
   expandValue: 0.25
 --- !u!1 &733378994
 GameObject:
@@ -20316,8 +20345,8 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 298916623}
-        m_TargetAssemblyTypeName: TeamMAsTD.UIJumpFx, Assembly-CSharp
-        m_MethodName: ProcessUIJump
+        m_TargetAssemblyTypeName: TeamMAsTD.UITweenBase, Assembly-CSharp
+        m_MethodName: RunTweenInternal
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -20328,8 +20357,8 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 1115374083}
-        m_TargetAssemblyTypeName: TeamMAsTD.UIShakeFx, Assembly-CSharp
-        m_MethodName: ProcessUIShake
+        m_TargetAssemblyTypeName: TeamMAsTD.UITweenBase, Assembly-CSharp
+        m_MethodName: RunTweenInternal
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -20938,9 +20967,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UI_TweenExecuteMode: 0
+  UI_TweenExecuteMode: 1
   tweenDuration: 0.5
   tweenAutoStartDelay: 0
+  isIndependentTimeScale: 0
   expandValue: 0.25
 --- !u!1 &790578195
 GameObject:
@@ -21165,9 +21195,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UI_TweenExecuteMode: 0
+  UI_TweenExecuteMode: 1
   tweenDuration: 0.5
   tweenAutoStartDelay: 0
+  isIndependentTimeScale: 0
   expandValue: 0.25
 --- !u!1 &801106473
 GameObject:
@@ -21420,9 +21451,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UI_TweenExecuteMode: 0
+  UI_TweenExecuteMode: 1
   tweenDuration: 0.5
   tweenAutoStartDelay: 0
+  isIndependentTimeScale: 0
   expandValue: 0.25
 --- !u!1 &806193131
 GameObject:
@@ -21671,9 +21703,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UI_TweenExecuteMode: 0
+  UI_TweenExecuteMode: 1
   tweenDuration: 0.5
   tweenAutoStartDelay: 0
+  isIndependentTimeScale: 0
   expandValue: 0.25
 --- !u!1 &812469415
 GameObject:
@@ -22012,9 +22045,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UI_TweenExecuteMode: 0
+  UI_TweenExecuteMode: 1
   tweenDuration: 0.5
   tweenAutoStartDelay: 0
+  isIndependentTimeScale: 0
   expandValue: 0.25
 --- !u!1 &826246790
 GameObject:
@@ -22255,9 +22289,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UI_TweenExecuteMode: 0
+  UI_TweenExecuteMode: 1
   tweenDuration: 0.5
   tweenAutoStartDelay: 0
+  isIndependentTimeScale: 0
   expandValue: 0.25
 --- !u!1 &840555210
 GameObject:
@@ -22335,8 +22370,8 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 298916623}
-        m_TargetAssemblyTypeName: TeamMAsTD.UIJumpFx, Assembly-CSharp
-        m_MethodName: ProcessUIJump
+        m_TargetAssemblyTypeName: TeamMAsTD.UITweenBase, Assembly-CSharp
+        m_MethodName: RunTweenInternal
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -22347,8 +22382,8 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 1115374083}
-        m_TargetAssemblyTypeName: TeamMAsTD.UIShakeFx, Assembly-CSharp
-        m_MethodName: ProcessUIShake
+        m_TargetAssemblyTypeName: TeamMAsTD.UITweenBase, Assembly-CSharp
+        m_MethodName: RunTweenInternal
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -22822,9 +22857,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UI_TweenExecuteMode: 0
+  UI_TweenExecuteMode: 1
   tweenDuration: 0.5
   tweenAutoStartDelay: 0
+  isIndependentTimeScale: 0
   expandValue: 0.25
 --- !u!1 &845359696
 GameObject:
@@ -22902,8 +22938,8 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 298916623}
-        m_TargetAssemblyTypeName: TeamMAsTD.UIJumpFx, Assembly-CSharp
-        m_MethodName: ProcessUIJump
+        m_TargetAssemblyTypeName: TeamMAsTD.UITweenBase, Assembly-CSharp
+        m_MethodName: RunTweenInternal
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -22914,8 +22950,8 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 1115374083}
-        m_TargetAssemblyTypeName: TeamMAsTD.UIShakeFx, Assembly-CSharp
-        m_MethodName: ProcessUIShake
+        m_TargetAssemblyTypeName: TeamMAsTD.UITweenBase, Assembly-CSharp
+        m_MethodName: RunTweenInternal
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -24069,9 +24105,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UI_TweenExecuteMode: 0
+  UI_TweenExecuteMode: 1
   tweenDuration: 0.5
   tweenAutoStartDelay: 0
+  isIndependentTimeScale: 0
   expandValue: 0.25
 --- !u!1 &886245908
 GameObject:
@@ -24220,9 +24257,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UI_TweenExecuteMode: 0
+  UI_TweenExecuteMode: 1
   tweenDuration: 0.5
   tweenAutoStartDelay: 0
+  isIndependentTimeScale: 0
   expandValue: 0.25
 --- !u!1 &889641572
 GameObject:
@@ -24509,9 +24547,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UI_TweenExecuteMode: 0
+  UI_TweenExecuteMode: 1
   tweenDuration: 0.5
   tweenAutoStartDelay: 0
+  isIndependentTimeScale: 0
   expandValue: 0.25
 --- !u!1 &898950360
 GameObject:
@@ -24660,9 +24699,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UI_TweenExecuteMode: 0
+  UI_TweenExecuteMode: 1
   tweenDuration: 0.5
   tweenAutoStartDelay: 0
+  isIndependentTimeScale: 0
   expandValue: 0.25
 --- !u!1 &902644738
 GameObject:
@@ -24925,9 +24965,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UI_TweenExecuteMode: 0
+  UI_TweenExecuteMode: 1
   tweenDuration: 0.5
   tweenAutoStartDelay: 0
+  isIndependentTimeScale: 0
   expandValue: 0.25
 --- !u!1 &905116812
 GameObject:
@@ -25372,9 +25413,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UI_TweenExecuteMode: 0
+  UI_TweenExecuteMode: 1
   tweenDuration: 0.5
   tweenAutoStartDelay: 0
+  isIndependentTimeScale: 0
   expandValue: 0.25
 --- !u!1 &923003476
 GameObject:
@@ -25547,9 +25589,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UI_TweenExecuteMode: 0
+  UI_TweenExecuteMode: 1
   tweenDuration: 0.5
   tweenAutoStartDelay: 0
+  isIndependentTimeScale: 0
   expandValue: 0.25
 --- !u!1 &924808186
 GameObject:
@@ -25833,9 +25876,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UI_TweenExecuteMode: 0
+  UI_TweenExecuteMode: 1
   tweenDuration: 0.5
   tweenAutoStartDelay: 0
+  isIndependentTimeScale: 0
   expandValue: 0.25
 --- !u!1 &929396797 stripped
 GameObject:
@@ -26179,9 +26223,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UI_TweenExecuteMode: 0
+  UI_TweenExecuteMode: 1
   tweenDuration: 0.5
   tweenAutoStartDelay: 0
+  isIndependentTimeScale: 0
   expandValue: 0.25
 --- !u!1 &967265388
 GameObject:
@@ -26761,9 +26806,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UI_TweenExecuteMode: 0
+  UI_TweenExecuteMode: 1
   tweenDuration: 0.5
   tweenAutoStartDelay: 0
+  isIndependentTimeScale: 0
   expandValue: 0.25
 --- !u!1 &979564347
 GameObject:
@@ -26841,8 +26887,8 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 298916623}
-        m_TargetAssemblyTypeName: TeamMAsTD.UIJumpFx, Assembly-CSharp
-        m_MethodName: ProcessUIJump
+        m_TargetAssemblyTypeName: TeamMAsTD.UITweenBase, Assembly-CSharp
+        m_MethodName: RunTweenInternal
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -26853,8 +26899,8 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 1115374083}
-        m_TargetAssemblyTypeName: TeamMAsTD.UIShakeFx, Assembly-CSharp
-        m_MethodName: ProcessUIShake
+        m_TargetAssemblyTypeName: TeamMAsTD.UITweenBase, Assembly-CSharp
+        m_MethodName: RunTweenInternal
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -27304,9 +27350,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UI_TweenExecuteMode: 0
+  UI_TweenExecuteMode: 1
   tweenDuration: 0.5
   tweenAutoStartDelay: 0
+  isIndependentTimeScale: 0
   expandValue: 0.25
 --- !u!1 &989619131
 GameObject:
@@ -27479,9 +27526,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UI_TweenExecuteMode: 0
+  UI_TweenExecuteMode: 1
   tweenDuration: 0.5
   tweenAutoStartDelay: 0
+  isIndependentTimeScale: 0
   expandValue: 0.25
 --- !u!1 &992945199
 GameObject:
@@ -27630,9 +27678,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UI_TweenExecuteMode: 0
+  UI_TweenExecuteMode: 1
   tweenDuration: 0.5
   tweenAutoStartDelay: 0
+  isIndependentTimeScale: 0
   expandValue: 0.25
 --- !u!1 &996015470 stripped
 GameObject:
@@ -27746,8 +27795,8 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 298916623}
-        m_TargetAssemblyTypeName: TeamMAsTD.UIJumpFx, Assembly-CSharp
-        m_MethodName: ProcessUIJump
+        m_TargetAssemblyTypeName: TeamMAsTD.UITweenBase, Assembly-CSharp
+        m_MethodName: RunTweenInternal
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -27758,8 +27807,8 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 1115374083}
-        m_TargetAssemblyTypeName: TeamMAsTD.UIShakeFx, Assembly-CSharp
-        m_MethodName: ProcessUIShake
+        m_TargetAssemblyTypeName: TeamMAsTD.UITweenBase, Assembly-CSharp
+        m_MethodName: RunTweenInternal
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -28214,8 +28263,8 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 298916623}
-        m_TargetAssemblyTypeName: TeamMAsTD.UIJumpFx, Assembly-CSharp
-        m_MethodName: ProcessUIJump
+        m_TargetAssemblyTypeName: TeamMAsTD.UITweenBase, Assembly-CSharp
+        m_MethodName: RunTweenInternal
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -28226,8 +28275,8 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 1115374083}
-        m_TargetAssemblyTypeName: TeamMAsTD.UIShakeFx, Assembly-CSharp
-        m_MethodName: ProcessUIShake
+        m_TargetAssemblyTypeName: TeamMAsTD.UITweenBase, Assembly-CSharp
+        m_MethodName: RunTweenInternal
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -28701,9 +28750,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UI_TweenExecuteMode: 0
+  UI_TweenExecuteMode: 1
   tweenDuration: 0.5
   tweenAutoStartDelay: 0
+  isIndependentTimeScale: 0
   expandValue: 0.25
 --- !u!1 &1007270509
 GameObject:
@@ -29051,9 +29101,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UI_TweenExecuteMode: 0
+  UI_TweenExecuteMode: 1
   tweenDuration: 0.5
   tweenAutoStartDelay: 0
+  isIndependentTimeScale: 0
   expandValue: 0.25
 --- !u!1 &1018865742
 GameObject:
@@ -29500,9 +29551,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UI_TweenExecuteMode: 0
+  UI_TweenExecuteMode: 1
   tweenDuration: 0.5
   tweenAutoStartDelay: 0
+  isIndependentTimeScale: 0
   expandValue: 0.25
 --- !u!114 &1039532475 stripped
 MonoBehaviour:
@@ -29667,9 +29719,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UI_TweenExecuteMode: 0
+  UI_TweenExecuteMode: 1
   tweenDuration: 0.5
   tweenAutoStartDelay: 0
+  isIndependentTimeScale: 0
   expandValue: 0.25
 --- !u!1 &1050068446
 GameObject:
@@ -30089,9 +30142,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UI_TweenExecuteMode: 0
+  UI_TweenExecuteMode: 1
   tweenDuration: 0.5
   tweenAutoStartDelay: 0
+  isIndependentTimeScale: 0
   expandValue: 0.25
 --- !u!1 &1079170317
 GameObject:
@@ -30169,8 +30223,8 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 298916623}
-        m_TargetAssemblyTypeName: TeamMAsTD.UIJumpFx, Assembly-CSharp
-        m_MethodName: ProcessUIJump
+        m_TargetAssemblyTypeName: TeamMAsTD.UITweenBase, Assembly-CSharp
+        m_MethodName: RunTweenInternal
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -30181,8 +30235,8 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 1115374083}
-        m_TargetAssemblyTypeName: TeamMAsTD.UIShakeFx, Assembly-CSharp
-        m_MethodName: ProcessUIShake
+        m_TargetAssemblyTypeName: TeamMAsTD.UITweenBase, Assembly-CSharp
+        m_MethodName: RunTweenInternal
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -31148,8 +31202,8 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 298916623}
-        m_TargetAssemblyTypeName: TeamMAsTD.UIJumpFx, Assembly-CSharp
-        m_MethodName: ProcessUIJump
+        m_TargetAssemblyTypeName: TeamMAsTD.UITweenBase, Assembly-CSharp
+        m_MethodName: RunTweenInternal
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -31160,8 +31214,8 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 1115374083}
-        m_TargetAssemblyTypeName: TeamMAsTD.UIShakeFx, Assembly-CSharp
-        m_MethodName: ProcessUIShake
+        m_TargetAssemblyTypeName: TeamMAsTD.UITweenBase, Assembly-CSharp
+        m_MethodName: RunTweenInternal
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -32095,8 +32149,8 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 298916623}
-        m_TargetAssemblyTypeName: TeamMAsTD.UIJumpFx, Assembly-CSharp
-        m_MethodName: ProcessUIJump
+        m_TargetAssemblyTypeName: TeamMAsTD.UITweenBase, Assembly-CSharp
+        m_MethodName: RunTweenInternal
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -32107,8 +32161,8 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 1115374083}
-        m_TargetAssemblyTypeName: TeamMAsTD.UIShakeFx, Assembly-CSharp
-        m_MethodName: ProcessUIShake
+        m_TargetAssemblyTypeName: TeamMAsTD.UITweenBase, Assembly-CSharp
+        m_MethodName: RunTweenInternal
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -32622,8 +32676,8 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 298916623}
-        m_TargetAssemblyTypeName: TeamMAsTD.UIJumpFx, Assembly-CSharp
-        m_MethodName: ProcessUIJump
+        m_TargetAssemblyTypeName: TeamMAsTD.UITweenBase, Assembly-CSharp
+        m_MethodName: RunTweenInternal
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -32634,8 +32688,8 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 1115374083}
-        m_TargetAssemblyTypeName: TeamMAsTD.UIShakeFx, Assembly-CSharp
-        m_MethodName: ProcessUIShake
+        m_TargetAssemblyTypeName: TeamMAsTD.UITweenBase, Assembly-CSharp
+        m_MethodName: RunTweenInternal
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -33132,9 +33186,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UI_TweenExecuteMode: 0
+  UI_TweenExecuteMode: 1
   tweenDuration: 0.5
   tweenAutoStartDelay: 0
+  isIndependentTimeScale: 0
   expandValue: 0.25
 --- !u!1 &1183101711
 GameObject:
@@ -33418,9 +33473,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UI_TweenExecuteMode: 0
+  UI_TweenExecuteMode: 1
   tweenDuration: 0.5
   tweenAutoStartDelay: 0
+  isIndependentTimeScale: 0
   expandValue: 0.25
 --- !u!1 &1185341619
 GameObject:
@@ -33593,9 +33649,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UI_TweenExecuteMode: 0
+  UI_TweenExecuteMode: 1
   tweenDuration: 0.5
   tweenAutoStartDelay: 0
+  isIndependentTimeScale: 0
   expandValue: 0.25
 --- !u!1 &1186741398
 GameObject:
@@ -34017,9 +34074,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UI_TweenExecuteMode: 0
+  UI_TweenExecuteMode: 1
   tweenDuration: 0.5
   tweenAutoStartDelay: 0
+  isIndependentTimeScale: 0
   expandValue: 0.25
 --- !u!1 &1203595860
 GameObject:
@@ -34303,9 +34361,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UI_TweenExecuteMode: 0
+  UI_TweenExecuteMode: 1
   tweenDuration: 0.5
   tweenAutoStartDelay: 0
+  isIndependentTimeScale: 0
   expandValue: 0.25
 --- !u!1 &1220095774
 GameObject:
@@ -34755,8 +34814,8 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 298916623}
-        m_TargetAssemblyTypeName: TeamMAsTD.UIJumpFx, Assembly-CSharp
-        m_MethodName: ProcessUIJump
+        m_TargetAssemblyTypeName: TeamMAsTD.UITweenBase, Assembly-CSharp
+        m_MethodName: RunTweenInternal
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -34767,8 +34826,8 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 1115374083}
-        m_TargetAssemblyTypeName: TeamMAsTD.UIShakeFx, Assembly-CSharp
-        m_MethodName: ProcessUIShake
+        m_TargetAssemblyTypeName: TeamMAsTD.UITweenBase, Assembly-CSharp
+        m_MethodName: RunTweenInternal
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -35147,8 +35206,8 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 298916623}
-        m_TargetAssemblyTypeName: TeamMAsTD.UIJumpFx, Assembly-CSharp
-        m_MethodName: ProcessUIJump
+        m_TargetAssemblyTypeName: TeamMAsTD.UITweenBase, Assembly-CSharp
+        m_MethodName: RunTweenInternal
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -35159,8 +35218,8 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 1115374083}
-        m_TargetAssemblyTypeName: TeamMAsTD.UIShakeFx, Assembly-CSharp
-        m_MethodName: ProcessUIShake
+        m_TargetAssemblyTypeName: TeamMAsTD.UITweenBase, Assembly-CSharp
+        m_MethodName: RunTweenInternal
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -36152,8 +36211,8 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 298916623}
-        m_TargetAssemblyTypeName: TeamMAsTD.UIJumpFx, Assembly-CSharp
-        m_MethodName: ProcessUIJump
+        m_TargetAssemblyTypeName: TeamMAsTD.UITweenBase, Assembly-CSharp
+        m_MethodName: RunTweenInternal
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -36164,8 +36223,8 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 1115374083}
-        m_TargetAssemblyTypeName: TeamMAsTD.UIShakeFx, Assembly-CSharp
-        m_MethodName: ProcessUIShake
+        m_TargetAssemblyTypeName: TeamMAsTD.UITweenBase, Assembly-CSharp
+        m_MethodName: RunTweenInternal
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -36742,9 +36801,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UI_TweenExecuteMode: 0
+  UI_TweenExecuteMode: 1
   tweenDuration: 0.5
   tweenAutoStartDelay: 0
+  isIndependentTimeScale: 0
   expandValue: 0.25
 --- !u!1 &1286921733
 GameObject:
@@ -36917,9 +36977,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UI_TweenExecuteMode: 0
+  UI_TweenExecuteMode: 1
   tweenDuration: 0.5
   tweenAutoStartDelay: 0
+  isIndependentTimeScale: 0
   expandValue: 0.25
 --- !u!1 &1287577936
 GameObject:
@@ -37339,9 +37400,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UI_TweenExecuteMode: 0
+  UI_TweenExecuteMode: 1
   tweenDuration: 0.5
   tweenAutoStartDelay: 0
+  isIndependentTimeScale: 0
   expandValue: 0.25
 --- !u!1 &1302779612
 GameObject:
@@ -37752,9 +37814,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UI_TweenExecuteMode: 0
+  UI_TweenExecuteMode: 1
   tweenDuration: 0.5
   tweenAutoStartDelay: 0
+  isIndependentTimeScale: 0
   expandValue: 0.25
 --- !u!1 &1312762810
 GameObject:
@@ -38277,9 +38340,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UI_TweenExecuteMode: 0
+  UI_TweenExecuteMode: 1
   tweenDuration: 0.5
   tweenAutoStartDelay: 0
+  isIndependentTimeScale: 0
   expandValue: 0.25
 --- !u!1 &1324307679
 GameObject:
@@ -39070,8 +39134,8 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 298916623}
-        m_TargetAssemblyTypeName: TeamMAsTD.UIJumpFx, Assembly-CSharp
-        m_MethodName: ProcessUIJump
+        m_TargetAssemblyTypeName: TeamMAsTD.UITweenBase, Assembly-CSharp
+        m_MethodName: RunTweenInternal
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -39082,8 +39146,8 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 1115374083}
-        m_TargetAssemblyTypeName: TeamMAsTD.UIShakeFx, Assembly-CSharp
-        m_MethodName: ProcessUIShake
+        m_TargetAssemblyTypeName: TeamMAsTD.UITweenBase, Assembly-CSharp
+        m_MethodName: RunTweenInternal
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -39604,9 +39668,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UI_TweenExecuteMode: 0
+  UI_TweenExecuteMode: 1
   tweenDuration: 0.5
   tweenAutoStartDelay: 0
+  isIndependentTimeScale: 0
   expandValue: 0.25
 --- !u!1 &1383009402
 GameObject:
@@ -39990,9 +40055,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UI_TweenExecuteMode: 0
+  UI_TweenExecuteMode: 1
   tweenDuration: 0.5
   tweenAutoStartDelay: 0
+  isIndependentTimeScale: 0
   expandValue: 0.25
 --- !u!1 &1391704923
 GameObject:
@@ -40184,8 +40250,8 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 298916623}
-        m_TargetAssemblyTypeName: TeamMAsTD.UIJumpFx, Assembly-CSharp
-        m_MethodName: ProcessUIJump
+        m_TargetAssemblyTypeName: TeamMAsTD.UITweenBase, Assembly-CSharp
+        m_MethodName: RunTweenInternal
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -40196,8 +40262,8 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 1115374083}
-        m_TargetAssemblyTypeName: TeamMAsTD.UIShakeFx, Assembly-CSharp
-        m_MethodName: ProcessUIShake
+        m_TargetAssemblyTypeName: TeamMAsTD.UITweenBase, Assembly-CSharp
+        m_MethodName: RunTweenInternal
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -41135,9 +41201,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UI_TweenExecuteMode: 0
+  UI_TweenExecuteMode: 1
   tweenDuration: 0.5
   tweenAutoStartDelay: 0
+  isIndependentTimeScale: 0
   expandValue: 0.25
 --- !u!1 &1435873235
 GameObject:
@@ -41215,8 +41282,8 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 298916623}
-        m_TargetAssemblyTypeName: TeamMAsTD.UIJumpFx, Assembly-CSharp
-        m_MethodName: ProcessUIJump
+        m_TargetAssemblyTypeName: TeamMAsTD.UITweenBase, Assembly-CSharp
+        m_MethodName: RunTweenInternal
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -41227,8 +41294,8 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 1115374083}
-        m_TargetAssemblyTypeName: TeamMAsTD.UIShakeFx, Assembly-CSharp
-        m_MethodName: ProcessUIShake
+        m_TargetAssemblyTypeName: TeamMAsTD.UITweenBase, Assembly-CSharp
+        m_MethodName: RunTweenInternal
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -41818,8 +41885,8 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 298916623}
-        m_TargetAssemblyTypeName: TeamMAsTD.UIJumpFx, Assembly-CSharp
-        m_MethodName: ProcessUIJump
+        m_TargetAssemblyTypeName: TeamMAsTD.UITweenBase, Assembly-CSharp
+        m_MethodName: RunTweenInternal
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -41830,8 +41897,8 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 1115374083}
-        m_TargetAssemblyTypeName: TeamMAsTD.UIShakeFx, Assembly-CSharp
-        m_MethodName: ProcessUIShake
+        m_TargetAssemblyTypeName: TeamMAsTD.UITweenBase, Assembly-CSharp
+        m_MethodName: RunTweenInternal
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -42210,8 +42277,8 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 298916623}
-        m_TargetAssemblyTypeName: TeamMAsTD.UIJumpFx, Assembly-CSharp
-        m_MethodName: ProcessUIJump
+        m_TargetAssemblyTypeName: TeamMAsTD.UITweenBase, Assembly-CSharp
+        m_MethodName: RunTweenInternal
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -42222,8 +42289,8 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 1115374083}
-        m_TargetAssemblyTypeName: TeamMAsTD.UIShakeFx, Assembly-CSharp
-        m_MethodName: ProcessUIShake
+        m_TargetAssemblyTypeName: TeamMAsTD.UITweenBase, Assembly-CSharp
+        m_MethodName: RunTweenInternal
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -43318,9 +43385,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UI_TweenExecuteMode: 0
+  UI_TweenExecuteMode: 1
   tweenDuration: 0.5
   tweenAutoStartDelay: 0
+  isIndependentTimeScale: 0
   expandValue: 0.25
 --- !u!1 &1466278463
 GameObject:
@@ -43545,9 +43613,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UI_TweenExecuteMode: 0
+  UI_TweenExecuteMode: 1
   tweenDuration: 0.5
   tweenAutoStartDelay: 0
+  isIndependentTimeScale: 0
   expandValue: 0.25
 --- !u!1 &1470944022
 GameObject:
@@ -44031,8 +44100,8 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 298916623}
-        m_TargetAssemblyTypeName: TeamMAsTD.UIJumpFx, Assembly-CSharp
-        m_MethodName: ProcessUIJump
+        m_TargetAssemblyTypeName: TeamMAsTD.UITweenBase, Assembly-CSharp
+        m_MethodName: RunTweenInternal
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -44043,8 +44112,8 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 1115374083}
-        m_TargetAssemblyTypeName: TeamMAsTD.UIShakeFx, Assembly-CSharp
-        m_MethodName: ProcessUIShake
+        m_TargetAssemblyTypeName: TeamMAsTD.UITweenBase, Assembly-CSharp
+        m_MethodName: RunTweenInternal
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -45038,9 +45107,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UI_TweenExecuteMode: 0
+  UI_TweenExecuteMode: 1
   tweenDuration: 0.5
   tweenAutoStartDelay: 0
+  isIndependentTimeScale: 0
   expandValue: 0.25
 --- !u!1 &1501252048
 GameObject:
@@ -45348,9 +45418,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UI_TweenExecuteMode: 0
+  UI_TweenExecuteMode: 1
   tweenDuration: 0.5
   tweenAutoStartDelay: 0
+  isIndependentTimeScale: 0
   expandValue: 0.25
 --- !u!1 &1514582679
 GameObject:
@@ -45508,8 +45579,8 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 298916623}
-        m_TargetAssemblyTypeName: TeamMAsTD.UIJumpFx, Assembly-CSharp
-        m_MethodName: ProcessUIJump
+        m_TargetAssemblyTypeName: TeamMAsTD.UITweenBase, Assembly-CSharp
+        m_MethodName: RunTweenInternal
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -45520,8 +45591,8 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 1115374083}
-        m_TargetAssemblyTypeName: TeamMAsTD.UIShakeFx, Assembly-CSharp
-        m_MethodName: ProcessUIShake
+        m_TargetAssemblyTypeName: TeamMAsTD.UITweenBase, Assembly-CSharp
+        m_MethodName: RunTweenInternal
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -45900,8 +45971,8 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 298916623}
-        m_TargetAssemblyTypeName: TeamMAsTD.UIJumpFx, Assembly-CSharp
-        m_MethodName: ProcessUIJump
+        m_TargetAssemblyTypeName: TeamMAsTD.UITweenBase, Assembly-CSharp
+        m_MethodName: RunTweenInternal
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -45912,8 +45983,8 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 1115374083}
-        m_TargetAssemblyTypeName: TeamMAsTD.UIShakeFx, Assembly-CSharp
-        m_MethodName: ProcessUIShake
+        m_TargetAssemblyTypeName: TeamMAsTD.UITweenBase, Assembly-CSharp
+        m_MethodName: RunTweenInternal
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -46541,8 +46612,8 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 298916623}
-        m_TargetAssemblyTypeName: TeamMAsTD.UIJumpFx, Assembly-CSharp
-        m_MethodName: ProcessUIJump
+        m_TargetAssemblyTypeName: TeamMAsTD.UITweenBase, Assembly-CSharp
+        m_MethodName: RunTweenInternal
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -46553,8 +46624,8 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 1115374083}
-        m_TargetAssemblyTypeName: TeamMAsTD.UIShakeFx, Assembly-CSharp
-        m_MethodName: ProcessUIShake
+        m_TargetAssemblyTypeName: TeamMAsTD.UITweenBase, Assembly-CSharp
+        m_MethodName: RunTweenInternal
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -46933,8 +47004,8 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 298916623}
-        m_TargetAssemblyTypeName: TeamMAsTD.UIJumpFx, Assembly-CSharp
-        m_MethodName: ProcessUIJump
+        m_TargetAssemblyTypeName: TeamMAsTD.UITweenBase, Assembly-CSharp
+        m_MethodName: RunTweenInternal
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -46945,8 +47016,8 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 1115374083}
-        m_TargetAssemblyTypeName: TeamMAsTD.UIShakeFx, Assembly-CSharp
-        m_MethodName: ProcessUIShake
+        m_TargetAssemblyTypeName: TeamMAsTD.UITweenBase, Assembly-CSharp
+        m_MethodName: RunTweenInternal
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -48021,9 +48092,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UI_TweenExecuteMode: 0
+  UI_TweenExecuteMode: 1
   tweenDuration: 0.5
   tweenAutoStartDelay: 0
+  isIndependentTimeScale: 0
   expandValue: 0.25
 --- !u!1 &1612599134
 GameObject:
@@ -48316,8 +48388,8 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 298916623}
-        m_TargetAssemblyTypeName: TeamMAsTD.UIJumpFx, Assembly-CSharp
-        m_MethodName: ProcessUIJump
+        m_TargetAssemblyTypeName: TeamMAsTD.UITweenBase, Assembly-CSharp
+        m_MethodName: RunTweenInternal
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -48328,8 +48400,8 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 1115374083}
-        m_TargetAssemblyTypeName: TeamMAsTD.UIShakeFx, Assembly-CSharp
-        m_MethodName: ProcessUIShake
+        m_TargetAssemblyTypeName: TeamMAsTD.UITweenBase, Assembly-CSharp
+        m_MethodName: RunTweenInternal
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -49166,9 +49238,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UI_TweenExecuteMode: 0
+  UI_TweenExecuteMode: 1
   tweenDuration: 0.5
   tweenAutoStartDelay: 0
+  isIndependentTimeScale: 0
   expandValue: 0.25
 --- !u!1 &1636299093
 GameObject:
@@ -49293,8 +49366,8 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 298916623}
-        m_TargetAssemblyTypeName: TeamMAsTD.UIJumpFx, Assembly-CSharp
-        m_MethodName: ProcessUIJump
+        m_TargetAssemblyTypeName: TeamMAsTD.UITweenBase, Assembly-CSharp
+        m_MethodName: RunTweenInternal
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -49305,8 +49378,8 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 1115374083}
-        m_TargetAssemblyTypeName: TeamMAsTD.UIShakeFx, Assembly-CSharp
-        m_MethodName: ProcessUIShake
+        m_TargetAssemblyTypeName: TeamMAsTD.UITweenBase, Assembly-CSharp
+        m_MethodName: RunTweenInternal
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -49780,9 +49853,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UI_TweenExecuteMode: 0
+  UI_TweenExecuteMode: 1
   tweenDuration: 0.5
   tweenAutoStartDelay: 0
+  isIndependentTimeScale: 0
   expandValue: 0.25
 --- !u!1 &1662203883
 GameObject:
@@ -50253,8 +50327,8 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 298916623}
-        m_TargetAssemblyTypeName: TeamMAsTD.UIJumpFx, Assembly-CSharp
-        m_MethodName: ProcessUIJump
+        m_TargetAssemblyTypeName: TeamMAsTD.UITweenBase, Assembly-CSharp
+        m_MethodName: RunTweenInternal
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -50265,8 +50339,8 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 1115374083}
-        m_TargetAssemblyTypeName: TeamMAsTD.UIShakeFx, Assembly-CSharp
-        m_MethodName: ProcessUIShake
+        m_TargetAssemblyTypeName: TeamMAsTD.UITweenBase, Assembly-CSharp
+        m_MethodName: RunTweenInternal
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -50851,9 +50925,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UI_TweenExecuteMode: 0
+  UI_TweenExecuteMode: 1
   tweenDuration: 0.5
   tweenAutoStartDelay: 0
+  isIndependentTimeScale: 0
   expandValue: 0.25
 --- !u!1 &1688630476
 GameObject:
@@ -51078,9 +51153,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UI_TweenExecuteMode: 0
+  UI_TweenExecuteMode: 1
   tweenDuration: 0.5
   tweenAutoStartDelay: 0
+  isIndependentTimeScale: 0
   expandValue: 0.25
 --- !u!1 &1705588422
 GameObject:
@@ -51158,8 +51234,8 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 298916623}
-        m_TargetAssemblyTypeName: TeamMAsTD.UIJumpFx, Assembly-CSharp
-        m_MethodName: ProcessUIJump
+        m_TargetAssemblyTypeName: TeamMAsTD.UITweenBase, Assembly-CSharp
+        m_MethodName: RunTweenInternal
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -51170,8 +51246,8 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 1115374083}
-        m_TargetAssemblyTypeName: TeamMAsTD.UIShakeFx, Assembly-CSharp
-        m_MethodName: ProcessUIShake
+        m_TargetAssemblyTypeName: TeamMAsTD.UITweenBase, Assembly-CSharp
+        m_MethodName: RunTweenInternal
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -51645,9 +51721,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UI_TweenExecuteMode: 0
+  UI_TweenExecuteMode: 1
   tweenDuration: 0.5
   tweenAutoStartDelay: 0
+  isIndependentTimeScale: 0
   expandValue: 0.25
 --- !u!1 &1711441004
 GameObject:
@@ -52034,8 +52111,8 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 298916623}
-        m_TargetAssemblyTypeName: TeamMAsTD.UIJumpFx, Assembly-CSharp
-        m_MethodName: ProcessUIJump
+        m_TargetAssemblyTypeName: TeamMAsTD.UITweenBase, Assembly-CSharp
+        m_MethodName: RunTweenInternal
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -52046,8 +52123,8 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 1115374083}
-        m_TargetAssemblyTypeName: TeamMAsTD.UIShakeFx, Assembly-CSharp
-        m_MethodName: ProcessUIShake
+        m_TargetAssemblyTypeName: TeamMAsTD.UITweenBase, Assembly-CSharp
+        m_MethodName: RunTweenInternal
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -52772,9 +52849,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UI_TweenExecuteMode: 0
+  UI_TweenExecuteMode: 1
   tweenDuration: 0.5
   tweenAutoStartDelay: 0
+  isIndependentTimeScale: 0
   expandValue: 0.25
 --- !u!1 &1747731287
 GameObject:
@@ -52852,8 +52930,8 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 298916623}
-        m_TargetAssemblyTypeName: TeamMAsTD.UIJumpFx, Assembly-CSharp
-        m_MethodName: ProcessUIJump
+        m_TargetAssemblyTypeName: TeamMAsTD.UITweenBase, Assembly-CSharp
+        m_MethodName: RunTweenInternal
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -52864,8 +52942,8 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 1115374083}
-        m_TargetAssemblyTypeName: TeamMAsTD.UIShakeFx, Assembly-CSharp
-        m_MethodName: ProcessUIShake
+        m_TargetAssemblyTypeName: TeamMAsTD.UITweenBase, Assembly-CSharp
+        m_MethodName: RunTweenInternal
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -53585,9 +53663,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UI_TweenExecuteMode: 0
+  UI_TweenExecuteMode: 1
   tweenDuration: 0.5
   tweenAutoStartDelay: 0
+  isIndependentTimeScale: 0
   expandValue: 0.25
 --- !u!1 &1765167584
 GameObject:
@@ -54417,9 +54496,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UI_TweenExecuteMode: 0
+  UI_TweenExecuteMode: 1
   tweenDuration: 0.5
   tweenAutoStartDelay: 0
+  isIndependentTimeScale: 0
   expandValue: 0.25
 --- !u!1 &1817200644
 GameObject:
@@ -54727,9 +54807,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UI_TweenExecuteMode: 0
+  UI_TweenExecuteMode: 1
   tweenDuration: 0.5
   tweenAutoStartDelay: 0
+  isIndependentTimeScale: 0
   expandValue: 0.25
 --- !u!1 &1818967926
 GameObject:
@@ -55089,9 +55170,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UI_TweenExecuteMode: 0
+  UI_TweenExecuteMode: 1
   tweenDuration: 0.5
   tweenAutoStartDelay: 0
+  isIndependentTimeScale: 0
   expandValue: 0.25
 --- !u!1 &1822535765
 GameObject:
@@ -55856,9 +55938,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UI_TweenExecuteMode: 0
+  UI_TweenExecuteMode: 1
   tweenDuration: 0.5
   tweenAutoStartDelay: 0
+  isIndependentTimeScale: 0
   expandValue: 0.25
 --- !u!1 &1841357267 stripped
 GameObject:
@@ -56123,9 +56206,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UI_TweenExecuteMode: 0
+  UI_TweenExecuteMode: 1
   tweenDuration: 0.5
   tweenAutoStartDelay: 0
+  isIndependentTimeScale: 0
   expandValue: 0.25
 --- !u!1 &1858257629
 GameObject:
@@ -56485,9 +56569,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UI_TweenExecuteMode: 0
+  UI_TweenExecuteMode: 1
   tweenDuration: 0.5
   tweenAutoStartDelay: 0
+  isIndependentTimeScale: 0
   expandValue: 0.25
 --- !u!1 &1877727360
 GameObject:
@@ -56882,9 +56967,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UI_TweenExecuteMode: 0
+  UI_TweenExecuteMode: 1
   tweenDuration: 0.5
   tweenAutoStartDelay: 0
+  isIndependentTimeScale: 0
   expandValue: 0.25
 --- !u!1 &1889125672
 GameObject:
@@ -57177,8 +57263,8 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 298916623}
-        m_TargetAssemblyTypeName: TeamMAsTD.UIJumpFx, Assembly-CSharp
-        m_MethodName: ProcessUIJump
+        m_TargetAssemblyTypeName: TeamMAsTD.UITweenBase, Assembly-CSharp
+        m_MethodName: RunTweenInternal
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -57189,8 +57275,8 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 1115374083}
-        m_TargetAssemblyTypeName: TeamMAsTD.UIShakeFx, Assembly-CSharp
-        m_MethodName: ProcessUIShake
+        m_TargetAssemblyTypeName: TeamMAsTD.UITweenBase, Assembly-CSharp
+        m_MethodName: RunTweenInternal
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -57744,9 +57830,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UI_TweenExecuteMode: 0
+  UI_TweenExecuteMode: 1
   tweenDuration: 0.5
   tweenAutoStartDelay: 0
+  isIndependentTimeScale: 0
   expandValue: 0.25
 --- !u!1 &1906350236
 GameObject:
@@ -58421,9 +58508,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UI_TweenExecuteMode: 0
+  UI_TweenExecuteMode: 1
   tweenDuration: 0.5
   tweenAutoStartDelay: 0
+  isIndependentTimeScale: 0
   expandValue: 0.25
 --- !u!1 &1923448482
 GameObject:
@@ -58999,8 +59087,8 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 298916623}
-        m_TargetAssemblyTypeName: TeamMAsTD.UIJumpFx, Assembly-CSharp
-        m_MethodName: ProcessUIJump
+        m_TargetAssemblyTypeName: TeamMAsTD.UITweenBase, Assembly-CSharp
+        m_MethodName: RunTweenInternal
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -59011,8 +59099,8 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 1115374083}
-        m_TargetAssemblyTypeName: TeamMAsTD.UIShakeFx, Assembly-CSharp
-        m_MethodName: ProcessUIShake
+        m_TargetAssemblyTypeName: TeamMAsTD.UITweenBase, Assembly-CSharp
+        m_MethodName: RunTweenInternal
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -59618,9 +59706,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UI_TweenExecuteMode: 0
+  UI_TweenExecuteMode: 1
   tweenDuration: 0.5
   tweenAutoStartDelay: 0
+  isIndependentTimeScale: 0
   expandValue: 0.25
 --- !u!1 &1955639775
 GameObject:
@@ -60110,9 +60199,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UI_TweenExecuteMode: 0
+  UI_TweenExecuteMode: 1
   tweenDuration: 0.5
   tweenAutoStartDelay: 0
+  isIndependentTimeScale: 0
   expandValue: 0.25
 --- !u!1 &1983007210
 GameObject:
@@ -60261,9 +60351,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UI_TweenExecuteMode: 0
+  UI_TweenExecuteMode: 1
   tweenDuration: 0.5
   tweenAutoStartDelay: 0
+  isIndependentTimeScale: 0
   expandValue: 0.25
 --- !u!1 &1997207009
 GameObject:
@@ -60412,9 +60503,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UI_TweenExecuteMode: 0
+  UI_TweenExecuteMode: 1
   tweenDuration: 0.5
   tweenAutoStartDelay: 0
+  isIndependentTimeScale: 0
   expandValue: 0.25
 --- !u!1 &2000986108
 GameObject:
@@ -60876,8 +60968,8 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 298916623}
-        m_TargetAssemblyTypeName: TeamMAsTD.UIJumpFx, Assembly-CSharp
-        m_MethodName: ProcessUIJump
+        m_TargetAssemblyTypeName: TeamMAsTD.UITweenBase, Assembly-CSharp
+        m_MethodName: RunTweenInternal
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -60888,8 +60980,8 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 1115374083}
-        m_TargetAssemblyTypeName: TeamMAsTD.UIShakeFx, Assembly-CSharp
-        m_MethodName: ProcessUIShake
+        m_TargetAssemblyTypeName: TeamMAsTD.UITweenBase, Assembly-CSharp
+        m_MethodName: RunTweenInternal
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -62286,9 +62378,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UI_TweenExecuteMode: 0
+  UI_TweenExecuteMode: 1
   tweenDuration: 0.5
   tweenAutoStartDelay: 0
+  isIndependentTimeScale: 0
   expandValue: 0.25
 --- !u!1 &2057019667
 GameObject:
@@ -62517,9 +62610,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UI_TweenExecuteMode: 0
+  UI_TweenExecuteMode: 1
   tweenDuration: 0.5
   tweenAutoStartDelay: 0
+  isIndependentTimeScale: 0
   expandValue: 0.25
 --- !u!1 &2059737618
 GameObject:
@@ -62597,8 +62691,8 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 298916623}
-        m_TargetAssemblyTypeName: TeamMAsTD.UIJumpFx, Assembly-CSharp
-        m_MethodName: ProcessUIJump
+        m_TargetAssemblyTypeName: TeamMAsTD.UITweenBase, Assembly-CSharp
+        m_MethodName: RunTweenInternal
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -62609,8 +62703,8 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 1115374083}
-        m_TargetAssemblyTypeName: TeamMAsTD.UIShakeFx, Assembly-CSharp
-        m_MethodName: ProcessUIShake
+        m_TargetAssemblyTypeName: TeamMAsTD.UITweenBase, Assembly-CSharp
+        m_MethodName: RunTweenInternal
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -63060,9 +63154,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UI_TweenExecuteMode: 0
+  UI_TweenExecuteMode: 1
   tweenDuration: 0.5
   tweenAutoStartDelay: 0
+  isIndependentTimeScale: 0
   expandValue: 0.25
 --- !u!1 &2065378675
 GameObject:
@@ -63140,8 +63235,8 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 298916623}
-        m_TargetAssemblyTypeName: TeamMAsTD.UIJumpFx, Assembly-CSharp
-        m_MethodName: ProcessUIJump
+        m_TargetAssemblyTypeName: TeamMAsTD.UITweenBase, Assembly-CSharp
+        m_MethodName: RunTweenInternal
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -63152,8 +63247,8 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 1115374083}
-        m_TargetAssemblyTypeName: TeamMAsTD.UIShakeFx, Assembly-CSharp
-        m_MethodName: ProcessUIShake
+        m_TargetAssemblyTypeName: TeamMAsTD.UITweenBase, Assembly-CSharp
+        m_MethodName: RunTweenInternal
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -63747,8 +63842,8 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 298916623}
-        m_TargetAssemblyTypeName: TeamMAsTD.UIJumpFx, Assembly-CSharp
-        m_MethodName: ProcessUIJump
+        m_TargetAssemblyTypeName: TeamMAsTD.UITweenBase, Assembly-CSharp
+        m_MethodName: RunTweenInternal
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -63759,8 +63854,8 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 1115374083}
-        m_TargetAssemblyTypeName: TeamMAsTD.UIShakeFx, Assembly-CSharp
-        m_MethodName: ProcessUIShake
+        m_TargetAssemblyTypeName: TeamMAsTD.UITweenBase, Assembly-CSharp
+        m_MethodName: RunTweenInternal
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -64314,9 +64409,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UI_TweenExecuteMode: 0
+  UI_TweenExecuteMode: 1
   tweenDuration: 0.5
   tweenAutoStartDelay: 0
+  isIndependentTimeScale: 0
   expandValue: 0.25
 --- !u!1 &2093291935
 GameObject:
@@ -64624,9 +64720,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UI_TweenExecuteMode: 0
+  UI_TweenExecuteMode: 1
   tweenDuration: 0.5
   tweenAutoStartDelay: 0
+  isIndependentTimeScale: 0
   expandValue: 0.25
 --- !u!1 &2103963342
 GameObject:
@@ -64704,8 +64801,8 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 298916623}
-        m_TargetAssemblyTypeName: TeamMAsTD.UIJumpFx, Assembly-CSharp
-        m_MethodName: ProcessUIJump
+        m_TargetAssemblyTypeName: TeamMAsTD.UITweenBase, Assembly-CSharp
+        m_MethodName: RunTweenInternal
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -64716,8 +64813,8 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 1115374083}
-        m_TargetAssemblyTypeName: TeamMAsTD.UIShakeFx, Assembly-CSharp
-        m_MethodName: ProcessUIShake
+        m_TargetAssemblyTypeName: TeamMAsTD.UITweenBase, Assembly-CSharp
+        m_MethodName: RunTweenInternal
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -65132,8 +65229,8 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 298916623}
-        m_TargetAssemblyTypeName: TeamMAsTD.UIJumpFx, Assembly-CSharp
-        m_MethodName: ProcessUIJump
+        m_TargetAssemblyTypeName: TeamMAsTD.UITweenBase, Assembly-CSharp
+        m_MethodName: RunTweenInternal
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -65144,8 +65241,8 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 1115374083}
-        m_TargetAssemblyTypeName: TeamMAsTD.UIShakeFx, Assembly-CSharp
-        m_MethodName: ProcessUIShake
+        m_TargetAssemblyTypeName: TeamMAsTD.UITweenBase, Assembly-CSharp
+        m_MethodName: RunTweenInternal
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -65619,9 +65716,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UI_TweenExecuteMode: 0
+  UI_TweenExecuteMode: 1
   tweenDuration: 0.5
   tweenAutoStartDelay: 0
+  isIndependentTimeScale: 0
   expandValue: 0.25
 --- !u!1 &2123410193
 GameObject:
@@ -65794,9 +65892,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UI_TweenExecuteMode: 0
+  UI_TweenExecuteMode: 1
   tweenDuration: 0.5
   tweenAutoStartDelay: 0
+  isIndependentTimeScale: 0
   expandValue: 0.25
 --- !u!1 &2125657852
 GameObject:
@@ -66030,8 +66129,8 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 298916623}
-        m_TargetAssemblyTypeName: TeamMAsTD.UIJumpFx, Assembly-CSharp
-        m_MethodName: ProcessUIJump
+        m_TargetAssemblyTypeName: TeamMAsTD.UITweenBase, Assembly-CSharp
+        m_MethodName: RunTweenInternal
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -66042,8 +66141,8 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 1115374083}
-        m_TargetAssemblyTypeName: TeamMAsTD.UIShakeFx, Assembly-CSharp
-        m_MethodName: ProcessUIShake
+        m_TargetAssemblyTypeName: TeamMAsTD.UITweenBase, Assembly-CSharp
+        m_MethodName: RunTweenInternal
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -66732,9 +66831,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UI_TweenExecuteMode: 0
+  UI_TweenExecuteMode: 1
   tweenDuration: 0.5
   tweenAutoStartDelay: 0
+  isIndependentTimeScale: 0
   expandValue: 0.25
 --- !u!1 &2144636676
 GameObject:

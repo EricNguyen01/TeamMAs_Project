@@ -14,56 +14,19 @@ namespace TeamMAsTD
 
         [SerializeField] private int shakeVibrato = 5;
 
-        protected override void OnEnable()
-        {
-            base.OnEnable();
-
-            if (rectTransform && UI_TweenExecuteMode == UITweenExecuteMode.Auto)
-            {
-                StartCoroutine(AutoShakeCycleLoopCoroutine());//auto loop tween cycle
-            }
-        }
-
-        public override void RunTweenInternal()
-        {
-            ProcessUIShakeTweenCycleOnce();
-        }
-
-        protected virtual void ProcessUIShakeTweenCycleOnce()
-        {
-            if (UI_TweenExecuteMode == UITweenExecuteMode.Auto) return;
-
-            if (!rectTransform || alreadyPerformedTween) return;
-
-            StartCoroutine(ShakeTweenCycleCoroutine());
-        }
-
-        protected IEnumerator ShakeTweenCycleCoroutine()
+        protected override IEnumerator RunTweenCycleOnceCoroutine()
         {
             alreadyPerformedTween = true;
-
+            
             yield return rectTransform.DOShakeAnchorPos(tweenDuration, 
                                                         shakeStrength, 
                                                         shakeVibrato, 
                                                         50.0f, 
                                                         false, 
                                                         true, 
-                                                        ShakeRandomnessMode.Harmonic).WaitForCompletion();
+                                                        ShakeRandomnessMode.Harmonic).SetUpdate(isIndependentTimeScale).WaitForCompletion();
 
             alreadyPerformedTween = false;
-        }
-
-        protected IEnumerator AutoShakeCycleLoopCoroutine()
-        {
-            while (UI_TweenExecuteMode == UITweenExecuteMode.Auto)
-            {
-                yield return ShakeTweenCycleCoroutine();
-
-                //if expand start delay is > 0.0f -> wait for this number of seconds before looping expand cycle again
-                if (tweenAutoStartDelay > 0.0f) yield return new WaitForSeconds(tweenAutoStartDelay);
-            }
-
-            yield break;
         }
 
         public override void OnPointerEnter(PointerEventData eventData)
@@ -74,7 +37,7 @@ namespace TeamMAsTD
 
             if (UI_TweenExecuteMode == UITweenExecuteMode.HoverOnly || UI_TweenExecuteMode == UITweenExecuteMode.ClickAndHover)
             {
-                ProcessUIShakeTweenCycleOnce();
+                RunTweenInternal();
             }
         }
 

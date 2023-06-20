@@ -20,28 +20,22 @@ namespace TeamMAsTD
 
         protected override void OnEnable()
         {
-            base.OnEnable();
-
             expandedSize = new Vector2(baseSizeDelta.x + expandValue, baseSizeDelta.y + expandValue);
 
-            if (rectTransform && UI_TweenExecuteMode == UITweenExecuteMode.Auto)
-            {
-                StartCoroutine(AutoExpandCycleLoopCoroutine());//auto loop tween cycle
-            }
+            base.OnEnable();
         }
 
-        public override void RunTweenInternal()
+        protected override IEnumerator RunTweenCycleOnceCoroutine()
         {
-            ProcessUIExpandCycleOnce();
-        }
+            alreadyPerformedTween = true;
 
-        protected virtual void ProcessUIExpandCycleOnce()
-        {
-            if (UI_TweenExecuteMode == UITweenExecuteMode.Auto) return;
+            //wait for expand operation to finish async
+            yield return rectTransform.DOSizeDelta(expandedSize, tweenDuration).SetUpdate(isIndependentTimeScale).WaitForCompletion();
 
-            if (!rectTransform || alreadyPerformedTween) return;
+            //collapse to original size and wait for collapse async operation to finish
+            yield return rectTransform.DOSizeDelta(baseSizeDelta, tweenDuration).SetUpdate(isIndependentTimeScale).WaitForCompletion();
 
-            StartCoroutine(UIExpandCoroutine());//do tween cycle once without loop
+            alreadyPerformedTween = false;
         }
 
         //hover on
@@ -55,7 +49,7 @@ namespace TeamMAsTD
 
             if (UI_TweenExecuteMode == UITweenExecuteMode.HoverOnly || UI_TweenExecuteMode == UITweenExecuteMode.ClickAndHover)
             {
-                rectTransform.DOSizeDelta(expandedSize, tweenDuration);
+                rectTransform.DOSizeDelta(expandedSize, tweenDuration).SetUpdate(isIndependentTimeScale);
             }
         }
 
@@ -70,38 +64,8 @@ namespace TeamMAsTD
 
             if (UI_TweenExecuteMode == UITweenExecuteMode.HoverOnly || UI_TweenExecuteMode == UITweenExecuteMode.ClickAndHover)
             {
-                rectTransform.DOSizeDelta(baseSizeDelta, tweenDuration);
+                rectTransform.DOSizeDelta(baseSizeDelta, tweenDuration).SetUpdate(isIndependentTimeScale);
             }
-        }
-
-        protected IEnumerator UIExpandCoroutine()
-        {
-            alreadyPerformedTween = true;
-
-            //wait for expand operation to finish async
-            yield return rectTransform.DOSizeDelta(expandedSize, tweenDuration).WaitForCompletion();
-
-            //collapse to original size and wait for collapse async operation to finish
-            yield return rectTransform.DOSizeDelta(baseSizeDelta, tweenDuration).WaitForCompletion();
-
-            alreadyPerformedTween = false;
-        }
-
-        protected IEnumerator AutoExpandCycleLoopCoroutine()
-        {
-            //only do auto expand while in auto ui tween mode
-
-            while (UI_TweenExecuteMode == UITweenExecuteMode.Auto)
-            {
-                yield return UIExpandCoroutine();
-
-                //if expand start delay is > 0.0f -> wait for this number of seconds before looping expand cycle again
-                if (tweenAutoStartDelay > 0.0f) yield return new WaitForSeconds(tweenAutoStartDelay);
-            }
-
-            //if not in auto mode -> break and exit coroutine
-
-            yield break;
         }
     }
 }

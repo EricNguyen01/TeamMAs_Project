@@ -16,56 +16,15 @@ namespace TeamMAsTD
 
         [SerializeField] private float moveDistance = 1.0f;
 
-        protected override void OnEnable()
-        {
-            base.OnEnable();
-
-            if (rectTransform && UI_TweenExecuteMode == UITweenExecuteMode.Auto)
-            {
-                StartCoroutine(AutoMoveCycleLoopCoroutine());
-            }
-        }
-
-        public override void RunTweenInternal()
-        {
-            ProcessUIMoveTweenCycleOnce();
-        }
-
-        protected virtual void ProcessUIMoveTweenCycleOnce()
-        {
-            if (UI_TweenExecuteMode == UITweenExecuteMode.Auto) return;
-
-            if (!rectTransform || alreadyPerformedTween) return;
-
-            StartCoroutine(UIMoveCycleCoroutine());
-        }
-
-        protected IEnumerator UIMoveCycleCoroutine()
+        protected override IEnumerator RunTweenCycleOnceCoroutine()
         {
             alreadyPerformedTween = true;
 
-            yield return rectTransform.DOAnchorPos(FinalMoveToPosition(), tweenDuration).WaitForCompletion();
+            yield return rectTransform.DOAnchorPos(FinalMoveToPosition(), tweenDuration).SetUpdate(isIndependentTimeScale).WaitForCompletion();
 
-            yield return rectTransform.DOAnchorPos(baseAnchoredPos, tweenDuration).WaitForCompletion();
+            yield return rectTransform.DOAnchorPos(baseAnchoredPos, tweenDuration).SetUpdate(isIndependentTimeScale).WaitForCompletion();
 
             alreadyPerformedTween = false;
-        }
-
-        protected IEnumerator AutoMoveCycleLoopCoroutine()
-        {
-            //only do move cycle while in auto ui tween mode
-
-            while (UI_TweenExecuteMode == UITweenExecuteMode.Auto)
-            {
-                yield return UIMoveCycleCoroutine();
-
-                //if expand start delay is > 0.0f -> wait for this number of seconds before looping expand cycle again
-                if (tweenAutoStartDelay > 0.0f) yield return new WaitForSeconds(tweenAutoStartDelay);
-            }
-
-            //if not in auto mode -> break and exit coroutine
-
-            yield break;
         }
 
         public override void OnPointerEnter(PointerEventData eventData)
@@ -76,7 +35,7 @@ namespace TeamMAsTD
 
             if (UI_TweenExecuteMode == UITweenExecuteMode.HoverOnly || UI_TweenExecuteMode == UITweenExecuteMode.ClickAndHover)
             {
-                rectTransform.DOAnchorPos(FinalMoveToPosition(), tweenDuration);
+                rectTransform.DOAnchorPos(FinalMoveToPosition(), tweenDuration).SetUpdate(isIndependentTimeScale);
             }
         }
 
@@ -88,7 +47,7 @@ namespace TeamMAsTD
 
             if (UI_TweenExecuteMode == UITweenExecuteMode.HoverOnly || UI_TweenExecuteMode == UITweenExecuteMode.ClickAndHover)
             {
-                rectTransform.DOAnchorPos(baseAnchoredPos, tweenDuration);
+                rectTransform.DOAnchorPos(baseAnchoredPos, tweenDuration).SetUpdate(isIndependentTimeScale);
             }
         }
 

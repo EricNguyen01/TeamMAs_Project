@@ -286,6 +286,7 @@ GameObject:
   - component: {fileID: 397203903538753928}
   - component: {fileID: 6551568252127299206}
   - component: {fileID: 854267395715268378}
+  - component: {fileID: 3314842644857603282}
   m_Layer: 5
   m_Name: WaterAllButton
   m_TagString: Untagged
@@ -486,9 +487,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f83716641ba6d2f49a119a23d9ef7c8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  UI_TweenExecuteMode: 4
+  tweenDuration: 0.5
+  tweenAutoStartDelay: 0
   shakeStrength: {x: 15, y: 15, z: 15}
   shakeVibrato: 10
-  shakeDuration: 0.5
+--- !u!114 &3314842644857603282
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3573310272857652583}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 189660f92ff16a448b4454a44340a37d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UI_TweenExecuteMode: 4
+  tweenDuration: 0.4
+  tweenAutoStartDelay: 0
+  rotateDegrees: 45
+  rotateMode: 0
 --- !u!1 &6263052097355576603
 GameObject:
   m_ObjectHideFlags: 0

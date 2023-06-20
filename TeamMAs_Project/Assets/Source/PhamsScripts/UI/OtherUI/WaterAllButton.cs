@@ -48,6 +48,8 @@ namespace TeamMAsTD
 
         private UIShakeFx UI_ShakeFx;
 
+        private UIRotate UI_Rotate;
+
         private void Awake()
         {
             if(waterAllCanvasGroup == null)
@@ -87,6 +89,10 @@ namespace TeamMAsTD
             UI_ShakeFx = GetComponent<UIShakeFx>();
 
             if(UI_ShakeFx == null) UI_ShakeFx = gameObject.AddComponent<UIShakeFx>();
+
+            UI_Rotate = GetComponent<UIRotate>();
+
+            if(UI_Rotate == null) UI_Rotate = gameObject.AddComponent<UIRotate>(); 
         }
 
         private void OnEnable()
@@ -250,6 +256,8 @@ namespace TeamMAsTD
 
                 return;
             }
+
+            UI_Rotate.RunTweenInternal();
 
             bool hasPlayedWateringSound = false;
 

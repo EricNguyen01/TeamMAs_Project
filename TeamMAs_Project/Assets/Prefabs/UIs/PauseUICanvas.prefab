@@ -115,6 +115,7 @@ GameObject:
   - component: {fileID: 7683354166695200724}
   - component: {fileID: 5016623854282399914}
   - component: {fileID: 6559636418441606567}
+  - component: {fileID: 6418021163320589923}
   m_Layer: 5
   m_Name: PauseButton
   m_TagString: Untagged
@@ -249,6 +250,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseMenuCanvasGroup: {fileID: 2080329990327795018}
+--- !u!114 &6418021163320589923
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7965951194950092717}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 189660f92ff16a448b4454a44340a37d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UI_TweenExecuteMode: 1
+  tweenDuration: 0.6
+  tweenAutoStartDelay: 0
+  isIndependentTimeScale: 1
+  rotateDegrees: -90
+  rotateMode: 0
 --- !u!1 &8441748914483907765
 GameObject:
   m_ObjectHideFlags: 0

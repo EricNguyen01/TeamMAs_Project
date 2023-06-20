@@ -25,6 +25,8 @@ namespace TeamMAsTD
         "Only works with Auto UITweenExecuteMode!")]
         protected float tweenAutoStartDelay = 0.0f;
 
+        [SerializeField] protected bool isIndependentTimeScale = false;
+
         //INTERNALS......................................................................
 
         protected RectTransform rectTransform;
@@ -51,12 +53,15 @@ namespace TeamMAsTD
             baseSizeDelta = rectTransform.sizeDelta;
         }
 
-        protected virtual void OnEnable() 
-        { 
-
+        protected virtual void OnEnable()
+        {
+            if (rectTransform && UI_TweenExecuteMode == UITweenExecuteMode.Auto)
+            {
+                StartCoroutine(AutoTweenLoopCycleCoroutine());
+            }
         }
 
-        protected virtual void OnDisable() 
+        protected virtual void OnDisable()
         {
 
         }
@@ -66,11 +71,44 @@ namespace TeamMAsTD
 
         }
 
-        public abstract void RunTweenInternal();
+        public void RunTweenInternal()
+        {
+            if (UI_TweenExecuteMode == UITweenExecuteMode.Auto) return;
+
+            if (!rectTransform || alreadyPerformedTween) return;
+
+            StartCoroutine(RunTweenCycleOnceCoroutineBase());
+        }
 
         public float GetTweenDuration()
         {
             return tweenDuration;
+        }
+
+        private IEnumerator RunTweenCycleOnceCoroutineBase()
+        {
+            alreadyPerformedTween = true;
+
+            yield return RunTweenCycleOnceCoroutine();
+
+            alreadyPerformedTween = false;
+        }
+
+        protected abstract IEnumerator RunTweenCycleOnceCoroutine();
+
+        protected virtual IEnumerator AutoTweenLoopCycleCoroutine()
+        {
+            while (UI_TweenExecuteMode == UITweenExecuteMode.Auto)
+            {
+                yield return RunTweenCycleOnceCoroutine();
+
+                //if expand start delay is > 0.0f -> wait for this number of seconds before looping expand cycle again
+                if (tweenAutoStartDelay > 0.0f) yield return new WaitForSeconds(tweenAutoStartDelay);
+            }
+
+            //if not in auto mode -> break and exit coroutine
+
+            yield break;
         }
 
         public abstract void OnPointerEnter(PointerEventData eventData);//hover on
@@ -78,9 +116,14 @@ namespace TeamMAsTD
 
         public virtual void OnPointerDown(PointerEventData eventData)//click on
         {
-            if (UI_TweenExecuteMode != UITweenExecuteMode.ClickOnly || UI_TweenExecuteMode != UITweenExecuteMode.ClickAndHover) return;
+            if (!rectTransform) return;
 
-            RunTweenInternal();
+            if (UI_TweenExecuteMode == UITweenExecuteMode.Auto) return;
+
+            if (UI_TweenExecuteMode == UITweenExecuteMode.ClickOnly || UI_TweenExecuteMode == UITweenExecuteMode.ClickAndHover)
+            {
+                RunTweenInternal();
+            }
         }
     }
 }
