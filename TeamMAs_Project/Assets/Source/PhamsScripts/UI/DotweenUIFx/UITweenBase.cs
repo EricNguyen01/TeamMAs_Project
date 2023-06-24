@@ -85,6 +85,11 @@ namespace TeamMAsTD
             return tweenDuration;
         }
 
+        public bool IsTweenRunning()
+        {
+            return alreadyPerformedTween;
+        }
+
         private IEnumerator RunTweenCycleOnceCoroutineBase()
         {
             alreadyPerformedTween = true;
