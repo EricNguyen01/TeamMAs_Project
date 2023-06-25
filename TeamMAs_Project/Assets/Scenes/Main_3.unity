@@ -67998,6 +67998,10 @@ PrefabInstance:
       propertyPath: m_fontSize
       value: 36
       objectReference: {fileID: 0}
+    - target: {fileID: 441331576219813609, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1099689189817966449, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
       propertyPath: gameResourceUIStatPopupSpawner
       value: 
@@ -68109,18 +68113,6 @@ PrefabInstance:
     - target: {fileID: 1546197183359776993, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
       propertyPath: OnStartedDragging.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 1567155238411720870, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
-      propertyPath: barkOrder
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1567155238411720870, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
-      propertyPath: maxSeconds
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1567155238411720870, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
-      propertyPath: minSeconds
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1787284736203990429, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
       propertyPath: m_Enabled

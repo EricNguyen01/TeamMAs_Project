@@ -553,14 +553,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7663563581612626003}
     m_Modifications:
-    - target: {fileID: 192653860754856720, guid: 9fcef3549ef177e499bbc1c3ebc5df6d, type: 3}
-      propertyPath: maxSeconds
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 192653860754856720, guid: 9fcef3549ef177e499bbc1c3ebc5df6d, type: 3}
-      propertyPath: minSeconds
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1228421060994794847, guid: 9fcef3549ef177e499bbc1c3ebc5df6d, type: 3}
       propertyPath: m_Name
       value: Barks

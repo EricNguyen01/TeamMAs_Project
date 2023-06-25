@@ -76,6 +76,8 @@ namespace TeamMAsTD
             {
                 EnablePauseMenuCanvasGroup(false);
 
+                DialogueManager.Unpause();
+
                 if (DialogueManager.isConversationActive) return;
 
                 StopCoroutine(CheckAndStopTimeCoroutine());
@@ -89,10 +91,14 @@ namespace TeamMAsTD
 
             EnablePauseMenuCanvasGroup(true);
 
+            DialogueManager.Pause();
+
             if (DialogueManager.isConversationActive) return;
 
             StartCoroutine(CheckAndStopTimeCoroutine());
         }
+
+        private WaitForFixedUpdate waitForFixedUpdate = new WaitForFixedUpdate();//cache wait for fixed update to avoid GC
 
         private IEnumerator CheckAndStopTimeCoroutine()
         {
@@ -104,7 +110,7 @@ namespace TeamMAsTD
             {
                 if(Time.timeScale > 0.0f) Time.timeScale = 0.0f;
 
-                yield return new WaitForFixedUpdate();
+                yield return waitForFixedUpdate;//use cached wait for fixed update above.
             }
 
             Time.timeScale = timeScaleBeforePause;

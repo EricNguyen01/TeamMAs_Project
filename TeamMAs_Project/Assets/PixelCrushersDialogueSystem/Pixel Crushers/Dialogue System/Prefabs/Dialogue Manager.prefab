@@ -529,7 +529,7 @@ MonoBehaviour:
   m_ReverseArrangement: 0
 --- !u!95 &5590227151675177957
 Animator:
-  serializedVersion: 4
+  serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -546,7 +546,8 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &1600683153721106388
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2058,7 +2059,7 @@ CanvasGroup:
   m_IgnoreParentGroups: 0
 --- !u!95 &4103905511057597741
 Animator:
-  serializedVersion: 4
+  serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -2075,7 +2076,8 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &7049571165688632790
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2125,8 +2127,10 @@ MonoBehaviour:
   portraitImage: {fileID: 5634532384226017579}
   portraitName:
     m_uiText: {fileID: 5286833916338558204}
+    m_textMeshProUGUI: {fileID: 0}
   subtitleText:
     m_uiText: {fileID: 7170795282184037745}
+    m_textMeshProUGUI: {fileID: 0}
   addSpeakerName: 0
   addSpeakerNameFormat: '{0}: {1}'
   accumulateText: 0
@@ -2654,7 +2658,7 @@ CanvasGroup:
   m_IgnoreParentGroups: 0
 --- !u!95 &1174865454955060270
 Animator:
-  serializedVersion: 4
+  serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -2671,7 +2675,8 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &4181566114450919437
 GameObject:
   m_ObjectHideFlags: 0
@@ -2973,7 +2978,7 @@ CanvasGroup:
   m_IgnoreParentGroups: 0
 --- !u!95 &7354938075038009159
 Animator:
-  serializedVersion: 4
+  serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -2990,7 +2995,8 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &7192569372809781231
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3040,8 +3046,10 @@ MonoBehaviour:
   portraitImage: {fileID: 6508045137350740793}
   portraitName:
     m_uiText: {fileID: 9160620567203298537}
+    m_textMeshProUGUI: {fileID: 0}
   subtitleText:
     m_uiText: {fileID: 7170795282184037745}
+    m_textMeshProUGUI: {fileID: 0}
   addSpeakerName: 0
   addSpeakerNameFormat: '{0}: {1}'
   accumulateText: 0
@@ -3255,8 +3263,10 @@ MonoBehaviour:
   panel: {fileID: 943229771631258734}
   label:
     m_uiText: {fileID: 6594334440718881358}
+    m_textMeshProUGUI: {fileID: 0}
   inputField:
     m_uiInputField: {fileID: 6205837859863278018}
+    m_textMeshProInputField: {fileID: 0}
   acceptKey: 13
   acceptButton: 
   cancelKey: 27
@@ -3823,7 +3833,7 @@ CanvasGroup:
   m_IgnoreParentGroups: 0
 --- !u!95 &1016226003808455013
 Animator:
-  serializedVersion: 4
+  serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -3840,7 +3850,8 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &7145978133309326726
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4083,7 +4094,7 @@ CanvasGroup:
   m_IgnoreParentGroups: 0
 --- !u!95 &106579734899417322
 Animator:
-  serializedVersion: 4
+  serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -4100,7 +4111,8 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &7348083186335310652
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4150,8 +4162,10 @@ MonoBehaviour:
   portraitImage: {fileID: 2257155458121000049}
   portraitName:
     m_uiText: {fileID: 8130466967432084197}
+    m_textMeshProUGUI: {fileID: 0}
   subtitleText:
     m_uiText: {fileID: 7170795282184037745}
+    m_textMeshProUGUI: {fileID: 0}
   addSpeakerName: 0
   addSpeakerNameFormat: '{0}: {1}'
   accumulateText: 0
@@ -4365,6 +4379,7 @@ MonoBehaviour:
   pcImage: {fileID: 3737930342956606254}
   pcName:
     m_uiText: {fileID: 2380783049724823602}
+    m_textMeshProUGUI: {fileID: 0}
   usePortraitNativeSize: 0
   timerSlider: {fileID: 6440130112277748992}
   buttonAlignment: 0
@@ -5185,6 +5200,7 @@ MonoBehaviour:
   button: {fileID: 7107284884701996629}
   label:
     m_uiText: {fileID: 9167079142083227325}
+    m_textMeshProUGUI: {fileID: 0}
   setLabelColor: 1
   defaultColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &8340296226111544127
@@ -5361,6 +5377,7 @@ MonoBehaviour:
     panel: {fileID: 1600683153721106388}
     alertText:
       m_uiText: {fileID: 39427939030822569}
+      m_textMeshProUGUI: {fileID: 0}
     queueAlerts: 1
     dontQueueDuplicates: 0
     waitForHideAnimation: 1

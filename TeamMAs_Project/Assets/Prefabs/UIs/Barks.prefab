@@ -258,11 +258,11 @@ MonoBehaviour:
   conversant: {fileID: 1558496476844563390}
   useConversationTitlePicker: 1
   selectedDatabase: {fileID: 0}
-  barkOrder: 0
+  barkOrder: 2
   allowDuringConversations: 0
   cacheBarkLines: 0
-  minSeconds: 1
-  maxSeconds: 2
+  minSeconds: 0
+  maxSeconds: 1.25
   target: {fileID: 0}
 --- !u!114 &3918139430953551092
 MonoBehaviour:
@@ -279,6 +279,7 @@ MonoBehaviour:
   UI_TweenExecuteMode: 4
   tweenDuration: 0.6
   tweenAutoStartDelay: 0
+  isIndependentTimeScale: 0
   shakeStrength: {x: 12, y: 12, z: 12}
   shakeVibrato: 6
 --- !u!1 &2240217968776451120
@@ -374,6 +375,7 @@ MonoBehaviour:
   UI_TweenExecuteMode: 4
   tweenDuration: 0.6
   tweenAutoStartDelay: 0
+  isIndependentTimeScale: 0
   jumpHeight: 18
   jumpPower: 10
 --- !u!114 &260857270051422389
