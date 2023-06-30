@@ -11,7 +11,7 @@ namespace TeamMAsTD
      */
     public class UITweenSequenceSetup : MonoBehaviour
     {
-        private enum UITweenSequenceRunMode { InOrder, Simultaneously }
+        private enum UITweenSequenceRunMode { Sequential, Simultaneously }
 
         private struct TweenStruct
         {
@@ -23,7 +23,7 @@ namespace TeamMAsTD
         [Header("Tween Sequence Setup")]
 
         [SerializeField]
-        private UITweenSequenceRunMode UI_TweenSequenceRunMode = UITweenSequenceRunMode.InOrder;
+        private UITweenSequenceRunMode UI_TweenSequenceRunMode = UITweenSequenceRunMode.Sequential;
 
         [SerializeField]
         private TweenStruct[] tweensInSequence;
@@ -37,6 +37,15 @@ namespace TeamMAsTD
 
         public float tweenSequenceDuration { get; private set; } = 0.0f;
 
+#if UNITY_EDITOR
+        private void OnValidate()
+        {
+            if (tweensInSequence == null || tweensInSequence.Length <= 1) return;
+
+            Remove_OverlappingTweens_OnSameGameObject_InSimultanousMode();
+        }
+#endif
+
         private void Awake()
         {
             if(tweensInSequence == null || tweensInSequence.Length == 0)
@@ -45,6 +54,8 @@ namespace TeamMAsTD
 
                 return;
             }
+
+            Remove_OverlappingTweens_OnSameGameObject_InSimultanousMode();
 
             tweenSequenceDuration = GetTweenSequenceTotalDuration();
         }
@@ -55,19 +66,38 @@ namespace TeamMAsTD
 
             float totalDuration = 0.0f;
 
-            for(int i = 0; i < tweensInSequence.Length; i++)
+            if(UI_TweenSequenceRunMode == UITweenSequenceRunMode.Sequential)
             {
-                totalDuration += tweensInSequence[i].tween.GetTweenDuration();
+                for (int i = 0; i < tweensInSequence.Length; i++)
+                {
+                    if (tweensInSequence.Equals(null) || !tweensInSequence[i].tween) continue;
+
+                    totalDuration += tweensInSequence[i].tween.GetTweenDuration();
+                }
+            }
+            else if(UI_TweenSequenceRunMode == UITweenSequenceRunMode.Simultaneously)
+            {
+                for (int i = 0; i < tweensInSequence.Length; i++)
+                {
+                    if (tweensInSequence.Equals(null) || !tweensInSequence[i].tween) continue;
+
+                    if(tweensInSequence[i].tween.GetTweenDuration() > totalDuration)
+                    {
+                        totalDuration = tweensInSequence[i].tween.GetTweenDuration();
+                    }
+                }
             }
 
             return totalDuration;
         }
 
-        private IEnumerator TweenSequenceCoroutine()
+        private IEnumerator SequentialTweenSequenceCoroutine()
         {
             if (tweensInSequence == null || tweensInSequence.Length == 0) yield break;
 
-            for(int i = 0; i < tweensInSequence.Length; i++)
+            if (UI_TweenSequenceRunMode != UITweenSequenceRunMode.Sequential) yield break;
+
+            for (int i = 0; i < tweensInSequence.Length; i++)
             {
                 if (tweensInSequence[i].Equals(null) || !tweensInSequence[i].tween) continue;
 
@@ -78,10 +108,7 @@ namespace TeamMAsTD
 
                 tweensInSequence[i].tween.RunTweenInternal();
 
-                if (UI_TweenSequenceRunMode == UITweenSequenceRunMode.InOrder)
-                {
-                    yield return new WaitForSeconds(tweensInSequence[i].tween.GetTweenDuration());
-                }
+                yield return new WaitUntil(() => !tweensInSequence[i].tween.IsTweenRunning());
             }
 
             OnTweenSequenceCompleted?.Invoke();
@@ -89,9 +116,81 @@ namespace TeamMAsTD
             yield break;
         }
 
+        private IEnumerator SimultanousTweenSequenceCoroutine()
+        {
+            if (tweensInSequence == null || tweensInSequence.Length == 0) yield break;
+
+            if (UI_TweenSequenceRunMode != UITweenSequenceRunMode.Simultaneously) yield break;
+
+            for (int i = 0; i < tweensInSequence.Length; i++)
+            {
+                if (tweensInSequence[i].Equals(null) || !tweensInSequence[i].tween) continue;
+
+                tweensInSequence[i].tween.RunTweenInternal();
+            }
+
+            OnTweenSequenceCompleted?.Invoke();
+
+            yield break;
+        }
+
+        private void Remove_OverlappingTweens_OnSameGameObject_InSimultanousMode()
+        {
+            if (tweensInSequence == null || tweensInSequence.Length == 0) return;
+
+            if (UI_TweenSequenceRunMode != UITweenSequenceRunMode.Simultaneously) return;
+
+            //set null to overlaps
+
+            int overlappingCounts = 0;
+
+            for(int i = 0; i < tweensInSequence.Length; i++)
+            {
+                if (tweensInSequence[i].Equals(null) || !tweensInSequence[i].tween) continue;
+
+                for(int j = 0; j < tweensInSequence.Length; j++)
+                {
+                    if (tweensInSequence[j].Equals(null) || !tweensInSequence[j].tween) continue;
+
+                    if (tweensInSequence[j].tween == tweensInSequence[i].tween) continue;
+
+                    if (tweensInSequence[j].tween.gameObject == tweensInSequence[i].tween.gameObject)
+                    {
+                        tweensInSequence[j].tween = null;
+
+                        overlappingCounts++;
+                    }
+                }
+            }
+
+            //remove null elements from array by swapping with temp arr
+
+            TweenStruct[] temp = new TweenStruct[tweensInSequence.Length - overlappingCounts];
+
+            int tempCurrentElement = 0;
+
+            for(int i = 0; i < tweensInSequence.Length; i++)
+            {
+                if (tweensInSequence[i].Equals(null) || !tweensInSequence[i].tween) continue;
+
+                temp[tempCurrentElement] = tweensInSequence[i];
+
+                tempCurrentElement++;
+            }
+
+            tweensInSequence = temp;
+        }
+
         public void RunTweenSequence()
         {
-            StartCoroutine(TweenSequenceCoroutine());
+            if (UI_TweenSequenceRunMode == UITweenSequenceRunMode.Sequential)
+            {
+                StartCoroutine(SequentialTweenSequenceCoroutine());
+            }
+            else if(UI_TweenSequenceRunMode == UITweenSequenceRunMode.Simultaneously)
+            {
+                StartCoroutine(SimultanousTweenSequenceCoroutine());
+            }
         }
     }
 }
