@@ -59,6 +59,12 @@ namespace TeamMAsTD
 
         private bool isAbilityPendingUnlocked = false;
 
+        protected SpriteRenderer visitorUsingAbilitySpriteRenderer;
+
+        protected string visitorUsingAbilitySpriteRendererLayerName;
+
+        protected int visitorUsingAbilitySpriteRendererLayerOrder;
+
         private WaveSO currentWave;
 
         private List<AbilityEffect> abilityEffectsCreated = new List<AbilityEffect>();
@@ -93,6 +99,16 @@ namespace TeamMAsTD
             abilityLocked = abilityScriptableObject.abilityLocked;
 
             gameObject.layer = unitPossessingAbility.GetUnitLayerMask();
+
+            if (unitPossessingAbility != null)
+            {
+                if (unitPossessingAbility.GetUnitObject().GetType() == typeof(VisitorUnit))
+                {
+                    VisitorUnit visitorUnit = (VisitorUnit)unitPossessingAbility.GetUnitObject();
+
+                    visitorUsingAbilitySpriteRenderer = visitorUnit.GetComponent<SpriteRenderer>();
+                }
+            }
 
             InitializeAuraAbilityEffectsOnAwake();
         }
@@ -425,6 +441,40 @@ namespace TeamMAsTD
             }
             
             return true;
+        }
+
+        protected void SetVisitorSortingOrderOnTopOfAbility(bool shouldBeOnTop)
+        {
+            if (shouldBeOnTop)
+            {
+                if (visitorUsingAbilitySpriteRenderer != null)
+                {
+                    visitorUsingAbilitySpriteRendererLayerName = visitorUsingAbilitySpriteRenderer.sortingLayerName;
+
+                    visitorUsingAbilitySpriteRendererLayerOrder = visitorUsingAbilitySpriteRenderer.sortingOrder;
+
+                    if (abilityParticleEffect != null)
+                    {
+                        ParticleSystemRenderer pRenderer = abilityParticleEffect.GetComponent<ParticleSystemRenderer>();
+
+                        if (pRenderer != null)
+                        {
+                            visitorUsingAbilitySpriteRenderer.sortingLayerName = pRenderer.sortingLayerName;
+
+                            visitorUsingAbilitySpriteRenderer.sortingOrder = pRenderer.sortingOrder + 5;
+                        }
+                    }
+                }
+
+                return;
+            }
+
+            if (visitorUsingAbilitySpriteRenderer != null)
+            {
+                visitorUsingAbilitySpriteRenderer.sortingLayerName = visitorUsingAbilitySpriteRendererLayerName;
+
+                visitorUsingAbilitySpriteRenderer.sortingOrder = visitorUsingAbilitySpriteRendererLayerOrder;
+            }
         }
 
         private void PendingUnlockAbilityOnWaveEndedIfApplicable(WaveSpawner waveSpawner, int waveNum, bool hasOngoingWave)
