@@ -27,9 +27,13 @@ namespace TeamMAsTD
 
         [SerializeField] protected bool isIndependentTimeScale = false;
 
+        [SerializeField] protected bool disableUIFunctionDuringTween = false;
+
         //INTERNALS......................................................................
 
         protected RectTransform rectTransform;
+
+        protected CanvasGroup canvasGroup;
 
         protected Vector2 baseAnchoredPos;
 
@@ -47,6 +51,10 @@ namespace TeamMAsTD
 
                 return;
             }
+
+            canvasGroup = GetComponent<CanvasGroup>();
+
+            if(!canvasGroup) canvasGroup = gameObject.AddComponent<CanvasGroup>();
 
             baseAnchoredPos = rectTransform.anchoredPosition;
 
@@ -94,15 +102,31 @@ namespace TeamMAsTD
         {
             alreadyPerformedTween = true;
 
+            if (disableUIFunctionDuringTween)
+            {
+                if(!canvasGroup) canvasGroup = gameObject.AddComponent<CanvasGroup>();
+
+                canvasGroup.interactable = false;
+            }
+
             yield return RunTweenCycleOnceCoroutine();
 
             alreadyPerformedTween = false;
+
+            if (canvasGroup && !canvasGroup.interactable) canvasGroup.interactable = true;
         }
 
         protected abstract IEnumerator RunTweenCycleOnceCoroutine();
 
         protected virtual IEnumerator AutoTweenLoopCycleCoroutine()
         {
+            if (disableUIFunctionDuringTween)
+            {
+                if (!canvasGroup) canvasGroup = gameObject.AddComponent<CanvasGroup>();
+
+                canvasGroup.interactable = false;
+            }
+
             while (UI_TweenExecuteMode == UITweenExecuteMode.Auto)
             {
                 yield return RunTweenCycleOnceCoroutine();
@@ -112,6 +136,26 @@ namespace TeamMAsTD
             }
 
             //if not in auto mode -> break and exit coroutine
+
+            if (canvasGroup && !canvasGroup.interactable) canvasGroup.interactable = true;
+
+            yield break;
+        }
+
+        protected IEnumerator ProcessCanvasGroupOnTweenStartStop(Tween tween)
+        {
+            if (tween == null || !disableUIFunctionDuringTween) yield break;
+            
+            if (disableUIFunctionDuringTween)
+            {
+                if (!canvasGroup) canvasGroup = gameObject.AddComponent<CanvasGroup>();
+
+                canvasGroup.interactable = false;
+            }
+
+            yield return tween.WaitForCompletion();
+
+            if (canvasGroup && !canvasGroup.interactable) canvasGroup.interactable = true;
 
             yield break;
         }

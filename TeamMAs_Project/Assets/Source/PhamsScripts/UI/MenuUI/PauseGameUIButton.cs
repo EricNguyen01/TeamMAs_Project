@@ -88,7 +88,7 @@ namespace TeamMAsTD
             }
 
             //else if closed -> then open 
-
+            
             EnablePauseMenuCanvasGroup(true);
 
             DialogueManager.Pause();

@@ -49,7 +49,9 @@ namespace TeamMAsTD
 
             if (UI_TweenExecuteMode == UITweenExecuteMode.HoverOnly || UI_TweenExecuteMode == UITweenExecuteMode.ClickAndHover)
             {
-                rectTransform.DOSizeDelta(expandedSize, tweenDuration).SetUpdate(isIndependentTimeScale);
+                Tween tween = rectTransform.DOSizeDelta(expandedSize, tweenDuration).SetUpdate(isIndependentTimeScale);
+
+                StartCoroutine(ProcessCanvasGroupOnTweenStartStop(tween));
             }
         }
 
@@ -64,7 +66,9 @@ namespace TeamMAsTD
 
             if (UI_TweenExecuteMode == UITweenExecuteMode.HoverOnly || UI_TweenExecuteMode == UITweenExecuteMode.ClickAndHover)
             {
-                rectTransform.DOSizeDelta(baseSizeDelta, tweenDuration).SetUpdate(isIndependentTimeScale);
+                Tween tween = rectTransform.DOSizeDelta(baseSizeDelta, tweenDuration).SetUpdate(isIndependentTimeScale);
+
+                StartCoroutine(ProcessCanvasGroupOnTweenStartStop(tween));
             }
         }
     }

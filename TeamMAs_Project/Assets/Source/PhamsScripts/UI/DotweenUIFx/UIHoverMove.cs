@@ -8,7 +8,7 @@ namespace TeamMAsTD
 {
     public class UIHoverMove : UITweenBase
     {
-        private enum UIHoverMoveDir { None, Up, Down, Left, Right }
+        private enum UIHoverMoveDir { None = 0, Up = 1, Down = 2, Left = 3, Right = 4 }
 
         [Header("UI Hover Move Settings")]
 
@@ -22,9 +22,41 @@ namespace TeamMAsTD
 
             yield return rectTransform.DOAnchorPos(FinalMoveToPosition(), tweenDuration).SetUpdate(isIndependentTimeScale).WaitForCompletion();
 
-            yield return rectTransform.DOAnchorPos(baseAnchoredPos, tweenDuration).SetUpdate(isIndependentTimeScale).WaitForCompletion();
+            //yield return rectTransform.DOAnchorPos(baseAnchoredPos, tweenDuration).SetUpdate(isIndependentTimeScale).WaitForCompletion();
 
             alreadyPerformedTween = false;
+        }
+
+        //the set dir functions below are to be used in UnityEvent calls (such as UI Buttons)
+        public void SetMoveDirUp()
+        {
+            hoverMoveDir = UIHoverMoveDir.Up;
+        }
+
+        public void SetMoveDirDown()
+        {
+            hoverMoveDir = UIHoverMoveDir.Down;
+        }
+
+        public void SetMoveDirRight()
+        {
+            hoverMoveDir = UIHoverMoveDir.Right;
+        }
+
+        public void SetMoveDirLeft()
+        {
+            hoverMoveDir = UIHoverMoveDir.Left;
+        }
+
+        public void SetInverseCurrentDir()
+        {
+            if(hoverMoveDir == UIHoverMoveDir.Right) hoverMoveDir = UIHoverMoveDir.Left;
+
+            if(hoverMoveDir == UIHoverMoveDir.Left) hoverMoveDir = UIHoverMoveDir.Right;
+
+            if (hoverMoveDir == UIHoverMoveDir.Up) hoverMoveDir = UIHoverMoveDir.Down;
+
+            if (hoverMoveDir == UIHoverMoveDir.Down) hoverMoveDir = UIHoverMoveDir.Up;
         }
 
         public override void OnPointerEnter(PointerEventData eventData)
@@ -35,7 +67,9 @@ namespace TeamMAsTD
 
             if (UI_TweenExecuteMode == UITweenExecuteMode.HoverOnly || UI_TweenExecuteMode == UITweenExecuteMode.ClickAndHover)
             {
-                rectTransform.DOAnchorPos(FinalMoveToPosition(), tweenDuration).SetUpdate(isIndependentTimeScale);
+                Tween tween = rectTransform.DOAnchorPos(FinalMoveToPosition(), tweenDuration).SetUpdate(isIndependentTimeScale);
+
+                StartCoroutine(ProcessCanvasGroupOnTweenStartStop(tween));
             }
         }
 
@@ -47,7 +81,9 @@ namespace TeamMAsTD
 
             if (UI_TweenExecuteMode == UITweenExecuteMode.HoverOnly || UI_TweenExecuteMode == UITweenExecuteMode.ClickAndHover)
             {
-                rectTransform.DOAnchorPos(baseAnchoredPos, tweenDuration).SetUpdate(isIndependentTimeScale);
+                Tween tween = rectTransform.DOAnchorPos(baseAnchoredPos, tweenDuration).SetUpdate(isIndependentTimeScale);
+
+                StartCoroutine(ProcessCanvasGroupOnTweenStartStop(tween));
             }
         }
 

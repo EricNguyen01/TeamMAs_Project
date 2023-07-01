@@ -1,4 +1,5 @@
 ﻿using DG.Tweening;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,6 +14,7 @@ namespace TeamMAsTD
     {
         private enum UITweenSequenceRunMode { Sequential, Simultaneously }
 
+        [Serializable]
         private struct TweenStruct
         {
             public UITweenBase tween;
@@ -96,11 +98,11 @@ namespace TeamMAsTD
             if (tweensInSequence == null || tweensInSequence.Length == 0) yield break;
 
             if (UI_TweenSequenceRunMode != UITweenSequenceRunMode.Sequential) yield break;
-
+            
             for (int i = 0; i < tweensInSequence.Length; i++)
             {
                 if (tweensInSequence[i].Equals(null) || !tweensInSequence[i].tween) continue;
-
+                
                 if (tweensInSequence[i].startDelaySec > 0.0f)
                 {
                     yield return new WaitForSeconds(tweensInSequence[i].startDelaySec);
@@ -110,7 +112,7 @@ namespace TeamMAsTD
 
                 yield return new WaitUntil(() => !tweensInSequence[i].tween.IsTweenRunning());
             }
-
+            
             OnTweenSequenceCompleted?.Invoke();
 
             yield break;
