@@ -13,20 +13,17 @@ namespace TeamMAsTD
     [DisallowMultipleComponent]
     public class UITweenSequenceSetup : MonoBehaviour
     {
-        private enum UITweenSequenceRunMode { Sequential, Simultaneously }
-
         [Serializable]
         private struct TweenStruct
         {
             public UITweenBase tween;
 
             public float startDelaySec;
+
+            public bool completeBeforeMoveNext;
         }
 
         [Header("Tween Sequence Setup")]
-
-        [SerializeField]
-        private UITweenSequenceRunMode UI_TweenSequenceRunMode = UITweenSequenceRunMode.Sequential;
 
         [SerializeField]
         private TweenStruct[] tweensInSequence;
@@ -50,7 +47,7 @@ namespace TeamMAsTD
         {
             if (tweensInSequence == null || tweensInSequence.Length <= 1) return;
 
-            Remove_OverlappingTweens_OnSameGameObject_InSimultanousMode();
+            Remove_OverlappingTweens_OnSameGameObject();
         }
 #endif
 
@@ -65,14 +62,12 @@ namespace TeamMAsTD
 
             SetTweensInSequenceToExecuteInternalOnly();
 
-            Remove_OverlappingTweens_OnSameGameObject_InSimultanousMode();
+            Remove_OverlappingTweens_OnSameGameObject();
         }
 
         private IEnumerator SequentialTweenSequenceCoroutine()
         {
             if (tweensInSequence == null || tweensInSequence.Length == 0) yield break;
-
-            if (UI_TweenSequenceRunMode != UITweenSequenceRunMode.Sequential) yield break;
             
             for (int i = 0; i < tweensInSequence.Length; i++)
             {
@@ -81,6 +76,11 @@ namespace TeamMAsTD
                 if (runningTweenList.Contains(tweensInSequence[i].tween)) continue;
 
                 StartCoroutine(ProcessTweenSlotCoroutine(tweensInSequence[i]));
+
+                if (tweensInSequence[i].completeBeforeMoveNext && tweensInSequence[i].tween.IsTweenRunning())
+                {
+                    yield return new WaitUntil(() => !tweensInSequence[i].tween.IsTweenRunning());
+                }
             }
 
             yield return new WaitUntil(() => runningTweenList.Count == 0);
@@ -117,29 +117,9 @@ namespace TeamMAsTD
             yield break;
         }
 
-        private IEnumerator SimultanousTweenSequenceCoroutine()
-        {
-            if (tweensInSequence == null || tweensInSequence.Length == 0) yield break;
-
-            if (UI_TweenSequenceRunMode != UITweenSequenceRunMode.Simultaneously) yield break;
-
-            for (int i = 0; i < tweensInSequence.Length; i++)
-            {
-                if (tweensInSequence[i].Equals(null) || !tweensInSequence[i].tween) continue;
-
-                tweensInSequence[i].tween.RunTweenInternal();
-            }
-
-            OnTweenSequenceCompleted?.Invoke();
-
-            yield break;
-        }
-
-        private void Remove_OverlappingTweens_OnSameGameObject_InSimultanousMode()
+        private void Remove_OverlappingTweens_OnSameGameObject()
         {
             if (tweensInSequence == null || tweensInSequence.Length == 0) return;
-
-            if (UI_TweenSequenceRunMode != UITweenSequenceRunMode.Simultaneously) return;
 
             //set null to overlaps
 
@@ -204,15 +184,8 @@ namespace TeamMAsTD
 
                 return;
             }
-            
-            if (UI_TweenSequenceRunMode == UITweenSequenceRunMode.Sequential)
-            {
-                StartCoroutine(SequentialTweenSequenceCoroutine());
-            }
-            else if(UI_TweenSequenceRunMode == UITweenSequenceRunMode.Simultaneously)
-            {
-                StartCoroutine(SimultanousTweenSequenceCoroutine());
-            }
+
+            StartCoroutine(SequentialTweenSequenceCoroutine());
 
             OnTweenSequenceStarted?.Invoke();
 
