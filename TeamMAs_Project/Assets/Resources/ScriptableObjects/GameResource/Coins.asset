@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <resourceName>k__BackingField: Coins
   initialResourceAmountMin: 0
-  initialResourceAmount: 80
+  initialResourceAmount: 30
   initialResourceAmountCap: 2000
   <coinsGainOnWaveEnded>k__BackingField: 0

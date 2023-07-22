@@ -167,6 +167,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   UI_TweenExecuteMode: 4
   tweenDuration: 0.5
+  tweenAutoStartDelay: 0
+  isIndependentTimeScale: 0
+  disableUIFunctionDuringTween: 0
   shakeStrength: {x: 4, y: 14, z: 0}
   shakeVibrato: 7
 --- !u!1 &1988533623866361764
@@ -626,8 +629,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 0
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 5c95bc2a72192a64bb719010a14b3f77, type: 2}
-  m_sharedMaterial: {fileID: -244629392850006900, guid: 5c95bc2a72192a64bb719010a14b3f77, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 7c4d598a1b6b80f4b83962e1ae64bc1b, type: 2}
+  m_sharedMaterial: {fileID: 434623511835423077, guid: 7c4d598a1b6b80f4b83962e1ae64bc1b, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -655,8 +658,8 @@ MonoBehaviour:
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
-  m_fontSizeMin: 2
-  m_fontSizeMax: 50
+  m_fontSizeMin: 10
+  m_fontSizeMax: 66
   m_fontStyle: 0
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512

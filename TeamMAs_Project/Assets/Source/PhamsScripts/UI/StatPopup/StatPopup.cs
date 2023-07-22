@@ -75,6 +75,13 @@ namespace TeamMAsTD
 
             startingLocalScale = transform.localScale;
 
+            Canvas popupCanvas = GetComponentInChildren<Canvas>();
+
+            if (popupCanvas && !popupCanvas.worldCamera)
+            {
+                popupCanvas.worldCamera = Camera.main;
+            }
+
             //this script and its object's enabled/disabled status can only be controlled by StatPopupPool.
             //if this script is not spawned by a StatPopupPool, it will always disable the whole gameobject by default on awake.
             gameObject.SetActive(false);
@@ -100,6 +107,13 @@ namespace TeamMAsTD
                     color.a = 100.0f;
                     statPopupUIImage.color = color;
                 }
+            }
+
+            Canvas popupCanvas = GetComponentInChildren<Canvas>();
+
+            if (popupCanvas && !popupCanvas.worldCamera)
+            {
+                popupCanvas.worldCamera = Camera.main;
             }
         }
 

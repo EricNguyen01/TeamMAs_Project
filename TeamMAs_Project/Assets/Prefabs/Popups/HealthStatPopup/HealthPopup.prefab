@@ -265,18 +265,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2c90dd0479bf604f8c0f6e5e5c86bcd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  statPopupWorldUICanvas: {fileID: 5374239132133481435}
   statPopupUIImage: {fileID: 4397547518056734228}
   statPopupTextMesh: {fileID: 7512172702897273963}
   positiveStatPopupSprite: {fileID: 21300000, guid: 159b8a6426bcd8d4a87e3fc4aaca3f7f, type: 3}
   negativeStatPopupSprite: {fileID: 21300000, guid: 252b2373d4495794196a28d1a54135de, type: 3}
+  statPopupAnimator: {fileID: 0}
+  positiveStatPopupAnimatorOverride: {fileID: 0}
+  negativeStatPopupAnimatorOverride: {fileID: 0}
   positiveStatText: 
   negativeStatText: 
   positiveStatPopupTextColor: {r: 0.3114971, g: 0.8584906, b: 0.18141682, a: 1}
   negativeStatPopupTextColor: {r: 0.7924528, g: 0.18241365, b: 0.18241365, a: 1}
 --- !u!95 &6848413014240626699
 Animator:
-  serializedVersion: 4
+  serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -293,7 +295,8 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &8982342318295134763
 GameObject:
   m_ObjectHideFlags: 0

@@ -64,7 +64,7 @@ namespace TeamMAsTD
         private float defaultPopupTime;
 
         [field: SerializeField]
-        [field: Tooltip("Whether to show multiple popups simultaneously if many are being spawned in quick succession" +
+        [field: Tooltip("Whether to show multiple popups simultaneously if many are being spawned in quick succession " +
         "or to show them one at a time.")]
         public bool displayPopupsSeparately { get; private set; } = false;
 

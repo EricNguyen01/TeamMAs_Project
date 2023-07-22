@@ -72,7 +72,7 @@ MonoBehaviour:
 
     See Stats'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 5c95bc2a72192a64bb719010a14b3f77, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 7c4d598a1b6b80f4b83962e1ae64bc1b, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}

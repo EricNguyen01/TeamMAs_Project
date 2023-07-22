@@ -264,7 +264,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2c90dd0479bf604f8c0f6e5e5c86bcd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  statPopupWorldUICanvas: {fileID: 5374239132133481435}
   statPopupUIImage: {fileID: 4397547518056734228}
   statPopupTextMesh: {fileID: 7512172702897273963}
   positiveStatPopupSprite: {fileID: 0}
@@ -344,8 +343,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: cb4991ddef649fc499dd2ffc10b9ab24, type: 2}
+  m_sharedMaterial: {fileID: 7906350216939441245, guid: cb4991ddef649fc499dd2ffc10b9ab24, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -373,7 +372,7 @@ MonoBehaviour:
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
-  m_fontSizeMin: 0.4
+  m_fontSizeMin: 0.5
   m_fontSizeMax: 1
   m_fontStyle: 1
   m_HorizontalAlignment: 2
