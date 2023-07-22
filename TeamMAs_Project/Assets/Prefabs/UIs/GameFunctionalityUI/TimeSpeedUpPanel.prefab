@@ -392,8 +392,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   UI_TweenExecuteMode: 1
   tweenDuration: 0.5
-  hoverMoveDir: 4
+  tweenAutoStartDelay: 0
+  isIndependentTimeScale: 0
+  disableUIFunctionDuringTween: 0
+  moveDir: 4
   moveDistance: 8.5
+  currentPositionAsStartPoint: 1
+  startingAnchoredPosition: {x: 0, y: 0}
+  endAnchoredPosition: {x: 0, y: 0}
+  reverseOnMoveCycleCompleted: 0
 --- !u!1 &7000335917043875743
 GameObject:
   m_ObjectHideFlags: 0
@@ -574,8 +581,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   UI_TweenExecuteMode: 1
   tweenDuration: 0.5
-  hoverMoveDir: 3
+  tweenAutoStartDelay: 0
+  isIndependentTimeScale: 0
+  disableUIFunctionDuringTween: 0
+  moveDir: 3
   moveDistance: 8.5
+  currentPositionAsStartPoint: 1
+  startingAnchoredPosition: {x: 0, y: 0}
+  endAnchoredPosition: {x: 0, y: 0}
+  reverseOnMoveCycleCompleted: 0
 --- !u!1 &8665070374301109883
 GameObject:
   m_ObjectHideFlags: 0

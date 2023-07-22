@@ -6,9 +6,10 @@ using UnityEngine.EventSystems;
 
 namespace TeamMAsTD
 {
+    [DisallowMultipleComponent]
     public abstract class UITweenBase : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler
     {
-        protected enum UITweenExecuteMode { ClickOnly, HoverOnly, ClickAndHover, Auto, Internal }
+        public enum UITweenExecuteMode { ClickOnly, HoverOnly, ClickAndHover, Auto, Internal }
 
         [Header("UI Tween General Settings")]
 
@@ -37,6 +38,8 @@ namespace TeamMAsTD
 
         protected Vector2 baseAnchoredPos;
 
+        protected Vector2 baseRectRotation;
+
         protected Vector2 baseSizeDelta;
 
         protected bool alreadyPerformedTween = false;
@@ -57,6 +60,8 @@ namespace TeamMAsTD
             if(!canvasGroup) canvasGroup = gameObject.AddComponent<CanvasGroup>();
 
             baseAnchoredPos = rectTransform.anchoredPosition;
+
+            baseRectRotation = rectTransform.rotation.eulerAngles;
 
             baseSizeDelta = rectTransform.sizeDelta;
         }
@@ -98,6 +103,11 @@ namespace TeamMAsTD
             return alreadyPerformedTween;
         }
 
+        public void SetTweenExecuteMode(UITweenExecuteMode executeMode)
+        {
+            UI_TweenExecuteMode = executeMode;
+        }
+
         private IEnumerator RunTweenCycleOnceCoroutineBase()
         {
             alreadyPerformedTween = true;
@@ -129,6 +139,8 @@ namespace TeamMAsTD
 
             while (UI_TweenExecuteMode == UITweenExecuteMode.Auto)
             {
+                alreadyPerformedTween = true;
+
                 yield return RunTweenCycleOnceCoroutine();
 
                 //if expand start delay is > 0.0f -> wait for this number of seconds before looping expand cycle again
@@ -138,6 +150,8 @@ namespace TeamMAsTD
             //if not in auto mode -> break and exit coroutine
 
             if (canvasGroup && !canvasGroup.interactable) canvasGroup.interactable = true;
+
+            alreadyPerformedTween = false;
 
             yield break;
         }
@@ -161,6 +175,7 @@ namespace TeamMAsTD
         }
 
         public abstract void OnPointerEnter(PointerEventData eventData);//hover on
+
         public abstract void OnPointerExit(PointerEventData eventData);//hover off
 
         public virtual void OnPointerDown(PointerEventData eventData)//click on
@@ -173,6 +188,21 @@ namespace TeamMAsTD
             {
                 RunTweenInternal();
             }
+        }
+
+        public void ResetUITween()
+        {
+            StopAllCoroutines();
+
+            alreadyPerformedTween = false;
+
+            DOTween.Kill(transform);
+
+            rectTransform.anchoredPosition = baseAnchoredPos;
+
+            rectTransform.rotation = Quaternion.Euler(baseRectRotation);
+
+            rectTransform.sizeDelta = baseSizeDelta;
         }
     }
 }

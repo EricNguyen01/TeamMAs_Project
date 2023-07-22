@@ -10,6 +10,7 @@ namespace TeamMAsTD
     /* A Class for creating a customizable list of tweening effects (by adding tween components) and then run them either individually in order or simultaneously.
      * Have nothing to do with DoTween Sequence functionality.
      */
+    [DisallowMultipleComponent]
     public class UITweenSequenceSetup : MonoBehaviour
     {
         private enum UITweenSequenceRunMode { Sequential, Simultaneously }
@@ -33,11 +34,16 @@ namespace TeamMAsTD
         [Header("Tween Sequence Unity Event")]
 
         [SerializeField]
+        private UnityEvent OnTweenSequenceStarted;
+
+        [SerializeField]
         private UnityEvent OnTweenSequenceCompleted;
 
-        //INTERNALS..............................................................................
+        //INTERNALS.......................................................
 
-        public float tweenSequenceDuration { get; private set; } = 0.0f;
+        private List<UITweenBase> runningTweenList = new List<UITweenBase>();
+
+        private int toggleState = 0;
 
 #if UNITY_EDITOR
         private void OnValidate()
@@ -57,40 +63,9 @@ namespace TeamMAsTD
                 return;
             }
 
+            SetTweensInSequenceToExecuteInternalOnly();
+
             Remove_OverlappingTweens_OnSameGameObject_InSimultanousMode();
-
-            tweenSequenceDuration = GetTweenSequenceTotalDuration();
-        }
-
-        private float GetTweenSequenceTotalDuration()
-        {
-            if (tweensInSequence == null || tweensInSequence.Length == 0) return 0.0f;
-
-            float totalDuration = 0.0f;
-
-            if(UI_TweenSequenceRunMode == UITweenSequenceRunMode.Sequential)
-            {
-                for (int i = 0; i < tweensInSequence.Length; i++)
-                {
-                    if (tweensInSequence.Equals(null) || !tweensInSequence[i].tween) continue;
-
-                    totalDuration += tweensInSequence[i].tween.GetTweenDuration();
-                }
-            }
-            else if(UI_TweenSequenceRunMode == UITweenSequenceRunMode.Simultaneously)
-            {
-                for (int i = 0; i < tweensInSequence.Length; i++)
-                {
-                    if (tweensInSequence.Equals(null) || !tweensInSequence[i].tween) continue;
-
-                    if(tweensInSequence[i].tween.GetTweenDuration() > totalDuration)
-                    {
-                        totalDuration = tweensInSequence[i].tween.GetTweenDuration();
-                    }
-                }
-            }
-
-            return totalDuration;
         }
 
         private IEnumerator SequentialTweenSequenceCoroutine()
@@ -102,18 +77,42 @@ namespace TeamMAsTD
             for (int i = 0; i < tweensInSequence.Length; i++)
             {
                 if (tweensInSequence[i].Equals(null) || !tweensInSequence[i].tween) continue;
-                
-                if (tweensInSequence[i].startDelaySec > 0.0f)
-                {
-                    yield return new WaitForSeconds(tweensInSequence[i].startDelaySec);
-                }
 
-                tweensInSequence[i].tween.RunTweenInternal();
+                if (runningTweenList.Contains(tweensInSequence[i].tween)) continue;
 
-                yield return new WaitUntil(() => !tweensInSequence[i].tween.IsTweenRunning());
+                StartCoroutine(ProcessTweenSlotCoroutine(tweensInSequence[i]));
             }
+
+            yield return new WaitUntil(() => runningTweenList.Count == 0);
             
             OnTweenSequenceCompleted?.Invoke();
+
+            yield break;
+        }
+
+        private IEnumerator ProcessTweenSlotCoroutine(TweenStruct tweenSlot)
+        {
+            if (tweenSlot.Equals(null) || !tweenSlot.tween || runningTweenList.Contains(tweenSlot.tween)) yield break;
+
+            runningTweenList.Add(tweenSlot.tween);
+
+            //Debug.Log("StartProcessTweenSlot");
+
+            if (tweenSlot.startDelaySec > 0.0f)
+            {
+                //Debug.Log("TweenSlotHasDelay!");
+                yield return new WaitForSecondsRealtime(tweenSlot.startDelaySec);
+            }
+
+            //Debug.Log("SlotDelayCompleted! StartingTween!");
+
+            tweenSlot.tween.RunTweenInternal();
+
+            yield return new WaitUntil(() => !tweenSlot.tween.IsTweenRunning());
+
+            //Debug.Log("SlotTweenFinishedRunning!");
+
+            runningTweenList.Remove(tweenSlot.tween);
 
             yield break;
         }
@@ -183,8 +182,29 @@ namespace TeamMAsTD
             tweensInSequence = temp;
         }
 
+        private void SetTweensInSequenceToExecuteInternalOnly()
+        {
+            if (tweensInSequence == null || tweensInSequence.Length == 0) return;
+
+            for (int i = 0; i < tweensInSequence.Length; i++)
+            {
+                if (tweensInSequence[i].Equals(null) || !tweensInSequence[i].tween) continue;
+
+                tweensInSequence[i].tween.SetTweenExecuteMode(UITweenBase.UITweenExecuteMode.Internal);
+            }
+        }
+
         public void RunTweenSequence()
         {
+            if(toggleState == 1)
+            {
+                StopAndResetTweenSequence();
+
+                if(toggleState != 0) toggleState = 0;
+
+                return;
+            }
+            
             if (UI_TweenSequenceRunMode == UITweenSequenceRunMode.Sequential)
             {
                 StartCoroutine(SequentialTweenSequenceCoroutine());
@@ -193,6 +213,30 @@ namespace TeamMAsTD
             {
                 StartCoroutine(SimultanousTweenSequenceCoroutine());
             }
+
+            OnTweenSequenceStarted?.Invoke();
+
+            toggleState = 1;
+        }
+
+        public void StopAndResetTweenSequence()
+        {
+            StopAllCoroutines();
+
+            runningTweenList.Clear();
+
+            if (tweensInSequence == null || tweensInSequence.Length == 0) return;
+
+            for (int i = 0; i < tweensInSequence.Length; i++)
+            {
+                if (tweensInSequence[i].Equals(null) || !tweensInSequence[i].tween) continue;
+
+                tweensInSequence[i].tween.ResetUITween();
+            }
+
+            OnTweenSequenceCompleted?.Invoke();
+
+            toggleState = 0;
         }
     }
 }
