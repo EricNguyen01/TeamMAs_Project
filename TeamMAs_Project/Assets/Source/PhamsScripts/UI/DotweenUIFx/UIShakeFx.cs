@@ -6,6 +6,7 @@ using UnityEngine.EventSystems;
 
 namespace TeamMAsTD
 {
+    [DisallowMultipleComponent]
     public class UIShakeFx : UITweenBase
     {
         [Header("UI Shake FX Settings")]
@@ -17,14 +18,16 @@ namespace TeamMAsTD
         protected override IEnumerator RunTweenCycleOnceCoroutine()
         {
             alreadyPerformedTween = true;
-            
-            yield return rectTransform.DOShakeAnchorPos(tweenDuration, 
-                                                        shakeStrength, 
-                                                        shakeVibrato, 
-                                                        50.0f, 
-                                                        false, 
-                                                        true, 
-                                                        ShakeRandomnessMode.Harmonic).SetUpdate(isIndependentTimeScale).WaitForCompletion();
+
+            Tween tween = rectTransform.DOShakeAnchorPos(tweenDuration,
+                                                        shakeStrength,
+                                                        shakeVibrato,
+                                                        50.0f,
+                                                        false,
+                                                        true,
+                                                        ShakeRandomnessMode.Harmonic);
+
+            yield return tween.SetEase(easeMode).SetUpdate(isIndependentTimeScale).WaitForCompletion();
 
             alreadyPerformedTween = false;
         }

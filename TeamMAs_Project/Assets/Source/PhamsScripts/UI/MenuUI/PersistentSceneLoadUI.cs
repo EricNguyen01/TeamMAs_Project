@@ -38,16 +38,13 @@ namespace TeamMAsTD
 
             if (sceneLoadCanvas == null)
             {
-                Debug.LogWarning("PersistentSceneLoadUI is implemented but a scene load canvas is not assigned! Scene Load UI won't work!");
+                //Debug.LogWarning("PersistentSceneLoadUI is implemented but a scene load canvas is not assigned! Scene Load UI won't work!");
 
-                gameObject.SetActive(false);
-
-                return;
             }
 
-            sceneLoadCanvasGroup = sceneLoadCanvas.GetComponent<CanvasGroup>();
+            if(sceneLoadCanvas) sceneLoadCanvasGroup = sceneLoadCanvas.GetComponent<CanvasGroup>();
 
-            if (sceneLoadCanvasGroup == null) sceneLoadCanvasGroup = sceneLoadCanvas.gameObject.AddComponent<CanvasGroup>();
+            if (sceneLoadCanvasGroup == null && sceneLoadCanvas) sceneLoadCanvasGroup = sceneLoadCanvas.gameObject.AddComponent<CanvasGroup>();
 
             EnableSceneLoadUI(false);
         }
@@ -85,7 +82,7 @@ namespace TeamMAsTD
 
         private void EnableSceneLoadUI(bool enabled)
         {
-            if (sceneLoadCanvasGroup == null) return;
+            if (!sceneLoadCanvas || !sceneLoadCanvasGroup) return;
 
             sceneLoadCanvasGroup.ignoreParentGroups = true;
 

@@ -7,6 +7,7 @@ using UnityEngine.UI;
 
 namespace TeamMAsTD
 {
+    [DisallowMultipleComponent]
     public class UIJumpFx :UITweenBase
     {
         [Header("UI Jump FX Settings")]
@@ -19,10 +20,12 @@ namespace TeamMAsTD
         {
             alreadyPerformedTween = true;
 
-            yield return rectTransform.DOJumpAnchorPos(new Vector2(baseAnchoredPos.x, baseAnchoredPos.y + jumpHeight), 
-                                                       jumpPower, 
-                                                       2, 
-                                                       tweenDuration).SetUpdate(isIndependentTimeScale).WaitForCompletion();
+            Tween tween = rectTransform.DOJumpAnchorPos(new Vector2(baseAnchoredPos.x, baseAnchoredPos.y + jumpHeight),
+                                                       jumpPower,
+                                                       2,
+                                                       tweenDuration);
+
+            yield return tween.SetEase(easeMode).SetUpdate(isIndependentTimeScale).WaitForCompletion();
 
             alreadyPerformedTween = false;
         }

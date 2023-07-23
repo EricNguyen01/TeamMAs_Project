@@ -89,6 +89,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UI_TweenExecuteMode: 1
+  easeMode: 7
   tweenDuration: 0.5
   tweenAutoStartDelay: 0
   isIndependentTimeScale: 0

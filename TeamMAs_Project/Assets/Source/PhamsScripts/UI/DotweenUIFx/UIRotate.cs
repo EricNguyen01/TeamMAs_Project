@@ -7,6 +7,7 @@ using UnityEngine.EventSystems;
 
 namespace TeamMAsTD
 {
+    [DisallowMultipleComponent]
     public class UIRotate : UITweenBase
     {
         private enum RotateMode { PingPong, FullLoop }
@@ -47,9 +48,9 @@ namespace TeamMAsTD
 
             if(rotateMode == RotateMode.PingPong)
             {
-                yield return rectTransform.DORotate(eulerRotationTo, tweenDuration).SetUpdate(isIndependentTimeScale).WaitForCompletion();
+                yield return rectTransform.DORotate(eulerRotationTo, tweenDuration).SetEase(easeMode).SetUpdate(isIndependentTimeScale).WaitForCompletion();
 
-                yield return rectTransform.DORotate(eulerRotationFrom, tweenDuration).SetUpdate(isIndependentTimeScale).WaitForCompletion();
+                yield return rectTransform.DORotate(eulerRotationFrom, tweenDuration).SetEase(easeMode).SetUpdate(isIndependentTimeScale).WaitForCompletion();
             }
             else if(rotateMode == RotateMode.FullLoop)
             {
@@ -67,7 +68,7 @@ namespace TeamMAsTD
 
             if (UI_TweenExecuteMode == UITweenExecuteMode.HoverOnly || UI_TweenExecuteMode == UITweenExecuteMode.ClickAndHover)
             {
-                Tween tween = rectTransform.DORotate(eulerRotationTo, tweenDuration).SetUpdate(isIndependentTimeScale);
+                Tween tween = rectTransform.DORotate(eulerRotationTo, tweenDuration).SetEase(easeMode).SetUpdate(isIndependentTimeScale);
 
                 StartCoroutine(ProcessCanvasGroupOnTweenStartStop(tween));
             }
@@ -81,7 +82,7 @@ namespace TeamMAsTD
 
             if (UI_TweenExecuteMode == UITweenExecuteMode.HoverOnly || UI_TweenExecuteMode == UITweenExecuteMode.ClickAndHover)
             {
-                Tween tween = rectTransform.DORotate(eulerRotationFrom, tweenDuration).SetUpdate(isIndependentTimeScale);
+                Tween tween = rectTransform.DORotate(eulerRotationFrom, tweenDuration).SetEase(easeMode).SetUpdate(isIndependentTimeScale);
 
                 StartCoroutine(ProcessCanvasGroupOnTweenStartStop(tween));
             }

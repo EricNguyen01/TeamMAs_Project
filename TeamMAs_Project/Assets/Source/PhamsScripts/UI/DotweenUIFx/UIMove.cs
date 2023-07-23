@@ -6,6 +6,7 @@ using UnityEngine.EventSystems;
 
 namespace TeamMAsTD
 {
+    [DisallowMultipleComponent]
     public class UIMove : UITweenBase
     {
         private enum UIMoveDir { None = 0, Up = 1, Down = 2, Left = 3, Right = 4 }
@@ -54,9 +55,14 @@ namespace TeamMAsTD
 
         protected override IEnumerator RunTweenCycleOnceCoroutine()
         {
+            if(UI_TweenExecuteMode == UITweenExecuteMode.Auto)
+            {
+                ReverseMove();
+            }
+
             alreadyPerformedTween = true;
 
-            yield return rectTransform.DOAnchorPos(endAnchoredPosition, tweenDuration).SetEase(Ease.OutSine).SetUpdate(isIndependentTimeScale).WaitForCompletion();
+            yield return rectTransform.DOAnchorPos(endAnchoredPosition, tweenDuration).SetEase(easeMode).SetUpdate(isIndependentTimeScale).WaitForCompletion();
 
             alreadyPerformedTween = false;
         }
@@ -90,7 +96,7 @@ namespace TeamMAsTD
 
             if (UI_TweenExecuteMode == UITweenExecuteMode.HoverOnly || UI_TweenExecuteMode == UITweenExecuteMode.ClickAndHover)
             {
-                Tween tween = rectTransform.DOAnchorPos(endAnchoredPosition, tweenDuration).SetEase(Ease.OutSine).SetUpdate(isIndependentTimeScale);
+                Tween tween = rectTransform.DOAnchorPos(endAnchoredPosition, tweenDuration).SetEase(easeMode).SetUpdate(isIndependentTimeScale);
 
                 StartCoroutine(ProcessCanvasGroupOnTweenStartStop(tween));
             }
@@ -104,7 +110,7 @@ namespace TeamMAsTD
 
             if (UI_TweenExecuteMode == UITweenExecuteMode.HoverOnly || UI_TweenExecuteMode == UITweenExecuteMode.ClickAndHover)
             {
-                Tween tween = rectTransform.DOAnchorPos(baseAnchoredPos, tweenDuration).SetEase(Ease.OutSine).SetUpdate(isIndependentTimeScale);
+                Tween tween = rectTransform.DOAnchorPos(baseAnchoredPos, tweenDuration).SetEase(easeMode).SetUpdate(isIndependentTimeScale);
 
                 StartCoroutine(ProcessCanvasGroupOnTweenStartStop(tween));
             }

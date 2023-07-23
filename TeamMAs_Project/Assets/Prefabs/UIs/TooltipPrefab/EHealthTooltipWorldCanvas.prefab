@@ -385,6 +385,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UI_TweenExecuteMode: 3
+  easeMode: 30
   tweenDuration: 0.8
   tweenAutoStartDelay: 0
   isIndependentTimeScale: 0
@@ -764,6 +765,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UI_TweenExecuteMode: 3
+  easeMode: 4
   tweenDuration: 0.8
   tweenAutoStartDelay: 0
   isIndependentTimeScale: 0

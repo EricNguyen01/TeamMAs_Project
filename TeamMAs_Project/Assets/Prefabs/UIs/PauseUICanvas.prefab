@@ -386,6 +386,7 @@ GameObject:
   - component: {fileID: 6836041278861470335}
   - component: {fileID: 3333032529054089397}
   - component: {fileID: 2458546360974292685}
+  - component: {fileID: 9078230006003071190}
   m_Layer: 5
   m_Name: ResumeButton
   m_TagString: Untagged
@@ -435,7 +436,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.47700456, g: 0.8584906, b: 0.2948024, a: 1}
+  m_Color: {r: 0.8784314, g: 1, b: 0.6627451, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -474,7 +475,7 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_HighlightedColor: {r: 0.7215313, g: 0.8679245, b: 0.46180135, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
@@ -554,6 +555,24 @@ MonoBehaviour:
   currentPositionAsStartPoint: 1
   startingAnchoredPosition: {x: 0, y: 0}
   endAnchoredPosition: {x: -8, y: 236.49976}
+--- !u!114 &9078230006003071190
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2721210617022761712}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UI_TweenExecuteMode: 1
+  tweenDuration: 0.5
+  tweenAutoStartDelay: 0
+  isIndependentTimeScale: 1
+  disableUIFunctionDuringTween: 0
+  expandValue: 16
 --- !u!1 &3971004943003716103
 GameObject:
   m_ObjectHideFlags: 0
@@ -1143,6 +1162,7 @@ GameObject:
   - component: {fileID: 3298665609487976687}
   - component: {fileID: 6218802503402271167}
   - component: {fileID: 864212527989603927}
+  - component: {fileID: 8264635658755477580}
   m_Layer: 5
   m_Name: Settings
   m_TagString: Untagged
@@ -1192,7 +1212,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.47843137, g: 0.85882354, b: 0.29803923, a: 1}
+  m_Color: {r: 0.8784314, g: 1, b: 0.6627451, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1231,7 +1251,7 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_HighlightedColor: {r: 0.7215313, g: 0.8679245, b: 0.46180135, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
@@ -1287,6 +1307,24 @@ MonoBehaviour:
   currentPositionAsStartPoint: 1
   startingAnchoredPosition: {x: 0, y: 0}
   endAnchoredPosition: {x: -14, y: 30}
+--- !u!114 &8264635658755477580
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8742164541031804179}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UI_TweenExecuteMode: 1
+  tweenDuration: 0.5
+  tweenAutoStartDelay: 0
+  isIndependentTimeScale: 1
+  disableUIFunctionDuringTween: 0
+  expandValue: 16
 --- !u!1 &9047951193722099347
 GameObject:
   m_ObjectHideFlags: 0
@@ -1301,6 +1339,7 @@ GameObject:
   - component: {fileID: 6903104106004263608}
   - component: {fileID: 2515864820164438967}
   - component: {fileID: 6141870380883988479}
+  - component: {fileID: 4274364475184909846}
   m_Layer: 5
   m_Name: Main Menu
   m_TagString: Untagged
@@ -1350,7 +1389,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.47843137, g: 0.85882354, b: 0.29803923, a: 1}
+  m_Color: {r: 0.8784314, g: 1, b: 0.6627451, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1389,7 +1428,7 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_HighlightedColor: {r: 0.7215313, g: 0.8679245, b: 0.46180135, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
@@ -1445,3 +1484,21 @@ MonoBehaviour:
   currentPositionAsStartPoint: 1
   startingAnchoredPosition: {x: 0, y: 0}
   endAnchoredPosition: {x: -15, y: -178.50012}
+--- !u!114 &4274364475184909846
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9047951193722099347}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UI_TweenExecuteMode: 1
+  tweenDuration: 0.5
+  tweenAutoStartDelay: 0
+  isIndependentTimeScale: 1
+  disableUIFunctionDuringTween: 0
+  expandValue: 16

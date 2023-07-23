@@ -7,6 +7,7 @@ using UnityEngine.UI;
 
 namespace TeamMAsTD
 {
+    [DisallowMultipleComponent]
     public class UIExpand : UITweenBase
     {
         [Header("UI Hover Expand Settings")]
@@ -30,10 +31,10 @@ namespace TeamMAsTD
             alreadyPerformedTween = true;
 
             //wait for expand operation to finish async
-            yield return rectTransform.DOSizeDelta(expandedSize, tweenDuration).SetUpdate(isIndependentTimeScale).WaitForCompletion();
+            yield return rectTransform.DOSizeDelta(expandedSize, tweenDuration).SetEase(easeMode).SetUpdate(isIndependentTimeScale).WaitForCompletion();
 
             //collapse to original size and wait for collapse async operation to finish
-            yield return rectTransform.DOSizeDelta(baseSizeDelta, tweenDuration).SetUpdate(isIndependentTimeScale).WaitForCompletion();
+            yield return rectTransform.DOSizeDelta(baseSizeDelta, tweenDuration).SetEase(easeMode).SetUpdate(isIndependentTimeScale).WaitForCompletion();
 
             alreadyPerformedTween = false;
         }
@@ -49,7 +50,7 @@ namespace TeamMAsTD
 
             if (UI_TweenExecuteMode == UITweenExecuteMode.HoverOnly || UI_TweenExecuteMode == UITweenExecuteMode.ClickAndHover)
             {
-                Tween tween = rectTransform.DOSizeDelta(expandedSize, tweenDuration).SetUpdate(isIndependentTimeScale);
+                Tween tween = rectTransform.DOSizeDelta(expandedSize, tweenDuration).SetEase(easeMode).SetUpdate(isIndependentTimeScale);
 
                 StartCoroutine(ProcessCanvasGroupOnTweenStartStop(tween));
             }
@@ -66,7 +67,7 @@ namespace TeamMAsTD
 
             if (UI_TweenExecuteMode == UITweenExecuteMode.HoverOnly || UI_TweenExecuteMode == UITweenExecuteMode.ClickAndHover)
             {
-                Tween tween = rectTransform.DOSizeDelta(baseSizeDelta, tweenDuration).SetUpdate(isIndependentTimeScale);
+                Tween tween = rectTransform.DOSizeDelta(baseSizeDelta, tweenDuration).SetEase(easeMode).SetUpdate(isIndependentTimeScale);
 
                 StartCoroutine(ProcessCanvasGroupOnTweenStartStop(tween));
             }

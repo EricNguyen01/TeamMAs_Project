@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 
 namespace TeamMAsTD
 {
-    [DisallowMultipleComponent]
     public abstract class UITweenBase : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler
     {
         public enum UITweenExecuteMode { ClickOnly, HoverOnly, ClickAndHover, Auto, Internal }
@@ -14,9 +14,12 @@ namespace TeamMAsTD
         [Header("UI Tween General Settings")]
 
         [SerializeField]
-        [Tooltip("Auto: the tween or tween cycle will be performed and looped automatically on component enabled.\n" +
-        "Internal: the tween will be processed internally.")]
+        [Tooltip("Auto: the tween or tween cycle will be performed and looped automatically and independently on component enabled.\n" +
+        "Internal: the tween will be called and processed internally.")]
         protected UITweenExecuteMode UI_TweenExecuteMode = UITweenExecuteMode.ClickOnly;
+
+        [SerializeField] 
+        protected Ease easeMode = Ease.OutBounce;
 
         [SerializeField] protected float tweenDuration = 0.5f;
 
@@ -68,6 +71,8 @@ namespace TeamMAsTD
 
         protected virtual void OnEnable()
         {
+            SceneManager.activeSceneChanged += KillAllTweenOnSceneLoad;
+
             if (rectTransform && UI_TweenExecuteMode == UITweenExecuteMode.Auto)
             {
                 StartCoroutine(AutoTweenLoopCycleCoroutine());
@@ -76,7 +81,7 @@ namespace TeamMAsTD
 
         protected virtual void OnDisable()
         {
-
+            SceneManager.activeSceneChanged -= KillAllTweenOnSceneLoad;
         }
 
         protected virtual void Start()
@@ -117,13 +122,20 @@ namespace TeamMAsTD
                 if(!canvasGroup) canvasGroup = gameObject.AddComponent<CanvasGroup>();
 
                 canvasGroup.interactable = false;
+
+                canvasGroup.blocksRaycasts = false;
             }
 
             yield return RunTweenCycleOnceCoroutine();
 
             alreadyPerformedTween = false;
 
-            if (canvasGroup && !canvasGroup.interactable) canvasGroup.interactable = true;
+            if (canvasGroup && !canvasGroup.interactable)
+            {
+                canvasGroup.interactable = true;
+
+                canvasGroup.blocksRaycasts = true;
+            }
         }
 
         protected abstract IEnumerator RunTweenCycleOnceCoroutine();
@@ -203,6 +215,11 @@ namespace TeamMAsTD
             rectTransform.rotation = Quaternion.Euler(baseRectRotation);
 
             rectTransform.sizeDelta = baseSizeDelta;
+        }
+
+        private static void KillAllTweenOnSceneLoad(Scene sc1, Scene sc2)
+        {
+            DOTween.KillAll();
         }
     }
 }

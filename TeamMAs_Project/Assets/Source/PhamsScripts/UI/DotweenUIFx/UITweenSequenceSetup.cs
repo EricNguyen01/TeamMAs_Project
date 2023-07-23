@@ -28,6 +28,8 @@ namespace TeamMAsTD
         [SerializeField]
         private TweenStruct[] tweensInSequence;
 
+        [SerializeField] private bool playOnStart = false;
+
         [Header("Tween Sequence Unity Event")]
 
         [SerializeField]
@@ -65,6 +67,14 @@ namespace TeamMAsTD
             Remove_OverlappingTweens_OnSameGameObject();
         }
 
+        private void Start()
+        {
+            if (playOnStart)
+            {
+                RunTweenSequence();
+            }
+        }
+
         private IEnumerator SequentialTweenSequenceCoroutine()
         {
             if (tweensInSequence == null || tweensInSequence.Length == 0) yield break;
@@ -77,9 +87,9 @@ namespace TeamMAsTD
 
                 StartCoroutine(ProcessTweenSlotCoroutine(tweensInSequence[i]));
 
-                if (tweensInSequence[i].completeBeforeMoveNext && tweensInSequence[i].tween.IsTweenRunning())
+                if (tweensInSequence[i].completeBeforeMoveNext)
                 {
-                    yield return new WaitUntil(() => !tweensInSequence[i].tween.IsTweenRunning());
+                    yield return new WaitForSecondsRealtime(tweensInSequence[i].tween.GetTweenDuration() + tweensInSequence[i].startDelaySec);
                 }
             }
 
