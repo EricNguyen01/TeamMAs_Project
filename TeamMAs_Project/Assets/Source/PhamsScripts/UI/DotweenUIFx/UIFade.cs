@@ -4,7 +4,6 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using DG.Tweening;
-using static CartoonFX.ExpressionParser;
 
 namespace TeamMAsTD
 {
