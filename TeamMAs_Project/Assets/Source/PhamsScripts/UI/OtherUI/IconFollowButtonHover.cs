@@ -51,7 +51,7 @@ namespace TeamMAsTD
 
         private List<RaycastResult> pointerRaycastResults = new List<RaycastResult>();
 
-        private Vector2 currentVel;
+        private Dictionary<GameObject, Button> gameObjectButtonDict = new Dictionary<GameObject, Button>();
 
         private void Awake()
         {
@@ -67,6 +67,8 @@ namespace TeamMAsTD
             }
 
             if (UIImageAsFollowingIcon) iconRectTransform = UIImageAsFollowingIcon.rectTransform;
+
+            if(gameObjectButtonDict.Count > 0) gameObjectButtonDict.Clear();
         }
 
         private void OnEnable()
@@ -167,6 +169,7 @@ namespace TeamMAsTD
             UIImageAsFollowingIcon.rectTransform.anchorMax = button.image.rectTransform.anchorMax + iconOffset;
         }
 
+        //This function gradually tweens the follow icon to the current valid UI button being hovered on
         private void InterpolateToCurrentHoveredButtonInList()
         {
             if (!EventSystem.current || pointerEventData == null) return;
@@ -175,27 +178,51 @@ namespace TeamMAsTD
 
             EventSystem.current.RaycastAll(pointerEventData, pointerRaycastResults);
 
-            if(pointerRaycastResults != null && pointerRaycastResults.Count > 0)
+            //if mouse is not on any UI obj or element -> do nothing and exit func
+            if (pointerRaycastResults == null || pointerRaycastResults.Count <= 0) return;
+
+            //if mouse is on 1 or more UI elements -> iterate through the UI objects to check if any of them are buttons
+            for (int i = 0; i < pointerRaycastResults.Count; i++)
             {
-                for (int i = 0; i < pointerRaycastResults.Count; i++)
+                Button button;
+                
+                //this if checks if the currently in-check UI game object is an existing key in the dict
+                //if yes, skip the chunk under this if.
+                if (!gameObjectButtonDict.TryGetValue(pointerRaycastResults[i].gameObject, out button))
                 {
-                    Button button = pointerRaycastResults[i].gameObject.GetComponent<Button>();
+                    //key (UI game object that mouse is on) doesnt exist in dict -> check this game object for a button component
 
-                    if (!button) continue;
+                    //because this UI game object has never been visited before, this is the first and only time get component will be used to check through its comps
+                    //after this, this game object will exist in the dict as key along with its button pair value for quick extraction of data (no need to use get component next time).
+                    button = pointerRaycastResults[i].gameObject.GetComponent<Button>();
 
-                    if(buttonsToFollowOnHovered.Count > 0)
-                    {
-                        if (!buttonsToFollowOnHovered.Contains(button)) break;
-                    }
-
-                    if (!currentButtonToMoveTo || currentButtonToMoveTo != button) currentButtonToMoveTo = button;
-
-                    break;
+                    //add this just checked game object to dict no matter if it has or has not a button component
+                    //this is so that the game object exists in the dict so that we don't have to look through its components to find a button comp (above if is used next time)
+                    //(if it doesn't have a button, the next time the pair value is extracted, this loop will continue (see above if logic))
+                    gameObjectButtonDict.Add(pointerRaycastResults[i].gameObject, button);
                 }
+
+                //after checking the UI obj, if it turns out the UI obj doesn't have a button comp -> continue iteration and skip the below chunk
+                if (!button) continue;
+
+                //if a button is found and a list of valid buttons is set, check if the founded button is in the list
+                //if yes, it is a valid button and if not, it is invalid and iteration is exit.
+                if (buttonsToFollowOnHovered.Count > 0)
+                {
+                    if (!buttonsToFollowOnHovered.Contains(button)) break;
+                }
+
+                //if the founded button is determined to be valid, set it as the current button to move to
+                if (!currentButtonToMoveTo || currentButtonToMoveTo != button) currentButtonToMoveTo = button;
+
+                break;//exit iteration once current button to move to is successfully set
             }
 
+            //if above iteration has finished and no valid button is received -> do nothing and exit function
             if (!currentButtonToMoveTo || !currentButtonToMoveTo.image) return;
 
+            //else if a valid button is received and it is a new one (in case the user leaves their mouse on the same valid button and it is checked every frame)
+            //if it is a new one -> interpolate the follow icon to that button.
             if(!previousButton || previousButton != currentButtonToMoveTo)
             {
                 iconRectTransform.DOAnchorMin(currentButtonToMoveTo.image.rectTransform.anchorMin + iconOffset,
