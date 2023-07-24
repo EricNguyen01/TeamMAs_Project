@@ -42,7 +42,7 @@ namespace TeamMAsTD
         //hover on
         public override void OnPointerEnter(PointerEventData eventData)
         {
-            if (!rectTransform) return;
+            if (!enabled) return;
 
             if (UI_TweenExecuteMode == UITweenExecuteMode.Auto) return;
 
@@ -59,7 +59,7 @@ namespace TeamMAsTD
         //hover off
         public override void OnPointerExit(PointerEventData eventData)
         {
-            if (!rectTransform) return;
+            if (!enabled) return;
 
             if (UI_TweenExecuteMode == UITweenExecuteMode.Auto) return;
 

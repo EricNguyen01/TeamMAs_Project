@@ -39,7 +39,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.029000001, y: 0.18014815}
   m_AnchorMax: {x: 0.19710417, y: 0.27925923}
-  m_AnchoredPosition: {x: -972.99994, y: -6}
+  m_AnchoredPosition: {x: -1068.0001, y: -6.0000305}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6806960673958426431
@@ -205,7 +205,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.029000001, y: 0.44362965}
   m_AnchorMax: {x: 0.19710417, y: 0.54285187}
-  m_AnchoredPosition: {x: -972.99994, y: -6}
+  m_AnchoredPosition: {x: -1067.9999, y: -6}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6806960674135288241
@@ -383,7 +383,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.029000001, y: 0.3125926}
   m_AnchorMax: {x: 0.19710417, y: 0.41300002}
-  m_AnchoredPosition: {x: -972.99994, y: -6}
+  m_AnchoredPosition: {x: -1067.9999, y: -6}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6806960674166760123
@@ -920,7 +920,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.029000001, y: 0.046148147}
   m_AnchorMax: {x: 0.19710417, y: 0.14677778}
-  m_AnchoredPosition: {x: -972.99994, y: -6}
+  m_AnchoredPosition: {x: -1068, y: -6}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6806960674515822356
@@ -1083,7 +1083,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.347375, y: 0.63000005}
   m_AnchorMax: {x: 0.5, y: 0.9025926}
-  m_AnchoredPosition: {x: -973, y: -6}
+  m_AnchoredPosition: {x: -1068, y: -6}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6806960674650616387
@@ -1705,6 +1705,9 @@ MonoBehaviour:
     completeBeforeMoveNext: 0
   - tween: {fileID: 6806960674515822354}
     startDelaySec: 0.9
+    completeBeforeMoveNext: 1
+  - tween: {fileID: 4826020343918367118}
+    startDelaySec: 0.1
     completeBeforeMoveNext: 0
   playOnStart: 1
   OnTweenSequenceStarted:
@@ -1749,7 +1752,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.54285187}
   m_AnchorMax: {x: 0.42987502, y: 0.70600003}
-  m_AnchoredPosition: {x: -973, y: -6}
+  m_AnchoredPosition: {x: -1068, y: -6}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6806960675766377928
@@ -1795,6 +1798,7 @@ GameObject:
   - component: {fileID: 6806960675846904389}
   - component: {fileID: 6806960675846904390}
   - component: {fileID: 426558211}
+  - component: {fileID: 4826020343918367118}
   m_Layer: 5
   m_Name: ButterflyIcon
   m_TagString: Untagged
@@ -1843,7 +1847,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1882,3 +1886,24 @@ MonoBehaviour:
   followEaseMode: 25
   followTweenTime: 0.4
   buttonForOffsetDebug: {fileID: 0}
+--- !u!114 &4826020343918367118
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6806960675846904760}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d582db315895f854193f6639d2cfeee1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UI_TweenExecuteMode: 4
+  easeMode: 7
+  tweenDuration: 0.5
+  tweenAutoStartDelay: 0
+  isIndependentTimeScale: 1
+  disableUIFunctionDuringTween: 0
+  canvasGroupToFade: {fileID: 0}
+  imageToFade: {fileID: 6806960675846904390}
+  fadeTo: 1

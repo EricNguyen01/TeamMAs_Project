@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using DG.Tweening;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
@@ -91,6 +92,8 @@ namespace TeamMAsTD
 
         public void RunTweenInternal()
         {
+            if (!enabled) return;
+
             if (UI_TweenExecuteMode == UITweenExecuteMode.Auto) return;
 
             if (!rectTransform || alreadyPerformedTween) return;
@@ -115,6 +118,8 @@ namespace TeamMAsTD
 
         private IEnumerator RunTweenCycleOnceCoroutineBase()
         {
+            if (!enabled) yield break;
+
             alreadyPerformedTween = true;
 
             if (disableUIFunctionDuringTween)
@@ -142,11 +147,15 @@ namespace TeamMAsTD
 
         protected virtual IEnumerator AutoTweenLoopCycleCoroutine()
         {
+            if (!enabled) yield break;
+
             if (disableUIFunctionDuringTween)
             {
                 if (!canvasGroup) canvasGroup = gameObject.AddComponent<CanvasGroup>();
 
                 canvasGroup.interactable = false;
+
+                canvasGroup.blocksRaycasts = false;
             }
 
             while (UI_TweenExecuteMode == UITweenExecuteMode.Auto)
@@ -155,13 +164,18 @@ namespace TeamMAsTD
 
                 yield return RunTweenCycleOnceCoroutine();
 
-                //if expand start delay is > 0.0f -> wait for this number of seconds before looping expand cycle again
+                //if start delay is > 0.0f -> wait for this number of seconds before looping cycle again
                 if (tweenAutoStartDelay > 0.0f) yield return new WaitForSeconds(tweenAutoStartDelay);
             }
 
             //if not in auto mode -> break and exit coroutine
 
-            if (canvasGroup && !canvasGroup.interactable) canvasGroup.interactable = true;
+            if (canvasGroup && !canvasGroup.interactable)
+            {
+                canvasGroup.interactable = true;
+
+                canvasGroup.blocksRaycasts = true;
+            }
 
             alreadyPerformedTween = false;
 
@@ -177,11 +191,18 @@ namespace TeamMAsTD
                 if (!canvasGroup) canvasGroup = gameObject.AddComponent<CanvasGroup>();
 
                 canvasGroup.interactable = false;
+
+                canvasGroup.blocksRaycasts = false;
             }
 
             yield return tween.WaitForCompletion();
 
-            if (canvasGroup && !canvasGroup.interactable) canvasGroup.interactable = true;
+            if (canvasGroup && !canvasGroup.interactable)
+            {
+                canvasGroup.interactable = true;
+
+                canvasGroup.blocksRaycasts = true;
+            }
 
             yield break;
         }
