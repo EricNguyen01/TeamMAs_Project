@@ -10,6 +10,7 @@ namespace TeamMAsTD
 {
     public class UIFade : UITweenBase
     {
+        private enum FadeMode { FadeIn, FadeOut }
 
         [Header("UI Fade Settings")]
 
@@ -17,12 +18,21 @@ namespace TeamMAsTD
         //if no CanvasGroup is added to this UI obj, the UITweenBase parent class will add it automatically on awake and set the added CG as default CG to fade
         [SerializeField] private CanvasGroup canvasGroupToFade;
 
+        [SerializeField] private float canvasGroupAlphaToFadeInTo = 0.0f;
+
+        [SerializeField] private float canvasGroupAlphaToFadeOutTo = 1.0f;
+
         [SerializeField] private Image imageToFade;
 
-        [Range(0f, 1f)]
-        [Tooltip("0f = fully fade.\n" +
-                     "1f = no fade.")]
-        public float fadeTo;
+        [SerializeField] private float imageAlphaToFadeInTo = 0.0f;
+
+        [SerializeField] private float imageAlphaToFadeOutTo = 255.0f;
+
+        [SerializeField]
+        [Tooltip("Fade Mode is only effective for Internal and Auto tween mode. " +
+        "For Hover tween mode, hover on will be fade in and hover off will be fade out. " +
+        "For Click-on mode, fade in/out will be toggled")]
+        private FadeMode fadeMode = FadeMode.FadeIn;
 
         //INTERNALS...............................................................................
 
@@ -59,7 +69,7 @@ namespace TeamMAsTD
                 {
                     Tween canvasGroupTween;
 
-                    canvasGroupTween = canvasGroupToFade.DOFade(fadeTo, tweenDuration).SetEase(easeMode).SetUpdate(isIndependentTimeScale);
+                    canvasGroupTween = canvasGroupToFade.DOFade(canvasGroupAlphaToFadeInTo, tweenDuration).SetEase(easeMode).SetUpdate(isIndependentTimeScale);
 
                     StartCoroutine(ProcessCanvasGroupOnTweenStartStop(canvasGroupTween));
                 }
@@ -68,7 +78,7 @@ namespace TeamMAsTD
                 {
                     Tween imageTween;
 
-                    imageTween = imageToFade.DOFade(imageToFade.color.a * fadeTo, tweenDuration).SetEase(easeMode).SetUpdate(isIndependentTimeScale);
+                    imageTween = imageToFade.DOFade(imageAlphaToFadeInTo, tweenDuration).SetEase(easeMode).SetUpdate(isIndependentTimeScale);
 
                     StartCoroutine(ProcessCanvasGroupOnTweenStartStop(imageTween));
                 }
@@ -87,7 +97,7 @@ namespace TeamMAsTD
                 {
                     Tween canvasGroupTween;
 
-                    canvasGroupTween = canvasGroupToFade.DOFade(1f, tweenDuration).SetEase(easeMode).SetUpdate(isIndependentTimeScale);
+                    canvasGroupTween = canvasGroupToFade.DOFade(canvasGroupAlphaToFadeOutTo, tweenDuration).SetEase(easeMode).SetUpdate(isIndependentTimeScale);
 
                     StartCoroutine(ProcessCanvasGroupOnTweenStartStop(canvasGroupTween));
                 }
@@ -96,11 +106,19 @@ namespace TeamMAsTD
                 {
                     Tween imageTween;
 
-                    imageTween = imageToFade.DOFade(imageBaseAlphaVal, tweenDuration).SetEase(easeMode).SetUpdate(isIndependentTimeScale);
+                    imageTween = imageToFade.DOFade(imageAlphaToFadeOutTo, tweenDuration).SetEase(easeMode).SetUpdate(isIndependentTimeScale);
 
                     StartCoroutine(ProcessCanvasGroupOnTweenStartStop(imageTween));
                 }
             }
+        }
+
+        public override void OnPointerDown(PointerEventData eventData)
+        {
+            base.OnPointerDown(eventData);
+
+            if (fadeMode == FadeMode.FadeIn) fadeMode = FadeMode.FadeOut;
+            else if (fadeMode == FadeMode.FadeOut) fadeMode = FadeMode.FadeIn;
         }
 
         protected override IEnumerator RunTweenCycleOnceCoroutine()//internal call for fade
@@ -129,6 +147,18 @@ namespace TeamMAsTD
 
             canvasGroupFadeCompleted = false;
 
+            float fadeTo = 0.0f;
+
+            if (fadeMode == FadeMode.FadeIn) fadeTo = canvasGroupAlphaToFadeInTo;
+            else fadeTo = canvasGroupAlphaToFadeOutTo;
+
+            if(canvasGroupToFade.alpha == fadeTo)
+            {
+                canvasGroupFadeCompleted = true;
+
+                yield break;
+            }
+
             yield return canvasGroupToFade.DOFade(fadeTo, tweenDuration).SetEase(easeMode).SetUpdate(isIndependentTimeScale).WaitForCompletion();
 
             canvasGroupFadeCompleted = true;
@@ -147,7 +177,19 @@ namespace TeamMAsTD
 
             imageFadeCompleted = false;
 
-            yield return imageToFade.DOFade(imageToFade.color.a * fadeTo, tweenDuration).SetEase(easeMode).SetUpdate(isIndependentTimeScale).WaitForCompletion();
+            float fadeTo = 0.0f;
+
+            if (fadeMode == FadeMode.FadeIn) fadeTo = imageAlphaToFadeInTo;
+            else fadeTo = imageAlphaToFadeOutTo;
+
+            if(imageToFade.color.a == fadeTo)
+            {
+                imageFadeCompleted = true;
+
+                yield break;
+            }
+
+            yield return imageToFade.DOFade(fadeTo, tweenDuration).SetEase(easeMode).SetUpdate(isIndependentTimeScale).WaitForCompletion();
 
             imageFadeCompleted = true;
 

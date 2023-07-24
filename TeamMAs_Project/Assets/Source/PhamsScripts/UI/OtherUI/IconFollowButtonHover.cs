@@ -8,7 +8,9 @@ using DG.Tweening;
 namespace TeamMAsTD
 {
     [DisallowMultipleComponent]
+#if UNITY_EDITOR
     [ExecuteInEditMode]
+#endif
     public class IconFollowButtonHover : MonoBehaviour
     {
         [SerializeField]
@@ -204,8 +206,6 @@ namespace TeamMAsTD
 
                 previousButton = currentButtonToMoveTo;
             }
-
-            //iconRectTransform.localPosition = currentButtonToMoveTo.image.rectTransform.localPosition + new Vector3(iconOffset.x, iconOffset.y, 0.0f);
         }
     }
 }

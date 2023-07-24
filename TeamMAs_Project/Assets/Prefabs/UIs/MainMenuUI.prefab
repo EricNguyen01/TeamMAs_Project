@@ -39,7 +39,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.029000001, y: 0.18014815}
   m_AnchorMax: {x: 0.19710417, y: 0.27925923}
-  m_AnchoredPosition: {x: -1068.0001, y: -6.0000305}
+  m_AnchoredPosition: {x: -1068.0002, y: -6.000061}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6806960673958426431
@@ -1707,7 +1707,7 @@ MonoBehaviour:
     startDelaySec: 0.9
     completeBeforeMoveNext: 1
   - tween: {fileID: 4826020343918367118}
-    startDelaySec: 0.1
+    startDelaySec: 0
     completeBeforeMoveNext: 0
   playOnStart: 1
   OnTweenSequenceStarted:
@@ -1905,5 +1905,9 @@ MonoBehaviour:
   isIndependentTimeScale: 1
   disableUIFunctionDuringTween: 0
   canvasGroupToFade: {fileID: 0}
+  canvasGroupAlphaToFadeInTo: 0
+  canvasGroupAlphaToFadeOutTo: 1
   imageToFade: {fileID: 6806960675846904390}
-  fadeTo: 1
+  imageAlphaToFadeInTo: 0
+  imageAlphaToFadeOutTo: 255
+  fadeMode: 1
