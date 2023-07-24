@@ -35,6 +35,10 @@ namespace TeamMAsTD
 
         [SerializeField] private Color negativeStatPopupTextColor;
 
+        public Canvas statPopupCanvas { get; private set; }
+
+        //INTERNALS.................................................................
+
         private StatPopupPool statPopupPoolSpawnedThisPopup;
 
         private StatPopupSpawner statPopupSpawnerSpawnedThisPopup;
@@ -75,10 +79,14 @@ namespace TeamMAsTD
 
             startingLocalScale = transform.localScale;
 
-            Canvas popupCanvas = GetComponentInChildren<Canvas>();
+            Canvas popupCanvas = GetComponent<Canvas>();
+
+            if (!popupCanvas) popupCanvas = GetComponentInChildren<Canvas>();
 
             if (popupCanvas && !popupCanvas.worldCamera)
             {
+                statPopupCanvas = popupCanvas;
+
                 popupCanvas.worldCamera = Camera.main;
             }
 
@@ -214,6 +222,8 @@ namespace TeamMAsTD
 
         public void SetStatPopupTextColor(Color colorToSet)
         {
+            if (!statPopupTextMesh) return;
+
             statPopupTextMesh.color = colorToSet;
         }
 
@@ -247,11 +257,15 @@ namespace TeamMAsTD
 
         public void SetStatPopupPositiveTextColor()
         {
+            if (!statPopupTextMesh) return;
+
             statPopupTextMesh.color = positiveStatPopupTextColor;
         }
 
         public void SetStatPopupNegativeTextColor()
         {
+            if (!statPopupTextMesh) return;
+
             statPopupTextMesh.color = negativeStatPopupTextColor;
         }
 

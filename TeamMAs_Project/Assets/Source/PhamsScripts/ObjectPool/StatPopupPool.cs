@@ -125,7 +125,9 @@ namespace TeamMAsTD
                 statPopupOfStatPopupObj.SetStatPopupNegativeTextColor(); 
             }
 
-            statPopupObj.transform.SetParent(null);//parent is reset to statPopupSpawner obj transform upon returning to pool
+            //if stat popup obj doesn't have its own canvas which mean it must be displayed within another canvas (that's the only way it can be displayed)
+            //and if so, don't detach from parent
+            if(statPopupOfStatPopupObj.statPopupCanvas) statPopupObj.transform.SetParent(null);//parent is reset to statPopupSpawner obj transform upon returning to pool
 
             if (!statPopupObj.activeInHierarchy && statPopupSpawnerSpawnedThisPool.enabled) statPopupObj.SetActive(true);
             

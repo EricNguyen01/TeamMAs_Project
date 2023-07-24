@@ -175,6 +175,11 @@ namespace TeamMAsTD
             return new Vector3(transform.position.x + startHorizontalOffset, transform.position.y + startVerticalOffset, transform.position.z);
         }
 
+        public void PopupUnityEventCall(bool isPositivePopup = true)//For UnityEvent calls ONLY!
+        {
+            PopUp(null, null, isPositivePopup);
+        }
+
         public virtual void PopUp(Sprite spriteToPopup, string textToPopup, bool isPositivePopup)
         {
             if (!enabled || disablePopup) return;
