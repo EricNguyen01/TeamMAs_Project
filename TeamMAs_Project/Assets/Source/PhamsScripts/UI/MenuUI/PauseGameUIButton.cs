@@ -83,8 +83,6 @@ namespace TeamMAsTD
 
                 if (DialogueManager.isConversationActive) return;
 
-                StopCoroutine(CheckAndStopTimeCoroutine());
-
                 if(Time.timeScale != timeScaleBeforePause) Time.timeScale = timeScaleBeforePause;
 
                 return;
@@ -116,7 +114,10 @@ namespace TeamMAsTD
                 yield return waitForFixedUpdate;//use cached wait for fixed update above.
             }
 
-            Time.timeScale = timeScaleBeforePause;
+            if (!DialogueManager.isConversationActive && Time.timeScale != timeScaleBeforePause)
+            {
+                Time.timeScale = timeScaleBeforePause;
+            }
 
             yield break;
         }

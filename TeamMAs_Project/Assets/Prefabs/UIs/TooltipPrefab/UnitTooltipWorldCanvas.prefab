@@ -151,7 +151,7 @@ Animator:
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: c4e0e02adfe479f45b74d3a8547152cb, type: 2}
   m_CullingMode: 0
-  m_UpdateMode: 2
+  m_UpdateMode: 0
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
@@ -193,10 +193,10 @@ RectTransform:
   m_Father: {fileID: 6222597543075191883}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 600, y: 600}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0.000030517578, y: -0.00045776367}
+  m_SizeDelta: {x: -0.32000732, y: -0.2999878}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5666353629100018574
 CanvasRenderer:
@@ -320,10 +320,10 @@ RectTransform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -4.4000244, y: -1.8400269}
-  m_SizeDelta: {x: 428.8438, y: 280.1083}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -1284.9727, y: -721.7245}
+  m_SizeDelta: {x: 593.6937, y: 399.8072}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &1742407007404276283
 Canvas:
@@ -368,7 +368,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 1
+  m_PresetInfoIsWorld: 0
 --- !u!114 &5715589965781146489
 MonoBehaviour:
   m_ObjectHideFlags: 0

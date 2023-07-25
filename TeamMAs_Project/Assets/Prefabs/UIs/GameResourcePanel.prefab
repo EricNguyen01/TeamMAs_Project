@@ -166,6 +166,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UI_TweenExecuteMode: 4
+  easeMode: 30
   tweenDuration: 0.5
   tweenAutoStartDelay: 0
   isIndependentTimeScale: 0
@@ -520,8 +521,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.18800001, y: 0.85062957}
   m_AnchorMax: {x: 0.40952083, y: 0.9924075}
-  m_AnchoredPosition: {x: -0.6799927, y: -0.1499939}
-  m_SizeDelta: {x: -0.4600067, y: 0.29999924}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5322612110336997801
 CanvasRenderer:
@@ -736,8 +737,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.07264629, y: 0.13710417}
   m_AnchorMax: {x: 0.92600006, y: 0.86281514}
-  m_AnchoredPosition: {x: -0.41999817, y: 0.841095}
-  m_SizeDelta: {x: 0.66999817, y: 1.9463005}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5322612110570391747
 CanvasRenderer:
@@ -988,8 +989,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0.2948496, y: 1}
-  m_AnchoredPosition: {x: 0.22998047, y: 0}
-  m_SizeDelta: {x: 0.19010162, y: 0.27999878}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5322612110656849131
 CanvasRenderer:

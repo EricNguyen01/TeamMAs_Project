@@ -156,10 +156,10 @@ RectTransform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.64092886, y: 0.87017995}
-  m_AnchorMax: {x: 0.9760514, y: 0.9848765}
-  m_AnchoredPosition: {x: -119.09, y: -12.630005}
-  m_SizeDelta: {x: 160.51, y: 25.26}
+  m_AnchorMin: {x: 0.4324792, y: 0.85062957}
+  m_AnchorMax: {x: 0.8653542, y: 0.9848765}
+  m_AnchoredPosition: {x: -0.08996582, y: -0.13000488}
+  m_SizeDelta: {x: 0.5099945, y: 0.26000023}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &224834696818509167
 CanvasRenderer:
@@ -277,9 +277,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UI_TweenExecuteMode: 4
+  easeMode: 30
   tweenDuration: 0.6
   tweenAutoStartDelay: 0
   isIndependentTimeScale: 0
+  disableUIFunctionDuringTween: 0
   shakeStrength: {x: 12, y: 12, z: 12}
   shakeVibrato: 6
 --- !u!1 &2240217968776451120
@@ -373,9 +375,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UI_TweenExecuteMode: 4
+  easeMode: 30
   tweenDuration: 0.6
   tweenAutoStartDelay: 0
   isIndependentTimeScale: 0
+  disableUIFunctionDuringTween: 0
   jumpHeight: 18
   jumpPower: 10
 --- !u!114 &260857270051422389
