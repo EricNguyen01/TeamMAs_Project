@@ -1,4 +1,7 @@
-﻿using DG.Tweening;
+﻿// Script Author: Pham Nguyen. All Rights Reserved. 
+// GitHub: https://github.com/EricNguyen01.
+
+using DG.Tweening;
 using System;
 using System.Collections;
 using System.Collections.Generic;
