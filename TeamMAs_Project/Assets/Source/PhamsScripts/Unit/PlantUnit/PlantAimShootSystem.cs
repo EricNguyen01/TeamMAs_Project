@@ -21,7 +21,7 @@ namespace TeamMAsTD
 
         private float currentShootWaitTime = 0.0f;
 
-        private float baseTargetsUpdateWaitTime = 0.03f;
+        private float baseTargetsUpdateWaitTime = 0.05f;
 
         private float currentTargetsUpdateWaitTime = 0.0f;
 
@@ -117,21 +117,41 @@ namespace TeamMAsTD
 
         private bool PlantPeformsAimShoot()
         {
-            //dont shoot if any visitor target in target list is null, dead, or inactive in scene
+            //doing some checks to see if there is one or more valid visitors to shoot
+            
+            //for 1 visitor target only:
+            //dont shoot if the visitor target in target list is null, dead, or inactive in scene
             //if such situation occurs, immediately update target list and reset its update timer
-            for (int i = 0; i < visitorTargetsList.Count; i++)
+            if(visitorTargetsList.Count == 1)
             {
-                if (visitorTargetsList[i] == null ||
-                    visitorTargetsList[i].currentVisitorHealth <= 0.0f ||
-                    !visitorTargetsList[i].gameObject.activeInHierarchy)
+                if (visitorTargetsList[0] == null ||
+                    visitorTargetsList[0].currentVisitorHealth <= 0.0f ||
+                    !visitorTargetsList[0].gameObject.activeInHierarchy)
                 {
-                    //in case this plant can perform multiple targets shooting
-                    if(visitorTargetsList.Count > 1)
-                    {
-                        //in case the number of visitors in range or in scene are less than the number of visitors this plant can multi-target
-                        if (visitorsInRangeList != null && i >= visitorsInRangeList.Count) break;
-                    }
+                    currentTargetsUpdateWaitTime = 0.0f;
 
+                    return false;
+                }
+            }
+            //for multiple visitors target only:
+            //if there's at least 1 valid target -> can proceed to shoot
+            //else can't shoot, return false, and update target list + reset timer
+            else if(visitorTargetsList.Count > 1)
+            {
+                int validTargetCount = visitorTargetsList.Count;
+
+                for (int i = 0; i < visitorTargetsList.Count; i++)
+                {
+                    if (visitorTargetsList[i] == null ||
+                        visitorTargetsList[i].currentVisitorHealth <= 0.0f ||
+                        !visitorTargetsList[i].gameObject.activeInHierarchy)
+                    {
+                        validTargetCount--;
+                    }
+                }
+
+                if(validTargetCount <= 0)
+                {
                     currentTargetsUpdateWaitTime = 0.0f;
 
                     return false;
