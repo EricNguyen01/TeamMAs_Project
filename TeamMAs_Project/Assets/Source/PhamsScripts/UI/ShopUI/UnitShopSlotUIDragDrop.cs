@@ -539,9 +539,11 @@ namespace TeamMAsTD
             }
 
             //check if the mouse pointer is on an obj with Tile component attached
-            Tile destinationTile = eventData.pointerEnter.GetComponent<Tile>();
+            Tile destinationTile;
 
-            if (destinationTile == null || !destinationTile.CanPlaceUnit_EXTERNAL(slotUnitScriptableObject))
+            eventData.pointerEnter.TryGetComponent<Tile>(out destinationTile);
+
+            if (!destinationTile || !destinationTile.CanPlaceUnit_EXTERNAL(slotUnitScriptableObject))
             {
                 currentTileBeingDraggedOver = null;
 
@@ -625,9 +627,9 @@ namespace TeamMAsTD
             }
 
             //check if the mouse pointer is on an obj with Tile component attached
-            Tile destinationTile = eventData.pointerEnter.GetComponent<Tile>();
+            Tile destinationTile;
 
-            if (destinationTile == null)
+            if (!eventData.pointerEnter.TryGetComponent<Tile>(out destinationTile))
             {
                 FindAndEnableTilePlantableGlowEffect(false);
 

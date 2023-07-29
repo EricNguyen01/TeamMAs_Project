@@ -197,7 +197,7 @@ namespace TeamMAsTD
 
                     //because this UI game object has never been visited before, this is the first and only time get component will be used to check through its comps
                     //after this, this game object will exist in the dict as key along with its button pair value for quick extraction of data (no need to use get component next time).
-                    button = pointerRaycastResults[i].gameObject.GetComponent<Button>();
+                    pointerRaycastResults[i].gameObject.TryGetComponent<Button>(out button);
 
                     //add this just checked game object to dict no matter if it has or has not a button component
                     //this is so that the game object exists in the dict so that we don't have to look through its components to find a button comp (above if is used next time)

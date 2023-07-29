@@ -67,10 +67,10 @@ namespace TeamMAsTD
         private void OnCollisionEnter2D(Collision2D collision)
         {
             //find if the object collided is an IDamageable -> only IDamageable can receive damage from projectile
-            IDamageable damageable = collision.gameObject.GetComponent<IDamageable>();
+            IDamageable damageable;
 
             //if not IDamageable -> do nothing!
-            if (damageable == null) return;
+            if (!collision.gameObject.TryGetComponent<IDamageable>(out damageable)) return;
 
             VisitorUnit visitorHit = null;
 
