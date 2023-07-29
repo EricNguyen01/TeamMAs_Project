@@ -14,10 +14,14 @@ namespace TeamMAsTD
         [field: Header("Plant Unit Data")]
 
         //dynamic ID is used to identify specific SO INSTANCE of this SO (different for each instance)
-        [field: SerializeField] public string unitDynamicID { get; private set; }
+        [field: ReadOnlyInspector]
+        [field: SerializeField]
+        public string unitDynamicID { get; private set; }
 
         //static ID is used to identify if an SO INSTANCE is of this specific SO (same for all instances and the base SO in folder)
-        [field: SerializeField] public string unitStaticID { get; private set; }
+        [field: ReadOnlyInspector]
+        [field: SerializeField] 
+        public string unitStaticID { get; private set; }
         [field: SerializeField] public string unitDescription { get; private set; }
         [field: SerializeField] public Sprite unitThumbnail { get; private set; }//thumbnail icon sprite to be displayed in shop or other UIs
 

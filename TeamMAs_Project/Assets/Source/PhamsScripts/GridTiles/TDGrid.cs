@@ -35,7 +35,7 @@ namespace TeamMAsTD
 
         [SerializeField] public UnityEvent<PlantUnit> OnFirstPlantPlantedOnGrid;
 
-        private List<Tile> unplantedTileList = new List<Tile>();
+        [HideInInspector] private List<Tile> unplantedTileList = new List<Tile>();
 
         private bool alreadyHasDandelionOnGrid = false;//for debugging
 

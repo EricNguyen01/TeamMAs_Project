@@ -49,16 +49,16 @@ namespace TeamMAsTD
         [SerializeField] private UnityEvent OnInsufficientFundsToUproot;
 
         //Internal........................................................
+        [field: ReadOnlyInspector]
         [field: SerializeField]
-        [field: HideInInspector]
         public int tileNumInRow { get; private set; }//position X in the grid (not in world space)
 
+        [field: ReadOnlyInspector]
         [field: SerializeField]
-        [field: HideInInspector]
         public int tileNumInColumn { get; private set; }//position Y in the grid (not in world space)
 
+        [field: ReadOnlyInspector]
         [field: SerializeField]
-        [field: HideInInspector]
         public TDGrid gridParent { get; private set; }//the grid that is housing this tile
 
         private SpriteRenderer spriteRenderer;

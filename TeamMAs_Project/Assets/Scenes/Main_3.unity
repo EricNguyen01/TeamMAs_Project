@@ -3804,6 +3804,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6380319184443845737, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -1316.5035
+      objectReference: {fileID: 0}
     - target: {fileID: 6474088391758042566, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
       propertyPath: m_fontSizeBase
       value: 36.08
@@ -3856,6 +3860,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6731880086570744011, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -0.41503906
+      objectReference: {fileID: 0}
     - target: {fileID: 6731880086588993990, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -3899,6 +3907,10 @@ PrefabInstance:
     - target: {fileID: 6731880086867236577, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
       propertyPath: m_LocalPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6731880086867236577, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -0.41503906
       objectReference: {fileID: 0}
     - target: {fileID: 6731880086990785988, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
       propertyPath: m_AnchorMax.x
@@ -4619,6 +4631,10 @@ PrefabInstance:
     - target: {fileID: 2306255402018192059, guid: c341c2553a635784d94092748dadae82, type: 3}
       propertyPath: m_Name
       value: PlantMenuReminderTooltipWorldCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 3051234705727337374, guid: c341c2553a635784d94092748dadae82, type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5234458258137982848, guid: c341c2553a635784d94092748dadae82, type: 3}
       propertyPath: m_Pivot.x

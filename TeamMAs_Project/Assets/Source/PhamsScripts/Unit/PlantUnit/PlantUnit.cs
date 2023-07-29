@@ -1,6 +1,7 @@
 // Script Author: Pham Nguyen. All Rights Reserved. 
 // GitHub: https://github.com/EricNguyen01.
 
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -15,6 +16,7 @@ namespace TeamMAsTD
     {
         [field: Header("Plant Unit SO Data")]
 
+        [field: ReadOnlyInspectorPlayMode]
         [field: SerializeField] 
         public PlantUnitSO plantUnitScriptableObject { get; private set; }
 
