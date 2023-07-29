@@ -27,7 +27,9 @@ namespace TeamMAsTD
 
         [field: Header("Plant Unit Stats")]
 
-        [field: SerializeField] public PlantProjectileSO plantProjectileSO { get; private set; }
+        [field: ReadOnlyInspectorPlayMode]
+        [field: SerializeField] 
+        public PlantProjectileSO plantProjectileSO { get; private set; }
         [field: SerializeField][field: Min(0)] public int waterBars { get; private set; }
         [field: SerializeField][field: Min(0)] public int wavesSurviveWithoutWater { get; private set; } = 1;
         [field: SerializeField][field: Min(0.0f)] public float damage { get; private set; }

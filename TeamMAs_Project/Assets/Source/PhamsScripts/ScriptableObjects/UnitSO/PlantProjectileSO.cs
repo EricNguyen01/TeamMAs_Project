@@ -12,7 +12,10 @@ namespace TeamMAsTD
     public class PlantProjectileSO : ScriptableObject
     {
         [field: Header("Plant Projectile General Data")]
-        [field: SerializeField] public GameObject plantProjectilePrefab { get; private set; }
+
+        [field: ReadOnlyInspectorPlayMode]
+        [field: SerializeField] 
+        public GameObject plantProjectilePrefab { get; private set; }
 
         [field: Header("Plant Projectile Stats")]
         [field: SerializeField] public float plantProjectileSpeed { get; private set; } = 100.0f;

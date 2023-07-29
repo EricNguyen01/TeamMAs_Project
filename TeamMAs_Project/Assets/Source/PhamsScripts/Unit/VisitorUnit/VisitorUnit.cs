@@ -12,7 +12,9 @@ namespace TeamMAsTD
     [RequireComponent(typeof(AbilityEffectReceivedInventory))]
     public class VisitorUnit : MonoBehaviour, IUnit, IDamageable
     {
-        [field: SerializeField] public VisitorUnitSO visitorUnitSO { get; private set; }
+        [field: ReadOnlyInspectorPlayMode]
+        [field: SerializeField] 
+        public VisitorUnitSO visitorUnitSO { get; private set; }
 
         [SerializeField] private HeartEffect heartEffect;
 

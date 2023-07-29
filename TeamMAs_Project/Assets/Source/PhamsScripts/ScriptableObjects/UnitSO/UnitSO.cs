@@ -13,6 +13,7 @@ namespace TeamMAsTD
         [field: Header("General Unit Data")]
         [field: SerializeField] public string displayName { get; private set; }
 
+        [field: ReadOnlyInspectorPlayMode]
         [field: SerializeField]
         public GameObject unitPrefab { get; private set; }
 
