@@ -419,7 +419,7 @@ namespace TeamMAsTD
                             if (abilityScriptableObject.specificPlantUnitImmuned[i] == plantUnitSO ||
                                 abilityScriptableObject.specificPlantUnitImmuned[i].Equals(plantUnitSO) ||
                                 ReferenceEquals(abilityScriptableObject.specificPlantUnitImmuned[i], plantUnitSO) ||
-                                abilityScriptableObject.specificPlantUnitImmuned[i].unitID == plantUnitSO.unitID)
+                                abilityScriptableObject.specificPlantUnitImmuned[i].unitStaticID == plantUnitSO.unitStaticID)
                             {
                                 //if (name.Contains("Kid")) Debug.Log("Plant: " + plantUnitSO.name + " is immuned to this ability.");
 
@@ -435,7 +435,7 @@ namespace TeamMAsTD
                             if (abilityScriptableObject.abilityAffectsSpecificPlantUnit[i] == plantUnitSO ||
                                 abilityScriptableObject.abilityAffectsSpecificPlantUnit[i].Equals(plantUnitSO) ||
                                 ReferenceEquals(abilityScriptableObject.abilityAffectsSpecificPlantUnit[i], plantUnitSO) ||
-                                abilityScriptableObject.abilityAffectsSpecificPlantUnit[i].unitID == plantUnitSO.unitID) return true;
+                                abilityScriptableObject.abilityAffectsSpecificPlantUnit[i].unitStaticID == plantUnitSO.unitStaticID) return true;
                         }
 
                         return false;

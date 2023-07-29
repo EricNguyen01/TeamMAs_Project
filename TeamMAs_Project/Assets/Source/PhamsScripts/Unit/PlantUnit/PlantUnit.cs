@@ -39,6 +39,8 @@ namespace TeamMAsTD
         [System.Serializable]
         private struct PlantDebugData
         {
+            public string plantDynamicID;
+            public string plantStaticID;
             public float pDamage;
             public float pAtkSpeed;
         }
@@ -70,8 +72,8 @@ namespace TeamMAsTD
                 return;
             }
 
-            plantUnitScriptableObject = Instantiate(plantUnitScriptableObject);
-
+            //plantUnitScriptableObject = Instantiate(plantUnitScriptableObject);
+            plantUnitScriptableObject = (PlantUnitSO)plantUnitScriptableObject.CloneThisUnitSO();
             //Debug.Log("PlantUnitID: " + plantUnitScriptableObject.unitID);
 
             SetPlantSODebugDataView();
@@ -260,6 +262,10 @@ namespace TeamMAsTD
 
         public void SetPlantSODebugDataView()
         {
+            plantDebugData.plantDynamicID = plantUnitScriptableObject.unitDynamicID;
+
+            plantDebugData.plantStaticID = plantUnitScriptableObject.unitStaticID;
+
             plantDebugData.pDamage = plantUnitScriptableObject.damage;
 
             plantDebugData.pAtkSpeed = plantUnitScriptableObject.attackSpeed;

@@ -13,7 +13,11 @@ namespace TeamMAsTD
     {
         [field: Header("Plant Unit Data")]
 
-        [field: SerializeField] public string unitID { get; private set; }
+        //dynamic ID is used to identify specific SO INSTANCE of this SO (different for each instance)
+        [field: SerializeField] public string unitDynamicID { get; private set; }
+
+        //static ID is used to identify if an SO INSTANCE is of this specific SO (same for all instances and the base SO in folder)
+        [field: SerializeField] public string unitStaticID { get; private set; }
         [field: SerializeField] public string unitDescription { get; private set; }
         [field: SerializeField] public Sprite unitThumbnail { get; private set; }//thumbnail icon sprite to be displayed in shop or other UIs
 
@@ -61,11 +65,40 @@ namespace TeamMAsTD
         [field: SerializeField] public WaveSO waveToUnlockPlantPurchaseOnWaveFinished { get; private set; }
         [field: SerializeField] public WaveSO waveToUnlockPlantPurchaseOnWaveStarted { get; private set; }
 
-        public override UnitSO CloneThisUnitSO(UnitSO unitSO)
+        protected override UnitSO CloneUnitSO(UnitSO unitSO)
         {
-            UnitSO plantSO = Instantiate(unitSO);
+            UnitSO instantiatedUnitSO = base.CloneUnitSO(unitSO);
 
-            return plantSO;
+            if(instantiatedUnitSO && instantiatedUnitSO is PlantUnitSO)
+            {
+                PlantUnitSO plantUnitSO = instantiatedUnitSO as PlantUnitSO;
+
+                // Generate and save a new dynamic ID
+                if (string.IsNullOrEmpty(plantUnitSO.unitDynamicID) || 
+                    string.IsNullOrWhiteSpace(plantUnitSO.unitDynamicID) ||
+                    !HelperFunctions.ObjectHasUniqueID(plantUnitSO.unitDynamicID, plantUnitSO))
+                {
+                    plantUnitSO.SetNewDynamicIDIfPossible();
+                }
+            }
+            
+            return instantiatedUnitSO;
+        }
+
+        public void SetNewDynamicIDIfPossible()
+        {
+            while(string.IsNullOrEmpty(unitDynamicID) || string.IsNullOrWhiteSpace(unitDynamicID) || !HelperFunctions.ObjectHasUniqueID(unitDynamicID, this))
+            {
+                unitDynamicID = System.Guid.NewGuid().ToString();
+            }
+        }
+
+        public void SetNewStaticIDIfPossible()
+        {
+            while(string.IsNullOrEmpty(unitStaticID) || string.IsNullOrWhiteSpace(unitStaticID) || !HelperFunctions.ObjectHasUniqueID(unitStaticID, this))
+            {
+                unitStaticID = System.Guid.NewGuid().ToString();
+            }
         }
 
         public void SetSpecificPlantUnitDamage(float damage)
@@ -108,11 +141,10 @@ namespace TeamMAsTD
 
         void ISerializationCallbackReceiver.OnBeforeSerialize()
         {
-            // Generate and save a new UUID if this is blank.
-            if (string.IsNullOrWhiteSpace(unitID))
-            {
-                unitID = System.Guid.NewGuid().ToString();
-            }
+            // Generate and save a new UUID if need to and if its possible to generate new
+            SetNewDynamicIDIfPossible();
+
+            SetNewStaticIDIfPossible();
         }
 
         void ISerializationCallbackReceiver.OnAfterDeserialize()

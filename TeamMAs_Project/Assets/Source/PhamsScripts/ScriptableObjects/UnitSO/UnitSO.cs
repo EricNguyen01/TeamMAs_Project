@@ -22,7 +22,17 @@ namespace TeamMAsTD
         [field: SerializeField] public GameObject unitSpawnEffectPrefab { get; private set; }
         [field: SerializeField] public GameObject unitDestroyEffectPrefab { get; private set; }
 
-        public abstract UnitSO CloneThisUnitSO(UnitSO unitSO);
+        public UnitSO CloneThisUnitSO()
+        {
+            return CloneUnitSO(this);
+        }
+
+        protected virtual UnitSO CloneUnitSO(UnitSO unitSOToClone)
+        {
+            UnitSO instantiatedUnitSO = Instantiate(unitSOToClone);
+
+            return instantiatedUnitSO;
+        }
 
         public GameObject SpawnUnitEffectGameObject(GameObject effectGO, Transform parentTransform, bool makeChildren, bool activeOnSpawn)
         {

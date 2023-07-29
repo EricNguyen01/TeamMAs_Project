@@ -10,6 +10,8 @@ namespace TeamMAsTD
 {
     public static class HelperFunctions
     {
+        private static Dictionary<string, object> globalIDLookup = new Dictionary<string, object>();
+
         //.................Layer Mask Comparison..................
         public static bool IsMaskEqual(this LayerMask mask, int layer)
         {
@@ -89,6 +91,43 @@ namespace TeamMAsTD
             RaycastHit2D hit2D = Physics2D.Raycast(origin, dir, dist, LayerMask.GetMask(layerName));
 
             return hit2D;
+        }
+
+        /// <summary>
+        /// Check if an object's generated UUID is unique or not among every other object that has an UUID registered in the global lookup. 
+        /// </summary>
+        /// <param name="ID"> The ID of the object that will be checked for uniqueness. </param> 
+        /// <param name="objectWithId"> The object using the ID just provided in the first param. Both must match! </param>
+        /// <returns></returns>
+        public static bool ObjectHasUniqueID(string ID, object objectWithId)
+        {
+            //if provided UUID NOT already existed => IS UNIQUE and Add ID to global IDs Lookup
+            if (!globalIDLookup.ContainsKey(ID))
+            {
+                globalIDLookup.Add(ID, objectWithId);
+
+                return true;
+            }
+
+            //if provided UUID already existed and not match with provided object
+            if (globalIDLookup.ContainsKey(ID))
+            {
+                //if provided UUID belongs to another object and not the one its supposes to belong to => NOT UNIQUE
+                if (globalIDLookup[ID] != objectWithId) return false;
+                
+            }
+
+            //if an object is unloaded or destroyed -> remove its UUID from the static dict
+            if (globalIDLookup[ID] == null)
+            {
+                globalIDLookup.Remove(ID);
+
+                //since this key in the static dict is now null -> it is unique
+                return true;
+            }
+            
+            //if passed all above checks => IS UNIQUE ID
+            return true;
         }
     }
 }

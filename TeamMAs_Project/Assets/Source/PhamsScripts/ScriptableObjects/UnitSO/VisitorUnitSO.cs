@@ -31,13 +31,6 @@ namespace TeamMAsTD
         [field: SerializeField][field: Range(1, 100)] public int chanceToDropCoins { get; private set; }
         [field: SerializeField][field: Range(0, 100)] public int chanceToNotDropCoins { get; private set; }
 
-        public override UnitSO CloneThisUnitSO(UnitSO unitSO)
-        {
-            UnitSO visitorSO = Instantiate(unitSO);
-
-            return visitorSO;
-        }
-
         public void SetSpecificVisitorHealth(float health)
         {
             happinessAsHealth = health;
