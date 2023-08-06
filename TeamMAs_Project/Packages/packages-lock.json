@@ -1,5 +1,12 @@
 {
   "dependencies": {
+    "com.gameframe.saveload": {
+      "version": "https://github.com/coryleach/UnitySaveLoad.git#1.0.7",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "1490a06dbe456de6ebcf33fa2eb534462f3afc01"
+    },
     "com.unity.2d.animation": {
       "version": "7.0.10",
       "depth": 0,

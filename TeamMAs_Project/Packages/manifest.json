@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "com.gameframe.saveload": "https://github.com/coryleach/UnitySaveLoad.git#1.0.7",
     "com.unity.2d.animation": "7.0.10",
     "com.unity.2d.pixel-perfect": "5.0.3",
     "com.unity.2d.sprite": "1.0.0",

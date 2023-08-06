@@ -682,6 +682,7 @@ GameObject:
   - component: {fileID: 6285526868185121444}
   - component: {fileID: -5632405630244621304}
   - component: {fileID: -1201831765329823197}
+  - component: {fileID: -6616952191035258017}
   m_Layer: 6
   m_Name: Tile
   m_TagString: Untagged
@@ -851,6 +852,7 @@ MonoBehaviour:
   <tileNumInRow>k__BackingField: 0
   <tileNumInColumn>k__BackingField: 0
   <gridParent>k__BackingField: {fileID: 0}
+  <uprootAudioEventEmitterFMOD>k__BackingField: {fileID: 0}
 --- !u!114 &3071205144696499768
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -934,6 +936,20 @@ MonoBehaviour:
   colorBrightnessFrom: 0.55
   colorBrightnessTo: 0.7
   glowCycleFrequency: 1.2
+--- !u!114 &-6616952191035258017
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5401990168163722275}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1d44f2470f4e4e49812b1f2aff9f9a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  disableSavingForThisObject: 0
+  UUID: 
 --- !u!1 &6202609648566256504
 GameObject:
   m_ObjectHideFlags: 0

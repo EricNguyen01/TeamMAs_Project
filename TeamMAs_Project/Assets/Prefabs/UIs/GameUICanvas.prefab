@@ -1254,6 +1254,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7663563581612626003}
     m_Modifications:
+    - target: {fileID: 1922226825343160178, guid: a8befa3fb9194844db1b9863b01669ef, type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 2017322867776763613, guid: a8befa3fb9194844db1b9863b01669ef, type: 3}
       propertyPath: m_fontStyle
       value: 1
@@ -1273,10 +1277,6 @@ PrefabInstance:
     - target: {fileID: 2017322867776763613, guid: a8befa3fb9194844db1b9863b01669ef, type: 3}
       propertyPath: m_fontSizeBase
       value: 32
-      objectReference: {fileID: 0}
-    - target: {fileID: 2017322867776763613, guid: a8befa3fb9194844db1b9863b01669ef, type: 3}
-      propertyPath: m_enableAutoSizing
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2017322867776763613, guid: a8befa3fb9194844db1b9863b01669ef, type: 3}
       propertyPath: m_fontColor32.rgba

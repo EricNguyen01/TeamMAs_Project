@@ -313,9 +313,9 @@ namespace TeamMAsTD
 
             return gridArray[tileIndexInGrid].PlaceUnit(plantSO);
         }
-    
-    //UNITY EDITOR only class and function for Grid
-    #if UNITY_EDITOR
+
+        //UNITY EDITOR only class and function for Grid
+#if UNITY_EDITOR
         [CustomEditor(typeof(TDGrid))]
         private class GridEditor : Editor
         {

@@ -2,10 +2,8 @@
 // GitHub: https://github.com/EricNguyen01.
 
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.UI;
 
 #if UNITY_EDITOR
 using UnityEditor;
@@ -19,7 +17,7 @@ namespace TeamMAsTD
 #endif
     [DisallowMultipleComponent]
     [RequireComponent(typeof(TileMenuAndUprootOnTileUI))]
-    public class Tile : MonoBehaviour
+    public class Tile : MonoBehaviour, ISaveable
     {
         [field: Header("Tile Properties")]
         [field: SerializeField] public bool isOccupied { get; set; } = false;
@@ -127,6 +125,16 @@ namespace TeamMAsTD
                 }
             }
 #endif
+        }
+
+        private void OnEnable()
+        {
+            if(this is ISaveable)
+            {
+                ISaveable saveable = (ISaveable)this;
+
+                saveable.GenerateSaveableComponentIfNull(this);
+            }
         }
 
 #if UNITY_EDITOR
@@ -472,6 +480,22 @@ namespace TeamMAsTD
                 Gizmos.DrawCube(transform.position, new Vector2(transform.localScale.x - 0.1f, transform.localScale.y - 0.1f));
             }
         }
+
+        //ISaveable interface implementation...................................................................
+
+        public SaveDataSerializeBase SaveData(string saveName = "")
+        {
+            SaveDataSerializeBase tileSaveData = new SaveDataSerializeBase(this, transform.position);
+
+            return tileSaveData;
+        }
+
+        public void LoadData(SaveDataSerializeBase saveDataToLoad)
+        {
+            
+        }
+
+        //.....................................................................................................
 
         [CustomEditor(typeof(Tile))]
         [CanEditMultipleObjects]
