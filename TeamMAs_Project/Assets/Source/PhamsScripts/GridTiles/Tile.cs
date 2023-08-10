@@ -336,7 +336,7 @@ namespace TeamMAsTD
             }
 
             plantUnitOnTile = unit;
-
+            
             //throw plant successful event
             OnPlantUnitPlantedOnTile?.Invoke(plantUnitOnTile, this);
 
@@ -492,7 +492,19 @@ namespace TeamMAsTD
 
         public void LoadData(SaveDataSerializeBase saveDataToLoad)
         {
-            
+            if (saveDataToLoad == null || saveDataToLoad.LoadSavedObject() == null) return;
+
+            object savedObject = saveDataToLoad.LoadSavedObject();
+
+            if (savedObject.GetType() != this.GetType()) return;
+
+            Tile savedTile = (Tile)savedObject;
+
+            if (!savedTile.plantUnitOnTile) return;
+
+            plantUnitOnTile = Instantiate(savedTile.plantUnitOnTile, transform);
+
+            disableUprootOnTile = savedTile.disableUprootOnTile;
         }
 
         //.....................................................................................................

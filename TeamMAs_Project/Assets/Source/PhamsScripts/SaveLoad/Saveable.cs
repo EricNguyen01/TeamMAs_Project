@@ -22,6 +22,7 @@ namespace TeamMAsTD
         [SerializeField] private bool disableSavingForThisObject = false;
 
         //generate new UUID(Universal unique ID) and convert it to string
+        [ReadOnlyInspector]
         [SerializeField] private string UUID;
 
         SerializedObject serializedObject;
@@ -65,14 +66,14 @@ namespace TeamMAsTD
         //capture whatever states that any ISaveable interface on any components attached to this game object has captured
         public object CaptureSaveableState()
         {
-            Dictionary<string, object> state = new Dictionary<string, object>();
+            Dictionary<ISaveable, object> state = new Dictionary<ISaveable, object>();
 
             if (disableSavingForThisObject) return null;
 
             //Get all ISaveable components in this game object and store the appropriate values in state dict
             foreach (ISaveable saveable in GetComponents<ISaveable>())
             {
-                state[saveable.GetType().ToString()] = saveable.SaveData();//CaptureSaveableState() is a method of ISaveable interface
+                state[saveable] = saveable.SaveData();//SaveData() is a method of ISaveable interface
             }
 
             return state;
@@ -80,13 +81,15 @@ namespace TeamMAsTD
 
         public void RestoreSaveableState(object state)
         {
-            Dictionary<string, object> stateDict = (Dictionary<string, object>)state;
+            if (state is not Dictionary<ISaveable, object>) return;
+
+            Dictionary<ISaveable, object> savedState = (Dictionary<ISaveable, object>)state;
 
             foreach (ISaveable saveable in GetComponents<ISaveable>())
             {
-                if (stateDict.ContainsKey(saveable.GetType().ToString()))
+                if (savedState.ContainsKey(saveable) && savedState[saveable] is SaveDataSerializeBase)
                 {
-                    saveable.LoadData((SaveDataSerializeBase)stateDict[saveable.GetType().ToString()]);//call the ISaveable method
+                    saveable.LoadData((SaveDataSerializeBase)savedState[saveable]);//call the ISaveable method
                 }
             }
         }

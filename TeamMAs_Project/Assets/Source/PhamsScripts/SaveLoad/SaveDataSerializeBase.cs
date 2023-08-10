@@ -15,7 +15,9 @@ namespace TeamMAsTD
 
         protected float posX, posY, posZ;
 
-        public SaveDataSerializeBase(object objectToSave, Vector3 posToSave)
+        protected string sceneNameSave;
+
+        public SaveDataSerializeBase(object objectToSave, Vector3 posToSave, string sceneNameToSave)
         {
             this.objectToSave = objectToSave;
 
@@ -24,6 +26,8 @@ namespace TeamMAsTD
             posY = posToSave.y;
 
             posZ = posToSave.z;
+
+            sceneNameSave = sceneNameToSave;
         }
 
         public object LoadSavedObject()
@@ -34,6 +38,11 @@ namespace TeamMAsTD
         public Vector3 LoadPosition()
         {
             return new Vector3(posX, posY, posZ);
+        }
+
+        public string LoadSceneName()
+        {
+            return sceneNameSave;
         }
     }
 }
