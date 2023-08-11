@@ -485,7 +485,7 @@ namespace TeamMAsTD
 
         public SaveDataSerializeBase SaveData(string saveName = "")
         {
-            SaveDataSerializeBase tileSaveData = new SaveDataSerializeBase(this, transform.position);
+            SaveDataSerializeBase tileSaveData = new SaveDataSerializeBase(this, transform.position, UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
 
             return tileSaveData;
         }

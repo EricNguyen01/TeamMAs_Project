@@ -7,9 +7,6 @@ using UnityEngine;
 
 namespace TeamMAsTD
 {
-#if UNITY_EDITOR
-    [ExecuteInEditMode]
-#endif
     public interface ISaveable
     {
         public void GenerateSaveableComponentIfNull(MonoBehaviour mono)
