@@ -14,7 +14,7 @@ namespace TeamMAsTD
      * This class handles all the Visitor game object pools for all types of visitors 
      * and the active/inactive of all Visitors game objects from their pools
      */
-    public class WaveSpawner : MonoBehaviour
+    public class WaveSpawner : MonoBehaviour, ISaveable
     {
         [Header("Wave Spawner And Waves Config")]
         [SerializeField] private List<WaveSO> waveSOList = new List<WaveSO>();
@@ -254,61 +254,6 @@ namespace TeamMAsTD
             waveTimerStartTime = 0.0f; waveTimerEndTime = 0.0f;
         }
 
-        /*This function is DEPRACATED!!!
-        private void HealEmotionalHealthAfterBossWave(WaveSO waveSO)//parameter is waveSO of the wave that just finished.
-        {
-            if (waveSO.visitorTypesToSpawnThisWave == null || waveSO.visitorTypesToSpawnThisWave.Length == 0) return;
-
-            bool isBossWave = false;
-
-            //if the waveSO of wave that just finished has a boss in its visitor types list -> wave is boss wave.
-            for(int i = 0; i < waveSO.visitorTypesToSpawnThisWave.Length; i++)
-            {
-                if (waveSO.visitorTypesToSpawnThisWave[i].visitorType.isBoss)
-                {
-                    isBossWave = true;//boss wave is determined
-
-                    break;//exit loop immediately
-                }
-            }
-
-            if (!isBossWave) return;//if after checking through wave visitor types list and it was not a boss wave -> exit function
-
-            //else if it was a boss wave
-
-            //check for existing emotional health game resource
-            if (GameResource.gameResourceInstance != null && GameResource.gameResourceInstance.emotionalHealthSO != null)
-            {
-                if(showWavesEndHealthProcessDebugLog) Debug.Log("Heal Health After Boss Wave!");
-
-                //heal up amount according to EmotionalHealthSO's health healed after boss wave data
-                GameResource.gameResourceInstance.emotionalHealthSO.AddResourceAmount(GameResource.gameResourceInstance.emotionalHealthSO.healthHealedAfterBossWave);
-            }
-        }*/
-
-        /*This function is DEPRACATED!!!
-        private void IncreaseTotalBaseEmotionalHealth()
-        {
-            //check for existing emotional health game resource
-            if (GameResource.gameResourceInstance != null && GameResource.gameResourceInstance.emotionalHealthSO != null)
-            {
-                //if health amount is current = health amount cap (is at full hp)
-                if(GameResource.gameResourceInstance.emotionalHealthSO.resourceAmount == GameResource.gameResourceInstance.emotionalHealthSO.resourceAmountCap)
-                {
-                    if (showWavesEndHealthProcessDebugLog) Debug.Log("Health is full. Increase Current Health and Total Health Cap!");
-
-                    //increase both health cap and current health on wave end.
-                    GameResource.gameResourceInstance.emotionalHealthSO.IncreaseResourceAmountCap(GameResource.gameResourceInstance.emotionalHealthSO.totalBaseHealthIncreaseOnWaveEnd, true);
-                    //exit
-                    return;
-                }
-                //else -> only icnrease health cap
-                if (showWavesEndHealthProcessDebugLog) Debug.Log("Health is not full. Increase Total Health Cap Only!");
-
-                GameResource.gameResourceInstance.emotionalHealthSO.IncreaseResourceAmountCap(GameResource.gameResourceInstance.emotionalHealthSO.totalBaseHealthIncreaseOnWaveEnd, false);
-            }
-        }*/
-
         private void DropCoinsOnWaveEnded(WaveSO waveJustEnded)
         {
             if (GameResource.gameResourceInstance == null || GameResource.gameResourceInstance.coinResourceSO == null) return;
@@ -333,6 +278,11 @@ namespace TeamMAsTD
 
             //decrease current wave by 1 so that when the currently running wave is finished, current wave ends up the same
             currentWave--;
+        }
+
+        public void DEBUG_StartWaveAtForward(int waveNum)
+        {
+            JumpToWave(waveNum, true);
         }
 
         public void ProcessWaveFinished(int waveNum, bool incrementWaveOnFinished, bool broadcastWaveFinishedEvent)
@@ -458,6 +408,24 @@ namespace TeamMAsTD
         public List<Wave> GetWaveSpawnerWaveList()
         {
             return wavesList;
+        }
+
+        //ISaveable interface implementations.........................................................................................................
+
+        public SaveDataSerializeBase SaveData(string saveName = "")
+        {
+            SaveDataSerializeBase waveSpawnerSave = new SaveDataSerializeBase(this, transform.position, UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
+
+            return waveSpawnerSave;
+        }
+
+        public void LoadData(SaveDataSerializeBase savedDataToLoad)
+        {
+            if (!ISaveable.IsSavedObjectMatchObjectType<WaveSpawner>(savedDataToLoad)) return;
+
+            WaveSpawner savedWaveSpawner = (WaveSpawner)savedDataToLoad.LoadSavedObject();
+
+            currentWave = savedWaveSpawner.currentWave;
         }
     }
 }

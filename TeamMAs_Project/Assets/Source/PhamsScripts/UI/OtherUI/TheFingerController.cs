@@ -8,7 +8,7 @@ using UnityEngine;
 
 namespace TeamMAsTD
 {
-    public class TheFingerController : MonoBehaviour
+    public class TheFingerController : MonoBehaviour, ISaveable
     {
         private bool alreadyDisplayed = false;
 
@@ -40,6 +40,13 @@ namespace TeamMAsTD
             }
 
             if (gameObject.activeInHierarchy) gameObject.SetActive(false);
+        }
+
+        public void ResetDragDropFingerDisplay()
+        {
+            EnableDragDropFinger(true);
+
+            alreadyDisplayed = false;
         }
 
         private void DisableOnPlantPlantedOnTileEvent(bool subToEvent)
@@ -80,6 +87,27 @@ namespace TeamMAsTD
             }
 
             dialogueSystemEvents.conversationEvents.onConversationEnd.RemoveListener((transform) => EnableDragDropFinger(true));
+        }
+
+        //ISaveable interface implementations......................................................................................................
+
+        public SaveDataSerializeBase SaveData(string saveName = "")
+        {
+            SaveDataSerializeBase tutorialFingerSave = new SaveDataSerializeBase(this, transform.position, UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
+
+            return tutorialFingerSave;
+        }
+
+        public void LoadData(SaveDataSerializeBase savedDataToLoad)
+        {
+            if(!ISaveable.IsSavedObjectMatchObjectType<TheFingerController>(savedDataToLoad)) return;
+
+            TheFingerController savedTutorialFinger = (TheFingerController)savedDataToLoad.LoadSavedObject();
+
+            if (savedTutorialFinger.alreadyDisplayed)
+            {
+                EnableDragDropFinger(false);
+            }
         }
     }
 }

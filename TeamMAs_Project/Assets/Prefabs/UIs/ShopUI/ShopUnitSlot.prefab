@@ -965,6 +965,7 @@ GameObject:
   - component: {fileID: 3715392631770610072}
   - component: {fileID: 6658701522767471769}
   - component: {fileID: 1560772206688998941}
+  - component: {fileID: 820546892059262413}
   m_Layer: 5
   m_Name: ShopUnitSlot
   m_TagString: Untagged
@@ -1111,3 +1112,17 @@ MonoBehaviour:
   isIndependentTimeScale: 0
   disableUIFunctionDuringTween: 0
   expandValue: 37
+--- !u!114 &820546892059262413
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3715392631770610074}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1d44f2470f4e4e49812b1f2aff9f9a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  disableSavingForThisObject: 0
+  UUID: 

@@ -12,7 +12,7 @@ using TMPro;
 namespace TeamMAsTD
 {
     [DisallowMultipleComponent]
-    public class UnitShopSlotUIDragDrop : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
+    public class UnitShopSlotUIDragDrop : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, ISaveable
     {
         [SerializeField] [Tooltip("The Unit Scriptable Object of this slot.")] 
         private PlantUnitSO slotUnitScriptableObject;
@@ -643,6 +643,27 @@ namespace TeamMAsTD
             destinationTile.PlaceUnit(slotUnitScriptableObject);
 
             OnDroppedSuccessful?.Invoke();
+        }
+
+        public SaveDataSerializeBase SaveData(string saveName = "")
+        {
+            SaveDataSerializeBase shopSlotSaveData = new SaveDataSerializeBase(this, transform.position, UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
+
+            return shopSlotSaveData;
+        }
+
+        public void LoadData(SaveDataSerializeBase savedDataToLoad)
+        {
+            if (!ISaveable.IsSavedObjectMatchObjectType<UnitShopSlotUIDragDrop>(savedDataToLoad)) return;
+
+            UnitShopSlotUIDragDrop savedShopSlot = (UnitShopSlotUIDragDrop)savedDataToLoad.LoadSavedObject();
+
+            if(savedShopSlot.isShopSlotUnlocked)
+            {
+                if (!gameObject.activeInHierarchy) gameObject.SetActive(true);
+
+                isShopSlotUnlocked = true;
+            }
         }
     }
 }

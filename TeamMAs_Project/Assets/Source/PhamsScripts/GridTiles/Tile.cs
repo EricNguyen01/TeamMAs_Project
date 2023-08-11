@@ -129,12 +129,7 @@ namespace TeamMAsTD
 
         private void OnEnable()
         {
-            if(this is ISaveable)
-            {
-                ISaveable saveable = (ISaveable)this;
-
-                saveable.GenerateSaveableComponentIfNull(this);
-            }
+            if(this is ISaveable) ISaveable.GenerateSaveableComponentIfNull(this);
         }
 
 #if UNITY_EDITOR
@@ -481,7 +476,7 @@ namespace TeamMAsTD
             }
         }
 
-        //ISaveable interface implementation...................................................................
+        //ISaveable interface implementations........................................................................................................
 
         public SaveDataSerializeBase SaveData(string saveName = "")
         {
@@ -490,15 +485,11 @@ namespace TeamMAsTD
             return tileSaveData;
         }
 
-        public void LoadData(SaveDataSerializeBase saveDataToLoad)
+        public void LoadData(SaveDataSerializeBase savedDataToLoad)
         {
-            if (saveDataToLoad == null || saveDataToLoad.LoadSavedObject() == null) return;
+            if (!ISaveable.IsSavedObjectMatchObjectType<Tile>(savedDataToLoad)) return;
 
-            object savedObject = saveDataToLoad.LoadSavedObject();
-
-            if (savedObject.GetType() != this.GetType()) return;
-
-            Tile savedTile = (Tile)savedObject;
+            Tile savedTile = (Tile)savedDataToLoad.LoadSavedObject();
 
             if (!savedTile.plantUnitOnTile) return;
 
@@ -507,7 +498,7 @@ namespace TeamMAsTD
             disableUprootOnTile = savedTile.disableUprootOnTile;
         }
 
-        //.....................................................................................................
+        //Tile Custom Editor Private Class................................................................................................................
 
         [CustomEditor(typeof(Tile))]
         [CanEditMultipleObjects]

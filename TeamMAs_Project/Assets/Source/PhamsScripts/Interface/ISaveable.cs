@@ -9,20 +9,37 @@ namespace TeamMAsTD
 {
     public interface ISaveable
     {
-        public void GenerateSaveableComponentIfNull(MonoBehaviour mono)
+        public SaveDataSerializeBase SaveData(string saveName = "");
+
+        public void LoadData(SaveDataSerializeBase savedDataToLoad);
+
+        public static void GenerateSaveableComponentIfNull(MonoBehaviour mono)
         {
             if (!mono) return;
 
             Saveable saveable;
 
-            if(!mono.TryGetComponent<Saveable>(out saveable))
+            if (!mono.TryGetComponent<Saveable>(out saveable))
             {
                 saveable = mono.gameObject.AddComponent<Saveable>();
             }
         }
 
-        public SaveDataSerializeBase SaveData(string saveName = "");
+        /// <summary>
+        /// Check if the loaded object's type matches the type of the object that is about to be loaded. Also checks for null object.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="savedData"></param>
+        /// <returns></returns>
+        public static bool IsSavedObjectMatchObjectType<T>(SaveDataSerializeBase savedData)
+        {
+            if (savedData == null || savedData.LoadSavedObject() == null) return false;
 
-        public void LoadData(SaveDataSerializeBase saveDataToLoad);
+            object savedObject = savedData.LoadSavedObject();
+
+            if (savedObject.GetType() is not T) return false;
+
+            return true;
+        }
     }
 }

@@ -2974,6 +2974,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: WaveSpawner
       objectReference: {fileID: 0}
+    - target: {fileID: 9129364728104280397, guid: 6e63e86c283224240aea3258256ba6a3, type: 3}
+      propertyPath: UUID
+      value: 36985eed-c28b-4a0e-8269-8dcf4fa0e571
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6e63e86c283224240aea3258256ba6a3, type: 3}
 --- !u!114 &7007502426730147584 stripped
@@ -3721,6 +3725,22 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: -0
       objectReference: {fileID: 0}
+    - target: {fileID: 4791386802047426997, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
+      propertyPath: UUID
+      value: 8028dab0-0b4a-4298-9dd0-2915fdaf8288
+      objectReference: {fileID: 0}
+    - target: {fileID: 4791386802764241341, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
+      propertyPath: UUID
+      value: 3c89743a-9ec9-4274-829b-f1cf9ed79c3b
+      objectReference: {fileID: 0}
+    - target: {fileID: 4791386802963921254, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
+      propertyPath: UUID
+      value: eb521694-1d76-468c-8d35-9b3a8bfbaf3b
+      objectReference: {fileID: 0}
+    - target: {fileID: 4791386802977296515, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
+      propertyPath: UUID
+      value: dff80bc0-bfba-482a-a7d6-e20de0834a94
+      objectReference: {fileID: 0}
     - target: {fileID: 4848073371935819355, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
       propertyPath: m_Colors.m_HighlightedColor.b
       value: 0.33333334
@@ -3835,7 +3855,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6380319184443845737, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -1316.5029
+      value: -1316.5028
       objectReference: {fileID: 0}
     - target: {fileID: 6474088391758042566, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
       propertyPath: m_fontSize
@@ -4440,6 +4460,10 @@ PrefabInstance:
     - target: {fileID: 8126860849029176828, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 8210577795603118610, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
+      propertyPath: UUID
+      value: a342f6d7-3dfd-4493-a605-a2b49f31d16e
       objectReference: {fileID: 0}
     - target: {fileID: 8431845080792975626, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
       propertyPath: waveSpawnerToLookAhead
