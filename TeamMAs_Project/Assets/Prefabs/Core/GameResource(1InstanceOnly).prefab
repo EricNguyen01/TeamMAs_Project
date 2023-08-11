@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1170832716100704013}
   - component: {fileID: 2178137913080178364}
+  - component: {fileID: 4922944722092221627}
   m_Layer: 0
   m_Name: GameResource(1InstanceOnly)
   m_TagString: Untagged
@@ -48,3 +49,17 @@ MonoBehaviour:
   <emotionalHealthSOTypes>k__BackingField:
   - {fileID: 11400000, guid: e289713b36f7bd249a0ced43fd1b0d63, type: 2}
   - {fileID: 11400000, guid: 35624bf9137e30146ab433187f9ad551, type: 2}
+--- !u!114 &4922944722092221627
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3947919269961772322}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1d44f2470f4e4e49812b1f2aff9f9a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  disableSavingForThisObject: 0
+  UUID: ef4757e2-aa07-4496-b918-9ad53f40bcaa

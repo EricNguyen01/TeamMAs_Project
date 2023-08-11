@@ -426,6 +426,10 @@ namespace TeamMAsTD
             WaveSpawner savedWaveSpawner = (WaveSpawner)savedDataToLoad.LoadSavedObject();
 
             currentWave = savedWaveSpawner.currentWave;
+
+            if (currentWave <= 0) return;
+
+            OnWaveFinished?.Invoke(this, currentWave--, false);
         }
     }
 }

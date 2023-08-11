@@ -16,7 +16,7 @@ namespace TeamMAsTD
      * To access the game resource instance, call: GameResource.gameResourceInstance...
      */
     [DisallowMultipleComponent]
-    public class GameResource : MonoBehaviour
+    public class GameResource : MonoBehaviour, ISaveable
     {
         [field: SerializeField] public CoinResourceSO coinResourceSO { get; private set; }
 
@@ -38,6 +38,39 @@ namespace TeamMAsTD
 
             gameResourceInstance = this;
             DontDestroyOnLoad(gameObject);
+        }
+
+        //ISaveable interface implementations...........................................................................
+
+        public SaveDataSerializeBase SaveData(string saveName = "")
+        {
+            UnityEngine.SceneManagement.Scene scene = UnityEngine.SceneManagement.SceneManager.GetActiveScene();
+
+            SaveDataSerializeBase resourceSaveData = new SaveDataSerializeBase(this, transform.position, scene.name);
+
+            return resourceSaveData;
+        }
+
+        public void LoadData(SaveDataSerializeBase savedDataToLoad)
+        {
+            if (!ISaveable.IsSavedObjectMatchObjectType<GameResource>(savedDataToLoad)) return;
+
+            GameResource savedGameResource = (GameResource)savedDataToLoad.LoadSavedObject();
+
+            if(savedGameResource.coinResourceSO != null) coinResourceSO = savedGameResource.coinResourceSO;
+
+            coinResourceSO.InvokeGameResourceUpdateEvent();
+
+            if (savedGameResource.emotionalHealthSOTypes == null || savedGameResource.emotionalHealthSOTypes.Count == 0) return;
+
+            emotionalHealthSOTypes = savedGameResource.emotionalHealthSOTypes;
+
+            if (emotionalHealthSOTypes == null && emotionalHealthSOTypes.Count == 0) return;
+            
+            for(int i = 0; i < emotionalHealthSOTypes.Count; i++)
+            {
+                emotionalHealthSOTypes[i].InvokeGameResourceUpdateEvent();
+            }
         }
     }
 }

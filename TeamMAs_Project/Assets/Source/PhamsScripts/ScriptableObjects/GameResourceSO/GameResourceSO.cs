@@ -67,6 +67,15 @@ namespace TeamMAsTD
             OnResourceAmountUpdated?.Invoke(this);
         }
 
+        public virtual void SetSpecificResourceAmount(float setAmount)
+        {
+            resourceAmount = setAmount;
+
+            CheckResourceAmountMinMaxReached();
+
+            OnResourceAmountUpdated?.Invoke(this);
+        }
+
         public virtual void RemoveResourceAmount(float removedAmount)
         {
             resourceAmount -= removedAmount;
@@ -108,6 +117,11 @@ namespace TeamMAsTD
 
             //else if there's a cap and current amount is above it -> reset to cap amount
             if (resourceAmount > resourceAmountCap) resourceAmount = resourceAmountCap;
+        }
+
+        public void InvokeGameResourceUpdateEvent()
+        {
+            OnResourceAmountUpdated?.Invoke(this);
         }
 
         //ISerializationCallbackReceiver interface implementation....................................................

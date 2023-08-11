@@ -493,7 +493,10 @@ namespace TeamMAsTD
 
             if (!savedTile.plantUnitOnTile) return;
 
-            plantUnitOnTile = Instantiate(savedTile.plantUnitOnTile, transform);
+            plantUnitOnTile = Instantiate(savedTile.plantUnitOnTile, 
+                                          savedTile.plantUnitOnTile.transform.position, 
+                                          savedTile.plantUnitOnTile.transform.rotation, 
+                                          transform);
 
             disableUprootOnTile = savedTile.disableUprootOnTile;
         }

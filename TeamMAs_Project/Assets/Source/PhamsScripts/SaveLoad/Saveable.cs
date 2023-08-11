@@ -34,11 +34,20 @@ namespace TeamMAsTD
             serializedObject = new SerializedObject(this);
 
             UUID_SerializedProperty = serializedObject.FindProperty("UUID");
+
+            GenerateID_If_None();
         }
 
-        //remove the block of codes below this if on build
 #if UNITY_EDITOR
+
         private void Update()
+        {
+            GenerateID_If_None();
+        }
+
+#endif
+
+        private void GenerateID_If_None()
         {
             if (Application.isPlaying) return;
 
@@ -56,7 +65,6 @@ namespace TeamMAsTD
                 serializedObject.ApplyModifiedProperties();
             }
         }
-#endif
 
         public string GetSaveableID()
         {

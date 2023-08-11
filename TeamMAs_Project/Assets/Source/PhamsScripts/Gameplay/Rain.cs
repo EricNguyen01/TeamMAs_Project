@@ -25,6 +25,8 @@ namespace TeamMAsTD
         //the current wave that just ended right before rain started happening
         private int currentWaveBeforeRain = 0;
 
+        private bool hasDisabledRain = false;
+
         //if there's rain animation -> add here...
 
         //sub by PlantWaterUsageSystem.cs for water refilling after rain
@@ -48,11 +50,19 @@ namespace TeamMAsTD
 
         private void OnEnable()
         {
+            SaveLoadHandler.OnLoadingStarted += () => hasDisabledRain = true;
+
+            SaveLoadHandler.OnLoadingFinished += () => hasDisabledRain = false;
+
             WaveSpawner.OnWaveFinished += OnWaveFinished;
         }
 
         private void OnDisable()
         {
+            SaveLoadHandler.OnLoadingStarted -= () => hasDisabledRain = true;
+
+            SaveLoadHandler.OnLoadingFinished -= () => hasDisabledRain = false;
+
             WaveSpawner.OnWaveFinished -= OnWaveFinished;
 
             StopCoroutine(RainSequenceCoroutine());
@@ -60,6 +70,8 @@ namespace TeamMAsTD
 
         private void OnWaveFinished(WaveSpawner waveSpawner, int waveNum, bool stillHasOngoingWaves)
         {
+            if (hasDisabledRain) return;
+
             if (stillHasOngoingWaves) return;
 
             currentWaveBeforeRain = waveNum;

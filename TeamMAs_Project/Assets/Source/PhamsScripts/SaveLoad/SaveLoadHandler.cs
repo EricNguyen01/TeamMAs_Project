@@ -1,11 +1,11 @@
 // Script Author: Pham Nguyen. All Rights Reserved. 
 // GitHub: https://github.com/EricNguyen01.
 
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Gameframe.SaveLoad;
-using System;
 
 namespace TeamMAsTD
 {
@@ -65,6 +65,13 @@ namespace TeamMAsTD
             if (disableSaveLoad) return;
 
             OnSavingStarted?.Invoke();
+
+            foreach(ISaveable ISave in FindObjectsOfType(typeof(ISaveable)))
+            {
+                MonoBehaviour mono = ISave as MonoBehaviour;
+
+                ISaveable.GenerateSaveableComponentIfNull(mono);
+            }
 
             Dictionary<string, object> latestDataToSave = UpdateCurrentSavedData(LoadFromFile());
 
