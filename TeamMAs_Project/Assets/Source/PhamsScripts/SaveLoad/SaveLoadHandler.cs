@@ -15,6 +15,8 @@ namespace TeamMAsTD
 
         [SerializeField] private bool disableSaveLoad = false;
 
+        [SerializeField] private bool showDebugLog = false;
+
         private const string SAVE_FILE_NAME = "GameSave";
 
         private const string BASE_FOLDER = "GameData";
@@ -58,11 +60,15 @@ namespace TeamMAsTD
         #region Save
 
         //SAVE ALL.......................................................................................
-        public void SaveAllSaveables()
+        public static void SaveAllSaveables()
         {
-            if (!saveLoadHandlerInstance || !saveLoadManager) return;
+            if (!saveLoadHandlerInstance || !saveLoadHandlerInstance.saveLoadManager) return;
 
-            if (disableSaveLoad) return;
+            if (saveLoadHandlerInstance.disableSaveLoad) return;
+
+            float saveStartTime = Time.realtimeSinceStartup;
+
+            if (saveLoadHandlerInstance.showDebugLog) Debug.Log("Save All Started!");
 
             OnSavingStarted?.Invoke();
 
@@ -78,11 +84,15 @@ namespace TeamMAsTD
             WriteToFile(latestDataToSave);
 
             OnSavingFinished?.Invoke();
+
+            float saveTime = Time.realtimeSinceStartup - saveStartTime;
+
+            if (saveLoadHandlerInstance.showDebugLog) Debug.Log("Save All Finished! Time took: " + saveTime);
         }
 
-        private Dictionary<string, object> LoadFromFile()
+        private static Dictionary<string, object> LoadFromFile()
         {
-            object loadedData = saveLoadManager.Load<object>(SAVE_FILE_NAME);
+            object loadedData = saveLoadHandlerInstance.saveLoadManager.Load<object>(SAVE_FILE_NAME);
 
             //if no saved data to load or saved data is not of the right type -> return an empty save dict as type object
             if(loadedData == null || loadedData is not Dictionary<string, object>) return new Dictionary<string, object>();
@@ -91,7 +101,7 @@ namespace TeamMAsTD
             return (Dictionary<string, object>)loadedData;
         }
 
-        private Dictionary<string, object> UpdateCurrentSavedData(Dictionary<string, object> currentSavedData)
+        private static Dictionary<string, object> UpdateCurrentSavedData(Dictionary<string, object> currentSavedData)
         {
             foreach (Saveable saveable in FindObjectsOfType<Saveable>())
             {
@@ -101,19 +111,23 @@ namespace TeamMAsTD
             return currentSavedData;
         }
 
-        private void WriteToFile(Dictionary<string, object> latestSavedData)
+        private static void WriteToFile(Dictionary<string, object> latestSavedData)
         {
-            if (!saveLoadHandlerInstance || !saveLoadManager) return;
+            if (!saveLoadHandlerInstance || !saveLoadHandlerInstance.saveLoadManager) return;
 
-            saveLoadManager.Save(latestSavedData, SAVE_FILE_NAME);
+            saveLoadHandlerInstance.saveLoadManager.Save(latestSavedData, SAVE_FILE_NAME);
         }
 
         //SAVE SINGLE SAVEABLE ONLY......................................................................................
-        public void SaveThisSaveableOnly(Saveable saveable)
+        public static void SaveThisSaveableOnly(Saveable saveable)
         {
-            if (!saveLoadHandlerInstance || !saveLoadManager) return;
+            if (!saveLoadHandlerInstance || !saveLoadHandlerInstance.saveLoadManager) return;
 
-            if (disableSaveLoad || !saveable) return;
+            if (saveLoadHandlerInstance.disableSaveLoad || !saveable) return;
+
+            float saveStartTime = Time.realtimeSinceStartup;
+
+            if (saveLoadHandlerInstance.showDebugLog) Debug.Log("Save " + saveable.name + " Started!");
 
             OnSavingStarted?.Invoke();
 
@@ -122,9 +136,13 @@ namespace TeamMAsTD
             WriteToFile(latestDataToSave);
 
             OnSavingFinished?.Invoke();
+
+            float saveTime = Time.realtimeSinceStartup - saveStartTime;
+
+            if (saveLoadHandlerInstance.showDebugLog) Debug.Log("Save " + saveable.name + " Finished! Time took: " + saveTime);
         }
 
-        private Dictionary<string, object> UpdateCurrentSaveDataOfSaveable(Dictionary<string, object> currentSavedData, Saveable saveable)
+        private static Dictionary<string, object> UpdateCurrentSaveDataOfSaveable(Dictionary<string, object> currentSavedData, Saveable saveable)
         {
             if (currentSavedData.ContainsKey(saveable.GetSaveableID()))
             {
@@ -143,20 +161,28 @@ namespace TeamMAsTD
         //LOAD............................................................................................................
         #region Load
 
-        public void LoadToAllSaveables()
+        public static void LoadToAllSaveables()
         {
-            if (!saveLoadHandlerInstance || !saveLoadManager) return;
+            if (!saveLoadHandlerInstance || !saveLoadHandlerInstance.saveLoadManager) return;
 
-            if (disableSaveLoad) return;
+            if (saveLoadHandlerInstance.disableSaveLoad) return;
+
+            float loadTimeStart = Time.realtimeSinceStartup;
+
+            if (saveLoadHandlerInstance.showDebugLog) Debug.Log("Load Started!");
 
             OnLoadingStarted?.Invoke();
 
             RestoreSavedDataForAllSaveables(LoadFromFile());
 
             OnLoadingFinished?.Invoke();
+
+            float loadTime = Time.realtimeSinceStartup - loadTimeStart;
+
+            if (saveLoadHandlerInstance.showDebugLog) Debug.Log("Load Finished! Time took: " + loadTime);
         }
 
-        private void RestoreSavedDataForAllSaveables(Dictionary <string, object> savedData)
+        private static void RestoreSavedDataForAllSaveables(Dictionary <string, object> savedData)
         {
             foreach (Saveable saveable in FindObjectsOfType<Saveable>())
             {
@@ -165,20 +191,28 @@ namespace TeamMAsTD
         }
 
         //LOAD SINGLE SAVEABLE ONLY........................................................................
-        public void LoadThisSaveableOnly(Saveable saveable)
+        public static void LoadThisSaveableOnly(Saveable saveable)
         {
-            if (!saveLoadHandlerInstance || !saveLoadManager) return;
+            if (!saveLoadHandlerInstance || !saveLoadHandlerInstance.saveLoadManager) return;
 
             if (!saveable) return;
+
+            float loadTimeStart = Time.realtimeSinceStartup;
+
+            if (saveLoadHandlerInstance.showDebugLog) Debug.Log("Load " + saveable.name + " Started!");
 
             OnLoadingStarted?.Invoke();
 
             RestoreSaveDataOfSaveable(LoadFromFile(), saveable);
 
             OnLoadingFinished?.Invoke();
+
+            float loadTime = Time.realtimeSinceStartup - loadTimeStart;
+
+            if (saveLoadHandlerInstance.showDebugLog) Debug.Log("Load " + saveable.name + " Finished! Time took: " + loadTime);
         }
 
-        private void RestoreSaveDataOfSaveable(Dictionary <string, object> savedData, Saveable saveable)
+        private static void RestoreSaveDataOfSaveable(Dictionary <string, object> savedData, Saveable saveable)
         {
             if (savedData.ContainsKey(saveable.GetSaveableID())) saveable.RestoreSaveableState(savedData[saveable.GetSaveableID()]);
         }
@@ -188,16 +222,16 @@ namespace TeamMAsTD
         //OTHERS..........................................................................................................
         #region DeleteSave
 
-        public void DeleteAllSaveData()
+        public static void DeleteAllSaveData()
         {
-            if (!saveLoadHandlerInstance || !saveLoadManager) return;
+            if (!saveLoadHandlerInstance || !saveLoadHandlerInstance.saveLoadManager) return;
 
-            saveLoadManager.DeleteSave(SAVE_FILE_NAME);
+            saveLoadHandlerInstance.saveLoadManager.DeleteSave(SAVE_FILE_NAME);
         }
 
-        public void DeleteSaveDataOfSaveable(Saveable saveable)
+        public static void DeleteSaveDataOfSaveable(Saveable saveable)
         {
-            if (!saveLoadHandlerInstance || !saveLoadManager) return;
+            if (!saveLoadHandlerInstance || !saveLoadHandlerInstance.saveLoadManager) return;
 
             if (!saveable) return;
 
@@ -219,6 +253,12 @@ namespace TeamMAsTD
             GameObject go = new GameObject("SaveLoadManager");
 
             go.AddComponent<SaveLoadHandler>();
+        }
+
+        public static void EnableSaveLoad(bool enabled)
+        {
+            if (enabled) saveLoadHandlerInstance.disableSaveLoad = false;
+            else saveLoadHandlerInstance.disableSaveLoad = true;
         }
 
         #endregion

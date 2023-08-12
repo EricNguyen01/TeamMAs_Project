@@ -4,6 +4,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace TeamMAsTD
 {
@@ -47,7 +48,7 @@ namespace TeamMAsTD
 
         private float waveTimerEndTime = 0.0f;
 
-        //Wave events declarations
+        //Wave C# events declarations
         //StartWaveUI.cs receives these events to enable/disable start wave Button UI.
         //PlantAimShootSystem.cs receives these events to enable/disable plant targetting/shooting.
         //Rain.cs receives these events to enable, well...rain.
@@ -57,6 +58,13 @@ namespace TeamMAsTD
         public static event System.Action<WaveSpawner, bool> OnAllWaveSpawned;
 
         public static event System.Action<WaveSpawner, int, bool> OnWaveJumped;
+
+        //Wave UnityEvent
+        [Header("Wave Events")]
+
+        [SerializeField] private UnityEvent OnWaveStartedEvent;
+        [SerializeField] private UnityEvent OnWaveFinishedEvent;
+        [SerializeField] private UnityEvent OnAllWaveSpawnedEvent;
 
         //PRIVATES...............................................................................
 
@@ -210,6 +218,8 @@ namespace TeamMAsTD
 
             //invoke wave started event
             OnWaveStarted?.Invoke(this, waveNum);
+
+            OnWaveStartedEvent?.Invoke();
         }
 
         //find if there's any other ongoing waves started by other wavespawner apart from this wavespawner
@@ -314,24 +324,17 @@ namespace TeamMAsTD
 
                 OnWaveFinished?.Invoke(this, waveNum, hasOtherOngoingWaves);
 
-                //process emotional health change if no other waves from other WaveSpawner are currently running
-                //DEPRACATED!!!
-                /*if (!hasOtherOngoingWaves)
-                {
-                    IncreaseTotalBaseEmotionalHealth();
-
-                    HealEmotionalHealthAfterBossWave(waveSOList[waveNum]);
-                }*/
+                OnWaveFinishedEvent?.Invoke();
 
                 if (incrementWaveOnFinished) currentWave++;
             }
             //else if wave just ended is the final wave
             else
             {
-                //Debug.Log("OnAllWaveSpawned Invoked!");
-
                 //broadcast all waves of this WaveSpawner just finished running event
                 OnAllWaveSpawned?.Invoke(this, FindOtherOnGoingWaves());
+
+                OnAllWaveSpawnedEvent?.Invoke();
             }
         }
 

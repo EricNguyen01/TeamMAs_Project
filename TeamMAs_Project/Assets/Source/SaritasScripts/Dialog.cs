@@ -7,6 +7,8 @@ namespace TeamMAsTD
     {
         [SerializeField] int conversationNum = 1; // the title of the conversation
 
+        [SerializeField] private WaveSpawner waveSpawnerInUse;
+
         /* NOTES
         Using Names in Dialog Text
         Player Name: [lua(Actor["Player"].Display_Name)]
@@ -27,6 +29,16 @@ namespace TeamMAsTD
 
         */
 
+        private void Awake()
+        {
+            if (!waveSpawnerInUse)
+            {
+                waveSpawnerInUse = FindObjectOfType<WaveSpawner>();
+            }
+
+            if (!waveSpawnerInUse) Debug.LogWarning("Could not find a wave spawner in use for Dialogue process.");
+        }
+
         void OnEnable()
         {
             TeamMAsTD.WaveSpawner.OnAllWaveSpawned += (WaveSpawner ws, bool b) => StartConvoOnWave15Finished(14);
@@ -39,7 +51,9 @@ namespace TeamMAsTD
 
         void Start()
         {
-            StartCoroutine(StartFirstConversation(1f));
+            if (waveSpawnerInUse) conversationNum = waveSpawnerInUse.currentWave;
+
+            StartCoroutine(StartConversationDelayCoroutine(1f));
         }
 
         void OnConversationStart(Transform actor) // THIS SCRIPT MUST BE ON THE DIALOGUE MANAGER CUSTOM OBJECT TO WORK
@@ -62,9 +76,11 @@ namespace TeamMAsTD
             DialogueManager.ConversationView.SetupContinueButton();
         }
 
-        IEnumerator StartFirstConversation(float delayTime)
+        IEnumerator StartConversationDelayCoroutine(float delayTime)
         {
             yield return new WaitForSeconds(delayTime);
+
+            if (waveSpawnerInUse) conversationNum = waveSpawnerInUse.currentWave;
 
             //DialogueManager.StartConversation(string conversation, Transform actor, Transform conversant); // actor and conversant are optional
             StartConversation(conversationNum);
