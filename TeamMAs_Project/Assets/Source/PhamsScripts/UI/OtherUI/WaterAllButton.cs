@@ -55,30 +55,30 @@ namespace TeamMAsTD
 
         private void Awake()
         {
-            if(waterAllCanvasGroup == null)
+            if (waterAllCanvasGroup == null)
             {
-                waterAllCanvasGroup = GetComponent<CanvasGroup>(); 
+                if(!TryGetComponent<CanvasGroup>(out waterAllCanvasGroup))
+                {
+                    waterAllCanvasGroup = gameObject.AddComponent<CanvasGroup>();
+                }
             }
-            if(waterAllCanvasGroup == null)
-            {
-                waterAllCanvasGroup = gameObject.AddComponent<CanvasGroup>();
-            }
-            if(insufficientFundToWaterAllPopupPrefab != null)
+
+            if (insufficientFundToWaterAllPopupPrefab != null)
             {
                 GameObject go = Instantiate(insufficientFundToWaterAllPopupPrefab.gameObject, transform.position, Quaternion.identity);
 
                 insufficientFundToWaterAllPopup = go.GetComponent<StatPopupSpawner>();
 
-                insufficientFundToWaterAllPopup.SetStatPopupSpawnerConfig(0.0f, 
-                                                                          0.0f, 
-                                                                          0.0f, 
-                                                                          0.0f, 
+                insufficientFundToWaterAllPopup.SetStatPopupSpawnerConfig(0.0f,
+                                                                          0.0f,
+                                                                          0.0f,
+                                                                          0.0f,
                                                                           insufficientFundToWaterAllPopupScaleMultiplier);
             }
 
             waterAllButtonComp = GetComponentInChildren<Button>();
 
-            if (waterAllButtonComp != null) 
+            if (waterAllButtonComp != null)
             {
                 var waterAllButtonColors = waterAllButtonComp.colors;
 
@@ -86,16 +86,18 @@ namespace TeamMAsTD
 
                 waterAllButtonComp.colors = waterAllButtonColors;
 
-                defaultWaterAllButtonSelectHighlightColor = waterAllButtonComp.colors.highlightedColor; 
+                defaultWaterAllButtonSelectHighlightColor = waterAllButtonComp.colors.highlightedColor;
             }
 
-            UI_ShakeFx = GetComponent<UIShakeFx>();
+            if (!TryGetComponent<UIShakeFx>(out UI_ShakeFx))
+            {
+                UI_ShakeFx = gameObject.AddComponent<UIShakeFx>();
+            }
 
-            if(UI_ShakeFx == null) UI_ShakeFx = gameObject.AddComponent<UIShakeFx>();
-
-            UI_Rotate = GetComponent<UIRotate>();
-
-            if(UI_Rotate == null) UI_Rotate = gameObject.AddComponent<UIRotate>(); 
+            if (!TryGetComponent<UIRotate>(out UI_Rotate))
+            {
+                UI_Rotate = gameObject.AddComponent<UIRotate>();
+            }
         }
 
         private void OnEnable()

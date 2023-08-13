@@ -255,6 +255,7 @@ namespace TeamMAsTD
             go.AddComponent<SaveLoadHandler>();
         }
 
+        //THIS FUNCTION IS CALLED IN WAVE SPAWNER'S WAVE STARTED/FINISHED UNITY EVENTS
         public static void EnableSaveLoad(bool enabled)
         {
             if (enabled) saveLoadHandlerInstance.disableSaveLoad = false;

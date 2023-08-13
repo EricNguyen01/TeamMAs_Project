@@ -5,6 +5,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 namespace TeamMAsTD
 {
@@ -26,6 +27,8 @@ namespace TeamMAsTD
 
         public static GameResource gameResourceInstance;
 
+        private Saveable saveable;
+
         private void Awake()
         {
             //keep only 1 instance of game resource during runtime
@@ -37,7 +40,20 @@ namespace TeamMAsTD
             }
 
             gameResourceInstance = this;
+
             DontDestroyOnLoad(gameObject);
+        }
+
+        private void OnEnable()
+        {
+            TryGetComponent<Saveable>(out saveable);
+
+            GameResourceSO.OnResourceAmountUpdated += (resourceSO) => SaveLoadHandler.SaveThisSaveableOnly(saveable);
+        }
+
+        private void OnDisable()
+        {
+            GameResourceSO.OnResourceAmountUpdated -= (resourceSO) => SaveLoadHandler.SaveThisSaveableOnly(saveable);
         }
 
         //ISaveable interface implementations...........................................................................
@@ -57,19 +73,15 @@ namespace TeamMAsTD
 
             GameResource savedGameResource = (GameResource)savedDataToLoad.LoadSavedObject();
 
-            if(savedGameResource.coinResourceSO != null) coinResourceSO = savedGameResource.coinResourceSO;
-
-            coinResourceSO.InvokeGameResourceUpdateEvent();
+            if(savedGameResource.coinResourceSO != null) coinResourceSO.SetSpecificResourceAmount(savedGameResource.coinResourceSO.resourceAmount);
 
             if (savedGameResource.emotionalHealthSOTypes == null || savedGameResource.emotionalHealthSOTypes.Count == 0) return;
-
-            emotionalHealthSOTypes = savedGameResource.emotionalHealthSOTypes;
 
             if (emotionalHealthSOTypes == null && emotionalHealthSOTypes.Count == 0) return;
             
             for(int i = 0; i < emotionalHealthSOTypes.Count; i++)
             {
-                emotionalHealthSOTypes[i].InvokeGameResourceUpdateEvent();
+                emotionalHealthSOTypes[i].SetSpecificResourceAmount(savedGameResource.emotionalHealthSOTypes[i].resourceAmount);
             }
         }
     }

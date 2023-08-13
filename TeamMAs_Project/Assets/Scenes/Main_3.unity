@@ -2817,6 +2817,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6903104106004263608, guid: 115722e490f1df14fbfe36a87cfc6257, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 273583450}
     - target: {fileID: 8359256981445737380, guid: 115722e490f1df14fbfe36a87cfc6257, type: 3}
       propertyPath: OnTweenSequenceStarted.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -3832,7 +3836,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6380319184443845737, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -1316.5026
+      value: -1316.5024
       objectReference: {fileID: 0}
     - target: {fileID: 6474088391758042566, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
       propertyPath: m_fontSize

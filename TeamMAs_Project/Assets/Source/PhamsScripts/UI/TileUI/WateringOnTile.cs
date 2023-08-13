@@ -28,14 +28,20 @@ namespace TeamMAsTD
 
         private Button wateringChildButton;
 
+        private Saveable saveable;
+
         private void Awake()
         {
-            tileToWater= GetComponent<Tile>();
+            TryGetComponent<Tile>(out tileToWater);
+
+            TryGetComponent<Saveable>(out saveable);
 
             if(tileToWater == null)
             {
                 Debug.LogError("Tile script component not found. Watering on tile won't work, disabling script...");
+
                 enabled = false;
+
                 return;
             }
 
@@ -66,6 +72,8 @@ namespace TeamMAsTD
 
         private void Start()
         {
+            if (!enabled) return;
+
             //This if below needs to always be in Start() to avoid execution order conflicts
             //since it's getting the insufficient fund popup which is created in Tile.cs' Awake()
             if (tileToWater.thisTileInsufficientFundToPlantStatPopup != null)
@@ -78,6 +86,8 @@ namespace TeamMAsTD
         //WARNING: IF THIS FUNCTION NAME IS TO BE CHANGED -> HAS TO CHANGE ITS STRING REFERENCE IN THE GET BUTTON IN AWAKE() AS WELL!!!!!
         public void WaterTileIfHasPlantUnit()
         {
+            if (!enabled) return;
+
             if (tileToWater.plantUnitOnTile == null) return;
 
             PlantWaterUsageSystem tilePlantWaterUsageSystem = tileToWater.plantUnitOnTile.plantWaterUsageSystem;
@@ -101,6 +111,8 @@ namespace TeamMAsTD
             SpawnAndDestroy_WateringSoundPlayer_IfNotNull();
 
             tilePlantWaterUsageSystem.RefillWaterBars(waterBarsToRefill, wateringCoinsCost);
+
+            SaveLoadHandler.SaveThisSaveableOnly(saveable);
         }
 
         private bool HasInsufficientWateringFund(int wateringCoinsCost)

@@ -119,11 +119,6 @@ namespace TeamMAsTD
             if (resourceAmount > resourceAmountCap) resourceAmount = resourceAmountCap;
         }
 
-        public void InvokeGameResourceUpdateEvent()
-        {
-            OnResourceAmountUpdated?.Invoke(this);
-        }
-
         //ISerializationCallbackReceiver interface implementation....................................................
         void ISerializationCallbackReceiver.OnBeforeSerialize()
         {
