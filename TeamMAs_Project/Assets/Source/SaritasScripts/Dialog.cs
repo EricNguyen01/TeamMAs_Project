@@ -51,7 +51,7 @@ namespace TeamMAsTD
 
         void Start()
         {
-            if (waveSpawnerInUse) conversationNum = waveSpawnerInUse.currentWave;
+            //if (waveSpawnerInUse) conversationNum = waveSpawnerInUse.currentWave + 1;
 
             StartCoroutine(StartConversationDelayCoroutine(1f));
         }
@@ -80,7 +80,7 @@ namespace TeamMAsTD
         {
             yield return new WaitForSeconds(delayTime);
 
-            if (waveSpawnerInUse) conversationNum = waveSpawnerInUse.currentWave;
+            if (waveSpawnerInUse) conversationNum = waveSpawnerInUse.currentWave + 1;
 
             //DialogueManager.StartConversation(string conversation, Transform actor, Transform conversant); // actor and conversant are optional
             StartConversation(conversationNum);

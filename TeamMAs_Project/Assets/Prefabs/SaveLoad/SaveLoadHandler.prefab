@@ -46,3 +46,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   saveLoadManager: {fileID: 11400000, guid: a8fe6108ed765e841b0016db408faad2, type: 2}
   disableSaveLoad: 1
+  showDebugLog: 1
+  showEditorDebugLog: 1

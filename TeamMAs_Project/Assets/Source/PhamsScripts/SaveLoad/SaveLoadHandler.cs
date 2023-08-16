@@ -21,7 +21,7 @@ namespace TeamMAsTD
 
         [SerializeField] private bool disableSaveLoad = false;
 
-        [SerializeField] private bool showDebugLog = false;
+        [SerializeField] private bool showDebugLog = true;
 
         [SerializeField] private bool showEditorDebugLog = true;
 
@@ -79,13 +79,6 @@ namespace TeamMAsTD
             if (saveLoadHandlerInstance.showDebugLog) Debug.Log("Save All Started!");
 
             OnSavingStarted?.Invoke();
-
-            foreach(ISaveable ISave in FindObjectsOfType(typeof(ISaveable)))
-            {
-                MonoBehaviour mono = ISave as MonoBehaviour;
-
-                ISaveable.GenerateSaveableComponentIfNull(mono);
-            }
 
             Dictionary<string, object> latestDataToSave = UpdateCurrentSavedData(LoadFromFile());
 
@@ -320,7 +313,7 @@ namespace TeamMAsTD
                         return;
                     }
 
-                    if (!Application.isPlaying || Application.isEditor)
+                    if (!Application.isPlaying)
                     {
                         if (saveLoadHandler.showEditorDebugLog) Debug.LogWarning("Test Load Only Available On Runtime!");
 
@@ -328,6 +321,20 @@ namespace TeamMAsTD
                     }
 
                     LoadToAllSaveables();
+                }
+
+                EditorGUILayout.Space();
+
+                if(GUILayout.Button("Delete All Saved Data"))
+                {
+                    if (!HasSavedData())
+                    {
+                        if (saveLoadHandler.showEditorDebugLog) Debug.LogWarning("No Saved Data To Delete!");
+
+                        return;
+                    }
+
+                    DeleteAllSaveData();
                 }
             }
         }
