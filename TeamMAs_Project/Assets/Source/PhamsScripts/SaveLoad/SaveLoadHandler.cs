@@ -7,15 +7,23 @@ using System.Collections.Generic;
 using UnityEngine;
 using Gameframe.SaveLoad;
 
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
+
 namespace TeamMAsTD
 {
+    [DisallowMultipleComponent]
     public class SaveLoadHandler : MonoBehaviour
     {
+        [ReadOnlyInspectorPlayMode]
         [SerializeField] private SaveLoadManager saveLoadManager;
 
         [SerializeField] private bool disableSaveLoad = false;
 
         [SerializeField] private bool showDebugLog = false;
+
+        [SerializeField] private bool showEditorDebugLog = true;
 
         private const string SAVE_FILE_NAME = "GameSave";
 
@@ -167,6 +175,13 @@ namespace TeamMAsTD
 
             if (saveLoadHandlerInstance.disableSaveLoad) return;
 
+            if (!HasSavedData())
+            {
+                if (saveLoadHandlerInstance.showDebugLog) Debug.LogWarning("No Saved Data To Load!");
+
+                return;
+            }
+
             float loadTimeStart = Time.realtimeSinceStartup;
 
             if (saveLoadHandlerInstance.showDebugLog) Debug.Log("Load Started!");
@@ -255,12 +270,68 @@ namespace TeamMAsTD
             go.AddComponent<SaveLoadHandler>();
         }
 
+        public static bool HasSavedData()
+        {
+            return SaveLoadUtility.Exists(SAVE_FILE_NAME, DEFAULT_FOLDER, BASE_FOLDER);
+        }
+
         //THIS FUNCTION IS CALLED IN WAVE SPAWNER'S WAVE STARTED/FINISHED UNITY EVENTS
         public static void EnableSaveLoad(bool enabled)
         {
             if (enabled) saveLoadHandlerInstance.disableSaveLoad = false;
             else saveLoadHandlerInstance.disableSaveLoad = true;
         }
+
+        #endregion
+
+        #region Editor
+
+#if UNITY_EDITOR
+
+        [CustomEditor(typeof(SaveLoadHandler))]
+        private class SaveLoadHandlerEditor : Editor
+        {
+            private SaveLoadHandler saveLoadHandler;
+
+            private void OnEnable()
+            {
+                saveLoadHandler = target as SaveLoadHandler;
+            }
+
+            public override void OnInspectorGUI()
+            {
+                DrawDefaultInspector();
+
+                EditorGUILayout.Space();
+
+                EditorGUILayout.HelpBox(
+                    "Use this button to test the load functionality during RUNTIME ONLY." +
+                    "If any save file exists on disk, it will be loaded.",
+                    MessageType.Warning);
+
+                EditorGUILayout.Space();
+
+                if (GUILayout.Button("Test Load Save"))
+                {
+                    if (!HasSavedData())
+                    {
+                        if (saveLoadHandler.showEditorDebugLog) Debug.LogWarning("No Saved Data To Load!");
+
+                        return;
+                    }
+
+                    if (!Application.isPlaying || Application.isEditor)
+                    {
+                        if (saveLoadHandler.showEditorDebugLog) Debug.LogWarning("Test Load Only Available On Runtime!");
+
+                        return;
+                    }
+
+                    LoadToAllSaveables();
+                }
+            }
+        }
+#endif
 
         #endregion
     }
