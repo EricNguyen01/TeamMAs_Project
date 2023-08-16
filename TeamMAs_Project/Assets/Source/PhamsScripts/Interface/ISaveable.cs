@@ -7,11 +7,11 @@ using UnityEngine;
 
 namespace TeamMAsTD
 {
-    public interface ISaveable
+    public interface ISaveable <T> where T : class
     {
-        public SaveDataSerializeBase SaveData(string saveName = "");
+        public SaveDataSerializeBase<T> SaveData(string saveName = "");
 
-        public void LoadData(SaveDataSerializeBase savedDataToLoad);
+        public void LoadData(SaveDataSerializeBase<T> savedDataToLoad);
 
         public static void GenerateSaveableComponentIfNull(MonoBehaviour mono)
         {
@@ -25,13 +25,14 @@ namespace TeamMAsTD
             }
         }
 
+        /*
         /// <summary>
         /// Check if the loaded object's type matches the type of the object that is about to be loaded. Also checks for null object.
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="savedData"></param>
         /// <returns></returns>
-        public static bool IsSavedObjectMatchObjectType<T>(SaveDataSerializeBase savedData)
+        public static bool IsSavedObjectMatchObjectType<T>(SaveDataSerializeBase<object> savedData)
         {
             if (savedData == null || savedData.LoadSavedObject() == null) return false;
 
@@ -40,6 +41,6 @@ namespace TeamMAsTD
             if (savedObject.GetType() is not T) return false;
 
             return true;
-        }
+        }*/
     }
 }

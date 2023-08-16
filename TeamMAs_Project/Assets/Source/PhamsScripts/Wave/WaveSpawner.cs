@@ -15,7 +15,7 @@ namespace TeamMAsTD
      * This class handles all the Visitor game object pools for all types of visitors 
      * and the active/inactive of all Visitors game objects from their pools
      */
-    public class WaveSpawner : MonoBehaviour, ISaveable
+    public class WaveSpawner : MonoBehaviour, ISaveable<WaveSpawner>
     {
         [Header("Wave Spawner And Waves Config")]
         [SerializeField] private List<WaveSO> waveSOList = new List<WaveSO>();
@@ -415,18 +415,22 @@ namespace TeamMAsTD
 
         //ISaveable interface implementations.........................................................................................................
 
-        public SaveDataSerializeBase SaveData(string saveName = "")
+        public SaveDataSerializeBase<WaveSpawner> SaveData(string saveName = "")
         {
-            SaveDataSerializeBase waveSpawnerSave = new SaveDataSerializeBase(this, transform.position, UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
+            SaveDataSerializeBase<WaveSpawner> waveSpawnerSave;
+
+            waveSpawnerSave = new SaveDataSerializeBase<WaveSpawner>(this, 
+                                                                     transform.position, 
+                                                                     UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
 
             return waveSpawnerSave;
         }
 
-        public void LoadData(SaveDataSerializeBase savedDataToLoad)
+        public void LoadData(SaveDataSerializeBase<WaveSpawner> savedDataToLoad)
         {
-            if (!ISaveable.IsSavedObjectMatchObjectType<WaveSpawner>(savedDataToLoad)) return;
+            if (savedDataToLoad == null) return;
 
-            WaveSpawner savedWaveSpawner = (WaveSpawner)savedDataToLoad.LoadSavedObject();
+            WaveSpawner savedWaveSpawner = savedDataToLoad.LoadSavedObject();
 
             currentWave = savedWaveSpawner.currentWave;
 

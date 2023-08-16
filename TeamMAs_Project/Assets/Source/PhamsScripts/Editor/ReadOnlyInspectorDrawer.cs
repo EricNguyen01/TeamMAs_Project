@@ -4,6 +4,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using PixelCrushers.DialogueSystem.UnityGUI;
+using UnityEditor.U2D.Path.GUIFramework;
 
 #if UNITY_EDITOR
 using UnityEditor;

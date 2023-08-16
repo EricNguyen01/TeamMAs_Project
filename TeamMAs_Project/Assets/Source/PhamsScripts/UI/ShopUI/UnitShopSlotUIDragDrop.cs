@@ -12,7 +12,7 @@ using TMPro;
 namespace TeamMAsTD
 {
     [DisallowMultipleComponent]
-    public class UnitShopSlotUIDragDrop : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, ISaveable
+    public class UnitShopSlotUIDragDrop : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, ISaveable<UnitShopSlotUIDragDrop>
     {
         [SerializeField] [Tooltip("The Unit Scriptable Object of this slot.")] 
         private PlantUnitSO slotUnitScriptableObject;
@@ -645,18 +645,22 @@ namespace TeamMAsTD
             OnDroppedSuccessful?.Invoke();
         }
 
-        public SaveDataSerializeBase SaveData(string saveName = "")
+        public SaveDataSerializeBase<UnitShopSlotUIDragDrop> SaveData(string saveName = "")
         {
-            SaveDataSerializeBase shopSlotSaveData = new SaveDataSerializeBase(this, transform.position, UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
+            SaveDataSerializeBase<UnitShopSlotUIDragDrop> shopSlotSaveData;
+
+            shopSlotSaveData = new SaveDataSerializeBase<UnitShopSlotUIDragDrop>(this, 
+                                                                                 transform.position, 
+                                                                                 UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
 
             return shopSlotSaveData;
         }
 
-        public void LoadData(SaveDataSerializeBase savedDataToLoad)
+        public void LoadData(SaveDataSerializeBase<UnitShopSlotUIDragDrop> savedDataToLoad)
         {
-            if (!ISaveable.IsSavedObjectMatchObjectType<UnitShopSlotUIDragDrop>(savedDataToLoad)) return;
+            if (savedDataToLoad == null) return;
 
-            UnitShopSlotUIDragDrop savedShopSlot = (UnitShopSlotUIDragDrop)savedDataToLoad.LoadSavedObject();
+            UnitShopSlotUIDragDrop savedShopSlot = savedDataToLoad.LoadSavedObject();
 
             if(savedShopSlot.isShopSlotUnlocked)
             {

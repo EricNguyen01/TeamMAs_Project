@@ -15,7 +15,7 @@ namespace TeamMAsTD
     [DisallowMultipleComponent]
 
 #if UNITY_EDITOR
-    [ExecuteAlways]
+    [ExecuteInEditMode]
 #endif
     public class Saveable : MonoBehaviour
     {
@@ -25,27 +25,24 @@ namespace TeamMAsTD
         [ReadOnlyInspector]
         [SerializeField] private string UUID;
 
-        SerializedObject serializedObject;
+        private string currentIdentification;
 
-        SerializedProperty UUID_SerializedProperty;
+        private SerializedObject serializedObject;
+
+        private SerializedProperty UUID_SerializedProperty;
 
         private void OnEnable()
         {
-            serializedObject = new SerializedObject(this);
-
-            UUID_SerializedProperty = serializedObject.FindProperty("UUID");
-
             GenerateID_If_None();
         }
 
-#if UNITY_EDITOR
-
-        private void Update()
+        private void OnValidate()
         {
-            GenerateID_If_None();
+            if (!string.IsNullOrEmpty(currentIdentification) && !string.IsNullOrWhiteSpace(currentIdentification) && currentIdentification != "")
+            {
+                if (UUID != currentIdentification) UUID = currentIdentification;
+            }
         }
-
-#endif
 
         private void GenerateID_If_None()
         {
@@ -55,15 +52,21 @@ namespace TeamMAsTD
             //if the below returns null or empty then object is in prefab and should stop execute
             if (string.IsNullOrEmpty(gameObject.scene.path)) return;
 
+            serializedObject = new SerializedObject(this);
+
+            UUID_SerializedProperty = serializedObject.FindProperty("UUID");
+
             //if this does not have an UUID yet or has an ID that overlaps another object's ID -> provide new one
             if (UUID_SerializedProperty.stringValue == null ||
-                string.IsNullOrEmpty(UUID_SerializedProperty.stringValue) ||
-                !HelperFunctions.ObjectHasUniqueID(UUID_SerializedProperty.stringValue, this))
+                string.IsNullOrEmpty(UUID_SerializedProperty.stringValue)
+                /*!HelperFunctions.ObjectHasUniqueID(UUID_SerializedProperty.stringValue, this)*/)
             {
                 UUID_SerializedProperty.stringValue = System.Guid.NewGuid().ToString();
 
                 serializedObject.ApplyModifiedProperties();
             }
+
+            currentIdentification = UUID;
         }
 
         public string GetSaveableID()
@@ -71,33 +74,46 @@ namespace TeamMAsTD
             return UUID;
         }
 
-        //capture whatever states that any ISaveable interface on any components attached to this game object has captured
+        //capture the state of any ISaveable interface on the same game object that this Saveable component attached to
         public object CaptureSaveableState()
         {
-            Dictionary<ISaveable, object> state = new Dictionary<ISaveable, object>();
+            Dictionary<ISaveable<object>, SaveDataSerializeBase<object>> state;
+
+            state = new Dictionary<ISaveable<object>, SaveDataSerializeBase<object>>();
 
             if (disableSavingForThisObject) return null;
 
-            //Get all ISaveable components in this game object and store the appropriate values in state dict
-            foreach (ISaveable saveable in GetComponents<ISaveable>())
+            //Get all ISaveable components in the same game object that this Saveable component is attached to
+            //and store the appropriate values into state dict
+            foreach (ISaveable<object> saveable in GetComponents<ISaveable<object>>())
             {
-                state[saveable] = saveable.SaveData();//SaveData() is a method of ISaveable interface
+                //call the ISaveable's SaveData method on each ISaveable component of the same object
+                //that this Saveable component is attached to
+                state[saveable] = saveable.SaveData();
             }
 
             return state;
         }
 
+        //load and restore the state of any ISaveable interface on the same game object that this Saveable component attached to
         public void RestoreSaveableState(object state)
         {
-            if (state is not Dictionary<ISaveable, object>) return;
+            //if (state is not Dictionary<ISaveable<object>, SaveDataSerializeBase<object>>) return;
+            
+            Dictionary<ISaveable<object>, SaveDataSerializeBase<object>> savedState;
 
-            Dictionary<ISaveable, object> savedState = (Dictionary<ISaveable, object>)state;
-
-            foreach (ISaveable saveable in GetComponents<ISaveable>())
+            //cast "state" to dictionary type of "savedState"
+            savedState = (Dictionary<ISaveable<object>, SaveDataSerializeBase<object>>)state;
+            
+            //Get all ISaveable components in the same game object that this Saveable component is attached to
+            //and load the appropriate values from state dict
+            foreach (ISaveable<object> saveable in GetComponents<ISaveable<object>>())
             {
-                if (savedState.ContainsKey(saveable) && savedState[saveable] is SaveDataSerializeBase)
+                if (savedState.ContainsKey(saveable))
                 {
-                    saveable.LoadData((SaveDataSerializeBase)savedState[saveable]);//call the ISaveable method
+                    //call the ISaveable's LoadData method on each ISaveable component of the same object
+                    //that this Saveable component is attached to
+                    saveable.LoadData(savedState[saveable]);
                 }
             }
         }

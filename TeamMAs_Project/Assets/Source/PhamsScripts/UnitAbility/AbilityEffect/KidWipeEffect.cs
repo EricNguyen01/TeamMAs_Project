@@ -99,14 +99,14 @@ namespace TeamMAsTD
                 {
                     if (i >= plantAbilityEffectReceivedInventory.abilityEffectsReceived.Count) break;
 
-                    if (plantAbilityEffectReceivedInventory.abilityEffectsReceived[i].effectStackSpawned != null &&
-                        plantAbilityEffectReceivedInventory.abilityEffectsReceived[i].effectStackSpawned.Count > 0)
+                    if (plantAbilityEffectReceivedInventory.abilityEffectsReceived[i].EffectStackSpawned() != null &&
+                        plantAbilityEffectReceivedInventory.abilityEffectsReceived[i].EffectStackSpawned().Count > 0)
                     {
-                        for (int j = 0; j < plantAbilityEffectReceivedInventory.abilityEffectsReceived[i].effectStackSpawned.Count; j++)
+                        for (int j = 0; j < plantAbilityEffectReceivedInventory.abilityEffectsReceived[i].EffectStackSpawned().Count; j++)
                         {
-                            if (j >= plantAbilityEffectReceivedInventory.abilityEffectsReceived[i].effectStackSpawned.Count) break;
+                            if (j >= plantAbilityEffectReceivedInventory.abilityEffectsReceived[i].EffectStackSpawned().Count) break;
 
-                            AbilityEffect aEffect = plantAbilityEffectReceivedInventory.abilityEffectsReceived[i].effectStackSpawned[j];
+                            AbilityEffect aEffect = plantAbilityEffectReceivedInventory.abilityEffectsReceived[i].EffectStackSpawned()[j];
 
                             if (aEffect == null) continue;
 

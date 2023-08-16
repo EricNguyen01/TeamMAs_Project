@@ -9,15 +9,15 @@ using UnityEngine;
 namespace TeamMAsTD
 {
     [Serializable]
-    public class SaveDataSerializeBase
+    public class SaveDataSerializeBase <T> where T : class
     {
-        protected object objectToSave;
+        protected T objectToSave;
 
         protected float posX, posY, posZ;
 
         protected string sceneNameSave;
 
-        public SaveDataSerializeBase(object objectToSave, Vector3 posToSave, string sceneNameToSave)
+        public SaveDataSerializeBase(T objectToSave, Vector3 posToSave, string sceneNameToSave)
         {
             this.objectToSave = objectToSave;
 
@@ -30,7 +30,7 @@ namespace TeamMAsTD
             sceneNameSave = sceneNameToSave;
         }
 
-        public object LoadSavedObject()
+        public T LoadSavedObject()
         {
             return objectToSave;
         }

@@ -8,7 +8,7 @@ using UnityEngine;
 
 namespace TeamMAsTD
 {
-    public class TheFingerController : MonoBehaviour, ISaveable
+    public class TheFingerController : MonoBehaviour, ISaveable<TheFingerController>
     {
         private bool alreadyDisplayed = false;
 
@@ -91,18 +91,22 @@ namespace TeamMAsTD
 
         //ISaveable interface implementations......................................................................................................
 
-        public SaveDataSerializeBase SaveData(string saveName = "")
+        public SaveDataSerializeBase<TheFingerController> SaveData(string saveName = "")
         {
-            SaveDataSerializeBase tutorialFingerSave = new SaveDataSerializeBase(this, transform.position, UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
+            SaveDataSerializeBase<TheFingerController> tutorialFingerSave;
+
+            tutorialFingerSave = new SaveDataSerializeBase<TheFingerController>(this, 
+                                                                                transform.position, 
+                                                                                UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
 
             return tutorialFingerSave;
         }
 
-        public void LoadData(SaveDataSerializeBase savedDataToLoad)
+        public void LoadData(SaveDataSerializeBase<TheFingerController> savedDataToLoad)
         {
-            if(!ISaveable.IsSavedObjectMatchObjectType<TheFingerController>(savedDataToLoad)) return;
+            if(savedDataToLoad == null) return;
 
-            TheFingerController savedTutorialFinger = (TheFingerController)savedDataToLoad.LoadSavedObject();
+            TheFingerController savedTutorialFinger = savedDataToLoad.LoadSavedObject();
 
             if (savedTutorialFinger.alreadyDisplayed)
             {

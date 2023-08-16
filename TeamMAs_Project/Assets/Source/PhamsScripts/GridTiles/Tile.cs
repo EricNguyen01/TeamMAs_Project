@@ -17,7 +17,7 @@ namespace TeamMAsTD
 #endif
     [DisallowMultipleComponent]
     [RequireComponent(typeof(TileMenuAndUprootOnTileUI))]
-    public class Tile : MonoBehaviour, ISaveable
+    public class Tile : MonoBehaviour, ISaveable<Tile>
     {
         [field: Header("Tile Properties")]
         [field: SerializeField] public bool isOccupied { get; set; } = false;
@@ -129,7 +129,7 @@ namespace TeamMAsTD
 
         private void OnEnable()
         {
-            if(this is ISaveable) ISaveable.GenerateSaveableComponentIfNull(this);
+            if(this is ISaveable<Tile>) ISaveable<Tile>.GenerateSaveableComponentIfNull(this);
         }
 
 #if UNITY_EDITOR
@@ -478,18 +478,22 @@ namespace TeamMAsTD
 
         //ISaveable interface implementations........................................................................................................
 
-        public SaveDataSerializeBase SaveData(string saveName = "")
+        public SaveDataSerializeBase<Tile> SaveData(string saveName = "")
         {
-            SaveDataSerializeBase tileSaveData = new SaveDataSerializeBase(this, transform.position, UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
+            SaveDataSerializeBase<Tile> tileSaveData;
+
+            tileSaveData = new SaveDataSerializeBase<Tile>(this, 
+                                                           transform.position, 
+                                                           UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
 
             return tileSaveData;
         }
 
-        public void LoadData(SaveDataSerializeBase savedDataToLoad)
+        public void LoadData(SaveDataSerializeBase<Tile> savedDataToLoad)
         {
-            if (!ISaveable.IsSavedObjectMatchObjectType<Tile>(savedDataToLoad)) return;
+            if (savedDataToLoad == null) return;
 
-            Tile savedTile = (Tile)savedDataToLoad.LoadSavedObject();
+            Tile savedTile = savedDataToLoad.LoadSavedObject();
 
             if (!savedTile.plantUnitOnTile) return;
 
