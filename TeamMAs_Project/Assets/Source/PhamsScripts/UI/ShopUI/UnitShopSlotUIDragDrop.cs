@@ -128,7 +128,7 @@ namespace TeamMAsTD
 
             originalDragDropPos = dragDropUIImageObject.transform.localPosition;
 
-            if (slotUnitScriptableObject.plantPurchaseLockOnStart)
+            if (slotUnitScriptableObject.plantPurchaseLockOnStart && !isShopSlotUnlocked)
             {
                 gameObject.SetActive(false);
             }
@@ -384,7 +384,7 @@ namespace TeamMAsTD
 
             if (waveSpawner == null) return;
 
-            Wave wave = waveSpawner.GetCurrentWave();
+            Wave wave = waveSpawner.GetWave(waveNum);
 
             if (wave == null) return;
 
@@ -392,6 +392,7 @@ namespace TeamMAsTD
 
             if (currentWaveSO == null) return;
 
+            //if starts and reaches the wave number that is required to unlock this shop slot -> unlock it then exit func
             if(slotUnitScriptableObject.waveToUnlockPlantPurchaseOnWaveStarted != null)
             {
                 if(currentWaveSO == slotUnitScriptableObject.waveToUnlockPlantPurchaseOnWaveStarted)
@@ -407,6 +408,10 @@ namespace TeamMAsTD
             if (slotUnitScriptableObject.waveToUnlockPlantPurchaseOnWaveStarted == null &&
                 slotUnitScriptableObject.waveToUnlockPlantPurchaseOnWaveFinished == null) return;
 
+            //below is logic for
+            //unlocking this plant shop slot if the game starts where the current wave number has gone past 
+            //the wave number that is required to unlock this shop slot.
+
             List<Wave> wavesList = waveSpawner.GetWaveSpawnerWaveList();
 
             int waveNumToUnlock = -1;
@@ -415,7 +420,7 @@ namespace TeamMAsTD
             {
                 for(int i = 0; i < wavesList.Count; i++)
                 {
-                    if (wavesList == null) continue;
+                    if (wavesList[i] == null) continue;
 
                     if(slotUnitScriptableObject.waveToUnlockPlantPurchaseOnWaveStarted != null)
                     {
@@ -441,7 +446,7 @@ namespace TeamMAsTD
 
             if(waveNumToUnlock >= 0)
             {
-                if(waveNum >= waveNumToUnlock)
+                if(waveNum > waveNumToUnlock)
                 {
                     if (!gameObject.activeInHierarchy) gameObject.SetActive(true);
 
@@ -458,7 +463,7 @@ namespace TeamMAsTD
 
             if (waveSpawner == null) return;
 
-            Wave wave = waveSpawner.GetCurrentWave();
+            Wave wave = waveSpawner.GetWave(waveNum);
 
             if (wave == null) return;
 
@@ -649,7 +654,7 @@ namespace TeamMAsTD
         {
             SaveDataSerializeBase shopSlotSaveData;
 
-            shopSlotSaveData = new SaveDataSerializeBase(this, 
+            shopSlotSaveData = new SaveDataSerializeBase(isShopSlotUnlocked, 
                                                          transform.position, 
                                                          UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
 
@@ -659,14 +664,12 @@ namespace TeamMAsTD
         public void LoadData(SaveDataSerializeBase savedDataToLoad)
         {
             if (savedDataToLoad == null) return;
-
-            UnitShopSlotUIDragDrop savedShopSlot = (UnitShopSlotUIDragDrop)savedDataToLoad.LoadSavedObject();
-
-            if(savedShopSlot.isShopSlotUnlocked)
+            
+            isShopSlotUnlocked = (bool)savedDataToLoad.LoadSavedObject();
+            
+            if(isShopSlotUnlocked)
             {
                 if (!gameObject.activeInHierarchy) gameObject.SetActive(true);
-
-                isShopSlotUnlocked = true;
             }
         }
     }

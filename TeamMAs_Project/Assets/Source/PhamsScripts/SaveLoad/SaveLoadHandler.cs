@@ -138,7 +138,7 @@ namespace TeamMAsTD
 
         private static StateDictionaryObject UpdateCurrentSavedData(StateDictionaryObject currentSavedData)
         {
-            foreach (Saveable saveable in FindObjectsOfType<Saveable>())
+            foreach (Saveable saveable in FindObjectsOfType<Saveable>(true))
             {
                 UpdateCurrentSaveDataOfSaveable(currentSavedData, saveable);
             }
@@ -245,7 +245,7 @@ namespace TeamMAsTD
 
         private static void RestoreSavedDataForAllSaveables(StateDictionaryObject savedData)
         {
-            foreach (Saveable saveable in FindObjectsOfType<Saveable>())
+            foreach (Saveable saveable in FindObjectsOfType<Saveable>(true))
             {
                 RestoreSaveDataOfSaveable(savedData, saveable);
             }

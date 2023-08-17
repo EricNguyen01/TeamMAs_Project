@@ -95,7 +95,7 @@ namespace TeamMAsTD
         {
             SaveDataSerializeBase tutorialFingerSave;
 
-            tutorialFingerSave = new SaveDataSerializeBase(this, 
+            tutorialFingerSave = new SaveDataSerializeBase(alreadyDisplayed, 
                                                            transform.position, 
                                                            UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
 
@@ -106,11 +106,17 @@ namespace TeamMAsTD
         {
             if(savedDataToLoad == null) return;
 
-            TheFingerController savedTutorialFinger = (TheFingerController)savedDataToLoad.LoadSavedObject();
+            alreadyDisplayed = (bool)savedDataToLoad.LoadSavedObject();
 
-            if (savedTutorialFinger.alreadyDisplayed)
+            if (alreadyDisplayed)
             {
+                EnableOnDialogueEndEvent(false);
+
+                DisableOnPlantPlantedOnTileEvent(false);
+
                 EnableDragDropFinger(false);
+
+                if (gameObject.activeInHierarchy) gameObject.SetActive(false);
             }
         }
     }

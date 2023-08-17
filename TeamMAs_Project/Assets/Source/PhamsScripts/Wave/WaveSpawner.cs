@@ -399,6 +399,13 @@ namespace TeamMAsTD
             return wavesList[currentWave];
         }
 
+        public Wave GetWave(int waveNum)
+        {
+            if (waveNum < 0 || waveNum >= wavesList.Count) return null;
+
+            return wavesList[waveNum];
+        }
+
         public Wave GetNextWaveFromCurrentWave(int lookAheadNum)
         {
             int targetWaveNum = currentWave + lookAheadNum;
@@ -419,7 +426,9 @@ namespace TeamMAsTD
         {
             SaveDataSerializeBase waveSpawnerSave;
 
-            waveSpawnerSave = new SaveDataSerializeBase(this, 
+            int waveToSave = currentWave + 1; //+1 because save func is called before the next wave increment upon the current wave just finished.
+            
+            waveSpawnerSave = new SaveDataSerializeBase(waveToSave, 
                                                         transform.position, 
                                                         UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
 
@@ -430,13 +439,13 @@ namespace TeamMAsTD
         {
             if (savedDataToLoad == null) return;
 
-            WaveSpawner savedWaveSpawner = (WaveSpawner)savedDataToLoad.LoadSavedObject();
-
-            currentWave = savedWaveSpawner.currentWave;
+            currentWave = (int)savedDataToLoad.LoadSavedObject();
 
             if (currentWave <= 0) return;
 
-            OnWaveFinished?.Invoke(this, currentWave--, false);
+            int waveFinished = currentWave - 1;
+
+            OnWaveFinished?.Invoke(this, waveFinished, false);
         }
     }
 }

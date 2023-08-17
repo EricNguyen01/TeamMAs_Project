@@ -3577,7 +3577,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9129364728104280397, guid: 6e63e86c283224240aea3258256ba6a3, type: 3}
       propertyPath: disableSaveLoadForThisSaveable
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6e63e86c283224240aea3258256ba6a3, type: 3}
@@ -4336,7 +4336,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4791386802047426997, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
       propertyPath: disableSaveLoadForThisSaveable
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4791386802764241341, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
       propertyPath: UUID
@@ -4348,7 +4348,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4791386802764241341, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
       propertyPath: disableSaveLoadForThisSaveable
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4791386802963921254, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
       propertyPath: UUID
@@ -4360,7 +4360,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4791386802963921254, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
       propertyPath: disableSaveLoadForThisSaveable
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4791386802977296515, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
       propertyPath: UUID
@@ -4372,7 +4372,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4791386802977296515, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
       propertyPath: disableSaveLoadForThisSaveable
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4848073371935819355, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
       propertyPath: m_Colors.m_HighlightedColor.b
@@ -4488,7 +4488,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6380319184443845737, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -1316.5017
+      value: -1316.5016
       objectReference: {fileID: 0}
     - target: {fileID: 6474088391758042566, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
       propertyPath: m_fontSize
@@ -5104,7 +5104,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8210577795603118610, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
       propertyPath: disableSaveLoadForThisSaveable
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8431845080792975626, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
       propertyPath: waveSpawnerToLookAhead
@@ -5429,11 +5429,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8044427528212389576, guid: b2ae05a64eda3cc46ae632fa1fafb83a, type: 3}
       propertyPath: showDebugLog
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8044427528212389576, guid: b2ae05a64eda3cc46ae632fa1fafb83a, type: 3}
       propertyPath: showEditorDebugLog
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8044427528212389578, guid: b2ae05a64eda3cc46ae632fa1fafb83a, type: 3}
       propertyPath: m_Name
@@ -5502,7 +5502,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 873135158756900366, guid: eed3eec48ff8cc6419e0115e87295bd1, type: 3}
       propertyPath: disableSaveLoadForThisSaveable
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8106917588667664480, guid: eed3eec48ff8cc6419e0115e87295bd1, type: 3}
       propertyPath: m_Name
