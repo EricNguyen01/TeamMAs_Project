@@ -13,6 +13,8 @@ namespace TeamMAsTD
     {
         [SerializeField] protected object objectToSave;
 
+        protected int coinResourceToSave;
+
         protected float posX, posY, posZ;
 
         protected string sceneNameSave;

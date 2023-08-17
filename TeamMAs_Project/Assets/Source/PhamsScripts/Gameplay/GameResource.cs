@@ -1,6 +1,7 @@
 // Script Author: Pham Nguyen. All Rights Reserved. 
 // GitHub: https://github.com/EricNguyen01.
 
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
@@ -28,6 +29,21 @@ namespace TeamMAsTD
         public static GameResource gameResourceInstance;
 
         private Saveable saveable;
+
+        [Serializable]
+        private class GameResourceSaveData
+        {
+            public int coinResourceAmountSave { get; private set; }
+
+            public Dictionary<string, float> emotionalHealthTypesAmountSave { get; private set; }
+
+            public GameResourceSaveData(int coinAmountSave, Dictionary<string, float> emotionalHealthTypesSave)
+            {
+                coinResourceAmountSave = coinAmountSave;
+
+                emotionalHealthTypesAmountSave = emotionalHealthTypesSave;
+            }
+        }
 
         private void Awake()
         {
@@ -62,9 +78,26 @@ namespace TeamMAsTD
         {
             UnityEngine.SceneManagement.Scene scene = UnityEngine.SceneManagement.SceneManager.GetActiveScene();
 
-            SaveDataSerializeBase resourceSaveData; 
+            Dictionary<string, float> emotionalHealthTypesSaveDict = new Dictionary<string, float>();
 
-            resourceSaveData = new SaveDataSerializeBase(this, transform.position, scene.name);
+            if(emotionalHealthSOTypes != null && emotionalHealthSOTypes.Count > 0 )
+            {
+                for(int i = 0; i < emotionalHealthSOTypes.Count; i++)
+                {
+                    if (emotionalHealthSOTypes[i] == null) continue;
+
+                    if (!emotionalHealthTypesSaveDict.ContainsKey(emotionalHealthSOTypes[i].name))
+                    {
+                        emotionalHealthTypesSaveDict.Add(emotionalHealthSOTypes[i].name, emotionalHealthSOTypes[i].resourceAmount);
+                    }
+                }
+            }
+
+            SaveDataSerializeBase resourceSaveData;
+
+            GameResourceSaveData resourceSaveDataObject = new GameResourceSaveData((int)coinResourceSO.resourceAmount, emotionalHealthTypesSaveDict);
+
+            resourceSaveData = new SaveDataSerializeBase(resourceSaveDataObject, transform.position, scene.name);
 
             return resourceSaveData;
         }
@@ -73,17 +106,24 @@ namespace TeamMAsTD
         {
             if (savedDataToLoad == null) return;
 
-            GameResource savedGameResource = (GameResource)savedDataToLoad.LoadSavedObject();
+            GameResourceSaveData savedGameResource = (GameResourceSaveData)savedDataToLoad.LoadSavedObject();
             
-            if(savedGameResource.coinResourceSO != null) coinResourceSO.SetSpecificResourceAmount(savedGameResource.coinResourceSO.resourceAmount);
+            coinResourceSO.SetSpecificResourceAmount(savedGameResource.coinResourceAmountSave);
 
-            if (savedGameResource.emotionalHealthSOTypes == null || savedGameResource.emotionalHealthSOTypes.Count == 0) return;
+            if (savedGameResource.emotionalHealthTypesAmountSave == null || savedGameResource.emotionalHealthTypesAmountSave.Count == 0) return;
 
             if (emotionalHealthSOTypes == null && emotionalHealthSOTypes.Count == 0) return;
             
             for(int i = 0; i < emotionalHealthSOTypes.Count; i++)
             {
-                emotionalHealthSOTypes[i].SetSpecificResourceAmount(savedGameResource.emotionalHealthSOTypes[i].resourceAmount);
+                if (emotionalHealthSOTypes[i] == null) continue;
+
+                if(savedGameResource.emotionalHealthTypesAmountSave.ContainsKey(emotionalHealthSOTypes[i].name))
+                {
+                    float emotionalHealthAmount = savedGameResource.emotionalHealthTypesAmountSave[emotionalHealthSOTypes[i].name];
+
+                    emotionalHealthSOTypes[i].SetSpecificResourceAmount(emotionalHealthAmount);
+                }
             }
         }
     }

@@ -25,23 +25,5 @@ namespace TeamMAsTD
                 saveable = mono.gameObject.AddComponent<Saveable>();
             }
         }
-
-        /*
-        /// <summary>
-        /// Check if the loaded object's type matches the type of the object that is about to be loaded. Also checks for null object.
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="savedData"></param>
-        /// <returns></returns>
-        public static bool IsSavedObjectMatchObjectType<T>(SaveDataSerializeBase<object> savedData)
-        {
-            if (savedData == null || savedData.LoadSavedObject() == null) return false;
-
-            object savedObject = savedData.LoadSavedObject();
-
-            if (savedObject.GetType() is not T) return false;
-
-            return true;
-        }*/
     }
 }

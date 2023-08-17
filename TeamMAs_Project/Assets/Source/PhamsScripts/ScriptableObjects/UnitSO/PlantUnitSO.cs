@@ -81,8 +81,8 @@ namespace TeamMAsTD
 
                 // Generate and save a new dynamic ID
                 if (string.IsNullOrEmpty(plantUnitSO.unitDynamicID) || 
-                    string.IsNullOrWhiteSpace(plantUnitSO.unitDynamicID) ||
-                    !HelperFunctions.ObjectHasUniqueID(plantUnitSO.unitDynamicID, plantUnitSO))
+                    string.IsNullOrWhiteSpace(plantUnitSO.unitDynamicID) /*||
+                    !HelperFunctions.ObjectHasUniqueID(plantUnitSO.unitDynamicID, plantUnitSO)*/)
                 {
                     plantUnitSO.SetNewDynamicIDIfPossible();
                 }

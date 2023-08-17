@@ -19,7 +19,7 @@ namespace TeamMAsTD
 #endif
     public class Saveable : MonoBehaviour
     {
-        [SerializeField] private bool disableSavingForThisObject = false;
+        [SerializeField] private bool disableSaveLoadForThisSaveable = false;
 
         //generate new UUID(Universal unique ID) and convert it to string
         [ReadOnlyInspector]
@@ -87,21 +87,21 @@ namespace TeamMAsTD
         //capture the state of any ISaveable interface on the same game object that this Saveable component attached to
         public object CaptureSaveableState()
         {
-            if (disableSavingForThisObject) return null;
+            if (disableSaveLoadForThisSaveable) return null;
 
-            Dictionary<ISaveable, SaveDataSerializeBase> state;
+            Dictionary<string, SaveDataSerializeBase> state;
 
-            state = new Dictionary<ISaveable, SaveDataSerializeBase>();
+            state = new Dictionary<string, SaveDataSerializeBase>();
 
             //Get all ISaveable components in the same game object that this Saveable component is attached to
             //and store the appropriate values into state dict
             foreach (ISaveable saveable in GetComponents<ISaveable>())
             {
-                if (!state.ContainsKey(saveable))
+                if (!state.ContainsKey(saveable.GetType().ToString()))
                 {
                     //call the ISaveable's SaveData method on each ISaveable component of the same object
                     //that this Saveable component is attached to
-                    state.Add(saveable, saveable.SaveData());
+                    state.Add(saveable.GetType().ToString(), saveable.SaveData());
                 }
             }
 
@@ -111,24 +111,22 @@ namespace TeamMAsTD
         //load and restore the state of any ISaveable interface on the same game object that this Saveable component attached to
         public void RestoreSaveableState(object state)
         {
-            //if (state is not Dictionary<ISaveable<object>, SaveDataSerializeBase<object>>) return;
-            Debug.Log("Restore Saveable: " + name + " Type: " +  state.GetType().ToString());   
-            Dictionary<ISaveable, SaveDataSerializeBase> savedState;
+            if (disableSaveLoadForThisSaveable || state == null) return;
+            
+            Dictionary<string, SaveDataSerializeBase> savedState;
 
             //cast "state" to dictionary type of "savedState"
-            savedState = (Dictionary<ISaveable, SaveDataSerializeBase>)state;
+            savedState = (Dictionary<string, SaveDataSerializeBase>)state;
             
             //Get all ISaveable components in the same game object that this Saveable component is attached to
             //and load the appropriate values from state dict
             foreach (ISaveable saveable in GetComponents<ISaveable>())
             {
-                Debug.Log("Found an ISaveable that could be loaded to.");
-                if (savedState.ContainsKey(saveable))
+                if (savedState.ContainsKey(saveable.GetType().ToString()))
                 {
-                    Debug.Log("SavedState contains ISaveable, proceed to load ISaveable");
                     //call the ISaveable's LoadData method on each ISaveable component of the same object
                     //that this Saveable component is attached to
-                    saveable.LoadData(savedState[saveable]);
+                    saveable.LoadData(savedState[saveable.GetType().ToString()]);
                 }
             }
         }

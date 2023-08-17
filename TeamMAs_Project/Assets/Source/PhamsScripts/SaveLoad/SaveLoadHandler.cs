@@ -42,7 +42,7 @@ namespace TeamMAsTD
         [Serializable]
         private class StateDictionaryObject
         {
-            public Dictionary<string, object> stateDict { get; private set; } = new Dictionary<string, object>();
+            [field: SerializeReference] public Dictionary<string, object> stateDict { get; private set; } = new Dictionary<string, object>();
 
             public StateDictionaryObject(Dictionary<string, object> stateDict = null)
             {
@@ -293,16 +293,18 @@ namespace TeamMAsTD
         //OTHERS..........................................................................................................
         #region DeleteSave
 
-        public static void DeleteAllSaveData()
+        public void DeleteAllSaveData()
         {
-            if (!saveLoadHandlerInstance || !saveLoadHandlerInstance.saveLoadManager) return;
+            if (!saveLoadManager) return;
 
-            saveLoadHandlerInstance.saveLoadManager.DeleteSave(SAVE_FILE_NAME);
+            if (showDebugLog) Debug.Log("Deleting All Save Data!");
+
+            saveLoadManager.DeleteSave(SAVE_FILE_NAME);
         }
 
-        public static void DeleteSaveDataOfSaveable(Saveable saveable)
+        public void DeleteSaveDataOfSaveable(Saveable saveable)
         {
-            if (!saveLoadHandlerInstance || !saveLoadHandlerInstance.saveLoadManager) return;
+            if (!saveLoadManager) return;
 
             if (!saveable) return;
 
@@ -397,7 +399,7 @@ namespace TeamMAsTD
                         return;
                     }
 
-                    DeleteAllSaveData();
+                    saveLoadHandler.DeleteAllSaveData();
                 }
             }
         }

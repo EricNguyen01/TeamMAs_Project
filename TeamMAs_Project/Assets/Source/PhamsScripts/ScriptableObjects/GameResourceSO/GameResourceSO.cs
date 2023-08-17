@@ -31,6 +31,9 @@ namespace TeamMAsTD
         [field: NonSerialized]
         public float resourceAmount { get; private set; }//runtime non-static data
 
+        [ReadOnlyInspector]
+        [SerializeField] private float currentResourceAmount;
+
         [SerializeField]
         [Tooltip("The highest possible amount of this resource. If value is 0, this resource has an infinite cap.")]
         [Min(0)]
@@ -46,6 +49,8 @@ namespace TeamMAsTD
         protected virtual void OnValidate()
         {
             CheckResourceAmountMinMaxReached();
+
+            if(currentResourceAmount != resourceAmount) currentResourceAmount = resourceAmount;
 
             OnResourceAmountUpdated?.Invoke(this);
         }
@@ -64,6 +69,8 @@ namespace TeamMAsTD
 
             CheckResourceAmountMinMaxReached();
 
+            currentResourceAmount = resourceAmount;
+
             OnResourceAmountUpdated?.Invoke(this);
         }
 
@@ -73,6 +80,8 @@ namespace TeamMAsTD
 
             CheckResourceAmountMinMaxReached();
 
+            currentResourceAmount = resourceAmount;
+
             OnResourceAmountUpdated?.Invoke(this);
         }
 
@@ -81,6 +90,8 @@ namespace TeamMAsTD
             resourceAmount -= removedAmount;
 
             CheckResourceAmountMinMaxReached();
+
+            currentResourceAmount = resourceAmount;
 
             OnResourceAmountUpdated?.Invoke(this);
         }
@@ -130,6 +141,8 @@ namespace TeamMAsTD
             resourceAmountMin = initialResourceAmountMin;
 
             resourceAmount = initialResourceAmount;
+
+            currentResourceAmount = resourceAmount;
 
             resourceAmountCap = initialResourceAmountCap;
         }
