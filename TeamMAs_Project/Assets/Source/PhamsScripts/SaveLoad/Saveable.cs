@@ -97,9 +97,12 @@ namespace TeamMAsTD
             //and store the appropriate values into state dict
             foreach (ISaveable saveable in GetComponents<ISaveable>())
             {
-                //call the ISaveable's SaveData method on each ISaveable component of the same object
-                //that this Saveable component is attached to
-                state[saveable] = saveable.SaveData();
+                if (!state.ContainsKey(saveable))
+                {
+                    //call the ISaveable's SaveData method on each ISaveable component of the same object
+                    //that this Saveable component is attached to
+                    state.Add(saveable, saveable.SaveData());
+                }
             }
 
             return state;
