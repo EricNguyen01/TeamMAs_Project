@@ -17,7 +17,7 @@ namespace TeamMAsTD
      * To access the game resource instance, call: GameResource.gameResourceInstance...
      */
     [DisallowMultipleComponent]
-    public class GameResource : MonoBehaviour, ISaveable<GameResource>
+    public class GameResource : MonoBehaviour, ISaveable
     {
         [field: SerializeField] public CoinResourceSO coinResourceSO { get; private set; }
 
@@ -58,22 +58,22 @@ namespace TeamMAsTD
 
         //ISaveable interface implementations...........................................................................
 
-        public SaveDataSerializeBase<GameResource> SaveData(string saveName = "")
+        public SaveDataSerializeBase SaveData(string saveName = "")
         {
             UnityEngine.SceneManagement.Scene scene = UnityEngine.SceneManagement.SceneManager.GetActiveScene();
 
-            SaveDataSerializeBase<GameResource> resourceSaveData; 
+            SaveDataSerializeBase resourceSaveData; 
 
-            resourceSaveData = new SaveDataSerializeBase<GameResource>(this, transform.position, scene.name);
+            resourceSaveData = new SaveDataSerializeBase(this, transform.position, scene.name);
 
             return resourceSaveData;
         }
 
-        public void LoadData(SaveDataSerializeBase<GameResource> savedDataToLoad)
+        public void LoadData(SaveDataSerializeBase savedDataToLoad)
         {
             if (savedDataToLoad == null) return;
 
-            GameResource savedGameResource = savedDataToLoad.LoadSavedObject();
+            GameResource savedGameResource = (GameResource)savedDataToLoad.LoadSavedObject();
             
             if(savedGameResource.coinResourceSO != null) coinResourceSO.SetSpecificResourceAmount(savedGameResource.coinResourceSO.resourceAmount);
 

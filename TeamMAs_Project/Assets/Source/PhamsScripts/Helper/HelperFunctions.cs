@@ -113,13 +113,20 @@ namespace TeamMAsTD
             if (globalIDLookup.ContainsKey(ID))
             {
                 //if provided UUID belongs to another object and not the one its supposes to belong to => NOT UNIQUE
-                if (globalIDLookup[ID] != objectWithId) return false;
+                if (globalIDLookup[ID] != objectWithId)
+                {
+                    Debug.Log("ID: " + ID + " not matches its object!");
+
+                    return false;
+                }
                 
             }
 
             //if an object is unloaded or destroyed -> remove its UUID from the static dict
             if (globalIDLookup[ID] == null)
             {
+                Debug.Log("ID: " + ID + " doesnt have associate object!");
+
                 globalIDLookup.Remove(ID);
 
                 //since this key in the static dict is now null -> it is unique

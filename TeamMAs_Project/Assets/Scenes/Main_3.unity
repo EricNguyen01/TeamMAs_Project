@@ -4048,7 +4048,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6380319184443845737, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -1316.5021
+      value: -1316.502
       objectReference: {fileID: 0}
     - target: {fileID: 6474088391758042566, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
       propertyPath: m_fontSize
@@ -4979,6 +4979,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 8044427528212389576, guid: b2ae05a64eda3cc46ae632fa1fafb83a, type: 3}
+      propertyPath: showDebugLog
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8044427528212389576, guid: b2ae05a64eda3cc46ae632fa1fafb83a, type: 3}
+      propertyPath: showEditorDebugLog
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8044427528212389578, guid: b2ae05a64eda3cc46ae632fa1fafb83a, type: 3}
       propertyPath: m_Name
       value: SaveLoadHandler

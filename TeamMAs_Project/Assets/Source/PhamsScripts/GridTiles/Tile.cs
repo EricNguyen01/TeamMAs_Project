@@ -17,7 +17,7 @@ namespace TeamMAsTD
 #endif
     [DisallowMultipleComponent]
     [RequireComponent(typeof(TileMenuAndUprootOnTileUI))]
-    public class Tile : MonoBehaviour, ISaveable<Tile>
+    public class Tile : MonoBehaviour, ISaveable
     {
         [field: Header("Tile Properties")]
         [field: SerializeField] public bool isOccupied { get; set; } = false;
@@ -129,7 +129,7 @@ namespace TeamMAsTD
 
         private void OnEnable()
         {
-            if(this is ISaveable<Tile>) ISaveable<Tile>.GenerateSaveableComponentIfNull(this);
+            if(this is ISaveable) ISaveable.GenerateSaveableComponentIfNull(this);
         }
 
 #if UNITY_EDITOR
@@ -478,22 +478,22 @@ namespace TeamMAsTD
 
         //ISaveable interface implementations........................................................................................................
 
-        public SaveDataSerializeBase<Tile> SaveData(string saveName = "")
+        public SaveDataSerializeBase SaveData(string saveName = "")
         {
-            SaveDataSerializeBase<Tile> tileSaveData;
+            SaveDataSerializeBase tileSaveData;
 
-            tileSaveData = new SaveDataSerializeBase<Tile>(this, 
-                                                           transform.position, 
-                                                           UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
+            tileSaveData = new SaveDataSerializeBase(this, 
+                                                     transform.position, 
+                                                     UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
 
             return tileSaveData;
         }
 
-        public void LoadData(SaveDataSerializeBase<Tile> savedDataToLoad)
+        public void LoadData(SaveDataSerializeBase savedDataToLoad)
         {
             if (savedDataToLoad == null) return;
 
-            Tile savedTile = savedDataToLoad.LoadSavedObject();
+            Tile savedTile = (Tile)savedDataToLoad.LoadSavedObject();
 
             if (!savedTile.plantUnitOnTile) return;
 

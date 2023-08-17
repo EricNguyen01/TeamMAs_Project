@@ -40,7 +40,16 @@ namespace TeamMAsTD
         {
             if (!string.IsNullOrEmpty(currentIdentification) && !string.IsNullOrWhiteSpace(currentIdentification) && currentIdentification != "")
             {
-                if (UUID != currentIdentification) UUID = currentIdentification;
+                serializedObject = new SerializedObject(this);
+
+                UUID_SerializedProperty = serializedObject.FindProperty("UUID");
+
+                if (UUID_SerializedProperty.stringValue != currentIdentification)
+                {
+                    UUID_SerializedProperty.stringValue = currentIdentification;
+
+                    serializedObject.ApplyModifiedProperties();
+                }
             }
         }
 
@@ -57,9 +66,10 @@ namespace TeamMAsTD
             UUID_SerializedProperty = serializedObject.FindProperty("UUID");
 
             //if this does not have an UUID yet or has an ID that overlaps another object's ID -> provide new one
-            if (UUID_SerializedProperty.stringValue == null ||
-                string.IsNullOrEmpty(UUID_SerializedProperty.stringValue)
-                /*!HelperFunctions.ObjectHasUniqueID(UUID_SerializedProperty.stringValue, this)*/)
+            if (UUID_SerializedProperty.stringValue == "" ||
+                string.IsNullOrEmpty(UUID_SerializedProperty.stringValue) ||
+                string.IsNullOrWhiteSpace(UUID_SerializedProperty.stringValue) /*|| 
+                !HelperFunctions.ObjectHasUniqueID(UUID_SerializedProperty.stringValue, this)*/)
             {
                 UUID_SerializedProperty.stringValue = System.Guid.NewGuid().ToString();
 
@@ -77,15 +87,15 @@ namespace TeamMAsTD
         //capture the state of any ISaveable interface on the same game object that this Saveable component attached to
         public object CaptureSaveableState()
         {
-            Dictionary<ISaveable<object>, SaveDataSerializeBase<object>> state;
-
-            state = new Dictionary<ISaveable<object>, SaveDataSerializeBase<object>>();
-
             if (disableSavingForThisObject) return null;
+
+            Dictionary<ISaveable, SaveDataSerializeBase> state;
+
+            state = new Dictionary<ISaveable, SaveDataSerializeBase>();
 
             //Get all ISaveable components in the same game object that this Saveable component is attached to
             //and store the appropriate values into state dict
-            foreach (ISaveable<object> saveable in GetComponents<ISaveable<object>>())
+            foreach (ISaveable saveable in GetComponents<ISaveable>())
             {
                 //call the ISaveable's SaveData method on each ISaveable component of the same object
                 //that this Saveable component is attached to
@@ -99,18 +109,20 @@ namespace TeamMAsTD
         public void RestoreSaveableState(object state)
         {
             //if (state is not Dictionary<ISaveable<object>, SaveDataSerializeBase<object>>) return;
-            
-            Dictionary<ISaveable<object>, SaveDataSerializeBase<object>> savedState;
+            Debug.Log("Restore Saveable: " + name + " Type: " +  state.GetType().ToString());   
+            Dictionary<ISaveable, SaveDataSerializeBase> savedState;
 
             //cast "state" to dictionary type of "savedState"
-            savedState = (Dictionary<ISaveable<object>, SaveDataSerializeBase<object>>)state;
+            savedState = (Dictionary<ISaveable, SaveDataSerializeBase>)state;
             
             //Get all ISaveable components in the same game object that this Saveable component is attached to
             //and load the appropriate values from state dict
-            foreach (ISaveable<object> saveable in GetComponents<ISaveable<object>>())
+            foreach (ISaveable saveable in GetComponents<ISaveable>())
             {
+                Debug.Log("Found an ISaveable that could be loaded to.");
                 if (savedState.ContainsKey(saveable))
                 {
+                    Debug.Log("SavedState contains ISaveable, proceed to load ISaveable");
                     //call the ISaveable's LoadData method on each ISaveable component of the same object
                     //that this Saveable component is attached to
                     saveable.LoadData(savedState[saveable]);

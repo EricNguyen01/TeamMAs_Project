@@ -1,17 +1,18 @@
 // Script Author: Pham Nguyen. All Rights Reserved. 
 // GitHub: https://github.com/EricNguyen01.
 
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 namespace TeamMAsTD
 {
-    public interface ISaveable <T> where T : class
+    public interface ISaveable
     {
-        public SaveDataSerializeBase<T> SaveData(string saveName = "");
+        public SaveDataSerializeBase SaveData(string saveName = "");
 
-        public void LoadData(SaveDataSerializeBase<T> savedDataToLoad);
+        public void LoadData(SaveDataSerializeBase savedDataToLoad);
 
         public static void GenerateSaveableComponentIfNull(MonoBehaviour mono)
         {
