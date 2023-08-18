@@ -93,7 +93,7 @@ namespace TeamMAsTD
 
         public void SetNewDynamicIDIfPossible()
         {
-            while(string.IsNullOrEmpty(unitDynamicID) || string.IsNullOrWhiteSpace(unitDynamicID) || !HelperFunctions.ObjectHasUniqueID(unitDynamicID, this))
+            if(string.IsNullOrEmpty(unitDynamicID) || string.IsNullOrWhiteSpace(unitDynamicID) || unitDynamicID == "" /*|| !HelperFunctions.ObjectHasUniqueID(unitDynamicID, this)*/)
             {
                 unitDynamicID = System.Guid.NewGuid().ToString();
             }
@@ -101,7 +101,7 @@ namespace TeamMAsTD
 
         public void SetNewStaticIDIfPossible()
         {
-            while(string.IsNullOrEmpty(unitStaticID) || string.IsNullOrWhiteSpace(unitStaticID) || !HelperFunctions.ObjectHasUniqueID(unitStaticID, this))
+            if(string.IsNullOrEmpty(unitStaticID) || string.IsNullOrWhiteSpace(unitStaticID) || unitStaticID == "" /*|| !HelperFunctions.ObjectHasUniqueID(unitStaticID, this)*/)
             {
                 unitStaticID = System.Guid.NewGuid().ToString();
             }
