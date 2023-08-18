@@ -70,6 +70,21 @@ namespace TeamMAsTD
         [field: SerializeField] [field: HideInInspector] 
         public FMODUnity.StudioEventEmitter uprootAudioEventEmitterFMOD { get; private set; }
 
+        [System.Serializable]
+        private class TileSave
+        {
+            public string plantSOPlantedStaticID { get; private set; }
+
+            public int currentPlantWater { get; private set; }
+
+            public TileSave(string plantSOPlantedStaticID, int currentPlantWater)
+            {
+                this.plantSOPlantedStaticID = plantSOPlantedStaticID;
+
+                this.currentPlantWater = currentPlantWater;
+            }
+        }
+
         //PRIVATES......................................................................
 
         private void Awake()
@@ -482,7 +497,17 @@ namespace TeamMAsTD
         {
             SaveDataSerializeBase tileSaveData;
 
-            tileSaveData = new SaveDataSerializeBase(this, 
+            string plantSOPlantedStaticID = null;
+
+            if (plantUnitOnTile) plantSOPlantedStaticID = plantUnitOnTile.plantUnitScriptableObject.unitStaticID;
+
+            int currentPlantWaterBars = 0;
+
+            if(plantUnitOnTile) currentPlantWaterBars = plantUnitOnTile.plantWaterUsageSystem.GetRemainingWaterBars();
+
+            TileSave tileSave = new TileSave(plantSOPlantedStaticID, currentPlantWaterBars);
+
+            tileSaveData = new SaveDataSerializeBase(tileSave, 
                                                      transform.position, 
                                                      UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
 
@@ -493,16 +518,32 @@ namespace TeamMAsTD
         {
             if (savedDataToLoad == null) return;
 
-            Tile savedTile = (Tile)savedDataToLoad.LoadSavedObject();
+            TileSave savedTile = (TileSave)savedDataToLoad.LoadSavedObject();
 
-            if (!savedTile.plantUnitOnTile) return;
+            if (savedTile.plantSOPlantedStaticID == null ||
+                string.IsNullOrEmpty(savedTile.plantSOPlantedStaticID) ||
+                string.IsNullOrWhiteSpace(savedTile.plantSOPlantedStaticID) ||
+                savedTile.plantSOPlantedStaticID == "") return;
 
-            plantUnitOnTile = Instantiate(savedTile.plantUnitOnTile, 
-                                          savedTile.plantUnitOnTile.transform.position, 
-                                          savedTile.plantUnitOnTile.transform.rotation, 
-                                          transform);
+            PlantUnitSO[] plantSOArr = Resources.LoadAll<PlantUnitSO>("ScriptableObjects/PlantUnitSO");
 
-            disableUprootOnTile = savedTile.disableUprootOnTile;
+            if (plantSOArr == null || plantSOArr.Length == 0) return;
+
+            string plantSOPlantedStaticID = savedTile.plantSOPlantedStaticID;
+
+            for (int i = 0; i < plantSOArr.Length; i++)
+            {
+                if (plantSOArr[i] == null) continue;
+
+                if (plantSOPlantedStaticID != plantSOArr[i].unitStaticID) continue;
+
+                plantUnitOnTile = Instantiate(plantSOArr[i].unitPrefab,
+                                          transform.position,
+                                          transform.rotation,
+                                          transform).GetComponent<PlantUnit>();
+            }
+
+            plantUnitOnTile.plantWaterUsageSystem.SetWaterBarsRemainingDirectly(savedTile.currentPlantWater);
         }
 
         //Tile Custom Editor Private Class................................................................................................................

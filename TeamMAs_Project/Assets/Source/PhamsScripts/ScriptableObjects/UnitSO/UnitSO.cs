@@ -8,6 +8,7 @@ using UnityEngine;
 
 namespace TeamMAsTD
 {
+    [System.Serializable]
     public abstract class UnitSO : ScriptableObject
     {
         [field: Header("General Unit Data")]

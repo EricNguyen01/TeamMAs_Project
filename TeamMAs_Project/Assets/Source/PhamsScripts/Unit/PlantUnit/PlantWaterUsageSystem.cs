@@ -248,6 +248,20 @@ namespace TeamMAsTD
             else plantUnitWorldUI.SetWaterSliderValue(0, totalWaterBars);
         }
 
+        public void SetWaterBarsRemainingDirectly(int waterBarsRemainingToSet)
+        {
+            if (waterBarsRemainingToSet >= totalWaterBars)
+            {
+                waterBarsRemainingToSet = totalWaterBars;
+
+                return;
+            }
+
+            if (waterBarsRemainingToSet < 0) waterBarsRemainingToSet = 0;
+
+            ConsumingWaterBars(totalWaterBars - waterBarsRemainingToSet);
+        }
+
         private void UprootOnWaterDepleted(float uprootDelaySec)
         {
             //if the parent tile that this plant is planted on is not null:
@@ -324,6 +338,11 @@ namespace TeamMAsTD
             }
 
             return plantUnitSO.wateringCoinsCost * waterTimes;
+        }
+
+        public int GetRemainingWaterBars()
+        {
+            return waterBarsRemaining;
         }
     }
 }
