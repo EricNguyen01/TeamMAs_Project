@@ -46,6 +46,9 @@ namespace TeamMAsTD
         [SerializeField] public UnityEvent<PlantUnit, Tile> OnPlantUnitUprootedOnTile;
         [SerializeField] private UnityEvent OnInsufficientFundsToUproot;
 
+        //C# Events
+        public static event System.Action<Tile> OnTileLoaded;
+
         //Internal........................................................
         [field: ReadOnlyInspector]
         [field: SerializeField]
@@ -570,6 +573,8 @@ namespace TeamMAsTD
 
                 plantUnitOnTile = null;
             }
+
+            OnTileLoaded?.Invoke(this);
         }
 
         //Tile Custom Editor Private Class................................................................................................................

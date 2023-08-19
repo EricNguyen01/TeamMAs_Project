@@ -86,6 +86,16 @@ namespace TeamMAsTD
 #endif
         }
 
+        private void OnValidate()
+        {
+            SetDynamicID_IfNull_NonSerializable();
+
+#if UNITY_EDITOR
+
+            SetStaticID_IfNull_Serializable();
+#endif
+        }
+
         public override UnitSO CloneUnitSO(UnitSO unitSO)
         {
             if (unitSO.GetType() != typeof(PlantUnitSO)) return null;
@@ -129,7 +139,7 @@ namespace TeamMAsTD
 
                 serializedObject.ApplyModifiedProperties();
 
-                AssetDatabase.SaveAssets();
+                AssetDatabase.SaveAssetIfDirty(this);
             }
         }
 

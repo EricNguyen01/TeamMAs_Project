@@ -115,12 +115,16 @@ namespace TeamMAsTD
 
             foreach (Tile tile in FindObjectsOfType<Tile>())
             {
-                tile.OnPlantUnitPlantedOnTile.AddListener(RegisteringExisitngPlantUnit);
+                tile.OnPlantUnitPlantedOnTile.AddListener(RegisteringExistingPlantUnit);
 
                 tile.OnPlantUnitUprootedOnTile.AddListener(RemovingExistingPlantUnit);
 
                 tile.OnPlantUnitUprootedOnTile.AddListener((PlantUnit pUnit, Tile t) => UpdateCostOnPlantWaterBarsRefilled(pUnit.plantUnitScriptableObject));
             }
+
+            Tile.OnTileLoaded += (Tile tile) => RegisteringExistingPlantUnit(tile.plantUnitOnTile, tile);
+
+            Tile.OnTileLoaded += (Tile tile) => CheckSufficientFundToWaterAll();
 
             WaveSpawner.OnAllWaveSpawned += (WaveSpawner ws, bool b) => TemporaryDisableWaterAll(true);
 
@@ -136,12 +140,16 @@ namespace TeamMAsTD
         {
             foreach (Tile tile in FindObjectsOfType<Tile>())
             {
-                tile.OnPlantUnitPlantedOnTile.RemoveListener(RegisteringExisitngPlantUnit);
+                tile.OnPlantUnitPlantedOnTile.RemoveListener(RegisteringExistingPlantUnit);
 
                 tile.OnPlantUnitUprootedOnTile.RemoveListener(RemovingExistingPlantUnit);
 
                 tile.OnPlantUnitUprootedOnTile.RemoveListener((PlantUnit pUnit, Tile t) => UpdateCostOnPlantWaterBarsRefilled(pUnit.plantUnitScriptableObject));
             }
+
+            Tile.OnTileLoaded -= (Tile tile) => RegisteringExistingPlantUnit(tile.plantUnitOnTile, tile);
+
+            Tile.OnTileLoaded -= (Tile tile) => CheckSufficientFundToWaterAll();
 
             WaveSpawner.OnAllWaveSpawned -= (WaveSpawner ws, bool b) => TemporaryDisableWaterAll(true);
 
@@ -296,12 +304,14 @@ namespace TeamMAsTD
             }
         }
 
-        public void RegisteringExisitngPlantUnit(PlantUnit plantUnit, Tile tile)
+        private void RegisteringExistingPlantUnit(PlantUnit plantUnit, Tile tile)
         {
+            if (!plantUnit) return;
+
             if(!existingPlantUnits.Contains(plantUnit)) existingPlantUnits.Add(plantUnit);
         }
 
-        public void RemovingExistingPlantUnit(PlantUnit plantUnit, Tile tile)
+        private void RemovingExistingPlantUnit(PlantUnit plantUnit, Tile tile)
         {
             if(existingPlantUnits.Contains(plantUnit)) existingPlantUnits.Remove(plantUnit);
         }
