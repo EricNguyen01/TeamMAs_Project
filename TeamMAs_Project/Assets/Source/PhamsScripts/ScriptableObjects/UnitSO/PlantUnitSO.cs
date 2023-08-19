@@ -1,15 +1,20 @@
 // Script Author: Pham Nguyen. All Rights Reserved. 
 // GitHub: https://github.com/EricNguyen01.
 
+using PixelCrushers;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
+
+#if UNITY_EDITOR
 using UnityEngine;
+#endif
 
 namespace TeamMAsTD
 {
     [System.Serializable]
     [CreateAssetMenu(menuName = "Plant Unit Data Asset/New Plant Unit")]
-    public class PlantUnitSO : UnitSO, ISerializationCallbackReceiver
+    public class PlantUnitSO : UnitSO
     {
         [field: Header("Plant Unit Data")]
 
@@ -20,7 +25,7 @@ namespace TeamMAsTD
 
         //static ID is used to identify if an SO INSTANCE is of this specific SO (same for all instances and the base SO in folder)
         [field: ReadOnlyInspector]
-        [field: SerializeField] 
+        [field: SerializeField]
         public string unitStaticID { get; private set; }
         [field: SerializeField] public string unitDescription { get; private set; }
         [field: SerializeField] public Sprite unitThumbnail { get; private set; }//thumbnail icon sprite to be displayed in shop or other UIs
@@ -71,39 +76,60 @@ namespace TeamMAsTD
         [field: SerializeField] public WaveSO waveToUnlockPlantPurchaseOnWaveFinished { get; private set; }
         [field: SerializeField] public WaveSO waveToUnlockPlantPurchaseOnWaveStarted { get; private set; }
 
-        protected override UnitSO CloneUnitSO(UnitSO unitSO)
+        private void OnEnable()
         {
-            UnitSO instantiatedUnitSO = base.CloneUnitSO(unitSO);
+            SetDynamicID_IfNull_NonSerializable();
 
-            if(instantiatedUnitSO && instantiatedUnitSO is PlantUnitSO)
-            {
-                PlantUnitSO plantUnitSO = instantiatedUnitSO as PlantUnitSO;
+#if UNITY_EDITOR
 
-                // Generate and save a new dynamic ID
-                if (string.IsNullOrEmpty(plantUnitSO.unitDynamicID) || 
-                    string.IsNullOrWhiteSpace(plantUnitSO.unitDynamicID) /*||
-                    !HelperFunctions.ObjectHasUniqueID(plantUnitSO.unitDynamicID, plantUnitSO)*/)
-                {
-                    plantUnitSO.SetNewDynamicIDIfPossible();
-                }
-            }
-            
-            return instantiatedUnitSO;
+            SetStaticID_IfNull_Serializable();
+#endif
         }
 
-        public void SetNewDynamicIDIfPossible()
+        public override UnitSO CloneUnitSO(UnitSO unitSO)
         {
-            if(string.IsNullOrEmpty(unitDynamicID) || string.IsNullOrWhiteSpace(unitDynamicID) || unitDynamicID == "" /*|| !HelperFunctions.ObjectHasUniqueID(unitDynamicID, this)*/)
+            if (unitSO.GetType() != typeof(PlantUnitSO)) return null;
+
+            PlantUnitSO instantiatedPlantUnitSO = Instantiate((PlantUnitSO)unitSO);
+
+            instantiatedPlantUnitSO.SetDynamicID_IfNull_NonSerializable();
+
+            return instantiatedPlantUnitSO;
+        }
+
+        private void SetDynamicID_IfNull_NonSerializable()
+        {
+            if (string.IsNullOrEmpty(unitDynamicID) || 
+                string.IsNullOrWhiteSpace(unitDynamicID) || 
+                unitDynamicID == "" || 
+                !HelperFunctions.ObjectHasUniqueID(unitDynamicID, this))
             {
                 unitDynamicID = System.Guid.NewGuid().ToString();
             }
         }
 
-        public void SetNewStaticIDIfPossible()
+        private void SetStaticID_IfNull_Serializable()
         {
-            if(string.IsNullOrEmpty(unitStaticID) || string.IsNullOrWhiteSpace(unitStaticID) || unitStaticID == "" /*|| !HelperFunctions.ObjectHasUniqueID(unitStaticID, this)*/)
+            if (Application.isPlaying) return;
+
+            SerializedObject serializedObject = new SerializedObject(this);
+
+            //since unitStaticID is an auto-implemented property, its name has to be converted to the format that is find-able by 
+            //the FindProperty function.
+            //If we open Inspector DebugMode and hover over the unitStaticID field, the actual name will be displayed as tooltip.
+            SerializedProperty staticIDProperty = HelperFunctions.FindPropertyByAutoPropertyName(serializedObject, "unitStaticID");
+            
+            //if this does not have an UUID yet or has an ID that overlaps another object's ID -> provide new one
+            if (staticIDProperty.stringValue == "" ||
+                string.IsNullOrEmpty(staticIDProperty.stringValue) ||
+                string.IsNullOrWhiteSpace(staticIDProperty.stringValue) ||
+                !HelperFunctions.ObjectHasUniqueID(staticIDProperty.stringValue, this))
             {
-                unitStaticID = System.Guid.NewGuid().ToString();
+                staticIDProperty.stringValue = System.Guid.NewGuid().ToString();
+
+                serializedObject.ApplyModifiedProperties();
+
+                AssetDatabase.SaveAssets();
             }
         }
 
@@ -143,19 +169,6 @@ namespace TeamMAsTD
         public void RemovePlantAttackSpeed(float atkSpdDecreaseAmount)
         {
             attackSpeed += atkSpdDecreaseAmount;
-        }
-
-        void ISerializationCallbackReceiver.OnBeforeSerialize()
-        {
-            // Generate and save a new UUID if need to and if its possible to generate new
-            SetNewDynamicIDIfPossible();
-
-            SetNewStaticIDIfPossible();
-        }
-
-        void ISerializationCallbackReceiver.OnAfterDeserialize()
-        {
-            
         }
     }
 }

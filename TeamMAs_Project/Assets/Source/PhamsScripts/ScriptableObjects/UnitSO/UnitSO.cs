@@ -29,7 +29,7 @@ namespace TeamMAsTD
             return CloneUnitSO(this);
         }
 
-        protected virtual UnitSO CloneUnitSO(UnitSO unitSOToClone)
+        public virtual UnitSO CloneUnitSO(UnitSO unitSOToClone)
         {
             UnitSO instantiatedUnitSO = Instantiate(unitSOToClone);
 

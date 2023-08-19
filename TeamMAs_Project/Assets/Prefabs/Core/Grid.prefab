@@ -2112,7 +2112,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1d44f2470f4e4e49812b1f2aff9f9a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  disableSavingForThisObject: 0
+  disableSaveLoadForThisSaveable: 0
   UUID: ce95c6f0-f921-4a99-967c-ade67a3030a6
 --- !u!1 &2553152341524516416
 GameObject:
@@ -3424,7 +3424,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1d44f2470f4e4e49812b1f2aff9f9a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  disableSavingForThisObject: 0
+  disableSaveLoadForThisSaveable: 0
   UUID: fcb699fa-93ea-4fe2-943b-b3fbe5de6a89
 --- !u!1 &2553152341571487421
 GameObject:
@@ -4374,7 +4374,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1d44f2470f4e4e49812b1f2aff9f9a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  disableSavingForThisObject: 0
+  disableSaveLoadForThisSaveable: 0
   UUID: 77972c4d-b102-4eb8-a58c-f95537412b7c
 --- !u!1 &2553152341599349183
 GameObject:
@@ -5865,7 +5865,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1d44f2470f4e4e49812b1f2aff9f9a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  disableSavingForThisObject: 0
+  disableSaveLoadForThisSaveable: 0
   UUID: feac2db9-5c97-4cfd-a806-06605f2e1df3
 --- !u!1 &2553152341647760776
 GameObject:
@@ -7595,7 +7595,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1d44f2470f4e4e49812b1f2aff9f9a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  disableSavingForThisObject: 0
+  disableSaveLoadForThisSaveable: 0
   UUID: 3f062346-ee5c-4a17-b8ea-13916dba67fe
 --- !u!1 &2553152341682215554
 GameObject:
@@ -10086,7 +10086,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1d44f2470f4e4e49812b1f2aff9f9a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  disableSavingForThisObject: 0
+  disableSaveLoadForThisSaveable: 0
   UUID: c0a780ea-0d5b-4fbb-ab45-1d57c635eac2
 --- !u!1 &2553152341786570281
 GameObject:
@@ -12005,7 +12005,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1d44f2470f4e4e49812b1f2aff9f9a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  disableSavingForThisObject: 0
+  disableSaveLoadForThisSaveable: 0
   UUID: 5a7ddeaa-ecce-4cff-8240-1bec955b845f
 --- !u!1 &2553152341871422893
 GameObject:
@@ -13383,6 +13383,7 @@ GameObject:
   - component: {fileID: 2553152341965145271}
   - component: {fileID: 2553152341965145270}
   - component: {fileID: 2553152341965145264}
+  - component: {fileID: 6120092838747561873}
   m_Layer: 0
   m_Name: Grid
   m_TagString: Untagged
@@ -13568,6 +13569,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   conversationNum: 1
+  waveSpawnerInUse: {fileID: 0}
+--- !u!114 &6120092838747561873
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2553152341965145269}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1d44f2470f4e4e49812b1f2aff9f9a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  disableSaveLoadForThisSaveable: 0
+  UUID: 5336e105-5a87-4575-b114-e1ecf3fd60b6
 --- !u!1 &2553152341968346661
 GameObject:
   m_ObjectHideFlags: 0
@@ -14155,7 +14171,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1d44f2470f4e4e49812b1f2aff9f9a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  disableSavingForThisObject: 0
+  disableSaveLoadForThisSaveable: 0
   UUID: fd54b730-fcb4-4677-8813-5cafa28770d1
 --- !u!1 &2553152341975000048
 GameObject:
@@ -16395,7 +16411,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1d44f2470f4e4e49812b1f2aff9f9a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  disableSavingForThisObject: 0
+  disableSaveLoadForThisSaveable: 0
   UUID: 03c2ec98-5cb3-4221-ae83-1b127c433776
 --- !u!1 &2553152342044208404
 GameObject:
@@ -17276,7 +17292,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1d44f2470f4e4e49812b1f2aff9f9a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  disableSavingForThisObject: 0
+  disableSaveLoadForThisSaveable: 0
   UUID: 247bbe4f-5da0-47e8-8c37-646a09b08b21
 --- !u!1 &2553152342078426407
 GameObject:
@@ -17972,7 +17988,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1d44f2470f4e4e49812b1f2aff9f9a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  disableSavingForThisObject: 0
+  disableSaveLoadForThisSaveable: 0
   UUID: d9606738-62a5-4655-ac65-40d35b28aeff
 --- !u!1 &2553152342089954212
 GameObject:
@@ -20256,7 +20272,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1d44f2470f4e4e49812b1f2aff9f9a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  disableSavingForThisObject: 0
+  disableSaveLoadForThisSaveable: 0
   UUID: 9dc67097-4c62-4be1-96e0-9e7fb3830a55
 --- !u!1 &2553152342211858457
 GameObject:
@@ -20663,7 +20679,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1d44f2470f4e4e49812b1f2aff9f9a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  disableSavingForThisObject: 0
+  disableSaveLoadForThisSaveable: 0
   UUID: 9c4f368e-c2e3-4994-95c6-b48e1e562f45
 --- !u!1 &2553152342212457331
 GameObject:
@@ -22899,7 +22915,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1d44f2470f4e4e49812b1f2aff9f9a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  disableSavingForThisObject: 0
+  disableSaveLoadForThisSaveable: 0
   UUID: 9b00cf1c-f8f0-47df-863b-43bd76eabd7d
 --- !u!1 &2553152342306769267
 GameObject:
@@ -23868,7 +23884,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1d44f2470f4e4e49812b1f2aff9f9a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  disableSavingForThisObject: 0
+  disableSaveLoadForThisSaveable: 0
   UUID: 29c87ab1-c620-45b2-89b0-6eaa8e9700e4
 --- !u!1 &2553152342329100484
 GameObject:
@@ -24275,7 +24291,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1d44f2470f4e4e49812b1f2aff9f9a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  disableSavingForThisObject: 0
+  disableSaveLoadForThisSaveable: 0
   UUID: 4e28a906-e75f-45f3-8be6-4d6712a2ebc8
 --- !u!1 &2553152342329365306
 GameObject:
@@ -27770,7 +27786,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1d44f2470f4e4e49812b1f2aff9f9a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  disableSavingForThisObject: 0
+  disableSaveLoadForThisSaveable: 0
   UUID: aa078916-494b-4b62-8c88-c14a1af4ecb6
 --- !u!1 &2553152342435053686
 GameObject:
@@ -28355,7 +28371,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1d44f2470f4e4e49812b1f2aff9f9a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  disableSavingForThisObject: 0
+  disableSaveLoadForThisSaveable: 0
   UUID: 8d8f442d-a297-4f63-bf99-de564d1639d9
 --- !u!1 &2553152342440413034
 GameObject:
@@ -31130,7 +31146,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1d44f2470f4e4e49812b1f2aff9f9a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  disableSavingForThisObject: 0
+  disableSaveLoadForThisSaveable: 0
   UUID: 31eaf2b2-12c8-44ee-99b3-51ff00ff5963
 --- !u!1 &2553152342538264276
 GameObject:
@@ -33214,7 +33230,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1d44f2470f4e4e49812b1f2aff9f9a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  disableSavingForThisObject: 0
+  disableSaveLoadForThisSaveable: 0
   UUID: c69212af-8a8d-41f2-8af7-c6b39daa665d
 --- !u!1 &2553152342621854626
 GameObject:
@@ -33621,7 +33637,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1d44f2470f4e4e49812b1f2aff9f9a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  disableSavingForThisObject: 0
+  disableSaveLoadForThisSaveable: 0
   UUID: b31f33e8-e707-4db4-bd2c-e8ca0dac6123
 --- !u!1 &2553152342622791264
 GameObject:
@@ -35469,7 +35485,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1d44f2470f4e4e49812b1f2aff9f9a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  disableSavingForThisObject: 0
+  disableSaveLoadForThisSaveable: 0
   UUID: b5e94767-2b74-4070-b96f-7f5320478e60
 --- !u!1 &2553152342682469094
 GameObject:
@@ -35876,7 +35892,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1d44f2470f4e4e49812b1f2aff9f9a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  disableSavingForThisObject: 0
+  disableSaveLoadForThisSaveable: 0
   UUID: de1e6b0b-5fcc-4c7e-9b37-64cef51aa23e
 --- !u!1 &2553152342683505962
 GameObject:
@@ -36754,7 +36770,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1d44f2470f4e4e49812b1f2aff9f9a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  disableSavingForThisObject: 0
+  disableSaveLoadForThisSaveable: 0
   UUID: 64f83e90-ee08-4979-b7a6-9060960ba9c2
 --- !u!1 &2553152342701764294
 GameObject:
@@ -37748,7 +37764,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1d44f2470f4e4e49812b1f2aff9f9a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  disableSavingForThisObject: 0
+  disableSaveLoadForThisSaveable: 0
   UUID: cb0f752a-1907-4d7c-90f8-cafd0247a927
 --- !u!1 &2553152342743079177
 GameObject:
@@ -39396,7 +39412,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1d44f2470f4e4e49812b1f2aff9f9a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  disableSavingForThisObject: 0
+  disableSaveLoadForThisSaveable: 0
   UUID: ba18beed-9df9-40ef-a5c3-7a9729041132
 --- !u!1 &2553152342817197222
 GameObject:
@@ -39803,7 +39819,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1d44f2470f4e4e49812b1f2aff9f9a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  disableSavingForThisObject: 0
+  disableSaveLoadForThisSaveable: 0
   UUID: 7f34a3b1-480b-456a-8f5b-6a09158bdcdd
 --- !u!1 &2553152342826911838
 GameObject:
@@ -40603,7 +40619,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1d44f2470f4e4e49812b1f2aff9f9a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  disableSavingForThisObject: 0
+  disableSaveLoadForThisSaveable: 0
   UUID: 6adddb85-dc15-4914-b4ef-e4270bc3426f
 --- !u!1 &2553152342860623935
 GameObject:
@@ -41010,7 +41026,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1d44f2470f4e4e49812b1f2aff9f9a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  disableSavingForThisObject: 0
+  disableSaveLoadForThisSaveable: 0
   UUID: d8ef47c3-45dc-42dc-b53f-9eb0f73ab132
 --- !u!1 &2553152342867604486
 GameObject:
@@ -41789,7 +41805,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1d44f2470f4e4e49812b1f2aff9f9a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  disableSavingForThisObject: 0
+  disableSaveLoadForThisSaveable: 0
   UUID: fe573a2e-8109-4b93-84c7-7ab0480bf6d4
 --- !u!1 &2553152342883285700
 GameObject:
@@ -42906,7 +42922,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1d44f2470f4e4e49812b1f2aff9f9a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  disableSavingForThisObject: 0
+  disableSaveLoadForThisSaveable: 0
   UUID: 1b6aa15a-409e-42a1-88d8-b90e32d9b413
 --- !u!1 &2553152342902951238
 GameObject:
@@ -43448,7 +43464,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1d44f2470f4e4e49812b1f2aff9f9a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  disableSavingForThisObject: 0
+  disableSaveLoadForThisSaveable: 0
   UUID: eede5bc6-8e20-4b2f-aff5-75361eab8b73
 --- !u!1 &2553152342905090051
 GameObject:
@@ -45087,7 +45103,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1d44f2470f4e4e49812b1f2aff9f9a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  disableSavingForThisObject: 0
+  disableSaveLoadForThisSaveable: 0
   UUID: 54c36b5d-1967-4e2c-a223-165fb2a1cb22
 --- !u!1 &2553152342962847961
 GameObject:
@@ -46386,7 +46402,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1d44f2470f4e4e49812b1f2aff9f9a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  disableSavingForThisObject: 0
+  disableSaveLoadForThisSaveable: 0
   UUID: 984363e9-bdf4-4f6a-a5cf-37a32cf51711
 --- !u!1 &2553152342995340306
 GameObject:
@@ -47266,7 +47282,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1d44f2470f4e4e49812b1f2aff9f9a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  disableSavingForThisObject: 0
+  disableSaveLoadForThisSaveable: 0
   UUID: f26a43ee-d339-491c-9d51-44e013cebc64
 --- !u!1 &2553152343033036765
 GameObject:
@@ -50686,7 +50702,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1d44f2470f4e4e49812b1f2aff9f9a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  disableSavingForThisObject: 0
+  disableSaveLoadForThisSaveable: 0
   UUID: 802a565e-551f-4abb-87e7-3fb31df43ed8
 --- !u!1 &2553152343140773732
 GameObject:
@@ -51987,7 +52003,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1d44f2470f4e4e49812b1f2aff9f9a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  disableSavingForThisObject: 0
+  disableSaveLoadForThisSaveable: 0
   UUID: 554452b7-2c0f-469b-a536-74ce0c142ba7
 --- !u!1 &2553152343187278604
 GameObject:
@@ -52784,7 +52800,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1d44f2470f4e4e49812b1f2aff9f9a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  disableSavingForThisObject: 0
+  disableSaveLoadForThisSaveable: 0
   UUID: 65f5d700-7843-4d2a-8f9d-16a907e0f31a
 --- !u!1 &2553152343230829298
 GameObject:
@@ -54094,7 +54110,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1d44f2470f4e4e49812b1f2aff9f9a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  disableSavingForThisObject: 0
+  disableSaveLoadForThisSaveable: 0
   UUID: 1f46258c-1ebd-41e5-a066-24af07f151ee
 --- !u!1 &2553152343268222259
 GameObject:
@@ -54870,7 +54886,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1d44f2470f4e4e49812b1f2aff9f9a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  disableSavingForThisObject: 0
+  disableSaveLoadForThisSaveable: 0
   UUID: 8aa200f5-626f-419a-9a45-c70b989517b9
 --- !u!1 &2553152343274085677
 GameObject:
@@ -56000,7 +56016,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1d44f2470f4e4e49812b1f2aff9f9a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  disableSavingForThisObject: 0
+  disableSaveLoadForThisSaveable: 0
   UUID: 07ecb071-66f0-4650-b37a-e1dfb4600bbb
 --- !u!1 &2553152343304861671
 GameObject:
@@ -56407,7 +56423,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1d44f2470f4e4e49812b1f2aff9f9a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  disableSavingForThisObject: 0
+  disableSaveLoadForThisSaveable: 0
   UUID: 5dd8a723-8370-4a4a-aaa0-a91d9909dc8e
 --- !u!1 &2553152343311521285
 GameObject:
@@ -57406,7 +57422,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1d44f2470f4e4e49812b1f2aff9f9a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  disableSavingForThisObject: 0
+  disableSaveLoadForThisSaveable: 0
   UUID: d7ee6ada-44af-4c0c-a089-504b2ec08177
 --- !u!1 &2553152343326529437
 GameObject:
@@ -58887,7 +58903,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1d44f2470f4e4e49812b1f2aff9f9a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  disableSavingForThisObject: 0
+  disableSaveLoadForThisSaveable: 0
   UUID: e1e6f084-868b-40c3-826a-5bdb2e5e5572
 --- !u!1 &2553152343373920276
 GameObject:
@@ -59649,7 +59665,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1d44f2470f4e4e49812b1f2aff9f9a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  disableSavingForThisObject: 0
+  disableSaveLoadForThisSaveable: 0
   UUID: 7b679206-40d6-4e56-93fc-bcfce63534fa
 --- !u!1 &2553152343384302786
 GameObject:
@@ -60210,7 +60226,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1d44f2470f4e4e49812b1f2aff9f9a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  disableSavingForThisObject: 0
+  disableSaveLoadForThisSaveable: 0
   UUID: 1f0acb9f-56c2-4f62-bac7-9590c14c0311
 --- !u!1 &2553152343389297739
 GameObject:
@@ -60832,7 +60848,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1d44f2470f4e4e49812b1f2aff9f9a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  disableSavingForThisObject: 0
+  disableSaveLoadForThisSaveable: 0
   UUID: da4e30c4-8549-4fa3-bdee-ef9f95fdd72b
 --- !u!1 &2553152343398553896
 GameObject:
@@ -62607,7 +62623,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1d44f2470f4e4e49812b1f2aff9f9a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  disableSavingForThisObject: 0
+  disableSaveLoadForThisSaveable: 0
   UUID: d18f1604-b2c3-48d9-9fa1-c5ffa3eb5d24
 --- !u!1 &2553152343463555110
 GameObject:
@@ -64938,7 +64954,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1d44f2470f4e4e49812b1f2aff9f9a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  disableSavingForThisObject: 0
+  disableSaveLoadForThisSaveable: 0
   UUID: e317b3c8-4ccf-4160-9c74-50b9327c0acd
 --- !u!1 &2553152343530386302
 GameObject:
@@ -66029,7 +66045,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1d44f2470f4e4e49812b1f2aff9f9a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  disableSavingForThisObject: 0
+  disableSaveLoadForThisSaveable: 0
   UUID: 1008b9e1-29ff-4f45-ab8e-85b45b6420e8
 --- !u!1 &2553152343560746542
 GameObject:

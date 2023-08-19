@@ -4,13 +4,14 @@
 using PixelCrushers.DialogueSystem;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 namespace TeamMAsTD
 {
     public static class HelperFunctions
     {
-        private static Dictionary<string, object> globalIDLookup = new Dictionary<string, object>();
+        private static Dictionary<string, Object> globalIDLookup = new Dictionary<string, Object>();
 
         //.................Layer Mask Comparison..................
         public static bool IsMaskEqual(this LayerMask mask, int layer)
@@ -99,7 +100,7 @@ namespace TeamMAsTD
         /// <param name="ID"> The ID of the object that will be checked for uniqueness. </param> 
         /// <param name="objectWithId"> The object using the ID just provided in the first param. Both must match! </param>
         /// <returns></returns>
-        public static bool ObjectHasUniqueID(string ID, object objectWithId)
+        public static bool ObjectHasUniqueID(string ID, Object objectWithId)
         {
             //if provided UUID NOT already existed => IS UNIQUE and Add ID to global IDs Lookup
             if (!globalIDLookup.ContainsKey(ID))
@@ -113,9 +114,10 @@ namespace TeamMAsTD
             if (globalIDLookup.ContainsKey(ID))
             {
                 //if provided UUID belongs to another object and not the one its supposes to belong to => NOT UNIQUE
-                if (globalIDLookup[ID] != objectWithId)
+                if (globalIDLookup[ID] != objectWithId || !globalIDLookup[ID].Equals(objectWithId))
                 {
-                    Debug.Log("ID: " + ID + " not matches its object!");
+                    Debug.Log("Object: " + globalIDLookup[ID].name + " with ID: " + ID + "\n" +
+                    "does not matches its provided comparison object: " + objectWithId.name);
 
                     return false;
                 }
@@ -125,7 +127,7 @@ namespace TeamMAsTD
             //if an object is unloaded or destroyed -> remove its UUID from the static dict
             if (globalIDLookup[ID] == null)
             {
-                Debug.Log("ID: " + ID + " doesnt have associate object!");
+                //Debug.Log("ID: " + ID + " doesnt have associate object!");
 
                 globalIDLookup.Remove(ID);
 
@@ -135,6 +137,18 @@ namespace TeamMAsTD
             
             //if passed all above checks => IS UNIQUE ID
             return true;
+        }
+
+        /// <summary>
+        /// Helps converting auto-implemented property display name to its actual property name 
+        /// which can then be picked up by FindProperty function.
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <param name="propName"></param>
+        /// <returns></returns>
+        public static SerializedProperty FindPropertyByAutoPropertyName(SerializedObject obj, string propName)
+        {
+            return obj.FindProperty(string.Format("<{0}>k__BackingField", propName));
         }
     }
 }

@@ -5,13 +5,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
 
 namespace TeamMAsTD
 {
-    [System.Serializable]
     [CreateAssetMenu(menuName = "GameResource Data Asset/New Game Resource")]
     public class GameResourceSO : ScriptableObject, ISerializationCallbackReceiver
     {

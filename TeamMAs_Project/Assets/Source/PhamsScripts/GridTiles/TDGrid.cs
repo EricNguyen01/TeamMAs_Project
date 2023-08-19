@@ -14,7 +14,7 @@ namespace TeamMAsTD
 {
     [DisallowMultipleComponent]
     [ExecuteInEditMode]
-    public class TDGrid : MonoBehaviour
+    public class TDGrid : MonoBehaviour, ISaveable
     {
         [field: SerializeField] [field: Min(1)]
         public int gridWidth { get; private set; } = 10;//number of columns
@@ -40,6 +40,20 @@ namespace TeamMAsTD
         private bool alreadyHasDandelionOnGrid = false;//for debugging
 
         private bool alreadyHasCloverOnGrid = false;
+
+        [System.Serializable]
+        private class GridSave
+        {
+            public bool alreadyHasDandyOnGrid { get; private set; }
+            public bool alreadyHasCloverOnGrid { get; private set; }
+
+            public GridSave(bool hasDandyOnGrid, bool hasCloverOnGrid)
+            {
+                alreadyHasCloverOnGrid = hasCloverOnGrid;
+
+                alreadyHasDandyOnGrid = hasDandyOnGrid;
+            }
+        }
 
         //UNITY
 
@@ -281,7 +295,7 @@ namespace TeamMAsTD
                 {
                     if (unplantedTileList.Count == 0) break;
 
-                    int unplantedTilesIndex = Random.Range(0, unplantedTileList.Count);
+                    int unplantedTilesIndex = UnityEngine.Random.Range(0, unplantedTileList.Count);
 
                     if(unplantedTileList.Count > 1 && unplantedTilesIndex == previousTilesIndex)
                     {
@@ -289,7 +303,7 @@ namespace TeamMAsTD
 
                         while(count < 5 && unplantedTilesIndex == previousTilesIndex)
                         {
-                            unplantedTilesIndex = Random.Range(0, unplantedTileList.Count);
+                            unplantedTilesIndex = UnityEngine.Random.Range(0, unplantedTileList.Count);
 
                             count++;
                         }
@@ -314,8 +328,36 @@ namespace TeamMAsTD
             return gridArray[tileIndexInGrid].PlaceUnit(plantSO);
         }
 
-        //UNITY EDITOR only class and function for Grid
+        //ISaveable interface implementations.............................................................................
+
+        public SaveDataSerializeBase SaveData(string saveName = "")
+        {
+            SaveDataSerializeBase gridSaveData;
+
+            GridSave gridSave = new GridSave(alreadyHasDandelionOnGrid, alreadyHasCloverOnGrid);
+
+            gridSaveData = new SaveDataSerializeBase(gridSave,
+                                                     transform.position,
+                                                     UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
+
+            return gridSaveData;
+        }
+
+        public void LoadData(SaveDataSerializeBase savedDataToLoad)
+        {
+            if (savedDataToLoad == null) return;
+
+            GridSave gridSavedData = (GridSave)savedDataToLoad.LoadSavedObject();
+
+            alreadyHasDandelionOnGrid = gridSavedData.alreadyHasDandyOnGrid;
+
+            alreadyHasCloverOnGrid = gridSavedData.alreadyHasCloverOnGrid;
+        }
+
+        //UNITY EDITOR only class and function for Grid....................................................................
+
 #if UNITY_EDITOR
+
         [CustomEditor(typeof(TDGrid))]
         private class GridEditor : Editor
         {

@@ -148,6 +148,8 @@ namespace TeamMAsTD
 
             //set water slider UI values
             plantUnitWorldUI.SetWaterSliderValue(waterBarsRemaining, totalWaterBars);
+
+            SaveLoadHandler.SaveThisSaveableOnly(tilePlantedOn.GetTileSaveable());
         }
 
         //This function is for the WaterAll button functionality with the water all bars on each plant option checked.
@@ -246,6 +248,8 @@ namespace TeamMAsTD
             //set water slider UI values
             if(waterBarsRemaining > 0) plantUnitWorldUI.SetWaterSliderValue(waterBarsRemaining, totalWaterBars);
             else plantUnitWorldUI.SetWaterSliderValue(0, totalWaterBars);
+
+            SaveLoadHandler.SaveThisSaveableOnly(tilePlantedOn.GetTileSaveable());
         }
 
         public void SetWaterBarsRemainingDirectly(int waterBarsRemainingToSet)
@@ -259,7 +263,10 @@ namespace TeamMAsTD
 
             if (waterBarsRemainingToSet < 0) waterBarsRemainingToSet = 0;
 
-            ConsumingWaterBars(totalWaterBars - waterBarsRemainingToSet);
+            waterBarsRemaining = waterBarsRemainingToSet;
+
+            if (waterBarsRemaining > 0) plantUnitWorldUI.SetWaterSliderValue(waterBarsRemaining, totalWaterBars);
+            else plantUnitWorldUI.SetWaterSliderValue(0, totalWaterBars);
         }
 
         private void UprootOnWaterDepleted(float uprootDelaySec)

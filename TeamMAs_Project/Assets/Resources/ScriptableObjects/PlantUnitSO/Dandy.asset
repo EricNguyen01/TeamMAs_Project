@@ -17,7 +17,8 @@ MonoBehaviour:
   <unitInfoTooltipImageSprite>k__BackingField: {fileID: 21300000, guid: c8a4e80de4a8073488d77e644a5ab439, type: 3}
   <unitSpawnEffectPrefab>k__BackingField: {fileID: 1355123197302658146, guid: f4f8b7672c4ecb146b287056f2e31299, type: 3}
   <unitDestroyEffectPrefab>k__BackingField: {fileID: 1355123197302658146, guid: f4f8b7672c4ecb146b287056f2e31299, type: 3}
-  <unitID>k__BackingField: ca2aa5b3-567f-4f2b-a50c-0a26b9538e6f
+  <unitDynamicID>k__BackingField: 3d01e992-f0e1-4062-abd1-55c861e598f2
+  <unitStaticID>k__BackingField: 1a605947-3351-44de-a8f8-d34ac7c5f647
   <unitDescription>k__BackingField: 
   <unitThumbnail>k__BackingField: {fileID: 21300000, guid: bb62bfc6c4cc62a4b9610e60d05d1130, type: 3}
   <plantProjectileSO>k__BackingField: {fileID: 11400000, guid: 318d3b3ba451a5a47891c58fba6d24dc, type: 2}

@@ -70,6 +70,8 @@ namespace TeamMAsTD
         [field: SerializeField] [field: HideInInspector] 
         public FMODUnity.StudioEventEmitter uprootAudioEventEmitterFMOD { get; private set; }
 
+        private Saveable tileSaveable;
+
         [System.Serializable]
         private class TileSave
         {
@@ -145,6 +147,8 @@ namespace TeamMAsTD
         private void OnEnable()
         {
             if(this is ISaveable) ISaveable.GenerateSaveableComponentIfNull(this);
+
+            if (!tileSaveable) TryGetComponent<Saveable>(out tileSaveable);
         }
 
 #if UNITY_EDITOR
@@ -350,6 +354,8 @@ namespace TeamMAsTD
             //throw plant successful event
             OnPlantUnitPlantedOnTile?.Invoke(plantUnitOnTile, this);
 
+            SaveLoadHandler.SaveThisSaveableOnly(tileSaveable);
+
             //re-enable tile UI open/close functionality on a plant planted on
             tileMenuAndUprootOnTileUI.SetDisableTileMenuOpen(false);
 
@@ -399,6 +405,8 @@ namespace TeamMAsTD
             else Destroy(plantUnitOnTile.gameObject, uprootDelaySec);
 
             plantUnitOnTile = null;
+
+            SaveLoadHandler.SaveThisSaveableOnly(tileSaveable);
         }
 
         public void UprootingInsufficientFundsEventInvoke()
@@ -462,6 +470,11 @@ namespace TeamMAsTD
             tileGlowComp.DisableTileGlowEffect();
         }
 
+        public Saveable GetTileSaveable()
+        {
+            return tileSaveable;
+        }
+
         //EDITOR...........................................................................
 
         //Tile editor stuff................................................................
@@ -490,7 +503,7 @@ namespace TeamMAsTD
                 Gizmos.DrawCube(transform.position, new Vector2(transform.localScale.x - 0.1f, transform.localScale.y - 0.1f));
             }
         }
-
+#endif
         //ISaveable interface implementations........................................................................................................
 
         public SaveDataSerializeBase SaveData(string saveName = "")
@@ -527,7 +540,13 @@ namespace TeamMAsTD
 
             PlantUnitSO[] plantSOArr = Resources.LoadAll<PlantUnitSO>("ScriptableObjects/PlantUnitSO");
 
-            if (plantSOArr == null || plantSOArr.Length == 0) return;
+            if (plantSOArr == null || plantSOArr.Length == 0)
+            {
+                Debug.LogError("Trying to load plant SO from Resources/PlantUnitSO folder but none was found!\n" +
+                "Please make sure that all plant SO must be in Resources/PlantUnitSO folder.");
+
+                return;
+            }
 
             string plantSOPlantedStaticID = savedTile.plantSOPlantedStaticID;
 
@@ -544,9 +563,18 @@ namespace TeamMAsTD
             }
 
             plantUnitOnTile.plantWaterUsageSystem.SetWaterBarsRemainingDirectly(savedTile.currentPlantWater);
+
+            if(plantUnitOnTile.plantWaterUsageSystem.GetRemainingWaterBars() <= 0)
+            {
+                Destroy(plantUnitOnTile.gameObject);
+
+                plantUnitOnTile = null;
+            }
         }
 
         //Tile Custom Editor Private Class................................................................................................................
+
+#if UNITY_EDITOR
 
         [CustomEditor(typeof(Tile))]
         [CanEditMultipleObjects]

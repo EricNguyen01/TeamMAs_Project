@@ -33,7 +33,10 @@ namespace TeamMAsTD
 
         private void OnEnable()
         {
+#if UNITY_EDITOR
+
             GenerateID_If_None();
+#endif
         }
 
         private void OnValidate()
@@ -66,10 +69,10 @@ namespace TeamMAsTD
             UUID_SerializedProperty = serializedObject.FindProperty("UUID");
 
             //if this does not have an UUID yet or has an ID that overlaps another object's ID -> provide new one
-            if (UUID_SerializedProperty.stringValue == "" ||
+            while (UUID_SerializedProperty.stringValue == "" ||
                 string.IsNullOrEmpty(UUID_SerializedProperty.stringValue) ||
-                string.IsNullOrWhiteSpace(UUID_SerializedProperty.stringValue) /*|| 
-                !HelperFunctions.ObjectHasUniqueID(UUID_SerializedProperty.stringValue, this)*/)
+                string.IsNullOrWhiteSpace(UUID_SerializedProperty.stringValue) || 
+                !HelperFunctions.ObjectHasUniqueID(UUID_SerializedProperty.stringValue, this))
             {
                 UUID_SerializedProperty.stringValue = System.Guid.NewGuid().ToString();
 

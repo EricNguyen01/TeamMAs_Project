@@ -1,0 +1,47 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f04e3d0adf1c69949bc6bd1b45397d53, type: 3}
+  m_Name: New Plant Unit SO
+  m_EditorClassIdentifier: 
+  <displayName>k__BackingField: 
+  <unitPrefab>k__BackingField: {fileID: 0}
+  <unitInfoTooltipImageSprite>k__BackingField: {fileID: 0}
+  <unitSpawnEffectPrefab>k__BackingField: {fileID: 0}
+  <unitDestroyEffectPrefab>k__BackingField: {fileID: 0}
+  <unitDynamicID>k__BackingField: 54a3d67c-5451-4355-bc00-cf866876df69
+  <unitStaticID>k__BackingField: bcbbce14-0cd6-45c1-9ab4-7f2d6783e460
+  <unitDescription>k__BackingField: 
+  <unitThumbnail>k__BackingField: {fileID: 0}
+  <plantProjectileSO>k__BackingField: {fileID: 0}
+  <waterBars>k__BackingField: 0
+  <wavesSurviveWithoutWater>k__BackingField: 1
+  <damage>k__BackingField: 0
+  <attackSpeed>k__BackingField: 0
+  <attackRangeInTiles>k__BackingField: 1
+  <plantRangeCirclePrefab>k__BackingField: {fileID: 0}
+  <targetsPerAttack>k__BackingField: 1
+  <humanMultiplier>k__BackingField: 0
+  <pollinatorMultiplier>k__BackingField: 0
+  <isPlacableOnPath>k__BackingField: 0
+  plantTargetsLayerNames: []
+  plantTargetsSpecifically: 0
+  <plantingCoinCost>k__BackingField: 0
+  <uprootRefundAmount>k__BackingField: 0
+  <uprootCost>k__BackingField: 0
+  <uprootHealthCost>k__BackingField: 0
+  <waterUse>k__BackingField: 0
+  <waterBarsRefilledPerWatering>k__BackingField: 1
+  <wateringCoinsCost>k__BackingField: 1
+  <canPurchasePlant>k__BackingField: 1
+  <plantPurchaseLockOnStart>k__BackingField: 1
+  <waveToUnlockPlantPurchaseOnWaveFinished>k__BackingField: {fileID: 0}
+  <waveToUnlockPlantPurchaseOnWaveStarted>k__BackingField: {fileID: 0}
