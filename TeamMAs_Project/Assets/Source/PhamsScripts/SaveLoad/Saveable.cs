@@ -60,6 +60,8 @@ namespace TeamMAsTD
         {
             if (Application.isPlaying) return;
 
+            if (!gameObject.scene.isLoaded) return;
+
             //only continue to execute if the object is dropped into a scene and not in asset prefab folder
             //if the below returns null or empty then object is in prefab and should stop execute
             if (string.IsNullOrEmpty(gameObject.scene.path)) return;

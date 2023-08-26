@@ -13,6 +13,8 @@ namespace TeamMAsTD
     {
         [Header("Scene Transition Settings")]
 
+        [SerializeField] private const string DEFAULT_SCENE_TO_LOAD = "GameScene";
+
         [SerializeField] private float additionalTransitionTime = 1.0f;
 
         //INTERNALS..............................................................
@@ -22,6 +24,8 @@ namespace TeamMAsTD
         private Canvas sceneLoadCanvas;
 
         private CanvasGroup sceneLoadCanvasGroup;
+
+        private bool isLoadingSavedData = false;
 
         private void Awake()
         {
@@ -52,6 +56,20 @@ namespace TeamMAsTD
             EnableSceneLoadUI(false);
         }
 
+        private void OnEnable()
+        {
+            SaveLoadHandler.OnLoadingStarted += () => isLoadingSavedData = true;
+
+            SaveLoadHandler.OnLoadingFinished += () => isLoadingSavedData = false;
+        }
+
+        private void OnDisable()
+        {
+            SaveLoadHandler.OnLoadingStarted -= () => isLoadingSavedData = true;
+
+            SaveLoadHandler.OnLoadingFinished -= () => isLoadingSavedData = false;
+        }
+
         public void SceneTransitionToScene(string sceneTo)
         {
             if (SceneManager.GetSceneByName(sceneTo) == null)
@@ -72,13 +90,14 @@ namespace TeamMAsTD
 
             PixelCrushers.DialogueSystem.DialogueManager.Pause();
 
-            if (Time.timeScale > 0.0f) Time.timeScale = 0.0f;
+            if (SaveLoadHandler.LoadToAllSaveables())
+            {
+                yield return StartCoroutine(SceneSavedDataLoadCheckIntervalCoroutine());
+            }
 
             yield return new WaitForSeconds(additionalTransitionTime);
 
             PixelCrushers.DialogueSystem.DialogueManager.Unpause();
-
-            if (Time.timeScale == 0.0f) Time.timeScale = 1.0f;
 
             EnableSceneLoadUI(false);
         }
@@ -103,6 +122,25 @@ namespace TeamMAsTD
             sceneLoadCanvasGroup.alpha = 0.0f;
 
             sceneLoadCanvasGroup.blocksRaycasts = false;
+        }
+
+        private WaitForFixedUpdate waitForFixedUpdate = new WaitForFixedUpdate();//cache wait for fixed update
+        private IEnumerator SceneSavedDataLoadCheckIntervalCoroutine(float intervalDuration = 1.0f)
+        {
+            if (intervalDuration <= 0.0f) yield break;
+
+            float t = 0.0f;
+
+            while(t <= intervalDuration)
+            {
+                t += Time.fixedDeltaTime;
+
+                if (isLoadingSavedData) t = 0.0f;
+
+                yield return waitForFixedUpdate;
+            }
+
+            yield break;
         }
     }
 }

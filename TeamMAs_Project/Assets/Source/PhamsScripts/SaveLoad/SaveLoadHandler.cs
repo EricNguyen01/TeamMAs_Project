@@ -102,11 +102,11 @@ namespace TeamMAsTD
         #region Save
 
         //SAVE ALL.......................................................................................
-        public static void SaveAllSaveables()
+        public static bool SaveAllSaveables()
         {
-            if (!saveLoadHandlerInstance || !saveLoadHandlerInstance.saveLoadManager) return;
+            if (!saveLoadHandlerInstance || !saveLoadHandlerInstance.saveLoadManager) return false;
 
-            if (saveLoadHandlerInstance.disableSaveLoadAlways || saveLoadHandlerInstance.disableSaveLoadRuntime) return;
+            if (saveLoadHandlerInstance.disableSaveLoadAlways || saveLoadHandlerInstance.disableSaveLoadRuntime) return false;
 
             float saveStartTime = Time.realtimeSinceStartup;
 
@@ -123,6 +123,8 @@ namespace TeamMAsTD
             float saveTime = Time.realtimeSinceStartup - saveStartTime;
 
             if (saveLoadHandlerInstance.showDebugLog) Debug.Log("Save All Finished! Time took: " + saveTime);
+
+            return true;
         }
 
         private static StateDictionaryObject LoadFromFile()
@@ -154,13 +156,13 @@ namespace TeamMAsTD
         }
 
         //SAVE SINGLE SAVEABLE ONLY......................................................................................
-        public static void SaveThisSaveableOnly(Saveable saveable)
+        public static bool SaveThisSaveableOnly(Saveable saveable)
         {
-            if (!saveLoadHandlerInstance || !saveLoadHandlerInstance.saveLoadManager) return;
+            if (!saveLoadHandlerInstance || !saveLoadHandlerInstance.saveLoadManager) return false;
 
-            if (saveLoadHandlerInstance.disableSaveLoadAlways || saveLoadHandlerInstance.disableSaveLoadRuntime) return;
+            if (saveLoadHandlerInstance.disableSaveLoadAlways || saveLoadHandlerInstance.disableSaveLoadRuntime) return false;
 
-            if (!saveable) return;
+            if (!saveable) return false;
 
             float saveStartTime = Time.realtimeSinceStartup;
 
@@ -177,6 +179,8 @@ namespace TeamMAsTD
             float saveTime = Time.realtimeSinceStartup - saveStartTime;
 
             if (saveLoadHandlerInstance.showDebugLog) Debug.Log("Save " + saveable.name + " Finished! Time took: " + saveTime);
+
+            return true;
         }
 
         private static StateDictionaryObject UpdateCurrentSaveDataOfSaveable(StateDictionaryObject currentSavedData, Saveable saveable)
@@ -215,17 +219,17 @@ namespace TeamMAsTD
         //LOAD............................................................................................................
         #region Load
 
-        public static void LoadToAllSaveables()
+        public static bool LoadToAllSaveables()
         {
-            if (!saveLoadHandlerInstance || !saveLoadHandlerInstance.saveLoadManager) return;
+            if (!saveLoadHandlerInstance || !saveLoadHandlerInstance.saveLoadManager) return false;
 
-            if (saveLoadHandlerInstance.disableSaveLoadAlways || saveLoadHandlerInstance.disableSaveLoadRuntime) return;
+            if (saveLoadHandlerInstance.disableSaveLoadAlways || saveLoadHandlerInstance.disableSaveLoadRuntime) return false;
 
             if (!HasSavedData())
             {
                 if (saveLoadHandlerInstance.showDebugLog) Debug.LogWarning("No Saved Data To Load!");
 
-                return;
+                return false;
             }
 
             float loadTimeStart = Time.realtimeSinceStartup;
@@ -241,6 +245,8 @@ namespace TeamMAsTD
             float loadTime = Time.realtimeSinceStartup - loadTimeStart;
 
             if (saveLoadHandlerInstance.showDebugLog) Debug.Log("Load Finished! Time took: " + loadTime);
+
+            return true;
         }
 
         private static void RestoreSavedDataForAllSaveables(StateDictionaryObject savedData)
@@ -252,13 +258,13 @@ namespace TeamMAsTD
         }
 
         //LOAD SINGLE SAVEABLE ONLY........................................................................
-        public static void LoadThisSaveableOnly(Saveable saveable)
+        public static bool LoadThisSaveableOnly(Saveable saveable)
         {
-            if (!saveLoadHandlerInstance || !saveLoadHandlerInstance.saveLoadManager) return;
+            if (!saveLoadHandlerInstance || !saveLoadHandlerInstance.saveLoadManager) return false;
 
-            if (saveLoadHandlerInstance.disableSaveLoadAlways || saveLoadHandlerInstance.disableSaveLoadRuntime) return;
+            if (saveLoadHandlerInstance.disableSaveLoadAlways || saveLoadHandlerInstance.disableSaveLoadRuntime) return false;
 
-            if (!saveable) return;
+            if (!saveable) return false;
 
             float loadTimeStart = Time.realtimeSinceStartup;
 
@@ -273,6 +279,8 @@ namespace TeamMAsTD
             float loadTime = Time.realtimeSinceStartup - loadTimeStart;
 
             if (saveLoadHandlerInstance.showDebugLog) Debug.Log("Load " + saveable.name + " Finished! Time took: " + loadTime);
+
+            return true;
         }
 
         private static void RestoreSaveDataOfSaveable(StateDictionaryObject savedData, Saveable saveable)
