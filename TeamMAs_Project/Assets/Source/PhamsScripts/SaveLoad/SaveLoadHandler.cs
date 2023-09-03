@@ -65,7 +65,7 @@ namespace TeamMAsTD
             }
         }
 
-        private List<SavedSaveable> savedSaveablesList = new List<SavedSaveable>();
+        private List<SavedSaveable> DEBUG_SavedSaveablesList = new List<SavedSaveable>();
 
         public static event Action OnSavingStarted;
 
@@ -209,7 +209,7 @@ namespace TeamMAsTD
 
             currentSavedData.stateDict.Add(saveable.GetSaveableID(), saveable.CaptureSaveableState());
 
-            saveLoadHandlerInstance.savedSaveablesList.Add(new SavedSaveable(saveable.name, saveable.GetSaveableID()));
+            saveLoadHandlerInstance.DEBUG_SavedSaveablesList.Add(new SavedSaveable(saveable.name, saveable.GetSaveableID()));
 
             return currentSavedData;
         }
@@ -301,18 +301,22 @@ namespace TeamMAsTD
         //OTHERS..........................................................................................................
         #region DeleteSave
 
-        public void DeleteAllSaveData()
+        public static void DeleteAllSaveData()
         {
-            if (!saveLoadManager) return;
+            if (!saveLoadHandlerInstance) return;
 
-            if (showDebugLog) Debug.Log("Deleting All Save Data!");
+            if (!saveLoadHandlerInstance.saveLoadManager) return;
 
-            saveLoadManager.DeleteSave(SAVE_FILE_NAME);
+            if (saveLoadHandlerInstance.showDebugLog) Debug.Log("Deleting All Save Data!");
+
+            saveLoadHandlerInstance.saveLoadManager.DeleteSave(SAVE_FILE_NAME);
         }
 
-        public void DeleteSaveDataOfSaveable(Saveable saveable)
+        public static void DeleteSaveDataOfSaveable(Saveable saveable)
         {
-            if (!saveLoadManager) return;
+            if (!saveLoadHandlerInstance) return;
+
+            if (!saveLoadHandlerInstance.saveLoadManager) return;
 
             if (!saveable) return;
 
@@ -407,7 +411,7 @@ namespace TeamMAsTD
                         return;
                     }
 
-                    saveLoadHandler.DeleteAllSaveData();
+                    DeleteAllSaveData();
                 }
             }
         }

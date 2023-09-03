@@ -4,7 +4,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 namespace TeamMAsTD
@@ -13,7 +12,13 @@ namespace TeamMAsTD
     {
         [Header("Scene Transition Settings")]
 
-        [SerializeField] private const string DEFAULT_SCENE_TO_LOAD = "GameScene";
+        //default scene (build index 0) should always be menu scene
+        private const int DEFAULT_SCENE_BUILD_INDEX = 0;
+
+        //first game scene shoud be the scene after menu scene or load transition scene (if has one) in the build index
+        private const int FIRST_GAME_SCENE_BUILD_INDEX = 1;
+
+        [SerializeField] private bool loadSaveAfterScene = false;
 
         [SerializeField] private float additionalTransitionTime = 1.0f;
 
@@ -46,7 +51,6 @@ namespace TeamMAsTD
             if (sceneLoadCanvas == null)
             {
                 //Debug.LogWarning("PersistentSceneLoadUI is implemented but a scene load canvas is not assigned! Scene Load UI won't work!");
-
             }
 
             if(sceneLoadCanvas) sceneLoadCanvasGroup = sceneLoadCanvas.GetComponent<CanvasGroup>();
@@ -70,11 +74,56 @@ namespace TeamMAsTD
             SaveLoadHandler.OnLoadingFinished -= () => isLoadingSavedData = false;
         }
 
-        public void SceneTransitionToScene(string sceneTo)
+        public void LoadDefaultScene()
         {
-            if (SceneManager.GetSceneByName(sceneTo) == null)
+            Scene defaultSc = SceneManager.GetSceneByBuildIndex(DEFAULT_SCENE_BUILD_INDEX);
+
+            if (defaultSc == null)
             {
-                Debug.LogWarning("Trying To Transition To Scene: " + sceneTo + "But Scene Does Not Exist!");
+                Debug.LogWarning("Default Scene Not Found! No Scene Will Be Loaded.");
+
+                return;
+            }
+
+            LoadScene(defaultSc.name);
+        }
+
+        public void LoadFirstGameScene()
+        {
+            Scene defaultSc = SceneManager.GetSceneByBuildIndex(FIRST_GAME_SCENE_BUILD_INDEX);
+
+            if (defaultSc == null)
+            {
+                Debug.LogWarning("First Game Scene Not Found! Load Default Scene Instead!");
+
+                LoadDefaultScene();
+
+                return;
+            }
+
+            LoadScene(defaultSc.name);
+        }
+
+        public void LoadScene(string sceneToLoad)
+        {
+            SceneTransitionToScene(sceneToLoad);
+        }
+
+        public void AllowLoadSaveAfterSceneLoaded(bool allowedSaveToLoad)
+        {
+            loadSaveAfterScene = allowedSaveToLoad;
+        }
+
+        private void SceneTransitionToScene(string sceneTo)
+        {
+            if (string.IsNullOrEmpty(sceneTo) ||
+                string.IsNullOrWhiteSpace(sceneTo) ||
+                SceneManager.GetSceneByName(sceneTo) == null)
+            {
+                Debug.LogWarning("Trying To Transition To Scene: " + sceneTo + "But Scene Does Not Exist!\n" +
+                "Loading Default Scene Instead.");
+
+                LoadDefaultScene();
 
                 return;
             }
@@ -90,9 +139,12 @@ namespace TeamMAsTD
 
             PixelCrushers.DialogueSystem.DialogueManager.Pause();
 
-            if (SaveLoadHandler.LoadToAllSaveables())
+            if (loadSaveAfterScene)
             {
-                yield return StartCoroutine(SceneSavedDataLoadCheckIntervalCoroutine());
+                if (SaveLoadHandler.LoadToAllSaveables()) 
+                { 
+                    yield return StartCoroutine(SceneSavedDataLoadCheckIntervalCoroutine()); 
+                }
             }
 
             yield return new WaitForSeconds(additionalTransitionTime);

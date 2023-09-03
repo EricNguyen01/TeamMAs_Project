@@ -209,6 +209,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce1aa141f614c39478cec9647badf668, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  loadSaveAfterScene: 0
   additionalTransitionTime: 1
 --- !u!4 &417897368
 Transform:
@@ -435,10 +436,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 6806960674135288243, guid: e864f50927cec454e99ba1479a735e84, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 417897367}
     - target: {fileID: 6806960674192644378, guid: e864f50927cec454e99ba1479a735e84, type: 3}
       propertyPath: m_Name
       value: MainMenuUI

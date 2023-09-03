@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 6806960673958426417}
   - component: {fileID: 6806960673958426429}
   - component: {fileID: 6806960673958426430}
+  - component: {fileID: 7487238915879284473}
   m_Layer: 5
   m_Name: SETTING
   m_TagString: Untagged
@@ -166,6 +167,18 @@ MonoBehaviour:
   isIndependentTimeScale: 0
   disableUIFunctionDuringTween: 0
   expandValue: 16
+--- !u!225 &7487238915879284473
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6806960673958426419}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 1
 --- !u!1 &6806960674135288245
 GameObject:
   m_ObjectHideFlags: 0
@@ -180,6 +193,8 @@ GameObject:
   - component: {fileID: 6806960674135288243}
   - component: {fileID: 6806960674135288255}
   - component: {fileID: 6806960674135288240}
+  - component: {fileID: 2602064477371806912}
+  - component: {fileID: 4848609075905622950}
   m_Layer: 5
   m_Name: NEWGAME
   m_TagString: Untagged
@@ -290,16 +305,16 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: TeamMAsTD.PersistentSceneLoadUI, Assembly-CSharp
-        m_MethodName: SceneTransitionToScene
-        m_Mode: 5
+      - m_Target: {fileID: 2602064477371806912}
+        m_TargetAssemblyTypeName: MenuButton, Assembly-CSharp
+        m_MethodName: NewGameButton
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: Main_3
+          m_StringArgument: GameScene
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &6806960674135288255
@@ -344,6 +359,30 @@ MonoBehaviour:
   isIndependentTimeScale: 0
   disableUIFunctionDuringTween: 0
   expandValue: 16
+--- !u!114 &2602064477371806912
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6806960674135288245}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53ec8d2a769e3af4cb91a40e44368479, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!225 &4848609075905622950
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6806960674135288245}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 1
 --- !u!1 &6806960674166760127
 GameObject:
   m_ObjectHideFlags: 0
@@ -358,6 +397,8 @@ GameObject:
   - component: {fileID: 6806960674166760125}
   - component: {fileID: 6806960674166760121}
   - component: {fileID: 6806960674166760122}
+  - component: {fileID: 1611048382564474489}
+  - component: {fileID: 1973773236565544652}
   m_Layer: 5
   m_Name: LOADGAME
   m_TagString: Untagged
@@ -467,7 +508,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6806960674166760124}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1611048382564474489}
+        m_TargetAssemblyTypeName: MenuButton, Assembly-CSharp
+        m_MethodName: LoadGameButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &6806960674166760121
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -510,6 +563,30 @@ MonoBehaviour:
   isIndependentTimeScale: 0
   disableUIFunctionDuringTween: 0
   expandValue: 16
+--- !u!114 &1611048382564474489
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6806960674166760127}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53ec8d2a769e3af4cb91a40e44368479, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!225 &1973773236565544652
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6806960674166760127}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 1
 --- !u!1 &6806960674192644378
 GameObject:
   m_ObjectHideFlags: 0
@@ -895,6 +972,7 @@ GameObject:
   - component: {fileID: 6806960674515822358}
   - component: {fileID: 6806960674515822354}
   - component: {fileID: 6806960674515822355}
+  - component: {fileID: 2256115357123429027}
   m_Layer: 5
   m_Name: QUIT
   m_TagString: Untagged
@@ -1047,6 +1125,18 @@ MonoBehaviour:
   isIndependentTimeScale: 0
   disableUIFunctionDuringTween: 0
   expandValue: 16
+--- !u!225 &2256115357123429027
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6806960674515822344}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 1
 --- !u!1 &6806960674650616390
 GameObject:
   m_ObjectHideFlags: 0
