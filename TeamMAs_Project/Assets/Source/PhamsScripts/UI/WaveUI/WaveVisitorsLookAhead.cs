@@ -25,7 +25,9 @@ namespace TeamMAsTD
 
         private int currentWave = 0;
 
-        private bool hasFinishedRaining = false;
+        //hasFinishedRaining has to be true by default
+        //so there's no bug when displaying visitors look ahead after loading saved data on runtime begins
+        private bool hasFinishedRaining = true;
 
         private void Awake()
         {

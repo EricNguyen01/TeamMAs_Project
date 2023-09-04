@@ -222,7 +222,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8044427528212389576, guid: b2ae05a64eda3cc46ae632fa1fafb83a, type: 3}
   m_PrefabInstance: {fileID: 8044427527939658642}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 8044427527939658643}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0253454f5129c314182c2607ae34da45, type: 3}
@@ -3512,6 +3512,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 910096186279003502, guid: 6e63e86c283224240aea3258256ba6a3, type: 3}
+      propertyPath: OnWaveFinishedEvent.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 910096186279003502, guid: 6e63e86c283224240aea3258256ba6a3, type: 3}
       propertyPath: OnWaveStartedEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 273583450}
@@ -3523,6 +3527,22 @@ PrefabInstance:
       propertyPath: OnWaveFinishedEvent.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 273583450}
+    - target: {fileID: 910096186279003502, guid: 6e63e86c283224240aea3258256ba6a3, type: 3}
+      propertyPath: OnWaveFinishedEvent.m_PersistentCalls.m_Calls.Array.data[2].m_Target
+      value: 
+      objectReference: {fileID: 8044427527939658643}
+    - target: {fileID: 910096186279003502, guid: 6e63e86c283224240aea3258256ba6a3, type: 3}
+      propertyPath: OnWaveFinishedEvent.m_PersistentCalls.m_Calls.Array.data[2].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 910096186279003502, guid: 6e63e86c283224240aea3258256ba6a3, type: 3}
+      propertyPath: OnWaveFinishedEvent.m_PersistentCalls.m_Calls.Array.data[2].m_TargetAssemblyTypeName
+      value: TeamMAsTD.SaveLoadHandler, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 910096186279003502, guid: 6e63e86c283224240aea3258256ba6a3, type: 3}
+      propertyPath: OnWaveFinishedEvent.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_BoolArgument
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2262348578732048999, guid: 6e63e86c283224240aea3258256ba6a3, type: 3}
       propertyPath: m_RootOrder
       value: 8
@@ -4593,7 +4613,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6380319184443845737, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -1316.501
+      value: -1316.5009
       objectReference: {fileID: 0}
     - target: {fileID: 6474088391758042566, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
       propertyPath: m_fontSize
@@ -5590,6 +5610,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b2ae05a64eda3cc46ae632fa1fafb83a, type: 3}
+--- !u!1 &8044427527939658643 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8044427528212389578, guid: b2ae05a64eda3cc46ae632fa1fafb83a, type: 3}
+  m_PrefabInstance: {fileID: 8044427527939658642}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8106917588518128649
 PrefabInstance:
   m_ObjectHideFlags: 0

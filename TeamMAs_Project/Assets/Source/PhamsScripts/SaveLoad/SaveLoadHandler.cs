@@ -103,7 +103,7 @@ namespace TeamMAsTD
 
         //SAVE ALL.......................................................................................
 
-        public void SaveAllSaveables_NonStatic()
+        public void SaveAllSaveables_UnityEventOnly()
         {
             SaveAllSaveables();
         }
@@ -162,10 +162,6 @@ namespace TeamMAsTD
         }
 
         //SAVE SINGLE SAVEABLE ONLY......................................................................................
-        public bool SaveThisSaveableOnly_NonStatic(Saveable saveable)
-        {
-            return SaveThisSaveableOnly(saveable);
-        }
 
         public static bool SaveThisSaveableOnly(Saveable saveable)
         {
@@ -230,7 +226,7 @@ namespace TeamMAsTD
         //LOAD............................................................................................................
         #region Load
 
-        public void LoadToAllSaveables_NonStatic()
+        public void LoadToAllSaveables_UnityEventOnly()
         {
             LoadToAllSaveables();
         }
@@ -274,6 +270,7 @@ namespace TeamMAsTD
         }
 
         //LOAD SINGLE SAVEABLE ONLY........................................................................
+
         public static bool LoadThisSaveableOnly(Saveable saveable)
         {
             if (!saveLoadHandlerInstance && !saveLoadHandlerInstance.saveLoadManager) return false;
@@ -358,10 +355,12 @@ namespace TeamMAsTD
         }
 
         //THIS FUNCTION IS CALLED IN WAVE SPAWNER'S WAVE STARTED/FINISHED UNITY EVENTS
-        public void EnableSaveLoad(bool enabled)
+        public static void EnableSaveLoad(bool enabled)
         {
-            if (enabled) disableSaveLoadRuntime = false;
-            else disableSaveLoadRuntime = true;
+            if (!saveLoadHandlerInstance) return;
+
+            if (enabled) saveLoadHandlerInstance.disableSaveLoadRuntime = false;
+            else saveLoadHandlerInstance.disableSaveLoadRuntime = true;
         }
 
         #endregion
