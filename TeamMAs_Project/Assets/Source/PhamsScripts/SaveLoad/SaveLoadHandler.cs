@@ -37,7 +37,7 @@ namespace TeamMAsTD
 
         private const SerializationMethodType SERIALIZE_METHOD = SerializationMethodType.Default;
 
-        private static SaveLoadHandler saveLoadHandlerInstance;
+        public static SaveLoadHandler saveLoadHandlerInstance;
 
         [Serializable]
         private class StateDictionaryObject
@@ -102,9 +102,15 @@ namespace TeamMAsTD
         #region Save
 
         //SAVE ALL.......................................................................................
+
+        public void SaveAllSaveables_NonStatic()
+        {
+            SaveAllSaveables();
+        }
+
         public static bool SaveAllSaveables()
         {
-            if (!saveLoadHandlerInstance || !saveLoadHandlerInstance.saveLoadManager) return false;
+            if (!saveLoadHandlerInstance && !saveLoadHandlerInstance.saveLoadManager) return false;
 
             if (saveLoadHandlerInstance.disableSaveLoadAlways || saveLoadHandlerInstance.disableSaveLoadRuntime) return false;
 
@@ -150,15 +156,20 @@ namespace TeamMAsTD
 
         private static void WriteToFile(StateDictionaryObject latestSavedData)
         {
-            if (!saveLoadHandlerInstance || !saveLoadHandlerInstance.saveLoadManager) return;
+            if (!saveLoadHandlerInstance && !saveLoadHandlerInstance.saveLoadManager) return;
 
             saveLoadHandlerInstance.saveLoadManager.Save(latestSavedData, SAVE_FILE_NAME);
         }
 
         //SAVE SINGLE SAVEABLE ONLY......................................................................................
+        public bool SaveThisSaveableOnly_NonStatic(Saveable saveable)
+        {
+            return SaveThisSaveableOnly(saveable);
+        }
+
         public static bool SaveThisSaveableOnly(Saveable saveable)
         {
-            if (!saveLoadHandlerInstance || !saveLoadHandlerInstance.saveLoadManager) return false;
+            if (!saveLoadHandlerInstance && !saveLoadHandlerInstance.saveLoadManager) return false;
 
             if (saveLoadHandlerInstance.disableSaveLoadAlways || saveLoadHandlerInstance.disableSaveLoadRuntime) return false;
 
@@ -219,9 +230,14 @@ namespace TeamMAsTD
         //LOAD............................................................................................................
         #region Load
 
+        public void LoadToAllSaveables_NonStatic()
+        {
+            LoadToAllSaveables();
+        }
+
         public static bool LoadToAllSaveables()
         {
-            if (!saveLoadHandlerInstance || !saveLoadHandlerInstance.saveLoadManager) return false;
+            if (!saveLoadHandlerInstance && !saveLoadHandlerInstance.saveLoadManager) return false;
 
             if (saveLoadHandlerInstance.disableSaveLoadAlways || saveLoadHandlerInstance.disableSaveLoadRuntime) return false;
 
@@ -260,7 +276,7 @@ namespace TeamMAsTD
         //LOAD SINGLE SAVEABLE ONLY........................................................................
         public static bool LoadThisSaveableOnly(Saveable saveable)
         {
-            if (!saveLoadHandlerInstance || !saveLoadHandlerInstance.saveLoadManager) return false;
+            if (!saveLoadHandlerInstance && !saveLoadHandlerInstance.saveLoadManager) return false;
 
             if (saveLoadHandlerInstance.disableSaveLoadAlways || saveLoadHandlerInstance.disableSaveLoadRuntime) return false;
 
@@ -301,22 +317,18 @@ namespace TeamMAsTD
         //OTHERS..........................................................................................................
         #region DeleteSave
 
-        public static void DeleteAllSaveData()
+        public void DeleteAllSaveData()
         {
-            if (!saveLoadHandlerInstance) return;
+            if (!saveLoadManager) return;
 
-            if (!saveLoadHandlerInstance.saveLoadManager) return;
+            if (showDebugLog) Debug.Log("Deleting All Save Data!");
 
-            if (saveLoadHandlerInstance.showDebugLog) Debug.Log("Deleting All Save Data!");
-
-            saveLoadHandlerInstance.saveLoadManager.DeleteSave(SAVE_FILE_NAME);
+            saveLoadManager.DeleteSave(SAVE_FILE_NAME);
         }
 
-        public static void DeleteSaveDataOfSaveable(Saveable saveable)
+        public void DeleteSaveDataOfSaveable(Saveable saveable)
         {
-            if (!saveLoadHandlerInstance) return;
-
-            if (!saveLoadHandlerInstance.saveLoadManager) return;
+            if (!saveLoadManager) return;
 
             if (!saveable) return;
 
@@ -346,10 +358,10 @@ namespace TeamMAsTD
         }
 
         //THIS FUNCTION IS CALLED IN WAVE SPAWNER'S WAVE STARTED/FINISHED UNITY EVENTS
-        public static void EnableSaveLoad(bool enabled)
+        public void EnableSaveLoad(bool enabled)
         {
-            if (enabled) saveLoadHandlerInstance.disableSaveLoadRuntime = false;
-            else saveLoadHandlerInstance.disableSaveLoadRuntime = true;
+            if (enabled) disableSaveLoadRuntime = false;
+            else disableSaveLoadRuntime = true;
         }
 
         #endregion
@@ -411,7 +423,7 @@ namespace TeamMAsTD
                         return;
                     }
 
-                    DeleteAllSaveData();
+                    saveLoadHandler.DeleteAllSaveData();
                 }
             }
         }

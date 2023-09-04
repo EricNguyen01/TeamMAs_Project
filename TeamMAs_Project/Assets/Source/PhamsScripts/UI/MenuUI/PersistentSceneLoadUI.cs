@@ -8,6 +8,7 @@ using UnityEngine.SceneManagement;
 
 namespace TeamMAsTD
 {
+    [DisallowMultipleComponent]
     public class PersistentSceneLoadUI : MonoBehaviour
     {
         [Header("Scene Transition Settings")]
@@ -139,7 +140,7 @@ namespace TeamMAsTD
 
             PixelCrushers.DialogueSystem.DialogueManager.Pause();
 
-            if (loadSaveAfterScene)
+            if (SaveLoadHandler.saveLoadHandlerInstance && loadSaveAfterScene)
             {
                 if (SaveLoadHandler.LoadToAllSaveables()) 
                 { 

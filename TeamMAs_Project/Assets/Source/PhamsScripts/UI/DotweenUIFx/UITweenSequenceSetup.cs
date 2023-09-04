@@ -217,7 +217,7 @@ namespace TeamMAsTD
             {
                 if (tweensInSequence[i].Equals(null) || !tweensInSequence[i].tween) continue;
 
-                tweensInSequence[i].tween.ResetUITween();
+                tweensInSequence[i].tween.StopAndResetUITweenImmediate();
             }
 
             OnTweenSequenceCompleted?.Invoke();

@@ -73,8 +73,8 @@ namespace TeamMAsTD
             //if this does not have an UUID yet or has an ID that overlaps another object's ID -> provide new one
             while (UUID_SerializedProperty.stringValue == "" ||
                 string.IsNullOrEmpty(UUID_SerializedProperty.stringValue) ||
-                string.IsNullOrWhiteSpace(UUID_SerializedProperty.stringValue) || 
-                !HelperFunctions.ObjectHasUniqueID(UUID_SerializedProperty.stringValue, this))
+                string.IsNullOrWhiteSpace(UUID_SerializedProperty.stringValue) //|| 
+                /*!HelperFunctions.ObjectHasUniqueID(UUID_SerializedProperty.stringValue, this)*/)
             {
                 UUID_SerializedProperty.stringValue = System.Guid.NewGuid().ToString();
 

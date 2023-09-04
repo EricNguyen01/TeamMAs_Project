@@ -75,7 +75,7 @@ namespace TeamMAsTD
 
         protected virtual void OnEnable()
         {
-            SceneManager.activeSceneChanged += KillAllTweenOnSceneLoad;
+            SceneManager.activeSceneChanged += (Scene sc1, Scene sc2) => KillAllTweenOnSceneLoad();
 
             if (rectTransform && UI_TweenExecuteMode == UITweenExecuteMode.Auto)
             {
@@ -85,7 +85,7 @@ namespace TeamMAsTD
 
         protected virtual void OnDisable()
         {
-            SceneManager.activeSceneChanged -= KillAllTweenOnSceneLoad;
+            SceneManager.activeSceneChanged -= (Scene sc1, Scene sc2) => KillAllTweenOnSceneLoad();
         }
 
         protected virtual void Start()
@@ -117,6 +117,13 @@ namespace TeamMAsTD
         public void SetTweenExecuteMode(UITweenExecuteMode executeMode)
         {
             UI_TweenExecuteMode = executeMode;
+        }
+
+        public virtual void SetUITweenCanvasGroup(CanvasGroup canvasGrp)
+        {
+            if (!canvasGrp) return;
+
+            canvasGroup = canvasGrp;
         }
 
         private IEnumerator RunTweenCycleOnceCoroutineBase()
@@ -226,7 +233,7 @@ namespace TeamMAsTD
             }
         }
 
-        public void ResetUITween()
+        public virtual void StopAndResetUITweenImmediate()
         {
             StopAllCoroutines();
 
@@ -241,7 +248,7 @@ namespace TeamMAsTD
             rectTransform.sizeDelta = baseSizeDelta;
         }
 
-        private static void KillAllTweenOnSceneLoad(Scene sc1, Scene sc2)
+        protected static void KillAllTweenOnSceneLoad()
         {
             DOTween.KillAll();
         }

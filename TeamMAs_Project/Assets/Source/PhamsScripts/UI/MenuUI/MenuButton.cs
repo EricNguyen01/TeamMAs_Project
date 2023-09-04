@@ -5,111 +5,118 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class MenuButton : MonoBehaviour
+namespace TeamMAsTD
 {
-    private CanvasGroup buttonCanvasGroup;
-
-    private void Awake()
+    [DisallowMultipleComponent]
+    public class MenuButton : MonoBehaviour
     {
-        TryGetComponent<CanvasGroup>(out buttonCanvasGroup);
+        private CanvasGroup buttonCanvasGroup;
 
-        if (!buttonCanvasGroup)
+        private void Awake()
         {
-            buttonCanvasGroup = gameObject.AddComponent<CanvasGroup>();
-        }
-    }
+            TryGetComponent<CanvasGroup>(out buttonCanvasGroup);
 
-    private void OnEnable()
-    {
-        SaveLoadHandler.OnSavingStarted += () => DisableButton(true);
-
-        SaveLoadHandler.OnLoadingStarted += () => DisableButton(true);
-
-        SaveLoadHandler.OnSavingFinished += () => DisableButton(false);
-
-        SaveLoadHandler.OnLoadingFinished += () => DisableButton(false);
-    }
-
-    private void OnDisable()
-    {
-        SaveLoadHandler.OnSavingStarted -= () => DisableButton(true);
-
-        SaveLoadHandler.OnLoadingStarted -= () => DisableButton(true);
-
-        SaveLoadHandler.OnSavingFinished -= () => DisableButton(false);
-
-        SaveLoadHandler.OnLoadingFinished -= () => DisableButton(false);
-    }
-
-    public void NewGameButton()
-    {
-        if (!PersistentSceneLoadUI.persistentSceneLoadUIInstance)
-        {
-            Debug.LogWarning("Persistent Scene Load UI Object not found. Scene Load Functionality Won't Work!");
-
-            return;
+            if (!buttonCanvasGroup)
+            {
+                buttonCanvasGroup = gameObject.AddComponent<CanvasGroup>();
+            }
         }
 
-        if(SaveLoadHandler.HasSavedData()) SaveLoadHandler.DeleteAllSaveData();
-
-        PersistentSceneLoadUI.persistentSceneLoadUIInstance.AllowLoadSaveAfterSceneLoaded(false);
-
-        //load scene with build index 1 which is the 1st game scene after scene build index 0 which is the main menu scene.
-        PersistentSceneLoadUI.persistentSceneLoadUIInstance.LoadFirstGameScene();
-    }
-
-    public void LoadGameButton()
-    {
-        if (!PersistentSceneLoadUI.persistentSceneLoadUIInstance)
+        private void OnEnable()
         {
-            Debug.LogWarning("Persistent Scene Load UI Object not found. Scene Load Functionality Won't Work!");
+            SaveLoadHandler.OnSavingStarted += () => DisableButton(true);
 
-            return;
+            SaveLoadHandler.OnLoadingStarted += () => DisableButton(true);
+
+            SaveLoadHandler.OnSavingFinished += () => DisableButton(false);
+
+            SaveLoadHandler.OnLoadingFinished += () => DisableButton(false);
         }
 
-        if (!SaveLoadHandler.HasSavedData())
+        private void OnDisable()
         {
-            NewGameButton();
+            SaveLoadHandler.OnSavingStarted -= () => DisableButton(true);
 
-            return;
+            SaveLoadHandler.OnLoadingStarted -= () => DisableButton(true);
+
+            SaveLoadHandler.OnSavingFinished -= () => DisableButton(false);
+
+            SaveLoadHandler.OnLoadingFinished -= () => DisableButton(false);
         }
 
-        PersistentSceneLoadUI.persistentSceneLoadUIInstance.AllowLoadSaveAfterSceneLoaded(true);
-
-        //for now, we hard code the scene to load because we only have 1 main game scene.
-        //if later, there are going to be multiple game scenes, create a new scene save/load system for this
-        Scene loadGameSc = SceneManager.GetSceneByBuildIndex(1);
-
-        PersistentSceneLoadUI.persistentSceneLoadUIInstance.LoadScene(loadGameSc.name);
-    }
-
-    public void BackToMainMenuButton()
-    {
-
-    }
-
-    public void QuitGameButton()
-    {
-        Application.Quit();
-    }
-
-    private void DisableButton(bool disabled)
-    {
-        if (disabled)
+        public void NewGameButton()
         {
-            buttonCanvasGroup.alpha = 0.5f;
+            if (!PersistentSceneLoadUI.persistentSceneLoadUIInstance)
+            {
+                Debug.LogWarning("Persistent Scene Load UI Object not found. Scene Load Functionality Won't Work!");
 
-            buttonCanvasGroup.blocksRaycasts = false;
+                return;
+            }
 
-            buttonCanvasGroup.interactable = false;
+            if (SaveLoadHandler.saveLoadHandlerInstance && SaveLoadHandler.HasSavedData())
+            {
+                SaveLoadHandler.saveLoadHandlerInstance.DeleteAllSaveData();
+            }
 
-            return;
+            PersistentSceneLoadUI.persistentSceneLoadUIInstance.AllowLoadSaveAfterSceneLoaded(false);
+
+            //load scene with build index 1 which is the 1st game scene after scene build index 0 which is the main menu scene.
+            PersistentSceneLoadUI.persistentSceneLoadUIInstance.LoadFirstGameScene();
         }
 
-        buttonCanvasGroup.alpha = 1.0f;
+        public void LoadGameButton()
+        {
+            if (!PersistentSceneLoadUI.persistentSceneLoadUIInstance)
+            {
+                Debug.LogWarning("Persistent Scene Load UI Object not found. Scene Load Functionality Won't Work!");
 
-        buttonCanvasGroup.blocksRaycasts = true;
+                return;
+            }
 
-        buttonCanvasGroup.interactable = true;
+            if (!SaveLoadHandler.HasSavedData())
+            {
+                NewGameButton();
+
+                return;
+            }
+
+            PersistentSceneLoadUI.persistentSceneLoadUIInstance.AllowLoadSaveAfterSceneLoaded(true);
+
+            //for now, we hard code the scene to load because we only have 1 main game scene.
+            //if later, there are going to be multiple game scenes, create a new scene save/load system for this
+            Scene loadGameSc = SceneManager.GetSceneByBuildIndex(1);
+
+            PersistentSceneLoadUI.persistentSceneLoadUIInstance.LoadScene(loadGameSc.name);
+        }
+
+        public void BackToMainMenuButton()
+        {
+
+        }
+
+        public void QuitGameButton()
+        {
+            Application.Quit();
+        }
+
+        private void DisableButton(bool disabled)
+        {
+            if (disabled)
+            {
+                buttonCanvasGroup.alpha = 0.5f;
+
+                buttonCanvasGroup.blocksRaycasts = false;
+
+                buttonCanvasGroup.interactable = false;
+
+                return;
+            }
+
+            buttonCanvasGroup.alpha = 1.0f;
+
+            buttonCanvasGroup.blocksRaycasts = true;
+
+            buttonCanvasGroup.interactable = true;
+        }
     }
 }

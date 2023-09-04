@@ -111,8 +111,8 @@ namespace TeamMAsTD
         {
             if (string.IsNullOrEmpty(unitDynamicID) || 
                 string.IsNullOrWhiteSpace(unitDynamicID) || 
-                unitDynamicID == "" || 
-                !HelperFunctions.ObjectHasUniqueID(unitDynamicID, this))
+                unitDynamicID == "" //|| 
+                /*!HelperFunctions.ObjectHasUniqueID(unitDynamicID, this)*/)
             {
                 unitDynamicID = System.Guid.NewGuid().ToString();
             }
@@ -132,8 +132,8 @@ namespace TeamMAsTD
             //if this does not have an UUID yet or has an ID that overlaps another object's ID -> provide new one
             if (staticIDProperty.stringValue == "" ||
                 string.IsNullOrEmpty(staticIDProperty.stringValue) ||
-                string.IsNullOrWhiteSpace(staticIDProperty.stringValue) ||
-                !HelperFunctions.ObjectHasUniqueID(staticIDProperty.stringValue, this))
+                string.IsNullOrWhiteSpace(staticIDProperty.stringValue) //||
+                /*!HelperFunctions.ObjectHasUniqueID(staticIDProperty.stringValue, this)*/)
             {
                 staticIDProperty.stringValue = System.Guid.NewGuid().ToString();
 

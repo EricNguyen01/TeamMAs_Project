@@ -40,6 +40,8 @@ namespace TeamMAsTD
 
         private float imageBaseAlphaVal = 255f;
 
+        private float canvasGroupBaseAlpha = 1.0f;
+
         private bool canvasGroupFadeCompleted = true;
 
         private bool imageFadeCompleted = true;
@@ -52,6 +54,8 @@ namespace TeamMAsTD
             {
                 if (canvasGroup) canvasGroupToFade = canvasGroup;
             }
+
+            if(canvasGroupToFade) canvasGroupBaseAlpha = canvasGroupToFade.alpha;
 
             if (imageToFade)
             {
@@ -121,6 +125,30 @@ namespace TeamMAsTD
 
             if (fadeMode == FadeMode.FadeIn) fadeMode = FadeMode.FadeOut;
             else if (fadeMode == FadeMode.FadeOut) fadeMode = FadeMode.FadeIn;
+        }
+
+        public override void SetUITweenCanvasGroup(CanvasGroup canvasGrp)
+        {
+            base.SetUITweenCanvasGroup(canvasGrp);
+
+            if (!canvasGrp) return;
+
+            canvasGroupToFade = canvasGrp;
+        }
+
+        public override void StopAndResetUITweenImmediate()
+        {
+            base.StopAndResetUITweenImmediate();
+
+            if (canvasGroupToFade && !imageToFade)
+            {
+                canvasGroupToFade.alpha = canvasGroupBaseAlpha;
+            }
+
+            if (imageToFade)
+            {
+                imageToFade.color = new Color(imageToFade.color.r, imageToFade.color.g, imageToFade.color.b, imageBaseAlphaVal);
+            }
         }
 
         protected override IEnumerator RunTweenCycleOnceCoroutine()//internal call for fade
