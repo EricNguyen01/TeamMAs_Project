@@ -4,7 +4,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static UnityEngine.UI.CanvasScaler;
 
 namespace TeamMAsTD
 {
@@ -14,6 +13,7 @@ namespace TeamMAsTD
     {
         [field: Header("General Buff Ability Data")]
         [field: Header("Note: Amount Percentages Always Override Normal Amount!")]
+        [field: Space]
 
         [field: SerializeField]
         [field: Range(0.0f, 100.0f)]
@@ -54,6 +54,9 @@ namespace TeamMAsTD
         [field: SerializeField]
         [field: Range(0.0f, 100.0f)]
         public float chargeTimeReductionPercentageBuff { get; private set; } = 0.0f;
+
+        [field: Header("Buff Connection Line")]
+        [field: SerializeField] public ConnectingLineRenderer buffConnectingLineRendererPrefab { get; private set; }
 
         protected override void Awake()
         {

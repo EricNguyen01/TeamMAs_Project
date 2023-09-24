@@ -17,17 +17,21 @@ namespace TeamMAsTD
     [RequireComponent(typeof(LineRenderer))]
     public class ConnectingLineRenderer : MonoBehaviour
     {
+        [SerializeField] private float lerpingLineSequenceDuration = 0.8f;
+
         private LineRenderer lineRenderer;
 
         private bool isRunningSequence = false;
 
-        private Vector3[] defaultLinePoints = { Vector3.zero };
+        private Vector3[] defaultLinePoints = { Vector3.zero, Vector3.zero };
 
         private Vector3[] dynamicLinePoints = new Vector3[2];
 
         private void Awake()
         {
             TryGetComponent<LineRenderer>(out lineRenderer);
+
+            if(lineRenderer) lineRenderer.enabled = false;
         }
 
         public void InitializeConnectingLine()
@@ -48,17 +52,52 @@ namespace TeamMAsTD
             return lineRenderer;
         }
 
-        public LineRenderer ActivateLineWithSequence(bool deactivateOnSequenceEnded)
+        public LineRenderer ActivateLineWithSequence(Vector3 from, Vector3 to, bool deactivateOnSequenceEnded)
         {
+            StartCoroutine(LineSequence(from, to, lerpingLineSequenceDuration, deactivateOnSequenceEnded));
+
             return lineRenderer;
         }
 
-        private IEnumerator LineSequence(float sequenceDuration)
+        private IEnumerator LineSequence(Vector3 from, Vector3 to, float sequenceDuration, bool deactivateOnSequenceEnded)
         {
+            isRunningSequence = true;
+
+            lineRenderer.enabled = true;
+
+            dynamicLinePoints[0] = from;
+
+            dynamicLinePoints[1] = from;
+
+            StartCoroutine(SetLineRendererPointsInSequence());
+
+            yield return DOTween.To(() => dynamicLinePoints[1], x => dynamicLinePoints[1] = x, to, sequenceDuration).SetEase(Ease.InOutFlash).WaitForCompletion();
+
+            yield return DOTween.To(() => dynamicLinePoints[0], x => dynamicLinePoints[0] = x, to, sequenceDuration).SetEase(Ease.InOutExpo).WaitForCompletion();
+
+            isRunningSequence = false;
+
+            StopCoroutine(SetLineRendererPointsInSequence());
+
+            if (deactivateOnSequenceEnded) DeactivateLine();
+
             yield break;
         }
 
-        public void DeactivateLineAndReturnToPool()
+        private WaitForFixedUpdate waitForFixedUpdate = new WaitForFixedUpdate();   
+        private IEnumerator SetLineRendererPointsInSequence()
+        {
+            while (isRunningSequence)
+            {
+                lineRenderer.SetPositions(dynamicLinePoints);
+
+                yield return waitForFixedUpdate;
+            }
+
+            yield break;
+        }
+
+        public void DeactivateLine()
         {
             lineRenderer.SetPositions(defaultLinePoints);
 

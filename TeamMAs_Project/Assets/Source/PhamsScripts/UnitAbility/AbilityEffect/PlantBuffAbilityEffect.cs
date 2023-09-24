@@ -22,11 +22,18 @@ namespace TeamMAsTD
 
         protected bool unitWithThisEffectIsBeingUprooted = false;
 
+        protected ConnectingLineRenderer lineFromBuffGiverToEffectTarget;
+
         protected override void Awake()
         {
             base.Awake();
 
-            if (abilityEffectSO == null) return;
+            if (abilityEffectSO == null)
+            {
+                enabled = false;
+
+                return;
+            }
 
             if (abilityEffectSO.GetType() != typeof(BuffAbilityEffectSO) || abilityEffectSO.effectType != AbilityEffectSO.EffectType.Buff)
             {
@@ -39,6 +46,13 @@ namespace TeamMAsTD
             }
 
             buffAbilityEffectSO = (BuffAbilityEffectSO)abilityEffectSO;
+
+            if (buffAbilityEffectSO.buffConnectingLineRendererPrefab)
+            {
+                ConnectingLineRenderer linePrefab = buffAbilityEffectSO.buffConnectingLineRendererPrefab;
+
+                lineFromBuffGiverToEffectTarget = Instantiate(linePrefab, transform.position, Quaternion.identity, transform).GetComponent<ConnectingLineRenderer>();
+            }
         }
 
         protected override void OnEffectStarted()
