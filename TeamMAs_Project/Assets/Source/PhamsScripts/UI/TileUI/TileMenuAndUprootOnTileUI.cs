@@ -32,6 +32,8 @@ namespace TeamMAsTD
 
         [SerializeField] public UnityEvent OnTileMenuOpened;
 
+        [SerializeField] public UnityEvent OnTileMenuClosed;
+
         //PRIVATES.............................................................................................
 
         private void Awake()
@@ -140,7 +142,9 @@ namespace TeamMAsTD
                 {
                     OpenPlantRangeCircle(plantSelected, false);
 
-                    tileWorldCanvas.gameObject.SetActive(false); 
+                    tileWorldCanvas.gameObject.SetActive(false);
+
+                    OnTileMenuClosed?.Invoke();
                 }
 
                 return;
@@ -151,6 +155,8 @@ namespace TeamMAsTD
                 tileWorldCanvas.gameObject.SetActive(false);
 
                 OpenPlantRangeCircle(plantSelected, false);
+
+                OnTileMenuClosed?.Invoke();
             }
         }
 

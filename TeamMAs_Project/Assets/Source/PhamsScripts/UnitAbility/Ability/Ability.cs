@@ -70,7 +70,9 @@ namespace TeamMAsTD
 
         private WaveSO currentWave;
 
-        private List<AbilityEffect> abilityEffectsCreated = new List<AbilityEffect>();
+        //any ability effect created by this Ability and picked up by an AbilityEffectReceivedInventory 
+        //will be registered by that AbilityEffectReceivedInventory to this list below
+        protected List<AbilityEffect> abilityEffectsCreated = new List<AbilityEffect>();
 
         public static event System.Action<Ability> OnAbilityStarted;
         public static event System.Action<Ability> OnAbilityStopped;

@@ -62,6 +62,29 @@ namespace TeamMAsTD
             auraRange = abilityScriptableObject.abilityRangeInTiles - 0.1f;
 
             auraCollider.radius = auraRange;
+
+            if (unitPossessingAbility != null && unitPossessingAbility.GetType() == typeof(PlantUnit))
+            {
+                PlantUnit plant = (PlantUnit)unitPossessingAbility;
+
+                plant.tilePlacedOn.tileMenuAndUprootOnTileUI.OnTileMenuOpened.AddListener(ShowConnectingLineToBuffedTargets);
+
+                plant.tilePlacedOn.tileMenuAndUprootOnTileUI.OnTileMenuClosed.AddListener(HideConnectingLineToBuffedTargets);
+            }
+        }
+
+        protected override void OnDisable()
+        {
+            base.OnDisable();
+
+            if (unitPossessingAbility != null && unitPossessingAbility.GetType() == typeof(PlantUnit))
+            {
+                PlantUnit plant = (PlantUnit)unitPossessingAbility;
+
+                plant.tilePlacedOn.tileMenuAndUprootOnTileUI.OnTileMenuOpened.RemoveListener(ShowConnectingLineToBuffedTargets);
+
+                plant.tilePlacedOn.tileMenuAndUprootOnTileUI.OnTileMenuClosed.RemoveListener(HideConnectingLineToBuffedTargets);
+            }
         }
 
         protected override void ProcessAbilityStart()
@@ -231,6 +254,38 @@ namespace TeamMAsTD
             enableTempDisableAuraTriggerCoroutine = true;
 
             yield break;
+        }
+
+        private void ShowConnectingLineToBuffedTargets()
+        {
+            if (abilityEffectsCreated == null || abilityEffectsCreated.Count == 0) return;
+
+            for (int i = 0; i < abilityEffectsCreated.Count; i++)
+            {
+                if (abilityEffectsCreated[i] == null) continue;
+
+                if (abilityEffectsCreated[i].GetType() != typeof(PlantBuffAbilityEffect)) continue;
+
+                PlantBuffAbilityEffect plantBuffEffect = (PlantBuffAbilityEffect)abilityEffectsCreated[i];
+
+                plantBuffEffect.ActivateBuffConnectingLine();
+            }
+        }
+
+        private void HideConnectingLineToBuffedTargets()
+        {
+            if (abilityEffectsCreated == null || abilityEffectsCreated.Count == 0) return;
+
+            for (int i = 0; i < abilityEffectsCreated.Count; i++)
+            {
+                if (abilityEffectsCreated[i] == null) continue;
+
+                if (abilityEffectsCreated[i].GetType() != typeof(PlantBuffAbilityEffect)) continue;
+
+                PlantBuffAbilityEffect plantBuffEffect = (PlantBuffAbilityEffect)abilityEffectsCreated[i];
+
+                plantBuffEffect.DeactivateBuffConnectingLine();
+            }
         }
     }
 }

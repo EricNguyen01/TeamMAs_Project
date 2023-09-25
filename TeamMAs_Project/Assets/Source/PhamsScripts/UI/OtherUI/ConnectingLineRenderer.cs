@@ -34,12 +34,7 @@ namespace TeamMAsTD
             if(lineRenderer) lineRenderer.enabled = false;
         }
 
-        public void InitializeConnectingLine()
-        {
-
-        }
-
-        public LineRenderer ActivateLine(Vector3 from, Vector3 to)
+        public void ActivateLine(Vector3 from, Vector3 to)
         {
             lineRenderer.enabled = true;
 
@@ -47,16 +42,12 @@ namespace TeamMAsTD
 
             dynamicLinePoints[1] = to;
 
-            lineRenderer.SetPositions(dynamicLinePoints);  
-
-            return lineRenderer;
+            lineRenderer.SetPositions(dynamicLinePoints);
         }
 
-        public LineRenderer ActivateLineWithSequence(Vector3 from, Vector3 to, bool deactivateOnSequenceEnded)
+        public void ActivateLineWithSequence(Vector3 from, Vector3 to, bool deactivateOnSequenceEnded)
         {
             StartCoroutine(LineSequence(from, to, lerpingLineSequenceDuration, deactivateOnSequenceEnded));
-
-            return lineRenderer;
         }
 
         private IEnumerator LineSequence(Vector3 from, Vector3 to, float sequenceDuration, bool deactivateOnSequenceEnded)
@@ -101,7 +92,12 @@ namespace TeamMAsTD
         {
             lineRenderer.SetPositions(defaultLinePoints);
 
-            lineRenderer.enabled = false;
+            if(lineRenderer.enabled) lineRenderer.enabled = false;
+        }
+
+        public LineRenderer GetLineRenderer()
+        {
+            return lineRenderer;
         }
     }
 }

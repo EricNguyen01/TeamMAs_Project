@@ -55,9 +55,6 @@ namespace TeamMAsTD
         [field: Range(0.0f, 100.0f)]
         public float chargeTimeReductionPercentageBuff { get; private set; } = 0.0f;
 
-        [field: Header("Buff Connection Line")]
-        [field: SerializeField] public ConnectingLineRenderer buffConnectingLineRendererPrefab { get; private set; }
-
         protected override void Awake()
         {
             effectType = EffectType.Buff;

@@ -22,7 +22,15 @@ namespace TeamMAsTD
 
         protected bool unitWithThisEffectIsBeingUprooted = false;
 
-        protected ConnectingLineRenderer lineFromBuffGiverToEffectTarget;
+        [Header("Buff Received Connection Line Renderer")]
+
+        [SerializeField] protected ConnectingLineRenderer buffConnectingLineRendererPrefab;
+
+        [SerializeField] protected bool disableLineOnBuffStarted = false;
+
+        [SerializeField] protected bool disableLineOnSelect = false;
+
+        protected ConnectingLineRenderer buffConnectingLineRenderer;
 
         protected override void Awake()
         {
@@ -47,11 +55,29 @@ namespace TeamMAsTD
 
             buffAbilityEffectSO = (BuffAbilityEffectSO)abilityEffectSO;
 
-            if (buffAbilityEffectSO.buffConnectingLineRendererPrefab)
+            if (buffConnectingLineRendererPrefab)
             {
-                ConnectingLineRenderer linePrefab = buffAbilityEffectSO.buffConnectingLineRendererPrefab;
+                buffConnectingLineRenderer = Instantiate(buffConnectingLineRendererPrefab, 
+                                                         transform.position, 
+                                                         Quaternion.identity, transform).GetComponent<ConnectingLineRenderer>();
+            }
+            else
+            {
+                buffConnectingLineRenderer = GetComponentInChildren<ConnectingLineRenderer>();
+            }
+        }
 
-                lineFromBuffGiverToEffectTarget = Instantiate(linePrefab, transform.position, Quaternion.identity, transform).GetComponent<ConnectingLineRenderer>();
+        protected override void OnDisable()
+        {
+            base.OnDisable();
+
+            if (plantUnitReceivedBuff != null && plantUnitReceivedBuff.tilePlacedOn != null)
+            {
+                plantUnitReceivedBuff.tilePlacedOn.OnPlantUnitUprootedOnTile.RemoveListener(SubToPlantUnitBeingUprootedOnTileEvent);
+
+                plantUnitReceivedBuff.tilePlacedOn.tileMenuAndUprootOnTileUI.OnTileMenuOpened.RemoveListener(ActivateBuffConnectingLine);
+
+                plantUnitReceivedBuff.tilePlacedOn.tileMenuAndUprootOnTileUI.OnTileMenuClosed.RemoveListener(DeactivateBuffConnectingLine);
             }
         }
 
@@ -108,9 +134,22 @@ namespace TeamMAsTD
 
             if (plantUnitReceivedBuff == null) plantUnitReceivedBuff = (PlantUnit)unitBeingAffected.GetUnitObject();
 
-            if (plantUnitReceivedBuff.tilePlacedOn != null)
+            if (plantUnitReceivedBuff != null && plantUnitReceivedBuff.tilePlacedOn != null)
             {
                 plantUnitReceivedBuff.tilePlacedOn.OnPlantUnitUprootedOnTile.AddListener(SubToPlantUnitBeingUprootedOnTileEvent);
+
+                plantUnitReceivedBuff.tilePlacedOn.tileMenuAndUprootOnTileUI.OnTileMenuOpened.AddListener(ActivateBuffConnectingLine);
+
+                plantUnitReceivedBuff.tilePlacedOn.tileMenuAndUprootOnTileUI.OnTileMenuClosed.AddListener(DeactivateBuffConnectingLine);
+            }
+
+            //draw a line moving from plant that is providing buff to the target that this buff effect is on 
+            //using ConnectingLineRenderer prefab if provided
+            if (!disableLineOnBuffStarted && buffConnectingLineRenderer && plantUnitReceivedBuff)
+            {
+                Vector3 buffSourcePos = sourceUnitProducedEffect.GetUnitTransform().position;
+
+                buffConnectingLineRenderer.ActivateLineWithSequence(buffSourcePos, plantUnitReceivedBuff.transform.position, true);
             }
 
             plantUnitReceivedBuff.SetPlantSODebugDataView();
@@ -131,7 +170,7 @@ namespace TeamMAsTD
             //no need to do anything here and return
             if (unitWithThisEffectIsBeingUprooted)
             {
-                if (plantUnitReceivedBuff.tilePlacedOn != null)
+                if (plantUnitReceivedBuff != null && plantUnitReceivedBuff.tilePlacedOn != null)
                 {
                     plantUnitReceivedBuff.tilePlacedOn.OnPlantUnitUprootedOnTile.RemoveListener(SubToPlantUnitBeingUprootedOnTileEvent);
                 }
@@ -158,6 +197,23 @@ namespace TeamMAsTD
             {
                 unitWithThisEffectIsBeingUprooted = true;
             }
+        }
+
+        public void ActivateBuffConnectingLine()
+        {
+            if (disableLineOnSelect) return;
+
+            if (buffConnectingLineRenderer && plantUnitReceivedBuff)
+            {
+                Vector3 buffSourcePos = sourceUnitProducedEffect.GetUnitTransform().position;
+
+                buffConnectingLineRenderer.ActivateLine(buffSourcePos, plantUnitReceivedBuff.transform.position);
+            }
+        }
+
+        public void DeactivateBuffConnectingLine()
+        {
+            if (buffConnectingLineRenderer) buffConnectingLineRenderer.DeactivateLine();
         }
     }
 }

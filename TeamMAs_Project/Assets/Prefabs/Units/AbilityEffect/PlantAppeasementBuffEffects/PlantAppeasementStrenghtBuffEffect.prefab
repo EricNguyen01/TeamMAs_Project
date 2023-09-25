@@ -105,6 +105,7 @@ MonoBehaviour:
   <effectStatPopupSpawner>k__BackingField: {fileID: 1181894219534169785}
   effectStartFx: {fileID: 0}
   effectUpdateFx: {fileID: 0}
+  buffConnectingLineRendererPrefab: {fileID: 8299224984019638498, guid: 46c49ca532202b94cb3a8ba9ccc2175f, type: 3}
 --- !u!1001 &35807740287846033
 PrefabInstance:
   m_ObjectHideFlags: 0

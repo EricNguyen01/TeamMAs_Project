@@ -64,7 +64,7 @@ namespace TeamMAsTD
 
         private SpriteRenderer spriteRenderer;
 
-        private TileMenuAndUprootOnTileUI tileMenuAndUprootOnTileUI;
+        public TileMenuAndUprootOnTileUI tileMenuAndUprootOnTileUI { get; private set; }
 
         public AudioSource tileAudioSource { get; private set; }
 

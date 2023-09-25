@@ -275,6 +275,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5349152270347383140, guid: 46c49ca532202b94cb3a8ba9ccc2175f, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5349152270347383140, guid: 46c49ca532202b94cb3a8ba9ccc2175f, type: 3}
+      propertyPath: m_Positions.Array.data[1].x
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 5349152270347383141, guid: 46c49ca532202b94cb3a8ba9ccc2175f, type: 3}
       propertyPath: m_Name
       value: PlantBuffConnectingLine
