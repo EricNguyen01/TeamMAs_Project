@@ -207,6 +207,8 @@ namespace TeamMAsTD
             {
                 Vector3 buffSourcePos = sourceUnitProducedEffect.GetUnitTransform().position;
 
+                buffSourcePos += (plantUnitReceivedBuff.transform.position - buffSourcePos).normalized * 0.2f;
+
                 buffConnectingLineRenderer.ActivateLine(buffSourcePos, plantUnitReceivedBuff.transform.position);
             }
         }

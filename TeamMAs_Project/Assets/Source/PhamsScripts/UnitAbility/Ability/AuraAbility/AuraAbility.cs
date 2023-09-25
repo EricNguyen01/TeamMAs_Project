@@ -266,6 +266,8 @@ namespace TeamMAsTD
 
                 if (abilityEffectsCreated[i].GetType() != typeof(PlantBuffAbilityEffect)) continue;
 
+                if (abilityEffectsCreated[i].unitBeingAffected == unitPossessingAbility) continue;
+
                 PlantBuffAbilityEffect plantBuffEffect = (PlantBuffAbilityEffect)abilityEffectsCreated[i];
 
                 plantBuffEffect.ActivateBuffConnectingLine();
@@ -281,6 +283,8 @@ namespace TeamMAsTD
                 if (abilityEffectsCreated[i] == null) continue;
 
                 if (abilityEffectsCreated[i].GetType() != typeof(PlantBuffAbilityEffect)) continue;
+
+                if (abilityEffectsCreated[i].unitBeingAffected == unitPossessingAbility) continue;
 
                 PlantBuffAbilityEffect plantBuffEffect = (PlantBuffAbilityEffect)abilityEffectsCreated[i];
 
