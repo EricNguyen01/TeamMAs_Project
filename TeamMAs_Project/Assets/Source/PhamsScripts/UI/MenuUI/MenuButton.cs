@@ -87,14 +87,13 @@ namespace TeamMAsTD
 
             //for now, we hard code the scene to load because we only have 1 main game scene.
             //if later, there are going to be multiple game scenes, create a new scene save/load system for this
-            Scene loadGameSc = SceneManager.GetSceneByBuildIndex(1);
 
-            PersistentSceneLoadUI.persistentSceneLoadUIInstance.LoadScene(loadGameSc.name);
+            PersistentSceneLoadUI.persistentSceneLoadUIInstance.LoadScene(1);
         }
 
         public void BackToMainMenuButton()
         {
-
+            if(PersistentSceneLoadUI.persistentSceneLoadUIInstance) PersistentSceneLoadUI.persistentSceneLoadUIInstance.LoadScene(0);
         }
 
         public void QuitGameButton()
@@ -104,6 +103,8 @@ namespace TeamMAsTD
 
         private void DisableButton(bool disabled)
         {
+            if (!buttonCanvasGroup) return;
+
             if (disabled)
             {
                 buttonCanvasGroup.alpha = 0.5f;

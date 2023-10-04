@@ -1347,6 +1347,7 @@ GameObject:
   - component: {fileID: 2515864820164438967}
   - component: {fileID: 6141870380883988479}
   - component: {fileID: 4274364475184909846}
+  - component: {fileID: 310875202562816683}
   m_Layer: 5
   m_Name: Main Menu
   m_TagString: Untagged
@@ -1459,7 +1460,19 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: TeamMAsTD.SaveLoadHandler, Assembly-CSharp
-        m_MethodName: SaveAllSaveables
+        m_MethodName: SaveAllSaveables_UnityEventOnly
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 310875202562816683}
+        m_TargetAssemblyTypeName: TeamMAsTD.MenuButton, Assembly-CSharp
+        m_MethodName: BackToMainMenuButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1523,3 +1536,15 @@ MonoBehaviour:
   isIndependentTimeScale: 1
   disableUIFunctionDuringTween: 0
   expandValue: 16
+--- !u!114 &310875202562816683
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9047951193722099347}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53ec8d2a769e3af4cb91a40e44368479, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

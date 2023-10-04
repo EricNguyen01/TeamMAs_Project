@@ -1072,7 +1072,7 @@ MonoBehaviour:
   dragDropUIImageObject: {fileID: 6717963996802540151}
   dropDenyImageObject: {fileID: 5094599634233476758}
   dragDropBlurAmount: 0.6
-  dropAllowedColor: {r: 0, g: 1, b: 0, a: 1}
+  dropAllowedColor: {r: 0.63584906, g: 1, b: 0.63584906, a: 1}
   dropDeniedColor: {r: 1, g: 0.65471697, b: 0.65471697, a: 1}
   useUnitThumbnailFromScriptableObject: 1
   dragDropVisualSameAsShopSlot: 1

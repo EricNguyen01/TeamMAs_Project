@@ -17,6 +17,7 @@ namespace TeamMAsTD
 #if UNITY_EDITOR
     [ExecuteInEditMode]
 #endif
+
     public class Saveable : MonoBehaviour
     {
         [SerializeField] private bool disableSaveLoadForThisSaveable = false;
@@ -27,9 +28,13 @@ namespace TeamMAsTD
 
         private string currentIdentification;
 
+#if UNITY_EDITOR
+
         private SerializedObject serializedObject;
 
         private SerializedProperty UUID_SerializedProperty;
+
+#endif
 
         private void OnEnable()
         {
@@ -41,6 +46,7 @@ namespace TeamMAsTD
 
         private void OnValidate()
         {
+#if UNITY_EDITOR
             if (!string.IsNullOrEmpty(currentIdentification) && !string.IsNullOrWhiteSpace(currentIdentification) && currentIdentification != "")
             {
                 serializedObject = new SerializedObject(this);
@@ -54,10 +60,12 @@ namespace TeamMAsTD
                     serializedObject.ApplyModifiedProperties();
                 }
             }
+#endif
         }
 
         private void GenerateID_If_None()
         {
+#if UNITY_EDITOR
             if (Application.isPlaying) return;
 
             if (!gameObject.scene.isLoaded) return;
@@ -82,6 +90,7 @@ namespace TeamMAsTD
             }
 
             currentIdentification = UUID;
+#endif
         }
 
         public string GetSaveableID()

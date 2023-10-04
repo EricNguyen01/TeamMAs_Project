@@ -1865,19 +1865,19 @@ MonoBehaviour:
     startDelaySec: 0
     completeBeforeMoveNext: 0
   - tween: {fileID: 6806960675766377943}
-    startDelaySec: 0.25
+    startDelaySec: 0.2
     completeBeforeMoveNext: 1
   - tween: {fileID: 6806960674135288255}
-    startDelaySec: 0.6
+    startDelaySec: 0.4
     completeBeforeMoveNext: 0
   - tween: {fileID: 6806960674166760121}
-    startDelaySec: 0.7
+    startDelaySec: 0.5
     completeBeforeMoveNext: 0
   - tween: {fileID: 6806960673958426429}
-    startDelaySec: 0.8
+    startDelaySec: 0.6
     completeBeforeMoveNext: 0
   - tween: {fileID: 6806960674515822354}
-    startDelaySec: 0.9
+    startDelaySec: 0.7
     completeBeforeMoveNext: 1
   - tween: {fileID: 4826020343918367118}
     startDelaySec: 0

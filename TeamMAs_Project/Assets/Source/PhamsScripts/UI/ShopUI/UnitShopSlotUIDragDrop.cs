@@ -19,7 +19,9 @@ namespace TeamMAsTD
         private PlantUnitSO slotUnitScriptableObject;
 
         [SerializeField] private Image unitThumbnailImage;
+
         [SerializeField] private TextMeshProUGUI unitNameDisplay;
+
         [SerializeField] private TextMeshProUGUI unitCostDisplay;
 
         [SerializeField]
@@ -70,6 +72,7 @@ namespace TeamMAsTD
 
         //the top most UI Canvas component that houses the rest of the children UI elements
         private Canvas parentCanva;
+
         //the Rect Transform of the top most parent UI canva above
         private RectTransform parentCanvaRect;
 
@@ -288,7 +291,7 @@ namespace TeamMAsTD
             {
                 GameObject childObj = plantOnTileMockUpVisualizationObj.transform.GetChild(i).gameObject;
 
-                Image childImage = childObj.GetComponent<Image>();
+                Image childImage; childObj.TryGetComponent<Image>(out childImage);
 
                 if (!childImage) continue;
 

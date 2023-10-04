@@ -226,6 +226,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1674262825 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1611048382564474489, guid: e864f50927cec454e99ba1479a735e84, type: 3}
+  m_PrefabInstance: {fileID: 6806960675420936519}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53ec8d2a769e3af4cb91a40e44368479, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1800338849
 GameObject:
   m_ObjectHideFlags: 0
@@ -436,6 +447,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6806960674166760125, guid: e864f50927cec454e99ba1479a735e84, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6806960674166760125, guid: e864f50927cec454e99ba1479a735e84, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1674262825}
+    - target: {fileID: 6806960674166760125, guid: e864f50927cec454e99ba1479a735e84, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: LoadGameButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 6806960674166760125, guid: e864f50927cec454e99ba1479a735e84, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: TeamMAsTD.MenuButton, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6806960674166760125, guid: e864f50927cec454e99ba1479a735e84, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 6806960674192644378, guid: e864f50927cec454e99ba1479a735e84, type: 3}
       propertyPath: m_Name
       value: MainMenuUI

@@ -4,10 +4,10 @@
 using PixelCrushers;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor;
+using UnityEngine;
 
 #if UNITY_EDITOR
-using UnityEngine;
+using UnityEditor;
 #endif
 
 namespace TeamMAsTD
@@ -18,15 +18,20 @@ namespace TeamMAsTD
     {
         [field: Header("Plant Unit Data")]
 
+#if UNITY_EDITOR
         //dynamic ID is used to identify specific SO INSTANCE of this SO (different for each instance)
         [field: ReadOnlyInspector]
+#endif
         [field: SerializeField]
         public string unitDynamicID { get; private set; }
 
+#if UNITY_EDITOR
         //static ID is used to identify if an SO INSTANCE is of this specific SO (same for all instances and the base SO in folder)
         [field: ReadOnlyInspector]
+#endif
         [field: SerializeField]
         public string unitStaticID { get; private set; }
+
         [field: SerializeField] public string unitDescription { get; private set; }
         [field: SerializeField] public Sprite unitThumbnail { get; private set; }//thumbnail icon sprite to be displayed in shop or other UIs
 
@@ -78,6 +83,8 @@ namespace TeamMAsTD
 
         //INTERNALS................................................................................................
 
+        [SerializeField]
+        [HideInInspector]
         public Sprite plantThumbnailPlaceholderSpr { get; private set; }
 
         private void OnEnable()
@@ -85,7 +92,6 @@ namespace TeamMAsTD
             SetDynamicID_IfNull_NonSerializable();
 
 #if UNITY_EDITOR
-
             SetStaticID_IfNull_Serializable();
 
             plantThumbnailPlaceholderSpr = AssetDatabase.GetBuiltinExtraResource<Sprite>("UI/Skin/UISprite.psd");
@@ -97,7 +103,6 @@ namespace TeamMAsTD
             SetDynamicID_IfNull_NonSerializable();
 
 #if UNITY_EDITOR
-
             SetStaticID_IfNull_Serializable();
 #endif
         }
@@ -126,6 +131,7 @@ namespace TeamMAsTD
 
         private void SetStaticID_IfNull_Serializable()
         {
+#if UNITY_EDITOR
             if (Application.isPlaying) return;
 
             SerializedObject serializedObject = new SerializedObject(this);
@@ -147,6 +153,7 @@ namespace TeamMAsTD
 
                 AssetDatabase.SaveAssetIfDirty(this);
             }
+#endif
         }
 
         public void SetSpecificPlantUnitDamage(float damage)

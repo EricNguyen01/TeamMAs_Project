@@ -77,37 +77,22 @@ namespace TeamMAsTD
 
         public void LoadDefaultScene()
         {
-            Scene defaultSc = SceneManager.GetSceneByBuildIndex(DEFAULT_SCENE_BUILD_INDEX);
-
-            if (defaultSc == null)
-            {
-                Debug.LogWarning("Default Scene Not Found! No Scene Will Be Loaded.");
-
-                return;
-            }
-
-            LoadScene(defaultSc.name);
+            LoadScene(DEFAULT_SCENE_BUILD_INDEX);
         }
 
         public void LoadFirstGameScene()
         {
-            Scene defaultSc = SceneManager.GetSceneByBuildIndex(FIRST_GAME_SCENE_BUILD_INDEX);
-
-            if (defaultSc == null)
-            {
-                Debug.LogWarning("First Game Scene Not Found! Load Default Scene Instead!");
-
-                LoadDefaultScene();
-
-                return;
-            }
-
-            LoadScene(defaultSc.name);
+            LoadScene(FIRST_GAME_SCENE_BUILD_INDEX);
         }
 
-        public void LoadScene(string sceneToLoad)
+        public void LoadScene(string sceneNameToLoad)
         {
-            SceneTransitionToScene(sceneToLoad);
+            SceneTransitionToScene(sceneNameToLoad);
+        }
+
+        public void LoadScene(int sceneNumToLoad)
+        {
+            SceneTransitionToScene(sceneNumToLoad);
         }
 
         public void AllowLoadSaveAfterSceneLoaded(bool allowedSaveToLoad)
@@ -115,13 +100,13 @@ namespace TeamMAsTD
             loadSaveAfterScene = allowedSaveToLoad;
         }
 
-        private void SceneTransitionToScene(string sceneTo)
+        private void SceneTransitionToScene(string sceneNameTo)
         {
-            if (string.IsNullOrEmpty(sceneTo) ||
-                string.IsNullOrWhiteSpace(sceneTo) ||
-                SceneManager.GetSceneByName(sceneTo) == null)
+            if (string.IsNullOrEmpty(sceneNameTo) ||
+                string.IsNullOrWhiteSpace(sceneNameTo) ||
+                sceneNameTo == null)
             {
-                Debug.LogWarning("Trying To Transition To Scene: " + sceneTo + "But Scene Does Not Exist!\n" +
+                Debug.LogWarning("Trying To Transition To Scene: " + sceneNameTo + "But Scene Does Not Exist!\n" +
                 "Loading Default Scene Instead.");
 
                 LoadDefaultScene();
@@ -129,14 +114,32 @@ namespace TeamMAsTD
                 return;
             }
 
-            StartCoroutine(SceneTransitionCoroutine(sceneTo));
+            StartCoroutine(SceneTransitionCoroutine(sceneNameTo, -1));
         }
 
-        private IEnumerator SceneTransitionCoroutine(string sceneTo)
+        private void SceneTransitionToScene(int sceneNumToLoad)
+        {
+            StartCoroutine(SceneTransitionCoroutine("", sceneNumToLoad));
+        }
+
+        private IEnumerator SceneTransitionCoroutine(string sceneNameTo = "", int sceneNumTo = -1)
         {
             EnableSceneLoadUI(true);
 
-            yield return SceneManager.LoadSceneAsync(sceneTo);
+            if (!string.IsNullOrEmpty(sceneNameTo) &&
+                !string.IsNullOrWhiteSpace(sceneNameTo) &&
+                sceneNameTo != null && sceneNameTo != "")
+            {
+                yield return SceneManager.LoadSceneAsync(sceneNameTo, LoadSceneMode.Single);
+            }
+            else if(sceneNumTo >= 0)
+            {
+                yield return SceneManager.LoadSceneAsync(sceneNumTo, LoadSceneMode.Single);
+            }
+            else
+            {
+                yield break;
+            }
 
             PixelCrushers.DialogueSystem.DialogueManager.Pause();
 

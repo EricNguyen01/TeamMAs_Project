@@ -139,6 +139,7 @@ namespace TeamMAsTD
             return true;
         }
 
+#if UNITY_EDITOR
         /// <summary>
         /// Helps converting auto-implemented property display name to its actual property name 
         /// which can then be picked up by FindProperty function.
@@ -150,5 +151,7 @@ namespace TeamMAsTD
         {
             return obj.FindProperty(string.Format("<{0}>k__BackingField", propName));
         }
+#endif
+
     }
 }

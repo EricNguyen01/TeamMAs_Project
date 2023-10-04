@@ -1687,7 +1687,7 @@ MonoBehaviour:
     Path: event:/Music
   Event: 
   PlayEvent: 1
-  StopEvent: 0
+  StopEvent: 2
   AllowFadeout: 1
   TriggerOnce: 0
   Preload: 0
@@ -5770,7 +5770,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8044427528212389576, guid: b2ae05a64eda3cc46ae632fa1fafb83a, type: 3}
       propertyPath: disableSaveLoadAlways
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8044427528212389578, guid: b2ae05a64eda3cc46ae632fa1fafb83a, type: 3}
       propertyPath: m_Name

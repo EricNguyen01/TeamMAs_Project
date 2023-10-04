@@ -33,6 +33,7 @@ namespace TeamMAsTD
         public WateringOnTile wateringOnTileScriptComp { get; private set; }
 
         [Header("Tile Debug Config")]
+
         [SerializeField] private bool drawTileDebug = true;
 
         [SerializeField]
