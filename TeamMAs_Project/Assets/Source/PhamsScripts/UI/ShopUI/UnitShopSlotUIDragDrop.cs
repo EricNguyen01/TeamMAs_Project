@@ -8,6 +8,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.Events;
 using UnityEngine.UI;
 using TMPro;
+using UnityEditor;
 
 namespace TeamMAsTD
 {
@@ -26,9 +27,20 @@ namespace TeamMAsTD
         "Dropping returns the object to its original position.")]
         private Image dragDropUIImageObject;
 
+        [SerializeField]
+        [Tooltip("The object with the UI Image component attached that shows the red X to indicate that the currently dragged plant" +
+        "is not plantable at mouse pos. This object must be the DragDropUIImageObject's child.")]
+        private Image dropDenyImageObject;
+
         private GameObject plantOnTileMockUpVisualizationObj;
 
         [SerializeField] [Range(0.0f, 1.0f)] private float dragDropBlurAmount = 0.6f;
+
+        [SerializeField] private Color dropAllowedColor = Color.green;
+
+        [SerializeField] private Color dropDeniedColor = Color.red;
+
+        private Color dropDefaultColor;
 
         [SerializeField]
         [Tooltip("Are we using the unit shop slot thumbnail sprite from the unit scriptable object " +
@@ -39,7 +51,7 @@ namespace TeamMAsTD
         [SerializeField] 
         [Tooltip("Is the UI image when dragging and dropping the same as the UI Image of this shop slot's image? " +
         "If an image is set for the drag drop UI object, setting this option to true will override it. The default setting is true.")] 
-        private bool dragDropVisualSameAsShopSlots = true;
+        private bool dragDropVisualSameAsShopSlot = true;
 
         //UnityEvents..................................................................................
 
@@ -83,7 +95,9 @@ namespace TeamMAsTD
             if (slotUnitScriptableObject == null)
             {
                 Debug.LogError("Unit ScriptableObject data for this unit shop slot: " + name + " is missing! Disabling shop slot object!");
+
                 gameObject.SetActive(false);
+
                 return;
             }
 
@@ -101,7 +115,9 @@ namespace TeamMAsTD
             {
                 Debug.LogError("Cannot find an EventSystem in the scene. " +
                 "An EventSystem is required for shop unit slot UI drag/drop to function. Disabling shop slot object!");
+
                 gameObject.SetActive(false);
+
                 return;
             }
 
@@ -157,8 +173,11 @@ namespace TeamMAsTD
             if (unitShopSlotImageRaycastComponent == null)
             {
                 unitShopSlotImageRaycastComponent = gameObject.AddComponent<Image>();
+
                 var color = unitShopSlotImageRaycastComponent.color;
+
                 color.a = 0.0f;
+
                 unitShopSlotImageRaycastComponent.color = color;
             }
         }
@@ -187,19 +206,35 @@ namespace TeamMAsTD
                 SpriteRenderer unitPrefabSpriteRenderer = slotUnitScriptableObject.unitPrefab.GetComponent<SpriteRenderer>();
 
                 unitThumbnailImage.sprite = unitPrefabSpriteRenderer.sprite;
+
                 unitThumbnailImage.color = unitPrefabSpriteRenderer.color;
             }
         }
 
         private void CheckAndGetDragDropRequirements()
         {
-            //check for drag drop Image UI object and its CanvasGroup component
-            if(dragDropUIImageObject == null)
+            //check if the important DragDropUIImageObject is null and if null,
+            //instantiate a child obj with an added Image component and attempt to assign the default Unity Square sprite to it as placeholder
+            if (!dragDropUIImageObject)
             {
-                Debug.LogError("Drag drop Image UI Object is not assigned on Unit Slot UI: " + name + ". Disabling drag/drop!");
+                GameObject go = Instantiate(new GameObject(), Vector3.zero, Quaternion.Euler(Vector3.zero), transform);
+
+                dragDropUIImageObject = go.AddComponent<Image>();
+
+                dragDropUIImageObject.sprite = slotUnitScriptableObject.plantThumbnailPlaceholderSpr;
+            }
+
+            //if dragDropUIImageObject is still null -> disable script
+            if(!dragDropUIImageObject)
+            {
+                Debug.LogError("Drag drop Image UI Object is not assigned on Unit Slot UI: " + name + ". Disabling shop drag/drop!");
+
                 enabled = false;
+
                 return;
             }
+
+            dropDefaultColor = dragDropUIImageObject.color;
 
             dragDropUIImageObjectBaseRectSize = dragDropUIImageObject.rectTransform.sizeDelta;
 
@@ -220,11 +255,14 @@ namespace TeamMAsTD
             parentCanva = GetComponentInParent<Canvas>();
 
             parentCanvaRect = parentCanva.GetComponent<RectTransform>();
+
+            if(dropDenyImageObject) dropDenyImageObject.gameObject.SetActive(false);
         }
 
         private void SetDragDropSameVisualAsShopSlot()
         {
-            if (!dragDropVisualSameAsShopSlots) return;
+            if (!dragDropVisualSameAsShopSlot) return;
+
             if(unitThumbnailImage == null)
             {
                 Debug.LogError("The Image UI obj to drag/drop is set to use the same image as the unit thumbnail Image obj but unit thumbnail image obj is not assigned!");
@@ -232,6 +270,7 @@ namespace TeamMAsTD
             }
 
             dragDropUIImageObject.sprite = unitThumbnailImage.sprite;
+
             dragDropUIImageObject.color = unitThumbnailImage.color;
         }
 
@@ -242,6 +281,24 @@ namespace TeamMAsTD
             plantOnTileMockUpVisualizationObj = Instantiate(dragDropUIImageObj.gameObject, transform);
 
             plantOnTileMockUpVisualizationObj.transform.localPosition = Vector3.zero;
+
+            if (plantOnTileMockUpVisualizationObj.transform.childCount == 0) return;
+
+            for(int i = 0; i < plantOnTileMockUpVisualizationObj.transform.childCount; i++)
+            {
+                GameObject childObj = plantOnTileMockUpVisualizationObj.transform.GetChild(i).gameObject;
+
+                Image childImage = childObj.GetComponent<Image>();
+
+                if (!childImage) continue;
+
+                if(dropDenyImageObject && childImage.sprite == dropDenyImageObject.sprite)
+                {
+                    Destroy(childImage.gameObject);
+
+                    break;
+                }
+            }
         }
 
         private void SetNameAndCostForUnitShopSlot()
@@ -275,6 +332,8 @@ namespace TeamMAsTD
             {
                 for(int i = 0; i < dragDropUIImageObject.transform.childCount; i++)
                 {
+                    if (dragDropUIImageObject.transform.GetChild(i).gameObject == dropDenyImageObject.gameObject) continue;
+
                     if (!dragDropUIImageObject.transform.GetChild(i).gameObject.activeInHierarchy)
                     {
                         dragDropUIImageObject.transform.GetChild(i).gameObject.SetActive(true);
@@ -491,6 +550,8 @@ namespace TeamMAsTD
 
         public void OnBeginDrag(PointerEventData eventData)
         {
+            if (!enabled) return;
+
             //On click and hold the mouse on the unit shop slot UI image:
             dragDropUIImageObject.rectTransform.sizeDelta = dragDropUIImageObjectBaseRectSize;
 
@@ -522,7 +583,11 @@ namespace TeamMAsTD
 
         public void OnDrag(PointerEventData eventData)
         {
+            if (!enabled) return;
+
             //On dragging while still holding the mouse:
+
+            //first, process the dragDropUIImageObject (the blurred plant icon following the mouse to indicate a plant's being dragged)
             //fix the drag drop UI image object to the EventSystem mouse pointer (in dragDropUIImage UI space from screen space)
             Vector2 mousePosLocal;
 
@@ -534,28 +599,51 @@ namespace TeamMAsTD
 
             EnableAndSet_PlantRangeCircle_To_WorldMousePos(worldMousePos, true);
 
-            if (plantOnTileMockUpVisualizationObj == null) return;
+            //process the plant planted mock-up visual on tile and other visual cues below:
 
-            if (eventData.pointerEnter == null)
+            //if not hovering on anything:
+            if (!eventData.pointerEnter)
             {
-                plantOnTileMockUpVisualizationObj.SetActive(false);
+                if (plantOnTileMockUpVisualizationObj) plantOnTileMockUpVisualizationObj.SetActive(false);
+
+                dragDropUIImageObject.color = dropDeniedColor;
+
+                if (dropDenyImageObject && !dropDenyImageObject.gameObject.activeInHierarchy)
+                {
+                    dropDenyImageObject.gameObject.SetActive(true);
+                }
 
                 return;
             }
 
+            //if hovering on smth:
             //check if the mouse pointer is on an obj with Tile component attached
             Tile destinationTile;
 
             eventData.pointerEnter.TryGetComponent<Tile>(out destinationTile);
 
+            //if not hovering on a tile or a tile does not accept plant placement:
             if (!destinationTile || !destinationTile.CanPlaceUnit_EXTERNAL(slotUnitScriptableObject))
             {
                 currentTileBeingDraggedOver = null;
 
                 plantOnTileMockUpVisualizationObj.SetActive(false);
 
+                dragDropUIImageObject.color = dropDeniedColor;
+
+                if (dropDenyImageObject && !dropDenyImageObject.gameObject.activeInHierarchy)
+                {
+                    dropDenyImageObject.gameObject.SetActive(true);
+                }
+
                 return;
             }
+
+            //else if hovering on a valid plantable tile:
+
+            if(dropDenyImageObject) dropDenyImageObject.gameObject.SetActive(false);
+
+            dragDropUIImageObject.color = dropAllowedColor;
 
             if(!plantOnTileMockUpVisualizationObj.activeInHierarchy) plantOnTileMockUpVisualizationObj.SetActive(true);
 
@@ -589,11 +677,12 @@ namespace TeamMAsTD
             RectTransformUtility.ScreenPointToLocalPointInRectangle(parentCanvaRect, tilePosScreenPnt, parentCanva.worldCamera, out tilePosUILocalPnt);
 
             plantOnTileMockUpVisualizationObj.transform.position = parentCanvaRect.transform.TransformPoint(tilePosUILocalPnt);
-
         }
 
         public void OnEndDrag(PointerEventData eventData)
         {
+            if (!enabled) return;
+
             //On releasing the mouse after dragging and holding:
 
             //Immediately return the drag/drop Image UI obj back to being this obj's children with original local pos
@@ -601,6 +690,8 @@ namespace TeamMAsTD
             dragDropUIImageObject.transform.SetParent(transform);
 
             dragDropUIImageObject.transform.localPosition = originalDragDropPos;
+
+            dragDropUIImageObject.color = dropDefaultColor;
 
             dragDropUIImageObject.gameObject.SetActive(false);
 

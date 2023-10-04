@@ -76,6 +76,10 @@ namespace TeamMAsTD
         [field: SerializeField] public WaveSO waveToUnlockPlantPurchaseOnWaveFinished { get; private set; }
         [field: SerializeField] public WaveSO waveToUnlockPlantPurchaseOnWaveStarted { get; private set; }
 
+        //INTERNALS................................................................................................
+
+        public Sprite plantThumbnailPlaceholderSpr { get; private set; }
+
         private void OnEnable()
         {
             SetDynamicID_IfNull_NonSerializable();
@@ -83,6 +87,8 @@ namespace TeamMAsTD
 #if UNITY_EDITOR
 
             SetStaticID_IfNull_Serializable();
+
+            plantThumbnailPlaceholderSpr = AssetDatabase.GetBuiltinExtraResource<Sprite>("UI/Skin/UISprite.psd");
 #endif
         }
 
