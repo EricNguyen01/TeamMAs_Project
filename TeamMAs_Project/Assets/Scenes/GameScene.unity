@@ -798,11 +798,23 @@ PrefabInstance:
       value: Dialogue Manager Custom
       objectReference: {fileID: 0}
     - target: {fileID: 8732644743546886105, guid: d1cdca22ec4708540aa68019e182a7d8, type: 3}
+      propertyPath: dontDestroyOnLoad
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8732644743546886105, guid: d1cdca22ec4708540aa68019e182a7d8, type: 3}
+      propertyPath: allowOnlyOneInstance
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8732644743546886105, guid: d1cdca22ec4708540aa68019e182a7d8, type: 3}
       propertyPath: displaySettings.barkSettings.minBarkSeconds
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8732644743546886105, guid: d1cdca22ec4708540aa68019e182a7d8, type: 3}
       propertyPath: displaySettings.barkSettings.allowBarksDuringConversations
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8732644743546887593, guid: d1cdca22ec4708540aa68019e182a7d8, type: 3}
+      propertyPath: singleton
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -5770,7 +5782,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8044427528212389576, guid: b2ae05a64eda3cc46ae632fa1fafb83a, type: 3}
       propertyPath: disableSaveLoadAlways
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8044427528212389578, guid: b2ae05a64eda3cc46ae632fa1fafb83a, type: 3}
       propertyPath: m_Name

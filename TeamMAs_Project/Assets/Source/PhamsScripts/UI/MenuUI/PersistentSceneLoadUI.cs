@@ -1,6 +1,7 @@
 // Script Author: Pham Nguyen. All Rights Reserved. 
 // GitHub: https://github.com/EricNguyen01.
 
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -19,8 +20,6 @@ namespace TeamMAsTD
         //first game scene shoud be the scene after menu scene or load transition scene (if has one) in the build index
         private const int FIRST_GAME_SCENE_BUILD_INDEX = 1;
 
-        [SerializeField] private bool loadSaveAfterScene = false;
-
         [SerializeField] private float additionalTransitionTime = 1.0f;
 
         //INTERNALS..............................................................
@@ -31,7 +30,11 @@ namespace TeamMAsTD
 
         private CanvasGroup sceneLoadCanvasGroup;
 
+        private bool loadSaveAfterScene = false;
+
         private bool isLoadingSavedData = false;
+
+        private bool isPerformingSceneLoad = false;
 
         private void Awake()
         {
@@ -100,6 +103,11 @@ namespace TeamMAsTD
             loadSaveAfterScene = allowedSaveToLoad;
         }
 
+        public bool IsPerformingSceneLoad()
+        {
+            return isPerformingSceneLoad;
+        }
+
         private void SceneTransitionToScene(string sceneNameTo)
         {
             if (string.IsNullOrEmpty(sceneNameTo) ||
@@ -124,6 +132,8 @@ namespace TeamMAsTD
 
         private IEnumerator SceneTransitionCoroutine(string sceneNameTo = "", int sceneNumTo = -1)
         {
+            isPerformingSceneLoad = true;
+
             EnableSceneLoadUI(true);
 
             if (!string.IsNullOrEmpty(sceneNameTo) &&
@@ -136,15 +146,14 @@ namespace TeamMAsTD
             {
                 yield return SceneManager.LoadSceneAsync(sceneNumTo, LoadSceneMode.Single);
             }
-            else
-            {
-                yield break;
-            }
 
-            PixelCrushers.DialogueSystem.DialogueManager.Pause();
-
-            if (SaveLoadHandler.saveLoadHandlerInstance && loadSaveAfterScene)
+            if (SaveLoadHandler.saveLoadHandlerInstance && SaveLoadHandler.HasSavedData() && loadSaveAfterScene)
             {
+                if (PixelCrushers.DialogueSystem.DialogueManager.IsConversationActive)
+                {
+                    PixelCrushers.DialogueSystem.DialogueManager.StopAllConversations();
+                }
+
                 if (SaveLoadHandler.LoadToAllSaveables()) 
                 { 
                     yield return StartCoroutine(SceneSavedDataLoadCheckIntervalCoroutine()); 
@@ -153,9 +162,9 @@ namespace TeamMAsTD
 
             yield return new WaitForSeconds(additionalTransitionTime);
 
-            PixelCrushers.DialogueSystem.DialogueManager.Unpause();
-
             EnableSceneLoadUI(false);
+
+            isPerformingSceneLoad = false;
         }
 
         private void EnableSceneLoadUI(bool enabled)

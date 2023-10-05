@@ -191,7 +191,7 @@ namespace TeamMAsTD
 
         public void TemporaryDisableTimeSpeedUp(bool shouldDisable, bool shouldResetTimeSpeed = true)
         {
-            if (shouldDisable)
+            if (timeSpeedUpCanvasGroup && shouldDisable)
             {
                 if (isTemporaryDisabled) return;
 

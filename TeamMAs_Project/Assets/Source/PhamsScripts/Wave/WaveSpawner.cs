@@ -42,7 +42,11 @@ namespace TeamMAsTD
 
         public int currentWave { get; private set; } = 0;
 
+        private int lastWaveStarted = 0;
+
         public bool waveAlreadyStarted { get; private set; } = false;
+
+        private bool justStartedWaveDebug = false;
 
         private float waveTimerStartTime = 0.0f;
 
@@ -279,6 +283,10 @@ namespace TeamMAsTD
         public void StartCurrentWave()
         {
             StartWave(currentWave);
+
+            lastWaveStarted = currentWave;
+
+            justStartedWaveDebug = false;
         }
 
         public void DEBUG_StartWaveAt(int waveNum)
@@ -288,11 +296,15 @@ namespace TeamMAsTD
 
             //decrease current wave by 1 so that when the currently running wave is finished, current wave ends up the same
             currentWave--;
+
+            justStartedWaveDebug = true;
         }
 
         public void DEBUG_StartWaveAtForward(int waveNum)
         {
             JumpToWave(waveNum, true);
+
+            justStartedWaveDebug = true;
         }
 
         public void ProcessWaveFinished(int waveNum, bool incrementWaveOnFinished, bool broadcastWaveFinishedEvent)
@@ -426,7 +438,10 @@ namespace TeamMAsTD
         {
             SaveDataSerializeBase waveSpawnerSave;
 
-            int waveToSave = currentWave + 1; //+1 because save func is called before the next wave increment upon the current wave just finished.
+            //we dont save the currentWave variable here because sometime this SaveData() is called before currentWave is incremented
+            //on current wave ended which could lead to wrong wave number being saved.
+            //saving lastWaveStarted + 1 will always be correct 
+            int waveToSave = lastWaveStarted + 1;
             
             waveSpawnerSave = new SaveDataSerializeBase(waveToSave, 
                                                         transform.position, 

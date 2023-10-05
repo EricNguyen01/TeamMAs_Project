@@ -53,15 +53,19 @@ namespace TeamMAsTD
         {
             //if (waveSpawnerInUse) conversationNum = waveSpawnerInUse.currentWave + 1;
 
-            StartCoroutine(StartConversationDelayCoroutine(1f));
+            if (!TeamMAsTD.PersistentSceneLoadUI.persistentSceneLoadUIInstance)
+            {
+                StartCoroutine(StartConversationDelayCoroutine(0.5f));
+            }
+            else StartCoroutine(StartConversationAfterSceneLoad());
         }
 
         void OnConversationStart(Transform actor) // THIS SCRIPT MUST BE ON THE DIALOGUE MANAGER CUSTOM OBJECT TO WORK
         {
             DialogueManager.DisplaySettings.subtitleSettings.continueButton = DisplaySettings.SubtitleSettings.ContinueButtonMode.Never;
             DialogueManager.ConversationView.SetupContinueButton();
-            StartCoroutine(DelayContinueButton(0.4f));
-            Time.timeScale = 0;
+            StartCoroutine(DelayContinueButton(0.5f));
+            //Time.timeScale = 0;
         }
 
         void OnConversationEnd(Transform actor) // THIS SCRIPT MUST BE ON THE DIALOGUE MANAGER CUSTOM OBJECT TO WORK
@@ -84,6 +88,21 @@ namespace TeamMAsTD
 
             //DialogueManager.StartConversation(string conversation, Transform actor, Transform conversant); // actor and conversant are optional
             StartConversation(conversationNum);
+        }
+
+        private IEnumerator StartConversationAfterSceneLoad()
+        {
+            if (!PersistentSceneLoadUI.persistentSceneLoadUIInstance) yield break;
+
+            if (PersistentSceneLoadUI.persistentSceneLoadUIInstance.IsPerformingSceneLoad())
+            {
+                yield return new WaitWhile(() => PersistentSceneLoadUI.persistentSceneLoadUIInstance.IsPerformingSceneLoad());
+
+                yield return StartCoroutine(StartConversationDelayCoroutine(0.5f));
+
+                yield break;
+            }
+            else yield return StartCoroutine(StartConversationDelayCoroutine(1.0f));
         }
 
         public void SkipDialog()
