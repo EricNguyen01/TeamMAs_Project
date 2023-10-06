@@ -259,12 +259,12 @@ namespace TeamMAsTD
             //to avoid setting water bars data on the same frame when this plant water bars usage system script is initializing
             //usually happens during loading from saves
             //which could cause bugs.
-            StartCoroutine(SetWaterBarsRemainingDirectlyNextPhysFrame(waterBarsRemainingToSet));
+            StartCoroutine(SetWaterBarsRemainingDirectlyDelay(waterBarsRemainingToSet));
         }
 
-        private IEnumerator SetWaterBarsRemainingDirectlyNextPhysFrame(int waterBarsRemainingToSet)
+        private IEnumerator SetWaterBarsRemainingDirectlyDelay(int waterBarsRemainingToSet)
         {
-            yield return new WaitForFixedUpdate();
+            yield return new WaitForSeconds(0.1f);
 
             if (waterBarsRemainingToSet >= totalWaterBars) waterBarsRemainingToSet = totalWaterBars;
 
@@ -274,8 +274,6 @@ namespace TeamMAsTD
 
             if (waterBarsRemaining > 0) plantUnitWorldUI.SetWaterSliderValue(waterBarsRemaining, totalWaterBars);
             else UprootOnWaterDepleted();
-
-            yield break;
         }
 
         private void UprootOnWaterDepleted(float uprootDelaySec = 0.0f)

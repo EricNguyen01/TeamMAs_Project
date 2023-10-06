@@ -54,7 +54,7 @@ namespace TeamMAsTD
 
             SaveLoadHandler.OnLoadingFinished += () => hasDisabledRain = false;
 
-            WaveSpawner.OnWaveFinished += OnWaveFinished;
+            WaveSpawner.OnWaveFinished += RainOnWaveFinished;
         }
 
         private void OnDisable()
@@ -63,12 +63,12 @@ namespace TeamMAsTD
 
             SaveLoadHandler.OnLoadingFinished -= () => hasDisabledRain = false;
 
-            WaveSpawner.OnWaveFinished -= OnWaveFinished;
+            WaveSpawner.OnWaveFinished -= RainOnWaveFinished;
 
             StopCoroutine(RainSequenceCoroutine());
         }
 
-        private void OnWaveFinished(WaveSpawner waveSpawner, int waveNum, bool stillHasOngoingWaves)
+        private void RainOnWaveFinished(WaveSpawner waveSpawner, int waveNum, bool stillHasOngoingWaves)
         {
             if (hasDisabledRain) return;
 

@@ -160,7 +160,7 @@ namespace TeamMAsTD
 
         private void Start()
         {
-            StartCoroutine(CheckSufficientFundToWaterAllNextPhysFramesCoroutine());
+            StartCoroutine(CheckSufficientFundToWaterAllDelayCoroutine());
         }
 
         private bool CanWaterAll(bool displayInsufficientFundPopup = false)
@@ -220,13 +220,9 @@ namespace TeamMAsTD
          * To avoid updating while water bars data is being loaded to plants from saves which could cause 
          * mismatching data and bugs
          */
-        private IEnumerator CheckSufficientFundToWaterAllNextPhysFramesCoroutine()
+        private IEnumerator CheckSufficientFundToWaterAllDelayCoroutine()
         {
-            yield return new WaitForFixedUpdate();
-
-            yield return new WaitForFixedUpdate();
-
-            yield return new WaitForFixedUpdate();
+            yield return new WaitForSeconds(0.1f);
 
             CheckSufficientFundToWaterAll();
 
