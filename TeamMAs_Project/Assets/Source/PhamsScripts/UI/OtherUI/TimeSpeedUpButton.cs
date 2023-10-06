@@ -208,7 +208,7 @@ namespace TeamMAsTD
                 return;
             }
 
-            if (!isTemporaryDisabled || !hasWaveAlreadyStarted || hasDialogueStarted) return;
+            if (!timeSpeedUpCanvasGroup || !isTemporaryDisabled || !hasWaveAlreadyStarted || hasDialogueStarted) return;
 
             isTemporaryDisabled = false;
 

@@ -124,8 +124,6 @@ namespace TeamMAsTD
 
             Tile.OnTileLoaded += (Tile tile) => RegisteringExistingPlantUnit(tile.plantUnitOnTile, tile);
 
-            Tile.OnTileLoaded += (Tile tile) => CheckSufficientFundToWaterAll();
-
             WaveSpawner.OnAllWaveSpawned += (WaveSpawner ws, bool b) => TemporaryDisableWaterAll(true);
 
             Rain.OnRainStarted += (Rain rain) => TemporaryDisableWaterAll(true);
@@ -133,7 +131,8 @@ namespace TeamMAsTD
 
             PlantWaterUsageSystem.OnPlantWaterBarsRefilled += UpdateCostOnPlantWaterBarsRefilled;
 
-            CheckSufficientFundToWaterAll();//this function also displays water all cost text
+            //calls on enable to display water all cost text UI right away
+            CheckSufficientFundToWaterAll();
         }
 
         private void OnDisable()
@@ -149,8 +148,6 @@ namespace TeamMAsTD
 
             Tile.OnTileLoaded -= (Tile tile) => RegisteringExistingPlantUnit(tile.plantUnitOnTile, tile);
 
-            Tile.OnTileLoaded -= (Tile tile) => CheckSufficientFundToWaterAll();
-
             WaveSpawner.OnAllWaveSpawned -= (WaveSpawner ws, bool b) => TemporaryDisableWaterAll(true);
 
             Rain.OnRainStarted -= (Rain rain) => TemporaryDisableWaterAll(true);
@@ -159,6 +156,11 @@ namespace TeamMAsTD
             PlantWaterUsageSystem.OnPlantWaterBarsRefilled -= UpdateCostOnPlantWaterBarsRefilled;
 
             StopAllCoroutines();
+        }
+
+        private void Start()
+        {
+            StartCoroutine(CheckSufficientFundToWaterAllNextPhysFramesCoroutine());
         }
 
         private bool CanWaterAll(bool displayInsufficientFundPopup = false)
@@ -213,6 +215,24 @@ namespace TeamMAsTD
             return true;
         }
 
+        /*
+         * This function updates sufficient fund to water all plants on the next few phys update frames
+         * To avoid updating while water bars data is being loaded to plants from saves which could cause 
+         * mismatching data and bugs
+         */
+        private IEnumerator CheckSufficientFundToWaterAllNextPhysFramesCoroutine()
+        {
+            yield return new WaitForFixedUpdate();
+
+            yield return new WaitForFixedUpdate();
+
+            yield return new WaitForFixedUpdate();
+
+            CheckSufficientFundToWaterAll();
+
+            yield break;
+        }
+
         private void DisplayWaterAllCostText(int waterAllCosts)
         {
             if(waterAllCosts <= 0)
@@ -245,18 +265,9 @@ namespace TeamMAsTD
 
         private void ProcessWaterAllButtonBehaviorsOnRainEnded()
         {
-            StartCoroutine(ProcessWaterAllButtonBehaviorsOnRainEndedCoroutine());
-        }
-
-        private IEnumerator ProcessWaterAllButtonBehaviorsOnRainEndedCoroutine()
-        {
-            yield return new WaitForSeconds(0.06f);
-
             CheckSufficientFundToWaterAll();
 
             TemporaryDisableWaterAll(false);
-
-            yield break;
         }
         
         public void WaterAll()

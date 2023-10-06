@@ -83,6 +83,8 @@ namespace TeamMAsTD
                 return;
             }
 
+            SaveLoadHandler.EnableSaveLoad(true);
+
             PersistentSceneLoadUI.persistentSceneLoadUIInstance.AllowLoadSaveAfterSceneLoaded(true);
 
             //for now, we hard code the scene to load because we only have 1 main game scene.
@@ -96,6 +98,8 @@ namespace TeamMAsTD
             if (PersistentSceneLoadUI.persistentSceneLoadUIInstance)
             {
                 PersistentSceneLoadUI.persistentSceneLoadUIInstance.LoadScene(0);
+
+                SaveLoadHandler.SaveAllSaveables();
 
                 PersistentSceneLoadUI.persistentSceneLoadUIInstance.AllowLoadSaveAfterSceneLoaded(true);
             }

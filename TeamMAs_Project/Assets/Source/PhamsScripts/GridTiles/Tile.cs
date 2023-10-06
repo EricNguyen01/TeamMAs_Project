@@ -312,6 +312,13 @@ namespace TeamMAsTD
             yield break;
         }
 
+        private IEnumerator SaveTileSaveableNextPhysFrame()
+        {
+            yield return new WaitForFixedUpdate();
+
+            SaveLoadHandler.SaveThisSaveableOnly(tileSaveable);
+        }
+
         //PUBLICS........................................................................
 
         //the method below gets and sets the tile's data from the Grid class upon grid generation
@@ -358,7 +365,7 @@ namespace TeamMAsTD
             //throw plant successful event
             OnPlantUnitPlantedOnTile?.Invoke(plantUnitOnTile, this);
 
-            SaveLoadHandler.SaveThisSaveableOnly(tileSaveable);
+            StartCoroutine(SaveTileSaveableNextPhysFrame());
 
             //re-enable tile UI open/close functionality on a plant planted on
             tileMenuAndUprootOnTileUI.SetDisableTileMenuOpen(false);
@@ -410,7 +417,7 @@ namespace TeamMAsTD
 
             plantUnitOnTile = null;
 
-            SaveLoadHandler.SaveThisSaveableOnly(tileSaveable);
+            StartCoroutine(SaveTileSaveableNextPhysFrame());
         }
 
         public void UprootingInsufficientFundsEventInvoke()
@@ -567,13 +574,6 @@ namespace TeamMAsTD
             }
 
             plantUnitOnTile.plantWaterUsageSystem.SetWaterBarsRemainingDirectly(savedTile.currentPlantWater);
-
-            if(plantUnitOnTile.plantWaterUsageSystem.GetRemainingWaterBars() <= 0)
-            {
-                Destroy(plantUnitOnTile.gameObject);
-
-                plantUnitOnTile = null;
-            }
 
             OnTileLoaded?.Invoke(this);
         }

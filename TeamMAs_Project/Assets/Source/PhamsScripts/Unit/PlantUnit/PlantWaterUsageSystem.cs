@@ -3,6 +3,7 @@
 
 using System.Collections;
 using System.Collections.Generic;
+using System.Resources;
 using UnityEngine;
 
 namespace TeamMAsTD
@@ -254,22 +255,30 @@ namespace TeamMAsTD
 
         public void SetWaterBarsRemainingDirectly(int waterBarsRemainingToSet)
         {
-            if (waterBarsRemainingToSet >= totalWaterBars)
-            {
-                waterBarsRemainingToSet = totalWaterBars;
+            //Delay setting water bars by 1 phys frame
+            //to avoid setting water bars data on the same frame when this plant water bars usage system script is initializing
+            //usually happens during loading from saves
+            //which could cause bugs.
+            StartCoroutine(SetWaterBarsRemainingDirectlyNextPhysFrame(waterBarsRemainingToSet));
+        }
 
-                return;
-            }
+        private IEnumerator SetWaterBarsRemainingDirectlyNextPhysFrame(int waterBarsRemainingToSet)
+        {
+            yield return new WaitForFixedUpdate();
+
+            if (waterBarsRemainingToSet >= totalWaterBars) waterBarsRemainingToSet = totalWaterBars;
 
             if (waterBarsRemainingToSet < 0) waterBarsRemainingToSet = 0;
 
             waterBarsRemaining = waterBarsRemainingToSet;
 
             if (waterBarsRemaining > 0) plantUnitWorldUI.SetWaterSliderValue(waterBarsRemaining, totalWaterBars);
-            else plantUnitWorldUI.SetWaterSliderValue(0, totalWaterBars);
+            else UprootOnWaterDepleted();
+
+            yield break;
         }
 
-        private void UprootOnWaterDepleted(float uprootDelaySec)
+        private void UprootOnWaterDepleted(float uprootDelaySec = 0.0f)
         {
             //if the parent tile that this plant is planted on is not null:
             if (tilePlantedOn != null && tilePlantedOn.plantUnitOnTile == plantUnitLinked) 

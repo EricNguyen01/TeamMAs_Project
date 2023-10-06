@@ -221,9 +221,9 @@ namespace TeamMAsTD
             waveTimerStartTime = Time.realtimeSinceStartup;
 
             //invoke wave started event
-            OnWaveStarted?.Invoke(this, waveNum);
-
             OnWaveStartedEvent?.Invoke();
+
+            OnWaveStarted?.Invoke(this, waveNum);
         }
 
         //find if there's any other ongoing waves started by other wavespawner apart from this wavespawner
@@ -284,8 +284,6 @@ namespace TeamMAsTD
         {
             StartWave(currentWave);
 
-            lastWaveStarted = currentWave;
-
             justStartedWaveDebug = false;
         }
 
@@ -316,6 +314,8 @@ namespace TeamMAsTD
             waveAlreadyStarted = false;
 
             waveTimerEndTime = Time.realtimeSinceStartup;
+
+            lastWaveStarted = currentWave;
 
             LogWaveRunTimeInSeconds(waveNum);
 
@@ -456,11 +456,15 @@ namespace TeamMAsTD
 
             currentWave = (int)savedDataToLoad.LoadSavedObject();
 
-            if (currentWave <= 0) return;
+            if (currentWave <= 0)
+            {
+                lastWaveStarted = 0;
 
-            int waveFinished = currentWave - 1;
+                return;
+            }
+            else lastWaveStarted = currentWave - 1;
 
-            OnWaveFinished?.Invoke(this, waveFinished, false);
+            OnWaveFinished?.Invoke(this, lastWaveStarted, false);
         }
     }
 }

@@ -363,6 +363,15 @@ namespace TeamMAsTD
             else saveLoadHandlerInstance.disableSaveLoadRuntime = true;
         }
 
+        public static bool IsSaveLoadRuntimeEnabled()
+        {
+            if (!saveLoadHandlerInstance) return false;
+
+            if (saveLoadHandlerInstance.disableSaveLoadRuntime) return false;
+
+            return true;
+        }
+
         #endregion
 
         #region Editor

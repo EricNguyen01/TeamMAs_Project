@@ -100,7 +100,7 @@ namespace TeamMAsTD
                 if (rainParticleSystem.isPlaying) rainParticleSystem.Stop();
             }
 
-            yield return new WaitForSeconds(0.2f);
+            yield return new WaitForSeconds(0.27f);
 
             OnRainEnded?.Invoke(this);
 
