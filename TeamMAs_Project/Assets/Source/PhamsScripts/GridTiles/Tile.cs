@@ -312,7 +312,7 @@ namespace TeamMAsTD
             yield break;
         }
 
-        private IEnumerator SaveTileSaveableNextPhysFrame()
+        private IEnumerator SaveTileSaveableNextPhysUpdate()
         {
             yield return new WaitForFixedUpdate();
 
@@ -365,7 +365,7 @@ namespace TeamMAsTD
             //throw plant successful event
             OnPlantUnitPlantedOnTile?.Invoke(plantUnitOnTile, this);
 
-            StartCoroutine(SaveTileSaveableNextPhysFrame());
+            StartCoroutine(SaveTileSaveableNextPhysUpdate());
 
             //re-enable tile UI open/close functionality on a plant planted on
             tileMenuAndUprootOnTileUI.SetDisableTileMenuOpen(false);
@@ -417,7 +417,7 @@ namespace TeamMAsTD
 
             plantUnitOnTile = null;
 
-            StartCoroutine(SaveTileSaveableNextPhysFrame());
+            StartCoroutine(SaveTileSaveableNextPhysUpdate());
         }
 
         public void UprootingInsufficientFundsEventInvoke()
@@ -571,6 +571,8 @@ namespace TeamMAsTD
                                           transform.position,
                                           transform.rotation,
                                           transform).GetComponent<PlantUnit>();
+
+                break;
             }
 
             plantUnitOnTile.plantWaterUsageSystem.SetWaterBarsRemainingDirectly(savedTile.currentPlantWater);

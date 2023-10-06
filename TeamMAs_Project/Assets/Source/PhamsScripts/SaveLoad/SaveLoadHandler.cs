@@ -316,6 +316,13 @@ namespace TeamMAsTD
 
         public void DeleteAllSaveData()
         {
+            if (!saveLoadHandlerInstance) return;
+
+            saveLoadHandlerInstance.DeleteAllSaveDataEditorInternal();
+        }
+
+        private void DeleteAllSaveDataEditorInternal()
+        {
             if (!saveLoadManager) return;
 
             if (showDebugLog) Debug.Log("Deleting All Save Data!");
@@ -431,7 +438,7 @@ namespace TeamMAsTD
                         return;
                     }
 
-                    saveLoadHandler.DeleteAllSaveData();
+                    saveLoadHandler.DeleteAllSaveDataEditorInternal();
                 }
             }
         }

@@ -45,6 +45,8 @@ namespace TeamMAsTD
             WaveSpawner.OnWaveFinished -= ConsumeWaterOnWaveFinished;
 
             Rain.OnRainEnded -= RefillWaterOnRainEnded_And_CheckWavesSurvivedWithoutWater;
+
+            StopAllCoroutines();
         }
 
         private void Start()
@@ -259,12 +261,12 @@ namespace TeamMAsTD
             //to avoid setting water bars data on the same frame when this plant water bars usage system script is initializing
             //usually happens during loading from saves
             //which could cause bugs.
-            StartCoroutine(SetWaterBarsRemainingDirectlyDelay(waterBarsRemainingToSet));
+            StartCoroutine(SetWaterBarsRemainingDirectlyNextPhysUpdate(waterBarsRemainingToSet));
         }
 
-        private IEnumerator SetWaterBarsRemainingDirectlyDelay(int waterBarsRemainingToSet)
+        private IEnumerator SetWaterBarsRemainingDirectlyNextPhysUpdate(int waterBarsRemainingToSet)
         {
-            yield return new WaitForSeconds(0.1f);
+            yield return new WaitForFixedUpdate();
 
             if (waterBarsRemainingToSet >= totalWaterBars) waterBarsRemainingToSet = totalWaterBars;
 
@@ -272,7 +274,12 @@ namespace TeamMAsTD
 
             waterBarsRemaining = waterBarsRemainingToSet;
 
-            if (waterBarsRemaining > 0) plantUnitWorldUI.SetWaterSliderValue(waterBarsRemaining, totalWaterBars);
+            if (waterBarsRemaining > 0) 
+            { 
+                plantUnitWorldUI.SetWaterSliderValue(waterBarsRemaining, totalWaterBars);
+
+                SaveLoadHandler.SaveThisSaveableOnly(tilePlantedOn.GetTileSaveable());
+            }
             else UprootOnWaterDepleted();
         }
 

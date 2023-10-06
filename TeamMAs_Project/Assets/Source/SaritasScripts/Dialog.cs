@@ -55,7 +55,7 @@ namespace TeamMAsTD
 
             if (!TeamMAsTD.PersistentSceneLoadUI.persistentSceneLoadUIInstance)
             {
-                StartCoroutine(StartConversationDelayCoroutine(0.5f));
+                StartCoroutine(StartConversationDelayCoroutine(0.35f));
             }
             else StartCoroutine(StartConversationAfterSceneLoad());
         }
@@ -64,7 +64,7 @@ namespace TeamMAsTD
         {
             DialogueManager.DisplaySettings.subtitleSettings.continueButton = DisplaySettings.SubtitleSettings.ContinueButtonMode.Never;
             DialogueManager.ConversationView.SetupContinueButton();
-            StartCoroutine(DelayContinueButton(0.5f));
+            StartCoroutine(DelayContinueButton(0.4f));
             //Time.timeScale = 0;
         }
 
@@ -98,11 +98,11 @@ namespace TeamMAsTD
             {
                 yield return new WaitWhile(() => PersistentSceneLoadUI.persistentSceneLoadUIInstance.IsPerformingSceneLoad());
 
-                yield return StartCoroutine(StartConversationDelayCoroutine(0.5f));
+                yield return StartCoroutine(StartConversationDelayCoroutine(0.35f));
 
                 yield break;
             }
-            else yield return StartCoroutine(StartConversationDelayCoroutine(1.0f));
+            else yield return StartCoroutine(StartConversationDelayCoroutine(0.8f));
         }
 
         public void SkipDialog()

@@ -22,6 +22,8 @@ namespace TeamMAsTD
 
         //INTERNALS.....................................................
 
+        private CanvasGroup pauseMenuButtonCanvasGroup;
+
         private bool pauseMenuOpened = false;
 
         private float timeScaleBeforePause = 0.0f;
@@ -38,16 +40,42 @@ namespace TeamMAsTD
             }
 
             EnablePauseMenuCanvasGroup(false);
+
+            TryGetComponent<CanvasGroup>(out pauseMenuButtonCanvasGroup);
+
+            if (!pauseMenuButtonCanvasGroup)
+            {
+                pauseMenuButtonCanvasGroup = gameObject.AddComponent<CanvasGroup>();
+            }
+        }
+
+        private void OnEnable()
+        {
+            SaveLoadHandler.OnSavingStarted += () => EnablePauseMenuButtonCanvasGroup(false);
+
+            SaveLoadHandler.OnSavingFinished += () => EnablePauseMenuButtonCanvasGroup(true);
+
+            SaveLoadHandler.OnLoadingStarted += () => EnablePauseMenuButtonCanvasGroup(false);
+
+            SaveLoadHandler.OnLoadingFinished += () => EnablePauseMenuButtonCanvasGroup(true);
         }
 
         private void OnDisable()
         {
+            SaveLoadHandler.OnSavingStarted -= () => EnablePauseMenuButtonCanvasGroup(false);
+
+            SaveLoadHandler.OnSavingFinished -= () => EnablePauseMenuButtonCanvasGroup(true);
+
+            SaveLoadHandler.OnLoadingStarted -= () => EnablePauseMenuButtonCanvasGroup(false);
+
+            SaveLoadHandler.OnLoadingFinished -= () => EnablePauseMenuButtonCanvasGroup(true);
+
             StopCoroutine(CheckAndStopTimeCoroutine());
 
             if (Time.timeScale != timeScaleBeforePause) Time.timeScale = timeScaleBeforePause;
         }
 
-        private void EnablePauseMenuCanvasGroup(bool enabled)
+        private void EnablePauseMenuCanvasGroup(bool enabled, float enableAlpha = 1.0f, float disableAlpha = 0.0f)
         {
             if (!pauseMenuCanvasGroup) return;
 
@@ -55,7 +83,7 @@ namespace TeamMAsTD
             {
                 pauseMenuOpened = true;
 
-                pauseMenuCanvasGroup.alpha = 1.0f;
+                pauseMenuCanvasGroup.alpha = enableAlpha;
 
                 pauseMenuCanvasGroup.interactable = true;
 
@@ -66,11 +94,33 @@ namespace TeamMAsTD
 
             pauseMenuOpened = false;
 
-            pauseMenuCanvasGroup.alpha = 0.0f;
+            pauseMenuCanvasGroup.alpha = disableAlpha;
 
             pauseMenuCanvasGroup.interactable = false;
 
             pauseMenuCanvasGroup.blocksRaycasts = false;
+        }
+
+        private void EnablePauseMenuButtonCanvasGroup(bool enabled, float enableAlpha = 1.0f, float disableAlpha = 0.4f)
+        {
+            if (!pauseMenuButtonCanvasGroup) return;
+
+            if (enabled)
+            {
+                pauseMenuButtonCanvasGroup.alpha = enableAlpha;
+
+                pauseMenuButtonCanvasGroup.interactable = true;
+
+                pauseMenuButtonCanvasGroup.blocksRaycasts = true;
+
+                return;
+            }
+
+            pauseMenuButtonCanvasGroup.alpha = disableAlpha;
+
+            pauseMenuButtonCanvasGroup.interactable = false;
+
+            pauseMenuButtonCanvasGroup.blocksRaycasts = false;
         }
 
         public void TogglePauseMenu()

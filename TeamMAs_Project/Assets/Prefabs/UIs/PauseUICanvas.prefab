@@ -702,6 +702,7 @@ GameObject:
   - component: {fileID: 5016623854282399914}
   - component: {fileID: 6559636418441606567}
   - component: {fileID: 6418021163320589923}
+  - component: {fileID: 3980936215636631464}
   m_Layer: 5
   m_Name: PauseOpenButton
   m_TagString: Untagged
@@ -868,6 +869,18 @@ MonoBehaviour:
   disableUIFunctionDuringTween: 0
   rotateDegrees: -90
   rotateMode: 0
+--- !u!225 &3980936215636631464
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7965951194950092717}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &8441748914483907765
 GameObject:
   m_ObjectHideFlags: 0
@@ -1548,3 +1561,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53ec8d2a769e3af4cb91a40e44368479, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isDebugOnlyButton: 0
+  debugButtonToggleKey: 293

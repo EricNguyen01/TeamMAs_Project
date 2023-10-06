@@ -86,7 +86,7 @@ namespace TeamMAsTD
 
         protected virtual void Start()
         {
-            
+            DisplayResourceAmountText(gameResourceSO);
         }
 
         public virtual void DisplayResourceNameText()

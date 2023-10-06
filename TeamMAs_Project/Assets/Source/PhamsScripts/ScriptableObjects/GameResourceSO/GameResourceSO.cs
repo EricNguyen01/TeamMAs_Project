@@ -56,13 +56,6 @@ namespace TeamMAsTD
         }
 #endif
 
-        /*protected virtual void Awake()
-        {
-            CheckResourceAmountMinMaxReached();
-
-            OnResourceAmountUpdated?.Invoke(this);
-        }*/
-
         public virtual void AddResourceAmount(float addedAmount)
         {
             resourceAmount += addedAmount;
@@ -114,6 +107,24 @@ namespace TeamMAsTD
             OnResourceAmountUpdated?.Invoke(this);
         }
 
+        public void ResetAndUpdateResourceValuesToInitial()
+        {
+            ResetResourceValuesToInitial();
+
+            CheckResourceAmountMinMaxReached();
+        }
+
+        private void ResetResourceValuesToInitial()
+        {
+            resourceAmountMin = initialResourceAmountMin;
+
+            resourceAmountCap = initialResourceAmountCap;
+
+            resourceAmount = initialResourceAmount;
+
+            currentResourceAmount = resourceAmount;
+        }
+
         protected virtual void CheckResourceAmountMinMaxReached()
         {
             //if resource amount below 0 -> set = 0
@@ -138,13 +149,7 @@ namespace TeamMAsTD
 
         void ISerializationCallbackReceiver.OnAfterDeserialize()
         {
-            resourceAmountMin = initialResourceAmountMin;
-
-            resourceAmount = initialResourceAmount;
-
-            currentResourceAmount = resourceAmount;
-
-            resourceAmountCap = initialResourceAmountCap;
+            ResetResourceValuesToInitial();
         }
     }
 }

@@ -15,5 +15,6 @@ MonoBehaviour:
   <resourceName>k__BackingField: Coins
   initialResourceAmountMin: 0
   initialResourceAmount: 30
+  currentResourceAmount: 30
   initialResourceAmountCap: 2000
   <coinsGainOnWaveEnded>k__BackingField: 0

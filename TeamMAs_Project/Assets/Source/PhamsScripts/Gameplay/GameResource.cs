@@ -12,10 +12,11 @@ namespace TeamMAsTD
 {
     /*
      * ONLY EXACTLY 1 GAME RESOURCE CLASS/GAME OBJECT INSTANCE CAN EXIST IN A SCENE!
-     * GameResource is a singleton that exists through scene changes.
-     * GameResource class is a central place for other classes/scripts to access the game's resources.
+     * GameResource is a singleton (DOES NOT exist on scene changes but is static in the scene that it is in).
+     * GameResource class is a central place for other classes/scripts to access the game's resource scriptable objects.
+     * The resource scriptable objects are where different resource types and their data are stored.
      * When a new game resource is made which is through making a new game resource scriptable object, the new game resource SO goes here (make a new field for it).
-     * To access the game resource instance, call: GameResource.gameResourceInstance...
+     * To access the game resource instance in the scene that it is in (if exists), call: GameResource.gameResourceInstance...
      */
     [DisallowMultipleComponent]
     public class GameResource : MonoBehaviour, ISaveable
@@ -50,14 +51,27 @@ namespace TeamMAsTD
             //keep only 1 instance of game resource during runtime
             if(gameResourceInstance != null)
             {
-                Debug.LogWarning("More than 1 instance of GameResource object exists! Destroying duplicated GameResource obj: " + name + "...");
+                Debug.LogWarning("More than 1 instance of GameResource object exists! There should only be one.\n" +
+                "Destroying duplicated GameResource obj: " + name);
+                
                 Destroy(gameObject);
+                
                 return;
             }
 
             gameResourceInstance = this;
 
-            DontDestroyOnLoad(gameObject);
+            if (coinResourceSO) coinResourceSO.ResetAndUpdateResourceValuesToInitial();
+
+            if (emotionalHealthSOTypes != null && emotionalHealthSOTypes.Count > 0)
+            {
+                for (int i = 0; i < emotionalHealthSOTypes.Count; i++)
+                {
+                    if (!emotionalHealthSOTypes[i]) continue;
+
+                    emotionalHealthSOTypes[i].ResetAndUpdateResourceValuesToInitial();
+                }
+            }
         }
 
         private void OnEnable()
@@ -93,9 +107,13 @@ namespace TeamMAsTD
                 }
             }
 
+            int coinResourceAmount = 0;
+
+            if (coinResourceSO) coinResourceAmount = (int)coinResourceSO.resourceAmount;
+
             SaveDataSerializeBase resourceSaveData;
 
-            GameResourceSaveData resourceSaveDataObject = new GameResourceSaveData((int)coinResourceSO.resourceAmount, emotionalHealthTypesSaveDict);
+            GameResourceSaveData resourceSaveDataObject = new GameResourceSaveData(coinResourceAmount, emotionalHealthTypesSaveDict);
 
             resourceSaveData = new SaveDataSerializeBase(resourceSaveDataObject, transform.position, scene.name);
 
@@ -106,19 +124,34 @@ namespace TeamMAsTD
         {
             if (savedDataToLoad == null) return;
 
+            StartCoroutine(LoadResourceDataNextPhysUpdate(savedDataToLoad));
+        }
+
+        private IEnumerator LoadResourceDataNextPhysUpdate(SaveDataSerializeBase savedDataToLoad)
+        {
+            yield return new WaitForFixedUpdate();
+
+            if (savedDataToLoad == null) yield break;
+
             GameResourceSaveData savedGameResource = (GameResourceSaveData)savedDataToLoad.LoadSavedObject();
-            
-            coinResourceSO.SetSpecificResourceAmount(savedGameResource.coinResourceAmountSave);
 
-            if (savedGameResource.emotionalHealthTypesAmountSave == null || savedGameResource.emotionalHealthTypesAmountSave.Count == 0) return;
+            if(coinResourceSO) coinResourceSO.SetSpecificResourceAmount(savedGameResource.coinResourceAmountSave);
 
-            if (emotionalHealthSOTypes == null && emotionalHealthSOTypes.Count == 0) return;
-            
-            for(int i = 0; i < emotionalHealthSOTypes.Count; i++)
+            if (savedGameResource.emotionalHealthTypesAmountSave == null || savedGameResource.emotionalHealthTypesAmountSave.Count == 0)
+            {
+                yield return null; yield break;
+            }
+
+            if (emotionalHealthSOTypes == null && emotionalHealthSOTypes.Count == 0)
+            {
+                yield return null; yield break;
+            }
+
+            for (int i = 0; i < emotionalHealthSOTypes.Count; i++)
             {
                 if (emotionalHealthSOTypes[i] == null) continue;
 
-                if(savedGameResource.emotionalHealthTypesAmountSave.ContainsKey(emotionalHealthSOTypes[i].name))
+                if (savedGameResource.emotionalHealthTypesAmountSave.ContainsKey(emotionalHealthSOTypes[i].name))
                 {
                     float emotionalHealthAmount = savedGameResource.emotionalHealthTypesAmountSave[emotionalHealthSOTypes[i].name];
 
