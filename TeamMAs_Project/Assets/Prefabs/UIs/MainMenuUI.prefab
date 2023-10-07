@@ -2109,6 +2109,7 @@ GameObject:
   - component: {fileID: 6806960675761142616}
   - component: {fileID: 6806960675761142631}
   - component: {fileID: 6806960675761142630}
+  - component: {fileID: 1140865533694197551}
   m_Layer: 5
   m_Name: MainMenuPanel
   m_TagString: Untagged
@@ -2169,7 +2170,7 @@ MonoBehaviour:
     startDelaySec: 0
     completeBeforeMoveNext: 0
   - tween: {fileID: 6806960675766377943}
-    startDelaySec: 0.2
+    startDelaySec: 0.3
     completeBeforeMoveNext: 1
   - tween: {fileID: 6806960674135288255}
     startDelaySec: 0.4
@@ -2193,6 +2194,36 @@ MonoBehaviour:
   OnTweenSequenceCompleted:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1140865533694197551
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6806960675761142617}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.45490196, g: 0.34117648, b: 0.22745098, a: 1}
+  m_RaycastTarget: 0
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
 --- !u!1 &6806960675766377930
 GameObject:
   m_ObjectHideFlags: 0

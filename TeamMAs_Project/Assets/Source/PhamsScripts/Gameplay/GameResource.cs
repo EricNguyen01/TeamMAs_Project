@@ -4,15 +4,14 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Runtime.CompilerServices;
 using UnityEngine;
-using UnityEngine.Rendering;
+using UnityEngine.SceneManagement;
 
 namespace TeamMAsTD
 {
     /*
      * ONLY EXACTLY 1 GAME RESOURCE CLASS/GAME OBJECT INSTANCE CAN EXIST IN A SCENE!
-     * GameResource is a singleton (DOES NOT exist on scene changes but is static in the scene that it is in).
+     * GameResource is a singleton (exists through scene changes except when entering main menu scene which the instance will be destroyed).
      * GameResource class is a central place for other classes/scripts to access the game's resource scriptable objects.
      * The resource scriptable objects are where different resource types and their data are stored.
      * When a new game resource is made which is through making a new game resource scriptable object, the new game resource SO goes here (make a new field for it).
@@ -61,6 +60,8 @@ namespace TeamMAsTD
 
             gameResourceInstance = this;
 
+            DontDestroyOnLoad(gameResourceInstance.gameObject);
+
             if (coinResourceSO) coinResourceSO.ResetAndUpdateResourceValuesToInitial();
 
             if (emotionalHealthSOTypes != null && emotionalHealthSOTypes.Count > 0)
@@ -79,11 +80,26 @@ namespace TeamMAsTD
             TryGetComponent<Saveable>(out saveable);
 
             GameResourceSO.OnResourceAmountUpdated += (resourceSO) => SaveLoadHandler.SaveThisSaveableOnly(saveable);
+
+            SceneManager.sceneLoaded += (Scene sc, LoadSceneMode loadSceneMode) => DestroyIfMenuSceneEntered(sc);
         }
 
         private void OnDisable()
         {
             GameResourceSO.OnResourceAmountUpdated -= (resourceSO) => SaveLoadHandler.SaveThisSaveableOnly(saveable);
+
+            SceneManager.sceneLoaded -= (Scene sc, LoadSceneMode loadSceneMode) => DestroyIfMenuSceneEntered(sc);
+        }
+
+        private void DestroyIfMenuSceneEntered(Scene scene)
+        {
+            if (scene == null) return;
+
+            if (scene.buildIndex == 0 ||
+               scene.name.Contains("Menu"))
+            {
+                if(gameResourceInstance) Destroy(gameResourceInstance.gameObject); return;
+            }
         }
 
         //ISaveable interface implementations...........................................................................

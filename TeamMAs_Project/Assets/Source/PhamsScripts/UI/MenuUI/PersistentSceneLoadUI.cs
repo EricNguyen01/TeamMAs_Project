@@ -22,6 +22,8 @@ namespace TeamMAsTD
 
         [SerializeField] private float additionalTransitionTime = 1.0f;
 
+        [SerializeField] private bool performAdditionalTransitionTime = false;
+
         //INTERNALS..............................................................
 
         public static PersistentSceneLoadUI persistentSceneLoadUIInstance;
@@ -160,7 +162,7 @@ namespace TeamMAsTD
                 }
             }
 
-            yield return new WaitForSeconds(additionalTransitionTime);
+            if(performAdditionalTransitionTime) yield return new WaitForSeconds(additionalTransitionTime);
 
             EnableSceneLoadUI(false);
 
