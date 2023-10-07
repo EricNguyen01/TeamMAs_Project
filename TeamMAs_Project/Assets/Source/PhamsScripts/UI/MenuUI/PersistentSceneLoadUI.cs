@@ -52,7 +52,7 @@ namespace TeamMAsTD
 
             sceneLoadCanvas = GetComponent<Canvas>();
 
-            if (sceneLoadCanvas == null) sceneLoadCanvas = GetComponentInChildren<Canvas>();
+            if (sceneLoadCanvas == null) sceneLoadCanvas = GetComponentInChildren<Canvas>(true);
 
             if (sceneLoadCanvas == null)
             {
@@ -179,12 +179,16 @@ namespace TeamMAsTD
 
             if (enabled)
             {
+                sceneLoadCanvas.gameObject.SetActive(true);
+
                 sceneLoadCanvasGroup.alpha = 1.0f;
 
                 sceneLoadCanvasGroup.blocksRaycasts = true;
 
                 return;
             }
+
+            sceneLoadCanvas.gameObject.SetActive(false);
 
             sceneLoadCanvasGroup.alpha = 0.0f;
 

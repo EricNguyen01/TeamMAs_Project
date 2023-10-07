@@ -8,7 +8,7 @@ public class RandomTipsDisplay : MonoBehaviour
     [SerializeField]
     [Min(1.0f)]
     [Tooltip("The time in seconds until the next tip in the tips list is displayed. Default is 2s and cannot goes below 1.0f")]
-    private float timeTillNextTip = 2.0f;
+    private float timeTillNextTip = 2.5f;
 
     [SerializeField]
     [Tooltip("Does the tip starts with the word \"Tips\" in the beginning?")]
