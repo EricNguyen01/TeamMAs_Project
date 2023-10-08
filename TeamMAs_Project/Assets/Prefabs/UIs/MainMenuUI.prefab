@@ -440,6 +440,7 @@ MonoBehaviour:
   tweenAutoStartDelay: 0
   isIndependentTimeScale: 1
   disableUIFunctionDuringTween: 1
+  disableUIFunctionAfterTween: 0
   moveDir: 0
   moveDistance: 1
   currentPositionAsStartPoint: 1
@@ -463,6 +464,7 @@ MonoBehaviour:
   tweenAutoStartDelay: 0
   isIndependentTimeScale: 0
   disableUIFunctionDuringTween: 0
+  disableUIFunctionAfterTween: 0
   expandValue: 16
 --- !u!225 &7487238915879284473
 CanvasGroup:
@@ -632,6 +634,7 @@ MonoBehaviour:
   tweenAutoStartDelay: 0
   isIndependentTimeScale: 1
   disableUIFunctionDuringTween: 1
+  disableUIFunctionAfterTween: 0
   moveDir: 0
   moveDistance: 1
   currentPositionAsStartPoint: 1
@@ -655,6 +658,7 @@ MonoBehaviour:
   tweenAutoStartDelay: 0
   isIndependentTimeScale: 0
   disableUIFunctionDuringTween: 0
+  disableUIFunctionAfterTween: 0
   expandValue: 16
 --- !u!114 &2602064477371806912
 MonoBehaviour:
@@ -809,7 +813,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1611048382564474489}
-        m_TargetAssemblyTypeName: MenuButton, Assembly-CSharp
+        m_TargetAssemblyTypeName: TeamMAsTD.MenuButton, Assembly-CSharp
         m_MethodName: LoadGameButton
         m_Mode: 1
         m_Arguments:
@@ -838,6 +842,7 @@ MonoBehaviour:
   tweenAutoStartDelay: 0
   isIndependentTimeScale: 1
   disableUIFunctionDuringTween: 1
+  disableUIFunctionAfterTween: 0
   moveDir: 0
   moveDistance: 1
   currentPositionAsStartPoint: 1
@@ -861,6 +866,7 @@ MonoBehaviour:
   tweenAutoStartDelay: 0
   isIndependentTimeScale: 0
   disableUIFunctionDuringTween: 0
+  disableUIFunctionAfterTween: 0
   expandValue: 16
 --- !u!114 &1611048382564474489
 MonoBehaviour:
@@ -1415,6 +1421,7 @@ MonoBehaviour:
   tweenAutoStartDelay: 0
   isIndependentTimeScale: 1
   disableUIFunctionDuringTween: 1
+  disableUIFunctionAfterTween: 0
   moveDir: 0
   moveDistance: 1
   currentPositionAsStartPoint: 1
@@ -1438,6 +1445,7 @@ MonoBehaviour:
   tweenAutoStartDelay: 0
   isIndependentTimeScale: 0
   disableUIFunctionDuringTween: 0
+  disableUIFunctionAfterTween: 0
   expandValue: 16
 --- !u!225 &2256115357123429027
 CanvasGroup:
@@ -1530,6 +1538,7 @@ MonoBehaviour:
   tweenAutoStartDelay: 0
   isIndependentTimeScale: 0
   disableUIFunctionDuringTween: 0
+  disableUIFunctionAfterTween: 0
   moveDir: 0
   moveDistance: 1
   currentPositionAsStartPoint: 1
@@ -1632,6 +1641,7 @@ MonoBehaviour:
   tweenAutoStartDelay: 0
   isIndependentTimeScale: 0
   disableUIFunctionDuringTween: 0
+  disableUIFunctionAfterTween: 0
   moveDir: 2
   moveDistance: 18
   currentPositionAsStartPoint: 1
@@ -2289,6 +2299,7 @@ MonoBehaviour:
   tweenAutoStartDelay: 0
   isIndependentTimeScale: 1
   disableUIFunctionDuringTween: 0
+  disableUIFunctionAfterTween: 0
   moveDir: 0
   moveDistance: 1
   currentPositionAsStartPoint: 1
@@ -2412,6 +2423,7 @@ MonoBehaviour:
   tweenAutoStartDelay: 0
   isIndependentTimeScale: 1
   disableUIFunctionDuringTween: 0
+  disableUIFunctionAfterTween: 0
   canvasGroupToFade: {fileID: 0}
   canvasGroupAlphaToFadeInTo: 0
   canvasGroupAlphaToFadeOutTo: 1
@@ -2419,6 +2431,7 @@ MonoBehaviour:
   imageAlphaToFadeInTo: 0
   imageAlphaToFadeOutTo: 255
   fadeMode: 1
+  reverseFadeOnFadeCycleFinished: 0
 --- !u!1001 &3555375321466387770
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -167,6 +167,8 @@ namespace TeamMAsTD
 
             if (performAdditionalTransitionTime) yield return new WaitForSecondsRealtime(additionalTransitionTime);
 
+            if (loadingScreenSlider) loadingScreenSlider.DOValue(UnityEngine.Random.Range(0.7f, 0.8f), 0.5f);
+
             if (!string.IsNullOrEmpty(sceneNameTo) &&
                 !string.IsNullOrWhiteSpace(sceneNameTo) &&
                 sceneNameTo != null && sceneNameTo != "")
@@ -177,8 +179,6 @@ namespace TeamMAsTD
             {
                 yield return SceneManager.LoadSceneAsync(sceneNumTo, LoadSceneMode.Single);
             }
-
-            if(loadingScreenSlider) loadingScreenSlider.DOValue(UnityEngine.Random.Range(0.7f, 0.8f), 0.5f);
 
             if (SaveLoadHandler.saveLoadHandlerInstance && SaveLoadHandler.HasSavedData() && loadSaveAfterScene)
             {
@@ -196,7 +196,7 @@ namespace TeamMAsTD
             if (loadingScreenSlider)
             {
                 if(performAdditionalTransitionTime) loadingScreenSlider.DOValue(1.0f, additionalTransitionTime + 0.1f);
-                else loadingScreenSlider.DOValue(1.0f, 0.25f);
+                else loadingScreenSlider.DOValue(1.0f, 0.3f);
             }
 
             if (performAdditionalTransitionTime) yield return new WaitForSecondsRealtime(additionalTransitionTime);
