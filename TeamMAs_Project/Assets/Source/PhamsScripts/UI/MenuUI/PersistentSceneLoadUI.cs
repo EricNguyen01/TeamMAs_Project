@@ -5,7 +5,9 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using DG.Tweening;
 
 namespace TeamMAsTD
 {
@@ -19,6 +21,12 @@ namespace TeamMAsTD
 
         //first game scene shoud be the scene after menu scene or load transition scene (if has one) in the build index
         private const int FIRST_GAME_SCENE_BUILD_INDEX = 1;
+
+        [SerializeField] private Canvas loadingScreenCanvas;
+
+        [SerializeField] private UIFade loadingScreenUIFadeComponent;
+
+        [SerializeField] private Slider loadingScreenSlider;
 
         [SerializeField] private float additionalTransitionTime = 1.0f;
 
@@ -50,7 +58,7 @@ namespace TeamMAsTD
 
             DontDestroyOnLoad(gameObject);
 
-            sceneLoadCanvas = GetComponent<Canvas>();
+            if (loadingScreenCanvas) sceneLoadCanvas = loadingScreenCanvas;
 
             if (sceneLoadCanvas == null) sceneLoadCanvas = GetComponentInChildren<Canvas>(true);
 
@@ -61,9 +69,21 @@ namespace TeamMAsTD
 
             if(sceneLoadCanvas) sceneLoadCanvasGroup = sceneLoadCanvas.GetComponent<CanvasGroup>();
 
-            if (sceneLoadCanvasGroup == null && sceneLoadCanvas) sceneLoadCanvasGroup = sceneLoadCanvas.gameObject.AddComponent<CanvasGroup>();
+            if (!sceneLoadCanvasGroup && sceneLoadCanvas) sceneLoadCanvasGroup = sceneLoadCanvas.gameObject.AddComponent<CanvasGroup>();
 
-            EnableSceneLoadUI(false);
+            sceneLoadCanvasGroup.alpha = 0.0f;
+
+            if(!loadingScreenUIFadeComponent) loadingScreenUIFadeComponent = sceneLoadCanvas.GetComponent<UIFade>();
+
+            if(!loadingScreenUIFadeComponent) loadingScreenUIFadeComponent = sceneLoadCanvas.gameObject.AddComponent<UIFade>();
+
+            loadingScreenUIFadeComponent.SetTweenExecuteMode(UITweenBase.UITweenExecuteMode.Internal);
+
+            loadingScreenUIFadeComponent.SetFadeMode(UIFade.UIFadeMode.FadeIn);
+
+            loadingScreenUIFadeComponent.StopAndResetUITweenImmediate();
+
+            if(!loadingScreenSlider) loadingScreenSlider = GetComponentInChildren<Slider>(true);
         }
 
         private void OnEnable()
@@ -78,6 +98,11 @@ namespace TeamMAsTD
             SaveLoadHandler.OnLoadingStarted -= () => isLoadingSavedData = true;
 
             SaveLoadHandler.OnLoadingFinished -= () => isLoadingSavedData = false;
+        }
+
+        private void Start()
+        {
+            EnableSceneLoadUIImmediate(false);
         }
 
         public void LoadDefaultScene()
@@ -136,7 +161,11 @@ namespace TeamMAsTD
         {
             isPerformingSceneLoad = true;
 
-            EnableSceneLoadUI(true);
+            yield return StartCoroutine(EnableSceneLoadUISequence(true));
+
+            if (performAdditionalTransitionTime && loadingScreenSlider) loadingScreenSlider.DOValue(UnityEngine.Random.Range(0.3f, 0.4f), additionalTransitionTime);
+
+            if (performAdditionalTransitionTime) yield return new WaitForSecondsRealtime(additionalTransitionTime);
 
             if (!string.IsNullOrEmpty(sceneNameTo) &&
                 !string.IsNullOrWhiteSpace(sceneNameTo) &&
@@ -148,6 +177,8 @@ namespace TeamMAsTD
             {
                 yield return SceneManager.LoadSceneAsync(sceneNumTo, LoadSceneMode.Single);
             }
+
+            if(loadingScreenSlider) loadingScreenSlider.DOValue(UnityEngine.Random.Range(0.7f, 0.8f), 0.5f);
 
             if (SaveLoadHandler.saveLoadHandlerInstance && SaveLoadHandler.HasSavedData() && loadSaveAfterScene)
             {
@@ -162,20 +193,28 @@ namespace TeamMAsTD
                 }
             }
 
-            if(performAdditionalTransitionTime) yield return new WaitForSeconds(additionalTransitionTime);
+            if (loadingScreenSlider)
+            {
+                if(performAdditionalTransitionTime) loadingScreenSlider.DOValue(1.0f, additionalTransitionTime + 0.1f);
+                else loadingScreenSlider.DOValue(1.0f, 0.25f);
+            }
 
-            EnableSceneLoadUI(false);
+            if (performAdditionalTransitionTime) yield return new WaitForSecondsRealtime(additionalTransitionTime);
+
+            yield return StartCoroutine(EnableSceneLoadUISequence(false));
+
+            if (loadingScreenSlider) loadingScreenSlider.value = 1.0f;
 
             isPerformingSceneLoad = false;
         }
 
-        private void EnableSceneLoadUI(bool enabled)
+        private void EnableSceneLoadUIImmediate(bool enabled)
         {
             if (!sceneLoadCanvas || !sceneLoadCanvasGroup) return;
 
             sceneLoadCanvasGroup.ignoreParentGroups = true;
 
-            sceneLoadCanvasGroup.interactable = false;
+            sceneLoadCanvasGroup.blocksRaycasts = true;
 
             if (enabled)
             {
@@ -183,16 +222,56 @@ namespace TeamMAsTD
 
                 sceneLoadCanvasGroup.alpha = 1.0f;
 
-                sceneLoadCanvasGroup.blocksRaycasts = true;
-
                 return;
             }
 
-            sceneLoadCanvas.gameObject.SetActive(false);
-
             sceneLoadCanvasGroup.alpha = 0.0f;
 
-            sceneLoadCanvasGroup.blocksRaycasts = false;
+            sceneLoadCanvas.gameObject.SetActive(false);
+        }
+
+        private IEnumerator EnableSceneLoadUISequence(bool enabled)
+        {
+            if (!sceneLoadCanvas || !sceneLoadCanvasGroup) yield break;
+
+            sceneLoadCanvasGroup.ignoreParentGroups = true;
+
+            sceneLoadCanvasGroup.blocksRaycasts = true;
+
+            if (loadingScreenSlider) loadingScreenSlider.value = 0.0f;
+
+            if (enabled)
+            {
+                sceneLoadCanvas.gameObject.SetActive(true);
+
+                if (loadingScreenUIFadeComponent)
+                {
+                    loadingScreenUIFadeComponent.SetFadeMode(UIFade.UIFadeMode.FadeIn);
+
+                    loadingScreenUIFadeComponent.RunTweenInternal();
+                }
+                else sceneLoadCanvasGroup.alpha = 1.0f;
+
+                yield break;
+            }
+            else
+            {
+                if (loadingScreenUIFadeComponent)
+                {
+                    loadingScreenUIFadeComponent.SetFadeMode(UIFade.UIFadeMode.FadeOut);
+
+                    loadingScreenUIFadeComponent.RunTweenInternal();
+                }
+                else sceneLoadCanvasGroup.alpha = 0.0f;
+
+                if (loadingScreenUIFadeComponent) yield return new WaitForSecondsRealtime(loadingScreenUIFadeComponent.GetTweenDuration());
+
+                loadingScreenUIFadeComponent.StopAndResetUITweenImmediate();
+
+                sceneLoadCanvas.gameObject.SetActive(false);
+            }
+
+            yield break;
         }
 
         private WaitForFixedUpdate waitForFixedUpdate = new WaitForFixedUpdate();//cache wait for fixed update
@@ -212,6 +291,11 @@ namespace TeamMAsTD
             }
 
             yield break;
+        }
+
+        private void TweenLoadingSlider()
+        {
+
         }
     }
 }

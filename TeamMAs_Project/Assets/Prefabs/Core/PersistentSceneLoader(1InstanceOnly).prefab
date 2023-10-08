@@ -165,6 +165,7 @@ GameObject:
   - component: {fileID: 2545718157399404774}
   - component: {fileID: 4134137608516341355}
   - component: {fileID: 6542785902921229346}
+  - component: {fileID: 153832608308000702}
   m_Layer: 0
   m_Name: LoadingScreenCanvas
   m_TagString: Untagged
@@ -223,8 +224,8 @@ CanvasGroup:
   m_GameObject: {fileID: 4368856952630507469}
   m_Enabled: 1
   m_Alpha: 0
-  m_Interactable: 0
-  m_BlocksRaycasts: 0
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 1
 --- !u!114 &4134137608516341355
 MonoBehaviour:
@@ -266,6 +267,33 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &153832608308000702
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4368856952630507469}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d582db315895f854193f6639d2cfeee1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UI_TweenExecuteMode: 4
+  easeMode: 13
+  tweenDuration: 1
+  tweenAutoStartDelay: 0
+  isIndependentTimeScale: 1
+  disableUIFunctionDuringTween: 0
+  disableUIFunctionAfterTween: 0
+  canvasGroupToFade: {fileID: 2545718157399404774}
+  canvasGroupAlphaToFadeInTo: 1
+  canvasGroupAlphaToFadeOutTo: 0
+  imageToFade: {fileID: 0}
+  imageAlphaToFadeInTo: 0
+  imageAlphaToFadeOutTo: 255
+  fadeMode: 0
+  reverseFadeOnFadeCycleFinished: 0
 --- !u!1 &4673488220717180017
 GameObject:
   m_ObjectHideFlags: 0
@@ -302,8 +330,8 @@ RectTransform:
   m_Father: {fileID: 3173195328670792001}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.105000004, y: 0.09325927}
-  m_AnchorMax: {x: 0.8824792, y: 0.18459257}
+  m_AnchorMin: {x: 0.10552084, y: 0.049000002}
+  m_AnchorMax: {x: 0.8824792, y: 0.1402963}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -403,6 +431,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce1aa141f614c39478cec9647badf668, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  loadingScreenCanvas: {fileID: 3082328526136417532}
+  loadingScreenUIFadeComponent: {fileID: 153832608308000702}
+  loadingScreenSlider: {fileID: 7566658773045395245}
   additionalTransitionTime: 4
   performAdditionalTransitionTime: 1
 --- !u!1 &5958883571991754872
@@ -416,6 +447,8 @@ GameObject:
   - component: {fileID: 2771985688584034273}
   - component: {fileID: 5863109220021774830}
   - component: {fileID: 7222544027843172735}
+  - component: {fileID: 1385000587589633480}
+  - component: {fileID: 5973969568961489998}
   m_Layer: 0
   m_Name: LoadingText
   m_TagString: Untagged
@@ -540,6 +573,45 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &1385000587589633480
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5958883571991754872}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d582db315895f854193f6639d2cfeee1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UI_TweenExecuteMode: 3
+  easeMode: 7
+  tweenDuration: 0.7
+  tweenAutoStartDelay: 0
+  isIndependentTimeScale: 1
+  disableUIFunctionDuringTween: 0
+  disableUIFunctionAfterTween: 0
+  canvasGroupToFade: {fileID: 5973969568961489998}
+  canvasGroupAlphaToFadeInTo: 1
+  canvasGroupAlphaToFadeOutTo: 0
+  imageToFade: {fileID: 0}
+  imageAlphaToFadeInTo: 0
+  imageAlphaToFadeOutTo: 255
+  fadeMode: 0
+  reverseFadeOnFadeCycleFinished: 1
+--- !u!225 &5973969568961489998
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5958883571991754872}
+  m_Enabled: 1
+  m_Alpha: 0
+  m_Interactable: 1
+  m_BlocksRaycasts: 0
+  m_IgnoreParentGroups: 0
 --- !u!1 &6004093437355413372
 GameObject:
   m_ObjectHideFlags: 0
@@ -802,8 +874,8 @@ RectTransform:
   m_Father: {fileID: 3173195328670792001}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.105000004, y: 0.007}
-  m_AnchorMax: {x: 0.8803958, y: 0.109000005}
+  m_AnchorMin: {x: 0.022645835, y: 0.21414815}
+  m_AnchorMax: {x: 0.98, y: 0.31622222}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -887,7 +959,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 65
+  m_fontSize: 50
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1

@@ -37,6 +37,8 @@ namespace TeamMAsTD
 
         [SerializeField] protected bool disableUIFunctionDuringTween = false;
 
+        [SerializeField] protected bool disableUIFunctionAfterTween = false;
+
         //INTERNALS......................................................................
 
         protected RectTransform rectTransform;
@@ -55,6 +57,8 @@ namespace TeamMAsTD
         {
             rectTransform = GetComponent<RectTransform>();
 
+            if(!rectTransform) rectTransform = GetComponentInChildren<RectTransform>(true);
+
             if (!rectTransform)
             {
                 enabled = false;
@@ -63,6 +67,8 @@ namespace TeamMAsTD
             }
 
             canvasGroup = GetComponent<CanvasGroup>();
+
+            if(!canvasGroup) canvasGroup = GetComponentInChildren<CanvasGroup>(true);
 
             if(!canvasGroup) canvasGroup = gameObject.AddComponent<CanvasGroup>();
 
@@ -75,6 +81,8 @@ namespace TeamMAsTD
 
         protected virtual void OnEnable()
         {
+            if (!enabled) return;
+
             SceneManager.activeSceneChanged += (Scene sc1, Scene sc2) => KillAllTweenOnSceneLoad();
 
             if (rectTransform && UI_TweenExecuteMode == UITweenExecuteMode.Auto)
@@ -143,14 +151,17 @@ namespace TeamMAsTD
 
             yield return RunTweenCycleOnceCoroutine();
 
-            alreadyPerformedTween = false;
-
-            if (canvasGroup && !canvasGroup.interactable)
+            if (canvasGroup && disableUIFunctionDuringTween)
             {
-                canvasGroup.interactable = true;
+                if (!disableUIFunctionAfterTween)
+                {
+                    canvasGroup.interactable = true;
 
-                canvasGroup.blocksRaycasts = true;
+                    canvasGroup.blocksRaycasts = true;
+                }
             }
+
+            alreadyPerformedTween = false;
         }
 
         protected abstract IEnumerator RunTweenCycleOnceCoroutine();
@@ -168,24 +179,32 @@ namespace TeamMAsTD
                 canvasGroup.blocksRaycasts = false;
             }
 
-            while (UI_TweenExecuteMode == UITweenExecuteMode.Auto)
+            while (enabled && UI_TweenExecuteMode == UITweenExecuteMode.Auto)
             {
                 alreadyPerformedTween = true;
+
+                //if start delay is > 0.0f -> wait for this number of seconds before looping cycle again
+                if (tweenAutoStartDelay > 0.0f) yield return new WaitForSeconds(tweenAutoStartDelay);
 
                 yield return RunTweenCycleOnceCoroutine();
 
                 //if start delay is > 0.0f -> wait for this number of seconds before looping cycle again
-                if (tweenAutoStartDelay > 0.0f) yield return new WaitForSeconds(tweenAutoStartDelay);
+                //if (tweenAutoStartDelay > 0.0f) yield return new WaitForSeconds(tweenAutoStartDelay);
             }
 
             //if not in auto mode -> break and exit coroutine
 
-            if (canvasGroup && !canvasGroup.interactable)
+            if (canvasGroup && disableUIFunctionDuringTween)
             {
-                canvasGroup.interactable = true;
+                if (!disableUIFunctionAfterTween)
+                {
+                    canvasGroup.interactable = true;
 
-                canvasGroup.blocksRaycasts = true;
+                    canvasGroup.blocksRaycasts = true;
+                }
             }
+
+            StopAndResetUITweenImmediate();
 
             alreadyPerformedTween = false;
 
@@ -207,11 +226,14 @@ namespace TeamMAsTD
 
             yield return tween.WaitForCompletion();
 
-            if (canvasGroup && !canvasGroup.interactable)
+            if (canvasGroup && disableUIFunctionDuringTween)
             {
-                canvasGroup.interactable = true;
+                if (!disableUIFunctionAfterTween)
+                {
+                    canvasGroup.interactable = true;
 
-                canvasGroup.blocksRaycasts = true;
+                    canvasGroup.blocksRaycasts = true;
+                }
             }
 
             yield break;
@@ -240,6 +262,8 @@ namespace TeamMAsTD
             alreadyPerformedTween = false;
 
             DOTween.Kill(transform);
+
+            if (!rectTransform) return;
 
             rectTransform.anchoredPosition = baseAnchoredPos;
 

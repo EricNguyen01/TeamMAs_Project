@@ -36,6 +36,10 @@ namespace TeamMAsTD
         "For Click-on mode, fade in/out will be toggled")]
         private FadeMode fadeMode = FadeMode.FadeIn;
 
+        [SerializeField] private bool reverseFadeOnFadeCycleFinished = false;
+
+        public enum UIFadeMode { FadeIn, FadeOut }
+
         //INTERNALS...............................................................................
 
         private float imageBaseAlphaVal = 255f;
@@ -155,11 +159,24 @@ namespace TeamMAsTD
         {
             alreadyPerformedTween = true;
 
-            if(canvasGroupToFade && !imageToFade) StartCoroutine(CanvasGroupFadeCoroutine());
+            if (canvasGroupToFade && !imageToFade) 
+            { 
+                yield return StartCoroutine(CanvasGroupFadeCoroutine()); 
+            }
 
-            if(imageToFade) StartCoroutine(ImageFadeCoroutine());
+            if (imageToFade) 
+            { 
+                yield return StartCoroutine(ImageFadeCoroutine()); 
+            }
 
-            yield return new WaitUntil(() => (canvasGroupFadeCompleted && imageFadeCompleted));
+            if (canvasGroupToFade && !imageToFade) yield return new WaitUntil(() => canvasGroupFadeCompleted);
+            else if(imageToFade) yield return new WaitUntil(() => imageFadeCompleted);
+
+            if (reverseFadeOnFadeCycleFinished)
+            {
+                if (fadeMode == FadeMode.FadeIn) fadeMode = FadeMode.FadeOut;
+                else fadeMode = FadeMode.FadeIn;
+            }
 
             alreadyPerformedTween = false;
 
@@ -224,6 +241,12 @@ namespace TeamMAsTD
             imageFadeCompleted = true;
 
             yield break;
+        }
+
+        public void SetFadeMode(UIFadeMode fadeMode)
+        {
+            if (fadeMode == UIFadeMode.FadeIn) this.fadeMode = FadeMode.FadeIn;
+            else this.fadeMode = FadeMode.FadeOut;
         }
     }
 }

@@ -330,7 +330,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 599533699
-  m_SortingOrder: 100
+  m_SortingOrder: 50
   m_TargetDisplay: 0
 --- !u!114 &7662525649767464429
 MonoBehaviour:
@@ -551,6 +551,7 @@ MonoBehaviour:
   tweenAutoStartDelay: 0
   isIndependentTimeScale: 1
   disableUIFunctionDuringTween: 1
+  disableUIFunctionAfterTween: 0
   moveDir: 0
   moveDistance: 1
   currentPositionAsStartPoint: 1
@@ -574,6 +575,7 @@ MonoBehaviour:
   tweenAutoStartDelay: 0
   isIndependentTimeScale: 1
   disableUIFunctionDuringTween: 0
+  disableUIFunctionAfterTween: 0
   expandValue: 16
 --- !u!1 &3971004943003716103
 GameObject:
@@ -683,6 +685,7 @@ MonoBehaviour:
   tweenAutoStartDelay: 0
   isIndependentTimeScale: 1
   disableUIFunctionDuringTween: 1
+  disableUIFunctionAfterTween: 0
   moveDir: 0
   moveDistance: 1
   currentPositionAsStartPoint: 1
@@ -867,6 +870,7 @@ MonoBehaviour:
   tweenAutoStartDelay: 0
   isIndependentTimeScale: 1
   disableUIFunctionDuringTween: 0
+  disableUIFunctionAfterTween: 0
   rotateDegrees: -90
   rotateMode: 0
 --- !u!225 &3980936215636631464
@@ -1321,6 +1325,7 @@ MonoBehaviour:
   tweenAutoStartDelay: 0
   isIndependentTimeScale: 1
   disableUIFunctionDuringTween: 1
+  disableUIFunctionAfterTween: 0
   moveDir: 0
   moveDistance: 1
   currentPositionAsStartPoint: 1
@@ -1344,6 +1349,7 @@ MonoBehaviour:
   tweenAutoStartDelay: 0
   isIndependentTimeScale: 1
   disableUIFunctionDuringTween: 0
+  disableUIFunctionAfterTween: 0
   expandValue: 16
 --- !u!1 &9047951193722099347
 GameObject:
@@ -1525,6 +1531,7 @@ MonoBehaviour:
   tweenAutoStartDelay: 0
   isIndependentTimeScale: 1
   disableUIFunctionDuringTween: 1
+  disableUIFunctionAfterTween: 0
   moveDir: 0
   moveDistance: 1
   currentPositionAsStartPoint: 1
@@ -1548,6 +1555,7 @@ MonoBehaviour:
   tweenAutoStartDelay: 0
   isIndependentTimeScale: 1
   disableUIFunctionDuringTween: 0
+  disableUIFunctionAfterTween: 0
   expandValue: 16
 --- !u!114 &310875202562816683
 MonoBehaviour:
