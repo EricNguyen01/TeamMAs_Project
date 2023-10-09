@@ -3,7 +3,6 @@
 
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
@@ -84,6 +83,13 @@ namespace TeamMAsTD
             loadingScreenUIFadeComponent.StopAndResetUITweenImmediate();
 
             if(!loadingScreenSlider) loadingScreenSlider = GetComponentInChildren<Slider>(true);
+
+            if (loadingScreenSlider) 
+            { 
+                loadingScreenSlider.minValue = 0.0f; 
+                
+                loadingScreenSlider.maxValue = 1.0f; 
+            }
         }
 
         private void OnEnable()
@@ -196,14 +202,14 @@ namespace TeamMAsTD
             if (loadingScreenSlider)
             {
                 if(performAdditionalTransitionTime) loadingScreenSlider.DOValue(1.0f, additionalTransitionTime + 0.1f);
-                else loadingScreenSlider.DOValue(1.0f, 0.3f);
+                else yield return loadingScreenSlider.DOValue(1.0f, 0.3f).WaitForCompletion();
             }
 
             if (performAdditionalTransitionTime) yield return new WaitForSecondsRealtime(additionalTransitionTime);
 
             yield return StartCoroutine(EnableSceneLoadUISequence(false));
 
-            if (loadingScreenSlider) loadingScreenSlider.value = 1.0f;
+            if (loadingScreenSlider && loadingScreenSlider.value < 1.0f) loadingScreenSlider.value = 1.0f;
 
             isPerformingSceneLoad = false;
         }
@@ -291,11 +297,6 @@ namespace TeamMAsTD
             }
 
             yield break;
-        }
-
-        private void TweenLoadingSlider()
-        {
-
         }
     }
 }
