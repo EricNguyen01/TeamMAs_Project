@@ -334,11 +334,13 @@ namespace TeamMAsTD
                 //coins drop on wave ended
                 DropCoinsOnWaveEnded(waveSOList[waveNum]);
 
+                if (incrementWaveOnFinished) currentWave++;
+
                 OnWaveFinished?.Invoke(this, waveNum, hasOtherOngoingWaves);
 
                 OnWaveFinishedEvent?.Invoke();
 
-                if (incrementWaveOnFinished) currentWave++;
+                //if (incrementWaveOnFinished) currentWave++;
             }
             //else if wave just ended is the final wave
             else
@@ -436,7 +438,9 @@ namespace TeamMAsTD
 
         public SaveDataSerializeBase SaveData(string saveName = "")
         {
-            SaveDataSerializeBase waveSpawnerSave;
+            SaveDataSerializeBase waveSpawnerSave = null;
+
+            if (lastWaveStarted == 0 && currentWave == 0) return waveSpawnerSave;
 
             //we dont save the currentWave variable here because sometime this SaveData() is called before currentWave is incremented
             //on current wave ended which could lead to wrong wave number being saved.

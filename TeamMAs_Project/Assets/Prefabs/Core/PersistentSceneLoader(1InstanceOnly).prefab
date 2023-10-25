@@ -329,6 +329,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4935853313485950926}
   - component: {fileID: 7566658773045395245}
+  - component: {fileID: 8743842170780313457}
   m_Layer: 0
   m_Name: LoadingSliderBar
   m_TagString: Untagged
@@ -411,6 +412,24 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &8743842170780313457
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4673488220717180017}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 090222c29fcda234a84884dc34b97bdd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sliderToDisplayPercentage: {fileID: 7566658773045395245}
+  sliderPercentageText: {fileID: 7222544027843172735}
+  keepPresetText: 1
+  hasSpaceBeforePercentage: 1
+  addPercentageSymbolSuffix: 1
+  disablePercentageTextDisplay: 0
 --- !u!1 &5340938907650492725
 GameObject:
   m_ObjectHideFlags: 0
@@ -619,7 +638,7 @@ MonoBehaviour:
   disableUIFunctionAfterTween: 0
   canvasGroupToFade: {fileID: 5973969568961489998}
   canvasGroupAlphaToFadeInTo: 1
-  canvasGroupAlphaToFadeOutTo: 0
+  canvasGroupAlphaToFadeOutTo: 0.4
   imageToFade: {fileID: 0}
   imageAlphaToFadeInTo: 0
   imageAlphaToFadeOutTo: 255

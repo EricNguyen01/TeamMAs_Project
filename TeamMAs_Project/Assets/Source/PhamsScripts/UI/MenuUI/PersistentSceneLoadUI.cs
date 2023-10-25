@@ -1,7 +1,6 @@
 // Script Author: Pham Nguyen. All Rights Reserved. 
 // GitHub: https://github.com/EricNguyen01.
 
-using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
@@ -27,7 +26,9 @@ namespace TeamMAsTD
 
         [SerializeField] private Slider loadingScreenSlider;
 
-        [SerializeField] private float additionalTransitionTime = 1.0f;
+        [SerializeField] private float additionalTransitionTimeToGame = 4.0f;
+
+        [SerializeField] private float additionalTransitionTimeToMenu = 1.5f;
 
         [SerializeField] private bool performAdditionalTransitionTime = false;
 
@@ -85,7 +86,7 @@ namespace TeamMAsTD
             if(!loadingScreenSlider) loadingScreenSlider = GetComponentInChildren<Slider>(true);
 
             if (loadingScreenSlider) 
-            { 
+            {
                 loadingScreenSlider.minValue = 0.0f; 
                 
                 loadingScreenSlider.maxValue = 1.0f; 
@@ -167,6 +168,8 @@ namespace TeamMAsTD
         {
             isPerformingSceneLoad = true;
 
+            float additionalTransitionTime = 1.5f;
+
             yield return StartCoroutine(EnableSceneLoadUISequence(true));
 
             if (performAdditionalTransitionTime && loadingScreenSlider)
@@ -201,6 +204,9 @@ namespace TeamMAsTD
                     yield return StartCoroutine(SceneSavedDataLoadCheckIntervalCoroutine()); 
                 }
             }
+
+            if (SceneManager.GetActiveScene().name.Contains("Game")) additionalTransitionTime = additionalTransitionTimeToGame;
+            else if (SceneManager.GetActiveScene().name.Contains("Menu")) additionalTransitionTime = additionalTransitionTimeToMenu;
 
             if (loadingScreenSlider)
             {

@@ -17,8 +17,11 @@ namespace TeamMAsTD
             EnableOnDialogueEndEvent(true);
 
             DisableOnPlantPlantedOnTileEvent(true);
+        }
 
-            gameObject.SetActive(false);
+        private void Start()
+        {
+            StartCoroutine(InActiveFingerDelay(0.1f));
         }
 
         private void OnDestroy()
@@ -89,6 +92,15 @@ namespace TeamMAsTD
             dialogueSystemEvents.conversationEvents.onConversationEnd.RemoveListener((transform) => EnableDragDropFinger(true));
         }
 
+        private IEnumerator InActiveFingerDelay(float delaySec)
+        {
+            yield return new WaitForSecondsRealtime(delaySec);
+
+            if (gameObject.activeInHierarchy) gameObject.SetActive(false);
+
+            yield break;
+        }
+
         //ISaveable interface implementations......................................................................................................
 
         public SaveDataSerializeBase SaveData(string saveName = "")
@@ -104,7 +116,7 @@ namespace TeamMAsTD
 
         public void LoadData(SaveDataSerializeBase savedDataToLoad)
         {
-            if(savedDataToLoad == null) return;
+            if (savedDataToLoad == null) return;
 
             alreadyDisplayed = (bool)savedDataToLoad.LoadSavedObject();
 
