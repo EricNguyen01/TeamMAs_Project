@@ -90,10 +90,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   UI_TweenExecuteMode: 1
   easeMode: 7
-  tweenDuration: 0.5
+  tweenDuration: 0.3
   tweenAutoStartDelay: 0
   isIndependentTimeScale: 0
   disableUIFunctionDuringTween: 0
+  disableUIFunctionAfterTween: 0
   expandValue: 18
 --- !u!1 &8532963187113107088
 GameObject:

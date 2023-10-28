@@ -69,7 +69,7 @@ MonoBehaviour:
   m_text: These bars show Visitor Happiness. Aim high!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7c4d598a1b6b80f4b83962e1ae64bc1b, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 434623511835423077, guid: 7c4d598a1b6b80f4b83962e1ae64bc1b, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -93,12 +93,12 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
+  m_fontSize: 26
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
-  m_fontSizeMin: 10
-  m_fontSizeMax: 30
+  m_fontSizeMin: 5
+  m_fontSizeMax: 26
   m_fontStyle: 0
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
@@ -132,7 +132,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1 &1804046316062793963
@@ -331,8 +331,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 314.06, y: 148.48}
+  m_AnchoredPosition: {x: 0.000017166, y: 0}
+  m_SizeDelta: {x: 275.92, y: 148.48}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5666353629100018574
 CanvasRenderer:
@@ -355,15 +355,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.3207547, g: 0.22571237, b: 0.16461372, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
-  m_Type: 0
+  m_Sprite: {fileID: 21300000, guid: 14a7e7425d330ec4ba6cf3dbdc0c36f2, type: 3}
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -390,6 +390,7 @@ MonoBehaviour:
   tweenAutoStartDelay: 0
   isIndependentTimeScale: 0
   disableUIFunctionDuringTween: 0
+  disableUIFunctionAfterTween: 0
   expandValue: 14
 --- !u!1 &3637978333142235788
 GameObject:
@@ -460,7 +461,7 @@ MonoBehaviour:
   m_text: Ok!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7c4d598a1b6b80f4b83962e1ae64bc1b, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 434623511835423077, guid: 7c4d598a1b6b80f4b83962e1ae64bc1b, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -484,12 +485,12 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
+  m_fontSize: 40
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
   m_fontSizeMin: 10
-  m_fontSizeMax: 46
+  m_fontSizeMax: 40
   m_fontStyle: 0
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
@@ -523,7 +524,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1 &4834743342050265533
@@ -612,8 +613,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 2.2, y: -46.847}
-  m_SizeDelta: {x: 268.23, y: 50.294}
+  m_AnchoredPosition: {x: -0.0000019073, y: -40.3}
+  m_SizeDelta: {x: 120.31, y: 54.75}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8663946985167539405
 CanvasRenderer:
@@ -636,14 +637,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.08517263, g: 0.5188679, b: 0.3466654, a: 1}
+  m_Color: {r: 0.44012824, g: 0.7830189, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 21300000, guid: 4eade859acaaaa64aa5d5e2fc5867f16, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -770,7 +771,8 @@ MonoBehaviour:
   tweenAutoStartDelay: 0
   isIndependentTimeScale: 0
   disableUIFunctionDuringTween: 0
-  expandValue: 14
+  disableUIFunctionAfterTween: 0
+  expandValue: 11
 --- !u!1 &7564045068594322292
 GameObject:
   m_ObjectHideFlags: 0
@@ -856,7 +858,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 1
+  m_PresetInfoIsWorld: 0
 --- !u!114 &5715589965781146489
 MonoBehaviour:
   m_ObjectHideFlags: 0
