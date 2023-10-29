@@ -1888,7 +1888,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f662c209c1ecf840ae3a313bdb88d67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttonToHighlight: {fileID: 418398374}
+  selectableToHighlight: {fileID: 418398374}
   useCustomButtonHighlightColor: 0
   customHighlightColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
 --- !u!114 &5253710062658365515

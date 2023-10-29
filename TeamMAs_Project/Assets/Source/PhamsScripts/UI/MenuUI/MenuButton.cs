@@ -128,6 +128,11 @@ namespace TeamMAsTD
             PersistentSceneLoadUI.persistentSceneLoadUIInstance.LoadScene(1);
         }
 
+        public void SettingButton()
+        {
+            //settings button in menu to open settings sub-menu
+        }
+
         public void BackToMainMenuButton()
         {
             if (PersistentSceneLoadUI.persistentSceneLoadUIInstance)
