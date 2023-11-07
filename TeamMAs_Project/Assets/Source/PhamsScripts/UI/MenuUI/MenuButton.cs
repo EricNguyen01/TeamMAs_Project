@@ -160,9 +160,18 @@ namespace TeamMAsTD
             {
                 SaveLoadHandler.saveLoadHandlerInstance.DeleteAllSaveData();
             }
+
+            if (GameSettings.gameSettingsInstance)
+            {
+                GameSettings.gameSettingsInstance.DeleteAllGameSettingsSavedData();
+            }
+
+            LoadGameButtonBlurAndDisableIfNoSaveData blurLoadGameButtonComp = transform.parent.GetComponentInChildren<LoadGameButtonBlurAndDisableIfNoSaveData>(true);
+
+            if (blurLoadGameButtonComp) blurLoadGameButtonComp.SetLoadButtonBlurDirectlyOnSaveDeleted(true);
         }
 
-        private void DisableButton(bool disabled, float disableAlpha = 0.5f, float enableAlpha = 1.0f)
+        public void DisableButton(bool disabled, float disableAlpha = 0.5f, float enableAlpha = 1.0f)
         {
             if (!buttonCanvasGroup) return;
 

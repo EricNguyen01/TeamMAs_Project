@@ -90,6 +90,7 @@ GameObject:
   - component: {fileID: 5798730151971975308}
   - component: {fileID: 4408049929007090009}
   - component: {fileID: 3356860093603886471}
+  - component: {fileID: 3402214398227424623}
   m_Layer: 5
   m_Name: ReturnToMenuButton
   m_TagString: Untagged
@@ -200,7 +201,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1018060314851818437}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 3402214398227424623}
+        m_TargetAssemblyTypeName: FMODUnity.StudioEventEmitter, FMODUnity
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &4408049929007090009
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -236,6 +249,37 @@ MonoBehaviour:
   selectableToHighlight: {fileID: 5798730151971975308}
   useCustomButtonHighlightColor: 0
   customHighlightColor: {r: 1, g: 0.8862745, b: 0.7019608, a: 1}
+--- !u!114 &3402214398227424623
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2047156994041781962}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -55100953
+      Data2: 1318490974
+      Data3: -785644634
+      Data4: -647336184
+    Path: event:/Shop UI Click Sound
+  Event: 
+  PlayEvent: 0
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
+  hasTriggered: 0
 --- !u!1 &2380318146160489801
 GameObject:
   m_ObjectHideFlags: 0
@@ -1026,15 +1070,44 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8375759506681827997, guid: 9b92dc9d7549daa41ad19daa1cf9038b, type: 3}
       propertyPath: m_Name
-      value: SettingItemDropdownSlot (1)
+      value: ResolutionSettingDropdownSlot
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9b92dc9d7549daa41ad19daa1cf9038b, type: 3}
+--- !u!1 &3029252129454984419 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2315083966615180172, guid: 9b92dc9d7549daa41ad19daa1cf9038b, type: 3}
+  m_PrefabInstance: {fileID: 732613776335855471}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &7437412227235384849
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3029252129454984419}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd8ee8dc89bffe04b86900f3a179ee75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dropdown: {fileID: 7767575195040910827}
 --- !u!224 &4231005670228180430 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3503036781569467041, guid: 9b92dc9d7549daa41ad19daa1cf9038b, type: 3}
   m_PrefabInstance: {fileID: 732613776335855471}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &7767575195040910827 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7052984622434669188, guid: 9b92dc9d7549daa41ad19daa1cf9038b, type: 3}
+  m_PrefabInstance: {fileID: 732613776335855471}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3029252129454984419}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b743370ac3e4ec2a1668f5455a8ef8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &4566931725777475399
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1204,7 +1277,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8375759506681827997, guid: 9b92dc9d7549daa41ad19daa1cf9038b, type: 3}
       propertyPath: m_Name
-      value: SettingItemDropdownSlot
+      value: WindowModeSettingDropdownSlot
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9b92dc9d7549daa41ad19daa1cf9038b, type: 3}
@@ -1213,3 +1286,32 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 3503036781569467041, guid: 9b92dc9d7549daa41ad19daa1cf9038b, type: 3}
   m_PrefabInstance: {fileID: 4566931725777475399}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2252315137604142283 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2315083966615180172, guid: 9b92dc9d7549daa41ad19daa1cf9038b, type: 3}
+  m_PrefabInstance: {fileID: 4566931725777475399}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2235635003820969648
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2252315137604142283}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08b09fdf122828f44a9785401364f88e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dropdown: {fileID: 6809508677862507971}
+--- !u!114 &6809508677862507971 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7052984622434669188, guid: 9b92dc9d7549daa41ad19daa1cf9038b, type: 3}
+  m_PrefabInstance: {fileID: 4566931725777475399}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2252315137604142283}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b743370ac3e4ec2a1668f5455a8ef8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

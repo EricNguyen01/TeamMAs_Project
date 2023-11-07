@@ -338,6 +338,7 @@ GameObject:
   - component: {fileID: 6027855830805952803}
   - component: {fileID: 7052984622434669188}
   - component: {fileID: 3438975647824381134}
+  - component: {fileID: 3011558026979050928}
   m_Layer: 5
   m_Name: SettingItemsDropdown
   m_TagString: Untagged
@@ -481,6 +482,37 @@ MonoBehaviour:
   selectableToHighlight: {fileID: 7052984622434669188}
   useCustomButtonHighlightColor: 0
   customHighlightColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+--- !u!114 &3011558026979050928
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2315083966615180172}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -55100953
+      Data2: 1318490974
+      Data3: -785644634
+      Data4: -647336184
+    Path: event:/Shop UI Click Sound
+  Event: 
+  PlayEvent: 15
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
+  hasTriggered: 0
 --- !u!1 &4051047903862471967
 GameObject:
   m_ObjectHideFlags: 0
@@ -764,8 +796,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 38.573, y: -0.5}
-  m_SizeDelta: {x: -77.146, y: -3}
+  m_AnchoredPosition: {x: 15.3613, y: -0.5}
+  m_SizeDelta: {x: -123.5692, y: -3}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6046750271705612636
 CanvasRenderer:
@@ -827,7 +859,7 @@ MonoBehaviour:
   m_fontWeight: 400
   m_enableAutoSizing: 1
   m_fontSizeMin: 5
-  m_fontSizeMax: 55
+  m_fontSizeMax: 50
   m_fontStyle: 0
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512

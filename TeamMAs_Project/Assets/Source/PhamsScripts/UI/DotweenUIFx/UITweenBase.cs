@@ -8,6 +8,7 @@ using UnityEngine.UI;
 using DG.Tweening;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
+using UnityEngine.Events;
 
 namespace TeamMAsTD
 {
@@ -38,6 +39,12 @@ namespace TeamMAsTD
         [SerializeField] protected bool disableUIFunctionDuringTween = false;
 
         [SerializeField] protected bool disableUIFunctionAfterTween = false;
+
+        [Header("UI Tween Events")]
+
+        [SerializeField] protected UnityEvent OnUITweenStarted;
+
+        [SerializeField] protected UnityEvent OnUITweenFinished;
 
         //INTERNALS......................................................................
 
@@ -140,6 +147,8 @@ namespace TeamMAsTD
 
             alreadyPerformedTween = true;
 
+            OnUITweenStarted?.Invoke();
+
             if (disableUIFunctionDuringTween)
             {
                 if(!canvasGroup) canvasGroup = gameObject.AddComponent<CanvasGroup>();
@@ -162,6 +171,11 @@ namespace TeamMAsTD
             }
 
             alreadyPerformedTween = false;
+
+            if (isIndependentTimeScale) yield return new WaitForSecondsRealtime(0.2f);
+            else yield return new WaitForSeconds(0.2f);
+
+            OnUITweenFinished?.Invoke();
         }
 
         protected abstract IEnumerator RunTweenCycleOnceCoroutine();
@@ -178,6 +192,8 @@ namespace TeamMAsTD
 
                 canvasGroup.blocksRaycasts = false;
             }
+
+            OnUITweenStarted?.Invoke();
 
             while (enabled && UI_TweenExecuteMode == UITweenExecuteMode.Auto)
             {
@@ -204,7 +220,7 @@ namespace TeamMAsTD
                 }
             }
 
-            StopAndResetUITweenImmediate();
+            StopAndResetUITweenImmediate();//UI Tween finish event is also called in this function
 
             alreadyPerformedTween = false;
 
@@ -260,6 +276,8 @@ namespace TeamMAsTD
             StopAllCoroutines();
 
             alreadyPerformedTween = false;
+
+            OnUITweenFinished?.Invoke();
 
             DOTween.Kill(transform);
 
