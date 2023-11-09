@@ -99,6 +99,8 @@ namespace TeamMAsTD
 
         private GameSettingsSaveData gameSettingsSavedData;
 
+        private WaitForFixedUpdate waitForFixedUpdate = new WaitForFixedUpdate();
+
         private bool isSaving = false;
 
         private void Awake()
@@ -119,18 +121,26 @@ namespace TeamMAsTD
 
         public void SetScreenMode(FullScreenMode fullScreenMode, bool sendEvent = true, bool saveSetting = true)
         {
-            if (Screen.fullScreenMode == fullScreenMode) return;
+            StartCoroutine(SetScreenModeSequence(fullScreenMode, sendEvent, saveSetting));
+        }
 
-            //if full screen mode is NOT Windowed -> fullScreen is true
-            /*if (fullScreenMode != FullScreenMode.Windowed)
+        private IEnumerator SetScreenModeSequence(FullScreenMode fullScreenMode, bool sendEvent = true, bool saveSetting = true)
+        {
+            if (Screen.fullScreenMode == fullScreenMode) yield break;
+
+            if(fullScreenMode == FullScreenMode.FullScreenWindow)
             {
-                if (!Screen.fullScreen) Screen.fullScreen = true;
+                SetScreenResolution(DEFAULT_SCREEN_WIDTH, DEFAULT_SCREEN_HEIGHT, sendEvent, saveSetting);
             }
-            else //else if full screen mode IS Windowed -> fullscreen is false
+            else if(fullScreenMode == FullScreenMode.Windowed)
             {
-                if (Screen.fullScreen) Screen.fullScreen = false;
-            }*/
-            
+                SetScreenResolution(DEFAULT_SCREEN_WIDTH_WINDOWED, DEFAULT_SCREEN_HEIGHT_WINDOWED, sendEvent, saveSetting);
+            }
+
+            yield return waitForFixedUpdate;
+
+            yield return waitForFixedUpdate;
+
             Screen.fullScreenMode = fullScreenMode;
 
             if (sendEvent) OnFullScreenModeChanged?.Invoke(fullScreenMode);
@@ -138,6 +148,10 @@ namespace TeamMAsTD
             if (showDebugLog) Debug.Log("Set New FullScreen Mode: " + Screen.fullScreenMode.ToString());
 
             if (saveSetting) SaveSettings();
+
+            yield return waitForFixedUpdate;
+
+            yield break;
         }
 
         public void SetScreenMode(int fsModeNum, bool sendEvent = true, bool saveSetting = true)
@@ -188,19 +202,17 @@ namespace TeamMAsTD
             StartCoroutine(SetDefaultAllSettingsSequence(sendEvent, saveSettings));
         }
 
-        private WaitForFixedUpdate waitForFixedUpdate = new WaitForFixedUpdate();
-
         private IEnumerator SetDefaultAllSettingsSequence(bool sendEvent = true, bool saveSettings = true)
         {
-            SetScreenMode(DEFAULT_FULLSCREEN_MODE, sendEvent, saveSettings);
-
-            yield return waitForFixedUpdate;
+            yield return StartCoroutine(SetScreenModeSequence(DEFAULT_FULLSCREEN_MODE, sendEvent, saveSettings));
 
             yield return waitForFixedUpdate;
 
             SetScreenResolution(DEFAULT_SCREEN_WIDTH, DEFAULT_SCREEN_HEIGHT, sendEvent, saveSettings);
 
             yield return waitForFixedUpdate;
+
+            yield break;
         }
 
         //GAME SETTINGS SAVE / LOAD LOGIC............................................................................................
@@ -218,10 +230,10 @@ namespace TeamMAsTD
             isSaving = true;
 
             //waiting for Screen to update
-            yield return waitForFixedUpdate;
+            //yield return waitForFixedUpdate;
 
             //waiting for Screen to update (another frame buffer to make sure Screen has finished updating before save)
-            yield return waitForFixedUpdate;
+            //yield return waitForFixedUpdate;
 
             OnGameSettingsBeginSaving?.Invoke();
 
@@ -247,6 +259,8 @@ namespace TeamMAsTD
             OnGameSettingsFinishSaving?.Invoke();
 
             isSaving = false;
+
+            yield break;
         }
 
         private void LoadSettings()
@@ -292,7 +306,7 @@ namespace TeamMAsTD
 
             if (gameSettingsSavedData == null) yield break;
 
-            //yield return StartCoroutine(SetDefaultAllSettingsSequence(false, false));
+            yield return StartCoroutine(SetDefaultAllSettingsSequence(false, false));
 
             yield return waitForFixedUpdate;
 
@@ -310,7 +324,7 @@ namespace TeamMAsTD
 
             yield return waitForFixedUpdate;
 
-            //SetScreenMode(gameSettingsSavedData.fullScreenModeNum, false, false);
+            SetScreenMode(gameSettingsSavedData.fullScreenModeNum, false, false);
 
             //wait 2 frames so the new screen window mode can be updated first before invoking setting finshed event
 
