@@ -7,8 +7,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using UnityEngine.Assertions.Must;
-using Language.Lua;
 
 namespace TeamMAsTD
 {
@@ -110,7 +108,7 @@ namespace TeamMAsTD
 
             //set screen res without sending event since event is only sent when settings are changed from other places
             //and we need the resolution dropdown UI (this) to update its visuals accordingly.
-            GameSettings.gameSettingsInstance.SetScreenResolution(resolutionToSet, false);
+            GameSettings.gameSettingsInstance.SetScreenResolution(resolutionToSet);
 
             return true;
         }

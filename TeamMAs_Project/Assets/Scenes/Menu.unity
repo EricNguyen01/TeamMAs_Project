@@ -525,10 +525,6 @@ PrefabInstance:
       propertyPath: m_Interactable
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 2604485480775460443, guid: e864f50927cec454e99ba1479a735e84, type: 3}
-      propertyPath: showDebugLog
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3271005979050991523, guid: e864f50927cec454e99ba1479a735e84, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -615,10 +611,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5543451671414529452, guid: e864f50927cec454e99ba1479a735e84, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6635087090430650106, guid: e864f50927cec454e99ba1479a735e84, type: 3}
-      propertyPath: showDebugLog
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6806960674192644378, guid: e864f50927cec454e99ba1479a735e84, type: 3}

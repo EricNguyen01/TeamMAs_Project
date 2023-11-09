@@ -233,6 +233,12 @@ MonoBehaviour:
   isIndependentTimeScale: 1
   disableUIFunctionDuringTween: 0
   disableUIFunctionAfterTween: 0
+  OnUITweenStarted:
+    m_PersistentCalls:
+      m_Calls: []
+  OnUITweenFinished:
+    m_PersistentCalls:
+      m_Calls: []
   expandValue: 15
 --- !u!114 &3356860093603886471
 MonoBehaviour:
@@ -1092,6 +1098,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dropdown: {fileID: 7767575195040910827}
+  showDebugLog: 0
 --- !u!224 &4231005670228180430 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3503036781569467041, guid: 9b92dc9d7549daa41ad19daa1cf9038b, type: 3}
@@ -1304,6 +1311,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dropdown: {fileID: 6809508677862507971}
+  showDebugLog: 0
 --- !u!114 &6809508677862507971 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7052984622434669188, guid: 9b92dc9d7549daa41ad19daa1cf9038b, type: 3}

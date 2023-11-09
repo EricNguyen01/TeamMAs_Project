@@ -92,7 +92,7 @@ namespace TeamMAsTD
 
             //set window mode without sending event since event is only sent when settings are changed from other places
             //and we need the window mode dropdown UI (this) to update its visuals accordingly.
-            GameSettings.gameSettingsInstance.SetScreenMode(fsModeToSet, false);
+            GameSettings.gameSettingsInstance.SetScreenMode(fsModeToSet);
 
             return true;
         }
