@@ -42,7 +42,8 @@ namespace TeamMAsTD
         [Serializable]
         private class StateDictionaryObject
         {
-            [field: SerializeReference] public Dictionary<string, object> stateDict { get; private set; } = new Dictionary<string, object>();
+            [field: SerializeReference] 
+            public Dictionary<string, object> stateDict { get; private set; } = new Dictionary<string, object>();
 
             public StateDictionaryObject(Dictionary<string, object> stateDict = null)
             {

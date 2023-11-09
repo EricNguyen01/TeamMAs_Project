@@ -6,6 +6,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Gameframe.SaveLoad;
+using System.Runtime.CompilerServices;
 
 #if UNITY_EDITOR
 using UnityEditor;
@@ -24,6 +25,10 @@ namespace TeamMAsTD
 
         private const int DEFAULT_SCREEN_HEIGHT = 1080;
 
+        private const int DEFAULT_SCREEN_WIDTH_WINDOWED = 1600;
+
+        private const int DEFAULT_SCREEN_HEIGHT_WINDOWED = 900;
+
         [Header("Game Settings Save Load")]
 
         [SerializeField] private SaveLoadManager gameSettingsSaveManager;
@@ -36,6 +41,8 @@ namespace TeamMAsTD
 
         public static GameSettings gameSettingsInstance;
 
+        //Game Settings C# Events Declarations
+
         public static event System.Action OnGameSettingsBeginSaving;
 
         public static event System.Action OnGameSettingsFinishSaving;
@@ -44,8 +51,16 @@ namespace TeamMAsTD
 
         public static event System.Action OnGameSettingsFinishLoading;
 
+
+        public static event System.Action<Resolution> OnScreenResolutionChanged;
+
+        public static event System.Action<FullScreenMode> OnFullScreenModeChanged;
+
+        public static event System.Action<int> OnFullScreenModeIndexChanged;
+
         //INTERNALS...................................................................................
 
+        //GAME SETTINGS SAVE DATA PRIVATE CLASS.....................................................................
         [Serializable]
         private class GameSettingsSaveData
         {
@@ -55,15 +70,34 @@ namespace TeamMAsTD
 
             public int screenHeight { get; private set; }
 
-            public GameSettingsSaveData(int fullScreenModeToSave, Resolution resolutionToSave)
-            {
-                fullScreenModeNum = fullScreenModeToSave;
+            public GameSettingsSaveData() { }//constructor
 
+            public void SetAllSaveData(int fullScreenModeIndexToSave, Resolution resolutionToSave)
+            {
+                SetFullScreenSaveData(fullScreenModeIndexToSave);
+
+                SetResolutionSaveData(resolutionToSave);
+            }
+
+            public void SetFullScreenSaveData(int fsModeIndexToSave)
+            {
+                if(fsModeIndexToSave < 0) fsModeIndexToSave = 0;
+
+                if(fsModeIndexToSave > 4) fsModeIndexToSave = 4;
+
+                fullScreenModeNum = fsModeIndexToSave;
+            }
+
+            public void SetResolutionSaveData(Resolution resolutionToSave)
+            {
                 screenWidth = resolutionToSave.width;
 
                 screenHeight = resolutionToSave.height;
             }
         }
+        //GAME SETTINGS SAVE DATA PRIVATE CLASS ENDS.............................................................................
+
+        private GameSettingsSaveData gameSettingsSavedData;
 
         private bool isSaving = false;
 
@@ -83,47 +117,62 @@ namespace TeamMAsTD
             LoadSettings();
         }
 
-        public void SetScreenMode(FullScreenMode fullScreenMode, bool saveSetting = true)
+        public void SetScreenMode(FullScreenMode fullScreenMode, bool sendEvent = true, bool saveSetting = true)
         {
-            if (!Screen.fullScreen) Screen.fullScreen = true;
-
             if (Screen.fullScreenMode == fullScreenMode) return;
+
+            //if full screen mode is NOT Windowed -> fullScreen is true
+            /*if (fullScreenMode != FullScreenMode.Windowed)
+            {
+                if (!Screen.fullScreen) Screen.fullScreen = true;
+            }
+            else //else if full screen mode IS Windowed -> fullscreen is false
+            {
+                if (Screen.fullScreen) Screen.fullScreen = false;
+            }*/
             
             Screen.fullScreenMode = fullScreenMode;
+
+            if (sendEvent) OnFullScreenModeChanged?.Invoke(fullScreenMode);
 
             if (showDebugLog) Debug.Log("Set New FullScreen Mode: " + Screen.fullScreenMode.ToString());
 
             if (saveSetting) SaveSettings();
         }
 
-        public void SetScreenMode(int fsModeNum, bool saveSetting = true)
+        public void SetScreenMode(int fsModeNum, bool sendEvent = true, bool saveSetting = true)
         {
-            if (fsModeNum == (int)FullScreenMode.ExclusiveFullScreen) SetScreenMode(FullScreenMode.ExclusiveFullScreen, saveSetting);
-            else if (fsModeNum == (int)FullScreenMode.MaximizedWindow) SetScreenMode(FullScreenMode.MaximizedWindow, saveSetting);
-            else if (fsModeNum == (int)FullScreenMode.FullScreenWindow) SetScreenMode(FullScreenMode.FullScreenWindow, saveSetting);
-            else if (fsModeNum == (int)FullScreenMode.Windowed) SetScreenMode(FullScreenMode.Windowed, saveSetting);
-            else SetScreenMode(DEFAULT_FULLSCREEN_MODE, saveSetting);
+            if (fsModeNum == (int)FullScreenMode.ExclusiveFullScreen) SetScreenMode(FullScreenMode.ExclusiveFullScreen, sendEvent, saveSetting);
+            else if (fsModeNum == (int)FullScreenMode.MaximizedWindow) SetScreenMode(FullScreenMode.MaximizedWindow, sendEvent, saveSetting);
+            else if (fsModeNum == (int)FullScreenMode.FullScreenWindow) SetScreenMode(FullScreenMode.FullScreenWindow, sendEvent, saveSetting);
+            else if (fsModeNum == (int)FullScreenMode.Windowed) SetScreenMode(FullScreenMode.Windowed, sendEvent, saveSetting);
+            else SetScreenMode(DEFAULT_FULLSCREEN_MODE, sendEvent, saveSetting);
         }
 
-        public void SetScreenResolution(Resolution resolution, bool saveSetting = true)
+        public void SetScreenResolution(Resolution resolution, bool sendEvent = true, bool saveSetting = true)
         {
+            //set default res values if invalid resolution parameters
+            //then call this function itself again but with default res values as params
             if (resolution.width == 0 || resolution.height == 0)
             {
-                Screen.SetResolution(DEFAULT_SCREEN_WIDTH, DEFAULT_SCREEN_HEIGHT, Screen.fullScreenMode);
+                SetScreenResolution(DEFAULT_SCREEN_WIDTH, DEFAULT_SCREEN_HEIGHT);
 
                 return;
             }
 
+            //if new res param = current screen res -> return
             if (resolution.width == Screen.currentResolution.width && resolution.height == Screen.currentResolution.height) return;
 
-            Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreenMode);
+            Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreenMode, (int)Screen.mainWindowDisplayInfo.refreshRate.value);
+
+            if (sendEvent) OnScreenResolutionChanged?.Invoke(resolution);
 
             if(showDebugLog) Debug.Log("Set New Screen Resolution: " + resolution.ToString());
 
             if (saveSetting) SaveSettings();
         }
 
-        public void SetScreenResolution(int screenWidth, int screenHeight, bool saveSetting = true)
+        public void SetScreenResolution(int screenWidth, int screenHeight, bool sendEvent = true, bool saveSetting = true)
         {
             Resolution res = new Resolution();
 
@@ -131,8 +180,30 @@ namespace TeamMAsTD
 
             res.height = screenHeight;
 
-            SetScreenResolution(res, saveSetting);
+            SetScreenResolution(res, sendEvent, saveSetting);
         }
+
+        private void SetDefaultAllSettings(bool sendEvent = true, bool saveSettings = true)
+        {
+            StartCoroutine(SetDefaultAllSettingsSequence(sendEvent, saveSettings));
+        }
+
+        private WaitForFixedUpdate waitForFixedUpdate = new WaitForFixedUpdate();
+
+        private IEnumerator SetDefaultAllSettingsSequence(bool sendEvent = true, bool saveSettings = true)
+        {
+            SetScreenMode(DEFAULT_FULLSCREEN_MODE, sendEvent, saveSettings);
+
+            yield return waitForFixedUpdate;
+
+            yield return waitForFixedUpdate;
+
+            SetScreenResolution(DEFAULT_SCREEN_WIDTH, DEFAULT_SCREEN_HEIGHT, sendEvent, saveSettings);
+
+            yield return waitForFixedUpdate;
+        }
+
+        //GAME SETTINGS SAVE / LOAD LOGIC............................................................................................
 
         private void SaveSettings()
         {
@@ -142,19 +213,26 @@ namespace TeamMAsTD
             if(!isSaving) StartCoroutine(SaveSettingsNextFrame());
         }
 
-        private WaitForFixedUpdate waitForFixedUpdate = new WaitForFixedUpdate();
-
         private IEnumerator SaveSettingsNextFrame()
         {
             isSaving = true;
 
+            //waiting for Screen to update
             yield return waitForFixedUpdate;
 
+            //waiting for Screen to update (another frame buffer to make sure Screen has finished updating before save)
             yield return waitForFixedUpdate;
 
             OnGameSettingsBeginSaving?.Invoke();
 
-            GameSettingsSaveData gameSettingsData = new GameSettingsSaveData((int)Screen.fullScreenMode, Screen.currentResolution);
+            //read and get existing gameSettingsSavedData from settings save file first
+            gameSettingsSavedData = gameSettingsSaveManager.Load<GameSettingsSaveData>(SETTINGS_SAVE_FILE_NAME);
+
+            //if no gameSettingsSavedData exists -> creates new
+            if (gameSettingsSavedData == null) gameSettingsSavedData = new GameSettingsSaveData();
+
+            //update the previous (or new) settings saved data
+            gameSettingsSavedData.SetAllSaveData((int)Screen.fullScreenMode, Screen.currentResolution);
 
             if (showDebugLog) 
             { 
@@ -163,19 +241,20 @@ namespace TeamMAsTD
                           "Saved!----------------------------------------------------------"); 
             }
 
-            gameSettingsSaveManager.Save(gameSettingsData, SETTINGS_SAVE_FILE_NAME);
+            //write settings data back to file
+            gameSettingsSaveManager.Save(gameSettingsSavedData, SETTINGS_SAVE_FILE_NAME);
 
             OnGameSettingsFinishSaving?.Invoke();
 
             isSaving = false;
         }
 
-        private void LoadSettings(bool isSavedAfterLoad = false)
+        private void LoadSettings()
         {
-            StartCoroutine(LoadSettingsSequence(isSavedAfterLoad));
+            StartCoroutine(LoadSettingsSequence());
         }
 
-        private IEnumerator LoadSettingsSequence(bool isSavedAfterLoad)
+        private IEnumerator LoadSettingsSequence()
         {
             OnGameSettingsStartLoading?.Invoke();
 
@@ -186,18 +265,21 @@ namespace TeamMAsTD
             {
                 if (showDebugLog) Debug.Log("No Available Game Settings Save Exists. Load Default Settings!");
 
-                if (Screen.fullScreenMode != DEFAULT_FULLSCREEN_MODE) SetScreenMode(DEFAULT_FULLSCREEN_MODE);
+                Resolution DEFAULT_RES = new Resolution();
 
-                if (Screen.currentResolution.width != DEFAULT_SCREEN_WIDTH ||
-                    Screen.currentResolution.height != DEFAULT_SCREEN_HEIGHT)
-                {
-                    SetScreenResolution(DEFAULT_SCREEN_WIDTH, DEFAULT_SCREEN_HEIGHT);
-                }
+                DEFAULT_RES.width = DEFAULT_SCREEN_WIDTH;
+
+                DEFAULT_RES.height = DEFAULT_SCREEN_HEIGHT;
+
+                yield return StartCoroutine(SetDefaultAllSettingsSequence(false));
 
                 //wait for next frames so the new screen settings can be updated first before invoking setting finshed event
                 yield return waitForFixedUpdate;
 
-                yield return waitForFixedUpdate; 
+                //send event to UIs and any other subscribers
+                OnFullScreenModeChanged?.Invoke(DEFAULT_FULLSCREEN_MODE);
+
+                OnScreenResolutionChanged?.Invoke(DEFAULT_RES);
 
                 OnGameSettingsFinishLoading?.Invoke();
 
@@ -206,26 +288,40 @@ namespace TeamMAsTD
 
             if (showDebugLog) Debug.Log("Available Game Settings Save Exists. Load Game Settings Save!");
 
-            GameSettingsSaveData gameSettingsSavedData = gameSettingsSaveManager.Load<GameSettingsSaveData>(SETTINGS_SAVE_FILE_NAME);
+            gameSettingsSavedData = gameSettingsSaveManager.Load<GameSettingsSaveData>(SETTINGS_SAVE_FILE_NAME);
 
             if (gameSettingsSavedData == null) yield break;
 
-            if ((int)Screen.fullScreenMode != gameSettingsSavedData.fullScreenModeNum)
-            {
-                SetScreenMode(gameSettingsSavedData.fullScreenModeNum, isSavedAfterLoad);
-            }
+            //yield return StartCoroutine(SetDefaultAllSettingsSequence(false, false));
 
-            if (Screen.currentResolution.width != gameSettingsSavedData.screenWidth ||
-                Screen.currentResolution.height != gameSettingsSavedData.screenHeight)
-            {
-                SetScreenResolution(gameSettingsSavedData.screenWidth, gameSettingsSavedData.screenHeight, isSavedAfterLoad);
-            }
+            yield return waitForFixedUpdate;
 
-            //wait for next frames so the new screen settings can be updated first before invoking setting finshed event
+            Resolution savedRes = new Resolution();
+
+            savedRes.width = gameSettingsSavedData.screenWidth;
+
+            savedRes.height = gameSettingsSavedData.screenHeight;
+
+            SetScreenResolution(savedRes.width, savedRes.height, false, false);
+
+            //wait 2 frames for screen window mode to update
 
             yield return waitForFixedUpdate;
 
             yield return waitForFixedUpdate;
+
+            //SetScreenMode(gameSettingsSavedData.fullScreenModeNum, false, false);
+
+            //wait 2 frames so the new screen window mode can be updated first before invoking setting finshed event
+
+            yield return waitForFixedUpdate;
+
+            yield return waitForFixedUpdate;
+
+            //send event to UIs and any other subscribers
+            OnFullScreenModeIndexChanged?.Invoke(gameSettingsSavedData.fullScreenModeNum);
+
+            OnScreenResolutionChanged?.Invoke(savedRes);
 
             OnGameSettingsFinishLoading?.Invoke();
         }
@@ -236,6 +332,8 @@ namespace TeamMAsTD
 
             gameSettingsSaveManager.DeleteSave(SETTINGS_SAVE_FILE_NAME);
         }
+
+        //GAME SETTINGS EDITOR...................................................................................................
 
 #if UNITY_EDITOR
 

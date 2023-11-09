@@ -59,6 +59,17 @@ namespace TeamMAsTD
             dropdown.RefreshShownValue();
         }
 
+        protected virtual void SetupOptionsList(FullScreenMode fsMode)
+        {
+            if (!enabled || !dropdown) return;
+
+            dropdown.ClearOptions();
+
+            dropdown.AddOptions(optionItems);
+
+            dropdown.RefreshShownValue();
+        }
+
         protected virtual bool OnDropdownOptionValueChanged(int dropdownItemSlotIndexSelected)
         {
             if (!enabled) return false;

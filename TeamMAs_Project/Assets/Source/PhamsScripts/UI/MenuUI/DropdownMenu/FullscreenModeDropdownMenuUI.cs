@@ -43,12 +43,23 @@ namespace TeamMAsTD
         {
             base.OnEnable();
 
-            GameSettings.OnGameSettingsFinishLoading += SetFullScreenOptionDisplayToCurrentFullScreenMode;
+            GameSettings.OnFullScreenModeIndexChanged += SetFullScreenOptionDisplayToCurrentFullScreenMode;
+        }
+
+        protected override void OnDisable()
+        {
+            base.OnDisable();
+
+            GameSettings.OnFullScreenModeIndexChanged -= SetFullScreenOptionDisplayToCurrentFullScreenMode;
         }
 
         protected override void SetupOptionsList()
         {
             if (!enabled) return;
+
+            if(fullScreenModeOptionItems.Count > 0) fullScreenModeOptionItems.Clear();
+
+            if(optionItems.Count > 0) optionItems.Clear();
 
             //count is only 4 because Unity only supports 4 window modes
             for(int i = 0; i < 4; i++)
@@ -79,12 +90,14 @@ namespace TeamMAsTD
 
             FullScreenMode fsModeToSet = fullScreenModeOptionItems[dropdownItemSlotIndexSelected].GetFullScreenMode();
 
-            GameSettings.gameSettingsInstance.SetScreenMode(fsModeToSet);
+            //set window mode without sending event since event is only sent when settings are changed from other places
+            //and we need the window mode dropdown UI (this) to update its visuals accordingly.
+            GameSettings.gameSettingsInstance.SetScreenMode(fsModeToSet, false);
 
             return true;
         }
 
-        private void SetFullScreenOptionDisplayToCurrentFullScreenMode()
+        private void SetFullScreenOptionDisplayToCurrentFullScreenMode(int fsModeIndex)
         {
             if (!enabled || !dropdown) return;
 
@@ -95,12 +108,12 @@ namespace TeamMAsTD
             //if the fullscreen mode dropdown option item UI display is already set to the current fullscreen mode -> exit coroutine
             if(dropdown.value >= 0 && dropdown.value < optionItems.Count)
             {
-                if (Screen.fullScreenMode == fullScreenModeOptionItems[dropdown.value].GetFullScreenMode()) return;
+                if (fsModeIndex == (int)fullScreenModeOptionItems[dropdown.value].GetFullScreenMode()) return;
             }
 
             for (int i = 0; i < fullScreenModeOptionItems.Count; i++)
             {
-                if (Screen.fullScreenMode == fullScreenModeOptionItems[i].GetFullScreenMode())
+                if (fsModeIndex == (int)fullScreenModeOptionItems[i].GetFullScreenMode())
                 {
                     if (i >= 0 && i < dropdown.options.Count) dropdown.SetValueWithoutNotify(i);
 

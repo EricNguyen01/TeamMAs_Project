@@ -8,6 +8,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.Assertions.Must;
+using Language.Lua;
 
 namespace TeamMAsTD
 {
@@ -50,7 +51,14 @@ namespace TeamMAsTD
         {
             base.OnEnable();
 
-            GameSettings.OnGameSettingsFinishLoading += SetResolutionOptionDisplayToCurrentResolution;
+            GameSettings.OnScreenResolutionChanged += (Resolution res) => SetResolutionOptionDisplayToCurrentResolution(res);
+        }
+
+        protected override void OnDisable()
+        {
+            base.OnDisable();
+
+            GameSettings.OnScreenResolutionChanged -= (Resolution res) => SetResolutionOptionDisplayToCurrentResolution(res);
         }
 
         protected override void SetupOptionsList()
@@ -58,6 +66,10 @@ namespace TeamMAsTD
             if (!enabled) return;
 
             if (Screen.resolutions == null || Screen.resolutions.Length == 0) return;
+
+            if (resolutionOptions.Count > 0) resolutionOptions.Clear();
+
+            if(optionItems.Count > 0) optionItems.Clear();
 
             if(showDebugLog) Debug.Log("Start Setting Up Resolution Option Items List!");
 
@@ -71,6 +83,9 @@ namespace TeamMAsTD
 
                 if (Screen.resolutions[i].refreshRate != (int)Screen.mainWindowDisplayInfo.refreshRate.value) continue;
 
+                //if (fsMode == FullScreenMode.Windowed && 
+                    //Screen.resolutions[i].width == 1920 && Screen.resolutions[i].height == 1080) continue;
+                
                 ResolutionOptionItem resItem = new ResolutionOptionItem();
 
                 resItem.InitResolutionOptionItem(Screen.resolutions[i]);
@@ -93,12 +108,14 @@ namespace TeamMAsTD
 
             Resolution resolutionToSet = resolutionOptions[dropdownItemSlotIndexSelected].GetResolution();
 
-            GameSettings.gameSettingsInstance.SetScreenResolution(resolutionToSet);
+            //set screen res without sending event since event is only sent when settings are changed from other places
+            //and we need the resolution dropdown UI (this) to update its visuals accordingly.
+            GameSettings.gameSettingsInstance.SetScreenResolution(resolutionToSet, false);
 
             return true;
         }
 
-        private void SetResolutionOptionDisplayToCurrentResolution()
+        private void SetResolutionOptionDisplayToCurrentResolution(Resolution currentRes, bool raiseDropdownEvent = false)
         {
             if (!enabled || !dropdown) return;
 
@@ -108,9 +125,9 @@ namespace TeamMAsTD
 
             if(showDebugLog) Debug.Log("Start Setting Resolution Option Display After Resolution Setting Loaded!");
 
-            Resolution currentRes = Screen.currentResolution;
+            if(currentRes.width == 0 && currentRes.height == 0) currentRes = Screen.currentResolution;
 
-            //if the fullscreen mode dropdown option item UI display is already set to the current fullscreen mode -> exit coroutine
+            //if the fullscreen mode dropdown option item UI display is already set to the current fullscreen mode -> exit func
             if (dropdown.value >= 0 && dropdown.value < optionItems.Count)
             {
                 Resolution currentResOptionDisplayed = resolutionOptions[dropdown.value].GetResolution();
@@ -130,7 +147,11 @@ namespace TeamMAsTD
 
                 if (currentRes.width == resIteration.width && currentRes.height == resIteration.height)
                 {
-                    if (i >= 0 && i < dropdown.options.Count) dropdown.SetValueWithoutNotify(i);
+                    if (i >= 0 && i < dropdown.options.Count)
+                    {
+                        if (raiseDropdownEvent) dropdown.value = i;
+                        else dropdown.SetValueWithoutNotify(i);
+                    }
 
                     if (showDebugLog) Debug.Log("Match Resolution Option Item UI Display To: " + dropdown.options[i].text);
 
