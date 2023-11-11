@@ -48,7 +48,7 @@ namespace TeamMAsTD
         private void Awake()
         {
             //keep only 1 instance of game resource during runtime
-            if(gameResourceInstance != null)
+            if(gameResourceInstance && gameResourceInstance != this)
             {
                 Debug.LogWarning("More than 1 instance of GameResource object exists! There should only be one.\n" +
                 "Destroying duplicated GameResource obj: " + name);

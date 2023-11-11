@@ -6,7 +6,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Gameframe.SaveLoad;
-using UnityEngine.SceneManagement;
+using System.Runtime.CompilerServices;
 
 #if UNITY_EDITOR
 using UnityEditor;
@@ -90,36 +90,9 @@ namespace TeamMAsTD
 
             DontDestroyOnLoad(gameObject);
 
-            if (!saveLoadManager)
-            {
-                saveLoadManager = GetSaveLoadManagerFromResources();
-            }
-
-            if (!saveLoadManager)
-            {
-                enabled = false;
-
-                return;
-            }
+            SetSaveLoadManagerReferenceIfMissing();
 
             disableSaveLoadRuntime = false;
-        }
-
-        private void OnEnable()
-        {
-            if (!saveLoadManager) saveLoadManager = SaveLoadManager.Create(BASE_FOLDER, DEFAULT_FOLDER, SERIALIZE_METHOD);
-
-            SceneManager.sceneUnloaded += (Scene sc) => RemoveAllEventsListeners();
-        }
-
-        private void OnDisable()
-        {
-            SceneManager.sceneUnloaded -= (Scene sc) => RemoveAllEventsListeners();
-        }
-
-        private void OnDestroy()
-        {
-            RemoveAllEventsListeners();
         }
 
         //SAVE FUNCTIONALITIES....................................................................................................
@@ -451,12 +424,17 @@ namespace TeamMAsTD
             return tempSaveLoadManager;
         }
 
-        private void RemoveAllEventsListeners()
+        private void SetSaveLoadManagerReferenceIfMissing()
         {
-            OnSavingStarted = null;
-            OnSavingFinished = null;
-            OnLoadingStarted = null;
-            OnLoadingFinished = null;
+            if (!saveLoadManager)
+            {
+                saveLoadManager = GetSaveLoadManagerFromResources();
+            }
+
+            if (!saveLoadManager)
+            {
+                saveLoadManager = SaveLoadManager.Create(BASE_FOLDER, DEFAULT_FOLDER, SERIALIZE_METHOD);
+            }
         }
 
         #endregion
@@ -518,7 +496,7 @@ namespace TeamMAsTD
                         return;
                     }
 
-                    saveLoadHandler.DeleteAllSaveData();
+                    saveLoadHandler.DeleteAllSaveDataEditorInternal();
                 }
             }
         }

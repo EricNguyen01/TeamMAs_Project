@@ -49,6 +49,8 @@ namespace TeamMAsTD
         {
             base.OnEnable();
 
+            GameSettings.OnScreenResolutionChanged -= (Resolution res) => SetResolutionOptionDisplayToCurrentResolution(res);
+
             GameSettings.OnScreenResolutionChanged += (Resolution res) => SetResolutionOptionDisplayToCurrentResolution(res);
         }
 
@@ -56,11 +58,6 @@ namespace TeamMAsTD
         {
             base.OnDisable();
 
-            GameSettings.OnScreenResolutionChanged -= (Resolution res) => SetResolutionOptionDisplayToCurrentResolution(res);
-        }
-
-        protected override void OnDestroy()
-        {
             GameSettings.OnScreenResolutionChanged -= (Resolution res) => SetResolutionOptionDisplayToCurrentResolution(res);
         }
 
@@ -120,49 +117,52 @@ namespace TeamMAsTD
 
         private void SetResolutionOptionDisplayToCurrentResolution(Resolution currentRes, bool raiseDropdownEvent = false)
         {
-            if (!enabled || !dropdown) return;
-
-            if (dropdown.options == null || dropdown.options.Count == 0) return;
-
-            if (resolutionOptions.Count == 0 || optionItems.Count == 0) return;
-
-            if(showDebugLog) Debug.Log("Start Setting Resolution Option Display After Resolution Setting Loaded!");
-
-            if(currentRes.width == 0 && currentRes.height == 0) currentRes = Screen.currentResolution;
-
-            //if the fullscreen mode dropdown option item UI display is already set to the current fullscreen mode -> exit func
-            if (dropdown.value >= 0 && dropdown.value < optionItems.Count)
+            if(this != null)
             {
-                Resolution currentResOptionDisplayed = resolutionOptions[dropdown.value].GetResolution();
+                if (!enabled || !dropdown) return;
 
-                if (currentRes.width == currentResOptionDisplayed.width && 
-                    currentRes.height == currentResOptionDisplayed.height)
+                if (dropdown.options == null || dropdown.options.Count == 0) return;
+
+                if (resolutionOptions.Count == 0 || optionItems.Count == 0) return;
+
+                if (showDebugLog) Debug.Log("Start Setting Resolution Option Display After Resolution Setting Loaded!");
+
+                if (currentRes.width == 0 && currentRes.height == 0) currentRes = Screen.currentResolution;
+
+                //if the fullscreen mode dropdown option item UI display is already set to the current fullscreen mode -> exit func
+                if (dropdown.value >= 0 && dropdown.value < optionItems.Count)
                 {
-                    if (showDebugLog) Debug.Log("Resolution Option Item UI Display SAME As Current Loaded Resolution Setting!");
+                    Resolution currentResOptionDisplayed = resolutionOptions[dropdown.value].GetResolution();
 
-                    return;
-                }
-            }
-
-            for (int i = 0; i < resolutionOptions.Count; i++)
-            {
-                Resolution resIteration = resolutionOptions[i].GetResolution();
-
-                if (currentRes.width == resIteration.width && currentRes.height == resIteration.height)
-                {
-                    if (i >= 0 && i < dropdown.options.Count)
+                    if (currentRes.width == currentResOptionDisplayed.width &&
+                        currentRes.height == currentResOptionDisplayed.height)
                     {
-                        if (raiseDropdownEvent) dropdown.value = i;
-                        else dropdown.SetValueWithoutNotify(i);
+                        if (showDebugLog) Debug.Log("Resolution Option Item UI Display SAME As Current Loaded Resolution Setting!");
+
+                        return;
                     }
-
-                    if (showDebugLog) Debug.Log("Match Resolution Option Item UI Display To: " + dropdown.options[i].text);
-
-                    break;
                 }
-            }
 
-            dropdown.RefreshShownValue();
+                for (int i = 0; i < resolutionOptions.Count; i++)
+                {
+                    Resolution resIteration = resolutionOptions[i].GetResolution();
+
+                    if (currentRes.width == resIteration.width && currentRes.height == resIteration.height)
+                    {
+                        if (i >= 0 && i < dropdown.options.Count)
+                        {
+                            if (raiseDropdownEvent) dropdown.value = i;
+                            else dropdown.SetValueWithoutNotify(i);
+                        }
+
+                        if (showDebugLog) Debug.Log("Match Resolution Option Item UI Display To: " + dropdown.options[i].text);
+
+                        break;
+                    }
+                }
+
+                dropdown.RefreshShownValue();
+            }
         }
     }
 }

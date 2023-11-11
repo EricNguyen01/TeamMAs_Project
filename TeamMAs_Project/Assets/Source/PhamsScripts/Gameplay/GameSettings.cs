@@ -35,6 +35,12 @@ namespace TeamMAsTD
 
         private const string SETTINGS_SAVE_FILE_NAME = "GameSettingSave";
 
+        private const string BASE_FOLDER = "GameData";
+
+        private const string DEFAULT_FOLDER = "GameSettings";
+
+        private const SerializationMethodType SERIALIZE_METHOD = SerializationMethodType.Default;
+
         [Header("Debug")]
 
         [SerializeField] private bool showDebugLog = false;
@@ -116,36 +122,21 @@ namespace TeamMAsTD
 
             gameSettingsInstance = this;
 
-            //DontDestroyOnLoad(gameObject);
+            DontDestroyOnLoad(gameObject);
 
-            if (!gameSettingsSaveManager)
-            {
-                gameSettingsSaveManager = Resources.Load<SaveLoadManager>("GameSettingsSaveLoadManager");
-            }
-
-            if (!gameSettingsSaveManager)
-            {
-                enabled = false;
-
-                return;
-            }
+            Set_GameSettingsSaveLoadManager_Reference_IfMissing();
 
             LoadSettings();
         }
 
         private void OnEnable()
         {
-            SceneManager.sceneUnloaded += (Scene sc) => RemoveAllEventsListeners();
+            SceneManager.sceneLoaded += (Scene sc, LoadSceneMode loadMode) => LoadSettings();
         }
 
         private void OnDisable()
         {
-            SceneManager.sceneUnloaded -= (Scene sc) => RemoveAllEventsListeners();
-        }
-
-        private void OnDestroy()
-        {
-            RemoveAllEventsListeners();
+            SceneManager.sceneLoaded -= (Scene sc, LoadSceneMode loadMode) => LoadSettings();
         }
 
         public void SetScreenMode(FullScreenMode fullScreenMode, bool sendEvent = true, bool saveSetting = true)
@@ -415,16 +406,17 @@ namespace TeamMAsTD
             go.AddComponent<GameSettings>();
         }
 
-        private void RemoveAllEventsListeners()
+        private void Set_GameSettingsSaveLoadManager_Reference_IfMissing()
         {
-            OnGameSettingsBeginSaving = null;
-            OnGameSettingsFinishSaving = null;
-            OnGameSettingsStartLoading = null;
-            OnGameSettingsFinishLoading = null;
+            if (!gameSettingsSaveManager)
+            {
+                gameSettingsSaveManager = Resources.Load<SaveLoadManager>("GameSettingsSaveLoadManager");
+            }
 
-            OnFullScreenModeChanged = null;
-            OnFullScreenModeIndexChanged = null;
-            OnScreenResolutionChanged = null;
+            if (!gameSettingsSaveManager)
+            {
+                gameSettingsSaveManager = SaveLoadManager.Create(BASE_FOLDER, DEFAULT_FOLDER, SERIALIZE_METHOD);
+            }
         }
 
         //GAME SETTINGS EDITOR...................................................................................................

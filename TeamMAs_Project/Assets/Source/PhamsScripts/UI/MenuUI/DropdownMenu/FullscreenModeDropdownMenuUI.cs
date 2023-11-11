@@ -43,6 +43,8 @@ namespace TeamMAsTD
         {
             base.OnEnable();
 
+            GameSettings.OnFullScreenModeIndexChanged -= SetFullScreenOptionDisplayToCurrentFullScreenMode;
+
             GameSettings.OnFullScreenModeIndexChanged += SetFullScreenOptionDisplayToCurrentFullScreenMode;
         }
 
@@ -50,11 +52,6 @@ namespace TeamMAsTD
         {
             base.OnDisable();
 
-            GameSettings.OnFullScreenModeIndexChanged -= SetFullScreenOptionDisplayToCurrentFullScreenMode;
-        }
-
-        protected override void OnDestroy()
-        {
             GameSettings.OnFullScreenModeIndexChanged -= SetFullScreenOptionDisplayToCurrentFullScreenMode;
         }
 
@@ -104,29 +101,32 @@ namespace TeamMAsTD
 
         private void SetFullScreenOptionDisplayToCurrentFullScreenMode(int fsModeIndex)
         {
-            if (!enabled || !dropdown) return;
-
-            if(dropdown.options == null || dropdown.options.Count == 0) return;
-
-            if (fullScreenModeOptionItems.Count == 0 || optionItems.Count == 0) return;
-
-            //if the fullscreen mode dropdown option item UI display is already set to the current fullscreen mode -> exit coroutine
-            if(dropdown.value >= 0 && dropdown.value < optionItems.Count)
+            if(this != null)
             {
-                if (fsModeIndex == (int)fullScreenModeOptionItems[dropdown.value].GetFullScreenMode()) return;
-            }
+                if (!enabled || !dropdown) return;
 
-            for (int i = 0; i < fullScreenModeOptionItems.Count; i++)
-            {
-                if (fsModeIndex == (int)fullScreenModeOptionItems[i].GetFullScreenMode())
+                if (dropdown.options == null || dropdown.options.Count == 0) return;
+
+                if (fullScreenModeOptionItems.Count == 0 || optionItems.Count == 0) return;
+
+                //if the fullscreen mode dropdown option item UI display is already set to the current fullscreen mode -> exit coroutine
+                if (dropdown.value >= 0 && dropdown.value < optionItems.Count)
                 {
-                    if (i >= 0 && i < dropdown.options.Count) dropdown.SetValueWithoutNotify(i);
-
-                    break;
+                    if (fsModeIndex == (int)fullScreenModeOptionItems[dropdown.value].GetFullScreenMode()) return;
                 }
-            }
 
-            dropdown.RefreshShownValue();
+                for (int i = 0; i < fullScreenModeOptionItems.Count; i++)
+                {
+                    if (fsModeIndex == (int)fullScreenModeOptionItems[i].GetFullScreenMode())
+                    {
+                        if (i >= 0 && i < dropdown.options.Count) dropdown.SetValueWithoutNotify(i);
+
+                        break;
+                    }
+                }
+
+                dropdown.RefreshShownValue();
+            }
         }
     }
 }

@@ -41,8 +41,6 @@ namespace TeamMAsTD
             }
         }
 
-        protected virtual void Start() { }
-
         protected virtual void OnDisable()
         {
             if (dropdown)
@@ -50,8 +48,6 @@ namespace TeamMAsTD
                 dropdown.onValueChanged.RemoveListener((int i) => OnDropdownOptionValueChanged(i));
             }
         }
-
-        protected virtual void OnDestroy() { }
 
         protected virtual void SetupOptionsList()
         {
