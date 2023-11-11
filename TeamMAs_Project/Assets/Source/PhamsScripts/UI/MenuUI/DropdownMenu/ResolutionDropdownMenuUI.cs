@@ -10,7 +10,7 @@ using TMPro;
 
 namespace TeamMAsTD
 {
-    public class ResolutionDropdownMenuUI : DropdownMenuUI
+    public class ResolutionDropdownMenuUI : DropdownSettingsMenuUI
     {
         [Serializable]
         private struct ResolutionOptionItem
@@ -56,6 +56,11 @@ namespace TeamMAsTD
         {
             base.OnDisable();
 
+            GameSettings.OnScreenResolutionChanged -= (Resolution res) => SetResolutionOptionDisplayToCurrentResolution(res);
+        }
+
+        protected override void OnDestroy()
+        {
             GameSettings.OnScreenResolutionChanged -= (Resolution res) => SetResolutionOptionDisplayToCurrentResolution(res);
         }
 

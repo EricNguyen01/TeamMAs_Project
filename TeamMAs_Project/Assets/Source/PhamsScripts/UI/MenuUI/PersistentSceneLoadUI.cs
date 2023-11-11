@@ -48,9 +48,10 @@ namespace TeamMAsTD
 
         private void Awake()
         {
-            if (persistentSceneLoadUIInstance != null)
+            if (persistentSceneLoadUIInstance && persistentSceneLoadUIInstance != this)
             {
                 Destroy(gameObject);
+
                 return;
             }
 

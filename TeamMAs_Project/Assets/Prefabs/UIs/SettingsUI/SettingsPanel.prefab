@@ -92,7 +92,7 @@ GameObject:
   - component: {fileID: 3356860093603886471}
   - component: {fileID: 3402214398227424623}
   m_Layer: 5
-  m_Name: ReturnToMenuButton
+  m_Name: ExitSettingsPanelButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -644,7 +644,6 @@ GameObject:
   m_Component:
   - component: {fileID: 7959813438100361342}
   - component: {fileID: 7959813438100361312}
-  - component: {fileID: 7959813438100361343}
   - component: {fileID: 2561108232694477927}
   m_Layer: 5
   m_Name: SettingsContentVertLayout
@@ -683,36 +682,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7959813438100361341}
   m_CullTransparentMesh: 1
---- !u!114 &7959813438100361343
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7959813438100361341}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 0.6355996, g: 0.8962264, b: 0.4684051, a: 0.8117647}
-  m_RaycastTarget: 0
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
 --- !u!114 &2561108232694477927
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -752,7 +721,7 @@ GameObject:
   - component: {fileID: 7959813439089080300}
   - component: {fileID: 7277314831744106942}
   m_Layer: 5
-  m_Name: SettingsPanelTemplate
+  m_Name: SettingsPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -814,7 +783,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.616315, g: 0.9056604, b: 0.43061587, a: 0.6745098}
+  m_Color: {r: 0.4523477, g: 0.6603774, b: 0.32022074, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1

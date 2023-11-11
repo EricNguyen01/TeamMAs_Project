@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 namespace TeamMAsTD
 {
@@ -40,6 +41,8 @@ namespace TeamMAsTD
             }
         }
 
+        protected virtual void Start() { }
+
         protected virtual void OnDisable()
         {
             if (dropdown)
@@ -47,6 +50,8 @@ namespace TeamMAsTD
                 dropdown.onValueChanged.RemoveListener((int i) => OnDropdownOptionValueChanged(i));
             }
         }
+
+        protected virtual void OnDestroy() { }
 
         protected virtual void SetupOptionsList()
         {

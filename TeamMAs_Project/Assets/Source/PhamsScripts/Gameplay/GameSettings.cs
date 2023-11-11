@@ -5,6 +5,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using Gameframe.SaveLoad;
 
 #if UNITY_EDITOR
@@ -98,15 +99,15 @@ namespace TeamMAsTD
 
         private GameSettingsSaveData gameSettingsSavedData;
 
-        private WaitForFixedUpdate waitForFixedUpdate = new WaitForFixedUpdate();
-
         private bool isSaving = false;
 
         private bool isLoading = false;
 
+        private bool isSettingScreenMode = false;
+
         private void Awake()
         {
-            if (gameSettingsInstance)
+            if (gameSettingsInstance && gameSettingsInstance != this)
             {
                 Destroy(gameObject);
 
@@ -115,27 +116,63 @@ namespace TeamMAsTD
 
             gameSettingsInstance = this;
 
-            DontDestroyOnLoad(gameObject);
+            //DontDestroyOnLoad(gameObject);
+
+            if (!gameSettingsSaveManager)
+            {
+                gameSettingsSaveManager = Resources.Load<SaveLoadManager>("GameSettingsSaveLoadManager");
+            }
+
+            if (!gameSettingsSaveManager)
+            {
+                enabled = false;
+
+                return;
+            }
 
             LoadSettings();
         }
 
+        private void OnEnable()
+        {
+            SceneManager.sceneUnloaded += (Scene sc) => RemoveAllEventsListeners();
+        }
+
+        private void OnDisable()
+        {
+            SceneManager.sceneUnloaded -= (Scene sc) => RemoveAllEventsListeners();
+        }
+
+        private void OnDestroy()
+        {
+            RemoveAllEventsListeners();
+        }
+
         public void SetScreenMode(FullScreenMode fullScreenMode, bool sendEvent = true, bool saveSetting = true)
         {
+            if (!enabled) return;
+
+            if (isSettingScreenMode) StopCoroutine(SetScreenModeSequence(fullScreenMode, sendEvent, saveSetting));
+
+            isSettingScreenMode = true;
+
             StartCoroutine(SetScreenModeSequence(fullScreenMode, sendEvent, saveSetting));
         }
 
         private IEnumerator SetScreenModeSequence(FullScreenMode fullScreenMode, bool sendEvent = true, bool saveSetting = true)
         {
-            if (Screen.fullScreenMode == fullScreenMode) yield break;
+            isSettingScreenMode = true;
+
+            if (Screen.fullScreenMode == fullScreenMode)
+            {
+                isSettingScreenMode = false; yield break;
+            }
 
             if (!Screen.fullScreen) Screen.fullScreen = true;
 
             Screen.fullScreenMode = fullScreenMode;
 
-            yield return waitForFixedUpdate;
-
-            yield return waitForFixedUpdate;
+            yield return new WaitForSecondsRealtime(0.03f);
 
             if (fullScreenMode == FullScreenMode.FullScreenWindow)
             {
@@ -146,15 +183,15 @@ namespace TeamMAsTD
                 SetScreenResolution(DEFAULT_SCREEN_WIDTH_WINDOWED, DEFAULT_SCREEN_HEIGHT_WINDOWED, sendEvent, saveSetting);
             }
 
-            //Screen.fullScreenMode = fullScreenMode;
-
             if (sendEvent) OnFullScreenModeChanged?.Invoke(fullScreenMode);
 
             if (showDebugLog) Debug.Log("Set New FullScreen Mode: " + Screen.fullScreenMode.ToString());
 
             if (saveSetting) SaveSettings();
 
-            yield return waitForFixedUpdate;
+            yield return new WaitForSecondsRealtime(0.02f);
+
+            isSettingScreenMode = false;
 
             yield break;
         }
@@ -170,6 +207,8 @@ namespace TeamMAsTD
 
         public void SetScreenResolution(Resolution resolution, bool sendEvent = true, bool saveSetting = true)
         {
+            if (!enabled) return;
+
             //set default res values if invalid resolution parameters
             //then call this function itself again but with default res values as params
             if (resolution.width == 0 || resolution.height == 0)
@@ -185,7 +224,7 @@ namespace TeamMAsTD
             Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreenMode, (int)Screen.mainWindowDisplayInfo.refreshRate.value);
 
             if (sendEvent) OnScreenResolutionChanged?.Invoke(resolution);
-
+            
             if(showDebugLog) Debug.Log("Set New Screen Resolution: " + resolution.ToString());
 
             if (saveSetting) SaveSettings();
@@ -204,6 +243,8 @@ namespace TeamMAsTD
 
         private void SetDefaultAllSettings(bool sendEvent = true, bool saveSettings = true)
         {
+            if (!enabled) return;
+
             StartCoroutine(SetDefaultAllSettingsSequence(sendEvent, saveSettings));
         }
 
@@ -211,11 +252,9 @@ namespace TeamMAsTD
         {
             yield return StartCoroutine(SetScreenModeSequence(DEFAULT_FULLSCREEN_MODE, sendEvent, saveSettings));
 
-            yield return waitForFixedUpdate;
-
             SetScreenResolution(DEFAULT_SCREEN_WIDTH, DEFAULT_SCREEN_HEIGHT, sendEvent, saveSettings);
 
-            yield return waitForFixedUpdate;
+            yield return new WaitForSecondsRealtime(0.02f);
 
             yield break;
         }
@@ -237,10 +276,7 @@ namespace TeamMAsTD
             isSaving = true;
 
             //waiting for Screen to update
-            yield return waitForFixedUpdate;
-
-            //waiting for Screen to update (another frame buffer to make sure Screen has finished updating before save)
-            yield return waitForFixedUpdate;
+            yield return new WaitForSecondsRealtime(0.03f);
 
             OnGameSettingsBeginSaving?.Invoke();
 
@@ -279,6 +315,8 @@ namespace TeamMAsTD
 
         private void LoadSettings()
         {
+            if (!gameSettingsSaveManager) return;
+
             if (isLoading) StopCoroutine(LoadSettingsSequence());
 
             StartCoroutine(LoadSettingsSequence());
@@ -298,9 +336,6 @@ namespace TeamMAsTD
                 if (showDebugLog) Debug.Log("No Available Game Settings Save Exists. Load Default Settings!");
 
                 yield return StartCoroutine(SetDefaultAllSettingsSequence(false));
-
-                //wait for next frames so the new screen settings can be updated first before invoking setting finshed event
-                yield return waitForFixedUpdate;
 
                 Resolution DEFAULT_RES = new Resolution();
 
@@ -328,9 +363,7 @@ namespace TeamMAsTD
 
             SetScreenMode(gameSettingsSavedData.fullScreenModeNum, false, false);
 
-            yield return waitForFixedUpdate;
-
-            yield return waitForFixedUpdate;
+            yield return new WaitWhile(() => isSettingScreenMode);
 
             Resolution savedRes = new Resolution();
 
@@ -340,11 +373,9 @@ namespace TeamMAsTD
 
             SetScreenResolution(savedRes.width, savedRes.height, false, false);
 
-            //wait 2 frames so the new screen window mode can be updated first before invoking setting finshed event
+            //wait a few frames so the new screen window mode can be updated first before invoking setting finshed event
 
-            yield return waitForFixedUpdate;
-
-            yield return waitForFixedUpdate;
+            yield return new WaitForSecondsRealtime(0.02f);
 
             if (showDebugLog)
             {
@@ -371,6 +402,29 @@ namespace TeamMAsTD
             if (!gameSettingsSaveManager) return;
 
             gameSettingsSaveManager.DeleteSave(SETTINGS_SAVE_FILE_NAME);
+        }
+
+        public static void CreateGameSettingsInstance()
+        {
+            if (gameSettingsInstance) return;
+
+            if (FindObjectOfType<GameSettings>() != null) return;
+
+            GameObject go = new GameObject("GameSettings(1InstanceOnly)");
+
+            go.AddComponent<GameSettings>();
+        }
+
+        private void RemoveAllEventsListeners()
+        {
+            OnGameSettingsBeginSaving = null;
+            OnGameSettingsFinishSaving = null;
+            OnGameSettingsStartLoading = null;
+            OnGameSettingsFinishLoading = null;
+
+            OnFullScreenModeChanged = null;
+            OnFullScreenModeIndexChanged = null;
+            OnScreenResolutionChanged = null;
         }
 
         //GAME SETTINGS EDITOR...................................................................................................

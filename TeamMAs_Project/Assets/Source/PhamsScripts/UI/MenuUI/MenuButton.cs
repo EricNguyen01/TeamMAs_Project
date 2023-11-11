@@ -91,10 +91,9 @@ namespace TeamMAsTD
                 return;
             }
 
-            if (SaveLoadHandler.saveLoadHandlerInstance)
-            {
-                SaveLoadHandler.saveLoadHandlerInstance.DeleteAllSaveData();
-            }
+            if (!SaveLoadHandler.saveLoadHandlerInstance) SaveLoadHandler.CreateSaveLoadManagerInstance();
+
+            SaveLoadHandler.saveLoadHandlerInstance.DeleteAllSaveData();
 
             PersistentSceneLoadUI.persistentSceneLoadUIInstance.AllowLoadSaveAfterSceneLoaded(false);
 
@@ -156,10 +155,9 @@ namespace TeamMAsTD
 
             if (!debugButtonEnabled) return;
 
-            if (SaveLoadHandler.saveLoadHandlerInstance)
-            {
-                SaveLoadHandler.saveLoadHandlerInstance.DeleteAllSaveData();
-            }
+            if (!SaveLoadHandler.saveLoadHandlerInstance) SaveLoadHandler.CreateSaveLoadManagerInstance();
+
+            SaveLoadHandler.saveLoadHandlerInstance.DeleteAllSaveData();
 
             if (GameSettings.gameSettingsInstance)
             {

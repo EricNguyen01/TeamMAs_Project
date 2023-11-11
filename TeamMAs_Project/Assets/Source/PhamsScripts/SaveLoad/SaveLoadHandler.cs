@@ -6,6 +6,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Gameframe.SaveLoad;
+using UnityEngine.SceneManagement;
 
 #if UNITY_EDITOR
 using UnityEditor;
@@ -25,9 +26,9 @@ namespace TeamMAsTD
         [SerializeField]
         private bool disableSaveLoadRuntime = false;
 
-        [SerializeField] private bool showDebugLog = true;
+        [SerializeField] private bool showDebugLog = false;
 
-        [SerializeField] private bool showEditorDebugLog = true;
+        [SerializeField] private bool showEditorDebugLog = false;
 
         private const string SAVE_FILE_NAME = "GameSave";
 
@@ -78,15 +79,25 @@ namespace TeamMAsTD
 
         private void Awake()
         {
-            if (!saveLoadHandlerInstance)
-            {
-                saveLoadHandlerInstance = this;
-
-                DontDestroyOnLoad(gameObject);
-            }
-            else
+            if (saveLoadHandlerInstance && saveLoadHandlerInstance != this)
             {
                 Destroy(gameObject);
+
+                return;
+            }
+
+            saveLoadHandlerInstance = this;
+
+            DontDestroyOnLoad(gameObject);
+
+            if (!saveLoadManager)
+            {
+                saveLoadManager = GetSaveLoadManagerFromResources();
+            }
+
+            if (!saveLoadManager)
+            {
+                enabled = false;
 
                 return;
             }
@@ -97,6 +108,18 @@ namespace TeamMAsTD
         private void OnEnable()
         {
             if (!saveLoadManager) saveLoadManager = SaveLoadManager.Create(BASE_FOLDER, DEFAULT_FOLDER, SERIALIZE_METHOD);
+
+            SceneManager.sceneUnloaded += (Scene sc) => RemoveAllEventsListeners();
+        }
+
+        private void OnDisable()
+        {
+            SceneManager.sceneUnloaded -= (Scene sc) => RemoveAllEventsListeners();
+        }
+
+        private void OnDestroy()
+        {
+            RemoveAllEventsListeners();
         }
 
         //SAVE FUNCTIONALITIES....................................................................................................
@@ -112,6 +135,8 @@ namespace TeamMAsTD
         public static bool SaveAllSaveables()
         {
             if (!saveLoadHandlerInstance && !saveLoadHandlerInstance.saveLoadManager) return false;
+
+            if (!saveLoadHandlerInstance.enabled) return false;
 
             if (saveLoadHandlerInstance.disableSaveLoadAlways || saveLoadHandlerInstance.disableSaveLoadRuntime) return false;
 
@@ -168,6 +193,8 @@ namespace TeamMAsTD
         {
             if (!saveLoadHandlerInstance && !saveLoadHandlerInstance.saveLoadManager) return false;
 
+            if (!saveLoadHandlerInstance.enabled) return false;
+                 
             if (saveLoadHandlerInstance.disableSaveLoadAlways || saveLoadHandlerInstance.disableSaveLoadRuntime) return false;
 
             if (!saveable) return false;
@@ -236,6 +263,8 @@ namespace TeamMAsTD
         {
             if (!saveLoadHandlerInstance && !saveLoadHandlerInstance.saveLoadManager) return false;
 
+            if (!saveLoadHandlerInstance.enabled) return false;
+
             if (saveLoadHandlerInstance.disableSaveLoadAlways || saveLoadHandlerInstance.disableSaveLoadRuntime) return false;
 
             if (!HasSavedData())
@@ -275,6 +304,8 @@ namespace TeamMAsTD
         public static bool LoadThisSaveableOnly(Saveable saveable)
         {
             if (!saveLoadHandlerInstance && !saveLoadHandlerInstance.saveLoadManager) return false;
+
+            if (!saveLoadHandlerInstance.enabled) return false;
 
             if (saveLoadHandlerInstance.disableSaveLoadAlways || saveLoadHandlerInstance.disableSaveLoadRuntime) return false;
 
@@ -324,15 +355,33 @@ namespace TeamMAsTD
 
         private void DeleteAllSaveDataEditorInternal()
         {
-            if (!saveLoadManager) return;
+            if (showDebugLog) Debug.Log("Start Deleting All Save Data!");
 
-            if (showDebugLog) Debug.Log("Deleting All Save Data!");
+            if (!saveLoadManager)
+            {
+                saveLoadManager = GetSaveLoadManagerFromResources();
+            }
+
+            if (!saveLoadManager)
+            {
+                if (showDebugLog) Debug.Log("Delete All Save Data FAILED! " +
+                    "No Save Load Manager SO found or No Save Data File Found!");
+
+                return;
+            }
+
+            if (showDebugLog) Debug.Log("All Save Data Deleted SUCCESSFULLY!");
 
             saveLoadManager.DeleteSave(SAVE_FILE_NAME);
         }
 
         public void DeleteSaveDataOfSaveable(Saveable saveable)
         {
+            if (!saveLoadManager)
+            {
+                saveLoadManager = GetSaveLoadManagerFromResources();
+            }
+
             if (!saveLoadManager) return;
 
             if (!saveable) return;
@@ -346,13 +395,15 @@ namespace TeamMAsTD
 
         #endregion
 
-        #region Others
+        #region Other SaveLoad Utilities
 
         public static void CreateSaveLoadManagerInstance()
         {
             if (saveLoadHandlerInstance) return;
 
-            GameObject go = new GameObject("SaveLoadManager");
+            if (FindObjectOfType<SaveLoadHandler>() != null) return;
+
+            GameObject go = new GameObject("SaveLoadManager(1InstanceOnly)");
 
             go.AddComponent<SaveLoadHandler>();
         }
@@ -378,6 +429,34 @@ namespace TeamMAsTD
             if (saveLoadHandlerInstance.disableSaveLoadRuntime) return false;
 
             return true;
+        }
+
+        private SaveLoadManager GetSaveLoadManagerFromResources()
+        {
+            if (saveLoadManager) return saveLoadManager;
+
+            SaveLoadManager tempSaveLoadManager = null;
+
+            foreach (SaveLoadManager slManager in Resources.FindObjectsOfTypeAll<SaveLoadManager>())
+            {
+                if (slManager.DefaultFolder == DEFAULT_FOLDER &&
+                    slManager.BaseFolder == BASE_FOLDER)
+                {
+                    tempSaveLoadManager = slManager;
+
+                    break;
+                }
+            }
+
+            return tempSaveLoadManager;
+        }
+
+        private void RemoveAllEventsListeners()
+        {
+            OnSavingStarted = null;
+            OnSavingFinished = null;
+            OnLoadingStarted = null;
+            OnLoadingFinished = null;
         }
 
         #endregion
@@ -439,7 +518,7 @@ namespace TeamMAsTD
                         return;
                     }
 
-                    saveLoadHandler.DeleteAllSaveDataEditorInternal();
+                    saveLoadHandler.DeleteAllSaveData();
                 }
             }
         }

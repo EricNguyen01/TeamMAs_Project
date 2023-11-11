@@ -10,7 +10,7 @@ using TMPro;
 
 namespace TeamMAsTD
 {
-    public class FullscreenModeDropdownMenuUI : DropdownMenuUI
+    public class FullscreenModeDropdownMenuUI : DropdownSettingsMenuUI
     {
         [Serializable]
         private struct FullscreenModeOptionItem
@@ -50,6 +50,11 @@ namespace TeamMAsTD
         {
             base.OnDisable();
 
+            GameSettings.OnFullScreenModeIndexChanged -= SetFullScreenOptionDisplayToCurrentFullScreenMode;
+        }
+
+        protected override void OnDestroy()
+        {
             GameSettings.OnFullScreenModeIndexChanged -= SetFullScreenOptionDisplayToCurrentFullScreenMode;
         }
 
