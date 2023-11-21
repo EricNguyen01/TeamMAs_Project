@@ -12,7 +12,7 @@ namespace TeamMAsTD
 {
     public class BuildMemoryUsageLogger : MonoBehaviour
     {
-        private const string LOG_FILE_NAME = "MemoryUsageLogger.txt";
+        private const string LOG_FILE_NAME = "MemoryUsageLog.txt";
 
         private string pathToLogFile;
 
@@ -34,10 +34,21 @@ namespace TeamMAsTD
 
         private string memoryLogText;
 
-        private static BuildMemoryUsageLogger buildMemoryUsageLoggerInstance;
+        private static BuildMemoryUsageLogger memoryUsageLoggerInstance;
 
         private void Awake()
         {
+            if(memoryUsageLoggerInstance && memoryUsageLoggerInstance != this)
+            {
+                Destroy(gameObject);
+
+                return;
+            }
+
+            memoryUsageLoggerInstance = this;
+
+            DontDestroyOnLoad(gameObject);
+
 #if UNITY_STANDALONE_WIN
 
             pathToLogFile = System.IO.Path.Combine(Application.persistentDataPath, LOG_FILE_NAME);
@@ -71,6 +82,14 @@ namespace TeamMAsTD
             gcUsedMemoryRecorder.Dispose();
 
             systemUsedMemoryRecorder.Dispose();
+#endif
+        }
+
+        private void Start()
+        {
+#if UNITY_STANDALONE_WIN
+
+            LogMemoryUsageToTextFile("StartCalled");
 #endif
         }
 
