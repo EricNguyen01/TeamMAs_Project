@@ -309,6 +309,8 @@ namespace TeamMAsTD
                 }
                 
             }
+
+            BuildMemoryUsageLogger.LogMemoryUsageAsText("WaterAllFinished");
         }
 
         private void RegisteringExistingPlantUnit(PlantUnit plantUnit, Tile tile)

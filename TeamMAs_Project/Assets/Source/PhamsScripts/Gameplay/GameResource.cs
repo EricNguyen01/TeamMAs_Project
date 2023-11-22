@@ -102,6 +102,19 @@ namespace TeamMAsTD
             }
         }
 
+        public static void CreateGameResourceInstance()
+        {
+            if (gameResourceInstance) return;
+
+            if (FindObjectOfType<GameResource>()) return;
+
+            GameObject obj = new GameObject("GameResource(1InstanceOnly)");
+
+            GameResource gResource = obj.AddComponent<GameResource>();
+
+            if (!gameResourceInstance) gameResourceInstance = gResource;
+        }
+
         //ISaveable interface implementations...........................................................................
 
         public SaveDataSerializeBase SaveData(string saveName = "")

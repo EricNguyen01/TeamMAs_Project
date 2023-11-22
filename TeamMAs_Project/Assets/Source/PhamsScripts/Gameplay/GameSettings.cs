@@ -385,6 +385,8 @@ namespace TeamMAsTD
 
             isLoading = false;
 
+            BuildMemoryUsageLogger.LogMemoryUsageAsText("GameSettingsSavedDataLoaded");
+
             yield break;
         }
 
@@ -403,7 +405,9 @@ namespace TeamMAsTD
 
             GameObject go = new GameObject("GameSettings(1InstanceOnly)");
 
-            go.AddComponent<GameSettings>();
+            GameSettings gSettings = go.AddComponent<GameSettings>();
+
+            if (!gameSettingsInstance) gameSettingsInstance = gSettings;
         }
 
         private void Set_GameSettingsSaveLoadManager_Reference_IfMissing()

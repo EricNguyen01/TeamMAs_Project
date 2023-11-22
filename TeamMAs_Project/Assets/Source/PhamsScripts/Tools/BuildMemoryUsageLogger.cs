@@ -4,7 +4,6 @@
 using System;
 using System.Collections;
 using System.IO;
-using System.Runtime.CompilerServices;
 using Unity.Profiling;
 using UnityEngine;
 
@@ -99,7 +98,7 @@ namespace TeamMAsTD
 
             if(currentLogTimer >= logIntervalInSec)
             {
-                LogMemoryUsageToTextFile("n/a");
+                LogMemoryUsageToTextFile("UpdateCalled");
 
                 currentLogTimer = 0.0f;
 
@@ -110,9 +109,47 @@ namespace TeamMAsTD
 #endif
         }
 
-        public void LogMemoryUsageToTextFile(string logEventName)
+        public static void LogMemoryUsageAsText(string logEventName = "n/a")
+        {
+            if (!memoryUsageLoggerInstance)
+            {
+                CreateMemoryLoggerInstance();
+            }
+
+            memoryUsageLoggerInstance.LogMemoryUsageToTextFile(logEventName);
+        }
+
+        public static void LogMemoryUsageDelay(float delaySec, string logEventName = "n/a")
+        {
+            if (!memoryUsageLoggerInstance)
+            {
+                CreateMemoryLoggerInstance();
+            }
+
+            if(delaySec <= 0.0f)
+            {
+                LogMemoryUsageAsText(logEventName);
+
+                return;
+            }
+
+            memoryUsageLoggerInstance.StartCoroutine(memoryUsageLoggerInstance.LogMemoryUsageDelayCoroutine(delaySec, logEventName));
+        }
+
+        private IEnumerator LogMemoryUsageDelayCoroutine(float delaySec, string logEventName = "n/a")
+        {
+            yield return new WaitForSecondsRealtime(delaySec);
+
+            LogMemoryUsageAsText(logEventName);
+
+            yield break;
+        }
+
+        private void LogMemoryUsageToTextFile(string logEventName = "n/a")
         {
 #if UNITY_STANDALONE_WIN
+
+            if (!enabled) return;
 
             if (pathToLogFile == string.Empty ||
                string.IsNullOrEmpty(pathToLogFile) ||
@@ -134,19 +171,19 @@ namespace TeamMAsTD
 
             if (totalReservedMemoryRecorder.Valid)
             {
-                totalReservedMemoryLogText += (totalReservedMemoryRecorder.LastValue / 1048576).ToString() + "MB";
+                totalReservedMemoryLogText = (totalReservedMemoryRecorder.LastValue / 1048576).ToString() + "MB";
             }
             else totalReservedMemoryLogText = "...";
 
             if(gcUsedMemoryRecorder.Valid)
             {
-                gcUsedMemoryLogText += (gcUsedMemoryRecorder.LastValue / 1048576).ToString() + "MB";
+                gcUsedMemoryLogText = (gcUsedMemoryRecorder.LastValue / 1048576).ToString() + "MB";
             }
             else gcUsedMemoryLogText = "...";
 
             if (systemUsedMemoryRecorder.Valid)
             {
-                systemUsedMemoryLogText += (systemUsedMemoryRecorder.LastValue / 1048576).ToString() + "MB";
+                systemUsedMemoryLogText = (systemUsedMemoryRecorder.LastValue / 1048576).ToString() + "MB";
             }
             else systemUsedMemoryLogText = "...";
 
@@ -159,5 +196,18 @@ namespace TeamMAsTD
                 "---------------------------------------\n";
         }
 #endif
+
+        public static void CreateMemoryLoggerInstance()
+        {
+            if (memoryUsageLoggerInstance) return;
+
+            if (FindObjectOfType<BuildMemoryUsageLogger>()) return;
+
+            GameObject obj = new GameObject("BuildMemoryUsageLogger(1InstanceOnly)");
+
+            BuildMemoryUsageLogger memLogger = obj.AddComponent<BuildMemoryUsageLogger>();
+
+            if (!memoryUsageLoggerInstance) memoryUsageLoggerInstance = memLogger;
+        }
     }
 }

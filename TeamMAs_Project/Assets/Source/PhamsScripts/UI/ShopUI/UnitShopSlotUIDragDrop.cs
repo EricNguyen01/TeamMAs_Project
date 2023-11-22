@@ -8,7 +8,6 @@ using UnityEngine.EventSystems;
 using UnityEngine.Events;
 using UnityEngine.UI;
 using TMPro;
-using UnityEditor;
 
 namespace TeamMAsTD
 {
@@ -680,6 +679,8 @@ namespace TeamMAsTD
             RectTransformUtility.ScreenPointToLocalPointInRectangle(parentCanvaRect, tilePosScreenPnt, parentCanva.worldCamera, out tilePosUILocalPnt);
 
             plantOnTileMockUpVisualizationObj.transform.position = parentCanvaRect.transform.TransformPoint(tilePosUILocalPnt);
+
+            BuildMemoryUsageLogger.LogMemoryUsageAsText("ShopSlot: " + name + "DragDroppingProcess");
         }
 
         public void OnEndDrag(PointerEventData eventData)

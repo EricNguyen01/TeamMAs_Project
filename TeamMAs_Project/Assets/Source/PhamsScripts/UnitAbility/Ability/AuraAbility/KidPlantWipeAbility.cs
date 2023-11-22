@@ -103,6 +103,8 @@ namespace TeamMAsTD
             if (abilityEventEmitterFMOD != null && abilityEventEmitterFMOD.IsPlaying()) abilityEventEmitterFMOD.Stop();
 
             base.ProcessAbilityEnd();
+
+            LogMemoryUsageOnPlantWipeAbilityEnded();
         }
 
         protected override void OnTriggerEnter2D(Collider2D other)
@@ -120,6 +122,29 @@ namespace TeamMAsTD
         {
             //do not call base function here
             //we want this function to do nothing for this specific ability
+        }
+
+        private void LogMemoryUsageOnPlantWipeAbilityEnded()
+        {
+            float abilityDuration = abilityScriptableObject.abilityDuration;
+
+            float abilityEffectsDuration = 0.0f;
+
+            float totalDuration;
+
+            if (abilityScriptableObject.abilityEffects != null && abilityScriptableObject.abilityEffects.Count > 0)
+            {
+                for (int i = 0; i < abilityScriptableObject.abilityEffects.Count; i++)
+                {
+                    if (!abilityScriptableObject.abilityEffects[i]) continue;
+
+                    abilityEffectsDuration += abilityScriptableObject.abilityEffects[i].effectDuration;
+                }
+            }
+
+            totalDuration = abilityDuration + abilityEffectsDuration;
+
+            BuildMemoryUsageLogger.LogMemoryUsageDelay(totalDuration, "KidPlantWipeAbilityFinished");
         }
     }
 }

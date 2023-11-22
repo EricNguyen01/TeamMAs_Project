@@ -308,5 +308,18 @@ namespace TeamMAsTD
 
             yield break;
         }
+
+        public static void CreatePersistentSceneLoadUIInstance()
+        {
+            if (persistentSceneLoadUIInstance) return;
+
+            if (FindObjectOfType<PersistentSceneLoadUI>()) return;
+
+            GameObject go = new GameObject("PersistentSceneLoad(1InstanceOnly)");
+
+            PersistentSceneLoadUI pSceneLoad = go.AddComponent<PersistentSceneLoadUI>();
+
+            if (!persistentSceneLoadUIInstance) persistentSceneLoadUIInstance = pSceneLoad;
+        }
     }
 }

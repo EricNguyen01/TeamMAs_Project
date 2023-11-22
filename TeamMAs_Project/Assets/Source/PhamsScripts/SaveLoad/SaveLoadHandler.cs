@@ -257,6 +257,8 @@ namespace TeamMAsTD
 
             OnLoadingFinished?.Invoke();
 
+            BuildMemoryUsageLogger.LogMemoryUsageAsText("GameProgressSavedDataLoaded");
+
             float loadTime = Time.realtimeSinceStartup - loadTimeStart;
 
             if (saveLoadHandlerInstance.showDebugLog) Debug.Log("Load Finished! Time took: " + loadTime);
@@ -378,7 +380,9 @@ namespace TeamMAsTD
 
             GameObject go = new GameObject("SaveLoadManager(1InstanceOnly)");
 
-            go.AddComponent<SaveLoadHandler>();
+            SaveLoadHandler slHandler = go.AddComponent<SaveLoadHandler>();
+
+            if (!saveLoadHandlerInstance) saveLoadHandlerInstance = slHandler;
         }
 
         public static bool HasSavedData()

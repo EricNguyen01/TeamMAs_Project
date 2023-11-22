@@ -15,13 +15,15 @@ namespace TeamMAsTD
 
         private void Awake()
         {
-            if(waveSpawnerManagerInstance != null)
+            if(waveSpawnerManagerInstance && waveSpawnerManagerInstance != this)
             {
                 Destroy(gameObject);
+
                 return;
             }
 
             waveSpawnerManagerInstance = this;
+
             DontDestroyOnLoad(gameObject);
 
             WaveSpawner[] waveSpawners = FindObjectsOfType<WaveSpawner>();
@@ -60,6 +62,19 @@ namespace TeamMAsTD
             }
 
             return false;
+        }
+
+        public static void CreateWaveSpawnerManagerInstance()
+        {
+            if (waveSpawnerManagerInstance) return;
+
+            if(FindObjectOfType<WaveSpawner>()) return;
+
+            GameObject go = new GameObject("WaveSpawnerManager(1InstanceOnly)");
+
+            WaveSpawnerManager spawnerManager = go.AddComponent<WaveSpawnerManager>();
+
+            if (!waveSpawnerManagerInstance) waveSpawnerManagerInstance = spawnerManager;
         }
     }
 }
