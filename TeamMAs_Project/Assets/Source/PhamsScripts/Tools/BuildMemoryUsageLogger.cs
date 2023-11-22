@@ -9,13 +9,22 @@ using UnityEngine;
 
 namespace TeamMAsTD
 {
+    [DisallowMultipleComponent]
     public class BuildMemoryUsageLogger : MonoBehaviour
     {
+        [Header("Log Config")]
+
+        [SerializeField] private bool enableLogInEditor = true;
+
+        [SerializeField] private bool enableLogInUpdate = true;
+
+        [SerializeField] private float logIntervalInSec = 10.0f;
+
+        //INTERNALS.............................................................................
+
         private const string LOG_FILE_NAME = "MemoryUsageLog.txt";
 
         private string pathToLogFile;
-
-        private const float logIntervalInSec = 1.0f;
 
         private float currentLogTimer;
 
@@ -48,53 +57,62 @@ namespace TeamMAsTD
 
             DontDestroyOnLoad(gameObject);
 
+            if(Application.isEditor && !enableLogInEditor)
+            {
+                enabled = false;
+
+                return;
+            }
+        }
+
 #if UNITY_STANDALONE_WIN
 
+        private void OnEnable()
+        {
             pathToLogFile = System.IO.Path.Combine(Application.persistentDataPath, LOG_FILE_NAME);
 
-            string newMemoryLogSession = "-----NEW MEMORY LOG SESSION STARTED-----\n";
+            string newMemoryLogSession;
+
+            if (Application.isEditor) newMemoryLogSession = "-----NEW IN-EDITOR MEMORY LOG SESSION STARTED-----\n";
+            else newMemoryLogSession = "-----NEW IN-BUILD MEMORY LOG SESSION STARTED-----\n";
 
             File.WriteAllText(pathToLogFile, newMemoryLogSession);
 
             currentLogTimer = logIntervalInSec;
-#endif
-        }
-
-        private void OnEnable()
-        {
-#if UNITY_STANDALONE_WIN
 
             totalReservedMemoryRecorder = ProfilerRecorder.StartNew(ProfilerCategory.Memory, "Total Reserved Memory");
 
             gcUsedMemoryRecorder = ProfilerRecorder.StartNew(ProfilerCategory.Memory, "GC Used Memory");
 
             systemUsedMemoryRecorder = ProfilerRecorder.StartNew(ProfilerCategory.Memory, "System Used Memory");
-#endif
         }
+#endif
+
+#if UNITY_STANDALONE_WIN
 
         private void OnDisable()
         {
-#if UNITY_STANDALONE_WIN
-
             totalReservedMemoryRecorder.Dispose();
 
             gcUsedMemoryRecorder.Dispose();
 
             systemUsedMemoryRecorder.Dispose();
-#endif
         }
+#endif
+
+#if UNITY_STANDALONE_WIN
 
         private void Start()
         {
-#if UNITY_STANDALONE_WIN
-
             LogMemoryUsageToTextFile("StartCalled");
-#endif
         }
+#endif
+
+#if UNITY_STANDALONE_WIN
 
         private void Update()
         {
-#if UNITY_STANDALONE_WIN
+            if (!enabled || !enableLogInUpdate) return;
 
             if(currentLogTimer >= logIntervalInSec)
             {
@@ -105,9 +123,9 @@ namespace TeamMAsTD
                 return;
             }
 
-            currentLogTimer += Time.deltaTime;
-#endif
+            currentLogTimer += Time.unscaledDeltaTime;
         }
+#endif
 
         public static void LogMemoryUsageAsText(string logEventName = "n/a")
         {
@@ -194,8 +212,8 @@ namespace TeamMAsTD
                 "GC Used Memory: " + gcUsedMemoryLogText + "\n" +
                 "Total Reserved Memory: " + totalReservedMemoryLogText + "\n" +
                 "---------------------------------------\n";
-        }
 #endif
+        }
 
         public static void CreateMemoryLoggerInstance()
         {
