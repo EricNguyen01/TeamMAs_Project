@@ -69,6 +69,8 @@ namespace TeamMAsTD
 
         private void OnEnable()
         {
+            if (!enabled) return;
+
             pathToLogFile = System.IO.Path.Combine(Application.persistentDataPath, LOG_FILE_NAME);
 
             string newMemoryLogSession;
@@ -92,11 +94,11 @@ namespace TeamMAsTD
 
         private void OnDisable()
         {
-            totalReservedMemoryRecorder.Dispose();
+            if(totalReservedMemoryRecorder.Valid) totalReservedMemoryRecorder.Dispose();
 
-            gcUsedMemoryRecorder.Dispose();
+            if(gcUsedMemoryRecorder.Valid) gcUsedMemoryRecorder.Dispose();
 
-            systemUsedMemoryRecorder.Dispose();
+            if(systemUsedMemoryRecorder.Valid) systemUsedMemoryRecorder.Dispose();
         }
 #endif
 
@@ -189,19 +191,25 @@ namespace TeamMAsTD
 
             if (totalReservedMemoryRecorder.Valid)
             {
-                totalReservedMemoryLogText = (totalReservedMemoryRecorder.LastValue / 1048576).ToString() + "MB";
+                long memory = totalReservedMemoryRecorder.LastValue / 1048576;
+
+                totalReservedMemoryLogText = memory.ToString() + "MB" + MemoryUsageLevelTag(memory, "Total Reserved Memory");
             }
             else totalReservedMemoryLogText = "...";
 
             if(gcUsedMemoryRecorder.Valid)
             {
-                gcUsedMemoryLogText = (gcUsedMemoryRecorder.LastValue / 1048576).ToString() + "MB";
+                long memory = gcUsedMemoryRecorder.LastValue / 1048576;
+
+                gcUsedMemoryLogText = memory.ToString() + "MB" + MemoryUsageLevelTag(memory, "GC Used Memory");
             }
             else gcUsedMemoryLogText = "...";
 
             if (systemUsedMemoryRecorder.Valid)
             {
-                systemUsedMemoryLogText = (systemUsedMemoryRecorder.LastValue / 1048576).ToString() + "MB";
+                long memory = systemUsedMemoryRecorder.LastValue / 1048576;
+
+                systemUsedMemoryLogText = memory.ToString() + "MB" + MemoryUsageLevelTag(memory, "System Used Memory");
             }
             else systemUsedMemoryLogText = "...";
 
@@ -213,6 +221,46 @@ namespace TeamMAsTD
                 "Total Reserved Memory: " + totalReservedMemoryLogText + "\n" +
                 "---------------------------------------\n";
 #endif
+        }
+
+        private string MemoryUsageLevelTag(long memoryUsed, string profilerRecorderName = "")
+        {
+            if (!Application.isEditor)//if in player build and NOT editor
+            {
+                if(profilerRecorderName == "GC Used Memory")
+                {
+                    if (memoryUsed <= 5) return " - LOW";
+
+                    if (memoryUsed > 5 && memoryUsed < 15) return " - MEDIUM";
+
+                    if (memoryUsed >= 15) return " - HIGH";
+                }
+
+                if (memoryUsed <= 400) return " - LOW";
+
+                if (memoryUsed > 400 && memoryUsed < 700) return " - MEDIUM";
+
+                if (memoryUsed >= 700) return " - HIGH";
+            }
+            else//if IN editor
+            {
+                if (profilerRecorderName == "GC Used Memory")
+                {
+                    if (memoryUsed <= 50) return " - LOW";
+
+                    if (memoryUsed > 50 && memoryUsed < 120) return " - MEDIUM";
+
+                    if (memoryUsed >= 120) return " - HIGH";
+                }
+
+                if (memoryUsed < 1000) return " - LOW";
+
+                if (memoryUsed >= 1000 && memoryUsed <= 1900) return " - MEDIUM";
+
+                if (memoryUsed > 1900) return " - HIGH";
+            }
+
+            return "";
         }
 
         public static void CreateMemoryLoggerInstance()

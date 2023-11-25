@@ -44,3 +44,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c28291bab01d3ed4bb8e392c1d5d3c00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enableLogInEditor: 1
+  enableLogInUpdate: 1
+  logIntervalInSec: 10
