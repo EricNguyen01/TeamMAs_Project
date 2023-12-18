@@ -310,7 +310,7 @@ namespace TeamMAsTD
                 
             }
 
-            BuildMemoryUsageLogger.LogMemoryUsageAsText("WaterAllFinished");
+            MemoryUsageLogger.LogMemoryUsageAsText("WaterAllFinished");
         }
 
         private void RegisteringExistingPlantUnit(PlantUnit plantUnit, Tile tile)

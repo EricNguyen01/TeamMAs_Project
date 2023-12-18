@@ -514,7 +514,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4060650801229325105, guid: e78e7e3ce85d46443b8ab6b2ece9cd5a, type: 3}
       propertyPath: m_Name
-      value: BuildMemoryUsageLogger
+      value: MemoryUsageLogger
       objectReference: {fileID: 0}
     - target: {fileID: 6422235768841070438, guid: e78e7e3ce85d46443b8ab6b2ece9cd5a, type: 3}
       propertyPath: m_RootOrder

@@ -257,7 +257,7 @@ namespace TeamMAsTD
 
             OnLoadingFinished?.Invoke();
 
-            BuildMemoryUsageLogger.LogMemoryUsageAsText("GameProgressSavedDataLoaded");
+            MemoryUsageLogger.LogMemoryUsageAsText("GameProgressSavedDataLoaded");
 
             float loadTime = Time.realtimeSinceStartup - loadTimeStart;
 

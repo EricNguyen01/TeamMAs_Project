@@ -87,7 +87,7 @@ namespace TeamMAsTD
 
             CreateWaveObjects();//Not actual Unity GameObject. Just Wave C# class object in memory. Check Wave.cs
 
-            BuildMemoryUsageLogger.LogMemoryUsageAsText("WaveSpawnerFinishedInit");
+            MemoryUsageLogger.LogMemoryUsageAsText("WaveSpawnerFinishedInit");
 
             float endInitTime = Time.realtimeSinceStartup - startInitTime;
 

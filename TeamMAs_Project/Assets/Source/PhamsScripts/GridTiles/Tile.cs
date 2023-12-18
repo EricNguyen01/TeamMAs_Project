@@ -382,7 +382,7 @@ namespace TeamMAsTD
             //disable tile plantable glow effect that was enabled during drag/drop in case it has not been disabled in dragdrop script
             EnablePlantableTileGlowOnPlantDrag(plantUnitSO, false);
 
-            BuildMemoryUsageLogger.LogMemoryUsageAsText("PlantUnitPlanted");
+            MemoryUsageLogger.LogMemoryUsageAsText("PlantUnitPlanted");
 
             return true;
         }
@@ -421,7 +421,7 @@ namespace TeamMAsTD
 
             StartCoroutine(SaveTileSaveableNextPhysUpdate());
 
-            BuildMemoryUsageLogger.LogMemoryUsageAsText("PlantUnitUprooted");
+            MemoryUsageLogger.LogMemoryUsageAsText("PlantUnitUprooted");
         }
 
         public void UprootingInsufficientFundsEventInvoke()

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6422235768841070438}
   - component: {fileID: 3136698299150012497}
   m_Layer: 0
-  m_Name: BuildMemoryUsageLogger
+  m_Name: MemoryUsageLogger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -46,4 +46,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enableLogInEditor: 1
   enableLogInUpdate: 1
-  logIntervalInSec: 10
+  deleteLogOnUnityClosed: 1
+  logIntervalInSec: 5

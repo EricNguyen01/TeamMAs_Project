@@ -144,7 +144,7 @@ namespace TeamMAsTD
 
             totalDuration = abilityDuration + abilityEffectsDuration;
 
-            BuildMemoryUsageLogger.LogMemoryUsageDelay(totalDuration, "KidPlantWipeAbilityFinished");
+            MemoryUsageLogger.LogMemoryUsageDelay(totalDuration, "KidPlantWipeAbilityFinished");
         }
     }
 }

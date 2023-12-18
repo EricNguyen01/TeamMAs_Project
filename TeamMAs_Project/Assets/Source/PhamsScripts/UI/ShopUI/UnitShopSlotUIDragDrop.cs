@@ -680,7 +680,7 @@ namespace TeamMAsTD
 
             plantOnTileMockUpVisualizationObj.transform.position = parentCanvaRect.transform.TransformPoint(tilePosUILocalPnt);
 
-            BuildMemoryUsageLogger.LogMemoryUsageAsText("ShopSlot: " + name + "DragDroppingProcess");
+            MemoryUsageLogger.LogMemoryUsageAsText("ShopSlot: " + name + "DragDroppingProcess");
         }
 
         public void OnEndDrag(PointerEventData eventData)
