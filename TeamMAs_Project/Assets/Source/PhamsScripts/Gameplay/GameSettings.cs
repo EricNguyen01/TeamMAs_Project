@@ -385,7 +385,7 @@ namespace TeamMAsTD
 
             isLoading = false;
 
-            BuildMemoryUsageLogger.LogMemoryUsageAsText("GameSettingsSavedDataLoaded");
+            MemoryUsageLogger.LogMemoryUsageAsText("GameSettingsSavedDataLoaded");
 
             yield break;
         }
