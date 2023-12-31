@@ -146,9 +146,9 @@ namespace PixelCrushers.DialogueSystem.DialogueEditor
         {
             EditorGUI.BeginChangeCheck();
             GUI.SetNextControlName("ConversationFilterTextField");
-            conversationTitleFilter = EditorGUILayout.TextField(GUIContent.none, conversationTitleFilter, "ToolbarSeachTextField");
+            conversationTitleFilter = EditorGUILayout.TextField(GUIContent.none, conversationTitleFilter, "ToolbarSearchTextField");
             GUI.SetNextControlName("ConversationClearClearButton");
-            if (GUILayout.Button("Clear", "ToolbarSeachCancelButton"))
+            if (GUILayout.Button("Clear", "ToolbarSearchCancelButton"))
             {
                 conversationTitleFilter = string.Empty;
                 GUI.FocusControl("ConversationClearClearButton"); // Need to deselect text field to clear text field's display.

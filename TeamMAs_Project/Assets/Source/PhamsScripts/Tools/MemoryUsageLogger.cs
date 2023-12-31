@@ -40,29 +40,37 @@ namespace TeamMAsTD
         {
             public long totalReservedMemory { get; internal set; }
 
+            public string totalReservedMemoryLogText { get; internal set; }
+
             public long gcUsedMemory { get; internal set; }
+
+            public string gcUsedMemoryLogText { get; internal set; }
 
             public long systemUsedMemory { get; internal set; }
 
-            internal ActiveMemoryLogStruct(long totalReservedMemory = 0L, long gcUsedMemory = 0L, long systemUsedMemory = 0L)
+            public string systemUsedMemoryLogText { get; internal set; }
+
+            public string memoryLogSummaryText { get; internal set; }
+
+            internal void InitSetDefaultValues()
             {
-                this.totalReservedMemory = totalReservedMemory;
+                totalReservedMemory = 0L; 
+                
+                totalReservedMemoryLogText = "N/A";
 
-                this.gcUsedMemory = gcUsedMemory;
+                gcUsedMemory = 0L; 
+                
+                gcUsedMemoryLogText = "N/A";
 
-                this.systemUsedMemory = systemUsedMemory;
+                systemUsedMemory = 0L; 
+                
+                systemUsedMemoryLogText = "N/A";
+
+                memoryLogSummaryText = "N/A";
             }
         }
 
         private ActiveMemoryLogStruct activeMemoryLogStruct;
-
-        private string totalReservedMemoryLogText;
-
-        private string gcUsedMemoryLogText;
-
-        private string systemUsedMemoryLogText;
-
-        private string memoryLogText;
 
         private static MemoryUsageLogger memoryUsageLoggerInstance;
 
@@ -107,6 +115,8 @@ namespace TeamMAsTD
             systemUsedMemoryRecorder = ProfilerRecorder.StartNew(ProfilerCategory.Memory, "System Used Memory");
 
             activeMemoryLogStruct = new ActiveMemoryLogStruct();
+
+            activeMemoryLogStruct.InitSetDefaultValues();
         }
 
         private void OnDisable()
@@ -194,42 +204,47 @@ namespace TeamMAsTD
 
             GenerateMemoryLogText(logEventName);
 
-            File.AppendAllText(pathToLogFile, memoryLogText);
+            File.AppendAllText(pathToLogFile, activeMemoryLogStruct.memoryLogSummaryText);
         }
 
         private void GenerateMemoryLogText(string logEventName = "n/a")
         {
+            activeMemoryLogStruct.InitSetDefaultValues();
+
             if (totalReservedMemoryRecorder.Valid)
             {
                 long memory = totalReservedMemoryRecorder.CurrentValue / 1048576;
 
-                totalReservedMemoryLogText = memory.ToString() + "MB" + MemoryUsageLevelTag(memory, "Total Reserved Memory");
+                activeMemoryLogStruct.totalReservedMemory = memory;
+
+                activeMemoryLogStruct.totalReservedMemoryLogText = memory.ToString() + "MB" + MemoryUsageLevelTag(memory, "Total Reserved Memory");
             }
-            else totalReservedMemoryLogText = "...";
 
             if(gcUsedMemoryRecorder.Valid)
             {
                 long memory = gcUsedMemoryRecorder.CurrentValue / 1048576;
 
-                gcUsedMemoryLogText = memory.ToString() + "MB" + MemoryUsageLevelTag(memory, "GC Used Memory");
+                activeMemoryLogStruct.gcUsedMemory = memory;
+
+                activeMemoryLogStruct.gcUsedMemoryLogText = memory.ToString() + "MB" + MemoryUsageLevelTag(memory, "GC Used Memory");
             }
-            else gcUsedMemoryLogText = "...";
 
             if (systemUsedMemoryRecorder.Valid)
             {
                 long memory = systemUsedMemoryRecorder.CurrentValue / 1048576;
 
-                systemUsedMemoryLogText = memory.ToString() + "MB" + MemoryUsageLevelTag(memory, "System Used Memory");
-            }
-            else systemUsedMemoryLogText = "...";
+                activeMemoryLogStruct.systemUsedMemory = memory;
 
-            memoryLogText = "---Memory Log At:\n" +
-                "Frame: " + Time.frameCount.ToString() + "\n" +
-                "Log Event: " + logEventName + "\n" +
-                "System Used Memory: " + systemUsedMemoryLogText + "\n" +
-                "GC Used Memory: " + gcUsedMemoryLogText + "\n" +
-                "Total Reserved Memory: " + totalReservedMemoryLogText + "\n" +
-                "---------------------------------------\n";
+                activeMemoryLogStruct.systemUsedMemoryLogText = memory.ToString() + "MB" + MemoryUsageLevelTag(memory, "System Used Memory");
+            }
+
+            activeMemoryLogStruct.memoryLogSummaryText = "---Memory Log At:\n" +
+                                                         "Frame: " + Time.frameCount.ToString() + "\n" +
+                                                         "Log Event: " + logEventName + "\n" +
+                                                         "System Used Memory: " + activeMemoryLogStruct.systemUsedMemoryLogText + "\n" +
+                                                         "GC Used Memory: " + activeMemoryLogStruct.gcUsedMemoryLogText + "\n" +
+                                                         "Total Reserved Memory: " + activeMemoryLogStruct.totalReservedMemoryLogText + "\n" +
+                                                         "---------------------------------------\n";
         }
 
         private string MemoryUsageLevelTag(long memoryUsed, string profilerRecorderName = "")
@@ -272,30 +287,25 @@ namespace TeamMAsTD
             return "";
         }
 
-        public string GetMemoryLogText()
+        public ActiveMemoryLogStruct GetActiveMemoryLogStructData()
         {
+            activeMemoryLogStruct.InitSetDefaultValues();
+
             if (!enabled)
             {
-                return "Memory Usage Logger is currently disabled!";
+                activeMemoryLogStruct.memoryLogSummaryText = "Memory Usage Logger is currently disabled!";
+
+                return activeMemoryLogStruct;
             }
 
             if(Application.isEditor && !enableLogInEditor)
             {
-                return "Memory Usage Logger is not enabled in editor.";
+                activeMemoryLogStruct.memoryLogSummaryText = "Memory Usage Logger is not enabled in editor.";
+
+                return activeMemoryLogStruct;
             }
 
             GenerateMemoryLogText();
-
-            return memoryLogText;
-        }
-
-        public ActiveMemoryLogStruct GetCurrentMemoryTypesUsage()
-        {
-            if(totalReservedMemoryRecorder.Valid) activeMemoryLogStruct.totalReservedMemory = totalReservedMemoryRecorder.CurrentValue;
-
-            if(gcUsedMemoryRecorder.Valid) activeMemoryLogStruct.gcUsedMemory = gcUsedMemoryRecorder.CurrentValue;
-
-            if(systemUsedMemoryRecorder.Valid) activeMemoryLogStruct.systemUsedMemory = systemUsedMemoryRecorder.CurrentValue;
 
             return activeMemoryLogStruct;
         }
