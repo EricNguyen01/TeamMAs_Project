@@ -20,7 +20,22 @@ namespace TeamMAsTD
 
         [SerializeField] private bool deleteLogOnUnityClosed = true;
 
-        [SerializeField] private float logIntervalInSec = 5.0f;
+        [SerializeField] private float logToTextIntervalSec = 5.0f;
+
+        //to record the last logToTextIntervalSec value above to use for checking if the player has changed this val
+        private float previousLogIntervalValue;
+
+        [Header("Log UI Display")]
+
+        [SerializeField] private MemoryUsageLogUI memoryUsageLogUIPrefab;
+
+        [SerializeField] private float memoryLogUIDisplayRefreshTime = 1.0f;
+
+        private MemoryUsageLogUI memoryUsageLogUI;
+
+        private float previousUIRefreshTime;
+
+        private float currentUIRefreshTimer;
 
         //INTERNALS.............................................................................
 
@@ -36,8 +51,14 @@ namespace TeamMAsTD
 
         private ProfilerRecorder systemUsedMemoryRecorder;
 
+        private enum LogEnvironmentStatus { Editor = 0, PlayerBuild = 1 }
+
+        private LogEnvironmentStatus logEnvironmentStatus = LogEnvironmentStatus.Editor;
+
         public struct ActiveMemoryLogStruct
         {
+            public string logEnvironmentStatus { get; internal set; }
+
             public long totalReservedMemory { get; internal set; }
 
             public string totalReservedMemoryLogText { get; internal set; }
@@ -54,25 +75,27 @@ namespace TeamMAsTD
 
             internal void InitSetDefaultValues()
             {
+                logEnvironmentStatus = "n/a";
+
                 totalReservedMemory = 0L; 
                 
-                totalReservedMemoryLogText = "N/A";
+                totalReservedMemoryLogText = "n/a";
 
                 gcUsedMemory = 0L; 
                 
-                gcUsedMemoryLogText = "N/A";
+                gcUsedMemoryLogText = "n/a";
 
                 systemUsedMemory = 0L; 
                 
-                systemUsedMemoryLogText = "N/A";
+                systemUsedMemoryLogText = "n/a";
 
-                memoryLogSummaryText = "N/A";
+                memoryLogSummaryText = "n/a";
             }
         }
 
         private ActiveMemoryLogStruct activeMemoryLogStruct;
 
-        private static MemoryUsageLogger memoryUsageLoggerInstance;
+        public static MemoryUsageLogger memoryUsageLoggerInstance;
 
         private void Awake()
         {
@@ -86,6 +109,8 @@ namespace TeamMAsTD
             memoryUsageLoggerInstance = this;
 
             DontDestroyOnLoad(gameObject);
+
+            SetupMemoryLogUI();
         }
 
         private void OnEnable()
@@ -101,12 +126,32 @@ namespace TeamMAsTD
 
             string newMemoryLogSession;
 
-            if (Application.isEditor) newMemoryLogSession = "-----NEW IN-EDITOR MEMORY LOG SESSION STARTED-----\n";
-            else newMemoryLogSession = "-----NEW IN-BUILD MEMORY LOG SESSION STARTED-----\n";
+            if (Application.isEditor)
+            {
+                newMemoryLogSession = "-----NEW IN-EDITOR MEMORY LOG SESSION STARTED-----\n";
+
+                logEnvironmentStatus = LogEnvironmentStatus.Editor;
+
+                activeMemoryLogStruct.logEnvironmentStatus = "Editor";
+            }
+            else 
+            { 
+                newMemoryLogSession = "-----NEW IN-BUILD MEMORY LOG SESSION STARTED-----\n";
+
+                logEnvironmentStatus = LogEnvironmentStatus.PlayerBuild;
+
+                activeMemoryLogStruct.logEnvironmentStatus = "PlayerBuild";
+            }
 
             File.WriteAllText(pathToLogFile, newMemoryLogSession);
 
-            currentLogTimer = logIntervalInSec;
+            previousLogIntervalValue = logToTextIntervalSec;
+
+            currentLogTimer = logToTextIntervalSec;
+
+            previousUIRefreshTime = memoryLogUIDisplayRefreshTime;
+
+            currentUIRefreshTimer = memoryLogUIDisplayRefreshTime;
 
             totalReservedMemoryRecorder = ProfilerRecorder.StartNew(ProfilerCategory.Memory, "Total Reserved Memory");
 
@@ -128,6 +173,25 @@ namespace TeamMAsTD
             if(systemUsedMemoryRecorder.Valid) systemUsedMemoryRecorder.Dispose();
         }
 
+        private void OnValidate()
+        {
+            if(!enabled) return;
+
+            if(logToTextIntervalSec != previousLogIntervalValue || !Mathf.Approximately(previousLogIntervalValue, logToTextIntervalSec))
+            {
+                if(currentLogTimer >= logToTextIntervalSec) currentLogTimer = logToTextIntervalSec;
+
+                previousLogIntervalValue = logToTextIntervalSec;
+            }
+
+            if(previousUIRefreshTime != memoryLogUIDisplayRefreshTime || !Mathf.Approximately(previousUIRefreshTime, memoryLogUIDisplayRefreshTime))
+            {
+                if(currentUIRefreshTimer >= memoryLogUIDisplayRefreshTime) currentUIRefreshTimer = memoryLogUIDisplayRefreshTime;
+
+                previousUIRefreshTime = memoryLogUIDisplayRefreshTime;
+            }
+        }
+
         private void OnApplicationQuit()
         {
             if(Application.isEditor && deleteLogOnUnityClosed && File.Exists(pathToLogFile)) File.Delete(pathToLogFile);
@@ -142,16 +206,21 @@ namespace TeamMAsTD
         {
             if (!enabled || !enableLogInUpdate) return;
 
-            if(currentLogTimer >= logIntervalInSec)
+            if (currentUIRefreshTimer >= memoryLogUIDisplayRefreshTime)
+            {
+                GenerateMemoryLogText("UpdateCalled");
+
+                currentUIRefreshTimer = 0.0f;
+            }
+            else currentUIRefreshTimer += Time.unscaledDeltaTime;
+
+            if(currentLogTimer >= logToTextIntervalSec)
             {
                 LogMemoryUsageToTextFile("UpdateCalled");
 
                 currentLogTimer = 0.0f;
-
-                return;
             }
-
-            currentLogTimer += Time.unscaledDeltaTime;
+            else currentLogTimer += Time.unscaledDeltaTime;
         }
 
         public static void LogMemoryUsageAsText(string logEventName = "n/a")
@@ -238,13 +307,16 @@ namespace TeamMAsTD
                 activeMemoryLogStruct.systemUsedMemoryLogText = memory.ToString() + "MB" + MemoryUsageLevelTag(memory, "System Used Memory");
             }
 
-            activeMemoryLogStruct.memoryLogSummaryText = "---Memory Log At:\n" +
+            activeMemoryLogStruct.memoryLogSummaryText = logEnvironmentStatus.ToString() + " Memory Log At:\n" +
                                                          "Frame: " + Time.frameCount.ToString() + "\n" +
                                                          "Log Event: " + logEventName + "\n" +
                                                          "System Used Memory: " + activeMemoryLogStruct.systemUsedMemoryLogText + "\n" +
                                                          "GC Used Memory: " + activeMemoryLogStruct.gcUsedMemoryLogText + "\n" +
                                                          "Total Reserved Memory: " + activeMemoryLogStruct.totalReservedMemoryLogText + "\n" +
                                                          "---------------------------------------\n";
+
+            //update UI if reference to memory log UI component exists
+            if (memoryUsageLogUI) memoryUsageLogUI.SetMemoryLogSummaryUIText(activeMemoryLogStruct.memoryLogSummaryText);
         }
 
         private string MemoryUsageLevelTag(long memoryUsed, string profilerRecorderName = "")
@@ -321,6 +393,48 @@ namespace TeamMAsTD
             MemoryUsageLogger memLogger = obj.AddComponent<MemoryUsageLogger>();
 
             if (!memoryUsageLoggerInstance) memoryUsageLoggerInstance = memLogger;
+        }
+
+        public static void SetupMemoryLogUI(MemoryUsageLogUI logUI = null)
+        {
+            if (!memoryUsageLoggerInstance) return;
+
+            if (!memoryUsageLoggerInstance.enabled) return;
+
+            if (!memoryUsageLoggerInstance.memoryUsageLogUI)
+            {
+                MemoryUsageLogUI childLogUI = memoryUsageLoggerInstance.GetComponentInChildren<MemoryUsageLogUI>();
+
+                if (childLogUI)
+                {
+                    memoryUsageLoggerInstance.memoryUsageLogUI = childLogUI;
+                }
+                else if (!childLogUI && memoryUsageLoggerInstance.memoryUsageLogUIPrefab)
+                {
+                    GameObject logUIGO = Instantiate(memoryUsageLoggerInstance.memoryUsageLogUIPrefab.gameObject,
+                                                     Vector3.zero,
+                                                     Quaternion.identity,
+                                                     memoryUsageLoggerInstance.transform);
+
+                    MemoryUsageLogUI logUIComponent; logUIGO.TryGetComponent<MemoryUsageLogUI>(out logUIComponent);
+
+                    memoryUsageLoggerInstance.memoryUsageLogUI = logUIComponent;
+                }
+                else if (!childLogUI && !memoryUsageLoggerInstance.memoryUsageLogUIPrefab && logUI)
+                {
+                    if (logUI.transform.parent == null || logUI.transform.parent != memoryUsageLoggerInstance.transform)
+                    {
+                        logUI.transform.SetParent(memoryUsageLoggerInstance.transform);
+                    }
+
+                    memoryUsageLoggerInstance.memoryUsageLogUI = logUI;
+                }
+            }
+
+            if (memoryUsageLoggerInstance.memoryUsageLogUI)
+            {
+                if (logUI != memoryUsageLoggerInstance.memoryUsageLogUI) Destroy(logUI.gameObject);
+            }
         }
     }
 }

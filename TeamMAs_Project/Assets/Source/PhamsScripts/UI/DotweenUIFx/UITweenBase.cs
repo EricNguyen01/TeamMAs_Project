@@ -2,7 +2,6 @@
 // GitHub: https://github.com/EricNguyen01.
 
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
@@ -62,7 +61,7 @@ namespace TeamMAsTD
 
         protected virtual void Awake()
         {
-            rectTransform = GetComponent<RectTransform>();
+            TryGetComponent<RectTransform>(out rectTransform);
 
             if(!rectTransform) rectTransform = GetComponentInChildren<RectTransform>(true);
 
@@ -73,7 +72,7 @@ namespace TeamMAsTD
                 return;
             }
 
-            canvasGroup = GetComponent<CanvasGroup>();
+            TryGetComponent<CanvasGroup>(out canvasGroup);
 
             if(!canvasGroup) canvasGroup = GetComponentInChildren<CanvasGroup>(true);
 
