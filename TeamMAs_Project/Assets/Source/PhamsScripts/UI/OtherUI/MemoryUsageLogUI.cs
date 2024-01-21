@@ -55,9 +55,9 @@ namespace TeamMAsTD
                 }
             }
 
-            SceneManager.sceneUnloaded += (Scene sc) => EnableMemoryLogUI(false);
+            SceneManager.sceneLoaded += (Scene sc, LoadSceneMode loadScMode) => EnableMemoryLogUI(false);
 
-            SceneManager.sceneLoaded += (Scene sc, LoadSceneMode loadScMode) => mainCanvas.worldCamera = Camera.main;
+            SceneManager.sceneLoaded += (Scene sc, LoadSceneMode loadScMode) => GetMainCamOnSceneLoaded();
 
             if(toggleCanvasGroup.blocksRaycasts) toggleCanvasGroup.blocksRaycasts = false;
 
@@ -68,9 +68,9 @@ namespace TeamMAsTD
 
         private void OnDestroy()
         {
-            SceneManager.sceneUnloaded -= (Scene sc) => EnableMemoryLogUI(false);
+            SceneManager.sceneLoaded -= (Scene sc, LoadSceneMode loadScMode) => EnableMemoryLogUI(false);
 
-            SceneManager.sceneLoaded -= (Scene sc, LoadSceneMode loadScMode) => mainCanvas.worldCamera = Camera.main;
+            SceneManager.sceneLoaded -= (Scene sc, LoadSceneMode loadScMode) => GetMainCamOnSceneLoaded();
         }
 
         private void Start()
@@ -116,14 +116,21 @@ namespace TeamMAsTD
             {
                 isLogDisplayed = true;
 
-                toggleCanvasGroup.alpha = 1.0f;
+                if (toggleCanvasGroup) toggleCanvasGroup.alpha = 1.0f;
 
                 return;
             }
 
             isLogDisplayed = false;
 
-            toggleCanvasGroup.alpha = 0.0f;
+            if(toggleCanvasGroup) toggleCanvasGroup.alpha = 0.0f;
+        }
+
+        private void GetMainCamOnSceneLoaded()
+        {
+            if (!mainCanvas) return;
+
+            mainCanvas.worldCamera = Camera.main;
         }
     }
 }

@@ -97,6 +97,8 @@ namespace TeamMAsTD
 
         public static MemoryUsageLogger memoryUsageLoggerInstance;
 
+        private bool pendingDeleteOnAppClosed = false;
+
         private void Awake()
         {
             if(memoryUsageLoggerInstance && memoryUsageLoggerInstance != this)
@@ -195,6 +197,8 @@ namespace TeamMAsTD
         private void OnApplicationQuit()
         {
             if(Application.isEditor && deleteLogOnUnityClosed) DeleteMemoryLogFile();
+
+            if (pendingDeleteOnAppClosed) DeleteMemoryLogFile();
         }
 
         private void Start()
@@ -384,7 +388,9 @@ namespace TeamMAsTD
 
         public void DeleteMemoryLogFile()
         {
-            if (File.Exists(pathToLogFile)) File.Delete(pathToLogFile);
+            if (pendingDeleteOnAppClosed && File.Exists(pathToLogFile)) File.Delete(pathToLogFile);
+
+            pendingDeleteOnAppClosed = true;
         }
 
         public static void CreateMemoryLoggerInstance()
