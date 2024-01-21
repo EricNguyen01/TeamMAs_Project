@@ -392,4 +392,4 @@ MonoBehaviour:
   deleteLogOnUnityClosed: 1
   logToTextIntervalSec: 5
   memoryUsageLogUIPrefab: {fileID: 2131573464673557554, guid: 04028905a6558584aa60e87b4f3b6c34, type: 3}
-  memoryLogUIDisplayRefreshTime: 1
+  memoryLogUIDisplayRefreshTime: 0.4

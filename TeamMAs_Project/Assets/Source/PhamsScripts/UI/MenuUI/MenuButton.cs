@@ -157,7 +157,7 @@ namespace TeamMAsTD
 
             if (!SaveLoadHandler.saveLoadHandlerInstance) SaveLoadHandler.CreateSaveLoadManagerInstance();
 
-            SaveLoadHandler.saveLoadHandlerInstance.DeleteAllSaveData();
+            if (SaveLoadHandler.saveLoadHandlerInstance) SaveLoadHandler.saveLoadHandlerInstance.DeleteAllSaveData();
 
             if (GameSettings.gameSettingsInstance)
             {
@@ -167,6 +167,17 @@ namespace TeamMAsTD
             LoadGameButtonBlurAndDisableIfNoSaveData blurLoadGameButtonComp = transform.parent.GetComponentInChildren<LoadGameButtonBlurAndDisableIfNoSaveData>(true);
 
             if (blurLoadGameButtonComp) blurLoadGameButtonComp.SetLoadButtonBlurDirectlyOnSaveDeleted(true);
+        }
+
+        public void DEBUG_DeleteMemoryLog()
+        {
+            if (!isDebugOnlyButton) return;
+
+            if (!debugButtonEnabled) return;
+
+            if(!MemoryUsageLogger.memoryUsageLoggerInstance) MemoryUsageLogger.CreateMemoryLoggerInstance();
+
+            if(MemoryUsageLogger.memoryUsageLoggerInstance) MemoryUsageLogger.memoryUsageLoggerInstance.DeleteMemoryLogFile();
         }
 
         public void DisableButton(bool disabled, float disableAlpha = 0.5f, float enableAlpha = 1.0f)

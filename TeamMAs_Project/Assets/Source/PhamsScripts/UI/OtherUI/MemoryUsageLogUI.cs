@@ -55,6 +55,8 @@ namespace TeamMAsTD
                 }
             }
 
+            SceneManager.sceneUnloaded += (Scene sc) => EnableMemoryLogUI(false);
+
             SceneManager.sceneLoaded += (Scene sc, LoadSceneMode loadScMode) => mainCanvas.worldCamera = Camera.main;
 
             if(toggleCanvasGroup.blocksRaycasts) toggleCanvasGroup.blocksRaycasts = false;
@@ -66,6 +68,8 @@ namespace TeamMAsTD
 
         private void OnDestroy()
         {
+            SceneManager.sceneUnloaded -= (Scene sc) => EnableMemoryLogUI(false);
+
             SceneManager.sceneLoaded -= (Scene sc, LoadSceneMode loadScMode) => mainCanvas.worldCamera = Camera.main;
         }
 

@@ -194,7 +194,7 @@ namespace TeamMAsTD
 
         private void OnApplicationQuit()
         {
-            if(Application.isEditor && deleteLogOnUnityClosed && File.Exists(pathToLogFile)) File.Delete(pathToLogFile);
+            if(Application.isEditor && deleteLogOnUnityClosed) DeleteMemoryLogFile();
         }
 
         private void Start()
@@ -380,6 +380,11 @@ namespace TeamMAsTD
             GenerateMemoryLogText();
 
             return activeMemoryLogStruct;
+        }
+
+        public void DeleteMemoryLogFile()
+        {
+            if (File.Exists(pathToLogFile)) File.Delete(pathToLogFile);
         }
 
         public static void CreateMemoryLoggerInstance()
