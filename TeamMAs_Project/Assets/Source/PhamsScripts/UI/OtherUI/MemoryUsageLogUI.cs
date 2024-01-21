@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 namespace TeamMAsTD
 {
@@ -27,32 +28,45 @@ namespace TeamMAsTD
 
         private bool isLogDisplayed = false;
 
-        private void Awake()
-        {
-            if (memoryLogSummaryText) 
-            { 
-                memoryLogSummaryText.text = memoryLogSummaryTitle;
-
-                memoryLogSummaryText.raycastTarget = false;
-            }
-        }
-
         private void OnEnable()
         {
-            if(!TryGetComponent<Canvas>(out mainCanvas))
+            if(!mainCanvas && !TryGetComponent<Canvas>(out mainCanvas))
             {
                 enabled = false;
 
                 return;
             }
 
-            if(!TryGetComponent<CanvasGroup>(out toggleCanvasGroup)) toggleCanvasGroup = gameObject.AddComponent<CanvasGroup>();
+            if(!toggleCanvasGroup && !TryGetComponent<CanvasGroup>(out toggleCanvasGroup)) 
+            toggleCanvasGroup = gameObject.AddComponent<CanvasGroup>();
 
-            toggleCanvasGroup.blocksRaycasts = false;
+            if(mainCanvas)
+            {
+                if (!memoryLogSummaryText)
+                {
+                    memoryLogSummaryText = mainCanvas.GetComponentInChildren<TextMeshProUGUI>();
+                }
 
-            toggleCanvasGroup.interactable = false;
+                if (memoryLogSummaryText)
+                {
+                    memoryLogSummaryText.text = memoryLogSummaryTitle;
 
-            EnableMemoryLogUI(false);
+                    if (memoryLogSummaryText.raycastTarget) memoryLogSummaryText.raycastTarget = false;
+                }
+            }
+
+            SceneManager.sceneLoaded += (Scene sc, LoadSceneMode loadScMode) => mainCanvas.worldCamera = Camera.main;
+
+            if(toggleCanvasGroup.blocksRaycasts) toggleCanvasGroup.blocksRaycasts = false;
+
+            if(toggleCanvasGroup.interactable) toggleCanvasGroup.interactable = false;
+
+            EnableMemoryLogUI(isLogDisplayed);
+        }
+
+        private void OnDestroy()
+        {
+            SceneManager.sceneLoaded -= (Scene sc, LoadSceneMode loadScMode) => mainCanvas.worldCamera = Camera.main;
         }
 
         private void Start()

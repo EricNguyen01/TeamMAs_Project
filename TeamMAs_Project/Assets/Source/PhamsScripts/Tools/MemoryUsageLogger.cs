@@ -433,7 +433,7 @@ namespace TeamMAsTD
 
             if (memoryUsageLoggerInstance.memoryUsageLogUI)
             {
-                if (logUI != memoryUsageLoggerInstance.memoryUsageLogUI) Destroy(logUI.gameObject);
+                if (logUI && logUI != memoryUsageLoggerInstance.memoryUsageLogUI) Destroy(logUI.gameObject);
             }
         }
     }

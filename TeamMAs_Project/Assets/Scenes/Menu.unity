@@ -512,6 +512,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1326277586, guid: e78e7e3ce85d46443b8ab6b2ece9cd5a, type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 1800338851}
     - target: {fileID: 4060650801229325105, guid: e78e7e3ce85d46443b8ab6b2ece9cd5a, type: 3}
       propertyPath: m_Name
       value: MemoryUsageLogger
@@ -522,15 +526,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6422235768841070438, guid: e78e7e3ce85d46443b8ab6b2ece9cd5a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5.2078648
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6422235768841070438, guid: e78e7e3ce85d46443b8ab6b2ece9cd5a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.14584175
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6422235768841070438, guid: e78e7e3ce85d46443b8ab6b2ece9cd5a, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 10.8867655
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6422235768841070438, guid: e78e7e3ce85d46443b8ab6b2ece9cd5a, type: 3}
       propertyPath: m_LocalRotation.w
