@@ -49,6 +49,8 @@ namespace TeamMAsTD
 
         private ProfilerRecorder gcUsedMemoryRecorder;
 
+        private ProfilerRecorder gcAllocatedFrame;
+
         private ProfilerRecorder systemUsedMemoryRecorder;
 
         private enum LogEnvironmentStatus { Editor = 0, PlayerBuild = 1 }
@@ -67,6 +69,10 @@ namespace TeamMAsTD
 
             public string gcUsedMemoryLogText { get; internal set; }
 
+            public long gcAllocatedFrame { get; internal set; }
+
+            public string gcAllocatedFrameLogText { get; internal set; }
+
             public long systemUsedMemory { get; internal set; }
 
             public string systemUsedMemoryLogText { get; internal set; }
@@ -84,6 +90,10 @@ namespace TeamMAsTD
                 gcUsedMemory = 0L; 
                 
                 gcUsedMemoryLogText = "n/a";
+
+                gcAllocatedFrame = 0L;
+
+                gcAllocatedFrameLogText = "n/a";
 
                 systemUsedMemory = 0L; 
                 
@@ -159,6 +169,8 @@ namespace TeamMAsTD
 
             gcUsedMemoryRecorder = ProfilerRecorder.StartNew(ProfilerCategory.Memory, "GC Used Memory");
 
+            gcAllocatedFrame = ProfilerRecorder.StartNew(ProfilerCategory.Memory, "GC Allocated In Frame");
+
             systemUsedMemoryRecorder = ProfilerRecorder.StartNew(ProfilerCategory.Memory, "System Used Memory");
 
             activeMemoryLogStruct = new ActiveMemoryLogStruct();
@@ -172,9 +184,12 @@ namespace TeamMAsTD
 
             if(gcUsedMemoryRecorder.Valid) gcUsedMemoryRecorder.Dispose();
 
+            if(gcAllocatedFrame.Valid) gcAllocatedFrame.Dispose();
+
             if(systemUsedMemoryRecorder.Valid) systemUsedMemoryRecorder.Dispose();
         }
 
+#if UNITY_EDITOR
         private void OnValidate()
         {
             if(!enabled) return;
@@ -193,6 +208,7 @@ namespace TeamMAsTD
                 previousUIRefreshTime = memoryLogUIDisplayRefreshTime;
             }
         }
+#endif
 
         private void OnApplicationQuit()
         {
@@ -302,6 +318,18 @@ namespace TeamMAsTD
                 activeMemoryLogStruct.gcUsedMemoryLogText = memory.ToString() + "MB" + MemoryUsageLevelTag(memory, "GC Used Memory");
             }
 
+            if (gcAllocatedFrame.Valid)
+            {
+                long memory = gcAllocatedFrame.CurrentValue;
+
+                if (memory >= 1048576) memory /= 1048576;
+
+                activeMemoryLogStruct.gcAllocatedFrame = memory;
+
+                if(memory >= 1048576) activeMemoryLogStruct.gcAllocatedFrameLogText = memory.ToString() + "MB" + MemoryUsageLevelTag(memory, "Garbage Collection Process");
+                else activeMemoryLogStruct.gcAllocatedFrameLogText = memory.ToString() + "KB" + MemoryUsageLevelTag(memory / 1048576, "Garbage Collection Process");
+            }
+
             if (systemUsedMemoryRecorder.Valid)
             {
                 long memory = systemUsedMemoryRecorder.CurrentValue / 1048576;
@@ -316,6 +344,7 @@ namespace TeamMAsTD
                                                          "Log Event: " + logEventName + "\n" +
                                                          "System Used Memory: " + activeMemoryLogStruct.systemUsedMemoryLogText + "\n" +
                                                          "GC Used Memory: " + activeMemoryLogStruct.gcUsedMemoryLogText + "\n" +
+                                                         "Garbage Allocated In Frame: " + activeMemoryLogStruct.gcAllocatedFrameLogText + "\n" +
                                                          "Total Reserved Memory: " + activeMemoryLogStruct.totalReservedMemoryLogText + "\n" +
                                                          "---------------------------------------\n";
 

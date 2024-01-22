@@ -41,6 +41,10 @@ namespace TeamMAsTD
 
         private const SerializationMethodType SERIALIZE_METHOD = SerializationMethodType.Default;
 
+        [SerializeField]
+        [Tooltip("Whether to only keep game settings save file existed during in-editor session or not. Does not affect build.")]
+        private bool deleteSaveOnEditorClosed = true;
+
         [Header("Debug")]
 
         [SerializeField] private bool showDebugLog = false;
@@ -137,6 +141,11 @@ namespace TeamMAsTD
         private void OnDisable()
         {
             SceneManager.sceneLoaded -= (Scene sc, LoadSceneMode loadMode) => LoadSettings();
+        }
+
+        private void OnApplicationQuit()
+        {
+            if(Application.isEditor && deleteSaveOnEditorClosed) DeleteAllGameSettingsSavedData();
         }
 
         public void SetScreenMode(FullScreenMode fullScreenMode, bool sendEvent = true, bool saveSetting = true)

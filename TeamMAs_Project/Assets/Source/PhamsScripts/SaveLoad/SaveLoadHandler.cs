@@ -26,6 +26,9 @@ namespace TeamMAsTD
         [SerializeField]
         private bool disableSaveLoadRuntime = false;
 
+        [SerializeField] [Tooltip("Whether to only keep game progress save file existed during in-editor session or not. Does not affect build.")] 
+        private bool deleteSaveOnEditorClosed = true;
+
         [SerializeField] private bool showDebugLog = false;
 
         [SerializeField] private bool showEditorDebugLog = false;
@@ -93,6 +96,11 @@ namespace TeamMAsTD
             SetSaveLoadManagerReferenceIfMissing();
 
             disableSaveLoadRuntime = false;
+        }
+
+        private void OnApplicationQuit()
+        {
+            if (Application.isEditor && deleteSaveOnEditorClosed) DeleteAllSaveData();
         }
 
         //SAVE FUNCTIONALITIES....................................................................................................
