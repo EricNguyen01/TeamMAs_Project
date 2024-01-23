@@ -28,6 +28,8 @@ namespace TeamMAsTD
 
         [SerializeField][Min(0.0f)] private float glowCycleFrequency = 1.3f;
 
+        public enum TileGlowMode { PositiveGlow, NegativeGlow }
+
         private SpriteGlow.SpriteGlowEffect spriteGlowEffectComp;
 
         public bool isTileGlowing { get; private set; } = false;
@@ -91,14 +93,14 @@ namespace TeamMAsTD
             glowCycleFrequency = newglowCycleFrequency;
         }
 
-        private void EnableTileGlowEffect(bool isPositiveGlow)
+        private void EnableTileGlowEffect(TileGlowMode tileGlowMode)
         {
             //always disable first before enable
             //in case tile glow is already enabled and we want to reset it for any reason (e.g changing glow properties)
             //in disable function, isTileGlowing is set to false and all coroutines are stopped.
             DisableTileGlowEffect();
 
-            if (isPositiveGlow)
+            if (tileGlowMode == TileGlowMode.PositiveGlow)
             {
                 spriteGlowEffectComp.GlowColor = glowColorPositive;
             }
@@ -182,39 +184,23 @@ namespace TeamMAsTD
             yield break;
         }
 
-        public void EnableTileGlowEffect(bool isPositiveGlow, float enableStartDelay = 0.0f)
+        public void EnableTileGlowEffect(TileGlowMode tileGlowMode, float enableStartDelay = 0.0f)
         {
             if(enableStartDelay <= 0.0f)
             {
-                EnableTileGlowEffect(isPositiveGlow);
+                EnableTileGlowEffect(tileGlowMode);
 
                 return;
             }
 
-            EnableTileGlowEffectDelay(isPositiveGlow, enableStartDelay);
+            StartCoroutine(EnableTileGlowEffectDelayCoroutine(tileGlowMode, enableStartDelay));
         }
 
-        public void EnableTileGlowEffect(bool isPositiveGlow, float enableStartDelay, float enableStopDelay)
+        public void EnableTileGlowEffect(TileGlowMode tileGlowMode, float startDelay, float stopDelay)
         {
-            if (enableStopDelay <= enableStartDelay) enableStopDelay = enableStartDelay + 0.5f;
+            if (stopDelay <= startDelay) stopDelay = startDelay + 0.5f;
 
-            EnableTileGlowEffect(isPositiveGlow, enableStartDelay);
-
-            DisableTileGlowEffect(enableStopDelay);
-        }
-
-        private void EnableTileGlowEffectDelay(bool isPositiveGlow, float delay)
-        {
-            StartCoroutine(EnableTileGlowEffectDelayCoroutine(isPositiveGlow, delay));
-        }
-
-        private IEnumerator EnableTileGlowEffectDelayCoroutine(bool isPositiveGlow, float delay)
-        {
-            yield return new WaitForSeconds(delay);
-
-            EnableTileGlowEffect(isPositiveGlow);
-
-            yield break;
+            StartCoroutine(TileGlowEffectStartStopWithDelay(tileGlowMode, startDelay, stopDelay));
         }
 
         private void DisableTileGlowEffect()
@@ -238,19 +224,46 @@ namespace TeamMAsTD
                 return;
             }
 
-            DisableTileGlowEffectDelay(disableStartDelay);
+            StartCoroutine(DisableTileGlowEffectDelayCoroutine(disableStartDelay));
         }
 
-        private void DisableTileGlowEffectDelay(float delay)
+        private IEnumerator EnableTileGlowEffectDelayCoroutine(TileGlowMode tileGlowMode, float delay)
         {
-            StartCoroutine(DisableTileGlowEffectDelayCoroutine(delay));
+            if (delay <= 0.0f)
+            {
+                EnableTileGlowEffect(tileGlowMode);
+
+                yield break;
+            }
+
+            yield return new WaitForSeconds(delay);
+
+            EnableTileGlowEffect(tileGlowMode);
+
+            yield break;
         }
 
         private IEnumerator DisableTileGlowEffectDelayCoroutine(float delay)
         {
+            if (delay <= 0.0f)
+            {
+                DisableTileGlowEffect();
+
+                yield break;
+            }
+
             yield return new WaitForSeconds(delay);
 
             DisableTileGlowEffect();
+
+            yield break;
+        }
+
+        private IEnumerator TileGlowEffectStartStopWithDelay(TileGlowMode tileGlowMode, float startDelay, float stopDelay)
+        {
+            yield return StartCoroutine(EnableTileGlowEffectDelayCoroutine(tileGlowMode, startDelay));
+
+            yield return StartCoroutine(DisableTileGlowEffectDelayCoroutine(stopDelay));
 
             yield break;
         }

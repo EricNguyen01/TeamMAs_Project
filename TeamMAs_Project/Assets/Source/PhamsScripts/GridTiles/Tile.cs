@@ -466,12 +466,12 @@ namespace TeamMAsTD
                 if(CanPlaceUnit(plantUnitSO, true))
                 {
                     //enable positive glow (green glow)
-                    tileGlowComp.EnableTileGlowEffect(true);
+                    tileGlowComp.EnableTileGlowEffect(TileGlow.TileGlowMode.PositiveGlow);
                 }
                 else
                 {
                     //enable negative glow (red glow)
-                    tileGlowComp.EnableTileGlowEffect(false);
+                    tileGlowComp.EnableTileGlowEffect(TileGlow.TileGlowMode.NegativeGlow);
                 }
 
                 return;//exit after enabled
