@@ -478,23 +478,26 @@ namespace TeamMAsTD
 
                 EditorGUILayout.Space();
 
-                if (GUILayout.Button("Test Load Save"))
+                using (new EditorGUI.DisabledGroupScope(!Application.isPlaying))
                 {
-                    if (!HasSavedData())
+                    if (GUILayout.Button("Test Load Save"))
                     {
-                        if (saveLoadHandler.showEditorDebugLog) Debug.LogWarning("No Saved Data To Load!");
+                        if (!HasSavedData())
+                        {
+                            if (saveLoadHandler.showEditorDebugLog) Debug.LogWarning("No Saved Data To Load!");
 
-                        return;
+                            return;
+                        }
+
+                        if (!Application.isPlaying)
+                        {
+                            if (saveLoadHandler.showEditorDebugLog) Debug.LogWarning("Test Load Only Available On Runtime!");
+
+                            return;
+                        }
+
+                        LoadToAllSaveables();
                     }
-
-                    if (!Application.isPlaying)
-                    {
-                        if (saveLoadHandler.showEditorDebugLog) Debug.LogWarning("Test Load Only Available On Runtime!");
-
-                        return;
-                    }
-
-                    LoadToAllSaveables();
                 }
 
                 EditorGUILayout.Space();

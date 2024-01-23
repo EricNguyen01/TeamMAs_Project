@@ -362,6 +362,7 @@ namespace TeamMAsTD
         private class GridEditor : Editor
         {
             TDGrid grid;
+
             private void OnEnable()
             {
                 grid = target as TDGrid;
@@ -375,15 +376,20 @@ namespace TeamMAsTD
                     "Generating the grid removes all of its current children Tiles and makes new ones based on the current grid's settings. " +
                     "New children tiles have default Tile settings", MessageType.Info);
 
-                //Create a button to execute the generation of the grid in the editor.
+                //Create a custom inspector button to execute the generation of the grid in the editor.
                 //Clicking the button regenerates the grid based on current grid settings.
                 //Regenerate grid deletes old tiles and create new children tiles with default values.
-                if(GUILayout.Button("Generate Grid"))//On Generate Grid button pressed:...
+                //Buttons are disabled during runtime.
+                using (new EditorGUI.DisabledGroupScope(Application.isPlaying))
                 {
-                    if (!grid.CanGenerateGrid()) return;//if can not generate grid->do nothing
-                    //else
-                    grid.ResetGrid();
-                    grid.CreateGrid();
+                    if (GUILayout.Button("Generate Grid"))//On Generate Grid button pressed:...
+                    {
+                        if (!grid.CanGenerateGrid()) return;//if can not generate grid->do nothing
+
+                        grid.ResetGrid();
+
+                        grid.CreateGrid();
+                    }
                 }
             }
         }
