@@ -51,7 +51,7 @@ Canvas:
   m_GameObject: {fileID: 1326277583}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 1
+  m_RenderMode: 0
   m_Camera: {fileID: 0}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
@@ -61,7 +61,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 599533699
-  m_SortingOrder: 10
+  m_SortingOrder: 200
   m_TargetDisplay: 0
 --- !u!114 &1326277585
 MonoBehaviour:
@@ -128,7 +128,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enableLogUIDisplay: 1
-  toggleLogUIKey: 293
+  closeUIOnSceneLoad: 0
+  toggleLogUIKey: 292
   memoryLogSummaryText: {fileID: 5217104699268922773}
 --- !u!1 &1488238825055219393
 GameObject:
