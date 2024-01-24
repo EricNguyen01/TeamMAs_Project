@@ -63,7 +63,7 @@ namespace TeamMAsTD
         [field: SerializeField]
         public TDGrid gridParent { get; private set; }//the grid that is housing this tile
 
-        private SpriteRenderer spriteRenderer;
+        public SpriteRenderer spriteRenderer { get; private set; }
 
         public TileMenuAndUprootOnTileUI tileMenuAndUprootOnTileUI { get; private set; }
 
@@ -76,6 +76,7 @@ namespace TeamMAsTD
 
         private Saveable tileSaveable;
 
+        //TileSave nested private class to store tile save data
         [System.Serializable]
         private class TileSave
         {
@@ -83,13 +84,26 @@ namespace TeamMAsTD
 
             public int currentPlantWater { get; private set; }
 
-            public TileSave(string plantSOPlantedStaticID, int currentPlantWater)
+            public bool isOccupied { get; private set; }
+
+            public bool is_AI_Path { get; private set; }
+
+            public string tileSpriteName { get; private set; }
+
+            //TileSave's constructor - save data goes into the constructor on class instance created
+            public TileSave(string plantSOPlantedStaticID, 
+                            int currentPlantWater,
+                            bool isOccupied,
+                            bool is_AI_Path,
+                            string tileSpriteName)
             {
                 this.plantSOPlantedStaticID = plantSOPlantedStaticID;
-
                 this.currentPlantWater = currentPlantWater;
+                this.isOccupied = isOccupied;
+                this.is_AI_Path = is_AI_Path;
+                this.tileSpriteName = tileSpriteName;
             }
-        }
+        }//end TileSave nested private class
 
         //PRIVATES......................................................................
 
@@ -533,7 +547,11 @@ namespace TeamMAsTD
 
             if(plantUnitOnTile) currentPlantWaterBars = plantUnitOnTile.plantWaterUsageSystem.GetRemainingWaterBars();
 
-            TileSave tileSave = new TileSave(plantSOPlantedStaticID, currentPlantWaterBars);
+            TileSave tileSave = new TileSave(plantSOPlantedStaticID, 
+                                             currentPlantWaterBars,
+                                             isOccupied,
+                                             is_AI_Path,
+                                             spriteRenderer.sprite.name);
 
             tileSaveData = new SaveDataSerializeBase(tileSave, 
                                                      transform.position, 
@@ -581,7 +599,37 @@ namespace TeamMAsTD
 
             plantUnitOnTile.plantWaterUsageSystem.SetWaterBarsRemainingDirectly(savedTile.currentPlantWater);
 
+            if(isOccupied != savedTile.isOccupied) isOccupied = savedTile.isOccupied;
+
+            if(is_AI_Path != savedTile.is_AI_Path) is_AI_Path = savedTile.is_AI_Path;
+
+            LoadTileSpriteFromSave(savedTile);
+
             OnTileLoaded?.Invoke(this);
+        }
+
+        private void LoadTileSpriteFromSave(TileSave savedTile)
+        {
+            if (!spriteRenderer) return;
+
+            if (string.IsNullOrEmpty(savedTile.tileSpriteName) || string.IsNullOrWhiteSpace(savedTile.tileSpriteName)) return;
+
+            if (spriteRenderer.sprite == null || spriteRenderer.sprite.name != savedTile.tileSpriteName)
+            {
+                for (int i = 0; i < gridParent.tileSpritesList.Count; i++)
+                {
+                    Sprite sprite = gridParent.tileSpritesList[i];
+
+                    if (!sprite) continue;
+
+                    if (sprite.name == savedTile.tileSpriteName)
+                    {
+                        spriteRenderer.sprite = sprite;
+
+                        break;
+                    }
+                }
+            }
         }
 
         //Tile Custom Editor Private Class................................................................................................................

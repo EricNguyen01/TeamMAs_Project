@@ -37,6 +37,8 @@ namespace TeamMAsTD
 
         [HideInInspector] private List<Tile> unplantedTileList = new List<Tile>();
 
+        public List<Sprite> tileSpritesList { get; private set; } = new List<Sprite>();
+
         private bool alreadyHasDandelionOnGrid = false;//for debugging
 
         private bool alreadyHasCloverOnGrid = false;
@@ -56,6 +58,11 @@ namespace TeamMAsTD
         }
 
         //UNITY
+
+        private void Awake()
+        {
+            GetAllSpritesFromChildrenTiles();
+        }
 
         private void OnEnable()
         {
@@ -328,7 +335,23 @@ namespace TeamMAsTD
             return gridArray[tileIndexInGrid].PlaceUnit(plantSO);
         }
 
-        //ISaveable interface implementations.............................................................................
+        private void GetAllSpritesFromChildrenTiles()
+        {
+            if (gridArray == null || gridArray.Length == 0) return;
+
+            if(tileSpritesList != null && tileSpritesList.Count > 0) tileSpritesList.Clear();
+
+            for(int i = 0; i < gridArray.Length; i++)
+            {
+                if (!gridArray[i] || !gridArray[i].spriteRenderer || !gridArray[i].spriteRenderer.sprite) continue;
+
+                if (tileSpritesList.Contains(gridArray[i].spriteRenderer.sprite)) continue;
+
+                tileSpritesList.Add(gridArray[i].spriteRenderer.sprite);
+            }
+        }
+
+        //ISaveable interface implementations for saving/loading.............................................................................
 
         public SaveDataSerializeBase SaveData(string saveName = "")
         {
