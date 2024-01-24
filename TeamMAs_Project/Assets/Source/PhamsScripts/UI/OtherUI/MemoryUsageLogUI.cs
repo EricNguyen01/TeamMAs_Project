@@ -2,6 +2,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
+using System.Runtime.CompilerServices;
+using System.Text;
 
 namespace TeamMAsTD
 {
@@ -25,6 +27,8 @@ namespace TeamMAsTD
         private CanvasGroup toggleCanvasGroup;
 
         private string memoryLogSummaryTitle = "MEMORY LOG SUMMARY:\n";
+
+        private StringBuilder logStringBuilder = new StringBuilder();
 
         private bool isLogDisplayed = false;
 
@@ -89,7 +93,11 @@ namespace TeamMAsTD
         {
             if (this.memoryLogSummaryText)
             {
-                this.memoryLogSummaryText.text = memoryLogSummaryTitle + memoryLogSummaryText;
+                if(logStringBuilder == null) logStringBuilder = new StringBuilder();
+
+                if (logStringBuilder.Length > 0) logStringBuilder.Clear();
+
+                this.memoryLogSummaryText.text = logStringBuilder.Append(memoryLogSummaryTitle).Append(memoryLogSummaryText).ToString();
             }
         }
 

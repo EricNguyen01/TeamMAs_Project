@@ -4,6 +4,7 @@
 using System;
 using System.Collections;
 using System.IO;
+using System.Text;
 using Unity.Profiling;
 using UnityEngine;
 
@@ -44,6 +45,10 @@ namespace TeamMAsTD
         private string pathToLogFile;
 
         private float currentLogTimer;
+
+        private StringBuilder logStringBuilder = new StringBuilder();
+
+        private StringBuilder tempStringBuilder = new StringBuilder();
 
         private ProfilerRecorder totalReservedMemoryRecorder;
 
@@ -300,13 +305,21 @@ namespace TeamMAsTD
         {
             activeMemoryLogStruct.InitSetDefaultValues();
 
+            if(logStringBuilder == null) logStringBuilder = new StringBuilder();
+
+            if(tempStringBuilder == null) tempStringBuilder = new StringBuilder();
+
+            if(logStringBuilder != null && logStringBuilder.Length > 0) logStringBuilder.Clear();
+
+            if(tempStringBuilder != null && tempStringBuilder.Length > 0) tempStringBuilder.Clear();
+
             if (totalReservedMemoryRecorder.Valid)
             {
                 long memory = totalReservedMemoryRecorder.CurrentValue / 1048576;
 
                 activeMemoryLogStruct.totalReservedMemory = memory;
 
-                activeMemoryLogStruct.totalReservedMemoryLogText = memory.ToString() + "MB" + MemoryUsageLevelTag(memory, "Total Reserved Memory");
+                activeMemoryLogStruct.totalReservedMemoryLogText = tempStringBuilder.Append(memory.ToString()).Append("MB").Append(MemoryUsageLevelTag(memory, "Total Reserved Memory")).ToString();
             }
 
             if(gcUsedMemoryRecorder.Valid)
@@ -315,7 +328,9 @@ namespace TeamMAsTD
 
                 activeMemoryLogStruct.gcUsedMemory = memory;
 
-                activeMemoryLogStruct.gcUsedMemoryLogText = memory.ToString() + "MB" + MemoryUsageLevelTag(memory, "GC Used Memory");
+                if (tempStringBuilder != null && tempStringBuilder.Length > 0) tempStringBuilder.Clear();
+
+                activeMemoryLogStruct.gcUsedMemoryLogText = tempStringBuilder.Append(memory.ToString()).Append("MB").Append(MemoryUsageLevelTag(memory, "GC Used Memory")).ToString();
             }
 
             if (gcAllocatedFrame.Valid)
@@ -326,8 +341,16 @@ namespace TeamMAsTD
 
                 activeMemoryLogStruct.gcAllocatedFrame = memory;
 
-                if(memory >= 1048576) activeMemoryLogStruct.gcAllocatedFrameLogText = memory.ToString() + "MB" + MemoryUsageLevelTag(memory, "Garbage Collection Process");
-                else activeMemoryLogStruct.gcAllocatedFrameLogText = memory.ToString() + "KB" + MemoryUsageLevelTag(memory / 1048576, "Garbage Collection Process");
+                if (tempStringBuilder != null && tempStringBuilder.Length > 0) tempStringBuilder.Clear();
+
+                if (memory >= 1048576)
+                {
+                    activeMemoryLogStruct.gcAllocatedFrameLogText = tempStringBuilder.Append(memory.ToString()).Append("MB").Append(MemoryUsageLevelTag(memory, "Garbage Collection Process")).ToString();
+                }
+                else 
+                { 
+                    activeMemoryLogStruct.gcAllocatedFrameLogText = tempStringBuilder.Append(memory.ToString()).Append("KB").Append(MemoryUsageLevelTag(memory / 1048576, "Garbage Collection Process")).ToString(); 
+                }
             }
 
             if (systemUsedMemoryRecorder.Valid)
@@ -336,17 +359,19 @@ namespace TeamMAsTD
 
                 activeMemoryLogStruct.systemUsedMemory = memory;
 
-                activeMemoryLogStruct.systemUsedMemoryLogText = memory.ToString() + "MB" + MemoryUsageLevelTag(memory, "System Used Memory");
+                if (tempStringBuilder != null && tempStringBuilder.Length > 0) tempStringBuilder.Clear();
+
+                activeMemoryLogStruct.systemUsedMemoryLogText = tempStringBuilder.Append(memory.ToString()).Append("MB").Append(MemoryUsageLevelTag(memory, "System Used Memory")).ToString();
             }
 
-            activeMemoryLogStruct.memoryLogSummaryText = logEnvironmentStatus.ToString() + " Memory Log At:\n" +
-                                                         "Frame: " + Time.frameCount.ToString() + "\n" +
-                                                         "Log Event: " + logEventName + "\n" +
-                                                         "System Used Memory: " + activeMemoryLogStruct.systemUsedMemoryLogText + "\n" +
-                                                         "GC Used Memory: " + activeMemoryLogStruct.gcUsedMemoryLogText + "\n" +
-                                                         "Garbage Allocated In Frame: " + activeMemoryLogStruct.gcAllocatedFrameLogText + "\n" +
-                                                         "Total Reserved Memory: " + activeMemoryLogStruct.totalReservedMemoryLogText + "\n" +
-                                                         "---------------------------------------\n";
+            activeMemoryLogStruct.memoryLogSummaryText = logStringBuilder.Append(logEnvironmentStatus.ToString()).Append(" Memory Log At: ").AppendLine()
+                                                         .Append("Frame: ").Append(Time.frameCount.ToString()).AppendLine()
+                                                         .Append("Log Event: ").Append(logEventName).AppendLine()
+                                                         .Append("System Used Memory: ").Append(activeMemoryLogStruct.systemUsedMemoryLogText).AppendLine()
+                                                         .Append("GC Used Memory: ").Append(activeMemoryLogStruct.gcUsedMemoryLogText).AppendLine()
+                                                         .Append("Garbage Allocated In Frame: ").Append(activeMemoryLogStruct.gcAllocatedFrameLogText).AppendLine()
+                                                         .Append("Total Reserved Memory: ").Append(activeMemoryLogStruct.totalReservedMemoryLogText).AppendLine()
+                                                         .Append("---------------------------------------").ToString();
 
             //update UI if reference to memory log UI component exists
             if (memoryUsageLogUI) memoryUsageLogUI.SetMemoryLogSummaryUIText(activeMemoryLogStruct.memoryLogSummaryText);
