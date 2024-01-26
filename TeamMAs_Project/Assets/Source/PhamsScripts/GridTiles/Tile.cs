@@ -53,11 +53,13 @@ namespace TeamMAsTD
         //Internal........................................................
         [field: ReadOnlyInspector]
         [field: SerializeField]
-        public int tileNumInRow { get; private set; }//position X in the grid (not in world space)
+        [field: Tooltip("tile position X in the grid (tile X coordinate in grid NOT in world space)")]
+        public int tileNumInRow { get; private set; }
 
         [field: ReadOnlyInspector]
         [field: SerializeField]
-        public int tileNumInColumn { get; private set; }//position Y in the grid (not in world space)
+        [field: Tooltip("tile position Y in the grid (tile Y coordinate in grid NOT in world space)")]
+        public int tileNumInColumn { get; private set; }
 
         [field: ReadOnlyInspector]
         [field: SerializeField]

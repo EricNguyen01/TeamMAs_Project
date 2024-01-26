@@ -87,9 +87,9 @@ namespace TeamMAsTD
         }
 
         //the method below returns the grid array index correspond to the provided tile coordinate in the grid.
-        public int GetGridArrayIndexFromTileCoordinate(Vector2 tileCoordInt)
+        public int GetGridArrayIndexFromTileCoordinate(Vector2Int tileCoordInt)
         {
-            return GetGridArrayIndexFromTileCoordinate((int)tileCoordInt.x, (int)tileCoordInt.y);
+            return GetGridArrayIndexFromTileCoordinate(tileCoordInt.x, tileCoordInt.y);
         }
 
         public int GetGridArrayIndexFromTileCoordinate(int tileGrid_X, int tileGrid_Y)
@@ -103,6 +103,15 @@ namespace TeamMAsTD
             if (tileGrid_Y > gridHeight) tileGrid_Y = gridHeight - 1;
 
             return tileGrid_X * gridHeight/*the array height*/ + tileGrid_Y;
+        }
+
+        public Tile GetTileFromTileCoordinate(Vector2Int tileCoordInt)
+        {
+            if (gridArray == null || gridArray.Length == 0) return null;
+
+            int tileGridArrayIndex = GetGridArrayIndexFromTileCoordinate(tileCoordInt);
+
+            return gridArray[tileGridArrayIndex];
         }
 
         //iterate through the grid to check if any plant has been planted before or not
@@ -212,7 +221,9 @@ namespace TeamMAsTD
         private Vector2 GetTileWorldPos(int tileGridPosX, int tileGridPosY)
         {
             float x = transform.position.x + (tileGridPosX * tileSize);
+
             float y = transform.position.y + (tileGridPosY * tileSize);
+
             return new Vector2(x, y);
         }
 
@@ -226,11 +237,13 @@ namespace TeamMAsTD
             }
 
             int index = 0;//index of the 1D flattened grid from 2D array 
+
             for (int x = 0; x < gridWidth; x++)
             {
                 for (int y = 0; y < gridHeight; y++)
                 {
                     Vector2 currentTileWorldPos = GetTileWorldPos(x, y);
+
                     gridArray[index] = Instantiate(tilePrefabToPopulate, currentTileWorldPos, Quaternion.identity, transform);
 
                     if (!gridArray[index].GetComponent<BoxCollider2D>())
@@ -239,7 +252,9 @@ namespace TeamMAsTD
                     }
 
                     gridArray[index].InitializeTile(this, x, y);
+
                     gridArray[index].transform.localScale = new Vector2(tileSize, tileSize);
+
                     index++;
                 }
             }
@@ -294,7 +309,7 @@ namespace TeamMAsTD
 
                 PlantUnitSO plantSO = wave.waveSO.plantsToSpawnOnThisWaveStart[i].plantUnitSOToSpawn;
 
-                Vector2 plantCoord = Vector2.zero;
+                Vector2Int plantCoord = Vector2Int.zero;
 
                 int previousTilesIndex = 0;
 
@@ -318,7 +333,7 @@ namespace TeamMAsTD
 
                     previousTilesIndex = unplantedTilesIndex;
 
-                    plantCoord = new Vector2(unplantedTileList[unplantedTilesIndex].tileNumInRow, unplantedTileList[unplantedTilesIndex].tileNumInColumn);
+                    plantCoord = new Vector2Int(unplantedTileList[unplantedTilesIndex].tileNumInRow, unplantedTileList[unplantedTilesIndex].tileNumInColumn);
 
                     if(SpawnPlantOnTileCoord(plantSO, plantCoord))
                     {
@@ -328,7 +343,7 @@ namespace TeamMAsTD
             }
         }
 
-        private bool SpawnPlantOnTileCoord(PlantUnitSO plantSO, Vector2 tileCoordInt)
+        private bool SpawnPlantOnTileCoord(PlantUnitSO plantSO, Vector2Int tileCoordInt)
         {
             int tileIndexInGrid = GetGridArrayIndexFromTileCoordinate(tileCoordInt);
 
