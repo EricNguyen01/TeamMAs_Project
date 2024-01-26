@@ -337,18 +337,22 @@ namespace TeamMAsTD
             {
                 long memory = gcAllocatedFrame.CurrentValue;
 
-                if (memory >= 1048576) memory /= 1048576;
-
-                activeMemoryLogStruct.gcAllocatedFrame = memory;
-
                 if (tempStringBuilder != null && tempStringBuilder.Length > 0) tempStringBuilder.Clear();
 
                 if (memory >= 1048576)
                 {
+                    memory /= 1048576;
+
+                    activeMemoryLogStruct.gcAllocatedFrame = memory;
+
                     activeMemoryLogStruct.gcAllocatedFrameLogText = tempStringBuilder.Append(memory.ToString()).Append("MB").Append(MemoryUsageLevelTag(memory, "Garbage Collection Process")).ToString();
                 }
                 else 
-                { 
+                {
+                    memory /= 1024;
+
+                    activeMemoryLogStruct.gcAllocatedFrame = memory;
+
                     activeMemoryLogStruct.gcAllocatedFrameLogText = tempStringBuilder.Append(memory.ToString()).Append("KB").Append(MemoryUsageLevelTag(memory / 1048576, "Garbage Collection Process")).ToString(); 
                 }
             }

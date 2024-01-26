@@ -14,6 +14,8 @@ namespace TeamMAsTD
 
         [SerializeField] private bool enableLogUIDisplay = true;
 
+        [SerializeField] private bool closeUIOnSceneLoad = false;
+
         [SerializeField] private KeyCode toggleLogUIKey = KeyCode.F12;
 
         [Header("UI Components")]
@@ -59,7 +61,7 @@ namespace TeamMAsTD
                 }
             }
 
-            SceneManager.sceneLoaded += (Scene sc, LoadSceneMode loadScMode) => EnableMemoryLogUI(false);
+            SceneManager.sceneLoaded += (Scene sc, LoadSceneMode loadScMode) => CloseMemoryLogUIOnSceneLoad();
 
             SceneManager.sceneLoaded += (Scene sc, LoadSceneMode loadScMode) => GetMainCamOnSceneLoaded();
 
@@ -72,7 +74,7 @@ namespace TeamMAsTD
 
         private void OnDestroy()
         {
-            SceneManager.sceneLoaded -= (Scene sc, LoadSceneMode loadScMode) => EnableMemoryLogUI(false);
+            SceneManager.sceneLoaded -= (Scene sc, LoadSceneMode loadScMode) => CloseMemoryLogUIOnSceneLoad();
 
             SceneManager.sceneLoaded -= (Scene sc, LoadSceneMode loadScMode) => GetMainCamOnSceneLoaded();
         }
@@ -134,9 +136,18 @@ namespace TeamMAsTD
             if(toggleCanvasGroup) toggleCanvasGroup.alpha = 0.0f;
         }
 
+        private void CloseMemoryLogUIOnSceneLoad()
+        {
+            if (!closeUIOnSceneLoad) return;
+
+            EnableMemoryLogUI(false);
+        }
+
         private void GetMainCamOnSceneLoaded()
         {
             if (!mainCanvas) return;
+
+            if (mainCanvas.renderMode == RenderMode.ScreenSpaceOverlay) return;
 
             mainCanvas.worldCamera = Camera.main;
         }
