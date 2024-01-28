@@ -15,15 +15,25 @@ namespace TeamMAsTD
     [ExecuteInEditMode]
     public class Path : MonoBehaviour
     {
+        [field: Header("Set Path Manually")]
+
         [field: SerializeField] public List<Tile> orderedPathTiles { get; private set; } = new List<Tile>();
 
         [field: SerializeField] public Sprite pathTileSprite { get; private set; }
 
-        [Header("Path Debug Section")]
+        [Header("Auto Generate Path")]
+
+        [SerializeField] private PathGenerator pathGenerator = new PathGenerator();
+
+        [Header("Path Debug")]
         [SerializeField] private bool showDebugLog = true;
 
         //This list is used for when the user updating the path tiles list in the editor
         [SerializeField] [HideInInspector] private List<Tile> oldOrderedPathTiles = new List<Tile>();
+
+        private bool isGeneratingPath = false;
+
+        private bool isUpdatingPath = false;
 
         //PRIVATES................................................................................
 
@@ -68,6 +78,8 @@ namespace TeamMAsTD
                 //either it is empty (1st update) or if not empty then we alr cleared the list on last update
                 oldOrderedPathTiles.Add(orderedPathTiles[i]);
 
+                if (orderedPathTiles[i].isOccupied) orderedPathTiles[i].isOccupied = false;
+
                 //if the current tile element is not set as an AI path -> set it as AI path.
                 if (!orderedPathTiles[i].is_AI_Path) orderedPathTiles[i].is_AI_Path = true;
 
@@ -100,11 +112,24 @@ namespace TeamMAsTD
             tile.EnableDrawTileDebug(true);
         }
 
+        private void AutoGeneratePath()
+        {
+            if (pathGenerator == null) return;
+
+            isGeneratingPath = true;
+
+            orderedPathTiles = pathGenerator.GeneratePath();
+
+            isGeneratingPath = false;
+        }
+
         private void UpdatePath()
         {
             if (!CanUpdatePath()) return;
 
             if (showDebugLog) Debug.Log("Path update started!");
+
+            isUpdatingPath = true;
 
             //if this is the first time the path is updated:
             if (oldOrderedPathTiles == null || oldOrderedPathTiles.Count == 0)
@@ -115,6 +140,8 @@ namespace TeamMAsTD
                 //goes through the orderedPathTiles list and sets each tile in it to AI path status.
                 //each newly updated tile in path will also be stored in oldOrderedPath list for comparison in later updates.
                 SetOrderedPathTilesList();
+
+                isUpdatingPath = false;
 
                 return;//stop executing function
             }
@@ -139,6 +166,8 @@ namespace TeamMAsTD
 
             //update the current path and then take a snapshot of it into oldOrderedPathTiles list.
             SetOrderedPathTilesList();
+
+            isUpdatingPath = false;
         }
 
         private void ClearPath()
@@ -187,33 +216,41 @@ namespace TeamMAsTD
             {
                 DrawDefaultInspector();
 
-                //Path script inspector text message box for what the path tiles list is and how it operates
-                EditorGUILayout.HelpBox(
-                    "This list represents the path. " +
-                    "The first tile element is the start point and the last is the end point. " +
-                    "The AIs will travel from one tile to the next based on their order in this list.", 
-                    MessageType.Info);
+                EditorGUILayout.Space();
+
+                EditorGUI.BeginDisabledGroup(path.isUpdatingPath || path.isGeneratingPath);
+
+                if (GUILayout.Button("Auto-Generate Path"))
+                {
+                    path.AutoGeneratePath();
+                }
+
+                EditorGUI.EndDisabledGroup();
 
                 EditorGUILayout.Space();
 
                 EditorGUILayout.HelpBox(
-                    "Please update path manually after making changes! " +
-                    "Changes may take a while to reflect in Scene view.", 
+                    "Please update path manually using the UpdatePath button after making changes or generating path! " +
+                    "Updates may take a while to reflect in Scene view.", 
                     MessageType.Warning);
 
                 EditorGUILayout.Space();
+
+                EditorGUI.BeginDisabledGroup(path.isUpdatingPath || path.isGeneratingPath);
 
                 //Draw update path button
                 if(GUILayout.Button("Update Path"))
                 {
                     path.UpdatePath();
                 }
-                
+
                 //Draw clear path button
                 if(GUILayout.Button("Clear Path"))
                 {
                     path.ClearPath();
                 }
+
+                EditorGUI.EndDisabledGroup();
             }
         }
     #endif

@@ -62,29 +62,29 @@ namespace TeamMAsTD
 
         private LogEnvironmentStatus logEnvironmentStatus = LogEnvironmentStatus.Editor;
 
-        public struct ActiveMemoryLogStruct
+        private struct ActiveMemoryLogStruct
         {
-            public string logEnvironmentStatus { get; internal set; }
+            public string logEnvironmentStatus;
 
-            public long totalReservedMemory { get; internal set; }
+            public long totalReservedMemory;
 
-            public string totalReservedMemoryLogText { get; internal set; }
+            public string totalReservedMemoryLogText;
 
-            public long gcUsedMemory { get; internal set; }
+            public long gcUsedMemory;
 
-            public string gcUsedMemoryLogText { get; internal set; }
+            public string gcUsedMemoryLogText;
 
-            public long gcAllocatedFrame { get; internal set; }
+            public long gcAllocatedFrame;
 
-            public string gcAllocatedFrameLogText { get; internal set; }
+            public string gcAllocatedFrameLogText;
 
-            public long systemUsedMemory { get; internal set; }
+            public long systemUsedMemory;
 
-            public string systemUsedMemoryLogText { get; internal set; }
+            public string systemUsedMemoryLogText;
 
-            public string memoryLogSummaryText { get; internal set; }
+            public string memoryLogSummaryText;
 
-            internal void InitSetDefaultValues()
+            public ActiveMemoryLogStruct(int i = 0)
             {
                 logEnvironmentStatus = "n/a";
 
@@ -108,7 +108,7 @@ namespace TeamMAsTD
             }
         }
 
-        private ActiveMemoryLogStruct activeMemoryLogStruct;
+        private ActiveMemoryLogStruct activeMemoryLogStruct = new ActiveMemoryLogStruct();
 
         public static MemoryUsageLogger memoryUsageLoggerInstance;
 
@@ -177,10 +177,6 @@ namespace TeamMAsTD
             gcAllocatedFrame = ProfilerRecorder.StartNew(ProfilerCategory.Memory, "GC Allocated In Frame");
 
             systemUsedMemoryRecorder = ProfilerRecorder.StartNew(ProfilerCategory.Memory, "System Used Memory");
-
-            activeMemoryLogStruct = new ActiveMemoryLogStruct();
-
-            activeMemoryLogStruct.InitSetDefaultValues();
         }
 
         private void OnDisable()
@@ -303,7 +299,7 @@ namespace TeamMAsTD
 
         private void GenerateMemoryLogText(string logEventName = "n/a")
         {
-            activeMemoryLogStruct.InitSetDefaultValues();
+            activeMemoryLogStruct = new ActiveMemoryLogStruct();
 
             if(logStringBuilder == null) logStringBuilder = new StringBuilder();
 
@@ -419,29 +415,6 @@ namespace TeamMAsTD
             }
 
             return "";
-        }
-
-        public ActiveMemoryLogStruct GetActiveMemoryLogStructData()
-        {
-            activeMemoryLogStruct.InitSetDefaultValues();
-
-            if (!enabled)
-            {
-                activeMemoryLogStruct.memoryLogSummaryText = "Memory Usage Logger is currently disabled!";
-
-                return activeMemoryLogStruct;
-            }
-
-            if(Application.isEditor && !enableLogInEditor)
-            {
-                activeMemoryLogStruct.memoryLogSummaryText = "Memory Usage Logger is not enabled in editor.";
-
-                return activeMemoryLogStruct;
-            }
-
-            GenerateMemoryLogText();
-
-            return activeMemoryLogStruct;
         }
 
         public void DeleteMemoryLogFile()
