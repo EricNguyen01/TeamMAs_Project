@@ -226,19 +226,7 @@ namespace TeamMAsTD
 
                 EditorGUILayout.Space();
 
-                EditorGUI.BeginDisabledGroup(path.isUpdatingPath || path.isGeneratingPath || !path.setPathManually);
-
-                SerializedProperty serializedOrderedPathTiles = HelperFunctions.FindPropertyByAutoPropertyName(pathSerializedObject, "orderedPathTiles");
-
-                EditorGUI.GetPropertyHeight(serializedOrderedPathTiles);
-
-                EditorGUI.EndDisabledGroup();
-
                 EditorGUI.BeginDisabledGroup(path.isUpdatingPath || path.isGeneratingPath || path.setPathManually);
-
-                SerializedProperty serializedPropertyPathGen = pathSerializedObject.FindProperty("pathGenerator");
-
-                EditorGUI.GetPropertyHeight(serializedPropertyPathGen, true);
 
                 if (GUILayout.Button("Auto-Generate Path"))
                 {
