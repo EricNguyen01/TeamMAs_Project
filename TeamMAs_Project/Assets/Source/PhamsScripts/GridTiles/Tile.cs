@@ -682,7 +682,7 @@ namespace TeamMAsTD
         [CanEditMultipleObjects]
         private class TileEditor : Editor
         {
-            Tile tile;
+            private Tile tile;
 
             private void OnEnable()
             {

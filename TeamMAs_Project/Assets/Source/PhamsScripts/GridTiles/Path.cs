@@ -17,6 +17,8 @@ namespace TeamMAsTD
     {
         [field: Header("Set Path Manually")]
 
+        [field: SerializeField] private bool setPathManually = true;
+
         [field: SerializeField] public List<Tile> orderedPathTiles { get; private set; } = new List<Tile>();
 
         [field: SerializeField] public Sprite pathTileSprite { get; private set; }
@@ -118,7 +120,9 @@ namespace TeamMAsTD
 
             isGeneratingPath = true;
 
-            orderedPathTiles = pathGenerator.GeneratePath();
+            if(orderedPathTiles != null && orderedPathTiles.Count > 0) orderedPathTiles.Clear();
+
+            orderedPathTiles.AddRange(pathGenerator.GeneratePath());
 
             isGeneratingPath = false;
         }
@@ -205,11 +209,15 @@ namespace TeamMAsTD
         [CustomEditor(typeof(Path))]
         private class PathEditor : Editor
         {
-            Path path;
+            private Path path;
+
+            private SerializedObject pathSerializedObject;
 
             private void OnEnable()
             {
                 path = target as Path;
+
+                pathSerializedObject = new SerializedObject(path);
             }
 
             public override void OnInspectorGUI()
@@ -218,7 +226,19 @@ namespace TeamMAsTD
 
                 EditorGUILayout.Space();
 
-                EditorGUI.BeginDisabledGroup(path.isUpdatingPath || path.isGeneratingPath);
+                EditorGUI.BeginDisabledGroup(path.isUpdatingPath || path.isGeneratingPath || !path.setPathManually);
+
+                SerializedProperty serializedOrderedPathTiles = HelperFunctions.FindPropertyByAutoPropertyName(pathSerializedObject, "orderedPathTiles");
+
+                EditorGUI.GetPropertyHeight(serializedOrderedPathTiles);
+
+                EditorGUI.EndDisabledGroup();
+
+                EditorGUI.BeginDisabledGroup(path.isUpdatingPath || path.isGeneratingPath || path.setPathManually);
+
+                SerializedProperty serializedPropertyPathGen = pathSerializedObject.FindProperty("pathGenerator");
+
+                EditorGUI.GetPropertyHeight(serializedPropertyPathGen, true);
 
                 if (GUILayout.Button("Auto-Generate Path"))
                 {

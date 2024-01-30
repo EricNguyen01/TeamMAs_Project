@@ -236,7 +236,9 @@ namespace TeamMAsTD
 
             reachedTiles.Add(currentStartTile);
 
-            while (tileSearchFrontier.Count > 0 && isFindingPath)
+            int count = 0;
+
+            while (tileSearchFrontier.Count > 0 && isFindingPath && count <= (gridPathOn.gridWidth * gridPathOn.gridHeight) + 5)
             {
                 currentCheckingTile = tileSearchFrontier.Dequeue();
 
@@ -263,6 +265,8 @@ namespace TeamMAsTD
 
                     return false;
                 }
+
+                count++;
             }
 
             if(showDebug) Debug.LogWarning("Path Generator BFS pathfinding process couldn't reach or find end tile. Please recheck data inputs...");
@@ -318,6 +322,8 @@ namespace TeamMAsTD
 
             while(currentTile != currentStartTile && currentTile.GetConnectingTile())
             {
+                if (!currentTile) break;
+
                 currentTile = currentTile.GetConnectingTile();
 
                 if(!path.Contains(currentTile)) path.Add(currentTile);

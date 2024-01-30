@@ -109,6 +109,8 @@ namespace TeamMAsTD
         {
             if (gridArray == null || gridArray.Length == 0) return null;
 
+            if(tileCoordInt.x < 0 || tileCoordInt.x > gridWidth || tileCoordInt.y < 0 || tileCoordInt.y > gridHeight) return null;
+
             int tileGridArrayIndex = GetGridArrayIndexFromTileCoordinate(tileCoordInt);
 
             return gridArray[tileGridArrayIndex];
@@ -399,7 +401,7 @@ namespace TeamMAsTD
         [CustomEditor(typeof(TDGrid))]
         private class GridEditor : Editor
         {
-            TDGrid grid;
+            private TDGrid grid;
 
             private void OnEnable()
             {
