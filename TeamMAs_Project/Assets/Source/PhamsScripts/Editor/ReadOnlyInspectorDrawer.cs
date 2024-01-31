@@ -12,7 +12,7 @@ using UnityEditor;
 #endif
 
 /*
- * This class contain custom drawer for ReadOnlyAttribute.
+ * This class contains custom drawer for ReadOnlyInspectorAttribute.cs.
  */
 #if UNITY_EDITOR
 [CustomPropertyDrawer(typeof(ReadOnlyInspectorAttribute))]
@@ -24,10 +24,15 @@ public class ReadOnlyInspectorDrawer : PropertyDrawer
         GUI.enabled = false;
 
         // Drawing Property
-        EditorGUI.PropertyField(position, property, label);
+        EditorGUI.PropertyField(position, property, label, true);
 
         // Setting old GUI enabled value
         GUI.enabled = true;
+    }
+
+    public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
+    {
+        return EditorGUI.GetPropertyHeight(property, label, true) + EditorGUIUtility.singleLineHeight + EditorGUIUtility.standardVerticalSpacing;
     }
 }
 #endif

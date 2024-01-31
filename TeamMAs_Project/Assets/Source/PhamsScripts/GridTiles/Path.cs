@@ -15,17 +15,27 @@ namespace TeamMAsTD
     [ExecuteInEditMode]
     public class Path : MonoBehaviour
     {
+        [field: Header("Path Visuals")]
+
+        [field: SerializeField] public Sprite pathTileSprite { get; private set; }
+
+        [field: Space()]
+
         [field: Header("Set Path Manually")]
 
         [field: SerializeField] private bool setPathManually = true;
 
-        [field: SerializeField] public List<Tile> orderedPathTiles { get; private set; } = new List<Tile>();
+        [field: Space()]
 
-        [field: SerializeField] public Sprite pathTileSprite { get; private set; }
+        [field: SerializeField]
+        [field: DisableIf("setPathManually", false)]
+        public List<Tile> orderedPathTiles { get; private set; } = new List<Tile>();
 
         [Header("Auto Generate Path")]
 
-        [SerializeField] private PathGenerator pathGenerator = new PathGenerator();
+        [SerializeField]
+        [DisableIf("setPathManually", true)]
+        private PathGenerator pathGenerator = new PathGenerator();
 
         [Header("Path Debug")]
         [SerializeField] private bool showDebugLog = true;
@@ -211,22 +221,20 @@ namespace TeamMAsTD
         {
             private Path path;
 
-            private SerializedObject pathSerializedObject;
-
             private void OnEnable()
             {
                 path = target as Path;
-
-                pathSerializedObject = new SerializedObject(path);
             }
 
             public override void OnInspectorGUI()
             {
                 DrawDefaultInspector();
 
+                serializedObject.UpdateIfRequiredOrScript();
+
                 EditorGUILayout.Space();
 
-                EditorGUI.BeginDisabledGroup(path.isUpdatingPath || path.isGeneratingPath || path.setPathManually);
+                EditorGUI.BeginDisabledGroup(path.isUpdatingPath || path.isGeneratingPath || path.setPathManually); 
 
                 if (GUILayout.Button("Auto-Generate Path"))
                 {

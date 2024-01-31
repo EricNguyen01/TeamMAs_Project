@@ -1810,6 +1810,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66088f4c0842cf8429662d2a65468faa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <pathTileSprite>k__BackingField: {fileID: 21300000, guid: c824952aa01b41b49b3010cb64b5c027, type: 3}
+  setPathManually: 1
   <orderedPathTiles>k__BackingField:
   - {fileID: 456749763}
   - {fileID: 1445330510}
@@ -1827,7 +1829,12 @@ MonoBehaviour:
   - {fileID: 1528747902}
   - {fileID: 1727865214}
   - {fileID: 1444773939}
-  <pathTileSprite>k__BackingField: {fileID: 21300000, guid: c824952aa01b41b49b3010cb64b5c027, type: 3}
+  pathGenerator:
+    gridPathOn: {fileID: 0}
+    startTileOnPath: {fileID: 0}
+    middleTilesOnPath: []
+    endTileOnPath: {fileID: 0}
+    showDebug: 1
   showDebugLog: 0
   oldOrderedPathTiles:
   - {fileID: 456749763}
@@ -5127,7 +5134,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6380319184443845737, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -1316.5005
+      value: -1316.5004
       objectReference: {fileID: 0}
     - target: {fileID: 6474088391758042566, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
       propertyPath: m_fontSize

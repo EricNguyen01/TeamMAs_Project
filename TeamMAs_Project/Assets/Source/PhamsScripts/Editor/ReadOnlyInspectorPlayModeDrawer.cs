@@ -9,26 +9,21 @@ using UnityEngine;
 using UnityEditor;
 #endif
 
+/*
+ * This class contains custom drawer for ReadOnlyInspectorPlayModeAttribute.cs.
+ */
+
 #if UNITY_EDITOR
 [CustomPropertyDrawer(typeof(ReadOnlyInspectorPlayModeAttribute))]
-public class ReadOnlyInspectorPlayModeDrawer : PropertyDrawer
+public class ReadOnlyInspectorPlayModeDrawer : ReadOnlyInspectorDrawer
 {
     public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
     {
-        if (Application.isEditor && !Application.isPlaying)
-        {
-            GUI.enabled = true;
-
-            EditorGUI.PropertyField(position, property, label);
-
-            return;
-        }
-
-        // Disabling edit for property
-        GUI.enabled = false;
+        if (!Application.isPlaying) GUI.enabled = true;
+        else GUI.enabled = false;
 
         // Drawing Property
-        EditorGUI.PropertyField(position, property, label);
+        EditorGUI.PropertyField(position, property, label, true);
 
         // Setting old GUI enabled value
         GUI.enabled = true;

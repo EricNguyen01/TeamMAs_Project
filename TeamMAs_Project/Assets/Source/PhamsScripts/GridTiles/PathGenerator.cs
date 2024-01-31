@@ -46,8 +46,6 @@ namespace TeamMAsTD
 
         private bool couldCompletePath = false;
 
-        [Space]
-
         [Header("Path Generator Debug")]
 
         [SerializeField] private bool showDebug = true;
