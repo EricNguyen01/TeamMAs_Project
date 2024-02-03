@@ -46,16 +46,6 @@ public class DisableIfPropertyDrawer : PropertyDrawer
 
     public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
     {
-        if(boolTargettedProp == null)
-        {
-            return EditorGUI.GetPropertyHeight(property, label, true);
-        }
-
-        if (!shouldDisable)
-        {
-            return EditorGUI.GetPropertyHeight(property, label, true);
-        }
-
-        return EditorGUI.GetPropertyHeight(property, label, true) + EditorGUIUtility.singleLineHeight + EditorGUIUtility.standardVerticalSpacing;
+        return EditorGUI.GetPropertyHeight(property, label, true);
     }
 }

@@ -1812,23 +1812,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <pathTileSprite>k__BackingField: {fileID: 21300000, guid: c824952aa01b41b49b3010cb64b5c027, type: 3}
   setPathManually: 1
-  <orderedPathTiles>k__BackingField:
-  - {fileID: 456749763}
-  - {fileID: 1445330510}
-  - {fileID: 2103963343}
-  - {fileID: 1560932787}
-  - {fileID: 1277552494}
-  - {fileID: 1004615121}
-  - {fileID: 197177028}
-  - {fileID: 1232348855}
-  - {fileID: 1640197435}
-  - {fileID: 686431545}
-  - {fileID: 1232097723}
-  - {fileID: 845359697}
-  - {fileID: 1675363178}
-  - {fileID: 1528747902}
-  - {fileID: 1727865214}
-  - {fileID: 1444773939}
+  orderedPathTiles:
+    <orderedPathTiles>k__BackingField:
+    - {fileID: 456749763}
+    - {fileID: 1445330510}
+    - {fileID: 2103963343}
+    - {fileID: 1560932787}
+    - {fileID: 1277552494}
+    - {fileID: 1004615121}
+    - {fileID: 197177028}
+    - {fileID: 1232348855}
+    - {fileID: 1640197435}
+    - {fileID: 686431545}
+    - {fileID: 1232097723}
+    - {fileID: 845359697}
+    - {fileID: 1675363178}
+    - {fileID: 1528747902}
+    - {fileID: 1727865214}
+    - {fileID: 1444773939}
   pathGenerator:
     gridPathOn: {fileID: 0}
     startTileOnPath: {fileID: 0}
@@ -5134,7 +5135,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6380319184443845737, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -1316.5004
+      value: -1316.5001
       objectReference: {fileID: 0}
     - target: {fileID: 6474088391758042566, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
       propertyPath: m_fontSize

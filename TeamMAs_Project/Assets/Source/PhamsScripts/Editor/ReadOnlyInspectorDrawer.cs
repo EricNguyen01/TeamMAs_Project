@@ -32,7 +32,7 @@ public class ReadOnlyInspectorDrawer : PropertyDrawer
 
     public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
     {
-        return EditorGUI.GetPropertyHeight(property, label, true) + EditorGUIUtility.singleLineHeight + EditorGUIUtility.standardVerticalSpacing;
+        return EditorGUI.GetPropertyHeight(property, label, true);
     }
 }
 #endif

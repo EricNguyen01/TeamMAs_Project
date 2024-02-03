@@ -26,11 +26,15 @@ namespace TeamMAsTD
 
         [SerializeField] private Slider loadingScreenSlider;
 
-        [SerializeField] private float additionalTransitionTimeToGame = 4.0f;
-
-        [SerializeField] private float additionalTransitionTimeToMenu = 1.5f;
-
         [SerializeField] private bool performAdditionalTransitionTime = false;
+
+        [SerializeField]
+        [DisableIf("performAdditionalTransitionTime", false)]
+        private float additionalTransitionTimeToGame = 4.0f;
+
+        [SerializeField]
+        [DisableIf("performAdditionalTransitionTime", false)]
+        private float additionalTransitionTimeToMenu = 1.5f;
 
         //INTERNALS..............................................................
 

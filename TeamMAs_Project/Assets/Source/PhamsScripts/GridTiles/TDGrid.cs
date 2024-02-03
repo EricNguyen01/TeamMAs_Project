@@ -29,6 +29,8 @@ namespace TeamMAsTD
 
         [SerializeField] [HideInInspector] private Tile[] gridArray;//the 2D array representing the grid that has been flattened into a 1D array
 
+        [Space(15.0f)]
+
         [SerializeField] private UnityEvent OnFirstDandelionPlantedOnGrid;
 
         [SerializeField] private UnityEvent OnFirstCloverPlantedOnGrid;

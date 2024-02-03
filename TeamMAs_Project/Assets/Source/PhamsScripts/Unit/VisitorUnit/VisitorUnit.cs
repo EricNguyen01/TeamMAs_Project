@@ -133,6 +133,7 @@ namespace TeamMAsTD
             if (currentVisitorHealth <= 0.0f)
             {
                 ProcessVisitorAppeased();
+
                 return;
             }
             
@@ -148,15 +149,30 @@ namespace TeamMAsTD
             if (chosenPath == null)
             {
                 ProcessVisitorDespawns();
+
+                Debug.LogWarning("There appears to be no visitor paths in the scene for visitor: " + name + " to walk on.");
+
+                return;
+            }
+
+            List<Tile> orderedPathTiles = chosenPath.GetOrderedPathTiles();
+
+            if(orderedPathTiles == null || orderedPathTiles.Count == 0)
+            {
+                ProcessVisitorDespawns();
+
+                Debug.LogWarning("Could not find any valid Path Tile on chosen Path game object for visitor to walk on. Visitor despawned!");
+
                 return;
             }
 
             //get last tile's pos in path
-            lastTilePos = (Vector2)chosenPath.orderedPathTiles[chosenPath.orderedPathTiles.Count - 1].transform.position;
+            lastTilePos = (Vector2)orderedPathTiles[orderedPathTiles.Count - 1].transform.position;
 
             //reset to start tile
             currentPathElement = 0;
-            currentTileWaypointPos = (Vector2)chosenPath.orderedPathTiles[currentPathElement].transform.position;
+
+            currentTileWaypointPos = (Vector2)orderedPathTiles[currentPathElement].transform.position;
 
             //reset visitors health, various timers, collider, UI elements, and colors to their original values
             ResetVisitorStatsAndLooks();
@@ -173,7 +189,7 @@ namespace TeamMAsTD
 
             for (int i = 0; i < paths.Length; i++)
             {
-                if (paths[i].orderedPathTiles == null || paths[i].orderedPathTiles.Count == 0) continue;
+                if (paths[i].GetOrderedPathTiles() == null || paths[i].GetOrderedPathTiles().Count == 0) continue;
 
                 visitorPathsList.Add(paths[i]);
             }
@@ -197,9 +213,11 @@ namespace TeamMAsTD
 
         private void SetVisitorToFirstTileOnPath(Path chosenPath)
         {
-            if (chosenPath == null || chosenPath.orderedPathTiles.Count == 0) return;
+            if (chosenPath == null) return;
 
-            transform.position = chosenPath.orderedPathTiles[0].transform.position;
+            if (chosenPath.GetOrderedPathTiles() == null || chosenPath.GetOrderedPathTiles().Count == 0) return;
+
+            transform.position = chosenPath.GetOrderedPathTiles()[0].transform.position;
         }
 
         private void WalkOnPath()
@@ -225,7 +243,8 @@ namespace TeamMAsTD
             if(Vector2.Distance((Vector2)transform.position, currentTileWaypointPos) <= 0.05f)
             {
                 currentPathElement++;
-                currentTileWaypointPos = (Vector2)chosenPath.orderedPathTiles[currentPathElement].transform.position;
+
+                currentTileWaypointPos = (Vector2)chosenPath.GetOrderedPathTiles()[currentPathElement].transform.position;
             }
 
             transform.position = Vector2.MoveTowards(transform.position, currentTileWaypointPos, visitorUnitSO.moveSpeed * Time.deltaTime);

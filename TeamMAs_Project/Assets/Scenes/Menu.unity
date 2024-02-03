@@ -573,6 +573,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5340938907650492724, guid: 6a6b17bf3554a4943910b8b50b9cab42, type: 3}
+      propertyPath: performAdditionalTransitionTime
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5340938907650492725, guid: 6a6b17bf3554a4943910b8b50b9cab42, type: 3}
       propertyPath: m_Name
       value: PersistentSceneLoader(1InstanceOnly)
