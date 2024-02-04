@@ -351,6 +351,9 @@ namespace TeamMAsTD
 
         public List<Tile> GeneratePath()
         {
+            Reset();//even if pathfinding is in process -> stops it and reset
+
+            //re-init in case newer inputs were set and we didnt get it
             PathGeneratorInit(gridPathOn, startTileOnPath, middleTilesOnPath, endTileOnPath);
 
             if (!canGeneratePath)
@@ -359,8 +362,6 @@ namespace TeamMAsTD
 
                 return finalGeneratedOrderedPathTiles;
             }
-
-            Reset();//even if pathfinding is in process -> stops it and reset
 
             if(moreThan2TilesToTraverseList == null || moreThan2TilesToTraverseList.Count == 0)
             {

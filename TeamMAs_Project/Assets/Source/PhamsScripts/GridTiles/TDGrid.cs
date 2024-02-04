@@ -76,6 +76,14 @@ namespace TeamMAsTD
             WaveSpawner.OnWaveStarted -= SpawnPlantOnWaveStarted;
         }
 
+        private void Start()
+        {
+            if (!SaveLoadHandler.HasSavedData())
+            {
+                //TO-DO: Add function to randomize blockers and path on the grid here if no save data existed (new game)...
+            }
+        }
+
         //PUBLICS...........................................................
 
         public Tile[] GetGridFlattened2DArray()
@@ -367,6 +375,16 @@ namespace TeamMAsTD
                 if (tileSpritesList.Contains(gridArray[i].spriteRenderer.sprite)) continue;
 
                 tileSpritesList.Add(gridArray[i].spriteRenderer.sprite);
+            }
+        }
+
+        private void GenerateRandomBlockersAndPathOnGrid()
+        {
+            Path path = FindObjectOfType<Path>();
+
+            if(path == null)
+            {
+                GameObject go = new GameObject("Path");
             }
         }
 

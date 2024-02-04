@@ -49,6 +49,7 @@ namespace TeamMAsTD
 
         [SerializeField]
         [DisableIf("setPathManually", true)]
+        [ReadOnlyInspectorPlayMode]
         private PathGenerator pathGenerator = new PathGenerator();
 
         [Header("Path Debug")]
@@ -69,9 +70,8 @@ namespace TeamMAsTD
             {
                 if(orderedPathTiles.orderedPathTiles.Count == 0)
                 {
-                    //TO-DO: Delete comments on these 2 funcs below once they are functional and ready to go
-                    //AutoGeneratePath();
-                    //UpdatePath();
+                    //TO-DO: Delete comments below once they are functional and ready to go
+                    //AutoGeneratePath(true);
                 }
             }
         }
@@ -157,6 +157,8 @@ namespace TeamMAsTD
 
             isGeneratingPath = true;
 
+            ClearPath();
+
             if(orderedPathTiles == null) orderedPathTiles = new OrderedPathTilesWrapper();
 
             if (orderedPathTiles.orderedPathTiles.Count > 0) orderedPathTiles.orderedPathTiles.Clear();
@@ -215,30 +217,31 @@ namespace TeamMAsTD
 
         private void ClearPath()
         {
-            if (orderedPathTiles == null || orderedPathTiles.orderedPathTiles.Count == 0) return;
-
             if (showDebugLog) Debug.Log("Clearing path started");
 
-            //set all the current tiles in the current path tiles list to NON AI path.
-            for (int i = 0; i < orderedPathTiles.orderedPathTiles.Count; i++)
+            if (orderedPathTiles != null && orderedPathTiles.orderedPathTiles != null && orderedPathTiles.orderedPathTiles.Count > 0)
             {
-                if (orderedPathTiles.orderedPathTiles[i] == null) continue;
+                //set all the current tiles in the current path tiles list to NON AI path.
+                for (int i = 0; i < orderedPathTiles.orderedPathTiles.Count; i++)
+                {
+                    if (orderedPathTiles.orderedPathTiles[i] == null) continue;
 
-                orderedPathTiles.orderedPathTiles[i].is_AI_Path = false;
+                    orderedPathTiles.orderedPathTiles[i].is_AI_Path = false;
 
-                //remove the AI Path sprite on tile if one exists
-                SpriteRenderer tileSpriteRenderer = orderedPathTiles.orderedPathTiles[i].GetComponent<SpriteRenderer>();
+                    //remove the AI Path sprite on tile if one exists
+                    SpriteRenderer tileSpriteRenderer = orderedPathTiles.orderedPathTiles[i].GetComponent<SpriteRenderer>();
 
-                if(tileSpriteRenderer.sprite != null) RemovePathTileSprite(orderedPathTiles.orderedPathTiles[i], tileSpriteRenderer);
+                    if (tileSpriteRenderer.sprite != null) RemovePathTileSprite(orderedPathTiles.orderedPathTiles[i], tileSpriteRenderer);
+                }
+
+                //then:
+
+                //clear the current path list
+                orderedPathTiles.orderedPathTiles.Clear();
             }
 
-            //then:
-
-            //clear the current path list
-            orderedPathTiles.orderedPathTiles.Clear();
-
             //also clear the old list
-            oldOrderedPathTiles.Clear();
+            if(oldOrderedPathTiles != null && oldOrderedPathTiles.Count > 0) oldOrderedPathTiles.Clear();
         }
 
         //PUBLICS..............................................................................
@@ -248,6 +251,13 @@ namespace TeamMAsTD
             if(orderedPathTiles.orderedPathTiles == null) return new List<Tile>();
 
             return orderedPathTiles.orderedPathTiles;
+        }
+
+        public void AutoGeneratePath(bool updatePathAfter = true)
+        {
+            AutoGeneratePath();
+
+            if(updatePathAfter) UpdatePath();
         }
 
     //EDITOR.............................................................................

@@ -19,7 +19,9 @@ public class ReadOnlyInspectorPlayModeDrawer : ReadOnlyInspectorDrawer
 {
     public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
     {
-        if (!Application.isPlaying) GUI.enabled = true;
+        bool originalState = GUI.enabled;
+
+        if (!Application.isPlaying) GUI.enabled = originalState;
         else GUI.enabled = false;
 
         // Drawing Property
