@@ -282,7 +282,7 @@ namespace TeamMAsTD
 
                 EditorGUILayout.Space();
 
-                EditorGUI.BeginDisabledGroup(path.isUpdatingPath || path.isGeneratingPath || path.setPathManually); 
+                EditorGUI.BeginDisabledGroup(path.isUpdatingPath || path.isGeneratingPath || path.setPathManually || Application.isPlaying); 
 
                 if (GUILayout.Button("Auto-Generate Path"))
                 {
@@ -300,7 +300,7 @@ namespace TeamMAsTD
 
                 EditorGUILayout.Space();
 
-                EditorGUI.BeginDisabledGroup(path.isUpdatingPath || path.isGeneratingPath);
+                EditorGUI.BeginDisabledGroup(path.isUpdatingPath || path.isGeneratingPath || Application.isPlaying);
 
                 //Draw update path button
                 if(GUILayout.Button("Update Path"))
