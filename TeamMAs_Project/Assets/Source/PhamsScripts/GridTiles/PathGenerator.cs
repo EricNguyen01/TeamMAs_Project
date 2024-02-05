@@ -301,7 +301,7 @@ namespace TeamMAsTD
 
                 if (exploredTiles.Contains(checkingNeighborTile)) continue;
 
-                tileAndConnectingTileDict.TryAdd(checkingNeighborTile, currentTile);
+                if(!tileAndConnectingTileDict.ContainsKey(checkingNeighborTile)) tileAndConnectingTileDict.TryAdd(checkingNeighborTile, currentTile);
 
                 tileSearchFrontier.Enqueue(checkingNeighborTile);
             }
