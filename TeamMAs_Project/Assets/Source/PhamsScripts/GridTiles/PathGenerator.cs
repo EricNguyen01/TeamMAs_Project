@@ -18,13 +18,13 @@ namespace TeamMAsTD
 
         [SerializeField] private Tile startTileOnPath;//for base ref (should be static once set)
 
-        private Tile currentStartTile;//the actual start tile to use in pathfinding (might change dynamically)
+        private Tile startTileOnPathToUse;//the actual start tile to use in pathfinding (might change dynamically)
 
         [SerializeField] private List<Tile> middleTilesOnPath = new List<Tile>();
          
         [SerializeField] private Tile endTileOnPath;//for base ref (should be static once set)
 
-        private Tile currentEndTile;//the actual end tile to use in pathfinding (might change dynamically)
+        private Tile endTileOnPathToUse;//the actual end tile to use in pathfinding (might change dynamically)
 
         private List<Tile> moreThan2TilesToTraverseList = new List<Tile>();//to use with middle tiles (more than 1 tiles that must be included in traversal)
 
@@ -32,7 +32,9 @@ namespace TeamMAsTD
         
         private Queue<Tile> tileSearchFrontier = new Queue<Tile>();
 
-        private List<Tile> reachedTiles = new List<Tile>();
+        private List<Tile> exploredTiles = new List<Tile>();
+
+        private Dictionary<Tile, Tile> tileAndConnectingTileDict = new Dictionary<Tile, Tile>(); 
 
         private Vector2Int[] neighborSearchDirections = { Vector2Int.right, Vector2Int.left, Vector2Int.up, Vector2Int.down };
 
@@ -70,11 +72,11 @@ namespace TeamMAsTD
 
             this.startTileOnPath = startTileOnPath;
 
-            currentStartTile = startTileOnPath;
+            startTileOnPathToUse = startTileOnPath;
 
             this.endTileOnPath = endTileOnPath;
 
-            currentEndTile = endTileOnPath;
+            endTileOnPathToUse = endTileOnPath;
 
             if (!CanGeneratePath())
             {
@@ -135,23 +137,23 @@ namespace TeamMAsTD
 
             PathGeneratorInit(gridOfPath, startTileOnPath, endTileOnPath);
 
-            currentStartTile = moreThan2TilesToTraverseList[0];
+            startTileOnPathToUse = moreThan2TilesToTraverseList[0];
 
-            currentEndTile = moreThan2TilesToTraverseList[1];
+            endTileOnPathToUse = moreThan2TilesToTraverseList[1];
         }
 
         private bool CanGeneratePath()
         {
             bool canGeneratePath = true;
 
-            if (!gridPathOn || !currentStartTile || !currentEndTile)
+            if (!gridPathOn || !startTileOnPathToUse || !endTileOnPathToUse)
             {
                 if (showDebug) Debug.LogError("Path Generator missing required data inputs. Path generation will not work!");
 
                 canGeneratePath = false;
             }
 
-            if (currentStartTile)
+            if (startTileOnPathToUse)
             {
                 if (startTileOnPath.gridParent && startTileOnPath.gridParent != gridPathOn)
                 {
@@ -162,7 +164,7 @@ namespace TeamMAsTD
                 }
             }
 
-            if (currentEndTile)
+            if (endTileOnPathToUse)
             {
                 if (endTileOnPath.gridParent && endTileOnPath.gridParent != gridPathOn)
                 {
@@ -195,9 +197,9 @@ namespace TeamMAsTD
 
                 Tile endTile = moreThan2TilesToTraverseList[i + 1];
 
-                if(currentStartTile != startTile) currentStartTile = startTile;
+                if(startTileOnPathToUse != startTile) startTileOnPathToUse = startTile;
 
-                if(currentEndTile != endTile) currentEndTile = endTile;
+                if(endTileOnPathToUse != endTile) endTileOnPathToUse = endTile;
 
                 if (!BreadthFirstSearchForPath())
                 {
@@ -230,9 +232,7 @@ namespace TeamMAsTD
             isFindingPath = true;
 
             //add start tile to queue and to reached tiles list
-            tileSearchFrontier.Enqueue(currentStartTile);
-
-            reachedTiles.Add(currentStartTile);
+            tileSearchFrontier.Enqueue(startTileOnPathToUse);
 
             int count = 0;
 
@@ -240,9 +240,12 @@ namespace TeamMAsTD
             {
                 currentCheckingTile = tileSearchFrontier.Dequeue();
 
-                if(currentCheckingTile) currentCheckingTile.SetTileExplored(true);
+                if (currentCheckingTile && !exploredTiles.Contains(currentCheckingTile)) 
+                {
+                    exploredTiles.Add(currentCheckingTile);
+                }
 
-                if (currentCheckingTile && currentCheckingTile == currentEndTile)
+                if (currentCheckingTile && currentCheckingTile == endTileOnPathToUse)
                 {
                     isFindingPath = false;
 
@@ -294,13 +297,11 @@ namespace TeamMAsTD
 
                 if (checkingNeighborTile.isOccupied) continue;
 
-                if (reachedTiles.Contains(checkingNeighborTile)) continue;
+                if (tileSearchFrontier.Contains(checkingNeighborTile)) continue;
 
-                if (checkingNeighborTile.IsExplored()) continue;
+                if (exploredTiles.Contains(checkingNeighborTile)) continue;
 
-                checkingNeighborTile.SetConnectingTile(currentTile);
-
-                reachedTiles.Add(checkingNeighborTile);
+                tileAndConnectingTileDict.TryAdd(checkingNeighborTile, currentTile);
 
                 tileSearchFrontier.Enqueue(checkingNeighborTile);
             }
@@ -314,15 +315,17 @@ namespace TeamMAsTD
 
             List<Tile> path = new List<Tile>();
 
-            Tile currentTile = currentEndTile;
+            Tile currentTile = endTileOnPathToUse;
 
-            path.Add(endTileOnPath);
+            Tile tileConnectToCurrentTile;
 
-            while(currentTile != currentStartTile && currentTile.GetConnectingTile())
+            path.Add(endTileOnPathToUse);
+
+            while(currentTile != startTileOnPathToUse && tileAndConnectingTileDict.TryGetValue(currentTile, out tileConnectToCurrentTile))
             {
-                if (!currentTile) break;
+                if (!tileConnectToCurrentTile) break;
 
-                currentTile = currentTile.GetConnectingTile();
+                currentTile = tileConnectToCurrentTile;
 
                 if(!path.Contains(currentTile)) path.Add(currentTile);
             }
@@ -340,7 +343,9 @@ namespace TeamMAsTD
 
             if (tileSearchFrontier.Count > 0) tileSearchFrontier.Clear();
 
-            if (reachedTiles.Count > 0) reachedTiles.Clear();
+            if (exploredTiles.Count > 0) exploredTiles.Clear();
+
+            if(tileAndConnectingTileDict.Count > 0) tileAndConnectingTileDict.Clear();
 
             if (finalGeneratedOrderedPathTiles.Count > 0) finalGeneratedOrderedPathTiles.Clear();
 

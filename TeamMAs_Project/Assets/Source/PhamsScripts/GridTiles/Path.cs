@@ -253,6 +253,11 @@ namespace TeamMAsTD
             return orderedPathTiles.orderedPathTiles;
         }
 
+        public void SetPathSprite(Sprite pathSprite)
+        {
+            pathTileSprite = pathSprite;
+        }
+
         public void AutoGeneratePath(bool updatePathAfter = true)
         {
             AutoGeneratePath();

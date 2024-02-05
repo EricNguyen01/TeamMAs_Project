@@ -5135,7 +5135,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6380319184443845737, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -1316.5001
+      value: -1316.5
       objectReference: {fileID: 0}
     - target: {fileID: 6474088391758042566, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
       propertyPath: m_fontSize

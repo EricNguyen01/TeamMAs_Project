@@ -76,24 +76,6 @@ namespace TeamMAsTD
         [field: SerializeField] [field: HideInInspector] 
         public FMODUnity.StudioEventEmitter uprootAudioEventEmitterFMOD { get; private set; }
 
-        //PathGenerationData struct to be used for BFS Pathfinding and generation algo below..............
-        //Check PathGenerator.cs for more details.
-        private struct PathGenerationData
-        {
-            public bool isExplored;
-
-            public Tile connectingTile;
-
-            public PathGenerationData (bool isExplored = false, Tile connectingTile = null)
-            {
-                this.isExplored = isExplored;
-
-                this.connectingTile = connectingTile;
-            }
-        }
-
-        private PathGenerationData pathGenerationData = new PathGenerationData();
-
         //Tile Save/Load variables below.......................
 
         private Saveable tileSaveable;
@@ -519,26 +501,6 @@ namespace TeamMAsTD
 
             //if not disabled -> disable
             tileGlowComp.DisableTileGlowEffect();
-        }
-
-        public bool IsExplored()
-        {
-            return pathGenerationData.isExplored;
-        }
-
-        public void SetTileExplored(bool isExplored)
-        {
-            pathGenerationData.isExplored = isExplored;
-        }
-
-        public Tile GetConnectingTile()
-        {
-            return pathGenerationData.connectingTile;
-        }
-
-        public void SetConnectingTile(Tile connectingTile)
-        {
-            pathGenerationData.connectingTile = connectingTile;
         }
 
         public Saveable GetTileSaveable()

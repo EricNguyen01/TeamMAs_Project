@@ -5,6 +5,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using JetBrains.Annotations;
+using UnityEditor.Build;
+
+
 
 #if UNITY_EDITOR
 using UnityEditor;
@@ -40,6 +44,10 @@ namespace TeamMAsTD
         [HideInInspector] private List<Tile> unplantedTileList = new List<Tile>();
 
         public List<Sprite> tileSpritesList { get; private set; } = new List<Sprite>();
+
+        private Sprite occupiedTileSprite;
+
+        private Sprite unOccupiedDirtTileSprite;
 
         private bool alreadyHasDandelionOnGrid = false;//for debugging
 
@@ -239,9 +247,9 @@ namespace TeamMAsTD
             return new Vector2(x, y);
         }
 
-        private void CreateGrid()//grid-generation method
+        private bool CreateGrid()//grid-generation method
         {
-            if (!CanGenerateGrid()) return;
+            if (!CanGenerateGrid()) return false;
 
             if (gridArray == null)
             {
@@ -270,6 +278,8 @@ namespace TeamMAsTD
                     index++;
                 }
             }
+
+            return true;
         }
 
         //The function below destroys all current children tiles of this grid and reset the grid to null
@@ -366,7 +376,9 @@ namespace TeamMAsTD
         {
             if (gridArray == null || gridArray.Length == 0) return;
 
-            if(tileSpritesList != null && tileSpritesList.Count > 0) tileSpritesList.Clear();
+            if(tileSpritesList == null) tileSpritesList = new List<Sprite>();
+
+            if(tileSpritesList.Count > 0) tileSpritesList.Clear();
 
             for(int i = 0; i < gridArray.Length; i++)
             {
@@ -375,16 +387,91 @@ namespace TeamMAsTD
                 if (tileSpritesList.Contains(gridArray[i].spriteRenderer.sprite)) continue;
 
                 tileSpritesList.Add(gridArray[i].spriteRenderer.sprite);
+
+                if (gridArray[i].spriteRenderer.sprite.name.Contains("Rock")) occupiedTileSprite = gridArray[i].spriteRenderer.sprite;
+
+                if(gridArray[i].spriteRenderer.sprite.name.Contains("Dirt")) unOccupiedDirtTileSprite = gridArray[i].spriteRenderer.sprite;
             }
         }
 
-        private void GenerateRandomBlockersAndPathOnGrid()
+        private void ProcedurallyRandomizedGrid()
         {
+            ResetGrid();
+
+            if (!CreateGrid()) return;
+
+            //get or create path component first
             Path path = FindObjectOfType<Path>();
 
             if(path == null)
             {
                 GameObject go = new GameObject("Path");
+
+                path = go.AddComponent<Path>();
+            }
+
+            if(tileSpritesList == null || tileSpritesList.Count == 0) GetAllSpritesFromChildrenTiles();
+
+            foreach(Sprite tileSpr in tileSpritesList)
+            {
+                if (tileSpr.name.Contains("Path"))
+                {
+                    path.SetPathSprite(tileSpr);
+
+                    break;
+                }
+            }
+
+            //starts randomizing blockers on grid with 25% blockers and the rest are non-blocker tiles
+
+            //IMPORTANT: "0" = blocker | "1" = non-blocker tile
+
+            int[] blockersSpawnChanceArr = new int[100];
+
+            int blockersCount = 0;
+
+            //load blockersSpawnChanceArr
+            for(int i = 0; i < blockersSpawnChanceArr.Length; i++)
+            {
+                if(blockersCount < 25) blockersSpawnChanceArr[i] = 0;
+
+                blockersSpawnChanceArr[i] = 1;
+            }
+
+            int previousIndex = 0;
+
+            int currentIndex = 0;
+
+            //traverse grid and set blockers
+            for(int i = 0; i < gridArray.Length; i++)
+            {
+                int count = 0;
+
+                while(currentIndex == previousIndex && count <= 5)
+                {
+                    currentIndex = Random.Range(0, blockersSpawnChanceArr.Length);
+                }
+
+                previousIndex = currentIndex;
+
+                if(currentIndex == 0)
+                {
+                    if (!gridArray[i].isOccupied) gridArray[i].isOccupied = true;
+
+                    if (gridArray[i].is_AI_Path) gridArray[i].is_AI_Path = false;
+
+                    if (occupiedTileSprite) gridArray[i].spriteRenderer.sprite = occupiedTileSprite;
+
+                    blockersSpawnChanceArr[currentIndex] = 1;
+                }
+                else if(currentIndex == 1)
+                {
+                    if (gridArray[i].isOccupied) gridArray[i].isOccupied = false;
+
+                    if (gridArray[i].is_AI_Path) gridArray[i].is_AI_Path = false;
+
+                    if (unOccupiedDirtTileSprite) gridArray[i].spriteRenderer.sprite = unOccupiedDirtTileSprite;
+                }
             }
         }
 
