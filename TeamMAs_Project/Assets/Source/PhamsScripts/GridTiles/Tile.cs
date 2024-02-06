@@ -168,6 +168,8 @@ namespace TeamMAsTD
 
         private void OnEnable()
         {
+            if(!spriteRenderer) spriteRenderer = GetComponent<SpriteRenderer>();
+
             if(this is ISaveable) ISaveable.GenerateSaveableComponentIfNull(this);
 
             if (!tileSaveable) TryGetComponent<Saveable>(out tileSaveable);

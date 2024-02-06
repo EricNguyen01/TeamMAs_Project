@@ -27,9 +27,16 @@ namespace SpriteGlow
 
         public static Material GetSharedFor (SpriteGlowEffect spriteGlow)
         {
+            if(spriteGlow == null) return null;
+
+            if (spriteGlow.gameObject.scene.path == null) return null;
+
+            if (!spriteGlow.Renderer.sprite) return null;
+
             for (int i = 0; i < sharedMaterials.Count; i++)
             {
-                if (sharedMaterials[i].SpriteTexture == spriteGlow.Renderer.sprite.texture &&
+                if (spriteGlow.Renderer.sprite && 
+                    sharedMaterials[i].SpriteTexture == spriteGlow.Renderer.sprite.texture &&
                     sharedMaterials[i].DrawOutside == spriteGlow.DrawOutside &&
                     sharedMaterials[i].InstancingEnabled == spriteGlow.EnableInstancing)
                     return sharedMaterials[i];

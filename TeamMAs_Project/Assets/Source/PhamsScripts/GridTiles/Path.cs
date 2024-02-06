@@ -5,6 +5,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using PixelCrushers.DialogueSystem.ChatMapper;
+
+using Unity.Burst.Intrinsics;
+using System;
+
+
 
 
 #if UNITY_EDITOR
@@ -17,9 +23,19 @@ namespace TeamMAsTD
     [ExecuteInEditMode]
     public class Path : MonoBehaviour
     {
+        [SerializeField] private TDGrid gridPathOn;
+
+        private TDGrid currentGridPathOn;
+
+        [field: Space]
+
         [field: Header("Path Visuals")]
 
         [field: SerializeField] public Sprite pathTileSprite { get; private set; }
+
+        [SerializeField] [HideInInspector] private Sprite dirtTileSprite;
+
+        [SerializeField][HideInInspector] private Sprite defaultTileSprite;
 
         [field: Space()]
 
@@ -66,15 +82,45 @@ namespace TeamMAsTD
 
         private void OnEnable()
         {
-            if(orderedPathTiles != null)
+            currentGridPathOn = gridPathOn;
+
+            pathGenerator.SetGridPathOn(gridPathOn);
+
+#if UNITY_EDITOR
+
+            dirtTileSprite = AssetDatabase.LoadAssetAtPath<Sprite>("Assets/Art/Sprites/Dirt.png");
+
+            defaultTileSprite = 
+            AssetDatabase.LoadAssetAtPath<Sprite>("Packages/com.unity.2d.sprite/Editor/ObjectMenuCreation/DefaultAssets/Textures/SquareWithBorder.png");
+#endif
+        }
+
+        private void OnDisable()
+        {
+
+#if UNITY_EDITOR
+
+            if (pathGenerator != null && isGeneratingPath)
             {
-                if(orderedPathTiles.orderedPathTiles.Count == 0)
-                {
-                    //TO-DO: Delete comments below once they are functional and ready to go
-                    //AutoGeneratePath(true);
-                }
+                isGeneratingPath = false;
+
+                pathGenerator.ResetAll();
+            }
+#endif
+
+        }
+
+#if UNITY_EDITOR
+        private void OnValidate()
+        {
+            if(gridPathOn != null && gridPathOn != currentGridPathOn)
+            {
+                pathGenerator.SetGridPathOn(gridPathOn);
+
+                currentGridPathOn = gridPathOn;
             }
         }
+#endif
 
         private bool CanUpdatePath()
         {
@@ -117,7 +163,7 @@ namespace TeamMAsTD
                 //either it is empty (1st update) or if not empty then we alr cleared the list on last update
                 oldOrderedPathTiles.Add(orderedPathTiles.orderedPathTiles[i]);
 
-                if (orderedPathTiles.orderedPathTiles[i].isOccupied) orderedPathTiles.orderedPathTiles[i].isOccupied = false;
+                //if (orderedPathTiles.orderedPathTiles[i].isOccupied) orderedPathTiles.orderedPathTiles[i].isOccupied = false;
 
                 //if the current tile element is not set as an AI path -> set it as AI path.
                 if (!orderedPathTiles.orderedPathTiles[i].is_AI_Path) orderedPathTiles.orderedPathTiles[i].is_AI_Path = true;
@@ -146,7 +192,19 @@ namespace TeamMAsTD
         {
             if (tile == null || tileSpriteRenderer == null) return;
 
-            tileSpriteRenderer.sprite = null;
+            if (tileSpriteRenderer.sprite != null && tileSpriteRenderer.sprite.name.Contains("Path"))
+            {
+                if (gridPathOn)
+                {
+                    tileSpriteRenderer.sprite = gridPathOn.unOccupiedDirtTileSprite;
+                }
+            }
+
+            if (!tileSpriteRenderer.sprite)
+            {
+                if (dirtTileSprite) tileSpriteRenderer.sprite = dirtTileSprite;
+                else if (defaultTileSprite) tileSpriteRenderer.sprite = defaultTileSprite;
+            }
 
             tile.EnableDrawTileDebug(true);
         }
@@ -163,9 +221,18 @@ namespace TeamMAsTD
 
             if (orderedPathTiles.orderedPathTiles.Count > 0) orderedPathTiles.orderedPathTiles.Clear();
 
-            orderedPathTiles.orderedPathTiles.AddRange(pathGenerator.GeneratePath());
-
-            isGeneratingPath = false;
+            try
+            {
+                orderedPathTiles.orderedPathTiles.AddRange(pathGenerator.GeneratePath());
+            }
+            catch
+            {
+                throw;
+            }
+            finally 
+            { 
+                isGeneratingPath = false; 
+            }
         }
 
         private void UpdatePath()
@@ -219,29 +286,57 @@ namespace TeamMAsTD
         {
             if (showDebugLog) Debug.Log("Clearing path started");
 
-            if (orderedPathTiles != null && orderedPathTiles.orderedPathTiles != null && orderedPathTiles.orderedPathTiles.Count > 0)
+            if (gridPathOn)
             {
-                //set all the current tiles in the current path tiles list to NON AI path.
-                for (int i = 0; i < orderedPathTiles.orderedPathTiles.Count; i++)
+                Tile[] gridArr = gridPathOn.GetGridFlattened2DArray();
+
+                if (gridArr != null && gridArr.Length > 0)
                 {
-                    if (orderedPathTiles.orderedPathTiles[i] == null) continue;
+                    for (int i = 0; i < gridArr.Length; i++)
+                    {
+                        if (gridArr[i] == null) continue;
 
-                    orderedPathTiles.orderedPathTiles[i].is_AI_Path = false;
+                        if (gridArr[i].is_AI_Path)
+                        {
+                            gridArr[i].is_AI_Path = false;
 
-                    //remove the AI Path sprite on tile if one exists
-                    SpriteRenderer tileSpriteRenderer = orderedPathTiles.orderedPathTiles[i].GetComponent<SpriteRenderer>();
+                            SpriteRenderer tileSpriteRenderer;
 
-                    if (tileSpriteRenderer.sprite != null) RemovePathTileSprite(orderedPathTiles.orderedPathTiles[i], tileSpriteRenderer);
+                            gridArr[i].TryGetComponent<SpriteRenderer>(out tileSpriteRenderer);
+
+                            if (tileSpriteRenderer.sprite != null) RemovePathTileSprite(gridArr[i], tileSpriteRenderer);
+                        }
+                    }
                 }
+            }
+            else
+            {
+                if (orderedPathTiles != null && orderedPathTiles.orderedPathTiles != null && orderedPathTiles.orderedPathTiles.Count > 0)
+                {
+                    //set all the current tiles in the current path tiles list to NON AI path.
+                    for (int i = 0; i < orderedPathTiles.orderedPathTiles.Count; i++)
+                    {
+                        if (orderedPathTiles.orderedPathTiles[i] == null) continue;
 
-                //then:
+                        if (orderedPathTiles.orderedPathTiles[i].is_AI_Path) orderedPathTiles.orderedPathTiles[i].is_AI_Path = false;
 
-                //clear the current path list
-                orderedPathTiles.orderedPathTiles.Clear();
+                        //remove the AI Path sprite on tile if one exists
+                        SpriteRenderer tileSpriteRenderer;
+
+                        orderedPathTiles.orderedPathTiles[i].TryGetComponent<SpriteRenderer>(out tileSpriteRenderer);
+
+                        if (tileSpriteRenderer.sprite != null) RemovePathTileSprite(orderedPathTiles.orderedPathTiles[i], tileSpriteRenderer);
+                    }
+                }
             }
 
+            //clear the current path list
+            if(orderedPathTiles != null && 
+               orderedPathTiles.orderedPathTiles != null && 
+               orderedPathTiles.orderedPathTiles.Count > 0) orderedPathTiles.orderedPathTiles.Clear();
+
             //also clear the old list
-            if(oldOrderedPathTiles != null && oldOrderedPathTiles.Count > 0) oldOrderedPathTiles.Clear();
+            if (oldOrderedPathTiles != null && oldOrderedPathTiles.Count > 0) oldOrderedPathTiles.Clear();
         }
 
         //PUBLICS..............................................................................
@@ -251,6 +346,18 @@ namespace TeamMAsTD
             if(orderedPathTiles.orderedPathTiles == null) return new List<Tile>();
 
             return orderedPathTiles.orderedPathTiles;
+        }
+
+        public TDGrid GetGridPathOn()
+        {
+            return gridPathOn;
+        }
+
+        public void SetGridPathOn(TDGrid grid)
+        {
+            gridPathOn = grid;
+
+            if(pathGenerator != null) pathGenerator.SetGridPathOn(grid);
         }
 
         public void SetPathSprite(Sprite pathSprite)
@@ -287,39 +394,37 @@ namespace TeamMAsTD
 
                 EditorGUILayout.Space();
 
-                EditorGUI.BeginDisabledGroup(path.isUpdatingPath || path.isGeneratingPath || path.setPathManually || Application.isPlaying); 
-
-                if (GUILayout.Button("Auto-Generate Path"))
+                using (new EditorGUI.DisabledGroupScope(path.isUpdatingPath || path.isGeneratingPath || path.setPathManually || Application.isPlaying))
                 {
-                    path.AutoGeneratePath();
+                    if (GUILayout.Button("Auto-Generate Path"))
+                    {
+                        path.AutoGeneratePath();
+                    }
                 }
-
-                EditorGUI.EndDisabledGroup();
 
                 EditorGUILayout.Space();
 
                 EditorGUILayout.HelpBox(
                     "Please update path manually using the UpdatePath button after making changes or generating path! " +
-                    "Updates may take a while to reflect in Scene view.", 
+                    "Updates may take a while to reflect in Scene view.",
                     MessageType.Warning);
 
                 EditorGUILayout.Space();
 
-                EditorGUI.BeginDisabledGroup(path.isUpdatingPath || path.isGeneratingPath || Application.isPlaying);
-
-                //Draw update path button
-                if(GUILayout.Button("Update Path"))
+                using (new EditorGUI.DisabledGroupScope(path.isUpdatingPath || path.isGeneratingPath || Application.isPlaying))
                 {
-                    path.UpdatePath();
-                }
+                    //Draw update path button
+                    if (GUILayout.Button("Update Path"))
+                    {
+                        path.UpdatePath();
+                    }
 
-                //Draw clear path button
-                if(GUILayout.Button("Clear Path"))
-                {
-                    path.ClearPath();
+                    //Draw clear path button
+                    if (GUILayout.Button("Clear Path"))
+                    {
+                        path.ClearPath();
+                    }
                 }
-
-                EditorGUI.EndDisabledGroup();
             }
         }
     #endif

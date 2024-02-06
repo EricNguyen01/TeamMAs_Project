@@ -7,6 +7,8 @@ using UnityEngine;
 using UnityEngine.Events;
 using JetBrains.Annotations;
 using UnityEditor.Build;
+using DG.Tweening.Plugins;
+
 
 
 
@@ -31,7 +33,27 @@ namespace TeamMAsTD
 
         [SerializeField] private Tile tilePrefabToPopulate;//prefab with tile script attached
 
-        [SerializeField] [HideInInspector] private Tile[] gridArray;//the 2D array representing the grid that has been flattened into a 1D array
+        [SerializeField] 
+        [HideInInspector] 
+        private Tile[] gridArray;//the 2D array representing the grid that has been flattened into a 1D array
+
+        [System.Serializable]
+        private class ReadOnlyGridArray
+        {
+            [SerializeField]
+            private Tile[] readOnlyGridArray;
+
+            public ReadOnlyGridArray() { }
+
+            public ReadOnlyGridArray(Tile[] readOnlyGridArray)
+            {
+                this.readOnlyGridArray = readOnlyGridArray;
+            }
+        }
+
+        [SerializeField]
+        [ReadOnlyInspector]
+        private ReadOnlyGridArray readOnlyGridArray;
 
         [Space(15.0f)]
 
@@ -43,11 +65,12 @@ namespace TeamMAsTD
 
         [HideInInspector] private List<Tile> unplantedTileList = new List<Tile>();
 
+        private Path pathOfGrid;
         public List<Sprite> tileSpritesList { get; private set; } = new List<Sprite>();
 
-        private Sprite occupiedTileSprite;
+        public Sprite occupiedTileSprite { get; private set; }
 
-        private Sprite unOccupiedDirtTileSprite;
+        public Sprite unOccupiedDirtTileSprite { get; private set; }
 
         private bool alreadyHasDandelionOnGrid = false;//for debugging
 
@@ -67,15 +90,16 @@ namespace TeamMAsTD
             }
         }
 
-        //UNITY
-
-        private void Awake()
-        {
-            GetAllSpritesFromChildrenTiles();
-        }
+        //UNITY CALLBACKS
 
         private void OnEnable()
         {
+            readOnlyGridArray = new ReadOnlyGridArray(gridArray);
+
+            GetAllSpritesFromChildrenTiles();
+
+            pathOfGrid = CreatePathObjectIfNone();
+
             WaveSpawner.OnWaveStarted += SpawnPlantOnWaveStarted;
         }
 
@@ -114,11 +138,11 @@ namespace TeamMAsTD
         {
             if (tileGrid_X < 0) tileGrid_X = 0;
 
-            if (tileGrid_X > gridWidth) tileGrid_X = gridWidth - 1;
+            if (tileGrid_X >= gridWidth) tileGrid_X = gridWidth - 1;
 
             if (tileGrid_Y < 0) tileGrid_Y = 0;
 
-            if (tileGrid_Y > gridHeight) tileGrid_Y = gridHeight - 1;
+            if (tileGrid_Y >= gridHeight) tileGrid_Y = gridHeight - 1;
 
             return tileGrid_X * gridHeight/*the array height*/ + tileGrid_Y;
         }
@@ -127,7 +151,7 @@ namespace TeamMAsTD
         {
             if (gridArray == null || gridArray.Length == 0) return null;
 
-            if(tileCoordInt.x < 0 || tileCoordInt.x > gridWidth || tileCoordInt.y < 0 || tileCoordInt.y > gridHeight) return null;
+            if(tileCoordInt.x < 0 || tileCoordInt.x >= gridWidth || tileCoordInt.y < 0 || tileCoordInt.y >= gridHeight) return null;
 
             int tileGridArrayIndex = GetGridArrayIndexFromTileCoordinate(tileCoordInt);
 
@@ -394,21 +418,51 @@ namespace TeamMAsTD
             }
         }
 
+        private Path CreatePathObjectIfNone()
+        {
+            Path path = null;
+
+            Path[] paths = FindObjectsOfType<Path>();
+
+            for(int i = 0; i < paths.Length; i++)
+            {
+                if (paths[i] == null) continue;
+
+                if (paths[i].GetGridPathOn() == this)
+                {
+                    return paths[i];
+                }
+            }
+
+            for (int i = 0; i < paths.Length; i++)
+            {
+                if (paths[i] == null) continue;
+
+                if (paths[i].GetGridPathOn() == null)
+                {
+                    paths[i].SetGridPathOn(this);
+
+                    return paths[i];
+                }
+            }
+
+            if (!path)
+            {
+                GameObject go = new GameObject("Path");
+
+                path = go.AddComponent<Path>();
+
+                path.SetGridPathOn(this);
+            }
+
+            return path;
+        }
+
         private void ProcedurallyRandomizedGrid()
         {
             ResetGrid();
 
             if (!CreateGrid()) return;
-
-            //get or create path component first
-            Path path = FindObjectOfType<Path>();
-
-            if(path == null)
-            {
-                GameObject go = new GameObject("Path");
-
-                path = go.AddComponent<Path>();
-            }
 
             if(tileSpritesList == null || tileSpritesList.Count == 0) GetAllSpritesFromChildrenTiles();
 
@@ -416,7 +470,7 @@ namespace TeamMAsTD
             {
                 if (tileSpr.name.Contains("Path"))
                 {
-                    path.SetPathSprite(tileSpr);
+                    pathOfGrid.SetPathSprite(tileSpr);
 
                     break;
                 }

@@ -12,7 +12,9 @@ namespace TeamMAsTD
     [Serializable]
     public class PathGenerator
     {
-        [SerializeField] private TDGrid gridPathOn;
+        [SerializeField]
+        [ReadOnlyInspector]
+        private TDGrid gridPathOn;
 
         [Space]
 
@@ -142,6 +144,11 @@ namespace TeamMAsTD
             endTileOnPathToUse = moreThan2TilesToTraverseList[1];
         }
 
+        public void SetGridPathOn(TDGrid grid)
+        {
+            gridPathOn = grid;
+        }
+
         private bool CanGeneratePath()
         {
             bool canGeneratePath = true;
@@ -191,15 +198,15 @@ namespace TeamMAsTD
 
             isFindingPathWithMultipleMidTiles = true;
 
-            for(int i = 0; i < moreThan2TilesToTraverseList.Count - 2; i++)
+            for(int i = 0; i < moreThan2TilesToTraverseList.Count - 1; i++)
             {
                 Tile startTile = moreThan2TilesToTraverseList[i];
 
                 Tile endTile = moreThan2TilesToTraverseList[i + 1];
 
-                if(startTileOnPathToUse != startTile) startTileOnPathToUse = startTile;
+                startTileOnPathToUse = startTile;
 
-                if(endTileOnPathToUse != endTile) endTileOnPathToUse = endTile;
+                endTileOnPathToUse = endTile;
 
                 if (!BreadthFirstSearchForPath())
                 {
@@ -229,15 +236,22 @@ namespace TeamMAsTD
                 return false;
             }
 
+            ResetDuringSearch();
+
             isFindingPath = true;
+
+            if (showDebug) Debug.Log("Started BFS for path operation with current start tile: " + 
+                                     startTileOnPathToUse.name + " and end tile: " + endTileOnPathToUse.name);
 
             //add start tile to queue and to reached tiles list
             tileSearchFrontier.Enqueue(startTileOnPathToUse);
 
             int count = 0;
 
-            while (tileSearchFrontier.Count > 0 && isFindingPath && count <= (gridPathOn.gridWidth * gridPathOn.gridHeight) + 5)
+            while (tileSearchFrontier.Count > 0 && isFindingPath && count <= (gridPathOn.gridWidth * gridPathOn.gridHeight) + 50)
             {
+                count++;
+
                 currentCheckingTile = tileSearchFrontier.Dequeue();
 
                 if (currentCheckingTile && !exploredTiles.Contains(currentCheckingTile)) 
@@ -250,6 +264,8 @@ namespace TeamMAsTD
                     isFindingPath = false;
 
                     couldCompletePath = true;
+
+                    if (showDebug) Debug.Log("BFS operation has reached specified end tile.");
 
                     ConnectTilesToFormPath();
 
@@ -266,15 +282,18 @@ namespace TeamMAsTD
 
                     return false;
                 }
-
-                count++;
             }
 
-            if(showDebug) Debug.LogWarning("Path Generator BFS pathfinding process couldn't reach or find end tile. Please recheck data inputs...");
+            if(showDebug) Debug.LogWarning("Path Generator BFS pathfinding process couldn't reach or find end tile. Please recheck data inputs...\n" +
+                                           "TileSearchFrontier's count: " + tileSearchFrontier.Count + "\n" +
+                                           "isFindingPath: " + isFindingPath.ToString() + "\n" +
+                                           "IterationCount: " + count.ToString());
 
             isFindingPath = false; 
 
             couldCompletePath = false;
+
+            ConnectTilesToFormPath();
 
             return false;
         }
@@ -285,25 +304,45 @@ namespace TeamMAsTD
 
             if (currentTile.gridParent != gridPathOn) return false;
 
+            bool shouldOverlapPathTile = true;
+
+            Tile overlappingPathTile = null;
+
             Vector2Int currentTileCoord = new Vector2Int(currentTile.tileNumInRow, currentTile.tileNumInColumn);
 
-            foreach (Vector2Int direction in neighborSearchDirections)
+            for(int i = 0; i < neighborSearchDirections.Length; i++)
             {
-                Vector2Int neighborCoord = currentTileCoord + direction;
+                Vector2Int neighborCoord = currentTileCoord + neighborSearchDirections[i];
 
                 Tile checkingNeighborTile = gridPathOn.GetTileFromTileCoordinate(neighborCoord);
 
                 if (!checkingNeighborTile) continue;
 
-                if (checkingNeighborTile.isOccupied) continue;
-
                 if (tileSearchFrontier.Contains(checkingNeighborTile)) continue;
 
                 if (exploredTiles.Contains(checkingNeighborTile)) continue;
 
-                if(!tileAndConnectingTileDict.ContainsKey(checkingNeighborTile)) tileAndConnectingTileDict.TryAdd(checkingNeighborTile, currentTile);
+                if (checkingNeighborTile.isOccupied) continue;
+
+                if (checkingNeighborTile.is_AI_Path)
+                {
+                    overlappingPathTile = checkingNeighborTile;
+
+                    continue;
+                }
+
+                tileAndConnectingTileDict.Add(checkingNeighborTile, currentTile);
 
                 tileSearchFrontier.Enqueue(checkingNeighborTile);
+
+                shouldOverlapPathTile = false;
+            }
+
+            if (shouldOverlapPathTile && overlappingPathTile)
+            {
+                tileAndConnectingTileDict.Add(overlappingPathTile, currentTile);
+
+                tileSearchFrontier.Enqueue(overlappingPathTile);
             }
 
             return true;
@@ -311,31 +350,97 @@ namespace TeamMAsTD
 
         private void ConnectTilesToFormPath()
         {
-            if (!canGeneratePath || isFindingPath || !couldCompletePath) return;
+            if (!canGeneratePath || isFindingPath) return;
+
+            if (tileAndConnectingTileDict.Count == 0) return;
+
+            if (showDebug) Debug.Log("Tiles are now being connected to form path...");
 
             List<Tile> path = new List<Tile>();
 
             Tile currentTile = endTileOnPathToUse;
 
+            if(endTileOnPathToUse.tileNumInRow == gridPathOn.gridWidth - 1)
+            {
+                Tile tileConnectedToEndTile = null;
+
+                if(!tileAndConnectingTileDict.TryGetValue(currentTile, out tileConnectedToEndTile) || !tileConnectedToEndTile)
+                {
+                    for(int i = 0; i < exploredTiles.Count; i++)
+                    {
+                        if (!exploredTiles[i]) continue;
+
+                        if (exploredTiles[i].tileNumInRow == endTileOnPathToUse.tileNumInRow)
+                        {
+                            currentTile = exploredTiles[i];
+
+                            break;
+                        }
+                    }
+                }
+            }
+
             Tile tileConnectToCurrentTile;
 
-            path.Add(endTileOnPathToUse);
+            path.Add(currentTile);
+
+            if(!endTileOnPathToUse.is_AI_Path) endTileOnPathToUse.is_AI_Path = true;
 
             while(currentTile != startTileOnPathToUse && tileAndConnectingTileDict.TryGetValue(currentTile, out tileConnectToCurrentTile))
             {
-                if (!tileConnectToCurrentTile) break;
+                if (!tileConnectToCurrentTile)
+                {
+                    if (showDebug) Debug.LogError("Encountered a NULL connecting tile while trying to construct path. Path construction INCOMPLETED!");
+
+                    break;
+                }
 
                 currentTile = tileConnectToCurrentTile;
 
-                if(!path.Contains(currentTile)) path.Add(currentTile);
+                if (!path.Contains(currentTile))
+                {
+                    path.Add(currentTile);
+
+                    if(!currentTile.is_AI_Path) currentTile.is_AI_Path = true;
+                }
             }
 
             path.Reverse();
 
             finalGeneratedOrderedPathTiles.AddRange(path);
+
+            //remove duplicates only if they are next to each other to maintain path's correct flow
+            for(int i = 0; i < finalGeneratedOrderedPathTiles.Count; i++)
+            {
+                if (i == finalGeneratedOrderedPathTiles.Count - 1) break;
+
+                if (finalGeneratedOrderedPathTiles[i] == finalGeneratedOrderedPathTiles[i + 1])
+                {
+                    finalGeneratedOrderedPathTiles.RemoveAt(i + 1);
+                }
+            }
+
+            if (showDebug) Debug.Log("Path Constructed!");
         }
 
-        private void Reset()
+        private void ResetDuringSearch()
+        {
+            if (tileSearchFrontier.Count > 0) tileSearchFrontier.Clear();
+
+            if (exploredTiles.Count > 0) exploredTiles.Clear();
+
+            if (tileAndConnectingTileDict.Count > 0) tileAndConnectingTileDict.Clear();
+
+            currentCheckingTile = null;
+
+            if (showDebug) Debug.Log("Temp Reset before a new search: \n" +
+                                     "TileSearchFrontier's count: " + tileSearchFrontier.Count + "\n" +
+                                     "ExploredTiles' count: " + exploredTiles.Count + "\n" +
+                                     "TileAndConnectingTileDict's count: " + tileAndConnectingTileDict.Count + "\n" +
+                                     "CurrentCheckingTile: " + ((currentCheckingTile is null) ? "Is Null" : currentCheckingTile.name));
+        }
+
+        public void ResetAll()
         {
             isFindingPath = false;
 
@@ -347,6 +452,8 @@ namespace TeamMAsTD
 
             if(tileAndConnectingTileDict.Count > 0) tileAndConnectingTileDict.Clear();
 
+            if (moreThan2TilesToTraverseList.Count > 0) moreThan2TilesToTraverseList.Clear();
+
             if (finalGeneratedOrderedPathTiles.Count > 0) finalGeneratedOrderedPathTiles.Clear();
 
             currentCheckingTile = null;
@@ -356,7 +463,7 @@ namespace TeamMAsTD
 
         public List<Tile> GeneratePath()
         {
-            Reset();//even if pathfinding is in process -> stops it and reset
+            ResetAll();//even if pathfinding is in process -> stops it and reset
 
             //re-init in case newer inputs were set and we didnt get it
             PathGeneratorInit(gridPathOn, startTileOnPath, middleTilesOnPath, endTileOnPath);
@@ -371,11 +478,11 @@ namespace TeamMAsTD
             if(moreThan2TilesToTraverseList == null || moreThan2TilesToTraverseList.Count == 0)
             {
                 BreadthFirstSearchForPath();
-
-                return finalGeneratedOrderedPathTiles;
             }
-
-            BreadthFirstSearchWithMoreThan2Tiles();
+            else
+            {
+                BreadthFirstSearchWithMoreThan2Tiles();
+            }
 
             return finalGeneratedOrderedPathTiles;
         }
