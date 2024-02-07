@@ -5,12 +5,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
-using JetBrains.Annotations;
-using UnityEditor.Build;
-using DG.Tweening.Plugins;
-
-
-
 
 #if UNITY_EDITOR
 using UnityEditor;
@@ -416,6 +410,17 @@ namespace TeamMAsTD
 
                 if(gridArray[i].spriteRenderer.sprite.name.Contains("Dirt")) unOccupiedDirtTileSprite = gridArray[i].spriteRenderer.sprite;
             }
+
+#if UNITY_EDITOR
+
+            if (!occupiedTileSprite) AssetDatabase.LoadAssetAtPath<Sprite>("Assets/Art/Sprites/Rocks.png");
+
+            if(!occupiedTileSprite) AssetDatabase.LoadAssetAtPath<Sprite>("Packages/com.unity.2d.sprite/Editor/ObjectMenuCreation/DefaultAssets/Textures/SquareWithBorder.png");
+
+            if (!unOccupiedDirtTileSprite) AssetDatabase.LoadAssetAtPath<Sprite>("Assets/Art/Sprites/Dirt.png");
+
+            if(!unOccupiedDirtTileSprite) AssetDatabase.LoadAssetAtPath<Sprite>("Packages/com.unity.2d.sprite/Editor/ObjectMenuCreation/DefaultAssets/Textures/SquareWithBorder.png");
+#endif
         }
 
         private Path CreatePathObjectIfNone()
@@ -496,7 +501,7 @@ namespace TeamMAsTD
 
             int currentIndex = 0;
 
-            //traverse grid and set blockers
+            //traverse grid and set random blockers
             for(int i = 0; i < gridArray.Length; i++)
             {
                 int count = 0;
@@ -504,6 +509,8 @@ namespace TeamMAsTD
                 while(currentIndex == previousIndex && count <= 5)
                 {
                     currentIndex = Random.Range(0, blockersSpawnChanceArr.Length);
+
+                    count++;
                 }
 
                 previousIndex = currentIndex;
@@ -515,8 +522,6 @@ namespace TeamMAsTD
                     if (gridArray[i].is_AI_Path) gridArray[i].is_AI_Path = false;
 
                     if (occupiedTileSprite) gridArray[i].spriteRenderer.sprite = occupiedTileSprite;
-
-                    blockersSpawnChanceArr[currentIndex] = 1;
                 }
                 else if(currentIndex == 1)
                 {

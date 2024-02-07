@@ -4,14 +4,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System.Linq;
-using PixelCrushers.DialogueSystem.ChatMapper;
-
-using Unity.Burst.Intrinsics;
-using System;
-
-
-
 
 #if UNITY_EDITOR
 using UnityEditor;
