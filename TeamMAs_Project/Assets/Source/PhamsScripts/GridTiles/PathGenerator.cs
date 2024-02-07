@@ -50,9 +50,9 @@ namespace TeamMAsTD
 
         private bool couldCompletePath = false;
 
-        [Header("Path Generator Debug")]
+        [field: Header("Path Generator Debug")]
 
-        [SerializeField] private bool showDebug = true;
+        [field: SerializeField] public bool showDebug { get; set; } = true;
 
         //PathGenerator base constructor
         public PathGenerator() { }
@@ -248,7 +248,7 @@ namespace TeamMAsTD
 
             int count = 0;
 
-            while (tileSearchFrontier.Count > 0 && isFindingPath && count <= (gridPathOn.gridWidth * gridPathOn.gridHeight) + 50)
+            while (tileSearchFrontier.Count > 0 && isFindingPath && count <= (gridPathOn.gridWidth * gridPathOn.gridHeight) * 2)
             {
                 count++;
 
@@ -278,13 +278,13 @@ namespace TeamMAsTD
 
                     couldCompletePath = false;
 
-                    if (showDebug) Debug.LogError("Exploring/Enqueue Neighbors Of A Tile Process Failed. Path Generation Stopped Abruptly!");
+                    if (showDebug) Debug.LogError("Exploring/Enqueue neighbors of a tile process failed. Path generation stopped abruptly!");
 
                     return false;
                 }
             }
 
-            if(showDebug) Debug.LogWarning("Path Generator BFS pathfinding process couldn't reach or find end tile. Please recheck data inputs...\n" +
+            if(showDebug) Debug.LogWarning("BFS pathfinding process couldn't reach or find end tile. Please recheck inputs...\n" +
                                            "TileSearchFrontier's count: " + tileSearchFrontier.Count + "\n" +
                                            "isFindingPath: " + isFindingPath.ToString() + "\n" +
                                            "IterationCount: " + count.ToString());
@@ -433,7 +433,7 @@ namespace TeamMAsTD
 
             currentCheckingTile = null;
 
-            if (showDebug) Debug.Log("Temp Reset before a new search: \n" +
+            if (showDebug) Debug.Log("Partial Reset before new search: \n" +
                                      "TileSearchFrontier's count: " + tileSearchFrontier.Count + "\n" +
                                      "ExploredTiles' count: " + exploredTiles.Count + "\n" +
                                      "TileAndConnectingTileDict's count: " + tileAndConnectingTileDict.Count + "\n" +
@@ -459,10 +459,25 @@ namespace TeamMAsTD
             currentCheckingTile = null;
 
             couldCompletePath = false;
+
+            if (showDebug) Debug.Log("Reset All Completed!");
         }
 
         public List<Tile> GeneratePath()
         {
+            float timeStart = Time.realtimeSinceStartup;
+
+            float timeEnd = 0.0f;
+
+            float timeTookSecs = 0.0f;
+
+            float timeTookMiliSecs = 0.0f;
+
+            if (showDebug)
+            {
+                Debug.Log("Path Generation Started!\n");
+            }
+
             ResetAll();//even if pathfinding is in process -> stops it and reset
 
             //re-init in case newer inputs were set and we didnt get it
@@ -470,7 +485,14 @@ namespace TeamMAsTD
 
             if (!canGeneratePath)
             {
-                if (showDebug) Debug.LogWarning("Path Generator Can Not Generate Path Now. Please check Errors Log And Input Params...");
+                timeEnd = Time.realtimeSinceStartup;
+
+                timeTookSecs = timeEnd - timeStart;
+
+                timeTookMiliSecs = timeTookSecs * 1000.0f;
+
+                if (showDebug) Debug.LogWarning("Path Generator Can Not Generate Path Now. Please Check Errors Log And Input Params...\n" +
+                                                "Time Took: " + timeTookSecs.ToString() + "s | " + timeTookMiliSecs.ToString() + "ms");
 
                 return finalGeneratedOrderedPathTiles;
             }
@@ -483,6 +505,15 @@ namespace TeamMAsTD
             {
                 BreadthFirstSearchWithMoreThan2Tiles();
             }
+
+            timeEnd = Time.realtimeSinceStartup;
+
+            timeTookSecs = timeEnd - timeStart;
+
+            timeTookMiliSecs = timeTookSecs * 1000.0f;
+
+            if(showDebug) Debug.Log("Path Generation Completed!\n" +
+                                    "Time Took: " + timeTookSecs.ToString() + "s | " + timeTookMiliSecs.ToString() + "ms");
 
             return finalGeneratedOrderedPathTiles;
         }

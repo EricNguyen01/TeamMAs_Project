@@ -113,6 +113,13 @@ namespace TeamMAsTD
 
         private void Awake()
         {
+            if (!Application.isEditor)
+            {
+                drawDebugRuntime = false;
+
+                drawTileDebug = false;
+            }
+
             if (Application.isPlaying)
             {
                 spriteRenderer = GetComponent<SpriteRenderer>();

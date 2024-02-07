@@ -51,6 +51,8 @@ namespace TeamMAsTD
                 return;
             }
 
+            if (!Application.isEditor) showDebugAndErrorLog = false;
+
             currentResourceAmount = gameResourceSO.resourceAmount;
 
             DisplayResourceNameText();

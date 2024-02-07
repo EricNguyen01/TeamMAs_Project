@@ -128,6 +128,8 @@ namespace TeamMAsTD
 
             DontDestroyOnLoad(gameObject);
 
+            if (!Application.isEditor) showDebugLog = false;
+
             Set_GameSettingsSaveLoadManager_Reference_IfMissing();
 
             LoadSettings();

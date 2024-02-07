@@ -100,10 +100,6 @@ namespace TeamMAsTD
 
         private void OnEnable()
         {
-            /*if (statPopupPoolSpawnedThisPopup == null || 
-                statPopupSpawnerSpawnedThisPopup == null ||
-                !statPopupSpawnerSpawnedThisPopup.enabled) Destroy(gameObject);*/
-
             if(statPopupUIImage != null)
             {
                 Color color = statPopupUIImage.color;

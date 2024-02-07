@@ -80,6 +80,16 @@ namespace TeamMAsTD
 
         //PRIVATES................................................................................
 
+        private void Awake()
+        {
+            if (!Application.isEditor)
+            {
+                showDebugLog = false;
+
+                if (pathGenerator != null) pathGenerator.showDebug = false;
+            }
+        }
+
         private void OnEnable()
         {
             currentGridPathOn = gridPathOn;

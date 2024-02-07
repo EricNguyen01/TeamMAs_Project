@@ -93,6 +93,13 @@ namespace TeamMAsTD
 
             DontDestroyOnLoad(gameObject);
 
+            if (!Application.isEditor)
+            {
+                showDebugLog = false;
+
+                showEditorDebugLog = false;
+            }
+
             SetSaveLoadManagerReferenceIfMissing();
 
             disableSaveLoadRuntime = false;
