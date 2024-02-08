@@ -22,7 +22,20 @@ namespace TeamMAsTD
 
         private Tile startTileOnPathToUse;//the actual start tile to use in pathfinding (might change dynamically)
 
-        [SerializeField] private List<Tile> middleTilesOnPath = new List<Tile>();
+        [Space]
+
+        [SerializeField] private bool autoGenerateMiddlePoints = false;
+
+        [SerializeField]
+        [DisableIf("autoGenerateMiddlePoints", false)]
+        [Min(2)]
+        private int maxTilesBetweenMidPoints = 2; 
+
+        [SerializeField]
+        [DisableIf("autoGenerateMiddlePoints", true)]
+        private List<Tile> middleTilesOnPath = new List<Tile>();
+
+        [Space]
          
         [SerializeField] private Tile endTileOnPath;//for base ref (should be static once set)
 
@@ -80,7 +93,7 @@ namespace TeamMAsTD
 
             endTileOnPathToUse = endTileOnPath;
 
-            if (!CanGeneratePath())
+            if (!CanGeneratePath_Internal())
             {
                 if (showDebug) Debug.LogError("Path Generator Start And/Or End Tile Inputs Validation Check Failed. Path Generation Disabled!");
             }
@@ -149,7 +162,20 @@ namespace TeamMAsTD
             gridPathOn = grid;
         }
 
-        private bool CanGeneratePath()
+        public bool CanGeneratePath()
+        {
+            bool showDebugOriginalState = showDebug;
+
+            if (showDebug) showDebug = false;
+
+            bool canGeneratePath = CanGeneratePath_Internal();
+
+            showDebug = showDebugOriginalState;
+
+            return canGeneratePath;
+        }
+
+        private bool CanGeneratePath_Internal()
         {
             bool canGeneratePath = true;
 
@@ -225,7 +251,7 @@ namespace TeamMAsTD
 
         private bool BreadthFirstSearchForPath()
         {
-            if (!CanGeneratePath())
+            if (!CanGeneratePath_Internal())
             {
                 isFindingPath = false;
 
