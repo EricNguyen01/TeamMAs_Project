@@ -841,6 +841,13 @@ MonoBehaviour:
   tweenAutoStartDelay: 0
   isIndependentTimeScale: 0
   disableUIFunctionDuringTween: 0
+  disableUIFunctionAfterTween: 0
+  OnUITweenStarted:
+    m_PersistentCalls:
+      m_Calls: []
+  OnUITweenFinished:
+    m_PersistentCalls:
+      m_Calls: []
   expandValue: 0.25
 --- !u!1 &2553152341450689238
 GameObject:
@@ -1071,6 +1078,13 @@ MonoBehaviour:
   tweenAutoStartDelay: 0
   isIndependentTimeScale: 0
   disableUIFunctionDuringTween: 0
+  disableUIFunctionAfterTween: 0
+  OnUITweenStarted:
+    m_PersistentCalls:
+      m_Calls: []
+  OnUITweenFinished:
+    m_PersistentCalls:
+      m_Calls: []
   expandValue: 0.25
 --- !u!1 &2553152341477783199
 GameObject:
@@ -1706,6 +1720,13 @@ MonoBehaviour:
   tweenAutoStartDelay: 0
   isIndependentTimeScale: 0
   disableUIFunctionDuringTween: 0
+  disableUIFunctionAfterTween: 0
+  OnUITweenStarted:
+    m_PersistentCalls:
+      m_Calls: []
+  OnUITweenFinished:
+    m_PersistentCalls:
+      m_Calls: []
   expandValue: 0.25
 --- !u!1 &2553152341521601495
 GameObject:
@@ -1960,6 +1981,9 @@ MonoBehaviour:
   OnTileMenuOpened:
     m_PersistentCalls:
       m_Calls: []
+  OnTileMenuClosed:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &2553152341521601490
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2101,7 +2125,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   disableSaveLoadForThisSaveable: 0
-  UUID: ce95c6f0-f921-4a99-967c-ade67a3030a6
+  UUID: 8bf1eb09-1dc6-46a0-b753-8b94c184d1c6
 --- !u!1 &2553152341524516416
 GameObject:
   m_ObjectHideFlags: 0
@@ -3260,6 +3284,9 @@ MonoBehaviour:
   OnTileMenuOpened:
     m_PersistentCalls:
       m_Calls: []
+  OnTileMenuClosed:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &2553152341563243540
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3401,7 +3428,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   disableSaveLoadForThisSaveable: 0
-  UUID: fcb699fa-93ea-4fe2-943b-b3fbe5de6a89
+  UUID: b01751f1-870c-474b-8479-bef91f5cd405
 --- !u!1 &2553152341571487421
 GameObject:
   m_ObjectHideFlags: 0
@@ -3579,6 +3606,13 @@ MonoBehaviour:
   tweenAutoStartDelay: 0
   isIndependentTimeScale: 0
   disableUIFunctionDuringTween: 0
+  disableUIFunctionAfterTween: 0
+  OnUITweenStarted:
+    m_PersistentCalls:
+      m_Calls: []
+  OnUITweenFinished:
+    m_PersistentCalls:
+      m_Calls: []
   expandValue: 0.25
 --- !u!1 &2553152341571684805
 GameObject:
@@ -3733,6 +3767,13 @@ MonoBehaviour:
   tweenAutoStartDelay: 0
   isIndependentTimeScale: 0
   disableUIFunctionDuringTween: 0
+  disableUIFunctionAfterTween: 0
+  OnUITweenStarted:
+    m_PersistentCalls:
+      m_Calls: []
+  OnUITweenFinished:
+    m_PersistentCalls:
+      m_Calls: []
   expandValue: 0.25
 --- !u!1 &2553152341572532943
 GameObject:
@@ -4198,6 +4239,9 @@ MonoBehaviour:
   OnTileMenuOpened:
     m_PersistentCalls:
       m_Calls: []
+  OnTileMenuClosed:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &2553152341580277241
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4339,7 +4383,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   disableSaveLoadForThisSaveable: 0
-  UUID: 77972c4d-b102-4eb8-a58c-f95537412b7c
+  UUID: d75d9fb6-0bd3-4fa4-ba3c-8365cb390081
 --- !u!1 &2553152341599349183
 GameObject:
   m_ObjectHideFlags: 0
@@ -4493,6 +4537,13 @@ MonoBehaviour:
   tweenAutoStartDelay: 0
   isIndependentTimeScale: 0
   disableUIFunctionDuringTween: 0
+  disableUIFunctionAfterTween: 0
+  OnUITweenStarted:
+    m_PersistentCalls:
+      m_Calls: []
+  OnUITweenFinished:
+    m_PersistentCalls:
+      m_Calls: []
   expandValue: 0.25
 --- !u!1 &2553152341604172242
 GameObject:
@@ -5267,6 +5318,13 @@ MonoBehaviour:
   tweenAutoStartDelay: 0
   isIndependentTimeScale: 0
   disableUIFunctionDuringTween: 0
+  disableUIFunctionAfterTween: 0
+  OnUITweenStarted:
+    m_PersistentCalls:
+      m_Calls: []
+  OnUITweenFinished:
+    m_PersistentCalls:
+      m_Calls: []
   expandValue: 0.25
 --- !u!1 &2553152341628109856
 GameObject:
@@ -5677,6 +5735,9 @@ MonoBehaviour:
   OnTileMenuOpened:
     m_PersistentCalls:
       m_Calls: []
+  OnTileMenuClosed:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &2553152341645683901
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5818,7 +5879,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   disableSaveLoadForThisSaveable: 0
-  UUID: feac2db9-5c97-4cfd-a806-06605f2e1df3
+  UUID: 7e3d83ce-dbb6-4e67-a363-b11e1647144e
 --- !u!1 &2553152341647760776
 GameObject:
   m_ObjectHideFlags: 0
@@ -6769,6 +6830,13 @@ MonoBehaviour:
   tweenAutoStartDelay: 0
   isIndependentTimeScale: 0
   disableUIFunctionDuringTween: 0
+  disableUIFunctionAfterTween: 0
+  OnUITweenStarted:
+    m_PersistentCalls:
+      m_Calls: []
+  OnUITweenFinished:
+    m_PersistentCalls:
+      m_Calls: []
   expandValue: 0.25
 --- !u!1 &2553152341666104862
 GameObject:
@@ -6947,6 +7015,13 @@ MonoBehaviour:
   tweenAutoStartDelay: 0
   isIndependentTimeScale: 0
   disableUIFunctionDuringTween: 0
+  disableUIFunctionAfterTween: 0
+  OnUITweenStarted:
+    m_PersistentCalls:
+      m_Calls: []
+  OnUITweenFinished:
+    m_PersistentCalls:
+      m_Calls: []
   expandValue: 0.25
 --- !u!1 &2553152341666615542
 GameObject:
@@ -7395,6 +7470,9 @@ MonoBehaviour:
   OnTileMenuOpened:
     m_PersistentCalls:
       m_Calls: []
+  OnTileMenuClosed:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &2553152341674533916
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7536,7 +7614,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   disableSaveLoadForThisSaveable: 0
-  UUID: 3f062346-ee5c-4a17-b8ea-13916dba67fe
+  UUID: f9ee5691-7964-43de-9796-d7d5e7fd6461
 --- !u!1 &2553152341682215554
 GameObject:
   m_ObjectHideFlags: 0
@@ -7714,6 +7792,13 @@ MonoBehaviour:
   tweenAutoStartDelay: 0
   isIndependentTimeScale: 0
   disableUIFunctionDuringTween: 0
+  disableUIFunctionAfterTween: 0
+  OnUITweenStarted:
+    m_PersistentCalls:
+      m_Calls: []
+  OnUITweenFinished:
+    m_PersistentCalls:
+      m_Calls: []
   expandValue: 0.25
 --- !u!1 &2553152341683264480
 GameObject:
@@ -7868,6 +7953,13 @@ MonoBehaviour:
   tweenAutoStartDelay: 0
   isIndependentTimeScale: 0
   disableUIFunctionDuringTween: 0
+  disableUIFunctionAfterTween: 0
+  OnUITweenStarted:
+    m_PersistentCalls:
+      m_Calls: []
+  OnUITweenFinished:
+    m_PersistentCalls:
+      m_Calls: []
   expandValue: 0.25
 --- !u!1 &2553152341689047974
 GameObject:
@@ -8046,6 +8138,13 @@ MonoBehaviour:
   tweenAutoStartDelay: 0
   isIndependentTimeScale: 0
   disableUIFunctionDuringTween: 0
+  disableUIFunctionAfterTween: 0
+  OnUITweenStarted:
+    m_PersistentCalls:
+      m_Calls: []
+  OnUITweenFinished:
+    m_PersistentCalls:
+      m_Calls: []
   expandValue: 0.25
 --- !u!1 &2553152341693338958
 GameObject:
@@ -9409,6 +9508,13 @@ MonoBehaviour:
   tweenAutoStartDelay: 0
   isIndependentTimeScale: 0
   disableUIFunctionDuringTween: 0
+  disableUIFunctionAfterTween: 0
+  OnUITweenStarted:
+    m_PersistentCalls:
+      m_Calls: []
+  OnUITweenFinished:
+    m_PersistentCalls:
+      m_Calls: []
   expandValue: 0.25
 --- !u!1 &2553152341770768693
 GameObject:
@@ -9874,6 +9980,9 @@ MonoBehaviour:
   OnTileMenuOpened:
     m_PersistentCalls:
       m_Calls: []
+  OnTileMenuClosed:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &2553152341778091985
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10015,7 +10124,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   disableSaveLoadForThisSaveable: 0
-  UUID: c0a780ea-0d5b-4fbb-ab45-1d57c635eac2
+  UUID: f1670e29-895e-4670-a252-2e42e9cdaee5
 --- !u!1 &2553152341786570281
 GameObject:
   m_ObjectHideFlags: 0
@@ -10679,6 +10788,13 @@ MonoBehaviour:
   tweenAutoStartDelay: 0
   isIndependentTimeScale: 0
   disableUIFunctionDuringTween: 0
+  disableUIFunctionAfterTween: 0
+  OnUITweenStarted:
+    m_PersistentCalls:
+      m_Calls: []
+  OnUITweenFinished:
+    m_PersistentCalls:
+      m_Calls: []
   expandValue: 0.25
 --- !u!1 &2553152341812628947
 GameObject:
@@ -11044,6 +11160,13 @@ MonoBehaviour:
   tweenAutoStartDelay: 0
   isIndependentTimeScale: 0
   disableUIFunctionDuringTween: 0
+  disableUIFunctionAfterTween: 0
+  OnUITweenStarted:
+    m_PersistentCalls:
+      m_Calls: []
+  OnUITweenFinished:
+    m_PersistentCalls:
+      m_Calls: []
   expandValue: 0.25
 --- !u!1 &2553152341825113835
 GameObject:
@@ -11527,6 +11650,13 @@ MonoBehaviour:
   tweenAutoStartDelay: 0
   isIndependentTimeScale: 0
   disableUIFunctionDuringTween: 0
+  disableUIFunctionAfterTween: 0
+  OnUITweenStarted:
+    m_PersistentCalls:
+      m_Calls: []
+  OnUITweenFinished:
+    m_PersistentCalls:
+      m_Calls: []
   expandValue: 0.25
 --- !u!1 &2553152341864357085
 GameObject:
@@ -11781,6 +11911,9 @@ MonoBehaviour:
   OnTileMenuOpened:
     m_PersistentCalls:
       m_Calls: []
+  OnTileMenuClosed:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &2553152341864357080
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11922,7 +12055,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   disableSaveLoadForThisSaveable: 0
-  UUID: 5a7ddeaa-ecce-4cff-8240-1bec955b845f
+  UUID: 4fd90faa-9c45-45f4-825a-10461be98cac
 --- !u!1 &2553152341871422893
 GameObject:
   m_ObjectHideFlags: 0
@@ -12076,6 +12209,13 @@ MonoBehaviour:
   tweenAutoStartDelay: 0
   isIndependentTimeScale: 0
   disableUIFunctionDuringTween: 0
+  disableUIFunctionAfterTween: 0
+  OnUITweenStarted:
+    m_PersistentCalls:
+      m_Calls: []
+  OnUITweenFinished:
+    m_PersistentCalls:
+      m_Calls: []
   expandValue: 0.25
 --- !u!1 &2553152341875928741
 GameObject:
@@ -12516,6 +12656,13 @@ MonoBehaviour:
   tweenAutoStartDelay: 0
   isIndependentTimeScale: 0
   disableUIFunctionDuringTween: 0
+  disableUIFunctionAfterTween: 0
+  OnUITweenStarted:
+    m_PersistentCalls:
+      m_Calls: []
+  OnUITweenFinished:
+    m_PersistentCalls:
+      m_Calls: []
   expandValue: 0.25
 --- !u!1 &2553152341918558690
 GameObject:
@@ -12831,6 +12978,13 @@ MonoBehaviour:
   tweenAutoStartDelay: 0
   isIndependentTimeScale: 0
   disableUIFunctionDuringTween: 0
+  disableUIFunctionAfterTween: 0
+  OnUITweenStarted:
+    m_PersistentCalls:
+      m_Calls: []
+  OnUITweenFinished:
+    m_PersistentCalls:
+      m_Calls: []
   expandValue: 0.25
 --- !u!1 &2553152341928909676
 GameObject:
@@ -13439,6 +13593,58 @@ MonoBehaviour:
   - {fileID: 2553152342900292903}
   - {fileID: 2553152341864357086}
   - {fileID: 2553152341674533906}
+  readOnlyGridArray:
+    readOnlyGridArray:
+    - {fileID: 2553152341580277247}
+    - {fileID: 2553152342903964506}
+    - {fileID: 2553152341778091991}
+    - {fileID: 2553152343556766928}
+    - {fileID: 2553152343522702296}
+    - {fileID: 2553152342211858458}
+    - {fileID: 2553152343361016795}
+    - {fileID: 2553152342736791578}
+    - {fileID: 2553152342988734799}
+    - {fileID: 2553152341563244010}
+    - {fileID: 2553152342681621285}
+    - {fileID: 2553152342817197223}
+    - {fileID: 2553152342534871674}
+    - {fileID: 2553152342329100485}
+    - {fileID: 2553152342882120767}
+    - {fileID: 2553152343230352339}
+    - {fileID: 2553152343273401624}
+    - {fileID: 2553152342303722024}
+    - {fileID: 2553152341521601488}
+    - {fileID: 2553152343463500905}
+    - {fileID: 2553152342207198996}
+    - {fileID: 2553152342699694849}
+    - {fileID: 2553152343026186691}
+    - {fileID: 2553152342621854627}
+    - {fileID: 2553152343394597306}
+    - {fileID: 2553152343304861664}
+    - {fileID: 2553152342621613231}
+    - {fileID: 2553152342076727341}
+    - {fileID: 2553152343299969071}
+    - {fileID: 2553152342327166748}
+    - {fileID: 2553152342682469095}
+    - {fileID: 2553152342438025029}
+    - {fileID: 2553152343322915690}
+    - {fileID: 2553152343386460256}
+    - {fileID: 2553152343138303564}
+    - {fileID: 2553152342811468137}
+    - {fileID: 2553152343265164926}
+    - {fileID: 2553152342430279647}
+    - {fileID: 2553152341645683891}
+    - {fileID: 2553152343384237831}
+    - {fileID: 2553152342034630945}
+    - {fileID: 2553152342849776234}
+    - {fileID: 2553152343183432810}
+    - {fileID: 2553152342959526592}
+    - {fileID: 2553152341972658559}
+    - {fileID: 2553152342087916584}
+    - {fileID: 2553152342860623928}
+    - {fileID: 2553152342900292903}
+    - {fileID: 2553152341864357086}
+    - {fileID: 2553152341674533906}
   OnFirstDandelionPlantedOnGrid:
     m_PersistentCalls:
       m_Calls:
@@ -13935,6 +14141,9 @@ MonoBehaviour:
   OnTileMenuOpened:
     m_PersistentCalls:
       m_Calls: []
+  OnTileMenuClosed:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &2553152341972658553
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14076,7 +14285,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   disableSaveLoadForThisSaveable: 0
-  UUID: fd54b730-fcb4-4677-8813-5cafa28770d1
+  UUID: 3d4a537e-38aa-4cd5-93aa-453db1e95ba5
 --- !u!1 &2553152341975000048
 GameObject:
   m_ObjectHideFlags: 0
@@ -14465,6 +14674,13 @@ MonoBehaviour:
   tweenAutoStartDelay: 0
   isIndependentTimeScale: 0
   disableUIFunctionDuringTween: 0
+  disableUIFunctionAfterTween: 0
+  OnUITweenStarted:
+    m_PersistentCalls:
+      m_Calls: []
+  OnUITweenFinished:
+    m_PersistentCalls:
+      m_Calls: []
   expandValue: 0.25
 --- !u!1 &2553152341984875136
 GameObject:
@@ -14619,6 +14835,13 @@ MonoBehaviour:
   tweenAutoStartDelay: 0
   isIndependentTimeScale: 0
   disableUIFunctionDuringTween: 0
+  disableUIFunctionAfterTween: 0
+  OnUITweenStarted:
+    m_PersistentCalls:
+      m_Calls: []
+  OnUITweenFinished:
+    m_PersistentCalls:
+      m_Calls: []
   expandValue: 0.25
 --- !u!1 &2553152341987907389
 GameObject:
@@ -14877,6 +15100,13 @@ MonoBehaviour:
   tweenAutoStartDelay: 0
   isIndependentTimeScale: 0
   disableUIFunctionDuringTween: 0
+  disableUIFunctionAfterTween: 0
+  OnUITweenStarted:
+    m_PersistentCalls:
+      m_Calls: []
+  OnUITweenFinished:
+    m_PersistentCalls:
+      m_Calls: []
   expandValue: 0.25
 --- !u!1 &2553152341995556497
 GameObject:
@@ -15731,6 +15961,13 @@ MonoBehaviour:
   tweenAutoStartDelay: 0
   isIndependentTimeScale: 0
   disableUIFunctionDuringTween: 0
+  disableUIFunctionAfterTween: 0
+  OnUITweenStarted:
+    m_PersistentCalls:
+      m_Calls: []
+  OnUITweenFinished:
+    m_PersistentCalls:
+      m_Calls: []
   expandValue: 0.25
 --- !u!1 &2553152342034445683
 GameObject:
@@ -15909,6 +16146,13 @@ MonoBehaviour:
   tweenAutoStartDelay: 0
   isIndependentTimeScale: 0
   disableUIFunctionDuringTween: 0
+  disableUIFunctionAfterTween: 0
+  OnUITweenStarted:
+    m_PersistentCalls:
+      m_Calls: []
+  OnUITweenFinished:
+    m_PersistentCalls:
+      m_Calls: []
   expandValue: 0.25
 --- !u!1 &2553152342034630944
 GameObject:
@@ -16163,6 +16407,9 @@ MonoBehaviour:
   OnTileMenuOpened:
     m_PersistentCalls:
       m_Calls: []
+  OnTileMenuClosed:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &2553152342034630947
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16304,7 +16551,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   disableSaveLoadForThisSaveable: 0
-  UUID: 03c2ec98-5cb3-4221-ae83-1b127c433776
+  UUID: 830dfe95-8279-4507-84e4-3d6809ac3ce5
 --- !u!1 &2553152342044208404
 GameObject:
   m_ObjectHideFlags: 0
@@ -16482,6 +16729,13 @@ MonoBehaviour:
   tweenAutoStartDelay: 0
   isIndependentTimeScale: 0
   disableUIFunctionDuringTween: 0
+  disableUIFunctionAfterTween: 0
+  OnUITweenStarted:
+    m_PersistentCalls:
+      m_Calls: []
+  OnUITweenFinished:
+    m_PersistentCalls:
+      m_Calls: []
   expandValue: 0.25
 --- !u!1 &2553152342055503014
 GameObject:
@@ -17032,6 +17286,9 @@ MonoBehaviour:
   OnTileMenuOpened:
     m_PersistentCalls:
       m_Calls: []
+  OnTileMenuClosed:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &2553152342076727343
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17173,7 +17430,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   disableSaveLoadForThisSaveable: 0
-  UUID: 247bbe4f-5da0-47e8-8c37-646a09b08b21
+  UUID: e8938827-7378-43de-8ded-18abcde8bfcc
 --- !u!1 &2553152342078426407
 GameObject:
   m_ObjectHideFlags: 0
@@ -17462,6 +17719,13 @@ MonoBehaviour:
   tweenAutoStartDelay: 0
   isIndependentTimeScale: 0
   disableUIFunctionDuringTween: 0
+  disableUIFunctionAfterTween: 0
+  OnUITweenStarted:
+    m_PersistentCalls:
+      m_Calls: []
+  OnUITweenFinished:
+    m_PersistentCalls:
+      m_Calls: []
   expandValue: 0.25
 --- !u!1 &2553152342087916591
 GameObject:
@@ -17716,6 +17980,9 @@ MonoBehaviour:
   OnTileMenuOpened:
     m_PersistentCalls:
       m_Calls: []
+  OnTileMenuClosed:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &2553152342087916586
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17857,7 +18124,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   disableSaveLoadForThisSaveable: 0
-  UUID: d9606738-62a5-4655-ac65-40d35b28aeff
+  UUID: 1c7583e2-ae5b-49a2-a678-051f60e6f445
 --- !u!1 &2553152342089954212
 GameObject:
   m_ObjectHideFlags: 0
@@ -18217,6 +18484,13 @@ MonoBehaviour:
   tweenAutoStartDelay: 0
   isIndependentTimeScale: 0
   disableUIFunctionDuringTween: 0
+  disableUIFunctionAfterTween: 0
+  OnUITweenStarted:
+    m_PersistentCalls:
+      m_Calls: []
+  OnUITweenFinished:
+    m_PersistentCalls:
+      m_Calls: []
   expandValue: 0.25
 --- !u!1 &2553152342127808834
 GameObject:
@@ -18395,6 +18669,13 @@ MonoBehaviour:
   tweenAutoStartDelay: 0
   isIndependentTimeScale: 0
   disableUIFunctionDuringTween: 0
+  disableUIFunctionAfterTween: 0
+  OnUITweenStarted:
+    m_PersistentCalls:
+      m_Calls: []
+  OnUITweenFinished:
+    m_PersistentCalls:
+      m_Calls: []
   expandValue: 0.25
 --- !u!1 &2553152342131779166
 GameObject:
@@ -19077,6 +19358,13 @@ MonoBehaviour:
   tweenAutoStartDelay: 0
   isIndependentTimeScale: 0
   disableUIFunctionDuringTween: 0
+  disableUIFunctionAfterTween: 0
+  OnUITweenStarted:
+    m_PersistentCalls:
+      m_Calls: []
+  OnUITweenFinished:
+    m_PersistentCalls:
+      m_Calls: []
   expandValue: 0.25
 --- !u!1 &2553152342176150838
 GameObject:
@@ -19556,6 +19844,13 @@ MonoBehaviour:
   tweenAutoStartDelay: 0
   isIndependentTimeScale: 0
   disableUIFunctionDuringTween: 0
+  disableUIFunctionAfterTween: 0
+  OnUITweenStarted:
+    m_PersistentCalls:
+      m_Calls: []
+  OnUITweenFinished:
+    m_PersistentCalls:
+      m_Calls: []
   expandValue: 0.25
 --- !u!1 &2553152342203440324
 GameObject:
@@ -19734,6 +20029,13 @@ MonoBehaviour:
   tweenAutoStartDelay: 0
   isIndependentTimeScale: 0
   disableUIFunctionDuringTween: 0
+  disableUIFunctionAfterTween: 0
+  OnUITweenStarted:
+    m_PersistentCalls:
+      m_Calls: []
+  OnUITweenFinished:
+    m_PersistentCalls:
+      m_Calls: []
   expandValue: 0.25
 --- !u!1 &2553152342207198443
 GameObject:
@@ -19988,6 +20290,9 @@ MonoBehaviour:
   OnTileMenuOpened:
     m_PersistentCalls:
       m_Calls: []
+  OnTileMenuClosed:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &2553152342207198998
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20129,7 +20434,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   disableSaveLoadForThisSaveable: 0
-  UUID: 9dc67097-4c62-4be1-96e0-9e7fb3830a55
+  UUID: 9316e5f1-d869-47ce-90ca-92fea52138a5
 --- !u!1 &2553152342211858457
 GameObject:
   m_ObjectHideFlags: 0
@@ -20383,6 +20688,9 @@ MonoBehaviour:
   OnTileMenuOpened:
     m_PersistentCalls:
       m_Calls: []
+  OnTileMenuClosed:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &2553152342211858436
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20524,7 +20832,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   disableSaveLoadForThisSaveable: 0
-  UUID: 9c4f368e-c2e3-4994-95c6-b48e1e562f45
+  UUID: cb08d792-deb7-401b-b34b-ce59bbb802bb
 --- !u!1 &2553152342212457331
 GameObject:
   m_ObjectHideFlags: 0
@@ -20678,6 +20986,13 @@ MonoBehaviour:
   tweenAutoStartDelay: 0
   isIndependentTimeScale: 0
   disableUIFunctionDuringTween: 0
+  disableUIFunctionAfterTween: 0
+  OnUITweenStarted:
+    m_PersistentCalls:
+      m_Calls: []
+  OnUITweenFinished:
+    m_PersistentCalls:
+      m_Calls: []
   expandValue: 0.25
 --- !u!1 &2553152342214715729
 GameObject:
@@ -21069,6 +21384,13 @@ MonoBehaviour:
   tweenAutoStartDelay: 0
   isIndependentTimeScale: 0
   disableUIFunctionDuringTween: 0
+  disableUIFunctionAfterTween: 0
+  OnUITweenStarted:
+    m_PersistentCalls:
+      m_Calls: []
+  OnUITweenFinished:
+    m_PersistentCalls:
+      m_Calls: []
   expandValue: 0.25
 --- !u!1 &2553152342237935818
 GameObject:
@@ -21747,6 +22069,13 @@ MonoBehaviour:
   tweenAutoStartDelay: 0
   isIndependentTimeScale: 0
   disableUIFunctionDuringTween: 0
+  disableUIFunctionAfterTween: 0
+  OnUITweenStarted:
+    m_PersistentCalls:
+      m_Calls: []
+  OnUITweenFinished:
+    m_PersistentCalls:
+      m_Calls: []
   expandValue: 0.25
 --- !u!1 &2553152342276366210
 GameObject:
@@ -22085,6 +22414,13 @@ MonoBehaviour:
   tweenAutoStartDelay: 0
   isIndependentTimeScale: 0
   disableUIFunctionDuringTween: 0
+  disableUIFunctionAfterTween: 0
+  OnUITweenStarted:
+    m_PersistentCalls:
+      m_Calls: []
+  OnUITweenFinished:
+    m_PersistentCalls:
+      m_Calls: []
   expandValue: 0.25
 --- !u!1 &2553152342298055261
 GameObject:
@@ -22239,6 +22575,13 @@ MonoBehaviour:
   tweenAutoStartDelay: 0
   isIndependentTimeScale: 0
   disableUIFunctionDuringTween: 0
+  disableUIFunctionAfterTween: 0
+  OnUITweenStarted:
+    m_PersistentCalls:
+      m_Calls: []
+  OnUITweenFinished:
+    m_PersistentCalls:
+      m_Calls: []
   expandValue: 0.25
 --- !u!1 &2553152342299651302
 GameObject:
@@ -22607,6 +22950,9 @@ MonoBehaviour:
   OnTileMenuOpened:
     m_PersistentCalls:
       m_Calls: []
+  OnTileMenuClosed:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &2553152342303722026
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22748,7 +23094,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   disableSaveLoadForThisSaveable: 0
-  UUID: 9b00cf1c-f8f0-47df-863b-43bd76eabd7d
+  UUID: 84710d25-fcf7-4295-ab1e-2cd763d0ee19
 --- !u!1 &2553152342306769267
 GameObject:
   m_ObjectHideFlags: 0
@@ -22902,6 +23248,13 @@ MonoBehaviour:
   tweenAutoStartDelay: 0
   isIndependentTimeScale: 0
   disableUIFunctionDuringTween: 0
+  disableUIFunctionAfterTween: 0
+  OnUITweenStarted:
+    m_PersistentCalls:
+      m_Calls: []
+  OnUITweenFinished:
+    m_PersistentCalls:
+      m_Calls: []
   expandValue: 0.25
 --- !u!1 &2553152342310969007
 GameObject:
@@ -23080,6 +23433,13 @@ MonoBehaviour:
   tweenAutoStartDelay: 0
   isIndependentTimeScale: 0
   disableUIFunctionDuringTween: 0
+  disableUIFunctionAfterTween: 0
+  OnUITweenStarted:
+    m_PersistentCalls:
+      m_Calls: []
+  OnUITweenFinished:
+    m_PersistentCalls:
+      m_Calls: []
   expandValue: 0.25
 --- !u!1 &2553152342316128571
 GameObject:
@@ -23234,6 +23594,13 @@ MonoBehaviour:
   tweenAutoStartDelay: 0
   isIndependentTimeScale: 0
   disableUIFunctionDuringTween: 0
+  disableUIFunctionAfterTween: 0
+  OnUITweenStarted:
+    m_PersistentCalls:
+      m_Calls: []
+  OnUITweenFinished:
+    m_PersistentCalls:
+      m_Calls: []
   expandValue: 0.25
 --- !u!1 &2553152342326706790
 GameObject:
@@ -23564,6 +23931,9 @@ MonoBehaviour:
   OnTileMenuOpened:
     m_PersistentCalls:
       m_Calls: []
+  OnTileMenuClosed:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &2553152342327166750
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23705,7 +24075,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   disableSaveLoadForThisSaveable: 0
-  UUID: 29c87ab1-c620-45b2-89b0-6eaa8e9700e4
+  UUID: 02c1bc8b-64a8-451e-af09-3c759555ae9c
 --- !u!1 &2553152342329100484
 GameObject:
   m_ObjectHideFlags: 0
@@ -23959,6 +24329,9 @@ MonoBehaviour:
   OnTileMenuOpened:
     m_PersistentCalls:
       m_Calls: []
+  OnTileMenuClosed:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &2553152342329100487
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24100,7 +24473,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   disableSaveLoadForThisSaveable: 0
-  UUID: 4e28a906-e75f-45f3-8be6-4d6712a2ebc8
+  UUID: 0c0fe127-4de2-4878-bd7d-9e633da0dbe7
 --- !u!1 &2553152342329365306
 GameObject:
   m_ObjectHideFlags: 0
@@ -24278,6 +24651,13 @@ MonoBehaviour:
   tweenAutoStartDelay: 0
   isIndependentTimeScale: 0
   disableUIFunctionDuringTween: 0
+  disableUIFunctionAfterTween: 0
+  OnUITweenStarted:
+    m_PersistentCalls:
+      m_Calls: []
+  OnUITweenFinished:
+    m_PersistentCalls:
+      m_Calls: []
   expandValue: 0.25
 --- !u!1 &2553152342344672874
 GameObject:
@@ -24456,6 +24836,13 @@ MonoBehaviour:
   tweenAutoStartDelay: 0
   isIndependentTimeScale: 0
   disableUIFunctionDuringTween: 0
+  disableUIFunctionAfterTween: 0
+  OnUITweenStarted:
+    m_PersistentCalls:
+      m_Calls: []
+  OnUITweenFinished:
+    m_PersistentCalls:
+      m_Calls: []
   expandValue: 0.25
 --- !u!1 &2553152342358618488
 GameObject:
@@ -25176,6 +25563,13 @@ MonoBehaviour:
   tweenAutoStartDelay: 0
   isIndependentTimeScale: 0
   disableUIFunctionDuringTween: 0
+  disableUIFunctionAfterTween: 0
+  OnUITweenStarted:
+    m_PersistentCalls:
+      m_Calls: []
+  OnUITweenFinished:
+    m_PersistentCalls:
+      m_Calls: []
   expandValue: 0.25
 --- !u!1 &2553152342380105454
 GameObject:
@@ -25489,6 +25883,13 @@ MonoBehaviour:
   tweenAutoStartDelay: 0
   isIndependentTimeScale: 0
   disableUIFunctionDuringTween: 0
+  disableUIFunctionAfterTween: 0
+  OnUITweenStarted:
+    m_PersistentCalls:
+      m_Calls: []
+  OnUITweenFinished:
+    m_PersistentCalls:
+      m_Calls: []
   expandValue: 0.25
 --- !u!1 &2553152342382051295
 GameObject:
@@ -25643,6 +26044,13 @@ MonoBehaviour:
   tweenAutoStartDelay: 0
   isIndependentTimeScale: 0
   disableUIFunctionDuringTween: 0
+  disableUIFunctionAfterTween: 0
+  OnUITweenStarted:
+    m_PersistentCalls:
+      m_Calls: []
+  OnUITweenFinished:
+    m_PersistentCalls:
+      m_Calls: []
   expandValue: 0.25
 --- !u!1 &2553152342395606438
 GameObject:
@@ -26249,6 +26657,13 @@ MonoBehaviour:
   tweenAutoStartDelay: 0
   isIndependentTimeScale: 0
   disableUIFunctionDuringTween: 0
+  disableUIFunctionAfterTween: 0
+  OnUITweenStarted:
+    m_PersistentCalls:
+      m_Calls: []
+  OnUITweenFinished:
+    m_PersistentCalls:
+      m_Calls: []
   expandValue: 0.25
 --- !u!1 &2553152342409779477
 GameObject:
@@ -26427,6 +26842,13 @@ MonoBehaviour:
   tweenAutoStartDelay: 0
   isIndependentTimeScale: 0
   disableUIFunctionDuringTween: 0
+  disableUIFunctionAfterTween: 0
+  OnUITweenStarted:
+    m_PersistentCalls:
+      m_Calls: []
+  OnUITweenFinished:
+    m_PersistentCalls:
+      m_Calls: []
   expandValue: 0.25
 --- !u!1 &2553152342413742320
 GameObject:
@@ -26605,6 +27027,13 @@ MonoBehaviour:
   tweenAutoStartDelay: 0
   isIndependentTimeScale: 0
   disableUIFunctionDuringTween: 0
+  disableUIFunctionAfterTween: 0
+  OnUITweenStarted:
+    m_PersistentCalls:
+      m_Calls: []
+  OnUITweenFinished:
+    m_PersistentCalls:
+      m_Calls: []
   expandValue: 0.25
 --- !u!1 &2553152342415140720
 GameObject:
@@ -26873,6 +27302,13 @@ MonoBehaviour:
   tweenAutoStartDelay: 0
   isIndependentTimeScale: 0
   disableUIFunctionDuringTween: 0
+  disableUIFunctionAfterTween: 0
+  OnUITweenStarted:
+    m_PersistentCalls:
+      m_Calls: []
+  OnUITweenFinished:
+    m_PersistentCalls:
+      m_Calls: []
   expandValue: 0.25
 --- !u!1 &2553152342427275791
 GameObject:
@@ -27027,6 +27463,13 @@ MonoBehaviour:
   tweenAutoStartDelay: 0
   isIndependentTimeScale: 0
   disableUIFunctionDuringTween: 0
+  disableUIFunctionAfterTween: 0
+  OnUITweenStarted:
+    m_PersistentCalls:
+      m_Calls: []
+  OnUITweenFinished:
+    m_PersistentCalls:
+      m_Calls: []
   expandValue: 0.25
 --- !u!1 &2553152342427433238
 GameObject:
@@ -27442,6 +27885,9 @@ MonoBehaviour:
   OnTileMenuOpened:
     m_PersistentCalls:
       m_Calls: []
+  OnTileMenuClosed:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &2553152342430279641
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27583,7 +28029,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   disableSaveLoadForThisSaveable: 0
-  UUID: aa078916-494b-4b62-8c88-c14a1af4ecb6
+  UUID: da712e06-8566-42c5-be31-d0a0f333fba8
 --- !u!1 &2553152342435053686
 GameObject:
   m_ObjectHideFlags: 0
@@ -27761,6 +28207,13 @@ MonoBehaviour:
   tweenAutoStartDelay: 0
   isIndependentTimeScale: 0
   disableUIFunctionDuringTween: 0
+  disableUIFunctionAfterTween: 0
+  OnUITweenStarted:
+    m_PersistentCalls:
+      m_Calls: []
+  OnUITweenFinished:
+    m_PersistentCalls:
+      m_Calls: []
   expandValue: 0.25
 --- !u!1 &2553152342438025028
 GameObject:
@@ -28015,6 +28468,9 @@ MonoBehaviour:
   OnTileMenuOpened:
     m_PersistentCalls:
       m_Calls: []
+  OnTileMenuClosed:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &2553152342438025031
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28156,7 +28612,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   disableSaveLoadForThisSaveable: 0
-  UUID: 8d8f442d-a297-4f63-bf99-de564d1639d9
+  UUID: 18868b4a-74c4-4e01-b581-e0e520212fb0
 --- !u!1 &2553152342440413034
 GameObject:
   m_ObjectHideFlags: 0
@@ -28680,6 +29136,13 @@ MonoBehaviour:
   tweenAutoStartDelay: 0
   isIndependentTimeScale: 0
   disableUIFunctionDuringTween: 0
+  disableUIFunctionAfterTween: 0
+  OnUITweenStarted:
+    m_PersistentCalls:
+      m_Calls: []
+  OnUITweenFinished:
+    m_PersistentCalls:
+      m_Calls: []
   expandValue: 0.25
 --- !u!1 &2553152342465133311
 GameObject:
@@ -29147,6 +29610,13 @@ MonoBehaviour:
   tweenAutoStartDelay: 0
   isIndependentTimeScale: 0
   disableUIFunctionDuringTween: 0
+  disableUIFunctionAfterTween: 0
+  OnUITweenStarted:
+    m_PersistentCalls:
+      m_Calls: []
+  OnUITweenFinished:
+    m_PersistentCalls:
+      m_Calls: []
   expandValue: 0.25
 --- !u!1 &2553152342488540592
 GameObject:
@@ -29301,6 +29771,13 @@ MonoBehaviour:
   tweenAutoStartDelay: 0
   isIndependentTimeScale: 0
   disableUIFunctionDuringTween: 0
+  disableUIFunctionAfterTween: 0
+  OnUITweenStarted:
+    m_PersistentCalls:
+      m_Calls: []
+  OnUITweenFinished:
+    m_PersistentCalls:
+      m_Calls: []
   expandValue: 0.25
 --- !u!1 &2553152342498768889
 GameObject:
@@ -29455,6 +29932,13 @@ MonoBehaviour:
   tweenAutoStartDelay: 0
   isIndependentTimeScale: 0
   disableUIFunctionDuringTween: 0
+  disableUIFunctionAfterTween: 0
+  OnUITweenStarted:
+    m_PersistentCalls:
+      m_Calls: []
+  OnUITweenFinished:
+    m_PersistentCalls:
+      m_Calls: []
   expandValue: 0.25
 --- !u!1 &2553152342498969889
 GameObject:
@@ -30198,6 +30682,13 @@ MonoBehaviour:
   tweenAutoStartDelay: 0
   isIndependentTimeScale: 0
   disableUIFunctionDuringTween: 0
+  disableUIFunctionAfterTween: 0
+  OnUITweenStarted:
+    m_PersistentCalls:
+      m_Calls: []
+  OnUITweenFinished:
+    m_PersistentCalls:
+      m_Calls: []
   expandValue: 0.25
 --- !u!1 &2553152342516935404
 GameObject:
@@ -30778,6 +31269,9 @@ MonoBehaviour:
   OnTileMenuOpened:
     m_PersistentCalls:
       m_Calls: []
+  OnTileMenuClosed:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &2553152342534871652
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30919,7 +31413,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   disableSaveLoadForThisSaveable: 0
-  UUID: 31eaf2b2-12c8-44ee-99b3-51ff00ff5963
+  UUID: 93149ae8-3952-463a-8482-49419322619b
 --- !u!1 &2553152342538264276
 GameObject:
   m_ObjectHideFlags: 0
@@ -31073,6 +31567,13 @@ MonoBehaviour:
   tweenAutoStartDelay: 0
   isIndependentTimeScale: 0
   disableUIFunctionDuringTween: 0
+  disableUIFunctionAfterTween: 0
+  OnUITweenStarted:
+    m_PersistentCalls:
+      m_Calls: []
+  OnUITweenFinished:
+    m_PersistentCalls:
+      m_Calls: []
   expandValue: 0.25
 --- !u!1 &2553152342538685261
 GameObject:
@@ -31433,6 +31934,13 @@ MonoBehaviour:
   tweenAutoStartDelay: 0
   isIndependentTimeScale: 0
   disableUIFunctionDuringTween: 0
+  disableUIFunctionAfterTween: 0
+  OnUITweenStarted:
+    m_PersistentCalls:
+      m_Calls: []
+  OnUITweenFinished:
+    m_PersistentCalls:
+      m_Calls: []
   expandValue: 0.25
 --- !u!1 &2553152342550465215
 GameObject:
@@ -31687,6 +32195,13 @@ MonoBehaviour:
   tweenAutoStartDelay: 0
   isIndependentTimeScale: 0
   disableUIFunctionDuringTween: 0
+  disableUIFunctionAfterTween: 0
+  OnUITweenStarted:
+    m_PersistentCalls:
+      m_Calls: []
+  OnUITweenFinished:
+    m_PersistentCalls:
+      m_Calls: []
   expandValue: 0.25
 --- !u!1 &2553152342559845320
 GameObject:
@@ -32850,6 +33365,9 @@ MonoBehaviour:
   OnTileMenuOpened:
     m_PersistentCalls:
       m_Calls: []
+  OnTileMenuClosed:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &2553152342621613225
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32991,7 +33509,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   disableSaveLoadForThisSaveable: 0
-  UUID: c69212af-8a8d-41f2-8af7-c6b39daa665d
+  UUID: 3d342605-f16b-4b9a-9ef1-c8d555d3acba
 --- !u!1 &2553152342621854626
 GameObject:
   m_ObjectHideFlags: 0
@@ -33245,6 +33763,9 @@ MonoBehaviour:
   OnTileMenuOpened:
     m_PersistentCalls:
       m_Calls: []
+  OnTileMenuClosed:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &2553152342621854637
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -33386,7 +33907,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   disableSaveLoadForThisSaveable: 0
-  UUID: b31f33e8-e707-4db4-bd2c-e8ca0dac6123
+  UUID: 09c6d2dc-ee9f-4c74-9b98-b85130fd5f88
 --- !u!1 &2553152342622791264
 GameObject:
   m_ObjectHideFlags: 0
@@ -33798,6 +34319,13 @@ MonoBehaviour:
   tweenAutoStartDelay: 0
   isIndependentTimeScale: 0
   disableUIFunctionDuringTween: 0
+  disableUIFunctionAfterTween: 0
+  OnUITweenStarted:
+    m_PersistentCalls:
+      m_Calls: []
+  OnUITweenFinished:
+    m_PersistentCalls:
+      m_Calls: []
   expandValue: 0.25
 --- !u!1 &2553152342641741339
 GameObject:
@@ -34225,6 +34753,13 @@ MonoBehaviour:
   tweenAutoStartDelay: 0
   isIndependentTimeScale: 0
   disableUIFunctionDuringTween: 0
+  disableUIFunctionAfterTween: 0
+  OnUITweenStarted:
+    m_PersistentCalls:
+      m_Calls: []
+  OnUITweenFinished:
+    m_PersistentCalls:
+      m_Calls: []
   expandValue: 0.25
 --- !u!1 &2553152342653244962
 GameObject:
@@ -34538,6 +35073,13 @@ MonoBehaviour:
   tweenAutoStartDelay: 0
   isIndependentTimeScale: 0
   disableUIFunctionDuringTween: 0
+  disableUIFunctionAfterTween: 0
+  OnUITweenStarted:
+    m_PersistentCalls:
+      m_Calls: []
+  OnUITweenFinished:
+    m_PersistentCalls:
+      m_Calls: []
   expandValue: 0.25
 --- !u!1 &2553152342659159872
 GameObject:
@@ -34827,6 +35369,13 @@ MonoBehaviour:
   tweenAutoStartDelay: 0
   isIndependentTimeScale: 0
   disableUIFunctionDuringTween: 0
+  disableUIFunctionAfterTween: 0
+  OnUITweenStarted:
+    m_PersistentCalls:
+      m_Calls: []
+  OnUITweenFinished:
+    m_PersistentCalls:
+      m_Calls: []
   expandValue: 0.25
 --- !u!1 &2553152342681621284
 GameObject:
@@ -35081,6 +35630,9 @@ MonoBehaviour:
   OnTileMenuOpened:
     m_PersistentCalls:
       m_Calls: []
+  OnTileMenuClosed:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &2553152342681621287
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -35222,7 +35774,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   disableSaveLoadForThisSaveable: 0
-  UUID: b5e94767-2b74-4070-b96f-7f5320478e60
+  UUID: d2eaacbb-2fdb-4821-a0b5-028a0c1d1844
 --- !u!1 &2553152342682469094
 GameObject:
   m_ObjectHideFlags: 0
@@ -35476,6 +36028,9 @@ MonoBehaviour:
   OnTileMenuOpened:
     m_PersistentCalls:
       m_Calls: []
+  OnTileMenuClosed:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &2553152342682469089
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -35617,7 +36172,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   disableSaveLoadForThisSaveable: 0
-  UUID: de1e6b0b-5fcc-4c7e-9b37-64cef51aa23e
+  UUID: 2abbb73b-9d8c-4523-8ebf-4a94316c1b21
 --- !u!1 &2553152342683505962
 GameObject:
   m_ObjectHideFlags: 0
@@ -35953,6 +36508,13 @@ MonoBehaviour:
   tweenAutoStartDelay: 0
   isIndependentTimeScale: 0
   disableUIFunctionDuringTween: 0
+  disableUIFunctionAfterTween: 0
+  OnUITweenStarted:
+    m_PersistentCalls:
+      m_Calls: []
+  OnUITweenFinished:
+    m_PersistentCalls:
+      m_Calls: []
   expandValue: 0.25
 --- !u!1 &2553152342699032837
 GameObject:
@@ -36342,6 +36904,9 @@ MonoBehaviour:
   OnTileMenuOpened:
     m_PersistentCalls:
       m_Calls: []
+  OnTileMenuClosed:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &2553152342699694851
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -36483,7 +37048,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   disableSaveLoadForThisSaveable: 0
-  UUID: 64f83e90-ee08-4979-b7a6-9060960ba9c2
+  UUID: e46977a5-a02e-4078-8f21-4632e8d45119
 --- !u!1 &2553152342701764294
 GameObject:
   m_ObjectHideFlags: 0
@@ -37070,6 +37635,13 @@ MonoBehaviour:
   tweenAutoStartDelay: 0
   isIndependentTimeScale: 0
   disableUIFunctionDuringTween: 0
+  disableUIFunctionAfterTween: 0
+  OnUITweenStarted:
+    m_PersistentCalls:
+      m_Calls: []
+  OnUITweenFinished:
+    m_PersistentCalls:
+      m_Calls: []
   expandValue: 0.25
 --- !u!1 &2553152342736791577
 GameObject:
@@ -37324,6 +37896,9 @@ MonoBehaviour:
   OnTileMenuOpened:
     m_PersistentCalls:
       m_Calls: []
+  OnTileMenuClosed:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &2553152342736791556
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -37465,7 +38040,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   disableSaveLoadForThisSaveable: 0
-  UUID: cb0f752a-1907-4d7c-90f8-cafd0247a927
+  UUID: b4473823-bf42-4c1f-b003-c7ac00f85535
 --- !u!1 &2553152342743079177
 GameObject:
   m_ObjectHideFlags: 0
@@ -38960,6 +39535,9 @@ MonoBehaviour:
   OnTileMenuOpened:
     m_PersistentCalls:
       m_Calls: []
+  OnTileMenuClosed:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &2553152342811468139
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -39101,7 +39679,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   disableSaveLoadForThisSaveable: 0
-  UUID: ba18beed-9df9-40ef-a5c3-7a9729041132
+  UUID: 31524231-c935-416b-a58b-ff692c8a473c
 --- !u!1 &2553152342817197222
 GameObject:
   m_ObjectHideFlags: 0
@@ -39355,6 +39933,9 @@ MonoBehaviour:
   OnTileMenuOpened:
     m_PersistentCalls:
       m_Calls: []
+  OnTileMenuClosed:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &2553152342817197217
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -39496,7 +40077,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   disableSaveLoadForThisSaveable: 0
-  UUID: 7f34a3b1-480b-456a-8f5b-6a09158bdcdd
+  UUID: aa44429e-1f8c-4fd8-a35a-d616130ecbd7
 --- !u!1 &2553152342826911838
 GameObject:
   m_ObjectHideFlags: 0
@@ -39809,6 +40390,13 @@ MonoBehaviour:
   tweenAutoStartDelay: 0
   isIndependentTimeScale: 0
   disableUIFunctionDuringTween: 0
+  disableUIFunctionAfterTween: 0
+  OnUITweenStarted:
+    m_PersistentCalls:
+      m_Calls: []
+  OnUITweenFinished:
+    m_PersistentCalls:
+      m_Calls: []
   expandValue: 0.25
 --- !u!1 &2553152342838742915
 GameObject:
@@ -40143,6 +40731,9 @@ MonoBehaviour:
   OnTileMenuOpened:
     m_PersistentCalls:
       m_Calls: []
+  OnTileMenuClosed:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &2553152342849776276
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -40284,7 +40875,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   disableSaveLoadForThisSaveable: 0
-  UUID: 6adddb85-dc15-4914-b4ef-e4270bc3426f
+  UUID: abd8744a-b685-4f61-b1a2-a17ad015a213
 --- !u!1 &2553152342860623935
 GameObject:
   m_ObjectHideFlags: 0
@@ -40538,6 +41129,9 @@ MonoBehaviour:
   OnTileMenuOpened:
     m_PersistentCalls:
       m_Calls: []
+  OnTileMenuClosed:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &2553152342860623930
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -40679,7 +41273,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   disableSaveLoadForThisSaveable: 0
-  UUID: d8ef47c3-45dc-42dc-b53f-9eb0f73ab132
+  UUID: df5badbe-31a8-4582-9e1d-1557b9ef9014
 --- !u!1 &2553152342867604486
 GameObject:
   m_ObjectHideFlags: 0
@@ -41305,6 +41899,9 @@ MonoBehaviour:
   OnTileMenuOpened:
     m_PersistentCalls:
       m_Calls: []
+  OnTileMenuClosed:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &2553152342882120761
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -41446,7 +42043,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   disableSaveLoadForThisSaveable: 0
-  UUID: fe573a2e-8109-4b93-84c7-7ab0480bf6d4
+  UUID: 95dc7cfe-6771-41ea-af4e-151721a9fadd
 --- !u!1 &2553152342883285700
 GameObject:
   m_ObjectHideFlags: 0
@@ -42156,6 +42753,13 @@ MonoBehaviour:
   tweenAutoStartDelay: 0
   isIndependentTimeScale: 0
   disableUIFunctionDuringTween: 0
+  disableUIFunctionAfterTween: 0
+  OnUITweenStarted:
+    m_PersistentCalls:
+      m_Calls: []
+  OnUITweenFinished:
+    m_PersistentCalls:
+      m_Calls: []
   expandValue: 0.25
 --- !u!1 &2553152342900292902
 GameObject:
@@ -42410,6 +43014,9 @@ MonoBehaviour:
   OnTileMenuOpened:
     m_PersistentCalls:
       m_Calls: []
+  OnTileMenuClosed:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &2553152342900292897
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -42551,7 +43158,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   disableSaveLoadForThisSaveable: 0
-  UUID: 1b6aa15a-409e-42a1-88d8-b90e32d9b413
+  UUID: 51cfdec6-0460-4380-9401-451f4e002c64
 --- !u!1 &2553152342902951238
 GameObject:
   m_ObjectHideFlags: 0
@@ -42940,6 +43547,9 @@ MonoBehaviour:
   OnTileMenuOpened:
     m_PersistentCalls:
       m_Calls: []
+  OnTileMenuClosed:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &2553152342903964484
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -43081,7 +43691,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   disableSaveLoadForThisSaveable: 0
-  UUID: eede5bc6-8e20-4b2f-aff5-75361eab8b73
+  UUID: 2b952e2c-7b6c-4396-a372-957856856650
 --- !u!1 &2553152342905090051
 GameObject:
   m_ObjectHideFlags: 0
@@ -43508,6 +44118,13 @@ MonoBehaviour:
   tweenAutoStartDelay: 0
   isIndependentTimeScale: 0
   disableUIFunctionDuringTween: 0
+  disableUIFunctionAfterTween: 0
+  OnUITweenStarted:
+    m_PersistentCalls:
+      m_Calls: []
+  OnUITweenFinished:
+    m_PersistentCalls:
+      m_Calls: []
   expandValue: 0.25
 --- !u!1 &2553152342921972591
 GameObject:
@@ -43742,6 +44359,13 @@ MonoBehaviour:
   tweenAutoStartDelay: 0
   isIndependentTimeScale: 0
   disableUIFunctionDuringTween: 0
+  disableUIFunctionAfterTween: 0
+  OnUITweenStarted:
+    m_PersistentCalls:
+      m_Calls: []
+  OnUITweenFinished:
+    m_PersistentCalls:
+      m_Calls: []
   expandValue: 0.25
 --- !u!1 &2553152342924926763
 GameObject:
@@ -44313,6 +44937,13 @@ MonoBehaviour:
   tweenAutoStartDelay: 0
   isIndependentTimeScale: 0
   disableUIFunctionDuringTween: 0
+  disableUIFunctionAfterTween: 0
+  OnUITweenStarted:
+    m_PersistentCalls:
+      m_Calls: []
+  OnUITweenFinished:
+    m_PersistentCalls:
+      m_Calls: []
   expandValue: 0.25
 --- !u!1 &2553152342959526599
 GameObject:
@@ -44567,6 +45198,9 @@ MonoBehaviour:
   OnTileMenuOpened:
     m_PersistentCalls:
       m_Calls: []
+  OnTileMenuClosed:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &2553152342959526594
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -44708,7 +45342,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   disableSaveLoadForThisSaveable: 0
-  UUID: 54c36b5d-1967-4e2c-a223-165fb2a1cb22
+  UUID: 5fe6447e-3bfa-4c49-829d-a35efc94e650
 --- !u!1 &2553152342962847961
 GameObject:
   m_ObjectHideFlags: 0
@@ -45173,6 +45807,13 @@ MonoBehaviour:
   tweenAutoStartDelay: 0
   isIndependentTimeScale: 0
   disableUIFunctionDuringTween: 0
+  disableUIFunctionAfterTween: 0
+  OnUITweenStarted:
+    m_PersistentCalls:
+      m_Calls: []
+  OnUITweenFinished:
+    m_PersistentCalls:
+      m_Calls: []
   expandValue: 0.25
 --- !u!1 &2553152342977611641
 GameObject:
@@ -45600,6 +46241,13 @@ MonoBehaviour:
   tweenAutoStartDelay: 0
   isIndependentTimeScale: 0
   disableUIFunctionDuringTween: 0
+  disableUIFunctionAfterTween: 0
+  OnUITweenStarted:
+    m_PersistentCalls:
+      m_Calls: []
+  OnUITweenFinished:
+    m_PersistentCalls:
+      m_Calls: []
   expandValue: 0.25
 --- !u!1 &2553152342988734798
 GameObject:
@@ -45854,6 +46502,9 @@ MonoBehaviour:
   OnTileMenuOpened:
     m_PersistentCalls:
       m_Calls: []
+  OnTileMenuClosed:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &2553152342988734793
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -45995,7 +46646,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   disableSaveLoadForThisSaveable: 0
-  UUID: 984363e9-bdf4-4f6a-a5cf-37a32cf51711
+  UUID: e4aef3a1-5cb6-4394-9caa-22e42ba66012
 --- !u!1 &2553152342995340306
 GameObject:
   m_ObjectHideFlags: 0
@@ -46722,6 +47373,9 @@ MonoBehaviour:
   OnTileMenuOpened:
     m_PersistentCalls:
       m_Calls: []
+  OnTileMenuClosed:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &2553152343026186701
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -46863,7 +47517,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   disableSaveLoadForThisSaveable: 0
-  UUID: f26a43ee-d339-491c-9d51-44e013cebc64
+  UUID: e88ed98c-e727-474a-a66e-3084f684b630
 --- !u!1 &2553152343033036765
 GameObject:
   m_ObjectHideFlags: 0
@@ -47064,6 +47718,13 @@ MonoBehaviour:
   tweenAutoStartDelay: 0
   isIndependentTimeScale: 0
   disableUIFunctionDuringTween: 0
+  disableUIFunctionAfterTween: 0
+  OnUITweenStarted:
+    m_PersistentCalls:
+      m_Calls: []
+  OnUITweenFinished:
+    m_PersistentCalls:
+      m_Calls: []
   expandValue: 0.25
 --- !u!1 &2553152343047234442
 GameObject:
@@ -47429,6 +48090,13 @@ MonoBehaviour:
   tweenAutoStartDelay: 0
   isIndependentTimeScale: 0
   disableUIFunctionDuringTween: 0
+  disableUIFunctionAfterTween: 0
+  OnUITweenStarted:
+    m_PersistentCalls:
+      m_Calls: []
+  OnUITweenFinished:
+    m_PersistentCalls:
+      m_Calls: []
   expandValue: 0.25
 --- !u!1 &2553152343066633620
 GameObject:
@@ -47818,6 +48486,13 @@ MonoBehaviour:
   tweenAutoStartDelay: 0
   isIndependentTimeScale: 0
   disableUIFunctionDuringTween: 0
+  disableUIFunctionAfterTween: 0
+  OnUITweenStarted:
+    m_PersistentCalls:
+      m_Calls: []
+  OnUITweenFinished:
+    m_PersistentCalls:
+      m_Calls: []
   expandValue: 0.25
 --- !u!1 &2553152343075029602
 GameObject:
@@ -48183,6 +48858,13 @@ MonoBehaviour:
   tweenAutoStartDelay: 0
   isIndependentTimeScale: 0
   disableUIFunctionDuringTween: 0
+  disableUIFunctionAfterTween: 0
+  OnUITweenStarted:
+    m_PersistentCalls:
+      m_Calls: []
+  OnUITweenFinished:
+    m_PersistentCalls:
+      m_Calls: []
   expandValue: 0.25
 --- !u!1 &2553152343079849281
 GameObject:
@@ -48953,6 +49635,13 @@ MonoBehaviour:
   tweenAutoStartDelay: 0
   isIndependentTimeScale: 0
   disableUIFunctionDuringTween: 0
+  disableUIFunctionAfterTween: 0
+  OnUITweenStarted:
+    m_PersistentCalls:
+      m_Calls: []
+  OnUITweenFinished:
+    m_PersistentCalls:
+      m_Calls: []
   expandValue: 0.25
 --- !u!1 &2553152343098094596
 GameObject:
@@ -49618,6 +50307,13 @@ MonoBehaviour:
   tweenAutoStartDelay: 0
   isIndependentTimeScale: 0
   disableUIFunctionDuringTween: 0
+  disableUIFunctionAfterTween: 0
+  OnUITweenStarted:
+    m_PersistentCalls:
+      m_Calls: []
+  OnUITweenFinished:
+    m_PersistentCalls:
+      m_Calls: []
   expandValue: 0.25
 --- !u!1 &2553152343136452784
 GameObject:
@@ -49876,6 +50572,13 @@ MonoBehaviour:
   tweenAutoStartDelay: 0
   isIndependentTimeScale: 0
   disableUIFunctionDuringTween: 0
+  disableUIFunctionAfterTween: 0
+  OnUITweenStarted:
+    m_PersistentCalls:
+      m_Calls: []
+  OnUITweenFinished:
+    m_PersistentCalls:
+      m_Calls: []
   expandValue: 0.25
 --- !u!1 &2553152343138303555
 GameObject:
@@ -50130,6 +50833,9 @@ MonoBehaviour:
   OnTileMenuOpened:
     m_PersistentCalls:
       m_Calls: []
+  OnTileMenuClosed:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &2553152343138303566
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -50271,7 +50977,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   disableSaveLoadForThisSaveable: 0
-  UUID: 802a565e-551f-4abb-87e7-3fb31df43ed8
+  UUID: d906c46c-db36-427f-96a7-ff48e49d3c7d
 --- !u!1 &2553152343140773732
 GameObject:
   m_ObjectHideFlags: 0
@@ -50695,6 +51401,13 @@ MonoBehaviour:
   tweenAutoStartDelay: 0
   isIndependentTimeScale: 0
   disableUIFunctionDuringTween: 0
+  disableUIFunctionAfterTween: 0
+  OnUITweenStarted:
+    m_PersistentCalls:
+      m_Calls: []
+  OnUITweenFinished:
+    m_PersistentCalls:
+      m_Calls: []
   expandValue: 0.25
 --- !u!1 &2553152343154420980
 GameObject:
@@ -51419,6 +52132,9 @@ MonoBehaviour:
   OnTileMenuOpened:
     m_PersistentCalls:
       m_Calls: []
+  OnTileMenuClosed:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &2553152343183432852
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -51560,7 +52276,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   disableSaveLoadForThisSaveable: 0
-  UUID: 554452b7-2c0f-469b-a536-74ce0c142ba7
+  UUID: 81d17de7-301e-4ecd-acbc-cb29f7f9e530
 --- !u!1 &2553152343187278604
 GameObject:
   m_ObjectHideFlags: 0
@@ -51874,6 +52590,13 @@ MonoBehaviour:
   tweenAutoStartDelay: 0
   isIndependentTimeScale: 0
   disableUIFunctionDuringTween: 0
+  disableUIFunctionAfterTween: 0
+  OnUITweenStarted:
+    m_PersistentCalls:
+      m_Calls: []
+  OnUITweenFinished:
+    m_PersistentCalls:
+      m_Calls: []
   expandValue: 0.25
 --- !u!1 &2553152343214180824
 GameObject:
@@ -52204,6 +52927,9 @@ MonoBehaviour:
   OnTileMenuOpened:
     m_PersistentCalls:
       m_Calls: []
+  OnTileMenuClosed:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &2553152343230352349
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -52345,7 +53071,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   disableSaveLoadForThisSaveable: 0
-  UUID: 65f5d700-7843-4d2a-8f9d-16a907e0f31a
+  UUID: cef416d0-96fc-4359-8941-1dd81c244c0b
 --- !u!1 &2553152343230829298
 GameObject:
   m_ObjectHideFlags: 0
@@ -52499,6 +53225,13 @@ MonoBehaviour:
   tweenAutoStartDelay: 0
   isIndependentTimeScale: 0
   disableUIFunctionDuringTween: 0
+  disableUIFunctionAfterTween: 0
+  OnUITweenStarted:
+    m_PersistentCalls:
+      m_Calls: []
+  OnUITweenFinished:
+    m_PersistentCalls:
+      m_Calls: []
   expandValue: 0.25
 --- !u!1 &2553152343232447301
 GameObject:
@@ -52677,6 +53410,13 @@ MonoBehaviour:
   tweenAutoStartDelay: 0
   isIndependentTimeScale: 0
   disableUIFunctionDuringTween: 0
+  disableUIFunctionAfterTween: 0
+  OnUITweenStarted:
+    m_PersistentCalls:
+      m_Calls: []
+  OnUITweenFinished:
+    m_PersistentCalls:
+      m_Calls: []
   expandValue: 0.25
 --- !u!1 &2553152343245154648
 GameObject:
@@ -52855,6 +53595,13 @@ MonoBehaviour:
   tweenAutoStartDelay: 0
   isIndependentTimeScale: 0
   disableUIFunctionDuringTween: 0
+  disableUIFunctionAfterTween: 0
+  OnUITweenStarted:
+    m_PersistentCalls:
+      m_Calls: []
+  OnUITweenFinished:
+    m_PersistentCalls:
+      m_Calls: []
   expandValue: 0.25
 --- !u!1 &2553152343252765439
 GameObject:
@@ -53502,6 +54249,9 @@ MonoBehaviour:
   OnTileMenuOpened:
     m_PersistentCalls:
       m_Calls: []
+  OnTileMenuClosed:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &2553152343265164920
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -53643,7 +54393,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   disableSaveLoadForThisSaveable: 0
-  UUID: 1f46258c-1ebd-41e5-a066-24af07f151ee
+  UUID: 3a163e12-5484-43f7-b627-bd63f21ac674
 --- !u!1 &2553152343268222259
 GameObject:
   m_ObjectHideFlags: 0
@@ -53932,6 +54682,13 @@ MonoBehaviour:
   tweenAutoStartDelay: 0
   isIndependentTimeScale: 0
   disableUIFunctionDuringTween: 0
+  disableUIFunctionAfterTween: 0
+  OnUITweenStarted:
+    m_PersistentCalls:
+      m_Calls: []
+  OnUITweenFinished:
+    m_PersistentCalls:
+      m_Calls: []
   expandValue: 0.25
 --- !u!1 &2553152343269241418
 GameObject:
@@ -54266,6 +55023,9 @@ MonoBehaviour:
   OnTileMenuOpened:
     m_PersistentCalls:
       m_Calls: []
+  OnTileMenuClosed:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &2553152343273401626
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -54407,7 +55167,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   disableSaveLoadForThisSaveable: 0
-  UUID: 8aa200f5-626f-419a-9a45-c70b989517b9
+  UUID: 7e53873a-247a-47e2-9bf5-20dbff2261e8
 --- !u!1 &2553152343274085677
 GameObject:
   m_ObjectHideFlags: 0
@@ -54969,6 +55729,13 @@ MonoBehaviour:
   tweenAutoStartDelay: 0
   isIndependentTimeScale: 0
   disableUIFunctionDuringTween: 0
+  disableUIFunctionAfterTween: 0
+  OnUITweenStarted:
+    m_PersistentCalls:
+      m_Calls: []
+  OnUITweenFinished:
+    m_PersistentCalls:
+      m_Calls: []
   expandValue: 0.25
 --- !u!1 &2553152343289617523
 GameObject:
@@ -55384,6 +56151,9 @@ MonoBehaviour:
   OnTileMenuOpened:
     m_PersistentCalls:
       m_Calls: []
+  OnTileMenuClosed:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &2553152343299969065
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -55525,7 +56295,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   disableSaveLoadForThisSaveable: 0
-  UUID: 07ecb071-66f0-4650-b37a-e1dfb4600bbb
+  UUID: d0073e1d-fd08-4994-90b5-87db69393046
 --- !u!1 &2553152343304861671
 GameObject:
   m_ObjectHideFlags: 0
@@ -55779,6 +56549,9 @@ MonoBehaviour:
   OnTileMenuOpened:
     m_PersistentCalls:
       m_Calls: []
+  OnTileMenuClosed:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &2553152343304861666
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -55920,7 +56693,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   disableSaveLoadForThisSaveable: 0
-  UUID: 5dd8a723-8370-4a4a-aaa0-a91d9909dc8e
+  UUID: 0db36a49-5262-4060-ab28-d47be10b1836
 --- !u!1 &2553152343311521285
 GameObject:
   m_ObjectHideFlags: 0
@@ -56098,6 +56871,13 @@ MonoBehaviour:
   tweenAutoStartDelay: 0
   isIndependentTimeScale: 0
   disableUIFunctionDuringTween: 0
+  disableUIFunctionAfterTween: 0
+  OnUITweenStarted:
+    m_PersistentCalls:
+      m_Calls: []
+  OnUITweenFinished:
+    m_PersistentCalls:
+      m_Calls: []
   expandValue: 0.25
 --- !u!1 &2553152343312445395
 GameObject:
@@ -56276,6 +57056,13 @@ MonoBehaviour:
   tweenAutoStartDelay: 0
   isIndependentTimeScale: 0
   disableUIFunctionDuringTween: 0
+  disableUIFunctionAfterTween: 0
+  OnUITweenStarted:
+    m_PersistentCalls:
+      m_Calls: []
+  OnUITweenFinished:
+    m_PersistentCalls:
+      m_Calls: []
   expandValue: 0.25
 --- !u!1 &2553152343313501160
 GameObject:
@@ -56766,6 +57553,9 @@ MonoBehaviour:
   OnTileMenuOpened:
     m_PersistentCalls:
       m_Calls: []
+  OnTileMenuClosed:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &2553152343322915732
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -56907,7 +57697,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   disableSaveLoadForThisSaveable: 0
-  UUID: d7ee6ada-44af-4c0c-a089-504b2ec08177
+  UUID: 5373a990-539b-48e0-9703-f6b161c8cd0a
 --- !u!1 &2553152343326529437
 GameObject:
   m_ObjectHideFlags: 0
@@ -57220,6 +58010,13 @@ MonoBehaviour:
   tweenAutoStartDelay: 0
   isIndependentTimeScale: 0
   disableUIFunctionDuringTween: 0
+  disableUIFunctionAfterTween: 0
+  OnUITweenStarted:
+    m_PersistentCalls:
+      m_Calls: []
+  OnUITweenFinished:
+    m_PersistentCalls:
+      m_Calls: []
   expandValue: 0.25
 --- !u!1 &2553152343332642776
 GameObject:
@@ -57668,6 +58465,13 @@ MonoBehaviour:
   tweenAutoStartDelay: 0
   isIndependentTimeScale: 0
   disableUIFunctionDuringTween: 0
+  disableUIFunctionAfterTween: 0
+  OnUITweenStarted:
+    m_PersistentCalls:
+      m_Calls: []
+  OnUITweenFinished:
+    m_PersistentCalls:
+      m_Calls: []
   expandValue: 0.25
 --- !u!1 &2553152343350682763
 GameObject:
@@ -57981,6 +58785,13 @@ MonoBehaviour:
   tweenAutoStartDelay: 0
   isIndependentTimeScale: 0
   disableUIFunctionDuringTween: 0
+  disableUIFunctionAfterTween: 0
+  OnUITweenStarted:
+    m_PersistentCalls:
+      m_Calls: []
+  OnUITweenFinished:
+    m_PersistentCalls:
+      m_Calls: []
   expandValue: 0.25
 --- !u!1 &2553152343361016794
 GameObject:
@@ -58235,6 +59046,9 @@ MonoBehaviour:
   OnTileMenuOpened:
     m_PersistentCalls:
       m_Calls: []
+  OnTileMenuClosed:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &2553152343361016773
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -58376,7 +59190,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   disableSaveLoadForThisSaveable: 0
-  UUID: e1e6f084-868b-40c3-826a-5bdb2e5e5572
+  UUID: 7f34ca5c-f607-4456-ba78-fa392bc752bb
 --- !u!1 &2553152343373920276
 GameObject:
   m_ObjectHideFlags: 0
@@ -58530,6 +59344,13 @@ MonoBehaviour:
   tweenAutoStartDelay: 0
   isIndependentTimeScale: 0
   disableUIFunctionDuringTween: 0
+  disableUIFunctionAfterTween: 0
+  OnUITweenStarted:
+    m_PersistentCalls:
+      m_Calls: []
+  OnUITweenFinished:
+    m_PersistentCalls:
+      m_Calls: []
   expandValue: 0.25
 --- !u!1 &2553152343374598840
 GameObject:
@@ -58731,6 +59552,13 @@ MonoBehaviour:
   tweenAutoStartDelay: 0
   isIndependentTimeScale: 0
   disableUIFunctionDuringTween: 0
+  disableUIFunctionAfterTween: 0
+  OnUITweenStarted:
+    m_PersistentCalls:
+      m_Calls: []
+  OnUITweenFinished:
+    m_PersistentCalls:
+      m_Calls: []
   expandValue: 0.25
 --- !u!1 &2553152343384237830
 GameObject:
@@ -58985,6 +59813,9 @@ MonoBehaviour:
   OnTileMenuOpened:
     m_PersistentCalls:
       m_Calls: []
+  OnTileMenuClosed:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &2553152343384237825
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -59126,7 +59957,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   disableSaveLoadForThisSaveable: 0
-  UUID: 7b679206-40d6-4e56-93fc-bcfce63534fa
+  UUID: e569b5a6-b42c-44a7-9bf5-1d88eabad7a1
 --- !u!1 &2553152343384302786
 GameObject:
   m_ObjectHideFlags: 0
@@ -59280,6 +60111,13 @@ MonoBehaviour:
   tweenAutoStartDelay: 0
   isIndependentTimeScale: 0
   disableUIFunctionDuringTween: 0
+  disableUIFunctionAfterTween: 0
+  OnUITweenStarted:
+    m_PersistentCalls:
+      m_Calls: []
+  OnUITweenFinished:
+    m_PersistentCalls:
+      m_Calls: []
   expandValue: 0.25
 --- !u!1 &2553152343386460263
 GameObject:
@@ -59534,6 +60372,9 @@ MonoBehaviour:
   OnTileMenuOpened:
     m_PersistentCalls:
       m_Calls: []
+  OnTileMenuClosed:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &2553152343386460258
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -59675,7 +60516,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   disableSaveLoadForThisSaveable: 0
-  UUID: 1f0acb9f-56c2-4f62-bac7-9590c14c0311
+  UUID: 87848b03-3eaa-46f8-8a60-f44dc5b303d6
 --- !u!1 &2553152343389297739
 GameObject:
   m_ObjectHideFlags: 0
@@ -60144,6 +60985,9 @@ MonoBehaviour:
   OnTileMenuOpened:
     m_PersistentCalls:
       m_Calls: []
+  OnTileMenuClosed:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &2553152343394597284
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -60285,7 +61129,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   disableSaveLoadForThisSaveable: 0
-  UUID: da4e30c4-8549-4fa3-bdee-ef9f95fdd72b
+  UUID: 47715c53-5f4c-41d6-a71f-aea55b2575aa
 --- !u!1 &2553152343398553896
 GameObject:
   m_ObjectHideFlags: 0
@@ -61229,6 +62073,13 @@ MonoBehaviour:
   tweenAutoStartDelay: 0
   isIndependentTimeScale: 0
   disableUIFunctionDuringTween: 0
+  disableUIFunctionAfterTween: 0
+  OnUITweenStarted:
+    m_PersistentCalls:
+      m_Calls: []
+  OnUITweenFinished:
+    m_PersistentCalls:
+      m_Calls: []
   expandValue: 0.25
 --- !u!1 &2553152343454533877
 GameObject:
@@ -61383,6 +62234,13 @@ MonoBehaviour:
   tweenAutoStartDelay: 0
   isIndependentTimeScale: 0
   disableUIFunctionDuringTween: 0
+  disableUIFunctionAfterTween: 0
+  OnUITweenStarted:
+    m_PersistentCalls:
+      m_Calls: []
+  OnUITweenFinished:
+    m_PersistentCalls:
+      m_Calls: []
   expandValue: 0.25
 --- !u!1 &2553152343459635944
 GameObject:
@@ -61907,6 +62765,9 @@ MonoBehaviour:
   OnTileMenuOpened:
     m_PersistentCalls:
       m_Calls: []
+  OnTileMenuClosed:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &2553152343463500907
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -62048,7 +62909,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   disableSaveLoadForThisSaveable: 0
-  UUID: d18f1604-b2c3-48d9-9fa1-c5ffa3eb5d24
+  UUID: 78cff087-7cda-4e44-bced-15f5f9661969
 --- !u!1 &2553152343463555110
 GameObject:
   m_ObjectHideFlags: 0
@@ -62506,6 +63367,13 @@ MonoBehaviour:
   tweenAutoStartDelay: 0
   isIndependentTimeScale: 0
   disableUIFunctionDuringTween: 0
+  disableUIFunctionAfterTween: 0
+  OnUITweenStarted:
+    m_PersistentCalls:
+      m_Calls: []
+  OnUITweenFinished:
+    m_PersistentCalls:
+      m_Calls: []
   expandValue: 0.25
 --- !u!1 &2553152343479117791
 GameObject:
@@ -63001,6 +63869,13 @@ MonoBehaviour:
   tweenAutoStartDelay: 0
   isIndependentTimeScale: 0
   disableUIFunctionDuringTween: 0
+  disableUIFunctionAfterTween: 0
+  OnUITweenStarted:
+    m_PersistentCalls:
+      m_Calls: []
+  OnUITweenFinished:
+    m_PersistentCalls:
+      m_Calls: []
   expandValue: 0.25
 --- !u!1 &2553152343504706467
 GameObject:
@@ -63474,6 +64349,13 @@ MonoBehaviour:
   tweenAutoStartDelay: 0
   isIndependentTimeScale: 0
   disableUIFunctionDuringTween: 0
+  disableUIFunctionAfterTween: 0
+  OnUITweenStarted:
+    m_PersistentCalls:
+      m_Calls: []
+  OnUITweenFinished:
+    m_PersistentCalls:
+      m_Calls: []
   expandValue: 0.25
 --- !u!1 &2553152343514490209
 GameObject:
@@ -64226,6 +65108,9 @@ MonoBehaviour:
   OnTileMenuOpened:
     m_PersistentCalls:
       m_Calls: []
+  OnTileMenuClosed:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &2553152343522702298
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -64367,7 +65252,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   disableSaveLoadForThisSaveable: 0
-  UUID: e317b3c8-4ccf-4160-9c74-50b9327c0acd
+  UUID: be42f7e5-e02d-48d9-a100-45e0a0d69893
 --- !u!1 &2553152343530386302
 GameObject:
   m_ObjectHideFlags: 0
@@ -64916,6 +65801,13 @@ MonoBehaviour:
   tweenAutoStartDelay: 0
   isIndependentTimeScale: 0
   disableUIFunctionDuringTween: 0
+  disableUIFunctionAfterTween: 0
+  OnUITweenStarted:
+    m_PersistentCalls:
+      m_Calls: []
+  OnUITweenFinished:
+    m_PersistentCalls:
+      m_Calls: []
   expandValue: 0.25
 --- !u!1 &2553152343551066769
 GameObject:
@@ -65305,6 +66197,9 @@ MonoBehaviour:
   OnTileMenuOpened:
     m_PersistentCalls:
       m_Calls: []
+  OnTileMenuClosed:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &2553152343556766930
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -65446,7 +66341,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   disableSaveLoadForThisSaveable: 0
-  UUID: 1008b9e1-29ff-4f45-ab8e-85b45b6420e8
+  UUID: f6db329d-4a50-4847-8151-70d220a72580
 --- !u!1 &2553152343560746542
 GameObject:
   m_ObjectHideFlags: 0
@@ -65624,6 +66519,13 @@ MonoBehaviour:
   tweenAutoStartDelay: 0
   isIndependentTimeScale: 0
   disableUIFunctionDuringTween: 0
+  disableUIFunctionAfterTween: 0
+  OnUITweenStarted:
+    m_PersistentCalls:
+      m_Calls: []
+  OnUITweenFinished:
+    m_PersistentCalls:
+      m_Calls: []
   expandValue: 0.25
 --- !u!1 &2553152343561285494
 GameObject:

@@ -4,6 +4,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Diagnostics.CodeAnalysis;
+using System.Threading;
+
+
 
 #if UNITY_EDITOR
 using UnityEditor;
@@ -15,7 +19,9 @@ namespace TeamMAsTD
     [ExecuteInEditMode]
     public class Path : MonoBehaviour
     {
-        [SerializeField] private TDGrid gridPathOn;
+        [SerializeField] 
+        [DisallowNull] 
+        private TDGrid gridPathOn;
 
         private TDGrid currentGridPathOn;
 
@@ -27,7 +33,7 @@ namespace TeamMAsTD
 
         [SerializeField] [HideInInspector] private Sprite dirtTileSprite;
 
-        [SerializeField][HideInInspector] private Sprite defaultTileSprite;
+        [SerializeField] [HideInInspector] private Sprite defaultTileSprite;
 
         [field: Space()]
 
@@ -112,17 +118,19 @@ namespace TeamMAsTD
 
         }
 
-#if UNITY_EDITOR
         private void OnValidate()
         {
-            if(gridPathOn != null && gridPathOn != currentGridPathOn)
+
+#if UNITY_EDITOR
+
+            if (gridPathOn != null && gridPathOn != currentGridPathOn)
             {
                 pathGenerator.SetGridPathOn(gridPathOn);
 
                 currentGridPathOn = gridPathOn;
             }
-        }
 #endif
+        }
 
         private bool CanUpdatePath()
         {
@@ -196,9 +204,9 @@ namespace TeamMAsTD
 
             if (tileSpriteRenderer.sprite != null && tileSpriteRenderer.sprite.name.Contains("Path"))
             {
-                if (gridPathOn)
+                if (currentGridPathOn)
                 {
-                    tileSpriteRenderer.sprite = gridPathOn.unOccupiedDirtTileSprite;
+                    tileSpriteRenderer.sprite = currentGridPathOn.unOccupiedDirtTileSprite;
                 }
             }
 
@@ -213,7 +221,7 @@ namespace TeamMAsTD
 
         private void AutoGeneratePath()
         {
-            if (pathGenerator == null) return;
+            if (pathGenerator == null || !currentGridPathOn) return;
 
             isGeneratingPath = true;
 
@@ -288,9 +296,9 @@ namespace TeamMAsTD
         {
             if (showDebugLog) Debug.Log("Clearing path started");
 
-            if (gridPathOn)
+            if (currentGridPathOn)
             {
-                Tile[] gridArr = gridPathOn.GetGridFlattened2DArray();
+                Tile[] gridArr = currentGridPathOn.GetGridFlattened2DArray();
 
                 if (gridArr != null && gridArr.Length > 0)
                 {
@@ -352,12 +360,19 @@ namespace TeamMAsTD
 
         public TDGrid GetGridPathOn()
         {
-            return gridPathOn;
+            return currentGridPathOn;
+        }
+
+        public PathGenerator GetPathGenerator()
+        {
+            return pathGenerator;
         }
 
         public void SetGridPathOn(TDGrid grid)
         {
             gridPathOn = grid;
+
+            currentGridPathOn = grid;
 
             if(pathGenerator != null) pathGenerator.SetGridPathOn(grid);
         }
@@ -367,11 +382,24 @@ namespace TeamMAsTD
             pathTileSprite = pathSprite;
         }
 
-        public void AutoGeneratePath(bool updatePathAfter = true)
+        public void AutoGeneratePath(Tile startTile, Tile endTile, List<Tile> middleTiles, bool updatePathAfter = true)
         {
+            if (!currentGridPathOn) return;
+
+            if (!startTile || !endTile) return;
+
+            if(pathGenerator == null)
+            {
+                pathGenerator = new PathGenerator(currentGridPathOn, startTile, middleTiles, endTile);
+            }
+            else
+            {
+                pathGenerator.PathGeneratorInit(currentGridPathOn, startTile, middleTiles, endTile);
+            }
+
             AutoGeneratePath();
 
-            if(updatePathAfter) UpdatePath();
+            if (updatePathAfter) UpdatePath();
         }
 
     //EDITOR.............................................................................

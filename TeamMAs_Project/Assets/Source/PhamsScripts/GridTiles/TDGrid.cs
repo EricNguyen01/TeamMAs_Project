@@ -5,6 +5,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using System.Diagnostics.CodeAnalysis;
+
+
 
 #if UNITY_EDITOR
 using UnityEditor;
@@ -25,7 +28,9 @@ namespace TeamMAsTD
         [field: SerializeField] [field: Min(1.0f)] 
         public float tileSize { get; private set; } = 1.0f;//size of a square tile in the grid (e.g 1x1)
 
-        [SerializeField] private Tile tilePrefabToPopulate;//prefab with tile script attached
+        [SerializeField] 
+        [DisallowNull]
+        private Tile tilePrefabToPopulate;//prefab with tile script attached
 
         [SerializeField] 
         [HideInInspector] 
@@ -57,6 +62,10 @@ namespace TeamMAsTD
 
         [SerializeField] public UnityEvent<PlantUnit> OnFirstPlantPlantedOnGrid;
 
+        [Space]
+
+        [SerializeField] private bool showDebugLog = true;
+
         [HideInInspector] private List<Tile> unplantedTileList = new List<Tile>();
 
         private Path pathOfGrid;
@@ -69,6 +78,8 @@ namespace TeamMAsTD
         private bool alreadyHasDandelionOnGrid = false;//for debugging
 
         private bool alreadyHasCloverOnGrid = false;
+
+        private bool isRandomizingGrid = false;
 
         [System.Serializable]
         private class GridSave
@@ -94,19 +105,22 @@ namespace TeamMAsTD
 
             pathOfGrid = CreatePathObjectIfNone();
 
-            WaveSpawner.OnWaveStarted += SpawnPlantOnWaveStarted;
+            if (!Application.isEditor) showDebugLog = false;
+
+            if (Application.isPlaying) WaveSpawner.OnWaveStarted += SpawnPlantOnWaveStarted;
         }
 
         private void OnDisable()
         {
-            WaveSpawner.OnWaveStarted -= SpawnPlantOnWaveStarted;
+            if (Application.isPlaying) WaveSpawner.OnWaveStarted -= SpawnPlantOnWaveStarted;
         }
 
         private void Start()
         {
-            if (!SaveLoadHandler.HasSavedData())
+            if (Application.isPlaying && !SaveLoadHandler.HasSavedData())
             {
-                //TO-DO: Add function to randomize blockers and path on the grid here if no save data existed (new game)...
+                //TODO: Remove comment of func below when it's ready
+                //StartCoroutine(RandomizedGridLayoutAndSaveLayoutOnStart());
             }
         }
 
@@ -239,17 +253,17 @@ namespace TeamMAsTD
         {
             if (tilePrefabToPopulate == null)
             {
-                Debug.LogError("Tile Prefab is missing on Grid object: " + name + ". Disabling grid!");
+                if(showDebugLog) Debug.LogError("Tile Prefab is missing on Grid object: " + name + ". Disabling grid!");
                 return false;
             }
             if(gridWidth < 1 && gridHeight <= 0)
             {
-                Debug.LogError("Please provide a valid row and column number input!");
+                if (showDebugLog) Debug.LogError("Please provide a valid row and column number input!");
                 return false;
             }
             if(tileSize <= 0)
             {
-                Debug.LogError("Tile size cannot be smaller or equal 0!");
+                if (showDebugLog) Debug.LogError("Tile size cannot be smaller or equal 0!");
                 return false;
             }
 
@@ -269,10 +283,9 @@ namespace TeamMAsTD
         {
             if (!CanGenerateGrid()) return false;
 
-            if (gridArray == null)
-            {
-                gridArray = new Tile[gridWidth * gridHeight];//initialize grid array with length as the total tiles in grid
-            }
+            if(gridArray != null && gridArray.Length > 0) ResetGrid();
+
+            gridArray = new Tile[gridWidth * gridHeight];//initialize grid array with length as the total tiles in grid
 
             int index = 0;//index of the 1D flattened grid from 2D array 
 
@@ -327,6 +340,8 @@ namespace TeamMAsTD
 
         private void SpawnPlantOnWaveStarted(WaveSpawner waveSpawner, int waveNum)
         {
+            if (gridArray == null || gridArray.Length == 0) return;
+
             GetUnplantedTiles();
 
             if (unplantedTileList == null || unplantedTileList.Count == 0) return;
@@ -413,13 +428,21 @@ namespace TeamMAsTD
 
 #if UNITY_EDITOR
 
-            if (!occupiedTileSprite) AssetDatabase.LoadAssetAtPath<Sprite>("Assets/Art/Sprites/Rocks.png");
+            if (!Application.isEditor) return;
 
-            if(!occupiedTileSprite) AssetDatabase.LoadAssetAtPath<Sprite>("Packages/com.unity.2d.sprite/Editor/ObjectMenuCreation/DefaultAssets/Textures/SquareWithBorder.png");
+            if (Application.isPlaying) return;
 
-            if (!unOccupiedDirtTileSprite) AssetDatabase.LoadAssetAtPath<Sprite>("Assets/Art/Sprites/Dirt.png");
+            if (!occupiedTileSprite) 
+                occupiedTileSprite = AssetDatabase.LoadAssetAtPath<Sprite>("Assets/Art/Sprites/Rocks.png");
 
-            if(!unOccupiedDirtTileSprite) AssetDatabase.LoadAssetAtPath<Sprite>("Packages/com.unity.2d.sprite/Editor/ObjectMenuCreation/DefaultAssets/Textures/SquareWithBorder.png");
+            if(!occupiedTileSprite) 
+                occupiedTileSprite = AssetDatabase.LoadAssetAtPath<Sprite>("Packages/com.unity.2d.sprite/Editor/ObjectMenuCreation/DefaultAssets/Textures/SquareWithBorder.png");
+
+            if (!unOccupiedDirtTileSprite)
+                unOccupiedDirtTileSprite = AssetDatabase.LoadAssetAtPath<Sprite>("Assets/Art/Sprites/Dirt.png");
+
+            if(!unOccupiedDirtTileSprite)
+                unOccupiedDirtTileSprite = AssetDatabase.LoadAssetAtPath<Sprite>("Packages/com.unity.2d.sprite/Editor/ObjectMenuCreation/DefaultAssets/Textures/SquareWithBorder.png");
 #endif
         }
 
@@ -463,15 +486,23 @@ namespace TeamMAsTD
             return path;
         }
 
-        private void ProcedurallyRandomizedGrid()
+        private int iterationCount = 0;//to use for path gen iteration counts control inside the below function
+        private void ProcedurallyRandomizedGridLayout()//should only call after a grid has been generated and is existing in the scene
         {
-            ResetGrid();
+            if (isRandomizingGrid) return;
 
-            if (!CreateGrid()) return;
+            isRandomizingGrid = true;
 
-            if(tileSpritesList == null || tileSpritesList.Count == 0) GetAllSpritesFromChildrenTiles();
+            if (pathOfGrid == null) CreatePathObjectIfNone();
 
-            foreach(Sprite tileSpr in tileSpritesList)
+            if (gridArray == null || gridArray.Length == 0)
+            {
+                if (!CreateGrid()) return;
+            }
+
+            if (tileSpritesList == null || tileSpritesList.Count == 0) GetAllSpritesFromChildrenTiles();
+
+            foreach (Sprite tileSpr in tileSpritesList)
             {
                 if (tileSpr.name.Contains("Path"))
                 {
@@ -487,14 +518,11 @@ namespace TeamMAsTD
 
             int[] blockersSpawnChanceArr = new int[100];
 
-            int blockersCount = 0;
-
             //load blockersSpawnChanceArr
-            for(int i = 0; i < blockersSpawnChanceArr.Length; i++)
+            for (int i = 0; i < blockersSpawnChanceArr.Length; i++)
             {
-                if(blockersCount < 25) blockersSpawnChanceArr[i] = 0;
-
-                blockersSpawnChanceArr[i] = 1;
+                if (i < 20) blockersSpawnChanceArr[i] = 0;
+                else blockersSpawnChanceArr[i] = 1;
             }
 
             int previousIndex = 0;
@@ -502,20 +530,21 @@ namespace TeamMAsTD
             int currentIndex = 0;
 
             //traverse grid and set random blockers
-            for(int i = 0; i < gridArray.Length; i++)
+            for (int i = 0; i < gridArray.Length; i++)
             {
                 int count = 0;
 
-                while(currentIndex == previousIndex && count <= 5)
+                while (currentIndex == previousIndex && count <= 10)
                 {
                     currentIndex = Random.Range(0, blockersSpawnChanceArr.Length);
 
                     count++;
                 }
 
+                //above loop done -> valid current index should be found -> set previous index as current index to prep for next loop
                 previousIndex = currentIndex;
 
-                if(currentIndex == 0)
+                if (blockersSpawnChanceArr[currentIndex] == 0)
                 {
                     if (!gridArray[i].isOccupied) gridArray[i].isOccupied = true;
 
@@ -523,7 +552,7 @@ namespace TeamMAsTD
 
                     if (occupiedTileSprite) gridArray[i].spriteRenderer.sprite = occupiedTileSprite;
                 }
-                else if(currentIndex == 1)
+                else if (blockersSpawnChanceArr[currentIndex] == 1)
                 {
                     if (gridArray[i].isOccupied) gridArray[i].isOccupied = false;
 
@@ -532,6 +561,85 @@ namespace TeamMAsTD
                     if (unOccupiedDirtTileSprite) gridArray[i].spriteRenderer.sprite = unOccupiedDirtTileSprite;
                 }
             }
+
+            int tilesBetweenMidpoints = 2;
+
+            if (gridWidth > 10 && ((gridWidth - 10) % 5) == 0) tilesBetweenMidpoints = gridWidth / 5;
+
+            Tile startTile = null;
+
+            Tile endTile = null;
+
+            List<Tile> middleTiles = new List<Tile>();
+
+            startTile = GetTileFromTileCoordinate(new Vector2Int(0, Random.Range(0, gridHeight)));
+
+            if (startTile.isOccupied) startTile.isOccupied = false;
+
+            endTile = GetTileFromTileCoordinate(new Vector2Int(gridWidth - 1, Random.Range(0, gridHeight)));
+
+            if (endTile.isOccupied) endTile.isOccupied = false;
+
+            int tilesSkipped = 0;
+
+            for (int i = 0; i < gridWidth; i++)
+            {
+                if (i == 0 || i == gridWidth - 1) continue;
+
+                if (tilesSkipped == tilesBetweenMidpoints)
+                {
+                    Tile randTileOnRow = GetTileFromTileCoordinate(new Vector2Int(i, Random.Range(0, gridHeight)));
+
+                    if (randTileOnRow.isOccupied) randTileOnRow.isOccupied = false;
+
+                    if (!middleTiles.Contains(randTileOnRow)) middleTiles.Add(randTileOnRow);
+
+                    tilesSkipped = 0;
+
+                    continue;
+                }
+
+                tilesSkipped++;
+            }
+
+            pathOfGrid.AutoGeneratePath(startTile, endTile, middleTiles);
+
+            PathGenerator pathGenerator = pathOfGrid.GetPathGenerator();
+
+            //incursively re-randomizing grid layout in case the first iteration doesn't work 
+            //to avoid overflow, number of recursions is controlled by "iterationCount"
+            if (!pathGenerator.couldCompletePath && iterationCount < 10)
+            {
+                //set isRandomizingGrid status to false so we can call this func within itself again
+                //on next recursive call below, this func gonna set isRandomzingGrid to true again
+                isRandomizingGrid = false;
+
+                ProcedurallyRandomizedGridLayout();
+
+                iterationCount++;
+
+                return;
+            }
+
+            if (showDebugLog) Debug.Log("Grid Randomization Finished! Iteration Counts: " + iterationCount);
+
+            iterationCount = 0;
+
+            isRandomizingGrid = false;
+        }
+
+        private WaitForFixedUpdate waitForFixedUpdate = new WaitForFixedUpdate();
+        private IEnumerator RandomizedGridLayoutAndSaveLayoutOnStart()
+        {
+            if (isRandomizingGrid) yield break;
+
+            yield return waitForFixedUpdate;
+
+            ProcedurallyRandomizedGridLayout();
+
+            yield return waitForFixedUpdate;
+
+            //TODO: perform saving the newly generated grid layout below:
         }
 
         //ISaveable interface implementations for saving/loading.............................................................................
@@ -578,6 +686,8 @@ namespace TeamMAsTD
             {
                 DrawDefaultInspector();
 
+                EditorGUILayout.Space(12);
+
                 EditorGUILayout.HelpBox(
                     "Generating the grid removes all of its current children Tiles and makes new ones based on the current grid's settings. " +
                     "New children tiles have default Tile settings", MessageType.Info);
@@ -586,15 +696,66 @@ namespace TeamMAsTD
                 //Clicking the button regenerates the grid based on current grid settings.
                 //Regenerate grid deletes old tiles and create new children tiles with default values.
                 //Buttons are disabled during runtime.
-                using (new EditorGUI.DisabledGroupScope(Application.isPlaying))
+                using (new EditorGUI.DisabledGroupScope(Application.isPlaying || grid.isRandomizingGrid))
                 {
                     if (GUILayout.Button("Generate Grid"))//On Generate Grid button pressed:...
                     {
                         if (!grid.CanGenerateGrid()) return;//if can not generate grid->do nothing
 
+                        float timeStart = Time.realtimeSinceStartup;
+
+                        float timeEnd = 0.0f;
+
+                        float timeTookSecs = 0.0f;
+
+                        float timeTookMiliSecs = 0.0f;
+
                         grid.ResetGrid();
 
                         grid.CreateGrid();
+
+                        grid.ProcedurallyRandomizedGridLayout();
+
+                        timeEnd = Time.realtimeSinceStartup;
+
+                        timeTookSecs = timeEnd - timeStart;
+
+                        timeTookMiliSecs = timeTookSecs * 1000.0f;
+
+                        if (grid.showDebugLog) Debug.Log("Grid Generation Completed! Time Took: " +
+                                                    timeTookSecs.ToString() +
+                                                    "s | " + timeTookMiliSecs.ToString() + "ms");
+                    }
+                }
+
+                EditorGUILayout.Space();
+
+                using (new EditorGUI.DisabledGroupScope(Application.isPlaying || 
+                                                        grid.gridArray == null || 
+                                                        grid.gridArray.Length == 0 || 
+                                                        grid.isRandomizingGrid))
+                {
+                    if (GUILayout.Button("Randomize Grid Layout"))
+                    {
+                        float timeStart = Time.realtimeSinceStartup;
+
+                        float timeEnd = 0.0f;
+
+                        float timeTookSecs = 0.0f;
+
+                        float timeTookMiliSecs = 0.0f;
+
+                        grid.ProcedurallyRandomizedGridLayout();
+
+                        timeEnd = Time.realtimeSinceStartup;
+
+                        timeTookSecs = timeEnd - timeStart;
+
+                        timeTookMiliSecs = timeTookSecs * 1000.0f;
+
+                        if (grid.showDebugLog) Debug.Log("Grid Layout Randomization Time Took: " +
+                                                    timeTookSecs.ToString() +
+                                                    "s | " + timeTookMiliSecs.ToString() + "ms");
                     }
                 }
             }

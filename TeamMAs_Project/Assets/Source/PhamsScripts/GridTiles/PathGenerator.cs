@@ -48,7 +48,7 @@ namespace TeamMAsTD
 
         private bool isFindingPathWithMultipleMidTiles = false;
 
-        private bool couldCompletePath = false;
+        public bool couldCompletePath { get; private set; } = false;
 
         [field: Header("Path Generator Debug")]
 
@@ -149,7 +149,7 @@ namespace TeamMAsTD
             gridPathOn = grid;
         }
 
-        private bool CanGeneratePath()
+        public bool CanGeneratePath()
         {
             bool canGeneratePath = true;
 
