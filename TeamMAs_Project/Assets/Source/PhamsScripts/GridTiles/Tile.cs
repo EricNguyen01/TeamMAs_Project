@@ -177,9 +177,14 @@ namespace TeamMAsTD
         {
             if(!spriteRenderer) spriteRenderer = GetComponent<SpriteRenderer>();
 
-            if(this is ISaveable) ISaveable.GenerateSaveableComponentIfNull(this);
+            //if(this is ISaveable) ISaveable.GenerateSaveableComponentIfNull(this);
 
             if (!tileSaveable) TryGetComponent<Saveable>(out tileSaveable);
+
+            if(!tileSaveable && Application.isEditor && !Application.isPlaying)
+            {
+                tileSaveable = gameObject.AddComponent<Saveable>();
+            }
         }
 
 #if UNITY_EDITOR
@@ -570,6 +575,8 @@ namespace TeamMAsTD
                                                      transform.position, 
                                                      UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
 
+            //Debug.Log("Tile: " + name + "is being saved!");
+
             return tileSaveData;
         }
 
@@ -582,7 +589,10 @@ namespace TeamMAsTD
             if (savedTile.plantSOPlantedStaticID == null ||
                 string.IsNullOrEmpty(savedTile.plantSOPlantedStaticID) ||
                 string.IsNullOrWhiteSpace(savedTile.plantSOPlantedStaticID) ||
-                savedTile.plantSOPlantedStaticID == "") return;
+                savedTile.plantSOPlantedStaticID == "")
+            {
+                goto OtherTileAttributes;
+            }
 
             PlantUnitSO[] plantSOArr = Resources.LoadAll<PlantUnitSO>("ScriptableObjects/PlantUnitSO");
 
@@ -591,7 +601,7 @@ namespace TeamMAsTD
                 Debug.LogError("Trying to load plant SO from Resources/PlantUnitSO folder but none was found!\n" +
                 "Please make sure that all plant SO must be in Resources/PlantUnitSO folder.");
 
-                return;
+                goto OtherTileAttributes;
             }
 
             string plantSOPlantedStaticID = savedTile.plantSOPlantedStaticID;
@@ -610,7 +620,9 @@ namespace TeamMAsTD
                 break;
             }
 
-            plantUnitOnTile.plantWaterUsageSystem.SetWaterBarsRemainingDirectly(savedTile.currentPlantWater);
+            if(plantUnitOnTile) plantUnitOnTile.plantWaterUsageSystem.SetWaterBarsRemainingDirectly(savedTile.currentPlantWater);
+            
+        OtherTileAttributes: //Label for the goto statements in the lines above
 
             if(isOccupied != savedTile.isOccupied) isOccupied = savedTile.isOccupied;
 
@@ -629,6 +641,8 @@ namespace TeamMAsTD
 
             if (spriteRenderer.sprite == null || spriteRenderer.sprite.name != savedTile.tileSpriteName)
             {
+                if (!gridParent || gridParent.tileSpritesList == null || gridParent.tileSpritesList.Count == 0) return;
+
                 for (int i = 0; i < gridParent.tileSpritesList.Count; i++)
                 {
                     Sprite sprite = gridParent.tileSpritesList[i];

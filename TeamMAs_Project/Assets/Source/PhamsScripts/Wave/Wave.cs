@@ -328,7 +328,7 @@ namespace TeamMAsTD
                 if(waveSpawnerOfThisWave != null && waveSpawnerOfThisWave.showDebugLog)
                 {
                     Debug.Log("Visitor: " + visitorSO.displayName + " successfully spawned in wave " + waveSO.name +
-                ". Remaining Visitors: " + totalVisitorsToSpawnList.Count);
+                              ". Remaining Visitors: " + totalVisitorsToSpawnList.Count);
                 }
             }
         }

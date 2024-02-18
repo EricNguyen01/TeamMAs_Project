@@ -7,8 +7,6 @@ using UnityEngine;
 using UnityEngine.Events;
 using System.Diagnostics.CodeAnalysis;
 
-
-
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
@@ -54,6 +52,11 @@ namespace TeamMAsTD
         [ReadOnlyInspector]
         private ReadOnlyGridArray readOnlyGridArray;
 
+        [field: SerializeField]
+        [field: HideInInspector]
+        //this dict below is for path save/load (see Path.cs file)
+        public Dictionary<string, Tile> tileNameToTileDict { get; private set; } = new Dictionary<string, Tile>();
+
         [Space(15.0f)]
 
         [SerializeField] private UnityEvent OnFirstDandelionPlantedOnGrid;
@@ -97,13 +100,18 @@ namespace TeamMAsTD
 
         //UNITY CALLBACKS
 
-        private void OnEnable()
+        private void Awake()
         {
-            readOnlyGridArray = new ReadOnlyGridArray(gridArray);
-
-            GetAllSpritesFromChildrenTiles();
+            if(readOnlyGridArray == null) readOnlyGridArray = new ReadOnlyGridArray(gridArray);
 
             pathOfGrid = CreatePathObjectIfNone();
+        }
+
+        private void OnEnable()
+        {
+            SetTileNameToTileDictionary();
+
+            GetAllSpritesFromChildrenTiles();
 
             if (!Application.isEditor) showDebugLog = false;
 
@@ -117,10 +125,12 @@ namespace TeamMAsTD
 
         private void Start()
         {
+            //only generate new random grid layout on new game started (no save files)
+            //if there's a save exists meaning that a grid layout has already been generated and will be loaded and overriding the current grid 
+            //on game scene entered
             if (Application.isPlaying && !SaveLoadHandler.HasSavedData())
             {
-                //TODO: Remove comment of func below when it's ready
-                //StartCoroutine(RandomizedGridLayoutAndSaveLayoutOnStart());
+                StartCoroutine(RandomizedGridLayoutAndSaveLayoutOnStart());
             }
         }
 
@@ -279,11 +289,11 @@ namespace TeamMAsTD
             return new Vector2(x, y);
         }
 
-        private bool CreateGrid()//grid-generation method
+        private bool CreateGrid(bool generateRandomGridLayout = false)//grid-generation method
         {
             if (!CanGenerateGrid()) return false;
 
-            if(gridArray != null && gridArray.Length > 0) ResetGrid();
+            if (gridArray != null && gridArray.Length > 0) ResetGrid();
 
             gridArray = new Tile[gridWidth * gridHeight];//initialize grid array with length as the total tiles in grid
 
@@ -310,7 +320,31 @@ namespace TeamMAsTD
                 }
             }
 
+            if (generateRandomGridLayout)
+            {
+                try { ProcedurallyRandomizedGridLayout(); }
+                catch { throw; }
+            }
+
+            SetTileNameToTileDictionary();
+
             return true;
+        }
+
+        private void SetTileNameToTileDictionary()
+        {
+            if (gridArray == null || gridArray.Length == 0) return;
+
+            if (tileNameToTileDict == null) tileNameToTileDict = new Dictionary<string, Tile>();
+
+            if(tileNameToTileDict.Count > 0) tileNameToTileDict.Clear();
+
+            for (int i = 0; i < gridArray.Length; i++)
+            {
+                if (!gridArray[i]) continue;
+
+                tileNameToTileDict.TryAdd(gridArray[i].name, gridArray[i]);
+            }
         }
 
         //The function below destroys all current children tiles of this grid and reset the grid to null
@@ -625,6 +659,10 @@ namespace TeamMAsTD
 
             iterationCount = 0;
 
+            //save the newly generated random grid layout
+            //only save grid layout if is in playmode in case grid is randomly being generated outside of playmode
+            if(Application.isPlaying) SaveGridLayoutAfterRandomlyGenerated();
+
             isRandomizingGrid = false;
         }
 
@@ -636,13 +674,27 @@ namespace TeamMAsTD
             yield return waitForFixedUpdate;
 
             ProcedurallyRandomizedGridLayout();
-
-            yield return waitForFixedUpdate;
-
-            //TODO: perform saving the newly generated grid layout below:
         }
 
-        //ISaveable interface implementations for saving/loading.............................................................................
+        private void SaveGridLayoutAfterRandomlyGenerated()
+        {
+            if (!Application.isPlaying) return;
+
+            if(gridArray == null || gridArray.Length == 0) return;
+
+            if(showDebugLog) Debug.Log("Saving Randomly Generated Grid Layout!");
+
+            for(int i = 0; i < gridArray.Length; i++)
+            {
+                if (!gridArray[i]) continue;
+
+                SaveLoadHandler.SaveThisSaveableOnly(gridArray[i].GetTileSaveable());
+            }
+
+            SaveLoadHandler.SaveThisSaveableOnly(pathOfGrid.GetPathSaveable());
+        }
+
+        //ISaveable interface implementations for grid saving/loading.............................................................................
 
         public SaveDataSerializeBase SaveData(string saveName = "")
         {
@@ -712,9 +764,7 @@ namespace TeamMAsTD
 
                         grid.ResetGrid();
 
-                        grid.CreateGrid();
-
-                        grid.ProcedurallyRandomizedGridLayout();
+                        grid.CreateGrid(true);
 
                         timeEnd = Time.realtimeSinceStartup;
 

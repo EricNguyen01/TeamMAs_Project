@@ -5,7 +5,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Diagnostics.CodeAnalysis;
-using System.Threading;
+using TMPro.EditorUtilities;
 
 
 
@@ -17,7 +17,7 @@ namespace TeamMAsTD
 {
     [DisallowMultipleComponent]
     [ExecuteInEditMode]
-    public class Path : MonoBehaviour
+    public class Path : MonoBehaviour, ISaveable
     {
         [SerializeField] 
         [DisallowNull] 
@@ -35,11 +35,11 @@ namespace TeamMAsTD
 
         [SerializeField] [HideInInspector] private Sprite defaultTileSprite;
 
-        [field: Space()]
+        [Space()]
 
-        [field: Header("Set Path Manually")]
+        [Header("Set Path Manually")]
 
-        [field: SerializeField] private bool setPathManually = true;
+        [SerializeField] private bool setPathManually = true;
 
         [System.Serializable]
         private class OrderedPathTilesWrapper
@@ -59,6 +59,8 @@ namespace TeamMAsTD
         [DisableIf("setPathManually", false)]
         private OrderedPathTilesWrapper orderedPathTiles = new OrderedPathTilesWrapper();
 
+        private List<string> orderedPathTilesNames = new List<string>();//to use for save/load ordered path tiles list during runtime
+
         [Header("Auto Generate Path")]
 
         [SerializeField]
@@ -76,6 +78,19 @@ namespace TeamMAsTD
 
         private bool isUpdatingPath = false;
 
+        [System.Serializable]
+        private class PathSave
+        {
+            public List<string> savedPathTiles { get; private set; } = new List<string>();
+
+            public PathSave(List<string> pathTilesNameToSave)
+            {
+                if(pathTilesNameToSave != null && pathTilesNameToSave.Count > 0) savedPathTiles = pathTilesNameToSave;
+            }
+        }
+
+        private Saveable pathSaveable;
+
         //PRIVATES................................................................................
 
         private void Awake()
@@ -85,6 +100,13 @@ namespace TeamMAsTD
                 showDebugLog = false;
 
                 if (pathGenerator != null) pathGenerator.showDebug = false;
+            }
+
+            TryGetComponent<Saveable>(out pathSaveable);
+
+            if(!pathSaveable && Application.isEditor && !Application.isPlaying)
+            {
+                pathSaveable = gameObject.AddComponent<Saveable>();
             }
         }
 
@@ -157,6 +179,10 @@ namespace TeamMAsTD
         //also, stores new AI path tiles into the "oldOrderedPathTiles" which is used for comparison with the modified path in later updates.
         private void SetOrderedPathTilesList()
         {
+            Tile firstValidTile = null;
+
+            Tile lastValidTile = null;
+
             for (int i = 0; i < orderedPathTiles.orderedPathTiles.Count; i++)
             {
                 //if somewhere in the path has no tile->path is invalid
@@ -166,12 +192,18 @@ namespace TeamMAsTD
                     continue;
                 }
 
+                if(firstValidTile == null) firstValidTile = orderedPathTiles.orderedPathTiles[i];
+
+                lastValidTile = orderedPathTiles.orderedPathTiles[i];
+
                 //else if path is still valid, do the below:
 
                 //add new AI path tile to old ordered list
                 //no need to check for duplicates when adding to oldOrderedPathTiles list as
                 //either it is empty (1st update) or if not empty then we alr cleared the list on last update
+#if UNITY_EDITOR
                 oldOrderedPathTiles.Add(orderedPathTiles.orderedPathTiles[i]);
+#endif
 
                 //if (orderedPathTiles.orderedPathTiles[i].isOccupied) orderedPathTiles.orderedPathTiles[i].isOccupied = false;
 
@@ -183,6 +215,10 @@ namespace TeamMAsTD
 
                 SetPathTileSprite(orderedPathTiles.orderedPathTiles[i], tileSpriteRenderer);
             }
+
+            firstValidTile.isOccupied = true;
+
+            lastValidTile.isOccupied = true;
         }
 
         private void SetPathTileSprite(Tile tile, SpriteRenderer tileSpriteRenderer)
@@ -402,10 +438,73 @@ namespace TeamMAsTD
             if (updatePathAfter) UpdatePath();
         }
 
-    //EDITOR.............................................................................
+        //Path's ISaveable interface implementation for save/load................................................
 
-    //UNITY EDITOR only functions and class
-    #if UNITY_EDITOR
+        public SaveDataSerializeBase SaveData(string saveName = "")
+        {
+            SaveDataSerializeBase pathSaveData;
+
+            List<string> pathTilesName = new List<string>();
+
+            if(orderedPathTiles != null && orderedPathTiles.orderedPathTiles != null && orderedPathTiles.orderedPathTiles.Count > 0)
+            {
+                for(int i = 0; i < orderedPathTiles.orderedPathTiles.Count; i++)
+                {
+                    if (!orderedPathTiles.orderedPathTiles[i]) continue;
+
+                    if (!pathTilesName.Contains(orderedPathTiles.orderedPathTiles[i].name))
+                    {
+                        pathTilesName.Add(orderedPathTiles.orderedPathTiles[i].name);
+                    }
+                }
+            }
+
+            PathSave pathSave = new PathSave(pathTilesName);
+
+            pathSaveData = new SaveDataSerializeBase(pathSave,
+                                                     transform.position,
+                                                     UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
+
+            return pathSaveData;
+        }
+
+        public void LoadData(SaveDataSerializeBase savedDataToLoad)
+        {
+            if(savedDataToLoad == null) return;
+
+            if (!gridPathOn) return;
+
+            PathSave pathSavedData = (PathSave)savedDataToLoad.LoadSavedObject();
+
+            if(pathSavedData == null) return;
+
+            if (pathSavedData.savedPathTiles == null || pathSavedData.savedPathTiles.Count == 0) return;
+
+            List<Tile> savedOrderedPathTiles = new List<Tile>();
+
+            for(int i = 0; i < pathSavedData.savedPathTiles.Count; i++)
+            {
+                Tile tile = gridPathOn.tileNameToTileDict[pathSavedData.savedPathTiles[i]];
+
+                if(!savedOrderedPathTiles.Contains(tile)) savedOrderedPathTiles.Add(tile);  
+            }
+
+            ClearPath();
+
+            orderedPathTiles.orderedPathTiles.AddRange(savedOrderedPathTiles);
+
+            UpdatePath();
+        }
+
+        public Saveable GetPathSaveable()
+        {
+            return pathSaveable;
+        }
+
+        //EDITOR.............................................................................
+
+        //UNITY EDITOR only functions and class
+#if UNITY_EDITOR
         [CustomEditor(typeof(Path))]
         private class PathEditor : Editor
         {

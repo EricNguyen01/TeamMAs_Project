@@ -10,17 +10,37 @@ namespace TeamMAsTD
 {
     public class TheFingerController : MonoBehaviour, ISaveable
     {
+        [SerializeField] private float fingerPointerMoveSpeed = 4.6f;
+
         private bool alreadyDisplayed = false;
+
+        private bool useCustomControl = false;
+
+        private TDGrid grid;
+
+        private Tile unoccupiedTileToPointTo;
+
+        private Vector3 fingerStartPos;
+
+        private Animator fingerAnimator;
+
+        private bool hasAnimatorDisabled = false;
 
         private void Awake()
         {
             EnableOnDialogueEndEvent(true);
 
             DisableOnPlantPlantedOnTileEvent(true);
+
+            TryGetComponent<Animator>(out fingerAnimator);
+
+            fingerStartPos = transform.position;
         }
 
         private void Start()
         {
+            GetUnOccupiedTileToPointTo();
+
             StartCoroutine(InActiveFingerDelay(0.1f));
         }
 
@@ -29,6 +49,32 @@ namespace TeamMAsTD
             EnableOnDialogueEndEvent(false);
 
             DisableOnPlantPlantedOnTileEvent(false);
+        }
+
+        private void Update()
+        {
+            if (useCustomControl && unoccupiedTileToPointTo)
+            {
+                if (!hasAnimatorDisabled) DisableFingerAnimIfUsingCustomControl(true);
+            }
+            else if(!useCustomControl || !unoccupiedTileToPointTo)
+            {
+                if (hasAnimatorDisabled) DisableFingerAnimIfUsingCustomControl(false);
+            }
+
+            if (useCustomControl && unoccupiedTileToPointTo)
+            {
+                if(Vector2.Distance(transform.position, (Vector2)unoccupiedTileToPointTo.transform.position) >= 0.1f)
+                {
+                    transform.position = Vector2.MoveTowards(transform.position, 
+                                                             (Vector2)unoccupiedTileToPointTo.transform.position, 
+                                                             fingerPointerMoveSpeed * Time.deltaTime);
+                }
+                else
+                {
+                    transform.position = fingerStartPos;
+                }
+            }
         }
 
         public void EnableDragDropFinger(bool enabled)
@@ -98,7 +144,82 @@ namespace TeamMAsTD
 
             if (gameObject.activeInHierarchy) gameObject.SetActive(false);
 
+            transform.position = fingerStartPos;
+
             yield break;
+        }
+
+        private void GetUnOccupiedTileToPointTo()
+        {
+            grid = FindObjectOfType<TDGrid>();
+
+            Tile[] tilesInGrid = grid.GetGridFlattened2DArray();
+
+            List<Tile> validTilesToPointTo = new List<Tile>();
+
+            int start = 0;
+
+            int end = tilesInGrid.Length - 1;
+
+            if(tilesInGrid.Length >= 4)
+            {
+                start = Mathf.RoundToInt(0.2f * tilesInGrid.Length);
+
+                end = Mathf.RoundToInt(0.6f * tilesInGrid.Length);
+            }
+
+            for(int i = start; i <= end; i++)
+            {
+                if (!tilesInGrid[i]) continue;
+
+                if (tilesInGrid[i].isOccupied || tilesInGrid[i].is_AI_Path) continue;
+
+                if (tilesInGrid[i].tileNumInRow == 0 || tilesInGrid[i].tileNumInColumn == 0) continue;
+
+                if (tilesInGrid[i].tileNumInRow == grid.gridWidth - 1 || tilesInGrid[i].tileNumInColumn == grid.gridHeight - 1) continue;
+
+                if (!validTilesToPointTo.Contains(tilesInGrid[i])) validTilesToPointTo.Add(tilesInGrid[i]);
+            }
+
+            if(validTilesToPointTo.Count > 0)
+            {
+                unoccupiedTileToPointTo = validTilesToPointTo[Random.Range(0, validTilesToPointTo.Count)];
+
+                useCustomControl = true;
+            }
+        }
+
+        private void DisableFingerAnimIfUsingCustomControl(bool disabled)
+        {
+            if (!useCustomControl || !unoccupiedTileToPointTo) return;
+
+            if (!fingerAnimator)
+            {
+                TryGetComponent<Animator>(out fingerAnimator);
+            }
+
+            if (!fingerAnimator) return;
+
+            if (disabled)
+            {
+                fingerAnimator.StopPlayback();
+
+                fingerAnimator.enabled = false;
+
+                hasAnimatorDisabled = true;
+
+                transform.position = fingerStartPos;
+
+                return;
+            }
+
+            transform.position = fingerStartPos;
+
+            fingerAnimator.enabled = true;
+
+            fingerAnimator.StartPlayback();
+
+            hasAnimatorDisabled = false;
         }
 
         //ISaveable interface implementations......................................................................................................

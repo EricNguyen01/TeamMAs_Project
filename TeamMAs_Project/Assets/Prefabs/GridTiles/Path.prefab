@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3627200679659000370}
   - component: {fileID: 2472316380240103865}
+  - component: {fileID: 6685713585756470536}
   m_Layer: 0
   m_Name: Path
   m_TagString: Untagged
@@ -44,7 +45,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66088f4c0842cf8429662d2a65468faa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridPathOn: {fileID: 0}
   <pathTileSprite>k__BackingField: {fileID: 21300000, guid: c824952aa01b41b49b3010cb64b5c027, type: 3}
+  dirtTileSprite: {fileID: 21300000, guid: 3a2faae39b6a8934da39a5c077523714, type: 3}
+  defaultTileSprite: {fileID: 7482667652216324306, guid: db750325989564987a34393247d883b4, type: 3}
   setPathManually: 1
   orderedPathTiles:
     <orderedPathTiles>k__BackingField: []
@@ -53,7 +57,7 @@ MonoBehaviour:
     startTileOnPath: {fileID: 0}
     middleTilesOnPath: []
     endTileOnPath: {fileID: 0}
-    showDebug: 1
+    <showDebug>k__BackingField: 1
   showDebugLog: 0
   oldOrderedPathTiles:
   - {fileID: 0}
@@ -72,3 +76,17 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+--- !u!114 &6685713585756470536
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3155947010299232687}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1d44f2470f4e4e49812b1f2aff9f9a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  disableSaveLoadForThisSaveable: 0
+  UUID: 

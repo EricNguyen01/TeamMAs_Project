@@ -1791,6 +1791,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2057019669}
   - component: {fileID: 2057019668}
+  - component: {fileID: 2057019670}
   m_Layer: 0
   m_Name: Path
   m_TagString: Untagged
@@ -1810,7 +1811,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66088f4c0842cf8429662d2a65468faa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridPathOn: {fileID: 777042338}
   <pathTileSprite>k__BackingField: {fileID: 21300000, guid: c824952aa01b41b49b3010cb64b5c027, type: 3}
+  dirtTileSprite: {fileID: 21300000, guid: 3a2faae39b6a8934da39a5c077523714, type: 3}
+  defaultTileSprite: {fileID: 7482667652216324306, guid: db750325989564987a34393247d883b4, type: 3}
   setPathManually: 1
   orderedPathTiles:
     <orderedPathTiles>k__BackingField:
@@ -1831,11 +1835,11 @@ MonoBehaviour:
     - {fileID: 1727865214}
     - {fileID: 1444773939}
   pathGenerator:
-    gridPathOn: {fileID: 0}
+    gridPathOn: {fileID: 777042338}
     startTileOnPath: {fileID: 0}
     middleTilesOnPath: []
     endTileOnPath: {fileID: 0}
-    showDebug: 1
+    <showDebug>k__BackingField: 0
   showDebugLog: 0
   oldOrderedPathTiles:
   - {fileID: 456749763}
@@ -1869,6 +1873,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2057019670
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2057019667}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1d44f2470f4e4e49812b1f2aff9f9a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  disableSaveLoadForThisSaveable: 0
+  UUID: a2054342-6b32-4c3f-9044-609b99f675ad
 --- !u!114 &2103963343 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2553152343361016795, guid: 04f8e434277eae2489122c4f3907320b, type: 3}
@@ -2275,6 +2293,10 @@ PrefabInstance:
     - target: {fileID: 2553152341965145269, guid: 04f8e434277eae2489122c4f3907320b, type: 3}
       propertyPath: m_Name
       value: Grid
+      objectReference: {fileID: 0}
+    - target: {fileID: 2553152341965145270, guid: 04f8e434277eae2489122c4f3907320b, type: 3}
+      propertyPath: showDebugLog
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2553152341965145270, guid: 04f8e434277eae2489122c4f3907320b, type: 3}
       propertyPath: OnFirstCloverPlantedOnGrid.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -4253,6 +4275,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 935585455, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 935585456, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0.869
@@ -4319,6 +4345,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1487304376, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
       propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1628325843, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1628325844, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
@@ -6151,6 +6181,10 @@ PrefabInstance:
     - target: {fileID: 873135158756900366, guid: eed3eec48ff8cc6419e0115e87295bd1, type: 3}
       propertyPath: disableSaveLoadForThisSaveable
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1035298349390849072, guid: eed3eec48ff8cc6419e0115e87295bd1, type: 3}
+      propertyPath: fingerPointerMoveSpeed
+      value: 4.6
       objectReference: {fileID: 0}
     - target: {fileID: 8106917588667664480, guid: eed3eec48ff8cc6419e0115e87295bd1, type: 3}
       propertyPath: m_Name

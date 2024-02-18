@@ -6,7 +6,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Gameframe.SaveLoad;
-using System.Runtime.CompilerServices;
 
 #if UNITY_EDITOR
 using UnityEditor;
@@ -122,6 +121,8 @@ namespace TeamMAsTD
 
         public static bool SaveAllSaveables()
         {
+            if (!Application.isPlaying) return false;
+
             if (!saveLoadHandlerInstance && !saveLoadHandlerInstance.saveLoadManager) return false;
 
             if (!saveLoadHandlerInstance.enabled) return false;
@@ -179,6 +180,8 @@ namespace TeamMAsTD
 
         public static bool SaveThisSaveableOnly(Saveable saveable)
         {
+            if (!Application.isPlaying) return false;
+
             if (!saveLoadHandlerInstance && !saveLoadHandlerInstance.saveLoadManager) return false;
 
             if (!saveLoadHandlerInstance.enabled) return false;
@@ -249,6 +252,8 @@ namespace TeamMAsTD
 
         public static bool LoadToAllSaveables()
         {
+            if (!Application.isPlaying) return false;
+
             if (!saveLoadHandlerInstance && !saveLoadHandlerInstance.saveLoadManager) return false;
 
             if (!saveLoadHandlerInstance.enabled) return false;
@@ -293,6 +298,8 @@ namespace TeamMAsTD
 
         public static bool LoadThisSaveableOnly(Saveable saveable)
         {
+            if (!Application.isPlaying) return false;
+
             if (!saveLoadHandlerInstance && !saveLoadHandlerInstance.saveLoadManager) return false;
 
             if (!saveLoadHandlerInstance.enabled) return false;
