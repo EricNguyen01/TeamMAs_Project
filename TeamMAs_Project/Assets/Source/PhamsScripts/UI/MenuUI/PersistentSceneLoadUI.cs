@@ -179,12 +179,19 @@ namespace TeamMAsTD
 
             if (performAdditionalTransitionTime && loadingScreenSlider)
             {
-                loadingScreenSlider.DOValue(UnityEngine.Random.Range(0.3f, 0.4f), additionalTransitionTime).SetUpdate(true);
+                StartCoroutine(LoadingScreenBarSliderCoroutine(UnityEngine.Random.Range(0.23f, 0.35f), additionalTransitionTime));
+
+                //loadingScreenSlider.DOValue(UnityEngine.Random.Range(0.3f, 0.4f), additionalTransitionTime).SetUpdate(true);
             }
 
-            if (performAdditionalTransitionTime) yield return new WaitForSecondsRealtime(additionalTransitionTime);
+            //if (performAdditionalTransitionTime) yield return new WaitForSecondsRealtime(additionalTransitionTime);
 
-            if (loadingScreenSlider) loadingScreenSlider.DOValue(UnityEngine.Random.Range(0.8f, 0.9f), 0.8f).SetUpdate(true);
+            if (loadingScreenSlider) 
+            {
+                StartCoroutine(LoadingScreenBarSliderCoroutine(UnityEngine.Random.Range(0.8f, 0.9f), 1.0f));
+
+                //loadingScreenSlider.DOValue(UnityEngine.Random.Range(0.8f, 0.9f), 0.8f).SetUpdate(true); 
+            }
 
             if (!string.IsNullOrEmpty(sceneNameTo) &&
                 !string.IsNullOrWhiteSpace(sceneNameTo) &&
@@ -197,7 +204,7 @@ namespace TeamMAsTD
                 yield return SceneManager.LoadSceneAsync(sceneNumTo, LoadSceneMode.Single);
             }
 
-            yield return new WaitForSecondsRealtime(0.3f);
+            yield return new WaitForSecondsRealtime(0.1f);
 
             if (SaveLoadHandler.saveLoadHandlerInstance && SaveLoadHandler.HasSavedData() && loadSaveAfterScene)
             {
@@ -217,8 +224,18 @@ namespace TeamMAsTD
 
             if (loadingScreenSlider)
             {
-                if(performAdditionalTransitionTime) loadingScreenSlider.DOValue(1.0f, additionalTransitionTime).SetUpdate(true);
-                else yield return loadingScreenSlider.DOValue(1.0f, 0.35f).SetUpdate(true).WaitForCompletion();
+                if (performAdditionalTransitionTime)
+                {
+                    StartCoroutine(LoadingScreenBarSliderCoroutine(1.0f, additionalTransitionTime));
+
+                    //loadingScreenSlider.DOValue(1.0f, additionalTransitionTime).SetUpdate(true);
+                }
+                else 
+                {
+                    yield return StartCoroutine(LoadingScreenBarSliderCoroutine(1.0f, 0.35f));
+
+                    //yield return loadingScreenSlider.DOValue(1.0f, 0.35f).SetUpdate(true).WaitForCompletion(); 
+                }
             }
 
             if (performAdditionalTransitionTime) yield return new WaitForSecondsRealtime(additionalTransitionTime);
@@ -313,6 +330,13 @@ namespace TeamMAsTD
             }
 
             yield break;
+        }
+
+        private IEnumerator LoadingScreenBarSliderCoroutine(float endVal, float duration)
+        {
+            if (!loadingScreenSlider) yield break;
+
+            yield return loadingScreenSlider.DOValue(endVal, duration).SetUpdate(true);
         }
 
         public static void CreatePersistentSceneLoadUIInstance()
