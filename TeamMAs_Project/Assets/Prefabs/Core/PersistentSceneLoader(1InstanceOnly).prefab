@@ -96,6 +96,12 @@ MonoBehaviour:
   isIndependentTimeScale: 1
   disableUIFunctionDuringTween: 0
   disableUIFunctionAfterTween: 0
+  OnUITweenStarted:
+    m_PersistentCalls:
+      m_Calls: []
+  OnUITweenFinished:
+    m_PersistentCalls:
+      m_Calls: []
   moveDir: 1
   moveDistance: 30
   currentPositionAsStartPoint: 1
@@ -311,6 +317,12 @@ MonoBehaviour:
   isIndependentTimeScale: 1
   disableUIFunctionDuringTween: 0
   disableUIFunctionAfterTween: 0
+  OnUITweenStarted:
+    m_PersistentCalls:
+      m_Calls: []
+  OnUITweenFinished:
+    m_PersistentCalls:
+      m_Calls: []
   canvasGroupToFade: {fileID: 2545718157399404774}
   canvasGroupAlphaToFadeInTo: 1
   canvasGroupAlphaToFadeOutTo: 0
@@ -478,8 +490,9 @@ MonoBehaviour:
   loadingScreenCanvas: {fileID: 3082328526136417532}
   loadingScreenUIFadeComponent: {fileID: 153832608308000702}
   loadingScreenSlider: {fileID: 7566658773045395245}
-  additionalTransitionTime: 4
   performAdditionalTransitionTime: 1
+  additionalTransitionTimeToGame: 2
+  additionalTransitionTimeToMenu: 1
 --- !u!1 &5958883571991754872
 GameObject:
   m_ObjectHideFlags: 0
@@ -636,6 +649,12 @@ MonoBehaviour:
   isIndependentTimeScale: 1
   disableUIFunctionDuringTween: 0
   disableUIFunctionAfterTween: 0
+  OnUITweenStarted:
+    m_PersistentCalls:
+      m_Calls: []
+  OnUITweenFinished:
+    m_PersistentCalls:
+      m_Calls: []
   canvasGroupToFade: {fileID: 5973969568961489998}
   canvasGroupAlphaToFadeInTo: 1
   canvasGroupAlphaToFadeOutTo: 0.4

@@ -690,6 +690,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3271005977793656884, guid: e864f50927cec454e99ba1479a735e84, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -80.77014
+      objectReference: {fileID: 0}
     - target: {fileID: 3271005979050991523, guid: e864f50927cec454e99ba1479a735e84, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -777,6 +781,22 @@ PrefabInstance:
     - target: {fileID: 5543451671414529452, guid: e864f50927cec454e99ba1479a735e84, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6806960673958426418, guid: e864f50927cec454e99ba1479a735e84, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -1068.0004
+      objectReference: {fileID: 0}
+    - target: {fileID: 6806960673958426418, guid: e864f50927cec454e99ba1479a735e84, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -6.000122
+      objectReference: {fileID: 0}
+    - target: {fileID: 6806960674135288244, guid: e864f50927cec454e99ba1479a735e84, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -1067.9999
+      objectReference: {fileID: 0}
+    - target: {fileID: 6806960674166760126, guid: e864f50927cec454e99ba1479a735e84, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -1067.9999
       objectReference: {fileID: 0}
     - target: {fileID: 6806960674192644378, guid: e864f50927cec454e99ba1479a735e84, type: 3}
       propertyPath: m_Name
@@ -870,6 +890,10 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 1800338851}
+    - target: {fileID: 6806960674515822359, guid: e864f50927cec454e99ba1479a735e84, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -1068.0001
+      objectReference: {fileID: 0}
     - target: {fileID: 8557364406445865963, guid: e864f50927cec454e99ba1479a735e84, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0

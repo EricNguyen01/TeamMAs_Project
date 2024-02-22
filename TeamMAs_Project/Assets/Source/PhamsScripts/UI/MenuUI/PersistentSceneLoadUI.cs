@@ -50,6 +50,8 @@ namespace TeamMAsTD
 
         private bool isPerformingSceneLoad = false;
 
+        private bool isLoadingBarTweening = false;
+
         private void Awake()
         {
             if (persistentSceneLoadUIInstance && persistentSceneLoadUIInstance != this)
@@ -100,6 +102,8 @@ namespace TeamMAsTD
 
         private void OnEnable()
         {
+            isLoadingBarTweening = false;
+
             SaveLoadHandler.OnLoadingStarted += () => isLoadingSavedData = true;
 
             SaveLoadHandler.OnLoadingFinished += () => isLoadingSavedData = false;
@@ -173,6 +177,8 @@ namespace TeamMAsTD
         {
             isPerformingSceneLoad = true;
 
+            isLoadingBarTweening = false;
+
             float additionalTransitionTime = 1.5f;
 
             yield return StartCoroutine(EnableSceneLoadUISequence(true));
@@ -184,11 +190,13 @@ namespace TeamMAsTD
                 //loadingScreenSlider.DOValue(UnityEngine.Random.Range(0.3f, 0.4f), additionalTransitionTime).SetUpdate(true);
             }
 
-            //if (performAdditionalTransitionTime) yield return new WaitForSecondsRealtime(additionalTransitionTime);
+            if (performAdditionalTransitionTime) yield return new WaitForSecondsRealtime(additionalTransitionTime);
+
+            yield return new WaitUntil(() => isLoadingBarTweening == false);
 
             if (loadingScreenSlider) 
             {
-                StartCoroutine(LoadingScreenBarSliderCoroutine(UnityEngine.Random.Range(0.8f, 0.9f), 1.0f));
+                StartCoroutine(LoadingScreenBarSliderCoroutine(UnityEngine.Random.Range(0.76f, 0.9f), 3.0f));
 
                 //loadingScreenSlider.DOValue(UnityEngine.Random.Range(0.8f, 0.9f), 0.8f).SetUpdate(true); 
             }
@@ -219,6 +227,8 @@ namespace TeamMAsTD
                 }
             }
 
+            yield return new WaitUntil(() => isLoadingBarTweening == false);
+
             if (SceneManager.GetActiveScene().name.Contains("Game")) additionalTransitionTime = additionalTransitionTimeToGame;
             else if (SceneManager.GetActiveScene().name.Contains("Menu")) additionalTransitionTime = additionalTransitionTimeToMenu;
 
@@ -232,13 +242,15 @@ namespace TeamMAsTD
                 }
                 else 
                 {
-                    yield return StartCoroutine(LoadingScreenBarSliderCoroutine(1.0f, 0.35f));
+                    yield return StartCoroutine(LoadingScreenBarSliderCoroutine(1.0f, 1.0f));
 
                     //yield return loadingScreenSlider.DOValue(1.0f, 0.35f).SetUpdate(true).WaitForCompletion(); 
                 }
             }
 
             if (performAdditionalTransitionTime) yield return new WaitForSecondsRealtime(additionalTransitionTime);
+
+            yield return new WaitUntil(() => isLoadingBarTweening == false);
 
             yield return StartCoroutine(EnableSceneLoadUISequence(false));
 
@@ -334,9 +346,27 @@ namespace TeamMAsTD
 
         private IEnumerator LoadingScreenBarSliderCoroutine(float endVal, float duration)
         {
-            if (!loadingScreenSlider) yield break;
+            if (!loadingScreenSlider)
+            {
+                isLoadingBarTweening = false;
 
-            yield return loadingScreenSlider.DOValue(endVal, duration).SetUpdate(true);
+                yield break;
+            }
+
+            if(loadingScreenSlider.value >= endVal)
+            {
+                isLoadingBarTweening = false;
+
+                yield break;
+            }
+
+            isLoadingBarTweening = true;
+
+            yield return loadingScreenSlider.DOValue(endVal, duration).SetUpdate(true).WaitForCompletion();
+
+            isLoadingBarTweening = false;
+
+            yield break;
         }
 
         public static void CreatePersistentSceneLoadUIInstance()
