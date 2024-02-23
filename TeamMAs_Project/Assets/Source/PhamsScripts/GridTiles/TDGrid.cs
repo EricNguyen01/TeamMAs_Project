@@ -527,6 +527,8 @@ namespace TeamMAsTD
 
             isRandomizingGrid = true;
 
+            MemoryUsageLogger.LogMemoryUsageAsText("GridGenerationStarted");
+
             if (pathOfGrid == null) CreatePathObjectIfNone();
 
             if (gridArray == null || gridArray.Length == 0)
@@ -662,6 +664,8 @@ namespace TeamMAsTD
             //save the newly generated random grid layout
             //only save grid layout if is in playmode in case grid is randomly being generated outside of playmode
             if(Application.isPlaying) SaveGridLayoutAfterRandomlyGenerated();
+
+            MemoryUsageLogger.LogMemoryUsageAsText("GridGenerationFinished");
 
             isRandomizingGrid = false;
         }

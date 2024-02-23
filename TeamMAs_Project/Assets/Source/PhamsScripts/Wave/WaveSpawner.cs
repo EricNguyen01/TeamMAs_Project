@@ -81,17 +81,19 @@ namespace TeamMAsTD
                 return;
             }
 
+            MemoryUsageLogger.LogMemoryUsageAsText("WaveSpawnerStartedInit");
+
             float startInitTime = Time.realtimeSinceStartup;
 
             SetupVisitorPools();
 
             CreateWaveObjects();//Not actual Unity GameObject. Just Wave C# class object in memory. Check Wave.cs
 
-            MemoryUsageLogger.LogMemoryUsageAsText("WaveSpawnerFinishedInit");
-
             float endInitTime = Time.realtimeSinceStartup - startInitTime;
 
-            if(showDebugLog) Debug.Log("WaveSpawner Finished Initializing VisitorPools and Child Wave Objects. Took: " + endInitTime * 1000.0f + "ms.");
+            MemoryUsageLogger.LogMemoryUsageAsText("WaveSpawnerFinishedInit");
+
+            if (showDebugLog) Debug.Log("WaveSpawner Finished Initializing VisitorPools and Child Wave Objects. Took: " + endInitTime * 1000.0f + "ms.");
         }
 
         private void OnEnable()

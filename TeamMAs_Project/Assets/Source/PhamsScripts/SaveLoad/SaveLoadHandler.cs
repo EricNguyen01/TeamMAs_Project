@@ -271,6 +271,8 @@ namespace TeamMAsTD
 
             if (saveLoadHandlerInstance.showDebugLog) Debug.Log("Load Started!");
 
+            MemoryUsageLogger.LogMemoryUsageAsText("GameProgressSavedDataStartedLoading");
+
             OnLoadingStarted?.Invoke();
 
             RestoreSavedDataForAllSaveables(LoadFromFile());

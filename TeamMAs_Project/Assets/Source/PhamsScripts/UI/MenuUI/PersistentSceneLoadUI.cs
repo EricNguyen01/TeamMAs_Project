@@ -175,6 +175,8 @@ namespace TeamMAsTD
 
         private IEnumerator SceneTransitionCoroutine(string sceneNameTo = "", int sceneNumTo = -1)
         {
+            MemoryUsageLogger.LogMemoryUsageAsText("SceneTransitionStarted");
+
             isPerformingSceneLoad = true;
 
             isLoadingBarTweening = false;
@@ -255,6 +257,8 @@ namespace TeamMAsTD
             yield return StartCoroutine(EnableSceneLoadUISequence(false));
 
             isPerformingSceneLoad = false;
+
+            MemoryUsageLogger.LogMemoryUsageAsText("SceneTransitionFinished");
         }
 
         private void EnableSceneLoadUIImmediate(bool enabled)
