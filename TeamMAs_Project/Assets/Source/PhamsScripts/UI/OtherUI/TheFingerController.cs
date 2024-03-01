@@ -10,7 +10,7 @@ namespace TeamMAsTD
 {
     public class TheFingerController : MonoBehaviour, ISaveable
     {
-        [SerializeField] private float fingerPointerMoveSpeed = 4.6f;
+        [SerializeField] private float fingerPointerMoveSpeed = 2.0f;
 
         private bool alreadyDisplayed = false;
 
@@ -21,6 +21,8 @@ namespace TeamMAsTD
         private List<Tile> validTilesToPointTo = new List<Tile>();
 
         private Tile unoccupiedTileToPointTo;
+
+        private Vector3 unoccupiedTileToPointToPositionOffset;
 
         private Vector3 fingerStartPos;
 
@@ -74,11 +76,17 @@ namespace TeamMAsTD
 
             if (useCustomControl && unoccupiedTileToPointTo)
             {
-                if(Vector2.Distance(transform.position, (Vector2)unoccupiedTileToPointTo.transform.position) >= 0.1f)
+                float dist = Vector2.Distance(transform.position, (Vector2)unoccupiedTileToPointToPositionOffset);
+
+                float distSpeedMultiplier = dist;
+
+                distSpeedMultiplier = Mathf.Clamp(distSpeedMultiplier, 0.5f, 4.0f);
+
+                if (dist >= 0.1f)
                 {
                     transform.position = Vector2.MoveTowards(transform.position, 
-                                                             (Vector2)unoccupiedTileToPointTo.transform.position, 
-                                                             fingerPointerMoveSpeed * Time.deltaTime);
+                                                             (Vector2)unoccupiedTileToPointToPositionOffset, 
+                                                             fingerPointerMoveSpeed * distSpeedMultiplier * Time.deltaTime);
                 }
                 else
                 {
@@ -203,6 +211,8 @@ namespace TeamMAsTD
             if(validTilesToPointTo.Count > 0)
             {
                 unoccupiedTileToPointTo = validTilesToPointTo[Random.Range(0, validTilesToPointTo.Count)];
+
+                unoccupiedTileToPointToPositionOffset = unoccupiedTileToPointTo.transform.position + (Vector3.right * 0.5f) + (Vector3.down * 0.4f);
 
                 useCustomControl = true;
             }

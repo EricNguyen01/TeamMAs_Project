@@ -16,6 +16,8 @@ public class UIToWorldPosition : MonoBehaviour
 
     [SerializeField] private Vector3 worldPositionToMatch;
 
+    [SerializeField] private bool keepZOffsetOnRePositioning = true;
+
     [SerializeField] private bool positioningOnStart = false;
 
     private void OnEnable()
@@ -28,15 +30,15 @@ public class UIToWorldPosition : MonoBehaviour
 
     private void Start()
     {
-        if(positioningOnStart) MatchUIRectPosToWorldPos(UIToRePosition, worldPositionToMatch);
+        if(positioningOnStart) MatchUIRectPosToWorldPos(UIToRePosition, worldPositionToMatch, keepZOffsetOnRePositioning);
     }
 
-    public void MatchUIRectPosToWorldPos(Vector3 worldPos)
+    public void MatchUIRectPosToWorldPos(Vector3 worldPos, bool keepZOffset = true)
     {
-        MatchUIRectPosToWorldPos(UIToRePosition, worldPos);
+        MatchUIRectPosToWorldPos(UIToRePosition, worldPos, keepZOffset);
     }
 
-    public void MatchUIRectPosToWorldPos(RectTransform UIObject, Vector3 worldPos)
+    public void MatchUIRectPosToWorldPos(RectTransform UIObject, Vector3 worldPos, bool keepZOffset = true)
     {
         if (!UIObject) return;
 
@@ -44,6 +46,6 @@ public class UIToWorldPosition : MonoBehaviour
 
         worldPositionToMatch = worldPos;
 
-        HelperFunctions.MatchUIRectPosToWorldPos(UIObject, worldPos);
+        HelperFunctions.MatchUIRectPosToWorldPos(UIObject, worldPos, keepZOffset);
     }
 }

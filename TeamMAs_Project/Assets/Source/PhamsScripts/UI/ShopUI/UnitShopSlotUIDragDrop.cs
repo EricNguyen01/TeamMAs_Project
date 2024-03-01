@@ -597,7 +597,7 @@ namespace TeamMAsTD
             RectTransformUtility.ScreenPointToLocalPointInRectangle(parentCanvaRect, eventData.position, parentCanva.worldCamera, out mousePosLocalInRect);
             
             //match the world pos of dragDropUIImageObject to the world pos of the mouse pointer (having translated from local rect point to world pos)
-            dragDropUIImageObject.transform.position = parentCanvaRect.transform.TransformPoint(mousePosLocalInRect);
+            dragDropUIImageObject.transform.position = parentCanvaRect.TransformPoint(mousePosLocalInRect);
 
             Vector2 worldMousePos = parentCanva.worldCamera.ScreenToWorldPoint(Input.mousePosition);
 

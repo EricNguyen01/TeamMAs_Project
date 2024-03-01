@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 935585458}
   - component: {fileID: 935585457}
   - component: {fileID: 1887407137928688343}
+  - component: {fileID: 780902345346645097}
+  - component: {fileID: 5431947723699255082}
   m_Layer: 5
   m_Name: Exit
   m_TagString: Untagged
@@ -148,6 +150,44 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6272d22d8505394797a130099a5e91f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  controlThisUIObject: 1
+  UIToRePosition: {fileID: 0}
+  worldPositionToMatch: {x: 0, y: 0, z: 0}
+  keepZOffsetOnRePositioning: 1
+  positioningOnStart: 0
+--- !u!225 &780902345346645097
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 935585455}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
+  m_IgnoreParentGroups: 0
+--- !u!223 &5431947723699255082
+Canvas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 935585455}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 2
+  m_Camera: {fileID: 0}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 1
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_AdditionalShaderChannelsFlag: 25
+  m_SortingLayerID: 1719923375
+  m_SortingOrder: -5
+  m_TargetDisplay: 0
 --- !u!1 &1487304375
 GameObject:
   m_ObjectHideFlags: 0
@@ -312,6 +352,8 @@ GameObject:
   - component: {fileID: 1628325846}
   - component: {fileID: 1628325845}
   - component: {fileID: 8284256821989366483}
+  - component: {fileID: 7855623001198846705}
+  - component: {fileID: 6657647011894098591}
   m_Layer: 5
   m_Name: Entrance
   m_TagString: Untagged
@@ -448,6 +490,44 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6272d22d8505394797a130099a5e91f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  controlThisUIObject: 1
+  UIToRePosition: {fileID: 0}
+  worldPositionToMatch: {x: 0, y: 0, z: 0}
+  keepZOffsetOnRePositioning: 1
+  positioningOnStart: 0
+--- !u!225 &7855623001198846705
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1628325843}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
+  m_IgnoreParentGroups: 0
+--- !u!223 &6657647011894098591
+Canvas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1628325843}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 2
+  m_Camera: {fileID: 0}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 1
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_AdditionalShaderChannelsFlag: 25
+  m_SortingLayerID: 1719923375
+  m_SortingOrder: -5
+  m_TargetDisplay: 0
 --- !u!1 &7663563581612626007
 GameObject:
   m_ObjectHideFlags: 0

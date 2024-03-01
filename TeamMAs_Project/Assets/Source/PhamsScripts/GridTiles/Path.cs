@@ -30,6 +30,14 @@ namespace TeamMAsTD
 
         [field: SerializeField] public Sprite pathTileSprite { get; private set; }
 
+        [SerializeField] private RectTransform pathEntranceTileUI;
+
+        private UIToWorldPosition pathEntranceUIToWorldPos;
+
+        [SerializeField] private RectTransform pathExitTileUI;
+
+        private UIToWorldPosition pathExitUIToWorldPos;
+
         [SerializeField] [HideInInspector] private Sprite dirtTileSprite;
 
         [SerializeField] [HideInInspector] private Sprite defaultTileSprite;
@@ -219,19 +227,22 @@ namespace TeamMAsTD
 
             lastValidTile.isOccupied = true;
 
-            if (Application.isPlaying)
+            if (pathEntranceTileUI)
             {
-                foreach(UIToWorldPosition UIObject in FindObjectsOfType<UIToWorldPosition>())
-                {
-                    if (UIObject.name.Contains("Entrance"))
-                    {
-                        UIObject.MatchUIRectPosToWorldPos(firstValidTile.transform.position);
-                    }
-                    else if (UIObject.name.Contains("Exit"))
-                    {
-                        UIObject.MatchUIRectPosToWorldPos(lastValidTile.transform.position);
-                    }
-                }
+                if (!pathEntranceUIToWorldPos) pathEntranceTileUI.TryGetComponent<UIToWorldPosition>(out pathEntranceUIToWorldPos);
+
+                if (!pathEntranceUIToWorldPos) pathEntranceUIToWorldPos = pathEntranceTileUI.gameObject.AddComponent<UIToWorldPosition>();
+
+                pathEntranceUIToWorldPos.MatchUIRectPosToWorldPos(firstValidTile.transform.position + Vector3.up * 0.3f, true);
+            }
+
+            if (pathExitTileUI)
+            {
+                if (!pathExitUIToWorldPos) pathExitTileUI.TryGetComponent<UIToWorldPosition>(out pathExitUIToWorldPos);
+
+                if (!pathExitUIToWorldPos) pathExitUIToWorldPos = pathExitTileUI.gameObject.AddComponent<UIToWorldPosition>();
+
+                pathExitUIToWorldPos.MatchUIRectPosToWorldPos(lastValidTile.transform.position + Vector3.up * 0.3f, true);
             }
         }
 

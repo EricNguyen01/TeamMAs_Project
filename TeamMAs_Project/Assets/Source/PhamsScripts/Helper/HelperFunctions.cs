@@ -145,7 +145,7 @@ namespace TeamMAsTD
         /// <param name="UIObject"> The UI Object with a RectTransform component attached to reposition. </param> 
         /// <param name="worldPos"> The world position to snap the UIObject (in rect local pos) to. </param>
         /// <returns></returns>
-        public static void MatchUIRectPosToWorldPos(RectTransform UIObject, Vector3 worldPos)
+        public static void MatchUIRectPosToWorldPos(RectTransform UIObject, Vector3 worldPos, bool keepZOffset = true)
         {
             if (!UIObject) return;
 
@@ -166,9 +166,10 @@ namespace TeamMAsTD
 
             RectTransformUtility.ScreenPointToLocalPointInRectangle(UIObject, screenPos, cam, out localPointInRect);
 
-            Vector3 finalWorldPos = parentCanvasRect.transform.TransformPoint(localPointInRect);
+            Vector3 finalWorldPos = UIObject.transform.TransformPoint(localPointInRect);
 
-            UIObject.transform.position = new Vector3(finalWorldPos.x, finalWorldPos.y, UIObject.transform.position.z);
+            if(!keepZOffset) UIObject.transform.position = finalWorldPos;
+            else UIObject.transform.position = new Vector3(finalWorldPos.x, finalWorldPos.y, UIObject.transform.position.z);
         }
 
 #if UNITY_EDITOR

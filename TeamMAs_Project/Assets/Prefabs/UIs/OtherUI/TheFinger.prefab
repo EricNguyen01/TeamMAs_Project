@@ -120,6 +120,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e3df1fd886c65f4a97946a9ae90cef8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fingerPointerMoveSpeed: 2
 --- !u!114 &873135158756900366
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -132,5 +133,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1d44f2470f4e4e49812b1f2aff9f9a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  disableSavingForThisObject: 0
+  disableSaveLoadForThisSaveable: 0
   UUID: 46544ef4-f394-4716-b6c3-fb4daf1bc8b1
