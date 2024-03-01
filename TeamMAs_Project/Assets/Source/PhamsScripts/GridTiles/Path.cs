@@ -218,6 +218,21 @@ namespace TeamMAsTD
             firstValidTile.isOccupied = true;
 
             lastValidTile.isOccupied = true;
+
+            if (Application.isPlaying)
+            {
+                foreach(UIToWorldPosition UIObject in FindObjectsOfType<UIToWorldPosition>())
+                {
+                    if (UIObject.name.Contains("Entrance"))
+                    {
+                        UIObject.MatchUIRectPosToWorldPos(firstValidTile.transform.position);
+                    }
+                    else if (UIObject.name.Contains("Exit"))
+                    {
+                        UIObject.MatchUIRectPosToWorldPos(lastValidTile.transform.position);
+                    }
+                }
+            }
         }
 
         private void SetPathTileSprite(Tile tile, SpriteRenderer tileSpriteRenderer)

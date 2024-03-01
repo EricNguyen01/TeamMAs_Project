@@ -139,6 +139,38 @@ namespace TeamMAsTD
             return true;
         }
 
+        /// <summary>
+        /// Match the provided UI Object (RectTransform) and it's local rect position to the provided world position. 
+        /// </summary>
+        /// <param name="UIObject"> The UI Object with a RectTransform component attached to reposition. </param> 
+        /// <param name="worldPos"> The world position to snap the UIObject (in rect local pos) to. </param>
+        /// <returns></returns>
+        public static void MatchUIRectPosToWorldPos(RectTransform UIObject, Vector3 worldPos)
+        {
+            if (!UIObject) return;
+
+            Canvas parentCanvas = UIObject.GetComponentInParent<Canvas>();
+
+            if (!parentCanvas) return;
+
+            RectTransform parentCanvasRect;
+            parentCanvas.TryGetComponent<RectTransform>(out parentCanvasRect);
+
+            Camera cam = parentCanvas.worldCamera;
+
+            if (!cam) return;
+
+            Vector3 screenPos = cam.WorldToScreenPoint(worldPos);
+
+            Vector2 localPointInRect;
+
+            RectTransformUtility.ScreenPointToLocalPointInRectangle(UIObject, screenPos, cam, out localPointInRect);
+
+            Vector3 finalWorldPos = parentCanvasRect.transform.TransformPoint(localPointInRect);
+
+            UIObject.transform.position = new Vector3(finalWorldPos.x, finalWorldPos.y, UIObject.transform.position.z);
+        }
+
 #if UNITY_EDITOR
         /// <summary>
         /// Helps converting auto-implemented property display name to its actual property name 

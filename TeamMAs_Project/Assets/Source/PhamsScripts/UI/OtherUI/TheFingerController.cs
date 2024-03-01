@@ -18,6 +18,8 @@ namespace TeamMAsTD
 
         private TDGrid grid;
 
+        private List<Tile> validTilesToPointTo = new List<Tile>();
+
         private Tile unoccupiedTileToPointTo;
 
         private Vector3 fingerStartPos;
@@ -53,6 +55,14 @@ namespace TeamMAsTD
 
         private void Update()
         {
+            if(validTilesToPointTo.Count > 0)
+            {
+                if (unoccupiedTileToPointTo)
+                {
+                    if (unoccupiedTileToPointTo.isOccupied || unoccupiedTileToPointTo.is_AI_Path) GetUnOccupiedTileToPointTo();
+                }
+            }
+
             if (useCustomControl && unoccupiedTileToPointTo)
             {
                 if (!hasAnimatorDisabled) DisableFingerAnimIfUsingCustomControl(true);
@@ -85,10 +95,17 @@ namespace TeamMAsTD
 
                 alreadyDisplayed = true;
 
+                transform.position = fingerStartPos;
+
                 return;
             }
 
-            if (gameObject.activeInHierarchy) gameObject.SetActive(false);
+            if (gameObject.activeInHierarchy)
+            {
+                gameObject.SetActive(false);
+
+                transform.position = fingerStartPos;
+            }
         }
 
         public void ResetDragDropFingerDisplay()
@@ -151,11 +168,13 @@ namespace TeamMAsTD
 
         private void GetUnOccupiedTileToPointTo()
         {
-            grid = FindObjectOfType<TDGrid>();
+            if(!grid) grid = FindObjectOfType<TDGrid>();
+
+            if (!grid) return;
+
+            if(validTilesToPointTo.Count > 0) validTilesToPointTo.Clear();
 
             Tile[] tilesInGrid = grid.GetGridFlattened2DArray();
-
-            List<Tile> validTilesToPointTo = new List<Tile>();
 
             int start = 0;
 
@@ -165,10 +184,10 @@ namespace TeamMAsTD
             {
                 start = Mathf.RoundToInt(0.2f * tilesInGrid.Length);
 
-                end = Mathf.RoundToInt(0.6f * tilesInGrid.Length);
+                end = Mathf.RoundToInt(0.7f * tilesInGrid.Length);
             }
 
-            for(int i = start; i <= end; i++)
+            for(int i = start; i < end; i++)
             {
                 if (!tilesInGrid[i]) continue;
 
@@ -191,8 +210,6 @@ namespace TeamMAsTD
 
         private void DisableFingerAnimIfUsingCustomControl(bool disabled)
         {
-            if (!useCustomControl || !unoccupiedTileToPointTo) return;
-
             if (!fingerAnimator)
             {
                 TryGetComponent<Animator>(out fingerAnimator);

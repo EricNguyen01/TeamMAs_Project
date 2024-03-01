@@ -65,6 +65,12 @@ namespace TeamMAsTD
 
         [SerializeField] public UnityEvent<PlantUnit> OnFirstPlantPlantedOnGrid;
 
+        [Space(15.0f)]
+
+        [SerializeField] private UnityEvent OnGridRuntimeGenerationStarted;
+
+        [SerializeField] private UnityEvent OnGridRuntimeGenerationFinished;
+
         [Space]
 
         [SerializeField] private bool showDebugLog = true;
@@ -254,6 +260,11 @@ namespace TeamMAsTD
             }
 
             return unplantedTileList;
+        }
+
+        public Path GetPathOfGrid()
+        {
+            return pathOfGrid;
         }
 
 
@@ -527,6 +538,8 @@ namespace TeamMAsTD
 
             isRandomizingGrid = true;
 
+            if(Application.isPlaying) OnGridRuntimeGenerationStarted?.Invoke();
+
             MemoryUsageLogger.LogMemoryUsageAsText("GridGenerationStarted");
 
             if (pathOfGrid == null) CreatePathObjectIfNone();
@@ -664,6 +677,8 @@ namespace TeamMAsTD
             //save the newly generated random grid layout
             //only save grid layout if is in playmode in case grid is randomly being generated outside of playmode
             if(Application.isPlaying) SaveGridLayoutAfterRandomlyGenerated();
+
+            if (Application.isPlaying) OnGridRuntimeGenerationFinished?.Invoke();
 
             MemoryUsageLogger.LogMemoryUsageAsText("GridGenerationFinished");
 

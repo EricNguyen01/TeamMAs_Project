@@ -591,11 +591,13 @@ namespace TeamMAsTD
 
             //first, process the dragDropUIImageObject (the blurred plant icon following the mouse to indicate a plant's being dragged)
             //fix the drag drop UI image object to the EventSystem mouse pointer (in dragDropUIImage UI space from screen space)
-            Vector2 mousePosLocal;
+            Vector2 mousePosLocalInRect;
 
-            RectTransformUtility.ScreenPointToLocalPointInRectangle(parentCanvaRect, eventData.position, parentCanva.worldCamera, out mousePosLocal);
+            //translate eventData.position(mouse in screen point) to its local position in the UI Rect of the canvas.
+            RectTransformUtility.ScreenPointToLocalPointInRectangle(parentCanvaRect, eventData.position, parentCanva.worldCamera, out mousePosLocalInRect);
             
-            dragDropUIImageObject.transform.position = parentCanvaRect.transform.TransformPoint(mousePosLocal);
+            //match the world pos of dragDropUIImageObject to the world pos of the mouse pointer (having translated from local rect point to world pos)
+            dragDropUIImageObject.transform.position = parentCanvaRect.transform.TransformPoint(mousePosLocalInRect);
 
             Vector2 worldMousePos = parentCanva.worldCamera.ScreenToWorldPoint(Input.mousePosition);
 
