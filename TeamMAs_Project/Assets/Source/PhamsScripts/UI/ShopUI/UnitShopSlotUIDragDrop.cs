@@ -8,13 +8,17 @@ using UnityEngine.EventSystems;
 using UnityEngine.Events;
 using UnityEngine.UI;
 using TMPro;
+using System;
 
 namespace TeamMAsTD
 {
     [DisallowMultipleComponent]
-    public class UnitShopSlotUIDragDrop : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, ISaveable
+    public class UnitShopSlotUIDragDrop : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerEnterHandler, ISaveable
     {
-        [SerializeField] [Tooltip("The Unit Scriptable Object of this slot.")] 
+        [Header("Unit Shop Slot Visuals")]
+
+        [SerializeField] 
+        [Tooltip("The Unit Scriptable Object of this slot.")] 
         private PlantUnitSO slotUnitScriptableObject;
 
         [SerializeField] private Image unitThumbnailImage;
@@ -54,6 +58,16 @@ namespace TeamMAsTD
         "If an image is set for the drag drop UI object, setting this option to true will override it. The default setting is true.")] 
         private bool dragDropVisualSameAsShopSlot = true;
 
+        [Space(15)]
+
+        [SerializeField] private ParticleSystem shopUnlocked_FX;
+
+        [SerializeField] private UITweenBase shopUnlockedTween;
+
+        private bool shopUnlockCheckedByPlayer = false;
+
+        [Space(15)]
+
         //UnityEvents..................................................................................
 
         [SerializeField] public UnityEvent OnStartedDragging;
@@ -89,6 +103,20 @@ namespace TeamMAsTD
 
         private Vector2 dragDropUIImageObjectBaseRectSize;
 
+        [Serializable]
+        private class UnitShopSlotSaveData
+        {
+            public bool isShopSlotUnlocked { get; private set; } = false;
+
+            public bool shopUnlockedCheckedByPlayer { get; private set; } = false;
+
+            public UnitShopSlotSaveData(bool isShopSlotUnlocked, bool shopUnlockedCheckedByPlayer)
+            {
+                this.isShopSlotUnlocked = isShopSlotUnlocked;
+                this.shopUnlockedCheckedByPlayer = shopUnlockedCheckedByPlayer;
+            }
+        }
+
         //PRIVATES.........................................................................
 
         private void Awake()
@@ -104,10 +132,16 @@ namespace TeamMAsTD
             }
 
             GetOrSetShopSlotCanvasGroup();
+
             SetImageUIRaycastComponent();
+
             SetUnitShopSlotImageFromUnitSO();
+
             CheckAndGetDragDropRequirements();
+
             SetNameAndCostForUnitShopSlot();
+
+            InitShopUnlockedAttentionFX();
         }
 
         private void OnEnable()
@@ -155,6 +189,8 @@ namespace TeamMAsTD
                 if (!gameObject.activeInHierarchy) gameObject.SetActive(true);
 
                 isShopSlotUnlocked = true;
+
+                EnableNewShopUnlockedAttentionFX();
             }
         }
 
@@ -439,6 +475,58 @@ namespace TeamMAsTD
             shopSlotCanvasGroup.alpha = canvasGroupAlpha;
         }
 
+        private void InitShopUnlockedAttentionFX()
+        {
+            if (shopUnlocked_FX)
+            {
+                var shopFXMain = shopUnlocked_FX.main;
+
+                shopFXMain.playOnAwake = false;
+
+                shopFXMain.loop = true;
+
+                shopUnlocked_FX.Stop();
+            }
+
+            if (shopUnlockedTween)
+            {
+                if(shopUnlockedTween.IsTweenRunning()) shopUnlockedTween.StopAndResetUITweenImmediate();
+            }
+        }
+
+        private void EnableNewShopUnlockedAttentionFX(bool enabled = true)
+        {
+            if (shopUnlocked_FX)
+            {
+                var shopUnlockedFXMain = shopUnlocked_FX.main;
+
+                if (shopUnlockCheckedByPlayer || !enabled)
+                {
+                    shopUnlockedFXMain.loop = false;
+
+                    if(shopUnlocked_FX.isPlaying || shopUnlocked_FX.isEmitting) shopUnlocked_FX.Stop();
+                }
+                else if(!shopUnlockCheckedByPlayer && enabled)
+                {
+                    shopUnlockedFXMain.loop = true;
+
+                    if (!shopUnlocked_FX.isPlaying) shopUnlocked_FX.Play();
+                }
+            }
+
+            if (shopUnlockedTween)
+            {
+                if (shopUnlockCheckedByPlayer || !enabled)
+                {
+                    if (shopUnlockedTween.IsTweenRunning()) shopUnlockedTween.StopAndResetUITweenImmediate();
+                }
+                else if(!shopUnlockCheckedByPlayer && enabled)
+                {
+                    shopUnlockedTween.RunTweenInternal();
+                }
+            }
+        }
+
         private void GetCurrentWaveToUnlockShopSlotOnWaveStarted(WaveSpawner waveSpawner, int waveNum)
         {
             if (isShopSlotUnlocked) return;
@@ -461,6 +549,8 @@ namespace TeamMAsTD
                     if (!gameObject.activeInHierarchy) gameObject.SetActive(true);
 
                     isShopSlotUnlocked = true;
+
+                    EnableNewShopUnlockedAttentionFX();
 
                     return;
                 }
@@ -512,6 +602,8 @@ namespace TeamMAsTD
                     if (!gameObject.activeInHierarchy) gameObject.SetActive(true);
 
                     isShopSlotUnlocked = true;
+
+                    EnableNewShopUnlockedAttentionFX();
                 }
             }
         }
@@ -539,6 +631,8 @@ namespace TeamMAsTD
                     if (!gameObject.activeInHierarchy) gameObject.SetActive(true);
 
                     isShopSlotUnlocked = true;
+
+                    EnableNewShopUnlockedAttentionFX();
                 }
             }
         }
@@ -747,11 +841,20 @@ namespace TeamMAsTD
             OnDroppedSuccessful?.Invoke();
         }
 
+        public void OnPointerEnter(PointerEventData eventData)
+        {
+            if (!shopUnlockCheckedByPlayer) shopUnlockCheckedByPlayer = true;
+
+            EnableNewShopUnlockedAttentionFX(false);
+        }
+
         public SaveDataSerializeBase SaveData(string saveName = "")
         {
             SaveDataSerializeBase shopSlotSaveData;
 
-            shopSlotSaveData = new SaveDataSerializeBase(isShopSlotUnlocked, 
+            UnitShopSlotSaveData unitShopSlotSaveData = new UnitShopSlotSaveData(isShopSlotUnlocked, shopUnlockCheckedByPlayer);
+
+            shopSlotSaveData = new SaveDataSerializeBase(unitShopSlotSaveData, 
                                                          transform.position, 
                                                          UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
 
@@ -761,13 +864,19 @@ namespace TeamMAsTD
         public void LoadData(SaveDataSerializeBase savedDataToLoad)
         {
             if (savedDataToLoad == null) return;
-            
-            isShopSlotUnlocked = (bool)savedDataToLoad.LoadSavedObject();
+
+            UnitShopSlotSaveData unitShopSlotSaveData = (UnitShopSlotSaveData)savedDataToLoad.LoadSavedObject();
+
+            isShopSlotUnlocked = unitShopSlotSaveData.isShopSlotUnlocked;
+
+            shopUnlockCheckedByPlayer = unitShopSlotSaveData.shopUnlockedCheckedByPlayer;
             
             if(isShopSlotUnlocked)
             {
                 if (!gameObject.activeInHierarchy) gameObject.SetActive(true);
             }
+
+            if(shopUnlockCheckedByPlayer) EnableNewShopUnlockedAttentionFX(false);
         }
     }
 }

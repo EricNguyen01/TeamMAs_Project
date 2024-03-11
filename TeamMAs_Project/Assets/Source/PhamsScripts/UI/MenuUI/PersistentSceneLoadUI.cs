@@ -26,6 +26,8 @@ namespace TeamMAsTD
 
         [SerializeField] private Slider loadingScreenSlider;
 
+        [SerializeField] private float transitionStartDelay = 0.0f;
+
         [SerializeField] private bool performAdditionalTransitionTime = false;
 
         [SerializeField]
@@ -133,11 +135,15 @@ namespace TeamMAsTD
 
         public void LoadScene(string sceneNameToLoad)
         {
+            if (isPerformingSceneLoad) return;
+
             SceneTransitionToScene(sceneNameToLoad);
         }
 
         public void LoadScene(int sceneNumToLoad)
         {
+            if (isPerformingSceneLoad) return;
+
             SceneTransitionToScene(sceneNumToLoad);
         }
 
@@ -175,11 +181,22 @@ namespace TeamMAsTD
 
         private IEnumerator SceneTransitionCoroutine(string sceneNameTo = "", int sceneNumTo = -1)
         {
+            if (isPerformingSceneLoad) yield break;
+
             MemoryUsageLogger.LogMemoryUsageAsText("SceneTransitionStarted");
 
             isPerformingSceneLoad = true;
 
             isLoadingBarTweening = false;
+
+            foreach (Button button in FindObjectsOfType<Button>())
+            {
+                if (!button) continue;
+
+                button.interactable = false;
+            }
+
+            if (transitionStartDelay > 0.0f) yield return new WaitForSecondsRealtime(transitionStartDelay);
 
             float additionalTransitionTime = 1.5f;
 

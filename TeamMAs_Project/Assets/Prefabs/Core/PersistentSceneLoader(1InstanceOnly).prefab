@@ -490,6 +490,7 @@ MonoBehaviour:
   loadingScreenCanvas: {fileID: 3082328526136417532}
   loadingScreenUIFadeComponent: {fileID: 153832608308000702}
   loadingScreenSlider: {fileID: 7566658773045395245}
+  transitionStartDelay: 0.65
   performAdditionalTransitionTime: 1
   additionalTransitionTimeToGame: 2
   additionalTransitionTimeToMenu: 1

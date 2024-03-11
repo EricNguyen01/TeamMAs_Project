@@ -9,7 +9,7 @@ using UnityEngine.EventSystems;
 
 namespace TeamMAsTD
 {
-    [DisallowMultipleComponent]
+    //[DisallowMultipleComponent]
     public class UIShakeFx : UITweenBase
     {
         [Header("UI Shake FX Settings")]

@@ -10,7 +10,7 @@ using UnityEngine.UI;
 
 namespace TeamMAsTD
 {
-    [DisallowMultipleComponent]
+    //[DisallowMultipleComponent]
     public class UIJumpFx :UITweenBase
     {
         [Header("UI Jump FX Settings")]

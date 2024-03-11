@@ -4639,6 +4639,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0.09753418
       objectReference: {fileID: 0}
+    - target: {fileID: 861651985613119268, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
+      propertyPath: m_Intensity
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1099689189817966449, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
       propertyPath: gameResourceUIStatPopupSpawner
       value: 

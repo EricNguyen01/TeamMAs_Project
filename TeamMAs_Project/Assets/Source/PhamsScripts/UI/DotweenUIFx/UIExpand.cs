@@ -10,7 +10,7 @@ using UnityEngine.UI;
 
 namespace TeamMAsTD
 {
-    [DisallowMultipleComponent]
+    //[DisallowMultipleComponent]
     public class UIExpand : UITweenBase
     {
         [Header("UI Hover Expand Settings")]

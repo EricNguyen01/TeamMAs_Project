@@ -816,6 +816,13 @@ MonoBehaviour:
   tweenAutoStartDelay: 0
   isIndependentTimeScale: 0
   disableUIFunctionDuringTween: 0
+  disableUIFunctionAfterTween: 0
+  OnUITweenStarted:
+    m_PersistentCalls:
+      m_Calls: []
+  OnUITweenFinished:
+    m_PersistentCalls:
+      m_Calls: []
   expandValue: 4
 --- !u!1 &3715392631093969825
 GameObject:
@@ -967,6 +974,7 @@ GameObject:
   - component: {fileID: 6658701522767471769}
   - component: {fileID: 1560772206688998941}
   - component: {fileID: 820546892059262413}
+  - component: {fileID: 1371526583959025978}
   m_Layer: 5
   m_Name: ShopUnitSlot
   m_TagString: Untagged
@@ -995,6 +1003,7 @@ RectTransform:
   - {fileID: 1296689912363760361}
   - {fileID: 2962750786344553647}
   - {fileID: 1492238374656841042}
+  - {fileID: 4000097537485030634}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1076,6 +1085,8 @@ MonoBehaviour:
   dropDeniedColor: {r: 1, g: 0.65471697, b: 0.65471697, a: 1}
   useUnitThumbnailFromScriptableObject: 1
   dragDropVisualSameAsShopSlot: 1
+  shopUnlocked_FX: {fileID: 6299163364306813803}
+  shopUnlockedTween: {fileID: 1371526583959025978}
   OnStartedDragging:
     m_PersistentCalls:
       m_Calls:
@@ -1115,6 +1126,13 @@ MonoBehaviour:
   tweenAutoStartDelay: 0
   isIndependentTimeScale: 0
   disableUIFunctionDuringTween: 0
+  disableUIFunctionAfterTween: 0
+  OnUITweenStarted:
+    m_PersistentCalls:
+      m_Calls: []
+  OnUITweenFinished:
+    m_PersistentCalls:
+      m_Calls: []
   expandValue: 37
 --- !u!114 &820546892059262413
 MonoBehaviour:
@@ -1130,6 +1148,32 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   disableSaveLoadForThisSaveable: 0
   UUID: 
+--- !u!114 &1371526583959025978
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3715392631770610074}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UI_TweenExecuteMode: 4
+  easeMode: 25
+  tweenDuration: 0.5
+  tweenAutoStartDelay: 0
+  isIndependentTimeScale: 0
+  disableUIFunctionDuringTween: 0
+  disableUIFunctionAfterTween: 0
+  OnUITweenStarted:
+    m_PersistentCalls:
+      m_Calls: []
+  OnUITweenFinished:
+    m_PersistentCalls:
+      m_Calls: []
+  expandValue: 37
 --- !u!1 &3737430066119274078
 GameObject:
   m_ObjectHideFlags: 0
@@ -1206,3 +1250,86 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!1001 &6591291594850359829
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 3715392631770610075}
+    m_Modifications:
+    - target: {fileID: 1141439971321067193, guid: 151c29f9541a8624db62141f33b2100f, type: 3}
+      propertyPath: m_SortingLayer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1842127032614578303, guid: 151c29f9541a8624db62141f33b2100f, type: 3}
+      propertyPath: m_Intensity
+      value: 2.6972742
+      objectReference: {fileID: 0}
+    - target: {fileID: 3229042880529394568, guid: 151c29f9541a8624db62141f33b2100f, type: 3}
+      propertyPath: m_SortingLayer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6728583650482770127, guid: 151c29f9541a8624db62141f33b2100f, type: 3}
+      propertyPath: m_SortingLayer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7313139732555419643, guid: 151c29f9541a8624db62141f33b2100f, type: 3}
+      propertyPath: m_Name
+      value: ShopSlotNewUnlockFX
+      objectReference: {fileID: 0}
+    - target: {fileID: 7853093906264039167, guid: 151c29f9541a8624db62141f33b2100f, type: 3}
+      propertyPath: m_RootOrder
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 7853093906264039167, guid: 151c29f9541a8624db62141f33b2100f, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -89
+      objectReference: {fileID: 0}
+    - target: {fileID: 7853093906264039167, guid: 151c29f9541a8624db62141f33b2100f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 73
+      objectReference: {fileID: 0}
+    - target: {fileID: 7853093906264039167, guid: 151c29f9541a8624db62141f33b2100f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7853093906264039167, guid: 151c29f9541a8624db62141f33b2100f, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7853093906264039167, guid: 151c29f9541a8624db62141f33b2100f, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7853093906264039167, guid: 151c29f9541a8624db62141f33b2100f, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7853093906264039167, guid: 151c29f9541a8624db62141f33b2100f, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7853093906264039167, guid: 151c29f9541a8624db62141f33b2100f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7853093906264039167, guid: 151c29f9541a8624db62141f33b2100f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7853093906264039167, guid: 151c29f9541a8624db62141f33b2100f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 151c29f9541a8624db62141f33b2100f, type: 3}
+--- !u!4 &4000097537485030634 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7853093906264039167, guid: 151c29f9541a8624db62141f33b2100f, type: 3}
+  m_PrefabInstance: {fileID: 6591291594850359829}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &6299163364306813803 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 870293673273416062, guid: 151c29f9541a8624db62141f33b2100f, type: 3}
+  m_PrefabInstance: {fileID: 6591291594850359829}
+  m_PrefabAsset: {fileID: 0}

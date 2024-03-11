@@ -10,7 +10,7 @@ using UnityEngine.EventSystems;
 
 namespace TeamMAsTD
 {
-    [DisallowMultipleComponent]
+    //[DisallowMultipleComponent]
     public class UIRotate : UITweenBase
     {
         private enum RotateMode { PingPong, FullLoop }
