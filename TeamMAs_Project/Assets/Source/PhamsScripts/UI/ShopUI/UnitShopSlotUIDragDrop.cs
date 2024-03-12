@@ -64,7 +64,11 @@ namespace TeamMAsTD
 
         [SerializeField] private UITweenBase shopUnlockedTween;
 
-        private bool shopUnlockCheckedByPlayer = false;
+        [SerializeField] private InfoTooltipEnabler shopSlotPlantInfoTooltip;
+
+        public bool shopUnlockCheckedByPlayer { get; private set; } = false;
+
+        public bool shopTooltipCheckedByPlayer { get; private set; } = false;
 
         [Space(15)]
 
@@ -110,10 +114,15 @@ namespace TeamMAsTD
 
             public bool shopUnlockedCheckedByPlayer { get; private set; } = false;
 
-            public UnitShopSlotSaveData(bool isShopSlotUnlocked, bool shopUnlockedCheckedByPlayer)
+            public bool shopTooltipCheckedByPlayer { get; private set; } = false;
+
+            public UnitShopSlotSaveData(bool isShopSlotUnlocked, bool shopUnlockedCheckedByPlayer, bool shopTooltipCheckedByPlayer)
             {
                 this.isShopSlotUnlocked = isShopSlotUnlocked;
+
                 this.shopUnlockedCheckedByPlayer = shopUnlockedCheckedByPlayer;
+
+                this.shopTooltipCheckedByPlayer = shopTooltipCheckedByPlayer;
             }
         }
 
@@ -191,6 +200,8 @@ namespace TeamMAsTD
                 isShopSlotUnlocked = true;
 
                 EnableNewShopUnlockedAttentionFX();
+
+                EnableNewPlantTooltipAttentionFX();
             }
         }
 
@@ -470,7 +481,7 @@ namespace TeamMAsTD
 
             shopSlotCanvasGroup.interactable = false;
 
-            shopSlotCanvasGroup.blocksRaycasts = false;
+            //shopSlotCanvasGroup.blocksRaycasts = false;
 
             shopSlotCanvasGroup.alpha = canvasGroupAlpha;
         }
@@ -527,6 +538,36 @@ namespace TeamMAsTD
             }
         }
 
+        public void EnableNewPlantTooltipAttentionFX(bool enabled = true)
+        {
+            if (!enabled) shopTooltipCheckedByPlayer = true;
+            else shopTooltipCheckedByPlayer = false;
+
+            if (shopSlotPlantInfoTooltip)
+            {
+                if (shopUnlockCheckedByPlayer || !enabled)
+                {
+                    if (shopSlotPlantInfoTooltip.UIExpandInternal)
+                    {
+                        if (shopSlotPlantInfoTooltip.UIExpandInternal.IsTweenRunning())
+                            shopSlotPlantInfoTooltip.UIExpandInternal.StopAndResetUITweenImmediate();
+                    }
+
+                    if (shopSlotPlantInfoTooltip.infoTooltipImage)
+                        shopSlotPlantInfoTooltip.infoTooltipImage.color = shopSlotPlantInfoTooltip.infoTooltipImageBaseColor;
+                }
+                else if (!shopUnlockCheckedByPlayer && enabled)
+                {
+                    if (shopSlotPlantInfoTooltip.UIExpandInternal) shopSlotPlantInfoTooltip.UIExpandInternal.RunTweenInternal();
+
+                    if (shopSlotPlantInfoTooltip.infoTooltipImage && shopSlotPlantInfoTooltip.infoTooltipButton)
+                    {
+                        shopSlotPlantInfoTooltip.infoTooltipImage.color = shopSlotPlantInfoTooltip.infoTooltipButton.colors.highlightedColor;
+                    }
+                }
+            }
+        }
+
         private void GetCurrentWaveToUnlockShopSlotOnWaveStarted(WaveSpawner waveSpawner, int waveNum)
         {
             if (isShopSlotUnlocked) return;
@@ -551,6 +592,8 @@ namespace TeamMAsTD
                     isShopSlotUnlocked = true;
 
                     EnableNewShopUnlockedAttentionFX();
+
+                    EnableNewPlantTooltipAttentionFX();
 
                     return;
                 }
@@ -604,6 +647,8 @@ namespace TeamMAsTD
                     isShopSlotUnlocked = true;
 
                     EnableNewShopUnlockedAttentionFX();
+
+                    EnableNewPlantTooltipAttentionFX();
                 }
             }
         }
@@ -633,6 +678,8 @@ namespace TeamMAsTD
                     isShopSlotUnlocked = true;
 
                     EnableNewShopUnlockedAttentionFX();
+
+                    EnableNewPlantTooltipAttentionFX();
                 }
             }
         }
@@ -647,6 +694,8 @@ namespace TeamMAsTD
         public void OnBeginDrag(PointerEventData eventData)
         {
             if (!enabled) return;
+
+            if (!slotUnitScriptableObject.canPurchasePlant) return;
 
             //On click and hold the mouse on the unit shop slot UI image:
             dragDropUIImageObject.rectTransform.sizeDelta = dragDropUIImageObjectBaseRectSize;
@@ -680,6 +729,8 @@ namespace TeamMAsTD
         public void OnDrag(PointerEventData eventData)
         {
             if (!enabled) return;
+
+            if (!slotUnitScriptableObject.canPurchasePlant) return;
 
             //On dragging while still holding the mouse:
 
@@ -783,6 +834,8 @@ namespace TeamMAsTD
         {
             if (!enabled) return;
 
+            if (!slotUnitScriptableObject.canPurchasePlant) return;
+
             //On releasing the mouse after dragging and holding:
 
             //Immediately return the drag/drop Image UI obj back to being this obj's children with original local pos
@@ -852,7 +905,9 @@ namespace TeamMAsTD
         {
             SaveDataSerializeBase shopSlotSaveData;
 
-            UnitShopSlotSaveData unitShopSlotSaveData = new UnitShopSlotSaveData(isShopSlotUnlocked, shopUnlockCheckedByPlayer);
+            UnitShopSlotSaveData unitShopSlotSaveData = new UnitShopSlotSaveData(isShopSlotUnlocked, 
+                                                                                 shopUnlockCheckedByPlayer, 
+                                                                                 shopTooltipCheckedByPlayer);
 
             shopSlotSaveData = new SaveDataSerializeBase(unitShopSlotSaveData, 
                                                          transform.position, 
@@ -870,6 +925,8 @@ namespace TeamMAsTD
             isShopSlotUnlocked = unitShopSlotSaveData.isShopSlotUnlocked;
 
             shopUnlockCheckedByPlayer = unitShopSlotSaveData.shopUnlockedCheckedByPlayer;
+
+            shopTooltipCheckedByPlayer = unitShopSlotSaveData.shopTooltipCheckedByPlayer;
             
             if(isShopSlotUnlocked)
             {
@@ -877,6 +934,8 @@ namespace TeamMAsTD
             }
 
             if(shopUnlockCheckedByPlayer) EnableNewShopUnlockedAttentionFX(false);
+
+            if(shopTooltipCheckedByPlayer) EnableNewPlantTooltipAttentionFX(false);
         }
     }
 }

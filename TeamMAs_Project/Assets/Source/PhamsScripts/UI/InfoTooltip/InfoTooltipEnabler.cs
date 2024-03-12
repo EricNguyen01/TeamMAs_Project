@@ -39,11 +39,48 @@ namespace TeamMAsTD
 
         public InfoTooltipClickReminderDisplayTimer clickReminderDisplayTimer { get; private set; }
 
-        private Button infoTooltipButton;
+        public Button infoTooltipButton { get; private set; }
+
+        public Image infoTooltipImage { get; private set; }
+
+        public Color32 infoTooltipImageBaseColor { get; private set; }
+
+        public UIExpand[] UIExpands { get; private set; }
+
+        public UIExpand UIExpandInternal { get; private set; }
+
+        private UnitShopSlotUIDragDrop shopSlotWithThisInfoTooltipOn;
 
         private void Awake()
         {
-            infoTooltipButton = GetComponentInChildren<Button>();
+            infoTooltipButton = GetComponent<Button>(); 
+
+            infoTooltipImage = GetComponent<Image>();
+
+            if(infoTooltipImage) infoTooltipImageBaseColor = infoTooltipImage.color;
+
+            UIExpands = GetComponents<UIExpand>();  
+
+            if(UIExpands != null && UIExpands.Length > 0)
+            {
+                for(int i = 0; i < UIExpands.Length; i++)
+                {
+                    if (!UIExpands[i]) continue;
+
+                    if (UIExpands[i].GetTweenExecuteMode() == UITweenBase.UITweenExecuteMode.Internal)
+                    {
+                        UIExpandInternal = UIExpands[i];
+
+                        if (UIExpandInternal.IsTweenRunning()) UIExpandInternal.StopAndResetUITweenImmediate();
+
+                        break;
+                    }
+                }
+            }
+
+            shopSlotWithThisInfoTooltipOn = GetComponentInParent<UnitShopSlotUIDragDrop>();
+
+            //if (shopSlotWithThisInfoTooltipOn) shopSlotWithThisInfoTooltipOn.EnableNewPlantTooltipAttentionFX();
         }
 
         private void OnEnable()
@@ -187,6 +224,9 @@ namespace TeamMAsTD
             pointerEventData = eventData;
 
             if(toggleTooltipOnClick) InfoTooltipImageToggle();
+
+            if (shopSlotWithThisInfoTooltipOn && !shopSlotWithThisInfoTooltipOn.shopTooltipCheckedByPlayer)
+                shopSlotWithThisInfoTooltipOn.EnableNewPlantTooltipAttentionFX(false);
 
             //set the selected game object in the current event system so that
             //when the event system detects a newly selected game obj whether null or not,

@@ -656,6 +656,7 @@ GameObject:
   - component: {fileID: 1485040860487661476}
   - component: {fileID: 3977114684487922220}
   - component: {fileID: 4405750141554077907}
+  - component: {fileID: 6752026929516973944}
   m_Layer: 5
   m_Name: PlantTooltipButton
   m_TagString: Untagged
@@ -814,6 +815,7 @@ MonoBehaviour:
   easeMode: 30
   tweenDuration: 0.6
   tweenAutoStartDelay: 0
+  <isLooped>k__BackingField: 0
   isIndependentTimeScale: 0
   disableUIFunctionDuringTween: 0
   disableUIFunctionAfterTween: 0
@@ -823,7 +825,34 @@ MonoBehaviour:
   OnUITweenFinished:
     m_PersistentCalls:
       m_Calls: []
-  expandValue: 4
+  expandValue: 10
+--- !u!114 &6752026929516973944
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3220088215175911581}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 965dd22260c750746925935e669f19e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UI_TweenExecuteMode: 4
+  easeMode: 10
+  tweenDuration: 0.5
+  tweenAutoStartDelay: 0
+  <isLooped>k__BackingField: 1
+  isIndependentTimeScale: 1
+  disableUIFunctionDuringTween: 0
+  disableUIFunctionAfterTween: 0
+  OnUITweenStarted:
+    m_PersistentCalls:
+      m_Calls: []
+  OnUITweenFinished:
+    m_PersistentCalls:
+      m_Calls: []
+  expandValue: 10
 --- !u!1 &3715392631093969825
 GameObject:
   m_ObjectHideFlags: 0
@@ -1087,6 +1116,7 @@ MonoBehaviour:
   dragDropVisualSameAsShopSlot: 1
   shopUnlocked_FX: {fileID: 6299163364306813803}
   shopUnlockedTween: {fileID: 1371526583959025978}
+  shopSlotPlantInfoTooltip: {fileID: 1485040860487661476}
   OnStartedDragging:
     m_PersistentCalls:
       m_Calls:
@@ -1124,6 +1154,7 @@ MonoBehaviour:
   easeMode: 0
   tweenDuration: 0.5
   tweenAutoStartDelay: 0
+  <isLooped>k__BackingField: 0
   isIndependentTimeScale: 0
   disableUIFunctionDuringTween: 0
   disableUIFunctionAfterTween: 0
@@ -1164,6 +1195,7 @@ MonoBehaviour:
   easeMode: 25
   tweenDuration: 0.5
   tweenAutoStartDelay: 0
+  <isLooped>k__BackingField: 0
   isIndependentTimeScale: 0
   disableUIFunctionDuringTween: 0
   disableUIFunctionAfterTween: 0

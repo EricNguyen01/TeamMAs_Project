@@ -33,6 +33,11 @@ namespace TeamMAsTD
         "Only works with Auto UITweenExecuteMode!")]
         protected float tweenAutoStartDelay = 0.0f;
 
+        [field: SerializeField]
+        public bool isLooped { get; private set; } = false;
+
+        private bool shouldLoop = false;
+
         [SerializeField] protected bool isIndependentTimeScale = false;
 
         [SerializeField] protected bool disableUIFunctionDuringTween = false;
@@ -83,6 +88,8 @@ namespace TeamMAsTD
             baseRectRotation = rectTransform.rotation.eulerAngles;
 
             baseSizeDelta = rectTransform.sizeDelta;
+
+            shouldLoop = isLooped;
         }
 
         protected virtual void OnEnable()
@@ -93,6 +100,8 @@ namespace TeamMAsTD
 
             if (rectTransform && UI_TweenExecuteMode == UITweenExecuteMode.Auto)
             {
+                shouldLoop = true;
+
                 StartCoroutine(AutoTweenLoopCycleCoroutine());
             }
         }
@@ -115,7 +124,16 @@ namespace TeamMAsTD
 
             if (!rectTransform || alreadyPerformedTween) return;
 
-            StartCoroutine(RunTweenCycleOnceCoroutineBase());
+            if(!isLooped) StartCoroutine(RunTweenCycleOnceCoroutineBase());
+            else
+            {
+                shouldLoop = isLooped;
+
+                if (UI_TweenExecuteMode == UITweenExecuteMode.Auto || UI_TweenExecuteMode == UITweenExecuteMode.Internal)
+                {
+                    StartCoroutine(AutoTweenLoopCycleCoroutine());
+                }
+            }
         }
 
         public float GetTweenDuration()
@@ -128,9 +146,24 @@ namespace TeamMAsTD
             return alreadyPerformedTween;
         }
 
+        public UITweenExecuteMode GetTweenExecuteMode()
+        {
+            return UI_TweenExecuteMode;
+        }
+
         public void SetTweenExecuteMode(UITweenExecuteMode executeMode)
         {
             UI_TweenExecuteMode = executeMode;
+        }
+
+        public Ease GetTweenEaseMode()
+        {
+            return easeMode;
+        }
+
+        public void SetTweenEaseMode(Ease easeMode)
+        {
+            this.easeMode = easeMode;
         }
 
         public virtual void SetUITweenCanvasGroup(CanvasGroup canvasGrp)
@@ -183,6 +216,13 @@ namespace TeamMAsTD
         {
             if (!enabled) yield break;
 
+            if (UI_TweenExecuteMode == UITweenExecuteMode.ClickOnly ||
+                UI_TweenExecuteMode == UITweenExecuteMode.ClickAndHover ||
+                UI_TweenExecuteMode == UITweenExecuteMode.HoverOnly)
+                yield break;
+
+            alreadyPerformedTween = true;
+
             if (disableUIFunctionDuringTween)
             {
                 if (!canvasGroup) canvasGroup = gameObject.AddComponent<CanvasGroup>();
@@ -194,7 +234,7 @@ namespace TeamMAsTD
 
             OnUITweenStarted?.Invoke();
 
-            while (enabled && UI_TweenExecuteMode == UITweenExecuteMode.Auto)
+            while (enabled && shouldLoop)
             {
                 alreadyPerformedTween = true;
 
@@ -202,6 +242,8 @@ namespace TeamMAsTD
                 if (tweenAutoStartDelay > 0.0f) yield return new WaitForSeconds(tweenAutoStartDelay);
 
                 yield return RunTweenCycleOnceCoroutine();
+
+                alreadyPerformedTween = true;
 
                 //if start delay is > 0.0f -> wait for this number of seconds before looping cycle again
                 //if (tweenAutoStartDelay > 0.0f) yield return new WaitForSeconds(tweenAutoStartDelay);
@@ -270,8 +312,20 @@ namespace TeamMAsTD
             }
         }
 
+        private void SetTweenLoop(bool isLooped)
+        {
+            shouldLoop = isLooped;
+        }
+
         public virtual void StopAndResetUITweenImmediate()
         {
+            if (shouldLoop)
+            {
+                SetTweenLoop(false);
+
+                return;
+            }
+
             StopAllCoroutines();
 
             alreadyPerformedTween = false;
