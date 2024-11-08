@@ -177,10 +177,10 @@ namespace TeamMAsTD
                 projectileGO.transform.rotation = CalculateProjectileRotatesTowardsTarget(projectileGO, visitorTargetsList[i]);
 
                 //get the plant projectile script component attached to the projectile game object just taken from projectile pool
-                PlantProjectile plantProjectile = projectileGO.GetComponent<PlantProjectile>();
+                PlantProjectile plantProjectile; projectileGO.TryGetComponent<PlantProjectile>(out plantProjectile);
 
                 //set the visitor target data for the plant projectile script if one is found
-                if (plantProjectile != null) plantProjectile.SetTargettedVisitorUnit(visitorTargetsList[i]);
+                if (plantProjectile) plantProjectile.SetTargettedVisitorUnit(visitorTargetsList[i]);
 
                 if (!projectileGO.activeInHierarchy) projectileGO.SetActive(true);
 

@@ -15,3 +15,4 @@ MonoBehaviour:
   <plantProjectilePrefab>k__BackingField: {fileID: 1245357011178758982, guid: b9105d238dd4e0d40966c85280ee55b2, type: 3}
   <plantProjectileSpeed>k__BackingField: 5
   <isHoming>k__BackingField: 1
+  <projectileHitEffect>k__BackingField: {fileID: 7263578408574780147, guid: 5aa08ea634cdeb04d8e56276939a8468, type: 3}

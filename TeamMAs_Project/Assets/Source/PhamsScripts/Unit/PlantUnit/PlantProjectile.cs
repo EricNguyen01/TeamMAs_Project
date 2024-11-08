@@ -2,7 +2,6 @@
 // GitHub: https://github.com/EricNguyen01.
 
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace TeamMAsTD
@@ -23,6 +22,8 @@ namespace TeamMAsTD
 
         private Rigidbody2D projectileRigidbody2D;
 
+        private ParticleSystem projectileHitEffect;
+
         public SpriteRenderer projectileSpriteRenderer { get; private set; }
 
         private Vector2 projectileStartPos;
@@ -33,6 +34,8 @@ namespace TeamMAsTD
 
         private bool isHoming = false;
 
+        private bool isDespawningDelay = false;
+
         private void Awake()
         {
             if(LayerMask.LayerToName(gameObject.layer) != "PlantProjectile")
@@ -41,8 +44,13 @@ namespace TeamMAsTD
             }
 
             projectileSpriteRenderer = GetComponent<SpriteRenderer>();
-            
+
             CheckProjectileColliderAndRigidbody();
+        }
+
+        private void OnEnable()
+        {
+            if (projectileSpriteRenderer && !projectileSpriteRenderer.enabled) projectileSpriteRenderer.enabled = true;
         }
 
         private void OnDisable()
@@ -113,7 +121,7 @@ namespace TeamMAsTD
 
             //if(visitorHit != null) Debug.Log("Projectile Hit Visitor: " + visitorHit.name);
 
-            DespawnProjectile();//despawn projectile on hit.
+            ProcessProjectileHitEffectAndDespawn();
         }
 
         private void ProcessProjectileMovement()
@@ -146,15 +154,64 @@ namespace TeamMAsTD
             //this is done so that even if plant was uprooted, the bullet can still check for current travel distance
             if(Vector2.Distance(projectileStartPos, (Vector2)transform.position) >= maxTravelDistance)
             {
-                DespawnProjectile();
+                DespawnProjectileImmediate();
                 //Debug.Log("Projectile has despawned from being out of travel dist!");
             }
         }
 
-        private void DespawnProjectile()
+        private void ProcessProjectileHitEffectAndDespawn()
         {
+            if (!projectileHitEffect)
+            {
+                DespawnProjectileImmediate();
+
+                return;
+            }
+            
+            //process projectile hit FX
+
+            projectileHitEffect.transform.SetParent(null);
+
+            if(targettedVisitorOfProjectile) projectileHitEffect.transform.position = targettedVisitorOfProjectile.transform.position;
+
+            else projectileHitEffect.transform.position = transform.position;
+
+            projectileHitEffect.transform.rotation = Quaternion.Euler(Vector3.zero);
+
+            projectileHitEffect.transform.localScale = Vector3.one;
+
+            projectileHitEffect.Play();
+
+            //disable the projectile sprite renderer while hit fx is being played
+
+            if(projectileSpriteRenderer && projectileSpriteRenderer.enabled) projectileSpriteRenderer.enabled = false;
+
+            var fxMain = projectileHitEffect.main;
+
+            //despawn delay -> wait until hit fx finishes playing to despawn
+
+            if (!isDespawningDelay) StartCoroutine(DespawnProjectileDelay(fxMain.duration + 0.5f));
+        }
+
+        private void DespawnProjectileImmediate()
+        {
+            //first re-parent projectile hit fx of this proj if exists
+            if (projectileHitEffect)
+            {
+                if (projectileHitEffect.transform.parent == null)
+                {
+                    projectileHitEffect.transform.localScale = Vector3.one;
+
+                    projectileHitEffect.transform.SetParent(transform, true);
+
+                    projectileHitEffect.transform.localPosition = Vector3.zero;
+
+                    projectileHitEffect.transform.localRotation = Quaternion.Euler(Vector3.zero);
+                }
+            }
+
             //if plant that spawned this projectile was uprooted -> destroy this projectile on despawn
-            if(plantUnitOfProjectile == null)
+            if (plantUnitOfProjectile == null)
             {
                 Destroy(gameObject);
 
@@ -162,9 +219,33 @@ namespace TeamMAsTD
             }
 
             //else
-
+            
             //return this projectile to plant's projectile pool
             plantUnitOfProjectile.ReturnProjectileToPool(this);
+        }
+
+        private IEnumerator DespawnProjectileDelay(float despawnDelay)
+        {
+            if (isDespawningDelay) yield break;
+
+            isDespawningDelay = true;
+
+            if (despawnDelay <= 0.0f)
+            {
+                DespawnProjectileImmediate();
+
+                isDespawningDelay = false;
+
+                yield break;
+            }
+
+            yield return new WaitForSeconds(despawnDelay);
+
+            DespawnProjectileImmediate();
+
+            isDespawningDelay = false;
+
+            yield break;
         }
 
         private void CheckProjectileColliderAndRigidbody()
@@ -195,8 +276,11 @@ namespace TeamMAsTD
             plantUnitSpawnedThisProjectile.plantUnitScriptableObject.plantProjectileSO == null)
             {
                 Debug.LogError("Initialize Plant Projectile: " + name + " failed! Some required components are missing!");
+
                 enabled = false;
+
                 gameObject.SetActive(false);
+
                 return;
             }
 
@@ -213,6 +297,8 @@ namespace TeamMAsTD
             travelSpeed = plantProjectileSO.plantProjectileSpeed;
 
             isHoming = plantProjectileSO.isHoming;
+
+            projectileHitEffect = plantProjectileSO.SpawnProjectileHitEffect(this, Vector3.zero, true, false);
         }
 
         public void SetTargettedVisitorUnit(VisitorUnit visitor)

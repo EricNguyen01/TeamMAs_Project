@@ -22,7 +22,7 @@ namespace TeamMAsTD
                      "how likely is this resource is going to drop compared to all the resources that could be dropped by this dropper.")]
             [Range(1, 100)] public int resourceDropChanceBetweenResources;
 
-            [Tooltip("This resource drop chances between itself and nothing. This means that after evaluating with other resources in drop list" +
+            [Tooltip("This resource drop chances between itself and nothing. This means that after evaluating with other resources in drop list " +
                 "or if this resource is the only one in drop list, calculate the drop chance of whether to drop this resource or drop nothing.")]
             [Range(0, 100)] public int chanceToNotDrop;
 
