@@ -48,11 +48,6 @@ namespace TeamMAsTD
             CheckProjectileColliderAndRigidbody();
         }
 
-        private void OnEnable()
-        {
-            if (projectileSpriteRenderer && !projectileSpriteRenderer.enabled) projectileSpriteRenderer.enabled = true;
-        }
-
         private void OnDisable()
         {
             //reset data on returning to pool and getting disabled
@@ -60,6 +55,10 @@ namespace TeamMAsTD
             projectileRigidbody2D.velocity = Vector2.zero;
 
             projectileRigidbody2D.angularVelocity = 0.0f;
+
+            if (projectileSpriteRenderer && !projectileSpriteRenderer.enabled) projectileSpriteRenderer.enabled = true;
+
+            if (projectileCollider2D && !projectileCollider2D.enabled) projectileCollider2D.enabled = true;
         }
 
         private void Update()
@@ -167,7 +166,17 @@ namespace TeamMAsTD
 
                 return;
             }
-            
+
+            //disable the projectile's sprite renderer while waiting for hit fx to finishes playing and despawning
+
+            if (projectileSpriteRenderer && projectileSpriteRenderer.enabled) projectileSpriteRenderer.enabled = false;
+
+            //disable the projectile's collider to avoid accidental collisions while waiting for hit fx to finishes playing and despawning
+
+            if (projectileCollider2D && projectileCollider2D.enabled) projectileCollider2D.enabled = false;
+
+            //both the above components are re-enabled on projectile disable function (after despawning completed)
+
             //process projectile hit FX
 
             projectileHitEffect.transform.SetParent(null);
@@ -181,10 +190,6 @@ namespace TeamMAsTD
             projectileHitEffect.transform.localScale = Vector3.one;
 
             projectileHitEffect.Play();
-
-            //disable the projectile sprite renderer while hit fx is being played
-
-            if(projectileSpriteRenderer && projectileSpriteRenderer.enabled) projectileSpriteRenderer.enabled = false;
 
             var fxMain = projectileHitEffect.main;
 
