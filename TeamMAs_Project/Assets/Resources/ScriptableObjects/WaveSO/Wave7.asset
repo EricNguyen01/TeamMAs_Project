@@ -29,6 +29,6 @@ MonoBehaviour:
   <waitTimeBetweenSpawn>k__BackingField: 1
   <spawnBossLast>k__BackingField: 0
   <applyVisitorHealthScalingThisWave>k__BackingField: 1
-  <visitorHealthScalingMultiplier>k__BackingField: 1.5
+  <visitorHealthScalingMultiplier>k__BackingField: 1.7
   <extraCoinsDropFromWave>k__BackingField: 4
   <plantsToSpawnOnThisWaveStart>k__BackingField: []

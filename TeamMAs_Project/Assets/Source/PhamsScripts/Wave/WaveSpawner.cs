@@ -450,6 +450,10 @@ namespace TeamMAsTD
             //on current wave ended which could lead to wrong wave number being saved.
             //saving lastWaveStarted + 1 will always be correct 
             int waveToSave = lastWaveStarted + 1;
+
+            //if we already finished playing the very last wave of all the wave list
+            //no need to save lastWaveStarted + 1 because in this case, the current and last wave is one.
+            if (lastWaveStarted >= waveSOList.Count - 1) waveToSave = lastWaveStarted;
             
             waveSpawnerSave = new SaveDataSerializeBase(waveToSave, 
                                                         transform.position, 
