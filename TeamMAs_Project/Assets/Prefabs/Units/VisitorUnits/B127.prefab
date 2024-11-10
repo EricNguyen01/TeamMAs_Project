@@ -218,7 +218,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <visitorUnitSO>k__BackingField: {fileID: 11400000, guid: 6a0dd658772fe164889725e1e71e29eb, type: 2}
-  heartEffect: {fileID: 1816669001672771142}
+  heartEffect: {fileID: 0}
   visitorCoinsDropper: {fileID: -9081993276595564927}
 --- !u!114 &-9081863570021092993
 MonoBehaviour:
@@ -755,17 +755,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 263390f310bec6d4c877c3c9178e8f16, type: 3}
---- !u!114 &1816669001672771142 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1684239658500108921, guid: 263390f310bec6d4c877c3c9178e8f16, type: 3}
-  m_PrefabInstance: {fileID: 1038508382827148351}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a4f62e3db36158a42b9608c6e31c30e7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &5719336018024946135 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4699132452098289128, guid: 263390f310bec6d4c877c3c9178e8f16, type: 3}

@@ -16,7 +16,7 @@ MonoBehaviour:
   <unitPrefab>k__BackingField: {fileID: 2664338853412353054, guid: 59baf253d5f35bb4fbf4ec302beb7866, type: 3}
   <unitInfoTooltipImageSprite>k__BackingField: {fileID: 21300000, guid: 8598af62508bbd741a3e5c3953babe48, type: 3}
   <unitSpawnEffectPrefab>k__BackingField: {fileID: 0}
-  <unitDestroyEffectPrefab>k__BackingField: {fileID: 0}
+  <unitDestroyEffectPrefab>k__BackingField: {fileID: 8487402871801164198, guid: 2953cc7d5c233a14da0a67a33ce3a4b6, type: 3}
   <visitorType>k__BackingField: 2
   <happinessAsHealth>k__BackingField: 1350
   <moveSpeed>k__BackingField: 1
@@ -24,7 +24,7 @@ MonoBehaviour:
   <dissapointmentDamage>k__BackingField: 4
   <isBoss>k__BackingField: 1
   <visitorHitColor>k__BackingField: {r: 1, g: 0.21960784, b: 0.8117647, a: 1}
-  <visitorAppeasementTime>k__BackingField: 2.5
+  <visitorAppeasementTime>k__BackingField: 1.5
   <coinResourceToDrop>k__BackingField: {fileID: 11400000, guid: 7f0c635957a541840b7d3206387c7a84, type: 2}
   <visitorsAppeasedCoinsDrop>k__BackingField: 5
   <chanceToDropCoins>k__BackingField: 100

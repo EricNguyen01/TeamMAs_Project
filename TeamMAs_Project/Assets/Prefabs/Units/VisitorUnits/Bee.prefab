@@ -127,6 +127,7 @@ GameObject:
   - component: {fileID: -9081863570021092993}
   - component: {fileID: -9081993276595564927}
   - component: {fileID: -6272482799170754482}
+  - component: {fileID: 2015166724250838911}
   m_Layer: 8
   m_Name: Bee
   m_TagString: Untagged
@@ -217,7 +218,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <visitorUnitSO>k__BackingField: {fileID: 11400000, guid: 297fbbaf0eb4b9a4f9e1270ac6e199f4, type: 2}
-  heartEffect: {fileID: 1816669001672771142}
+  heartEffect: {fileID: 0}
   visitorCoinsDropper: {fileID: -9081993276595564927}
 --- !u!114 &-9081863570021092993
 MonoBehaviour:
@@ -232,6 +233,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   unitWorldCanvas: {fileID: 6002797163402936112}
+  logMissingUIComponentsWarning: 0
   nameTextMeshProComponent: {fileID: 1824957415631162759}
   healthBarSlider: {fileID: 8999853755829154161}
 --- !u!114 &-9081993276595564927
@@ -281,6 +283,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &2015166724250838911
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2664338853412353054}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4459c84b5172c9d4cb0efb251fcec3df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3538604643891030984
 GameObject:
   m_ObjectHideFlags: 0
@@ -741,17 +755,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 263390f310bec6d4c877c3c9178e8f16, type: 3}
---- !u!114 &1816669001672771142 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1684239658500108921, guid: 263390f310bec6d4c877c3c9178e8f16, type: 3}
-  m_PrefabInstance: {fileID: 1038508382827148351}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a4f62e3db36158a42b9608c6e31c30e7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &5719336018024946135 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4699132452098289128, guid: 263390f310bec6d4c877c3c9178e8f16, type: 3}

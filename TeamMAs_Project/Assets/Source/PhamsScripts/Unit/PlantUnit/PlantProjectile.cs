@@ -120,7 +120,7 @@ namespace TeamMAsTD
 
             //if(visitorHit != null) Debug.Log("Projectile Hit Visitor: " + visitorHit.name);
 
-            ProcessProjectileHitEffectAndDespawn();
+            ProcessProjectileHitEffectAndDespawn(visitorHit);
         }
 
         private void ProcessProjectileMovement()
@@ -158,7 +158,7 @@ namespace TeamMAsTD
             }
         }
 
-        private void ProcessProjectileHitEffectAndDespawn()
+        private void ProcessProjectileHitEffectAndDespawn(VisitorUnit visitorHit)
         {
             if (!projectileHitEffect)
             {
@@ -181,13 +181,16 @@ namespace TeamMAsTD
 
             projectileHitEffect.transform.SetParent(null);
 
-            if(targettedVisitorOfProjectile) projectileHitEffect.transform.position = targettedVisitorOfProjectile.transform.position;
+            if(visitorHit) projectileHitEffect.transform.position = visitorHit.transform.position;
+
+            if (plantProjectileSO)
+            {
+                projectileHitEffect.transform.rotation = plantProjectileSO.projectileHitEffect.transform.rotation;
+
+                projectileHitEffect.transform.localScale = plantProjectileSO.projectileHitEffect.transform.localScale;
+            }
 
             else projectileHitEffect.transform.position = transform.position;
-
-            projectileHitEffect.transform.rotation = Quaternion.Euler(Vector3.zero);
-
-            projectileHitEffect.transform.localScale = Vector3.one;
 
             projectileHitEffect.Play();
 
@@ -195,7 +198,7 @@ namespace TeamMAsTD
 
             //despawn delay -> wait until hit fx finishes playing to despawn
 
-            if (!isDespawningDelay) StartCoroutine(DespawnProjectileDelay(fxMain.duration + 0.5f));
+            if (!isDespawningDelay && gameObject.activeInHierarchy) StartCoroutine(DespawnProjectileDelay(fxMain.duration + 0.5f));
         }
 
         private void DespawnProjectileImmediate()
@@ -205,13 +208,9 @@ namespace TeamMAsTD
             {
                 if (projectileHitEffect.transform.parent == null)
                 {
-                    projectileHitEffect.transform.localScale = Vector3.one;
-
                     projectileHitEffect.transform.SetParent(transform, true);
 
                     projectileHitEffect.transform.localPosition = Vector3.zero;
-
-                    projectileHitEffect.transform.localRotation = Quaternion.Euler(Vector3.zero);
                 }
             }
 

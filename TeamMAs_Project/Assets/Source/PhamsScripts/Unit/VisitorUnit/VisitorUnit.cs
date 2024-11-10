@@ -3,7 +3,6 @@
 
 using System.Collections;
 using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
 using UnityEngine;
 
 namespace TeamMAsTD
@@ -16,9 +15,11 @@ namespace TeamMAsTD
         [field: SerializeField] 
         public VisitorUnitSO visitorUnitSO { get; private set; }
 
-        [SerializeField] private HeartEffect heartEffect;
+        [SerializeField] 
+        private HeartEffect heartEffect;
 
-        [SerializeField] private GameResourceDropper visitorCoinsDropper;
+        [SerializeField] 
+        private GameResourceDropper visitorCoinsDropper;
 
         private AbilityEffectReceivedInventory abilityEffectReceivedInventory;
 
@@ -42,13 +43,17 @@ namespace TeamMAsTD
 
         private bool isInvincible = false;
 
-        private float baseAppeasementTime;
+        private float baseAppeasementTime = 1.0f;
 
         private float currentAppeasementTime = 0.0f;
 
-        private float baseDamageVisualTime = 0.5f;
+        private bool isProcessingAppeasement = false;
 
-        private float currentDamageVisualTime = 0.0f;
+        private float baseDamageColorChangeTime = 0.25f;
+
+        private float currentDamageColorChangeTime = 0.0f;
+
+        private bool isProcessingDamageColorChange = false;
 
         private SpriteRenderer visitorSpriteRenderer;
 
@@ -59,7 +64,12 @@ namespace TeamMAsTD
         private UnitWorldUI visitorWorldUIComponent;
 
         private Collider2D visitorCollider2D;
-    
+
+        public ParticleSystem visitorAppeasedEffect { get; private set; }
+
+        private bool isProcessingAppeasementEffect = false;
+
+        private WaitForFixedUpdate waitForFixedUpdate = new WaitForFixedUpdate();
 
         //Invoked on visitor appeased
         //PlantAimShootSystem.cs sub to this event to update its targets list
@@ -92,11 +102,12 @@ namespace TeamMAsTD
                 abilityEffectReceivedInventory = gameObject.AddComponent<AbilityEffectReceivedInventory>();
             }
 
-            baseAppeasementTime = visitorUnitSO.visitorAppeasementTime;
+            if (visitorUnitSO.visitorAppeasementTime <= 0.1f) baseAppeasementTime = 1.0f;
+            else baseAppeasementTime = visitorUnitSO.visitorAppeasementTime;
 
-            currentAppeasementTime = visitorUnitSO.visitorAppeasementTime;
+            currentAppeasementTime = baseAppeasementTime;
 
-            if (heartEffect == null) heartEffect = GetComponentInChildren<HeartEffect>();
+            if (!heartEffect) heartEffect = GetComponentInChildren<HeartEffect>();
 
             GetVisitorPathsOnAwake();
 
@@ -117,6 +128,25 @@ namespace TeamMAsTD
                                                              visitorUnitSO.chanceToDropCoins,
                                                              visitorUnitSO.chanceToNotDropCoins);
             }
+
+            if(visitorUnitSO && visitorUnitSO.unitDestroyEffectPrefab)
+            {
+                GameObject visitorAppeasedEffectGO = visitorUnitSO.SpawnUnitEffectGameObject(visitorUnitSO.unitDestroyEffectPrefab,
+                                                                                             transform,
+                                                                                             true,
+                                                                                             false);
+
+                visitorAppeasedEffect = visitorAppeasedEffectGO.GetComponent<ParticleSystem>();
+
+                if (visitorAppeasedEffect)
+                {
+                    var fxMain = visitorAppeasedEffect.main;
+
+                    fxMain.loop = false;
+
+                    fxMain.playOnAwake = false;
+                }
+            }
         }
 
         private void OnEnable()
@@ -126,16 +156,8 @@ namespace TeamMAsTD
 
         private void Update()
         {
-            //functions that no depend on whether the visitor is appeased or not:
-            ProcessVisitorDamageVisual();
-
-            //if happiness(health) is below 0:
-            if (currentVisitorHealth <= 0.0f)
-            {
-                ProcessVisitorAppeased();
-
-                return;
-            }
+            //stop updating visitor's behaviors if happiness(health) is below 0:
+            if (currentVisitorHealth <= 0.0f) return;
             
             //if happiness(Health) is not below 0:
             WalkOnPath();
@@ -250,7 +272,7 @@ namespace TeamMAsTD
             transform.position = Vector2.MoveTowards(transform.position, currentTileWaypointPos, visitorUnitSO.moveSpeed * Time.deltaTime);
         }
 
-        private void VisitorHealsHealthOnAppeased()
+        private void VisitorHealsPlayerEmotionalHealthOnAppeased()
         {
             if (GameResource.gameResourceInstance == null || GameResource.gameResourceInstance.emotionalHealthSOTypes == null) return;
 
@@ -296,6 +318,7 @@ namespace TeamMAsTD
 
             //else return to this visitor's correct pool
             poolContainsThisVisitor.ReturnVisitorToPool(this);
+
             //remove from active visitors list in wave that spawned this visitor
             waveSpawnedThisVisitor.RemoveInactiveVisitorsFromActiveList(this);
         }
@@ -307,7 +330,7 @@ namespace TeamMAsTD
 
             currentAppeasementTime = baseAppeasementTime;
 
-            currentDamageVisualTime = 0.0f;
+            currentDamageColorChangeTime = baseDamageColorChangeTime;
 
             visitorCollider2D.enabled = true;
 
@@ -330,59 +353,59 @@ namespace TeamMAsTD
             }
         }
 
-        private void ProcessVisitorDamageVisual()
+        private IEnumerator ProcessVisitorDamageColorChange()
         {
-            if (currentDamageVisualTime <= 0.0f) return;
+            if (isProcessingDamageColorChange || currentVisitorHealth <= 0.0f) yield break;
 
-            currentDamageVisualTime -= Time.deltaTime;
+            isProcessingDamageColorChange = true;
 
-            Color color = Color.Lerp(visitorHitColor, visitorOriginalSpriteColor, currentDamageVisualTime / baseDamageVisualTime);
-            color.a = 255.0f;
+            Color visitorDamageColor;
 
-            if (visitorSpriteRenderer != null) visitorSpriteRenderer.color = color;
-
-            if (currentDamageVisualTime <= 0.0f)
+            //lerp visitor color to damage color (duration is currentDamageVisualTime)
+            while(currentDamageColorChangeTime >= 0.0f)
             {
-                currentDamageVisualTime = 0.0f;
+                if (currentVisitorHealth <= 0.0f) break;
 
-                if (visitorSpriteRenderer != null && visitorSpriteRenderer.color != visitorOriginalSpriteColor)
-                {
-                    visitorOriginalSpriteColor.a = 255.0f;
+                if (currentDamageColorChangeTime > 0.0f)
+                    visitorDamageColor = Color.Lerp(visitorHitColor,
+                                                    visitorOriginalSpriteColor,
+                                                    currentDamageColorChangeTime / baseDamageColorChangeTime);
 
-                    visitorSpriteRenderer.color = visitorOriginalSpriteColor;
-                }
+                else
+                    visitorDamageColor = visitorHitColor;
+
+                visitorDamageColor.a = 255.0f;
+
+                if (visitorSpriteRenderer != null) visitorSpriteRenderer.color = visitorDamageColor;
+
+                yield return waitForFixedUpdate;
+
+                currentDamageColorChangeTime -= Time.fixedDeltaTime;
             }
+
+            //once visitor's color to damage color lerp is complete -> reset color to base visitor color
+
+            visitorOriginalSpriteColor.a = 255.0f;
+
+            visitorSpriteRenderer.color = visitorOriginalSpriteColor;
+
+            //reset variables
+
+            isProcessingDamageColorChange = false;
+
+            currentDamageColorChangeTime = baseDamageColorChangeTime;
+
+            yield break;
         }
 
-        private void ProcessVisitorAppeased()
+        private IEnumerator ProcessVisitorAppeased()
         {
-            if (currentAppeasementTime <= 0.0f)
-            {
-                if (gameObject.activeInHierarchy) ProcessVisitorDespawns();
+            if (isProcessingAppeasement) yield break;
 
-                return;
-            }
+            isProcessingAppeasement = true;
 
-            currentAppeasementTime -= Time.deltaTime;
-
-            //if during appeasement time...
-            //if there's an appease anim clip, it is triggered in TakeDamageFrom() function below...
-            //else process procedural appeasment visual only if there's no provided appeasement anim clip in visitorUnitSO.
-            ProcessProceduralAppeasementVisual();
-
-            //return visitor to pool when appeasement time is up
-            if (currentAppeasementTime <= 0.0f)
-            {
-                currentAppeasementTime = 0.0f;
-
-                ProcessVisitorDespawns();
-            }
-        }
-
-        private void ProcessProceduralAppeasementVisual()
-        {
             //hide name and happiness bar on being appeased
-            if(visitorWorldUIComponent != null)
+            if (visitorWorldUIComponent != null)
             {
                 //hide name text UI
                 visitorWorldUIComponent.EnableUnitNameTextUI(false);
@@ -390,15 +413,102 @@ namespace TeamMAsTD
                 visitorWorldUIComponent.EnableUnitHealthBarSlider(false);
             }
 
+            while (currentAppeasementTime > 0.0f)
+            {
+                //during appeasement time,
+                //if there's an appease anim clip, it is triggered in TakeDamageFrom() function below...
+                //also process appeasment visual iteratively here...
+                VisitorAppeasementColorFade();
+
+                yield return waitForFixedUpdate;
+
+                currentAppeasementTime -= Time.fixedDeltaTime;
+            }
+
+            ProcessVisitorDespawns();
+
+            currentAppeasementTime = 0.0f;
+
+            //reset variables
+
+            isProcessingAppeasement = false;
+
+            yield break;
+        }
+
+        private void VisitorAppeasementColorFade()
+        {
             //slowly fade visitor on being appeased
             if(visitorSpriteRenderer != null)
             {
                 var color = visitorSpriteRenderer.color;
 
-                color.a = currentAppeasementTime / visitorUnitSO.visitorAppeasementTime;
+                if (currentAppeasementTime <= 0.0f) color.a = 0.0f;
+                else color.a = currentAppeasementTime / baseAppeasementTime;
 
                 visitorSpriteRenderer.color = color;
             }
+        }
+
+        private IEnumerator ProcessVisitorAppeasementEffect()
+        {
+            if (isProcessingAppeasementEffect) yield break;
+
+            if(!visitorAppeasedEffect) yield break;
+
+            isProcessingAppeasementEffect = true;
+
+            visitorAppeasedEffect.transform.SetParent(null);
+
+            if (visitorUnitSO)
+            {
+                visitorAppeasedEffect.transform.rotation = visitorUnitSO.unitDestroyEffectPrefab.transform.rotation;
+
+                visitorAppeasedEffect.transform.localScale = visitorUnitSO.unitDestroyEffectPrefab.transform.localScale;
+            }
+
+            if (!visitorAppeasedEffect.gameObject.activeInHierarchy)
+                visitorAppeasedEffect.gameObject.SetActive(true);
+
+            visitorAppeasedEffect.Play();
+
+            ParticleSystem[] appeasementFXs = visitorAppeasedEffect.GetComponentsInChildren<ParticleSystem>();
+
+            if(appeasementFXs != null && appeasementFXs.Length > 0)
+            {
+                bool isEmitting = true;
+
+                while(isEmitting)
+                {
+                    for (int i = 0; i < appeasementFXs.Length; i++)
+                    {
+                        if (appeasementFXs[i].isEmitting)
+                        {
+                            yield return new WaitForSeconds(0.1f);
+
+                            break;
+                        }
+
+                        if(i == appeasementFXs.Length - 1)
+                        {
+                            if (!appeasementFXs[i].isEmitting) isEmitting = false;
+                        }
+                    }
+                }
+            }
+
+            yield return new WaitForSeconds(0.1f);
+
+            if (visitorAppeasedEffect.gameObject.activeInHierarchy)
+                visitorAppeasedEffect.gameObject.SetActive(false);
+
+            visitorAppeasedEffect.transform.SetParent(transform, true);
+
+            visitorAppeasedEffect.transform.localPosition = Vector3.zero;
+
+            isProcessingAppeasementEffect = false;
+
+            yield break;
         }
 
         public void SetVisitorInvincible(bool shouldBeInvincible)
@@ -526,15 +636,17 @@ namespace TeamMAsTD
                     visitorWorldUIComponent.SetHealthBarSliderValue(currentVisitorHealth, visitorUnitSO.happinessAsHealth, true);
                 }
                 
-                //to trigger damage color change in ProcessDamageVisual() function above
-                currentDamageVisualTime = baseDamageVisualTime;
+                //process visitor damage color changes (lerps to hit color)
+
+                if (!isProcessingDamageColorChange && gameObject.activeInHierarchy)
+                    StartCoroutine(ProcessVisitorDamageColorChange());
 
                 // to activate heart effect -sarita
-                if(heartEffect != null)
+                if(heartEffect)
                 {
                     heartEffect.transform.position = transform.position;
 
-                    heartEffect.gameObject.SetActive(true);
+                    if(!heartEffect.gameObject.activeInHierarchy) heartEffect.gameObject.SetActive(true);
                 }
 
                 //process visitor appeasement related functions when happiness dropped below 0.0f (or reached 100.0f).
@@ -542,11 +654,20 @@ namespace TeamMAsTD
                 {
                     if (visitorCollider2D != null) visitorCollider2D.enabled = false;
 
-                    VisitorHealsHealthOnAppeased();
+                    VisitorHealsPlayerEmotionalHealthOnAppeased();
 
                     if(visitorCoinsDropper != null)
                     {
                         visitorCoinsDropper.DropResource();
+                    }
+
+                    if(!isProcessingAppeasement && gameObject.activeInHierarchy) 
+                        StartCoroutine(ProcessVisitorAppeased());
+
+                    if (visitorAppeasedEffect)
+                    {
+                        if(!isProcessingAppeasementEffect && gameObject.activeInHierarchy)
+                            StartCoroutine(ProcessVisitorAppeasementEffect());
                     }
 
                     OnVisitorAppeased?.Invoke();

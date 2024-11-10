@@ -410,8 +410,9 @@ namespace TeamMAsTD
             yield break;
         }
 
-        //DONT USE THIS FUNCTION TO STOP THIS WAVE
-        //USE waveSpawnerOfThisWave.ProcessWaveFinished(param,param,param)
+        /// <summary>
+        /// DONT USE THIS FUNCTION TO STOP WAVE! USE waveSpawnerOfThisWave.ProcessWaveFinished(param,param,param) instead.
+        /// </summary>
         //In waveSpawnerOfThisWave.ProcessWaveFinished, this function below will be called along with other logics wave end logic.
         public void ProcessWaveStopped()
         {

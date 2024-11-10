@@ -60,13 +60,7 @@ namespace TeamMAsTD
 
             effectGO = Instantiate(projectileHitEffect.gameObject, effectSpawnPos, Quaternion.identity);
 
-            effectGO.transform.localScale = Vector3.one;
-
             if (makeEffectChild) effectGO.transform.SetParent(projectileUsingEffect.transform, true);
-
-            effectGO.transform.localPosition = Vector3.zero;
-
-            effectGO.transform.localRotation = Quaternion.Euler(Vector3.zero);
 
             effectGO.TryGetComponent<ParticleSystem>(out spawnedFx);
 

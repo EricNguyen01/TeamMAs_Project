@@ -25,7 +25,7 @@ namespace TeamMAsTD
         [field: SerializeField] public Color visitorHitColor { get; private set; }
 
         [field: Header("Visitor Appeasement Settings")]
-        [field: SerializeField] [field: Min(0)] public float visitorAppeasementTime { get; private set; } = 2.5f;
+        [field: SerializeField] [field: Min(0.1f)] public float visitorAppeasementTime { get; private set; } = 1.5f;
         [field: SerializeField] public CoinResourceSO coinResourceToDrop { get; private set; }
         [field: SerializeField][field: Min(0)] public int visitorsAppeasedCoinsDrop { get; private set; }
         [field: SerializeField][field: Range(1, 100)] public int chanceToDropCoins { get; private set; }

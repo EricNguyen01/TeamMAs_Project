@@ -90,6 +90,7 @@ GameObject:
   - component: {fileID: -9081863570021092993}
   - component: {fileID: 3203295247890861256}
   - component: {fileID: -360179473597307562}
+  - component: {fileID: 2015166724250838911}
   m_Layer: 8
   m_Name: HigherJoe
   m_TagString: Untagged
@@ -180,7 +181,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <visitorUnitSO>k__BackingField: {fileID: 11400000, guid: 6ab65e7a4abd60d4a88c452853649921, type: 2}
-  heartEffect: {fileID: 6858528910523158009}
+  heartEffect: {fileID: 0}
   visitorCoinsDropper: {fileID: 3203295247890861256}
 --- !u!114 &-9081863570021092993
 MonoBehaviour:
@@ -245,6 +246,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1.2255476}
   m_EdgeRadius: 0
+--- !u!114 &2015166724250838911
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2664338853412353054}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4459c84b5172c9d4cb0efb251fcec3df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3500098925844926785
 GameObject:
   m_ObjectHideFlags: 0
@@ -824,14 +837,3 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4699132452098289128, guid: 263390f310bec6d4c877c3c9178e8f16, type: 3}
   m_PrefabInstance: {fileID: 5220231340384649088}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &6858528910523158009 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1684239658500108921, guid: 263390f310bec6d4c877c3c9178e8f16, type: 3}
-  m_PrefabInstance: {fileID: 5220231340384649088}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a4f62e3db36158a42b9608c6e31c30e7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

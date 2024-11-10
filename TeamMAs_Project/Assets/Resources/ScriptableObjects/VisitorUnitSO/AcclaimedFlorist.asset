@@ -16,15 +16,15 @@ MonoBehaviour:
   <unitPrefab>k__BackingField: {fileID: 2664338853412353054, guid: 471d44336dcb8fe45b481eba247454de, type: 3}
   <unitInfoTooltipImageSprite>k__BackingField: {fileID: 21300000, guid: 0abf80230a9bbb64096401c484c6fa3d, type: 3}
   <unitSpawnEffectPrefab>k__BackingField: {fileID: 0}
-  <unitDestroyEffectPrefab>k__BackingField: {fileID: 0}
+  <unitDestroyEffectPrefab>k__BackingField: {fileID: 8487402871801164198, guid: 2953cc7d5c233a14da0a67a33ce3a4b6, type: 3}
   <visitorType>k__BackingField: 1
-  <happinessAsHealth>k__BackingField: 1500
+  <happinessAsHealth>k__BackingField: 1700
   <moveSpeed>k__BackingField: 1
   <appeasementHealAmount>k__BackingField: 2
   <dissapointmentDamage>k__BackingField: 4
   <isBoss>k__BackingField: 1
   <visitorHitColor>k__BackingField: {r: 1, g: 0.21960784, b: 0.8117647, a: 1}
-  <visitorAppeasementTime>k__BackingField: 2.5
+  <visitorAppeasementTime>k__BackingField: 1.7
   <coinResourceToDrop>k__BackingField: {fileID: 11400000, guid: 7f0c635957a541840b7d3206387c7a84, type: 2}
   <visitorsAppeasedCoinsDrop>k__BackingField: 15
   <chanceToDropCoins>k__BackingField: 100

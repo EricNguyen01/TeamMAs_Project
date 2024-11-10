@@ -40,11 +40,10 @@ namespace TeamMAsTD
         {
             if (effectGO == null || parentTransform == null) return null;
 
-            GameObject effectObjSpawned = null;
+            GameObject effectObjSpawned = Instantiate(effectGO, parentTransform.position, Quaternion.identity);
 
-            if (makeChildren) effectObjSpawned = Instantiate(effectGO, parentTransform.position, Quaternion.identity, parentTransform);
-            else effectObjSpawned = Instantiate(effectGO, parentTransform.position, Quaternion.identity);
-
+            if (makeChildren) effectObjSpawned.transform.SetParent(parentTransform, true);
+            
             if (activeOnSpawn)
             {
                 if (!effectObjSpawned.activeInHierarchy) effectObjSpawned.SetActive(true);
@@ -81,6 +80,7 @@ namespace TeamMAsTD
                         if(i < particleSystems.Length - 1)
                         {
                             if (particleSystems[i].main.loop) continue;
+
                             else 
                             { 
                                 if (particleSystems[i].isEmitting) break; 
