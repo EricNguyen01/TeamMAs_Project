@@ -62,21 +62,30 @@ namespace TeamMAsTD
 
         private LogEnvironmentStatus logEnvironmentStatus = LogEnvironmentStatus.Editor;
 
+        [Serializable]
         private struct ActiveMemoryLogStruct
         {
             public string logEnvironmentStatus;
+
+            public long totalReservedMemoryBase;
 
             public long totalReservedMemory;
 
             public string totalReservedMemoryLogText;
 
+            public long gcUsedMemoryBase;
+
             public long gcUsedMemory;
 
             public string gcUsedMemoryLogText;
 
+            public long gcAllocatedFrameBase;
+
             public long gcAllocatedFrame;
 
             public string gcAllocatedFrameLogText;
+
+            public long systemUsedMemoryBase;
 
             public long systemUsedMemory;
 
@@ -86,19 +95,27 @@ namespace TeamMAsTD
 
             public ActiveMemoryLogStruct(int i = 0)
             {
-                logEnvironmentStatus = "n/a";
+                logEnvironmentStatus = "Editor";
+
+                totalReservedMemoryBase = 0L;
 
                 totalReservedMemory = 0L; 
                 
                 totalReservedMemoryLogText = "n/a";
 
+                gcUsedMemoryBase = 0L;
+
                 gcUsedMemory = 0L; 
                 
                 gcUsedMemoryLogText = "n/a";
 
+                gcAllocatedFrameBase = 0L;
+
                 gcAllocatedFrame = 0L;
 
                 gcAllocatedFrameLogText = "n/a";
+
+                systemUsedMemoryBase = 0L;
 
                 systemUsedMemory = 0L; 
                 
@@ -108,6 +125,8 @@ namespace TeamMAsTD
             }
         }
 
+        [SerializeField]
+        [ReadOnlyInspector]
         private ActiveMemoryLogStruct activeMemoryLogStruct = new ActiveMemoryLogStruct();
 
         public static MemoryUsageLogger memoryUsageLoggerInstance;
@@ -301,6 +320,8 @@ namespace TeamMAsTD
         {
             activeMemoryLogStruct = new ActiveMemoryLogStruct();
 
+            activeMemoryLogStruct.logEnvironmentStatus = logEnvironmentStatus.ToString();
+
             if(logStringBuilder == null) logStringBuilder = new StringBuilder();
 
             if(tempStringBuilder == null) tempStringBuilder = new StringBuilder();
@@ -309,59 +330,76 @@ namespace TeamMAsTD
 
             if(tempStringBuilder != null && tempStringBuilder.Length > 0) tempStringBuilder.Clear();
 
+            long memory = 0L;
+
+            string conversedMemoryStr = "0";
+
+            string memoryUnitStr = "B";
+
+            activeMemoryLogStruct.totalReservedMemory = 0L;
+
+            activeMemoryLogStruct.totalReservedMemoryLogText = "N/A";
+
             if (totalReservedMemoryRecorder.Valid)
             {
-                long memory = totalReservedMemoryRecorder.CurrentValue / 1048576;
+                memory = totalReservedMemoryRecorder.CurrentValue;
 
-                activeMemoryLogStruct.totalReservedMemory = memory;
+                activeMemoryLogStruct.totalReservedMemoryBase = memory;
 
-                activeMemoryLogStruct.totalReservedMemoryLogText = tempStringBuilder.Append(memory.ToString()).Append("MB").Append(MemoryUsageLevelTag(memory, "Total Reserved Memory")).ToString();
+                activeMemoryLogStruct.totalReservedMemory = MemorySizeUnitConversion(memory, out conversedMemoryStr, out memoryUnitStr);
+
+                activeMemoryLogStruct.totalReservedMemoryLogText = tempStringBuilder.Append(conversedMemoryStr).Append(memoryUnitStr).ToString();
             }
 
-            if(gcUsedMemoryRecorder.Valid)
-            {
-                long memory = gcUsedMemoryRecorder.CurrentValue / 1048576;
+            activeMemoryLogStruct.gcUsedMemory = 0L;
 
-                activeMemoryLogStruct.gcUsedMemory = memory;
+            activeMemoryLogStruct.gcUsedMemoryLogText = "N/A";
+
+            if (gcUsedMemoryRecorder.Valid)
+            {
+                memory = gcUsedMemoryRecorder.CurrentValue;
+
+                activeMemoryLogStruct.gcUsedMemoryBase = memory;
 
                 if (tempStringBuilder != null && tempStringBuilder.Length > 0) tempStringBuilder.Clear();
 
-                activeMemoryLogStruct.gcUsedMemoryLogText = tempStringBuilder.Append(memory.ToString()).Append("MB").Append(MemoryUsageLevelTag(memory, "GC Used Memory")).ToString();
+                activeMemoryLogStruct.gcUsedMemory = MemorySizeUnitConversion(memory, out conversedMemoryStr, out memoryUnitStr);
+
+                activeMemoryLogStruct.gcUsedMemoryLogText = tempStringBuilder.Append(conversedMemoryStr).Append(memoryUnitStr).Append(MemoryUsageLevelTag(memory, "GC Used Memory")).ToString();
             }
 
-            if (gcAllocatedFrame.Valid)
+            activeMemoryLogStruct.gcAllocatedFrame = 0L;
+
+            activeMemoryLogStruct.gcAllocatedFrameLogText = "N/A";
+
+            if (gcAllocatedFrame.Valid && Application.isEditor)
             {
-                long memory = gcAllocatedFrame.CurrentValue;
+                memory = gcAllocatedFrame.CurrentValue;
+
+                activeMemoryLogStruct.gcAllocatedFrameBase = memory;
 
                 if (tempStringBuilder != null && tempStringBuilder.Length > 0) tempStringBuilder.Clear();
 
-                if (memory >= 1048576)
-                {
-                    memory /= 1048576;
+                activeMemoryLogStruct.gcAllocatedFrame = MemorySizeUnitConversion(memory, out conversedMemoryStr, out memoryUnitStr);
 
-                    activeMemoryLogStruct.gcAllocatedFrame = memory;
-
-                    activeMemoryLogStruct.gcAllocatedFrameLogText = tempStringBuilder.Append(memory.ToString()).Append("MB").Append(MemoryUsageLevelTag(memory, "Garbage Collection Process")).ToString();
-                }
-                else 
-                {
-                    memory /= 1024;
-
-                    activeMemoryLogStruct.gcAllocatedFrame = memory;
-
-                    activeMemoryLogStruct.gcAllocatedFrameLogText = tempStringBuilder.Append(memory.ToString()).Append("KB").Append(MemoryUsageLevelTag(memory / 1048576, "Garbage Collection Process")).ToString(); 
-                }
+                activeMemoryLogStruct.gcAllocatedFrameLogText = tempStringBuilder.Append(conversedMemoryStr).Append(memoryUnitStr).Append(MemoryUsageLevelTag(memory, "GC Allocated In Frame")).ToString();
             }
+
+            activeMemoryLogStruct.systemUsedMemory = 0L;
+
+            activeMemoryLogStruct.systemUsedMemoryLogText = "N/A";
 
             if (systemUsedMemoryRecorder.Valid)
             {
-                long memory = systemUsedMemoryRecorder.CurrentValue / 1048576;
+                memory = systemUsedMemoryRecorder.CurrentValue;
 
-                activeMemoryLogStruct.systemUsedMemory = memory;
+                activeMemoryLogStruct.systemUsedMemoryBase = memory;
 
                 if (tempStringBuilder != null && tempStringBuilder.Length > 0) tempStringBuilder.Clear();
 
-                activeMemoryLogStruct.systemUsedMemoryLogText = tempStringBuilder.Append(memory.ToString()).Append("MB").Append(MemoryUsageLevelTag(memory, "System Used Memory")).ToString();
+                activeMemoryLogStruct.systemUsedMemory = MemorySizeUnitConversion(memory, out conversedMemoryStr, out memoryUnitStr);
+
+                activeMemoryLogStruct.systemUsedMemoryLogText = tempStringBuilder.Append(conversedMemoryStr).Append(memoryUnitStr).Append(MemoryUsageLevelTag(memory, "System Used Memory")).ToString();
             }
 
             activeMemoryLogStruct.memoryLogSummaryText = logStringBuilder.Append(logEnvironmentStatus.ToString()).Append(" Memory Log At: ").AppendLine()
@@ -375,6 +413,40 @@ namespace TeamMAsTD
 
             //update UI if reference to memory log UI component exists
             if (memoryUsageLogUI) memoryUsageLogUI.SetMemoryLogSummaryUIText(activeMemoryLogStruct.memoryLogSummaryText);
+        }
+
+        private long MemorySizeUnitConversion(long memory, out string conversedMemoryStr, out string memoryUnitStr)
+        {
+            conversedMemoryStr = memory.ToString();
+
+            memoryUnitStr = "B";
+
+            double memoryDouble = memory;
+
+            if(memory >= 1073741824)
+            {
+                memoryDouble = memory / 1073741824;
+
+                memoryUnitStr = "GB";
+            }
+
+            if (memory >= 1048576 && memory < 1073741824)
+            {
+                memoryDouble = memory / 1048576;
+
+                memoryUnitStr = "MB";
+            }
+
+            if (memory >= 1024 && memory < 1048576)
+            {
+                memoryDouble = memory / 1024;
+
+                memoryUnitStr = "KB";
+            }
+
+            conversedMemoryStr = memoryDouble.ToString();
+
+            return (long)memoryDouble;
         }
 
         private string MemoryUsageLevelTag(long memoryUsed, string profilerRecorderName = "")
