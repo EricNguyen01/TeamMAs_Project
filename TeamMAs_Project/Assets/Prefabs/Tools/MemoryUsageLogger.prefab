@@ -393,4 +393,19 @@ MonoBehaviour:
   deleteLogOnUnityClosed: 1
   logToTextIntervalSec: 5
   memoryUsageLogUIPrefab: {fileID: 2131573464673557554, guid: 04028905a6558584aa60e87b4f3b6c34, type: 3}
-  memoryLogUIDisplayRefreshTime: 0.4
+  memoryLogUIDisplayRefreshTime: 0.5
+  activeMemoryLogStruct:
+    logEnvironmentStatus: 
+    totalReservedMemoryBase: 0
+    totalReservedMemory: 0
+    totalReservedMemoryLogText: 
+    gcUsedMemoryBase: 0
+    gcUsedMemory: 0
+    gcUsedMemoryLogText: 
+    gcAllocatedFrameBase: 0
+    gcAllocatedFrame: 0
+    gcAllocatedFrameLogText: 
+    systemUsedMemoryBase: 0
+    systemUsedMemory: 0
+    systemUsedMemoryLogText: 
+    memoryLogSummaryText: 

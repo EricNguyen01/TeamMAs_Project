@@ -417,36 +417,36 @@ namespace TeamMAsTD
 
         private long MemorySizeUnitConversion(long memory, out string conversedMemoryStr, out string memoryUnitStr)
         {
-            conversedMemoryStr = memory.ToString();
+            float memoryFloat = memory;
 
             memoryUnitStr = "B";
 
-            double memoryDouble = memory;
-
-            if(memory >= 1073741824)
+            if (memory >= 1073741824)
             {
-                memoryDouble = memory / 1073741824;
+                memoryFloat = memory / 1073741824.0f;
 
                 memoryUnitStr = "GB";
             }
 
             if (memory >= 1048576 && memory < 1073741824)
             {
-                memoryDouble = memory / 1048576;
+                memoryFloat = memory / 1048576.0f;
 
                 memoryUnitStr = "MB";
             }
 
             if (memory >= 1024 && memory < 1048576)
             {
-                memoryDouble = memory / 1024;
+                memoryFloat = memory / 1024.0f;
 
                 memoryUnitStr = "KB";
             }
 
-            conversedMemoryStr = memoryDouble.ToString();
+            memoryFloat = (float)Math.Round(memoryFloat, 2);
 
-            return (long)memoryDouble;
+            conversedMemoryStr = memoryFloat.ToString();
+
+            return (long)memoryFloat;
         }
 
         private string MemoryUsageLevelTag(long memoryUsed, string profilerRecorderName = "")
