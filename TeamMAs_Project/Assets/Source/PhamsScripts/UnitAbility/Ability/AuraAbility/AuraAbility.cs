@@ -22,7 +22,7 @@ namespace TeamMAsTD
 
         protected bool canCheckForUnitsInAura = true;
 
-        protected bool triggerExitEventCheck = true;
+        //protected bool triggerExitEventCheck = true;
 
         private bool enableTempDisableAuraTriggerCoroutine = true;
 
@@ -59,7 +59,7 @@ namespace TeamMAsTD
         {
             base.OnEnable();
 
-            auraRange = abilityScriptableObject.abilityRangeInTiles - 0.1f;
+            auraRange = abilityScriptableObject.abilityRange;
 
             auraCollider.radius = auraRange;
 
@@ -91,7 +91,7 @@ namespace TeamMAsTD
         {
             canCheckForUnitsInAura = true;
 
-            triggerExitEventCheck = true;
+            //triggerExitEventCheck = true;
 
             auraCollider.enabled = true;
 
@@ -112,7 +112,11 @@ namespace TeamMAsTD
 
         protected override void ProcessAbilityEnd()
         {
-            triggerExitEventCheck = false;
+            StopCoroutine(TemporaryDisableAuraTriggerCollisionEvent(0.3f));
+
+            canCheckForUnitsInAura = false;
+
+            //triggerExitEventCheck = false;
 
             auraCollider.enabled = false;
 
@@ -136,7 +140,7 @@ namespace TeamMAsTD
         {
             ProcessAuraTriggerEnterStay(other);
 
-            if (enableTempDisableAuraTriggerCoroutine) StartCoroutine(TemporaryDisableAuraTriggerCollisionEvent(0.3f));
+            if (enableTempDisableAuraTriggerCoroutine) StartCoroutine(TemporaryDisableAuraTriggerCollisionEvent(0.1f));
         }
 
         protected virtual void OnTriggerExit2D(Collider2D other)
@@ -187,7 +191,7 @@ namespace TeamMAsTD
 
         protected void ProcessAuraTriggerExit(Collider2D other)
         {
-            if (!triggerExitEventCheck) return;
+            //if (!triggerExitEventCheck) return;
 
             if (other == null || !other.gameObject.activeInHierarchy) return;
 
@@ -229,6 +233,8 @@ namespace TeamMAsTD
             if(auraCollider != null) Gizmos.DrawWireSphere(transform.position, auraCollider.radius);
         }
 
+        private WaitForFixedUpdate waitForFixedUpdate = new WaitForFixedUpdate();
+
         //For optimization purposes - we dont want the trigger collision check event to check on every objs and loop through everything 
         //every frame.
         private IEnumerator TemporaryDisableAuraTriggerCollisionEvent(float tempDisableTimeSecs)
@@ -237,7 +243,7 @@ namespace TeamMAsTD
 
             //Debug.Log("Temp aura stays on started: " + Time.realtimeSinceStartup);
 
-            yield return new WaitForSeconds(0.01f);
+            yield return waitForFixedUpdate;
 
             //Debug.Log("Temp aura stays on stopped: " + Time.realtimeSinceStartup);
 

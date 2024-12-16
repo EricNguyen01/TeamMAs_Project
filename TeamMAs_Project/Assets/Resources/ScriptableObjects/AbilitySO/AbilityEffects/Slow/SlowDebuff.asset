@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d518eb8bc9b3d4447a0253ed61231ca8, type: 3}
+  m_Name: SlowDebuff
+  m_EditorClassIdentifier: 
+  <abilityEffectName>k__BackingField: SlowDebuff
+  <abilityEffectPrefab>k__BackingField: {fileID: -1645460918864486559, guid: b7f1ac8f7ec9f3648bde475a493ba981, type: 3}
+  <effectDuration>k__BackingField: -1
+  <effectDurationAsAbilityDuration>k__BackingField: 0
+  <effectStackable>k__BackingField: 0
+  <effectType>k__BackingField: 4
+  <damageDeBuffAmountPercentage>k__BackingField: 0
+  <damageDeBuffAmount>k__BackingField: 0
+  <healthDeBuffAmountPercentage>k__BackingField: 0
+  <healthDeBuffAmount>k__BackingField: 0
+  <attackSpeedDeBuffAmountPercentage>k__BackingField: 0
+  <attackSpeedDeBuffAmount>k__BackingField: 0
+  <movementSpeedDeBuffAmountPercentage>k__BackingField: 40
+  <movementSpeedDeBuffAmount>k__BackingField: 0
+  <cooldownReductionPercentageDeBuff>k__BackingField: 0
+  <chargeTimeReductionPercentageDeBuff>k__BackingField: 0

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System.Runtime.CompilerServices;
 
 namespace TeamMAsTD
 {
@@ -24,19 +25,27 @@ namespace TeamMAsTD
 
         [SerializeField] private Sprite negativeStatPopupSprite;
 
+        [SerializeField] private Sprite neutralStatPopupSprite;
+
         [SerializeField] private Animator statPopupAnimator;
 
         [SerializeField] private AnimatorOverrideController positiveStatPopupAnimatorOverride;
 
         [SerializeField] private AnimatorOverrideController negativeStatPopupAnimatorOverride;
 
+        [SerializeField] private AnimatorOverrideController neutralStatPopupAnimatorOverride;
+
         [SerializeField] private string positiveStatText;
 
         [SerializeField] private string negativeStatText;
 
+        [SerializeField] private string neutralStatText;    
+
         [SerializeField] private Color positiveStatPopupTextColor;
 
         [SerializeField] private Color negativeStatPopupTextColor;
+
+        [SerializeField] private Color neutralStatPopupTextColor = Color.gray;
 
         public Canvas statPopupCanvas { get; private set; }
 
@@ -51,6 +60,8 @@ namespace TeamMAsTD
         private Vector3 endPos = Vector3.zero;
 
         private Vector3 startingLocalScale;
+
+        public enum PopUpType { Neutral = 0, Positive = 1, Negative = 2 }
 
         private float popupTravelTime;
 
@@ -201,9 +212,9 @@ namespace TeamMAsTD
             }
         }
 
-        public void UseDefaultStatPopupText(bool usePositiveText)
+        public void UseDefaultStatPopupText(PopUpType popUpType)
         {
-            if (usePositiveText)
+            if (popUpType == PopUpType.Positive)
             {
                 if (statPopupTextMesh != null) 
                 {
@@ -213,9 +224,22 @@ namespace TeamMAsTD
                 return;
             }
 
-            if (statPopupTextMesh != null) 
+            else if (popUpType == PopUpType.Negative)
             {
-                statPopupTextMesh.text = negativeStatText;
+                if (statPopupTextMesh != null)
+                {
+                    statPopupTextMesh.text = negativeStatText;
+                }
+
+                return;
+            }
+
+            else if(popUpType == PopUpType.Neutral)
+            {
+                if (statPopupTextMesh != null)
+                {
+                    statPopupTextMesh.text = neutralStatText;
+                }
             }
         }
 
@@ -254,6 +278,20 @@ namespace TeamMAsTD
             statPopupUIImage.sprite = negativeStatPopupSprite;
         }
 
+        public void SetNeutralStatPopupSprite()
+        {
+            if (statPopupAnimator != null && neutralStatPopupAnimatorOverride != null)
+            {
+                statPopupAnimator.runtimeAnimatorController = neutralStatPopupAnimatorOverride;
+
+                return;
+            }
+
+            if (neutralStatPopupSprite == null) return;
+
+            statPopupUIImage.sprite = neutralStatPopupSprite;
+        }
+
         public void SetStatPopupPositiveTextColor()
         {
             if (!statPopupTextMesh) return;
@@ -266,6 +304,13 @@ namespace TeamMAsTD
             if (!statPopupTextMesh) return;
 
             statPopupTextMesh.color = negativeStatPopupTextColor;
+        }
+
+        public void SetStatPopupNeutralTextColor()
+        {
+            if (!statPopupTextMesh) return;
+
+            statPopupTextMesh.color = neutralStatPopupTextColor;
         }
 
         public void SetStatPopupScaleMultipliers(float multipliers)

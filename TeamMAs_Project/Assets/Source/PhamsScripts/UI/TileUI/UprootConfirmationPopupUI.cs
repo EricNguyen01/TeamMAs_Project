@@ -185,7 +185,7 @@ namespace TeamMAsTD
                                                                           0.0f,
                                                                           1.8f);
 
-            insufficientFundToUprootPopupPrefab.PopUp(null, null, false);
+            insufficientFundToUprootPopupPrefab.PopUp(null, null, StatPopup.PopUpType.Negative);
         }
     }
 }

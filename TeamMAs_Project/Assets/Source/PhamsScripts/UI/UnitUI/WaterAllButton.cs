@@ -175,7 +175,7 @@ namespace TeamMAsTD
             {
                 if (displayInsufficientFundPopup && insufficientFundToWaterAllPopup != null)
                 {
-                    insufficientFundToWaterAllPopup.PopUp(null, null, false);
+                    insufficientFundToWaterAllPopup.PopUp(null, null, StatPopup.PopUpType.Negative);
                 }
             }
 

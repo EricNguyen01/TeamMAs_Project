@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2e60922fadcb2346b0383bee95792a3, type: 3}
+  m_Name: VisitorSlow
+  m_EditorClassIdentifier: 
+  <abilityName>k__BackingField: VisitorSlow
+  <abilityPrefab>k__BackingField: {fileID: 5210803887474864984, guid: f1eee6e2a239dab469e749732b171a3b, type: 3}
+  initialAbilityRange: 1
+  initialAbilityDuration: 3
+  initialAbilityCooldownTime: 4.5
+  initialAbilityChargeTime: 0
+  initialAutoRestartAbility: 1
+  initialAbilityUseReservedFor: 1
+  initialAbilityOnlyAffect: 2
+  initialAbilityAffectsSpecificVisitorType: 1
+  initialMaxNumberOfUnitsToAffect: 0
+  initialAbilityAffectsSpecificPlantUnit: []
+  initialAbilityAffectsSpecificVisitorUnit: []
+  initialSpecificPlantUnitImmuned: []
+  initialSpecificVisitorUnitImmuned: []
+  <abilityEffects>k__BackingField:
+  - {fileID: 11400000, guid: 1fea5be878e34964e86b12382a85ef9f, type: 2}
+  <waveToUnlockAbilityAfterFinished>k__BackingField: {fileID: 0}
+  initialAbilityLocked: 0
+  <useOnEquippedIfNotLocked>k__BackingField: 1

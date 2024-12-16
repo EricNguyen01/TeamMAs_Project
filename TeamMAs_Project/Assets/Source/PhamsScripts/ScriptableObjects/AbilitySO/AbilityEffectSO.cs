@@ -25,7 +25,7 @@ namespace TeamMAsTD
         [field: Min(-1.0f)]
         [field: Tooltip("The duration in which this effect will last. " +
         "If set to -1 means that this effect will last infinitely (e.g a bleed effect that lasts until target is ded).")]
-        public float effectDuration = 0.0f;
+        public float effectDuration { get; private set; } = 0.0f;
 
         [field: SerializeField]
         [field: Tooltip("Set effect last duration to be the same as the duration of the ability that produces this effect?")]
@@ -35,7 +35,7 @@ namespace TeamMAsTD
         [field: Tooltip("Can multiple instances of this ability effect be applied on the same unit?")]
         public bool effectStackable { get; private set; } = false;
 
-        public enum EffectType { Default, Stunt, Slowed, DoT, KnockedBack, KnockedUp, Buff, Debuff  }
+        public enum EffectType { Default, Stunt, DoT, Buff, Debuff  }
 
         [field: SerializeField]
         public EffectType effectType { get; protected set; } = EffectType.Default;

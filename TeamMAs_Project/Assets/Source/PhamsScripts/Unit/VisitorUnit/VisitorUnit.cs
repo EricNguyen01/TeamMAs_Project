@@ -1,6 +1,7 @@
 // Script Author: Pham Nguyen. All Rights Reserved. 
 // GitHub: https://github.com/EricNguyen01.
 
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -75,6 +76,14 @@ namespace TeamMAsTD
         //PlantAimShootSystem.cs sub to this event to update its targets list
         public static event System.Action OnVisitorAppeased;
 
+        [Serializable]
+        private struct VisitorStatsDebug
+        {
+            public float visitorMoveSpeed;
+        }
+
+        private VisitorStatsDebug DEBUG_VisitorStats = new VisitorStatsDebug();
+
         private void Awake()
         {
             if(visitorUnitSO == null)
@@ -94,6 +103,8 @@ namespace TeamMAsTD
             }
 
             visitorUnitSO = Instantiate(visitorUnitSO);
+
+            UpdateVisitorStatsDebugData();
 
             abilityEffectReceivedInventory = GetComponent<AbilityEffectReceivedInventory>();
 
@@ -228,7 +239,7 @@ namespace TeamMAsTD
             {
                 chosenPath = null;
             }
-            else chosenPath = visitorPathsList[Random.Range(0, visitorPathsList.Count)];
+            else chosenPath = visitorPathsList[UnityEngine.Random.Range(0, visitorPathsList.Count)];
 
             return chosenPath;
         }
@@ -539,6 +550,11 @@ namespace TeamMAsTD
             }
 
             return currentTileWaypointPos - (Vector2)transform.position;
+        }
+
+        public void UpdateVisitorStatsDebugData()
+        {
+            DEBUG_VisitorStats.visitorMoveSpeed = visitorUnitSO.moveSpeed;
         }
 
         //IUnit Interface functions....................................................

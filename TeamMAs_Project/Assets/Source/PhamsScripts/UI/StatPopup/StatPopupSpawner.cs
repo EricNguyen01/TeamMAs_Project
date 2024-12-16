@@ -180,10 +180,12 @@ namespace TeamMAsTD
 
         public void PopupUnityEventCall(bool isPositivePopup = true)//For UnityEvent calls ONLY!
         {
-            PopUp(null, null, isPositivePopup);
+            if(isPositivePopup) PopUp(null, null, StatPopup.PopUpType.Positive);
+
+            else PopUp(null, null, StatPopup.PopUpType.Negative);
         }
 
-        public virtual void PopUp(Sprite spriteToPopup, string textToPopup, bool isPositivePopup)
+        public virtual void PopUp(Sprite spriteToPopup, string textToPopup, StatPopup.PopUpType popUpType)
         {
             if (!enabled || disablePopup) return;
 
@@ -201,7 +203,7 @@ namespace TeamMAsTD
             //This EnableStatPopupGameObjectFromPool in StatPopupPool script both enables and initializes the StatPopup obj at the same time.
             GameObject statPopupObj = statPopupPool.Init_And_Enable_StatPopup_GameObject_FromPool(spriteToPopup,
                                                                                                   textToPopup,
-                                                                                                  isPositivePopup,
+                                                                                                  popUpType,
                                                                                                   popupStartPos,
                                                                                                   popupEndPos,
                                                                                                   popupTime);

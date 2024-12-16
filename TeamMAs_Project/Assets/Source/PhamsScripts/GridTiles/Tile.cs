@@ -244,7 +244,7 @@ namespace TeamMAsTD
                         {
                             thisTileInsufficientFundToPlantStatPopup.ResetStatPopupSpawnerConfigToStartDefault();
 
-                            thisTileInsufficientFundToPlantStatPopup.PopUp(null, null, false);
+                            thisTileInsufficientFundToPlantStatPopup.PopUp(null, null, StatPopup.PopUpType.Negative);
                         }
 
                         OnPlantingFailedOnTile?.Invoke(unitSO, this);

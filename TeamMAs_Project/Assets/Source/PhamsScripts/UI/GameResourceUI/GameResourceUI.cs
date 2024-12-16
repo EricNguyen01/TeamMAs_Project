@@ -155,12 +155,12 @@ namespace TeamMAsTD
 
             if(updatedResourceAmount > currentResourceAmount)
             {
-                gameResourceUIStatPopupSpawner.PopUp(null, "+" + (updatedResourceAmount - currentResourceAmount).ToString(), true);
+                gameResourceUIStatPopupSpawner.PopUp(null, "+" + (updatedResourceAmount - currentResourceAmount).ToString(), StatPopup.PopUpType.Positive);
             }
 
             if(updatedResourceAmount < currentResourceAmount)
             {
-                gameResourceUIStatPopupSpawner.PopUp(null, "-" + (currentResourceAmount - updatedResourceAmount).ToString(), false);
+                gameResourceUIStatPopupSpawner.PopUp(null, "-" + (currentResourceAmount - updatedResourceAmount).ToString(), StatPopup.PopUpType.Negative);
             }
 
             currentResourceAmount = updatedResourceAmount;

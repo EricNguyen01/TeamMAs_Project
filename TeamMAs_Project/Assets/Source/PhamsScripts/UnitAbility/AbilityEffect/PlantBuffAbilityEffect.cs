@@ -8,11 +8,9 @@ using UnityEngine;
 namespace TeamMAsTD
 {
     [DisallowMultipleComponent]
-    public class PlantBuffAbilityEffect : AbilityEffect
+    public class PlantBuffAbilityEffect : BuffDebuffAbilityEffect
     {
         protected PlantUnitSO plantUnitSOReceivedBuff { get; private set; }
-
-        protected BuffAbilityEffectSO buffAbilityEffectSO { get; private set; }
 
         protected PlantUnit plantUnitReceivedBuff { get; private set; }
 
@@ -20,50 +18,24 @@ namespace TeamMAsTD
 
         protected float finalAtkSpeedBuffedAmount = 0.0f;
 
-        protected bool unitWithThisEffectIsBeingUprooted = false;
-
-        [Header("Buff Received Connection Line Renderer")]
-
-        [SerializeField] protected ConnectingLineRenderer buffConnectingLineRendererPrefab;
-
-        [SerializeField] protected bool disableLineOnBuffStarted = false;
-
-        [SerializeField] protected bool disableLineOnSelect = false;
-
-        protected ConnectingLineRenderer buffConnectingLineRenderer;
-
         protected override void Awake()
         {
             base.Awake();
 
-            if (abilityEffectSO == null)
+            if (!abilityEffectSO)
             {
                 enabled = false;
 
                 return;
             }
 
-            if (abilityEffectSO.GetType() != typeof(BuffAbilityEffectSO) || abilityEffectSO.effectType != AbilityEffectSO.EffectType.Buff)
+            if (!buffAbilityEffectSO)
             {
-                Debug.LogError("PlantBuffAbilityEffect script on : " + name + " has unmatched AbilityEffectSO ability type." +
-                "Ability effect won't work and will be destroyed!");
+                enabled = false;
 
                 DestroyEffectWithEffectEndedInvoked(false);
 
                 return;
-            }
-
-            buffAbilityEffectSO = (BuffAbilityEffectSO)abilityEffectSO;
-
-            if (buffConnectingLineRendererPrefab)
-            {
-                buffConnectingLineRenderer = Instantiate(buffConnectingLineRendererPrefab, 
-                                                         transform.position, 
-                                                         Quaternion.identity, transform).GetComponent<ConnectingLineRenderer>();
-            }
-            else
-            {
-                buffConnectingLineRenderer = GetComponentInChildren<ConnectingLineRenderer>();
             }
         }
 
@@ -81,19 +53,11 @@ namespace TeamMAsTD
             }
         }
 
-        protected override void OnEffectStarted()
+        protected override bool OnEffectStarted()
         {
-            if (unitBeingAffectedUnitSO == null)
-            {
-                Debug.LogError("The unit: " + name + " being affected by this buff effect: " + name + " doesn't have a UnitSO data. " +
-                "Destroying buff effect!");
+            if (!base.OnEffectStarted()) return false;
 
-                DestroyEffectWithEffectEndedInvoked(false);
-
-                return;
-            }
-
-            if(unitBeingAffectedUnitSO.GetType() != typeof(PlantUnitSO))
+            if (unitBeingAffectedUnitSO.GetType() != typeof(PlantUnitSO))
             {
                 Debug.LogError("The unit: " + name + " being affected by this buff effect: " + name + " " +
                 "has UnitSO data that IS NOT of type PlantUnitSO. Buff won't work!\n" +
@@ -101,36 +65,12 @@ namespace TeamMAsTD
 
                 DestroyEffectWithEffectEndedInvoked(false);
 
-                return;
+                return false;
             }
 
-            if(plantUnitSOReceivedBuff == null) plantUnitSOReceivedBuff = (PlantUnitSO)unitBeingAffectedUnitSO;
+            if (plantUnitSOReceivedBuff == null) plantUnitSOReceivedBuff = (PlantUnitSO)unitBeingAffectedUnitSO;
 
-            finalDamageBuffedAmount = buffAbilityEffectSO.damageBuffAmount;
-
-            finalAtkSpeedBuffedAmount = buffAbilityEffectSO.attackSpeedBuffAmount;
-
-            if(buffAbilityEffectSO.damageBuffAmountPercentage > 0.0f)
-            {
-                float damage = plantUnitSOReceivedBuff.damage;
-
-                finalDamageBuffedAmount = damage *= buffAbilityEffectSO.damageBuffAmountPercentage / 100.0f;
-            }
-
-            if(buffAbilityEffectSO.attackSpeedBuffAmountPercentage > 0.0f)
-            {
-                float atkSpd = plantUnitSOReceivedBuff.attackSpeed;
-
-                finalAtkSpeedBuffedAmount = atkSpd *= buffAbilityEffectSO.attackSpeedBuffAmountPercentage / 100.0f;
-            }
-
-            plantUnitSOReceivedBuff.AddPlantUnitDamage(finalDamageBuffedAmount);
-
-            ProcessEffectPopupForBuffEffects(null, "+" + finalDamageBuffedAmount + " AppeasementSTRENGTH", finalDamageBuffedAmount);
-
-            plantUnitSOReceivedBuff.AddPlantAttackSpeed(finalAtkSpeedBuffedAmount);
-            
-            ProcessEffectPopupForBuffEffects(null, "+" + finalAtkSpeedBuffedAmount + " AppeasementSPEED", finalAtkSpeedBuffedAmount);
+            ProcessPlantBuffs();
 
             if (plantUnitReceivedBuff == null) plantUnitReceivedBuff = (PlantUnit)unitBeingAffected.GetUnitObject();
 
@@ -153,18 +93,51 @@ namespace TeamMAsTD
             }
 
             plantUnitReceivedBuff.SetPlantSODebugDataView();
+
+            return true;
         }
 
-        protected override void EffectUpdate()
+        private void ProcessPlantBuffs()
+        {
+            finalDamageBuffedAmount = buffAbilityEffectSO.damageBuffAmount;
+
+            finalAtkSpeedBuffedAmount = buffAbilityEffectSO.attackSpeedBuffAmount;
+
+            if (buffAbilityEffectSO.damageBuffAmountPercentage > 0.0f)
+            {
+                float damage = plantUnitSOReceivedBuff.damage;
+
+                finalDamageBuffedAmount = damage *= buffAbilityEffectSO.damageBuffAmountPercentage / 100.0f;
+            }
+
+            if (buffAbilityEffectSO.attackSpeedBuffAmountPercentage > 0.0f)
+            {
+                float atkSpd = plantUnitSOReceivedBuff.attackSpeed;
+
+                finalAtkSpeedBuffedAmount = atkSpd *= buffAbilityEffectSO.attackSpeedBuffAmountPercentage / 100.0f;
+            }
+
+            plantUnitSOReceivedBuff.AddPlantUnitDamage(finalDamageBuffedAmount);
+
+            ProcessEffectPopupForBuffEffects(null, "+" + finalDamageBuffedAmount + " AppeasementSTRENGTH", finalDamageBuffedAmount);
+
+            plantUnitSOReceivedBuff.AddPlantAttackSpeed(finalAtkSpeedBuffedAmount);
+
+            ProcessEffectPopupForBuffEffects(null, "+" + finalAtkSpeedBuffedAmount + " AppeasementSPEED", finalAtkSpeedBuffedAmount);
+        }
+
+        protected override bool EffectUpdate()
         {
             //should do nothing here! Nothing to update.
+
+            return true;
         }
 
-        protected override void OnEffectEnded()
+        protected override bool OnEffectEnded()
         {
-            if (plantUnitSOReceivedBuff == null) return;
+            if (buffAbilityEffectSO == null) return false;
 
-            if (buffAbilityEffectSO == null) return;
+            if (plantUnitSOReceivedBuff == null) return false;
 
             //if this effect is being destroyed because the plant unit being affected by it is being destroyed through being uprooted
             //no need to do anything here and return
@@ -175,7 +148,7 @@ namespace TeamMAsTD
                     plantUnitReceivedBuff.tilePlacedOn.OnPlantUnitUprootedOnTile.RemoveListener(SubToPlantUnitBeingUprootedOnTileEvent);
                 }
 
-                return;
+                return false;
             }
 
             plantUnitSOReceivedBuff.RemovePlantUnitDamage(finalDamageBuffedAmount);
@@ -189,6 +162,8 @@ namespace TeamMAsTD
             DetachAndDestroyAllEffectPopupsIncludingSpawner();
 
             plantUnitReceivedBuff.SetPlantSODebugDataView();
+
+            return true;
         }
 
         protected void SubToPlantUnitBeingUprootedOnTileEvent(PlantUnit plantUnit, Tile tile)

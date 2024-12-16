@@ -17,7 +17,7 @@ MonoBehaviour:
   effectDuration: 0
   <effectDurationAsAbilityDuration>k__BackingField: 1
   <effectStackable>k__BackingField: 0
-  <effectType>k__BackingField: 6
+  <effectType>k__BackingField: 3
   <damageBuffAmountPercentage>k__BackingField: 0
   <damageBuffAmount>k__BackingField: 5
   <healthBuffAmountPercentage>k__BackingField: 0

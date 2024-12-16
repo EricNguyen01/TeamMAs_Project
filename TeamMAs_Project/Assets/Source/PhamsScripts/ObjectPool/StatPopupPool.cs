@@ -63,7 +63,7 @@ namespace TeamMAsTD
             CreateAndAddToPool(statPopupPrefab, popupNumberToPool, parentTransformCarriesPool, true);
         }
 
-        public GameObject Init_And_Enable_StatPopup_GameObject_FromPool(Sprite popupSprite, string popupText, bool isPositivePopup, Vector3 enablePos, Vector3 endPos, float travelTime)
+        public GameObject Init_And_Enable_StatPopup_GameObject_FromPool(Sprite popupSprite, string popupText, StatPopup.PopUpType popUpType, Vector3 enablePos, Vector3 endPos, float travelTime)
         {
             GameObject statPopupObj = GetInactiveGameObjectFromPool();
 
@@ -111,21 +111,28 @@ namespace TeamMAsTD
             }
             else
             {
-                if (isPositivePopup) statPopupOfStatPopupObj.UseDefaultStatPopupText(true);
-                else statPopupOfStatPopupObj.UseDefaultStatPopupText(false);
+                if (popUpType == StatPopup.PopUpType.Positive) statPopupOfStatPopupObj.UseDefaultStatPopupText(StatPopup.PopUpType.Positive);
+                else if (popUpType == StatPopup.PopUpType.Negative) statPopupOfStatPopupObj.UseDefaultStatPopupText(StatPopup.PopUpType.Negative);
+                else if (popUpType == StatPopup.PopUpType.Neutral) statPopupOfStatPopupObj.UseDefaultStatPopupText(StatPopup.PopUpType.Neutral);
             }
 
-            if (isPositivePopup)
+            if (popUpType == StatPopup.PopUpType.Positive)
             {
                 statPopupOfStatPopupObj.SetPositiveStatPopupSprite();
 
                 statPopupOfStatPopupObj.SetStatPopupPositiveTextColor();
             }
-            else 
+            else if(popUpType == StatPopup.PopUpType.Negative) 
             {
                 statPopupOfStatPopupObj.SetNegativeStatPopupSprite();
 
                 statPopupOfStatPopupObj.SetStatPopupNegativeTextColor(); 
+            }
+            else if(popUpType == StatPopup.PopUpType.Neutral)
+            {
+                statPopupOfStatPopupObj.SetNeutralStatPopupSprite();
+
+                statPopupOfStatPopupObj.SetStatPopupNeutralTextColor();
             }
 
             //if stat popup obj doesn't have its own canvas which mean it must be displayed within another canvas (that's the only way it can be displayed)

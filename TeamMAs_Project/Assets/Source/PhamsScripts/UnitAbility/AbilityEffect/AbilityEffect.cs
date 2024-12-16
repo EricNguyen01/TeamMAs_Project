@@ -46,7 +46,11 @@ namespace TeamMAsTD
 
         //protected bool canUpdateEffect { get; private set; } = false;
 
+        protected bool unitWithThisEffectIsBeingUprooted = false;
+
         public bool effectIsBeingDestroyed { get; private set; } = false;
+
+        protected bool effectEndIsCalled = false;
 
         protected virtual void Awake()
         {
@@ -84,11 +88,11 @@ namespace TeamMAsTD
             Ability.OnAbilityStopped -= DestroyEffectOnAbilityStoppedIfApplicable;
         }
 
-        protected abstract void OnEffectStarted();
+        protected abstract bool OnEffectStarted();
 
-        protected abstract void EffectUpdate();
+        protected abstract bool EffectUpdate();
 
-        protected abstract void OnEffectEnded();
+        protected abstract bool OnEffectEnded();
 
         //EXTERNAL..........................................................................................................
 
@@ -219,7 +223,12 @@ namespace TeamMAsTD
 
             StopCoroutine(AbilityEffectUpdateCoroutine(abilityEffectSO.effectDuration));
 
-            if(callOnEffectEndedFunc) OnEffectEnded();
+            if (callOnEffectEndedFunc && !effectEndIsCalled)
+            {
+                OnEffectEnded();
+
+                effectEndIsCalled = true;
+            }
 
             if (abilityEffectInventoryRegisteredTo != null) abilityEffectInventoryRegisteredTo.RemoveEffect(this);
 
@@ -271,7 +280,7 @@ namespace TeamMAsTD
             }
         }
 
-        protected virtual void ProcessEffectPopupForBuffEffects(Sprite popupSprite, string popupText, float buffedNumber, float popupTime = 0.0f)
+        protected virtual void ProcessEffectPopupForBuffEffects(Sprite popupSprite, string popupText, float buffedNumber = 0.0f, float popupTime = 0.0f)
         {
             if (!gameObject.scene.isLoaded) return;
 
@@ -279,7 +288,7 @@ namespace TeamMAsTD
                 !effectStatPopupSpawner.enabled || 
                 effectStatPopupSpawner.disablePopup) return;
 
-            if (buffedNumber == 0.0f) return;
+            //if (buffedNumber == 0.0f) return;
 
             if (popupTime != 0.0f)
             {
@@ -288,11 +297,15 @@ namespace TeamMAsTD
             
             if (buffedNumber > 0.0f)
             {
-                effectStatPopupSpawner.PopUp(popupSprite, popupText, true);
+                effectStatPopupSpawner.PopUp(popupSprite, popupText, StatPopup.PopUpType.Positive);
             }
             else if(buffedNumber < 0.0f)
             {
-                effectStatPopupSpawner.PopUp(popupSprite, popupText, false);
+                effectStatPopupSpawner.PopUp(popupSprite, popupText, StatPopup.PopUpType.Negative);
+            }
+            else if(buffedNumber == 0.0f)
+            {
+                effectStatPopupSpawner.PopUp(popupSprite, popupText, StatPopup.PopUpType.Neutral);
             }
         }
 

@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8835983879471925127
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2587004502391706047}
+  - component: {fileID: 7653892883803117945}
+  m_Layer: 0
+  m_Name: VisitorDeBuffEffectPopupSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2587004502391706047
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8835983879471925127}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7653892883803117945
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8835983879471925127}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c19b9f42d03e804ab593c9d4f5ba6e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  statPopupPrefab: {fileID: 7758570173177216992, guid: 6e7deb1414a1a74479a4c8254b01aa5e, type: 3}
+  <statPopupScaleMultiplier>k__BackingField: 1
+  startVerticalOffset: 0.65
+  startHorizontalOffset: 0
+  verticalDistanceFromStart: 0.7
+  horizontalDistFromStart: 0
+  randomHorizontalTravelDistFromStart: 0
+  randomVerticalTravelDistFromStart: 0
+  popupTime: 2
+  <displayPopupsSeparately>k__BackingField: 0
+  popupNumberToPool: 1

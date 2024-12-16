@@ -16,7 +16,7 @@ namespace TeamMAsTD
 
         protected AbilityEffectReceivedInventory plantAbilityEffectReceivedInventory;
 
-        protected override void OnEffectStarted()
+        protected override bool OnEffectStarted()
         {
             if(unitBeingAffected.GetUnitObject().GetType() != typeof(PlantUnit))
             {
@@ -26,7 +26,7 @@ namespace TeamMAsTD
 
                 DestroyEffectWithEffectEndedInvoked(false);
 
-                return;
+                return false;
             }
 
             plantUnitToWipe = (PlantUnit)unitBeingAffected.GetUnitObject();
@@ -47,14 +47,18 @@ namespace TeamMAsTD
             if(effectStartFx != null) effectStartFx.Play();
 
             if(effectUpdateFx != null) effectUpdateFx.Play();
+
+            return true;
         }
 
-        protected override void EffectUpdate()
+        protected override bool EffectUpdate()
         {
             DestroyEffectStatPopupSpawnersOfEffectsOnPlant();
+
+            return true;
         }
 
-        protected override void OnEffectEnded()
+        protected override bool OnEffectEnded()
         {
             if (effectStartFx != null && effectStartFx.isEmitting) effectStartFx.Stop();
 
@@ -69,6 +73,8 @@ namespace TeamMAsTD
             {
                 Destroy(plantUnitToWipe, 0.1f);
             }
+
+            return true;
         }
 
         protected void DisablePlantUnitAndItsAbilities(PlantUnit plantUnit)

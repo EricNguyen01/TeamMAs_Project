@@ -151,7 +151,7 @@ namespace TeamMAsTD
                     //if there's an insufficient fund to water stat popup script component attached -> show insufficient funds popup
                     if (thisTileInsufficientWateringFundPopup != null)
                     {
-                        thisTileInsufficientWateringFundPopup.PopUp(null, null, false);
+                        thisTileInsufficientWateringFundPopup.PopUp(null, null, StatPopup.PopUpType.Negative);
                     }
 
                     OnInsufficientFundsToWater?.Invoke();

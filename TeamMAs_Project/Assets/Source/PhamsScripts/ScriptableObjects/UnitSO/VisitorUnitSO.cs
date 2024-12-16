@@ -51,6 +51,8 @@ namespace TeamMAsTD
         public void SetSpecificVisitorMoveSpeed(float moveSpeed)
         {
             this.moveSpeed = moveSpeed;
+
+            if (moveSpeed <= 0.0f) moveSpeed = 0.0f;
         }
 
         public void AddVisitorMoveSpeed(float moveSpeedIncreased)

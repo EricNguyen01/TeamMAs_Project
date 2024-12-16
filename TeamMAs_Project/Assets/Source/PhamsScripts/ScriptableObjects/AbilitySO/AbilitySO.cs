@@ -24,10 +24,10 @@ namespace TeamMAsTD
         [field: Min(0)]
         [field: Tooltip("The range that this ability can be casted in tile number. " +
         "If 0 means it can only be casted on self or at self's tile.")]
-        protected int initialAbilityRangeInTiles;
+        protected float initialAbilityRange;
 
         [field: NonSerialized]
-        public int abilityRangeInTiles { get; private set; }
+        public float abilityRange { get; private set; }
 
         [field: SerializeField]
         [field: Min(-1.0f)]
@@ -55,6 +55,14 @@ namespace TeamMAsTD
 
         [field: NonSerialized]
         public float abilityChargeTime { get; private set; } = 0.0f;//runtime value
+
+        [field: SerializeField]
+        [field: Tooltip("On ability cooldown finished and ability has finished updating, " +
+        "should the ability restarts itself automatically?")]
+        protected bool initialAutoRestartAbility = true;
+
+        [field: NonSerialized]
+        public bool autoRestartAbility { get; private set; } = true;
 
         public enum AbilityUseReservedFor { All, PlantOnly, VisitorOnly }
 
@@ -155,11 +163,11 @@ namespace TeamMAsTD
             }
         }
 
-        public void SetAbilityRangeInTiles(int newTileRange)
+        public void SetAbilityRangeInTiles(float newRange)
         {
-            if(newTileRange != abilityRangeInTiles)
+            if(newRange != abilityRange)
             {
-                abilityRangeInTiles = newTileRange;
+                abilityRange = newRange;
             }
         }
 
@@ -199,7 +207,7 @@ namespace TeamMAsTD
 
         void ISerializationCallbackReceiver.OnAfterDeserialize()
         {
-            abilityRangeInTiles = initialAbilityRangeInTiles;
+            abilityRange = initialAbilityRange;
 
             abilityDuration = initialAbilityDuration;
 

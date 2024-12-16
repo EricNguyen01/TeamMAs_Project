@@ -67,7 +67,7 @@ namespace TeamMAsTD
             {
                 //lerp expand the wipe aura collider ovetime here:
                 auraCollider.radius = Mathf.Lerp(auraRange,
-                                                 abilityScriptableObject.abilityRangeInTiles,
+                                                 abilityScriptableObject.abilityRange,
                                                  currentWipeAuraExpandTime / abilityScriptableObject.abilityDuration);
 
                 currentWipeAuraExpandTime += Time.fixedDeltaTime;
@@ -76,7 +76,7 @@ namespace TeamMAsTD
                 {
                     currentWipeAuraExpandTime = abilityScriptableObject.abilityDuration;
 
-                    auraRange = abilityScriptableObject.abilityRangeInTiles;
+                    auraRange = abilityScriptableObject.abilityRange;
 
                     auraCollider.radius = auraRange;
                 }

@@ -52,9 +52,15 @@ namespace TeamMAsTD
 
         protected bool isCharging = false;
 
+        private float chargeTime = 0.0f;//for debug
+
         protected bool isInCooldown = false;
 
+        private float cooldownTime = 0.0f;//for debug  
+
         protected bool isUpdating = false;
+
+        private float updateTime = 0.0f;//for debug
 
         protected bool isStopped = true;
 
@@ -176,14 +182,14 @@ namespace TeamMAsTD
 
             if (!isStopped) return;//if already started (not stopped) dont start again (in case multiple calls to func)
 
-            if(abilityScriptableObject.abilityChargeTime <= 0.0f)
+            if (abilityScriptableObject.abilityChargeTime > 0.0f)
             {
-                BeginPerformAbility();
+                if (!isCharging) StartCoroutine(AbilityChargeCoroutine(abilityScriptableObject.abilityChargeTime));
 
                 return;
             }
 
-            if(!isCharging) StartCoroutine(AbilityChargeCoroutine(abilityScriptableObject.abilityChargeTime));
+            BeginPerformAbility();
         }
 
         private void BeginPerformAbility()
@@ -220,23 +226,23 @@ namespace TeamMAsTD
         {
             if (isStopped || isUpdating) return;
 
-            if(abilityScriptableObject.abilityDuration < 0.0f)
+            if (abilityScriptableObject.abilityDuration < 0.0f)
             {
                 //ability duration is set to < 0.0f meaning that
                 //ability will be performed infinitely UNTIL there's an EXTERNAL INSTRUCTION to stop
                 return;
             }
 
-            if(abilityScriptableObject.abilityDuration == 0.0f)
+            StartCoroutine(AbilityUpdateDurationCoroutine(abilityScriptableObject.abilityDuration));
+
+            /*if (abilityScriptableObject.abilityDuration == 0.0f)
             {
                 //if ability duration is equal to 0.0f -> ability won't be updated and will be stopped immediately
 
                 StopAbility();
 
                 return;
-            }
-
-            StartCoroutine(AbilityUpdateDurationCoroutine(abilityScriptableObject.abilityDuration));
+            }*/
         }
 
         //To be edited in inherited classes
@@ -303,6 +309,8 @@ namespace TeamMAsTD
 
             if(abilityChargingParticleEffect != null) abilityChargingParticleEffect.Play();
 
+            float chargeStartTime = Time.realtimeSinceStartup;
+
             isCharging = true;
 
             yield return new WaitForSeconds(chargeTime);
@@ -313,19 +321,34 @@ namespace TeamMAsTD
 
             BeginPerformAbility();
 
+            this.chargeTime = Time.realtimeSinceStartup - chargeStartTime;
+
             yield break;
         }
+
+        private WaitForFixedUpdate waitForFixedUpdate = new WaitForFixedUpdate();
 
         private IEnumerator AbilityCooldownCoroutine(float cdrTime)
         {
             //if cooldown process alr started -> dont start again and exit coroutine
             if (isInCooldown) yield break;
 
+            float cdrStartTime = Time.realtimeSinceStartup;
+
             isInCooldown = true;
 
             yield return new WaitForSeconds(cdrTime);
 
             isInCooldown = false;
+
+            this.cooldownTime = Time.realtimeSinceStartup - cdrStartTime;
+
+            if(isStopped && !isUpdating && abilityScriptableObject.autoRestartAbility)
+            {
+                yield return waitForFixedUpdate;
+
+                StartAbility();
+            }
 
             yield break;
         }
@@ -334,11 +357,33 @@ namespace TeamMAsTD
         {
             if(isStopped || isUpdating) yield break;
 
+            float updateStartTime = Time.realtimeSinceStartup;
+
             isUpdating = true;
+
+            if (abilityDuration == 0.0f)
+            {
+                ProcessAbilityUpdate();
+
+                isUpdating = false;
+
+                this.updateTime = Time.realtimeSinceStartup - updateStartTime;
+
+                if (!isStopped) StopAbility();
+
+                if (!isInCooldown)
+                {
+                    yield return waitForFixedUpdate;
+
+                    StartAbility();
+                }
+
+                yield break;
+            }
 
             float time = 0.0f;
 
-            while(time < abilityDuration)
+            while (time < abilityDuration)
             {
                 if (isStopped) break;
 
@@ -346,12 +391,21 @@ namespace TeamMAsTD
 
                 ProcessAbilityUpdate();
 
-                yield return new WaitForFixedUpdate();
+                yield return waitForFixedUpdate;
             }
 
             isUpdating = false;
 
+            this.updateTime = time;
+
             if(!isStopped) StopAbility();
+
+            if (!isInCooldown)
+            {
+                yield return waitForFixedUpdate;
+
+                StartAbility();
+            }
 
             yield break;
         }
