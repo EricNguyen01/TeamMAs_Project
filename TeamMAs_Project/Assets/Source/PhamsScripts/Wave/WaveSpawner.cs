@@ -104,10 +104,7 @@ namespace TeamMAsTD
             }
             else
             {
-                if(waveSpawnerManagerPrefab != null)
-                {
-                    Instantiate(waveSpawnerManagerPrefab, Vector3.zero, Quaternion.identity);
-                }
+                WaveSpawnerManager.CreateWaveSpawnerManagerInstance().AddWaveSpawnerToList(this);
             }
         }
 

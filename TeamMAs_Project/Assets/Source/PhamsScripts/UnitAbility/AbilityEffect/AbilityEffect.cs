@@ -230,7 +230,7 @@ namespace TeamMAsTD
                 effectEndIsCalled = true;
             }
 
-            if (abilityEffectInventoryRegisteredTo != null) abilityEffectInventoryRegisteredTo.RemoveEffect(this);
+            if (abilityEffectInventoryRegisteredTo != null) abilityEffectInventoryRegisteredTo.RemoveAStackOfASpecificEffect(this);
 
             abilityEffectInventoryRegisteredTo = null;
 
@@ -303,7 +303,7 @@ namespace TeamMAsTD
             {
                 effectStatPopupSpawner.PopUp(popupSprite, popupText, StatPopup.PopUpType.Negative);
             }
-            else if(buffedNumber == 0.0f)
+            else if((buffedNumber - 0.0f) <= Mathf.Epsilon)
             {
                 effectStatPopupSpawner.PopUp(popupSprite, popupText, StatPopup.PopUpType.Neutral);
             }

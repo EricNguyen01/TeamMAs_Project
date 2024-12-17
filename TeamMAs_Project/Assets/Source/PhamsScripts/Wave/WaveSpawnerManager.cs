@@ -30,6 +30,8 @@ namespace TeamMAsTD
 
             for(int i = 0; i < waveSpawners.Length; i++)
             {
+                if (!waveSpawners[i]) continue;
+
                 waveSpawnersList.Add(waveSpawners[i]);
             }
         }
@@ -52,8 +54,10 @@ namespace TeamMAsTD
             waveSpawnersList.Remove(waveSpawner);
         }
 
-        public bool HasActiveWaveSpawnersExcept(WaveSpawner checkingWaveSpawner)
+        public bool HasActiveWaveSpawnersExcept(WaveSpawner checkingWaveSpawner = null)
         {
+            if (waveSpawnersList == null || waveSpawnersList.Count == 0) return false;
+
             for(int i = 0; i < waveSpawnersList.Count; i++)
             {
                 if (checkingWaveSpawner != null && waveSpawnersList[i] == checkingWaveSpawner) continue;
@@ -64,17 +68,17 @@ namespace TeamMAsTD
             return false;
         }
 
-        public static void CreateWaveSpawnerManagerInstance()
+        public static WaveSpawnerManager CreateWaveSpawnerManagerInstance()
         {
-            if (waveSpawnerManagerInstance) return;
-
-            if(FindObjectOfType<WaveSpawner>()) return;
+            if (waveSpawnerManagerInstance) return waveSpawnerManagerInstance;
 
             GameObject go = new GameObject("WaveSpawnerManager(1InstanceOnly)");
 
             WaveSpawnerManager spawnerManager = go.AddComponent<WaveSpawnerManager>();
 
             if (!waveSpawnerManagerInstance) waveSpawnerManagerInstance = spawnerManager;
+
+            return spawnerManager;
         }
     }
 }

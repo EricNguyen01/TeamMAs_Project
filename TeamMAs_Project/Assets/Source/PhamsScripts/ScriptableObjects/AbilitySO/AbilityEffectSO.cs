@@ -32,6 +32,10 @@ namespace TeamMAsTD
         public bool effectDurationAsAbilityDuration { get; private set; } = true;
 
         [field: SerializeField]
+        [field: Tooltip("Should this effect be cancelled when leaving its ability's aoe?")]
+        public bool effectEndsWhenLeavingAbilityArea { get; private set; } = true;
+
+        [field: SerializeField]
         [field: Tooltip("Can multiple instances of this ability effect be applied on the same unit?")]
         public bool effectStackable { get; private set; } = false;
 

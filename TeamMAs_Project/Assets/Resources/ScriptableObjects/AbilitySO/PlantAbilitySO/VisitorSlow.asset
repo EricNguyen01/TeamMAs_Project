@@ -19,6 +19,7 @@ MonoBehaviour:
   initialAbilityCooldownTime: 4.5
   initialAbilityChargeTime: 0
   initialAutoRestartAbility: 1
+  initialAbilityStartsWithUnitsInRange: 1
   initialAbilityUseReservedFor: 1
   initialAbilityOnlyAffect: 2
   initialAbilityAffectsSpecificVisitorType: 1

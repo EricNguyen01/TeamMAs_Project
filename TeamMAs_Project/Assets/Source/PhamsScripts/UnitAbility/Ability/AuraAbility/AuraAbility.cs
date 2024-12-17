@@ -203,11 +203,23 @@ namespace TeamMAsTD
 
             if (abilityEffectReceivedInventory == null) return;
 
+            if (abilityScriptableObject.abilityEffects == null || abilityScriptableObject.abilityEffects.Count == 0) return;
+
+            for(int i = 0; i < abilityScriptableObject.abilityEffects.Count; i++)
+            {
+                if (!abilityScriptableObject.abilityEffects[i]) continue;
+
+                if (!abilityScriptableObject.abilityEffects[i].effectEndsWhenLeavingAbilityArea) continue;
+
+                if (DEBUG_effectReceivedInventoriesInAura.Contains(abilityEffectReceivedInventory))
+                {
+                    abilityEffectReceivedInventory.RemoveASpecificEffectOfAnAbility(this, abilityScriptableObject.abilityEffects[i]);
+                }
+            }
+
             if (DEBUG_effectReceivedInventoriesInAura.Contains(abilityEffectReceivedInventory))
             {
                 DEBUG_effectReceivedInventoriesInAura.Remove(abilityEffectReceivedInventory);
-
-                abilityEffectReceivedInventory.RemoveEffectsOfAbility(this);
 
                 numberOfUnitsAffected--;
             }

@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <abilityEffectName>k__BackingField: SlowDebuff
   <abilityEffectPrefab>k__BackingField: {fileID: -1645460918864486559, guid: b7f1ac8f7ec9f3648bde475a493ba981, type: 3}
-  <effectDuration>k__BackingField: -1
-  <effectDurationAsAbilityDuration>k__BackingField: 0
+  <effectDuration>k__BackingField: 0
+  <effectDurationAsAbilityDuration>k__BackingField: 1
   <effectStackable>k__BackingField: 0
   <effectType>k__BackingField: 4
   <damageDeBuffAmountPercentage>k__BackingField: 0

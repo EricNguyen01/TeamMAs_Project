@@ -23,7 +23,7 @@ namespace TeamMAsTD
         [field: SerializeField]
         [field: Min(0)]
         [field: Tooltip("The range that this ability can be casted in tile number. " +
-        "If 0 means it can only be casted on self or at self's tile.")]
+        "If <=0 means infinite range.")]
         protected float initialAbilityRange;
 
         [field: NonSerialized]
@@ -63,6 +63,18 @@ namespace TeamMAsTD
 
         [field: NonSerialized]
         public bool autoRestartAbility { get; private set; } = true;
+
+        [field: SerializeField]
+        [field: Tooltip("Should ability only gets triggered when a valid unit is in its range?")]
+        protected bool initialAbilityStartsWithUnitsInRange = false;
+
+        public bool abilityStartsWithUnitsInRange { get; private set; } = false;
+
+        [field: SerializeField]
+        [field: Tooltip("Should ability only activates and runs during an active wave only?")]
+        protected bool initialAbilityRunsDuringWavesOnly = true;
+
+        public bool abilityRunsDuringWavesOnly { get; private set; } = true;
 
         public enum AbilityUseReservedFor { All, PlantOnly, VisitorOnly }
 
@@ -134,8 +146,10 @@ namespace TeamMAsTD
         [field: NonSerialized]
         public bool abilityLocked { get; private set; } = true;//runtime non-static value
 
-        [field: SerializeField]
-        public bool useOnEquippedIfNotLocked { get; private set; } = false;
+        protected void OnValidate()
+        {
+            if (initialAbilityRange <= 0.0f) initialAbilityRange = 200.0f;
+        }
 
         public void SetNewAbilityTimeConfigs(float newAbilityDuration = 0.0f, float newAbilityCdrTime = 0.0f, float newAbilityChargeTime = 0.0f)
         {
@@ -214,6 +228,12 @@ namespace TeamMAsTD
             abilityCooldownTime = initialAbilityCooldownTime;
 
             abilityChargeTime = initialAbilityChargeTime;
+
+            autoRestartAbility = initialAutoRestartAbility;
+
+            abilityStartsWithUnitsInRange = initialAbilityStartsWithUnitsInRange;
+
+            abilityRunsDuringWavesOnly = initialAbilityRunsDuringWavesOnly;
 
             abilityLocked = initialAbilityLocked;
 

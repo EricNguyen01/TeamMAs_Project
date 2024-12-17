@@ -14,8 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <abilityEffectName>k__BackingField: DoT
   <abilityEffectPrefab>k__BackingField: {fileID: 0}
-  effectDuration: 0
+  <effectDuration>k__BackingField: 0
   <effectDurationAsAbilityDuration>k__BackingField: 1
+  <effectEndsWhenLeavingAbilityArea>k__BackingField: 0
   <effectStackable>k__BackingField: 0
   <effectType>k__BackingField: 2
   damageOverTimeTickSpeed: 0

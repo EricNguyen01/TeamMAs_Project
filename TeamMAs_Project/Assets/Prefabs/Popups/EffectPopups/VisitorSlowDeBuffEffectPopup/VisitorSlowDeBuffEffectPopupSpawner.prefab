@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2587004502391706047}
   - component: {fileID: 7653892883803117945}
   m_Layer: 0
-  m_Name: VisitorDeBuffEffectPopupSpawner
+  m_Name: VisitorSlowDeBuffEffectPopupSpawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -46,12 +46,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   statPopupPrefab: {fileID: 7758570173177216992, guid: 6e7deb1414a1a74479a4c8254b01aa5e, type: 3}
   <statPopupScaleMultiplier>k__BackingField: 1
-  startVerticalOffset: 0.65
+  startVerticalOffset: 1
   startHorizontalOffset: 0
-  verticalDistanceFromStart: 0.7
+  verticalDistanceFromStart: 0.6
   horizontalDistFromStart: 0
-  randomHorizontalTravelDistFromStart: 0
+  randomHorizontalTravelDistFromStart: 1
   randomVerticalTravelDistFromStart: 0
-  popupTime: 2
+  popupTime: 1.56
   <displayPopupsSeparately>k__BackingField: 0
   popupNumberToPool: 1

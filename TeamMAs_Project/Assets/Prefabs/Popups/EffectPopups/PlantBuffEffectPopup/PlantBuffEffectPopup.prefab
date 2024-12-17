@@ -229,7 +229,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7769448042610555259}
   - component: {fileID: 7758570173177216992}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: PlantBuffEffectPopup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -268,13 +268,17 @@ MonoBehaviour:
   statPopupTextMesh: {fileID: 7512172702897273963}
   positiveStatPopupSprite: {fileID: 21300000, guid: b8ddba40c277ed9449fa19fc9281930d, type: 3}
   negativeStatPopupSprite: {fileID: 21300000, guid: a27e2f3450d6bfa4e81b794d5e20c234, type: 3}
+  neutralStatPopupSprite: {fileID: 0}
   statPopupAnimator: {fileID: 0}
   positiveStatPopupAnimatorOverride: {fileID: 0}
   negativeStatPopupAnimatorOverride: {fileID: 0}
+  neutralStatPopupAnimatorOverride: {fileID: 0}
   positiveStatText: 
   negativeStatText: 
+  neutralStatText: 
   positiveStatPopupTextColor: {r: 0.17942323, g: 0.8490566, b: 0.43917808, a: 1}
   negativeStatPopupTextColor: {r: 0.79607844, g: 0.18431373, b: 0.18431373, a: 1}
+  neutralStatPopupTextColor: {r: 0.25490198, g: 0.25490198, b: 0.25490198, a: 1}
 --- !u!1 &8982342318295134763
 GameObject:
   m_ObjectHideFlags: 0

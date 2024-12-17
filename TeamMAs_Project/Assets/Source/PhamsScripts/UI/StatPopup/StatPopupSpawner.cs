@@ -219,7 +219,7 @@ namespace TeamMAsTD
         {
             if (isDetachedAndDestroyed) return;
 
-            transform.SetParent(null);
+            if (this != null && gameObject.activeInHierarchy) transform.SetParent(null);
 
             if (shouldDestroyImmediate)
             {
@@ -239,7 +239,8 @@ namespace TeamMAsTD
                 return;
             }
 
-            StartCoroutine(DestroyOnPopupDelayCoroutineFinished());
+            if(this != null && gameObject.activeInHierarchy) StartCoroutine(DestroyOnPopupDelayCoroutineFinished());
+            else DestroyStatPopupPoolAndSpawner();
         }
 
         private IEnumerator DestroyOnPopupDelayCoroutineFinished()

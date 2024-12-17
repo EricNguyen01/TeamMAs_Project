@@ -92,7 +92,7 @@ namespace TeamMAsTD
 
                 ability.TempDisable_SpawnedAbilityEffects_StatPopupSpawners_Except(this);
 
-                ability.ForceStopAbility();
+                ability.ForceStopAbilityImmediate();
             }
         }
 

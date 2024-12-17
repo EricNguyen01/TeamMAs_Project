@@ -22,6 +22,7 @@ namespace TeamMAsTD
         //any instance of AbilityEffectReceived created internally within this class
         public interface IAbilityEffectReceived
         {
+            public Ability SourceAbilityOfEffectReceived();
             public AbilityEffectSO EffectSOReceived();
             public AbilityEffectReceivedInventory AbilityEffectReceivedInventory();
             public List<AbilityEffect> EffectStackSpawned();
@@ -39,13 +40,19 @@ namespace TeamMAsTD
         [System.Serializable]
         private class AbilityEffectReceived : IAbilityEffectReceived
         {
+            public Ability sourceAbilityOfEffect { get; private set; }
+
             public AbilityEffectSO effectSOReceived { get; private set; }
+
             public AbilityEffectReceivedInventory abilityEffectReceivedInventory { get; private set; }
+
             public List<AbilityEffect> effectStackSpawned { get; private set; } = new List<AbilityEffect>();
 
             //internal AbilityEffectReceived constructor
             public AbilityEffectReceived(Ability sourceAbility, AbilityEffectSO effectSO, AbilityEffectReceivedInventory effectReceivedInventory)
             {
+                sourceAbilityOfEffect = sourceAbility;
+
                 effectSOReceived = effectSO;
 
                 abilityEffectReceivedInventory = effectReceivedInventory;
@@ -117,6 +124,11 @@ namespace TeamMAsTD
                 }
 
                 abilityEffectReceivedInventory = null;
+            }
+
+            public Ability SourceAbilityOfEffectReceived()
+            {
+                return sourceAbilityOfEffect;
             }
 
             public AbilityEffectSO EffectSOReceived()
@@ -259,7 +271,7 @@ namespace TeamMAsTD
         }
 
         //This function removes all the currently spawned effects of every effect type that was spawned from "sourceAbility"
-        public void RemoveEffectsOfAbility(Ability sourceAbility)
+        public void RemoveAllEffectsOfAnAbility(Ability sourceAbility)
         {
             if (sourceAbility == null) return;
 
@@ -282,7 +294,7 @@ namespace TeamMAsTD
                 {
                     //the line below are to avoid out of range exception since we are removing effects as we are looping through the lists
                     //which the effect lists are actively shrinking and at some point we would be out of range
-                    if (i >= abilityEffectsReceived.Count || abilityEffectsReceived.Count == 0) return;
+                    //if (i >= abilityEffectsReceived.Count || abilityEffectsReceived.Count == 0) return;
 
                     if (abilityEffectsReceived[i].EffectStackSpawned()[j] == null) continue;
 
@@ -293,17 +305,95 @@ namespace TeamMAsTD
                     //and if so, it also removes this slot altogether.
                     abilityEffectsReceived[i].RemoveAStackOfThisSpawnedEffect(abilityEffectsReceived[i].EffectStackSpawned()[j]);
 
-                    //the two lines below are to avoid out of range exception since we are removing effects as we are looping through the lists
+                    //the lines below are to avoid out of range exception since we are removing effects as we are looping through the lists
                     //which the effect lists are actively shrinking and at some point we would be out of range
-                    if (i >= abilityEffectsReceived.Count || abilityEffectsReceived.Count == 0) return;
+                    //if (i >= abilityEffectsReceived.Count || abilityEffectsReceived.Count == 0) return;
+
+                    if (abilityEffectsReceived[i] == null || abilityEffectsReceived[i].EffectStackSpawned() == null) break;
 
                     if (j >= abilityEffectsReceived[i].EffectStackSpawned().Count || 
                         abilityEffectsReceived[i].EffectStackSpawned().Count == 0) break;
                 }
+
+                if (i >= abilityEffectsReceived.Count || abilityEffectsReceived.Count == 0) return;
             }
         }
 
-        public void RemoveEffect(AbilityEffect effectToRemove)
+        /// <summary>
+        /// Remove a specific effect that was received from a specific source ability.
+        /// If stacks to remove is set to <=0 (default) then all stacks of the designated effect will be removed.
+        /// </summary>
+        /// <param name="sourceAbility"></param>
+        /// <param name="stacksOfEffectToRemove"></param>
+        public void RemoveASpecificEffectOfAnAbility(Ability sourceAbility, AbilityEffectSO effectToRemove, int stacksOfEffectToRemove = 0)
+        {
+            if (sourceAbility == null) return;
+
+            if(effectToRemove == null) return;
+
+            if (sourceAbility.abilityScriptableObject == null) return;
+
+            if (sourceAbility.abilityScriptableObject.abilityEffects == null ||
+               sourceAbility.abilityScriptableObject.abilityEffects.Count == 0) return;
+
+            if(!sourceAbility.abilityScriptableObject.abilityEffects.Contains(effectToRemove)) return;
+
+            if (abilityEffectsReceived == null || abilityEffectsReceived.Count == 0) return;
+
+            //start going through every effect type received slot
+            for (int i = 0; i < abilityEffectsReceived.Count; i++)
+            {
+                //null checks
+                if (abilityEffectsReceived[i] == null || abilityEffectsReceived[i].EffectSOReceived() == null) continue;
+
+                //check if source ability of effect to remove matches source ability of effect received slot
+                if (!abilityEffectsReceived[i].SourceAbilityOfEffectReceived() ||
+                    abilityEffectsReceived[i].SourceAbilityOfEffectReceived() != sourceAbility) continue;
+
+                //check if effect to remove matches any effect received slot
+                if (abilityEffectsReceived[i].EffectSOReceived() != effectToRemove) continue;
+
+                if (abilityEffectsReceived[i].EffectStackSpawned() == null || abilityEffectsReceived[i].EffectStackSpawned().Count == 0) continue;
+
+                if (stacksOfEffectToRemove > abilityEffectsReceived[i].EffectStackSpawned().Count)
+                {
+                    stacksOfEffectToRemove = abilityEffectsReceived[i].EffectStackSpawned().Count;
+                }
+
+                //if stacks to remove is <= 0 || == stacks count -> remove all stacks of provided effect type
+                if (stacksOfEffectToRemove <= 0 || stacksOfEffectToRemove == abilityEffectsReceived[i].EffectStackSpawned().Count)
+                {
+                    abilityEffectsReceived[i].RemoveThisEffectSlotCompletely();
+
+                    return;
+                }
+
+                int removedStacksCount = 0;
+
+                //valid effect type slot found in effects received list -> begins going through its stacks (of the same effect type)
+                for (int j = 0; j < abilityEffectsReceived[i].EffectStackSpawned().Count; j++)
+                {
+                    if (removedStacksCount == stacksOfEffectToRemove) return;
+
+                    if (abilityEffectsReceived[i].EffectStackSpawned()[j] == null) continue;
+
+                    if (abilityEffectsReceived[i].EffectStackSpawned()[j].abilityCarriedEffect != sourceAbility) continue;
+
+                    abilityEffectsReceived[i].RemoveAStackOfThisSpawnedEffect(abilityEffectsReceived[i].EffectStackSpawned()[j]);
+
+                    removedStacksCount++;
+
+                    if (abilityEffectsReceived[i] == null || abilityEffectsReceived[i].EffectStackSpawned() == null) break;
+
+                    if (j >= abilityEffectsReceived[i].EffectStackSpawned().Count ||
+                        abilityEffectsReceived[i].EffectStackSpawned().Count == 0) break;
+                }
+
+                if (i >= abilityEffectsReceived.Count || abilityEffectsReceived.Count == 0) return;
+            }
+        }
+
+        public void RemoveAStackOfASpecificEffect(AbilityEffect effectToRemove)
         {
             if (!enabled) return;
 
@@ -311,40 +401,34 @@ namespace TeamMAsTD
 
             if(abilityEffectsReceived.Count == 0) return;
 
-            RemoveEffectStackFromEffectSlot(null, effectToRemove);
+            RemoveAnEffectStackFromEffectSlot(effectToRemove);
         }
 
-        private void RemoveEffectStackFromEffectSlot(AbilityEffectReceived abilityEffectReceivedSlot, AbilityEffect effect)
+        private void RemoveAnEffectStackFromEffectSlot(AbilityEffect effect)
         {
             if (effect == null) return;
 
-            //if an ability effect type received slot is NOT provided
-            if(abilityEffectReceivedSlot == null)
+            if (abilityEffectsReceived.Count == 0) return;
+
+            for (int i = 0; i < abilityEffectsReceived.Count; i++)
             {
-                if (abilityEffectsReceived.Count == 0) return;
+                if (abilityEffectsReceived[i] == null || abilityEffectsReceived[i].EffectSOReceived() == null) continue;
 
-                for (int i = 0; i < abilityEffectsReceived.Count; i++)
+                if (abilityEffectsReceived[i].EffectSOReceived() == effect.abilityEffectSO)
                 {
-                    if (abilityEffectsReceived[i] == null || abilityEffectsReceived[i].EffectSOReceived() == null) continue;
+                    abilityEffectsReceived[i].RemoveAStackOfThisSpawnedEffect(effect);
 
-                    if (abilityEffectsReceived[i].EffectSOReceived() == effect.abilityEffectSO)
-                    {
-                        abilityEffectsReceived[i].RemoveAStackOfThisSpawnedEffect(effect);
-
-                        return;//exit func
-                    }
+                    return;//exit func
                 }
-
-                //if having looped through all effect types and found no matching effect obj to remove -> return false
-                return;
             }
 
+            /*
             //if an ability effect type received slot IS provided
 
             //check if this effect slot contains the provided effect to remove, if contains, performs removal
             if (abilityEffectReceivedSlot.effectSOReceived != effect.abilityEffectSO) return;
 
-            abilityEffectReceivedSlot.RemoveAStackOfThisSpawnedEffect(effect);
+            abilityEffectReceivedSlot.RemoveAStackOfThisSpawnedEffect(effect);*/
         }
 
         public void ClearAllReceivedEffects()
@@ -359,7 +443,27 @@ namespace TeamMAsTD
             abilityEffectsReceived.Clear();
         }
 
-        public void EnableAbilityEffectReceive(bool canReceiveEffects)
+        public bool HasEffectsFromAbility(Ability sourceAbility)
+        {
+            if(sourceAbility == null) return false;
+
+            if (abilityEffectsReceived == null || abilityEffectsReceived.Count == 0) return false;
+
+            //start going through every effect type received slot
+            for (int i = 0; i < abilityEffectsReceived.Count; i++)
+            {
+                if (abilityEffectsReceived[i].EffectStackSpawned() == null || 
+                    abilityEffectsReceived[i].EffectStackSpawned().Count == 0) continue;
+
+                //check if source ability of effect to remove matches source ability of effect received slot
+                if (abilityEffectsReceived[i].SourceAbilityOfEffectReceived() &&
+                    abilityEffectsReceived[i].SourceAbilityOfEffectReceived() == sourceAbility) return true;
+            }
+            
+            return false;
+        }
+
+        public void EnableReceivingAbilityEffects(bool canReceiveEffects)
         {
             disableAbilityEffectReceive = canReceiveEffects;
         }

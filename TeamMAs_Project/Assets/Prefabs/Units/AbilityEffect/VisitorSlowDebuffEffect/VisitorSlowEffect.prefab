@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <abilityEffectSO>k__BackingField: {fileID: 11400000, guid: 1fea5be878e34964e86b12382a85ef9f, type: 2}
-  <effectStatPopupSpawner>k__BackingField: {fileID: 0}
+  <effectStatPopupSpawner>k__BackingField: {fileID: 4340793518994197796}
   effectStartFx: {fileID: 0}
   effectUpdateFx: {fileID: 0}
   buffConnectingLineRendererPrefab: {fileID: 0}
@@ -172,6 +172,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2f351cd82b0e31b4c81ef479a68d1d94, type: 3}
+--- !u!114 &4340793518994197796 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7653892883803117945, guid: 2f351cd82b0e31b4c81ef479a68d1d94, type: 3}
+  m_PrefabInstance: {fileID: 6198518458574836829}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c19b9f42d03e804ab593c9d4f5ba6e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &8494753516884772322 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2587004502391706047, guid: 2f351cd82b0e31b4c81ef479a68d1d94, type: 3}

@@ -1,7 +1,6 @@
 // Script Author: Pham Nguyen. All Rights Reserved. 
 // GitHub: https://github.com/EricNguyen01.
 
-using PixelCrushers.DialogueSystem;
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
@@ -68,6 +67,8 @@ namespace TeamMAsTD
 
         private bool isAbilityPendingUnlocked = false;
 
+        private bool abilityEnabled = true;
+
         protected SpriteRenderer visitorUsingAbilitySpriteRenderer;
 
         protected string visitorUsingAbilitySpriteRendererLayerName;
@@ -81,13 +82,14 @@ namespace TeamMAsTD
         protected List<AbilityEffect> abilityEffectsCreated = new List<AbilityEffect>();
 
         public static event System.Action<Ability> OnAbilityStarted;
+
         public static event System.Action<Ability> OnAbilityStopped;
 
         protected virtual void Awake()
         {
             unitPossessingAbility = GetComponentInParent<IUnit>();
 
-            if(abilityScriptableObject == null || unitPossessingAbility == null )
+            if (abilityScriptableObject == null || unitPossessingAbility == null)
             {
                 Debug.LogError("Ability SO Data or a proper unit that can possess ability: " + name + " is missing. Disabling ability script!");
 
@@ -121,7 +123,7 @@ namespace TeamMAsTD
                 }
             }
 
-            InitializeAuraAbilityEffectsOnAwake();
+            InitializeAbilityParticlesOnAwake();
         }
 
         protected virtual void OnEnable()
@@ -135,33 +137,79 @@ namespace TeamMAsTD
 
             if (abilityScriptableObject != null)
             {
-                if (abilityScriptableObject.useOnEquippedIfNotLocked && !abilityLocked)
+                if (abilityScriptableObject.abilityRunsDuringWavesOnly)
                 {
-                    StartAbility();
+                    WaveSpawner.OnWaveStarted += (WaveSpawner ws, int i) => EnableAbility(true, true);
+
+                    WaveSpawner.OnWaveFinished += (WaveSpawner ws, int i, bool b) => EnableAbility(false, true);
                 }
+
+                EnableAbility(true, true);
             }
         }
 
         protected virtual void OnDisable()
         {
-            ForceStopAbility();
+            ForceStopAbilityImmediate();
 
             numberOfUnitsAffected = 0;
+
+            WaveSpawner.OnWaveStarted -= (WaveSpawner ws, int i) => EnableAbility(true, true);
+
+            WaveSpawner.OnWaveFinished -= (WaveSpawner ws, int i, bool b) => EnableAbility(false, true);
 
             WaveSpawner.OnWaveFinished -= PendingUnlockAbilityOnWaveEndedIfApplicable;
 
             Rain.OnRainEnded -= (Rain r) => UnlockAbilityOnRainEndedIfApplicable();
         }
 
+        private float timeToCheckValidUnitsInRange = 0.0f;
+
+        protected virtual void Update()
+        {
+            if (!abilityScriptableObject) return;
+
+            if (!abilityScriptableObject.abilityStartsWithUnitsInRange) return;
+
+            if (!abilityEnabled || abilityLocked) return;
+
+            if (!isStopped) return;
+
+            if (abilityScriptableObject.abilityRunsDuringWavesOnly)
+            {
+                if (WaveSpawnerManager.waveSpawnerManagerInstance)
+                {
+                    if (!WaveSpawnerManager.waveSpawnerManagerInstance.HasActiveWaveSpawnersExcept()) return;
+                }
+            }
+
+            if (timeToCheckValidUnitsInRange < 0.1f)
+            {
+                timeToCheckValidUnitsInRange += Time.deltaTime;
+            }
+            else
+            {
+                if (HasValidUnitsInAbilityRange()) StartAbility();
+
+                timeToCheckValidUnitsInRange = 0.0f;
+            }
+        }
+
         #region AbilityStart
 
         private bool CanStartAbility()
         {
+            if (this == null) return false;
+
+            if (!enabled || !abilityEnabled) return false;
+
             if (abilityLocked) return false;
+
+            if (!gameObject.activeInHierarchy || !gameObject.scene.isLoaded) return false;
 
             if (abilityScriptableObject == null || unitPossessingAbility == null) return false;
 
-            if (isCharging || isInCooldown || isUpdating) return false;
+            if (!isStopped || isCharging || isInCooldown || isUpdating) return false;
 
             if (abilityScriptableObject.abilityUseReservedFor == AbilitySO.AbilityUseReservedFor.PlantOnly)
             {
@@ -173,6 +221,26 @@ namespace TeamMAsTD
                 if (unitPossessingAbility.GetType() == typeof(PlantUnit)) return false;
             }
 
+            if (abilityScriptableObject.abilityRunsDuringWavesOnly)
+            {
+                WaveSpawnerManager waveSpawnerManager = WaveSpawnerManager.waveSpawnerManagerInstance;
+
+                if (!waveSpawnerManager)
+                {
+                    waveSpawnerManager = WaveSpawnerManager.CreateWaveSpawnerManagerInstance();
+                }
+
+                if (!waveSpawnerManager.HasActiveWaveSpawnersExcept()) return false;
+            }
+
+            if (abilityScriptableObject.abilityStartsWithUnitsInRange)
+            {
+                if (!HasValidUnitsInAbilityRange())
+                {
+                    return false;
+                }
+            }
+
             return true;
         }
 
@@ -180,7 +248,7 @@ namespace TeamMAsTD
         {
             if (!CanStartAbility()) return;
 
-            if (!isStopped) return;//if already started (not stopped) dont start again (in case multiple calls to func)
+            isStopped = false;
 
             if (abilityScriptableObject.abilityChargeTime > 0.0f)
             {
@@ -198,9 +266,9 @@ namespace TeamMAsTD
 
             //start cooldown right away after begin performing ability
             //only starts cdr if not already in cooldown or ability cdr time > 0.0f
-            if (!isInCooldown && abilityScriptableObject.abilityCooldownTime > 0.0f) 
-            { 
-                StartCoroutine(AbilityCooldownCoroutine(abilityScriptableObject.abilityCooldownTime)); 
+            if (!isInCooldown && abilityScriptableObject.abilityCooldownTime > 0.0f)
+            {
+                StartCoroutine(AbilityCooldownCoroutine(abilityScriptableObject.abilityCooldownTime));
             }
 
             if (abilityParticleEffect != null) abilityParticleEffect.Play();
@@ -234,15 +302,6 @@ namespace TeamMAsTD
             }
 
             StartCoroutine(AbilityUpdateDurationCoroutine(abilityScriptableObject.abilityDuration));
-
-            /*if (abilityScriptableObject.abilityDuration == 0.0f)
-            {
-                //if ability duration is equal to 0.0f -> ability won't be updated and will be stopped immediately
-
-                StopAbility();
-
-                return;
-            }*/
         }
 
         //To be edited in inherited classes
@@ -254,11 +313,9 @@ namespace TeamMAsTD
 
         private void StopAbility()
         {
-            if(isStopped) return;  
+            if (isStopped) return;
 
             isStopped = true;
-
-            isUpdating = false;
 
             if (isCharging)
             {
@@ -269,34 +326,24 @@ namespace TeamMAsTD
                 if (abilityChargingParticleEffect != null) abilityChargingParticleEffect.Stop();
             }
 
-            StopCoroutine(AbilityUpdateDurationCoroutine(abilityScriptableObject.abilityDuration));
+            //StopCoroutine(AbilityUpdateDurationCoroutine(abilityScriptableObject.abilityDuration));
+
+            //isUpdating = false;
 
             if (abilityParticleEffect != null) abilityParticleEffect.Stop();
 
             ProcessAbilityEnd();
+
+            if (!isInCooldown)
+            {
+                if (abilityScriptableObject.autoRestartAbility) StartAbility();
+            }
         }
 
         //To be edited in inherited classes
         protected virtual void ProcessAbilityEnd()
         {
             OnAbilityStopped?.Invoke(this);
-        }
-
-        //To call from external scripts to stop/interupt this ability prematurely
-        public void ForceStopAbility()
-        {
-            if (isCharging)
-            {
-                StopCoroutine(AbilityChargeCoroutine(abilityScriptableObject.abilityChargeTime));
-
-                isCharging = false;
-
-                if (abilityChargingParticleEffect != null) abilityChargingParticleEffect.Stop();
-            }
-
-            if(isStopped || abilityLocked) return;
-
-            StopAbility();
         }
 
         #endregion
@@ -307,7 +354,7 @@ namespace TeamMAsTD
         {
             if (isCharging) yield break;
 
-            if(abilityChargingParticleEffect != null) abilityChargingParticleEffect.Play();
+            if (abilityChargingParticleEffect != null) abilityChargingParticleEffect.Play();
 
             float chargeStartTime = Time.realtimeSinceStartup;
 
@@ -343,7 +390,7 @@ namespace TeamMAsTD
 
             this.cooldownTime = Time.realtimeSinceStartup - cdrStartTime;
 
-            if(isStopped && !isUpdating && abilityScriptableObject.autoRestartAbility)
+            if (isStopped && !isUpdating && abilityScriptableObject.autoRestartAbility)
             {
                 yield return waitForFixedUpdate;
 
@@ -355,7 +402,7 @@ namespace TeamMAsTD
 
         private IEnumerator AbilityUpdateDurationCoroutine(float abilityDuration)
         {
-            if(isStopped || isUpdating) yield break;
+            if (isStopped || isUpdating) yield break;
 
             float updateStartTime = Time.realtimeSinceStartup;
 
@@ -369,13 +416,9 @@ namespace TeamMAsTD
 
                 this.updateTime = Time.realtimeSinceStartup - updateStartTime;
 
-                if (!isStopped) StopAbility();
-
-                if (!isInCooldown)
+                if (!isStopped)
                 {
-                    yield return waitForFixedUpdate;
-
-                    StartAbility();
+                    StopAbility();
                 }
 
                 yield break;
@@ -398,14 +441,7 @@ namespace TeamMAsTD
 
             this.updateTime = time;
 
-            if(!isStopped) StopAbility();
-
-            if (!isInCooldown)
-            {
-                yield return waitForFixedUpdate;
-
-                StartAbility();
-            }
+            if (!isStopped) StopAbility();
 
             yield break;
         }
@@ -423,15 +459,15 @@ namespace TeamMAsTD
 
             VisitorUnitSO visitorUnitSO = null;
 
-            if(unitSO.GetType() == typeof(PlantUnitSO)) plantUnitSO = (PlantUnitSO)unitSO;
+            if (unitSO.GetType() == typeof(PlantUnitSO)) plantUnitSO = (PlantUnitSO)unitSO;
 
-            if(unitSO.GetType() == typeof(VisitorUnitSO)) visitorUnitSO = (VisitorUnitSO)unitSO;
+            if (unitSO.GetType() == typeof(VisitorUnitSO)) visitorUnitSO = (VisitorUnitSO)unitSO;
 
             if (unitObj.GetType() == typeof(VisitorUnit))
             {
                 if (abilityScriptableObject.abilityOnlyAffect == AbilitySO.AbilityOnlyAffect.PlantOnly) return false;
 
-                if(visitorUnitSO != null)
+                if (visitorUnitSO != null)
                 {
                     if (abilityScriptableObject.abilityAffectsSpecificVisitorType != VisitorUnitSO.VisitorType.None)
                     {
@@ -462,11 +498,11 @@ namespace TeamMAsTD
                 }
             }
 
-            if(unitObj.GetType() == typeof(PlantUnit))
+            if (unitObj.GetType() == typeof(PlantUnit))
             {
                 if (abilityScriptableObject.abilityOnlyAffect == AbilitySO.AbilityOnlyAffect.VisitorOnly) return false;
 
-                if(plantUnitSO != null)
+                if (plantUnitSO != null)
                 {
                     if (abilityScriptableObject.specificPlantUnitImmuned != null && abilityScriptableObject.specificPlantUnitImmuned.Count > 0)
                     {
@@ -498,7 +534,7 @@ namespace TeamMAsTD
                     }
                 }
             }
-            
+
             return true;
         }
 
@@ -559,8 +595,6 @@ namespace TeamMAsTD
 
             if (!isAbilityPendingUnlocked) return;
 
-            if (!abilityScriptableObject.useOnEquippedIfNotLocked) return;
-
             if (abilityLocked)
             {
                 abilityScriptableObject.SetAbilityLocked(false);
@@ -569,48 +603,48 @@ namespace TeamMAsTD
 
                 isAbilityPendingUnlocked = false;
 
-                StartAbility();
+                EnableAbility(true, true);
             }
         }
 
-        protected virtual void InitializeAuraAbilityEffectsOnAwake()
+        protected virtual void InitializeAbilityParticlesOnAwake()
         {
             if (abilityChargingParticleEffect != null)
             {
                 var auraChargingFxMain = abilityChargingParticleEffect.main;
 
+                if (!abilityChargingParticleEffect.gameObject.activeInHierarchy) abilityChargingParticleEffect.gameObject.SetActive(true);
+
                 auraChargingFxMain.playOnAwake = false;
 
                 abilityChargingParticleEffect.Stop();
-
-                if (!abilityChargingParticleEffect.gameObject.activeInHierarchy) abilityChargingParticleEffect.gameObject.SetActive(true);
             }
 
             if (abilityParticleEffect != null)
             {
                 var auraFxMain = abilityParticleEffect.main;
 
+                if (!abilityParticleEffect.gameObject.activeInHierarchy) abilityParticleEffect.gameObject.SetActive(true);
+
                 auraFxMain.playOnAwake = false;
 
                 abilityParticleEffect.Stop();
-
-                if (!abilityParticleEffect.gameObject.activeInHierarchy) abilityParticleEffect.gameObject.SetActive(true);
             }
         }
 
         public void TempDisable_SpawnedAbilityEffects_StatPopupSpawners_Except(bool disable,
-                                                                               AbilityEffect abilityEffectToExcept = null, 
+                                                                               AbilityEffect abilityEffectToExcept = null,
                                                                                List<AbilityEffect> abilityEffectsToExcept = null)
         {
             if (abilityEffectsCreated == null || abilityEffectsCreated.Count == 0) return;
 
-            for(int i = 0; i < abilityEffectsCreated.Count; i++)
+            for (int i = 0; i < abilityEffectsCreated.Count; i++)
             {
                 if (abilityEffectsCreated[i] == null) continue;
 
                 if (abilityEffectToExcept != null && abilityEffectsCreated[i] == abilityEffectToExcept) continue;
 
-                if(abilityEffectsToExcept != null && abilityEffectsToExcept.Count > 0)
+                if (abilityEffectsToExcept != null && abilityEffectsToExcept.Count > 0)
                 {
                     if (abilityEffectsToExcept.Contains(abilityEffectsCreated[i])) continue;
                 }
@@ -650,6 +684,87 @@ namespace TeamMAsTD
             if (!abilityEffectsCreated.Contains(abilityEffect)) return;
 
             abilityEffectsCreated.Remove(abilityEffect);
+        }
+
+        private bool HasValidUnitsInAbilityRange()
+        {
+            if (!abilityScriptableObject) return true;
+
+            //if ability doesn't need a valid units in range to start -> no need to check and return
+            if (!abilityScriptableObject.abilityStartsWithUnitsInRange) return true;
+
+            Collider2D[] collidersInRange = Physics2D.OverlapCircleAll(transform.position, abilityScriptableObject.abilityRange, LayerMask.GetMask("Plants", "Visitors"));
+
+            if (collidersInRange.Length == 0) return false;
+
+            for (int i = 0; i < collidersInRange.Length; i++)
+            {
+                if (!collidersInRange[i]) continue;
+
+                if (!collidersInRange[i].gameObject.activeInHierarchy) continue;
+
+                IUnit unit = collidersInRange[i].GetComponent<IUnit>();
+
+                if (unit == null) continue;
+
+                if (unit.GetUnitObject().GetType() == typeof(VisitorUnit))
+                {
+                    VisitorUnit visitor = (VisitorUnit)unit.GetUnitObject();
+
+                    if (visitor.currentVisitorHealth <= 0) continue;
+                }
+
+                if (CanTargetUnitReceivesThisAbility(unit)) return true;
+            }
+
+            return false;
+        }
+
+        /// <summary>
+        /// Enable or Disable Ability. 
+        /// If ability is disabled using this method, it will finish its cycle before stopping (less disruptive than ForceStopAbilityImmediate()).
+        /// </summary>
+        /// <param name="enabled"></param>
+        /// <param name="shouldStartAbilityOnEnabled"></param>
+        public void EnableAbility(bool enabled, bool shouldStartAbilityOnEnabled)
+        {
+            if (this == null ||
+                !this.enabled ||
+                !gameObject || 
+                !gameObject.activeInHierarchy || 
+                !gameObject.scene.isLoaded) return;
+
+            abilityEnabled = enabled;
+
+            if (enabled && shouldStartAbilityOnEnabled)
+            {
+                StartAbility();
+            }
+            
+            //if disabled, the ability will auto stop by the end of its cycle (if it has already started) and will execute no further.
+            //no need to put a stop function here
+            //This is a less disruptive way to stop an ability than ForceStopAbilityImmediate().
+
+            //edge case: only force stop on ability disabled if ability has infnite duration
+            if(!abilityScriptableObject || abilityScriptableObject.abilityDuration < 0.0f)
+            {
+                if(!enabled) ForceStopAbilityImmediate();
+            }
+        }
+
+        //This will disrupt and stop ability immediately even if its cycle is not yet finished
+        public void ForceStopAbilityImmediate()
+        {
+            StopAbility();
+
+            if (!abilityScriptableObject) return;
+
+            if (isUpdating)
+            {
+                StopCoroutine(AbilityUpdateDurationCoroutine(abilityScriptableObject.abilityDuration));
+
+                isUpdating = false;
+            }
         }
     }
 }

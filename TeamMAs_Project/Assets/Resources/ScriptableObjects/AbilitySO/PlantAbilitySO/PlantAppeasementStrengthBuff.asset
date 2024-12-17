@@ -19,6 +19,8 @@ MonoBehaviour:
   initialAbilityCooldownTime: 0
   initialAbilityChargeTime: 0
   initialAutoRestartAbility: 1
+  initialAbilityStartsWithUnitsInRange: 1
+  initialAbilityRunsDuringWavesOnly: 0
   initialAbilityUseReservedFor: 1
   initialAbilityOnlyAffect: 1
   initialAbilityAffectsSpecificVisitorType: 0
