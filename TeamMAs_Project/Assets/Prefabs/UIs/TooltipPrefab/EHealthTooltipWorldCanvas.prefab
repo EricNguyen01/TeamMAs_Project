@@ -388,9 +388,16 @@ MonoBehaviour:
   easeMode: 30
   tweenDuration: 0.8
   tweenAutoStartDelay: 0
+  <isLooped>k__BackingField: 0
   isIndependentTimeScale: 0
   disableUIFunctionDuringTween: 0
   disableUIFunctionAfterTween: 0
+  OnUITweenStarted:
+    m_PersistentCalls:
+      m_Calls: []
+  OnUITweenFinished:
+    m_PersistentCalls:
+      m_Calls: []
   expandValue: 14
 --- !u!1 &3637978333142235788
 GameObject:
@@ -769,9 +776,16 @@ MonoBehaviour:
   easeMode: 4
   tweenDuration: 0.8
   tweenAutoStartDelay: 0
+  <isLooped>k__BackingField: 0
   isIndependentTimeScale: 0
   disableUIFunctionDuringTween: 0
   disableUIFunctionAfterTween: 0
+  OnUITweenStarted:
+    m_PersistentCalls:
+      m_Calls: []
+  OnUITweenFinished:
+    m_PersistentCalls:
+      m_Calls: []
   expandValue: 11
 --- !u!1 &7564045068594322292
 GameObject:
@@ -858,7 +872,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
+  m_PresetInfoIsWorld: 1
 --- !u!114 &5715589965781146489
 MonoBehaviour:
   m_ObjectHideFlags: 0
