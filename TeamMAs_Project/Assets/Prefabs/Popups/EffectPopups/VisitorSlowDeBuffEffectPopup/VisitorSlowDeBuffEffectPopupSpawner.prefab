@@ -48,10 +48,10 @@ MonoBehaviour:
   <statPopupScaleMultiplier>k__BackingField: 1
   startVerticalOffset: 1
   startHorizontalOffset: 0
-  verticalDistanceFromStart: 0.6
+  verticalDistanceFromStart: 0.5
   horizontalDistFromStart: 0
-  randomHorizontalTravelDistFromStart: 1
+  randomHorizontalTravelDistFromStart: 0
   randomVerticalTravelDistFromStart: 0
-  popupTime: 1.56
+  popupTime: 1.45
   <displayPopupsSeparately>k__BackingField: 0
   popupNumberToPool: 1

@@ -145,11 +145,17 @@ namespace TeamMAsTD
         private void Update()
         {
             if (hasFinishedPoppingUp) return;
+
+            float statPopupSpawnerX = statPopupSpawnerSpawnedThisPopup.transform.position.x;
             
             //process popup moving from its start to end position using lerp
             if (currentTravelTime < popupTravelTime)
             {
                 Vector3 lerpedPos = Vector3.Lerp(startPos, endPos, currentTravelTime / popupTravelTime);
+
+                float lerpedPosXDiff = statPopupSpawnerX - lerpedPos.x;
+
+                lerpedPos = new Vector3(lerpedPos.x + lerpedPosXDiff, lerpedPos.y, lerpedPos.z);
 
                 transform.position = lerpedPos;
 
@@ -159,7 +165,11 @@ namespace TeamMAsTD
             {
                 hasFinishedPoppingUp = true;
 
-                transform.position = endPos;
+                float endPosXDiff = statPopupSpawnerX - endPos.x;
+
+                Vector3 finalEndPos = new Vector3(endPos.x + endPosXDiff, endPos.y, endPos.z);
+
+                transform.position = finalEndPos;
 
                 currentTravelTime = popupTravelTime;
 
