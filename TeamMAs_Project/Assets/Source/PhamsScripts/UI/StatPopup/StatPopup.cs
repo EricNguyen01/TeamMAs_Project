@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using System.Runtime.CompilerServices;
 
 namespace TeamMAsTD
 {
@@ -60,6 +59,8 @@ namespace TeamMAsTD
         private Vector3 endPos = Vector3.zero;
 
         private Vector3 startingLocalScale;
+
+        private Vector3 popupSpawnerInitPos = Vector3.zero;
 
         public enum PopUpType { Neutral = 0, Positive = 1, Negative = 2 }
 
@@ -139,23 +140,31 @@ namespace TeamMAsTD
         {
             //reset everything on disable
             currentTravelTime = 0.0f;
+
             hasFinishedPoppingUp = false;
         }
 
         private void Update()
         {
+            if (!enabled || !gameObject.activeInHierarchy) return;
+
+            if(statPopupPoolSpawnedThisPopup == null || !statPopupSpawnerSpawnedThisPopup)
+            {
+                Destroy(gameObject);
+
+                return;
+            }
+
             if (hasFinishedPoppingUp) return;
 
-            float statPopupSpawnerX = statPopupSpawnerSpawnedThisPopup.transform.position.x;
-            
+            float spawnerXDiff = statPopupSpawnerSpawnedThisPopup.transform.position.x - popupSpawnerInitPos.x;
+
             //process popup moving from its start to end position using lerp
             if (currentTravelTime < popupTravelTime)
             {
                 Vector3 lerpedPos = Vector3.Lerp(startPos, endPos, currentTravelTime / popupTravelTime);
 
-                float lerpedPosXDiff = statPopupSpawnerX - lerpedPos.x;
-
-                lerpedPos = new Vector3(lerpedPos.x + lerpedPosXDiff, lerpedPos.y, lerpedPos.z);
+                lerpedPos = new Vector3(lerpedPos.x + spawnerXDiff, lerpedPos.y, lerpedPos.z);
 
                 transform.position = lerpedPos;
 
@@ -165,21 +174,24 @@ namespace TeamMAsTD
             {
                 hasFinishedPoppingUp = true;
 
-                float endPosXDiff = statPopupSpawnerX - endPos.x;
-
-                Vector3 finalEndPos = new Vector3(endPos.x + endPosXDiff, endPos.y, endPos.z);
+                Vector3 finalEndPos = new Vector3(endPos.x + spawnerXDiff, endPos.y, endPos.z);
 
                 transform.position = finalEndPos;
 
                 currentTravelTime = popupTravelTime;
 
                 //if finished popping up, return this stat popup object to pool through calling below function from its stat popup spawner
-                if (statPopupPoolSpawnedThisPopup != null && statPopupSpawnerSpawnedThisPopup != null)
+                if (statPopupPoolSpawnedThisPopup != null && statPopupSpawnerSpawnedThisPopup)
                 {
                     statPopupPoolSpawnedThisPopup.ReturnStatPopupGameObjectToPool(gameObject);
                 }
                 //if the stat popup spawner of this stat popup is null->destroy this stat popup game object
-                else Destroy(gameObject);
+                else 
+                { 
+                    Destroy(gameObject); 
+                }
+
+                return;
             }
         }
 
@@ -207,6 +219,8 @@ namespace TeamMAsTD
             this.endPos = endPos;
 
             popupTravelTime = travelTime;
+
+            if(statPopupSpawnerSpawnedThisPopup) popupSpawnerInitPos = statPopupSpawnerSpawnedThisPopup.transform.position;
         }
 
         public void SetNewStatPopupSprite(Sprite spritePopup)
