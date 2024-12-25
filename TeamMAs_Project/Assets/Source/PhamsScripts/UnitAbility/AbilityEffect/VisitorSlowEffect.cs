@@ -1,5 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
+// Script Author: Pham Nguyen. All Rights Reserved. 
+// GitHub: https://github.com/EricNguyen01.
+
 using UnityEngine;
 
 namespace TeamMAsTD
@@ -72,7 +73,7 @@ namespace TeamMAsTD
 
             if(visitorUnitReceivedBuff) visitorUnitReceivedBuff.UpdateVisitorStatsDebugData();
 
-            ProcessEffectPopupForBuffEffects(null, "Slowed");
+            ProcessEffectPopupForBuffEffects(null, "Slowed", 0.0f, true);
         }
 
         protected override bool EffectUpdate()

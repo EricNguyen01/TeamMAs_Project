@@ -1,8 +1,6 @@
 // Script Author: Pham Nguyen. All Rights Reserved. 
 // GitHub: https://github.com/EricNguyen01.
 
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace TeamMAsTD
@@ -119,11 +117,11 @@ namespace TeamMAsTD
 
             plantUnitSOReceivedBuff.AddPlantUnitDamage(finalDamageBuffedAmount);
 
-            ProcessEffectPopupForBuffEffects(null, "+" + finalDamageBuffedAmount + " AppeasementSTRENGTH", finalDamageBuffedAmount);
+            ProcessEffectPopupForBuffEffects(null, "+" /*+ finalDamageBuffedAmount*/ + " APPEASEMENT STRENGTH", finalDamageBuffedAmount);
 
             plantUnitSOReceivedBuff.AddPlantAttackSpeed(finalAtkSpeedBuffedAmount);
 
-            ProcessEffectPopupForBuffEffects(null, "+" + finalAtkSpeedBuffedAmount + " AppeasementSPEED", finalAtkSpeedBuffedAmount);
+            ProcessEffectPopupForBuffEffects(null, "+" /*+ finalAtkSpeedBuffedAmount*/ + " APPEASEMENT SPEED", finalAtkSpeedBuffedAmount);
         }
 
         protected override bool EffectUpdate()
@@ -153,11 +151,11 @@ namespace TeamMAsTD
 
             plantUnitSOReceivedBuff.RemovePlantUnitDamage(finalDamageBuffedAmount);
 
-            ProcessEffectPopupForBuffEffects(null, "-" + finalDamageBuffedAmount + " AppeasementSTRENGTH", -finalDamageBuffedAmount, 0.8f);
+            ProcessEffectPopupForBuffEffects(null, "-" + finalDamageBuffedAmount + " AppeasementSTRENGTH", -finalDamageBuffedAmount);
 
             plantUnitSOReceivedBuff.RemovePlantAttackSpeed(finalAtkSpeedBuffedAmount);
 
-            ProcessEffectPopupForBuffEffects(null, "-" + finalAtkSpeedBuffedAmount + " AppeasementSPEED", -finalAtkSpeedBuffedAmount, 0.8f);
+            ProcessEffectPopupForBuffEffects(null, "-" + finalAtkSpeedBuffedAmount + " AppeasementSPEED", -finalAtkSpeedBuffedAmount);
 
             DetachAndDestroyAllEffectPopupsIncludingSpawner();
 

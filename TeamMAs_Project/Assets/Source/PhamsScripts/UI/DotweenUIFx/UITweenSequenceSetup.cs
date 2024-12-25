@@ -1,7 +1,6 @@
 ﻿// Script Author: Pham Nguyen. All Rights Reserved. 
 // GitHub: https://github.com/EricNguyen01.
 
-using DG.Tweening;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -32,6 +31,8 @@ namespace TeamMAsTD
         private TweenStruct[] tweensInSequence;
 
         [SerializeField] private bool playOnStart = false;
+
+        [SerializeField] private bool isIndependentTimeScale = false;
 
         [Header("Tween Sequence Unity Event")]
 
@@ -68,6 +69,8 @@ namespace TeamMAsTD
             SetTweensInSequenceToExecuteInternalOnly();
 
             Remove_OverlappingTweens_OnSameGameObject();
+
+            SetTweensInSequenceTimeScale();
         }
 
         private void Start()
@@ -184,6 +187,21 @@ namespace TeamMAsTD
                 if (tweensInSequence[i].Equals(null) || !tweensInSequence[i].tween) continue;
 
                 tweensInSequence[i].tween.SetTweenExecuteMode(UITweenBase.UITweenExecuteMode.Internal);
+            }
+        }
+
+        private void SetTweensInSequenceTimeScale()
+        {
+            if (!isIndependentTimeScale) return;
+
+            if (tweensInSequence == null || tweensInSequence.Length == 0) return;
+
+            for(int i = 0; i < tweensInSequence.Length; i++)
+            {
+                if (tweensInSequence[i].Equals(null) || !tweensInSequence[i].tween) continue;
+
+                if(!tweensInSequence[i].tween.isIndependentTimeScale)
+                    tweensInSequence[i].tween.isIndependentTimeScale = isIndependentTimeScale;
             }
         }
 

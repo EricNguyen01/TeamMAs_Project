@@ -2,11 +2,7 @@
 // GitHub: https://github.com/EricNguyen01.
 
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Rendering;
-using UnityEngine.UI;
-using PixelCrushers;
 using PixelCrushers.DialogueSystem;
 
 namespace TeamMAsTD
@@ -101,7 +97,7 @@ namespace TeamMAsTD
             pauseMenuCanvasGroup.blocksRaycasts = false;
         }
 
-        private void EnablePauseMenuButtonCanvasGroup(bool enabled, float enableAlpha = 1.0f, float disableAlpha = 0.4f)
+        public void EnablePauseMenuButtonCanvasGroup(bool enabled, float enableAlpha = 1.0f, float disableAlpha = 0.4f)
         {
             if (!pauseMenuButtonCanvasGroup) return;
 

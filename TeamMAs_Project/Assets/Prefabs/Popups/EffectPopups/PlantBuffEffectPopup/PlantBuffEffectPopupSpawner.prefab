@@ -52,5 +52,6 @@ MonoBehaviour:
   horizontalDistFromStart: 0
   randomHorizontalTravelDistFromStart: 0
   randomVerticalTravelDistFromStart: 0
-  popupTime: 2.5
+  popupTime: 1.25
+  <displayPopupsSeparately>k__BackingField: 0
   popupNumberToPool: 1

@@ -2,7 +2,6 @@
 // GitHub: https://github.com/EricNguyen01.
 
 using System.Collections;
-using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using UnityEngine;
 
@@ -280,7 +279,7 @@ namespace TeamMAsTD
             }
         }
 
-        protected virtual void ProcessEffectPopupForBuffEffects(Sprite popupSprite, string popupText, float buffedNumber = 0.0f, float popupTime = 0.0f)
+        protected virtual void ProcessEffectPopupForBuffEffects(Sprite popupSprite, string popupText, float buffedNumber = 0.0f, bool allowNeutralPopup = false, float popupTime = 0.0f)
         {
             if (!gameObject.scene.isLoaded) return;
 
@@ -303,9 +302,9 @@ namespace TeamMAsTD
             {
                 effectStatPopupSpawner.PopUp(popupSprite, popupText, StatPopup.PopUpType.Negative);
             }
-            else if((buffedNumber - 0.0f) <= Mathf.Epsilon)
+            else if(buffedNumber - 0.0f <= Mathf.Epsilon)
             {
-                effectStatPopupSpawner.PopUp(popupSprite, popupText, StatPopup.PopUpType.Neutral);
+                if(allowNeutralPopup) effectStatPopupSpawner.PopUp(popupSprite, popupText, StatPopup.PopUpType.Neutral);
             }
         }
 

@@ -14,12 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <abilityName>k__BackingField: VisitorSlow
   <abilityPrefab>k__BackingField: {fileID: 5210803887474864984, guid: f1eee6e2a239dab469e749732b171a3b, type: 3}
-  initialAbilityRange: 1
+  initialAbilityRange: 1.3
   initialAbilityDuration: 3
   initialAbilityCooldownTime: 4.5
   initialAbilityChargeTime: 0
   initialAutoRestartAbility: 1
   initialAbilityStartsWithUnitsInRange: 1
+  initialAbilityRunsDuringWavesOnly: 1
   initialAbilityUseReservedFor: 1
   initialAbilityOnlyAffect: 2
   initialAbilityAffectsSpecificVisitorType: 1
@@ -32,4 +33,3 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 1fea5be878e34964e86b12382a85ef9f, type: 2}
   <waveToUnlockAbilityAfterFinished>k__BackingField: {fileID: 0}
   initialAbilityLocked: 0
-  <useOnEquippedIfNotLocked>k__BackingField: 1

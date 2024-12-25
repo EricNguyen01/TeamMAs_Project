@@ -549,7 +549,8 @@ MonoBehaviour:
   easeMode: 30
   tweenDuration: 0.43
   tweenAutoStartDelay: 0
-  isIndependentTimeScale: 1
+  <isLooped>k__BackingField: 0
+  <isIndependentTimeScale>k__BackingField: 1
   disableUIFunctionDuringTween: 1
   disableUIFunctionAfterTween: 0
   OnUITweenStarted:
@@ -579,7 +580,8 @@ MonoBehaviour:
   easeMode: 30
   tweenDuration: 0.5
   tweenAutoStartDelay: 0
-  isIndependentTimeScale: 1
+  <isLooped>k__BackingField: 0
+  <isIndependentTimeScale>k__BackingField: 0
   disableUIFunctionDuringTween: 0
   disableUIFunctionAfterTween: 0
   OnUITweenStarted:
@@ -695,7 +697,8 @@ MonoBehaviour:
   easeMode: 30
   tweenDuration: 0.5
   tweenAutoStartDelay: 0
-  isIndependentTimeScale: 1
+  <isLooped>k__BackingField: 0
+  <isIndependentTimeScale>k__BackingField: 1
   disableUIFunctionDuringTween: 1
   disableUIFunctionAfterTween: 0
   OnUITweenStarted:
@@ -887,7 +890,8 @@ MonoBehaviour:
   easeMode: 30
   tweenDuration: 0.6
   tweenAutoStartDelay: 0
-  isIndependentTimeScale: 1
+  <isLooped>k__BackingField: 0
+  <isIndependentTimeScale>k__BackingField: 0
   disableUIFunctionDuringTween: 0
   disableUIFunctionAfterTween: 0
   OnUITweenStarted:
@@ -1364,7 +1368,8 @@ MonoBehaviour:
   easeMode: 30
   tweenDuration: 0.43
   tweenAutoStartDelay: 0
-  isIndependentTimeScale: 1
+  <isLooped>k__BackingField: 0
+  <isIndependentTimeScale>k__BackingField: 1
   disableUIFunctionDuringTween: 1
   disableUIFunctionAfterTween: 0
   OnUITweenStarted:
@@ -1394,7 +1399,8 @@ MonoBehaviour:
   easeMode: 30
   tweenDuration: 0.5
   tweenAutoStartDelay: 0
-  isIndependentTimeScale: 1
+  <isLooped>k__BackingField: 0
+  <isIndependentTimeScale>k__BackingField: 0
   disableUIFunctionDuringTween: 0
   disableUIFunctionAfterTween: 0
   OnUITweenStarted:
@@ -1582,7 +1588,8 @@ MonoBehaviour:
   easeMode: 30
   tweenDuration: 0.43
   tweenAutoStartDelay: 0
-  isIndependentTimeScale: 1
+  <isLooped>k__BackingField: 0
+  <isIndependentTimeScale>k__BackingField: 1
   disableUIFunctionDuringTween: 1
   disableUIFunctionAfterTween: 0
   OnUITweenStarted:
@@ -1612,7 +1619,8 @@ MonoBehaviour:
   easeMode: 30
   tweenDuration: 0.5
   tweenAutoStartDelay: 0
-  isIndependentTimeScale: 1
+  <isLooped>k__BackingField: 0
+  <isIndependentTimeScale>k__BackingField: 0
   disableUIFunctionDuringTween: 0
   disableUIFunctionAfterTween: 0
   OnUITweenStarted:

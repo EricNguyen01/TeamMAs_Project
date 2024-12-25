@@ -3,7 +3,6 @@
 
 using System.Collections;
 using UnityEngine;
-using UnityEngine.UI;
 using DG.Tweening;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
@@ -34,11 +33,11 @@ namespace TeamMAsTD
         protected float tweenAutoStartDelay = 0.0f;
 
         [field: SerializeField]
-        public bool isLooped { get; private set; } = false;
+        public bool isLooped { get; set; } = false;
 
         private bool shouldLoop = false;
 
-        [SerializeField] protected bool isIndependentTimeScale = false;
+        [field: SerializeField] public bool isIndependentTimeScale { get; set; } = false;
 
         [SerializeField] protected bool disableUIFunctionDuringTween = false;
 
@@ -164,6 +163,13 @@ namespace TeamMAsTD
         public void SetTweenEaseMode(Ease easeMode)
         {
             this.easeMode = easeMode;
+        }
+
+        public void SetTweenDuration(float duration)
+        {
+            if (duration <= 0.0f) duration = 0.1f;
+
+            tweenDuration = duration;
         }
 
         public virtual void SetUITweenCanvasGroup(CanvasGroup canvasGrp)
@@ -312,7 +318,7 @@ namespace TeamMAsTD
             }
         }
 
-        private void SetTweenLoop(bool isLooped)
+        private void SetTweenLoopInternal(bool isLooped)
         {
             shouldLoop = isLooped;
         }
@@ -321,7 +327,7 @@ namespace TeamMAsTD
         {
             if (shouldLoop)
             {
-                SetTweenLoop(false);
+                SetTweenLoopInternal(false);
 
                 return;
             }

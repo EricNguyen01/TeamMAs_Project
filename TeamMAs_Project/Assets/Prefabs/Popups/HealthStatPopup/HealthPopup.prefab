@@ -267,15 +267,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   statPopupUIImage: {fileID: 4397547518056734228}
   statPopupTextMesh: {fileID: 7512172702897273963}
-  positiveStatPopupSprite: {fileID: 21300000, guid: 159b8a6426bcd8d4a87e3fc4aaca3f7f, type: 3}
+  positiveStatPopupSprite: {fileID: 21300000, guid: d75f8b1d41b93e048b7ee957a4099e9b, type: 3}
   negativeStatPopupSprite: {fileID: 21300000, guid: 252b2373d4495794196a28d1a54135de, type: 3}
+  neutralStatPopupSprite: {fileID: 0}
   statPopupAnimator: {fileID: 0}
   positiveStatPopupAnimatorOverride: {fileID: 0}
   negativeStatPopupAnimatorOverride: {fileID: 0}
+  neutralStatPopupAnimatorOverride: {fileID: 0}
   positiveStatText: 
   negativeStatText: 
+  neutralStatText: 
   positiveStatPopupTextColor: {r: 0.3114971, g: 0.8584906, b: 0.18141682, a: 1}
   negativeStatPopupTextColor: {r: 0.7924528, g: 0.18241365, b: 0.18241365, a: 1}
+  neutralStatPopupTextColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
 --- !u!95 &6848413014240626699
 Animator:
   serializedVersion: 5
@@ -330,10 +334,10 @@ RectTransform:
   m_Father: {fileID: 9133518828207136777}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.33837658, y: 0}
+  m_AnchorMin: {x: 0.46614337, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.0017587543, y: 0.000016510487}
-  m_SizeDelta: {x: 0.0033951644, y: -0.00010223687}
+  m_AnchoredPosition: {x: -0.00016853213, y: 0.000016510487}
+  m_SizeDelta: {x: 0.00013705809, y: -0.0001}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8781326177324571992
 CanvasRenderer:
@@ -390,12 +394,12 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 1
-  m_fontSizeBase: 36
+  m_fontSize: 0.3
+  m_fontSizeBase: 0.3
   m_fontWeight: 400
-  m_enableAutoSizing: 1
-  m_fontSizeMin: 0.4
-  m_fontSizeMax: 1
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 0.5
+  m_fontSizeMax: 0.5
   m_fontStyle: 1
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512

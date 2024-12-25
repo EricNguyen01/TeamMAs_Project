@@ -4422,9 +4422,17 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 519420031}
+    - target: {fileID: 7629894749752318312, guid: e32a5d18580203f4c8956bb7f0a05c27, type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7629894749752318314, guid: e32a5d18580203f4c8956bb7f0a05c27, type: 3}
       propertyPath: m_Name
       value: PersistentSaveLoadIndicatorCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 7629894749752318314, guid: e32a5d18580203f4c8956bb7f0a05c27, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e32a5d18580203f4c8956bb7f0a05c27, type: 3}

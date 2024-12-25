@@ -1,5 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
+// Script Author: Pham Nguyen. All Rights Reserved. 
+// GitHub: https://github.com/EricNguyen01.
+
 using UnityEngine;
 
 namespace TeamMAsTD

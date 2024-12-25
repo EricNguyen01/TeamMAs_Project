@@ -36,7 +36,7 @@ namespace TeamMAsTD
         "For Click-on mode, fade in/out will be toggled")]
         private FadeMode fadeMode = FadeMode.FadeIn;
 
-        [SerializeField] private bool reverseFadeOnFadeCycleFinished = false;
+        [SerializeField] public bool reverseFadeOnFadeCycleFinished { get; set; } = false;
 
         public enum UIFadeMode { FadeIn, FadeOut }
 
@@ -161,12 +161,12 @@ namespace TeamMAsTD
 
             if (canvasGroupToFade && !imageToFade) 
             { 
-                yield return StartCoroutine(CanvasGroupFadeCoroutine()); 
+                /*yield return */StartCoroutine(CanvasGroupFadeCoroutine()); 
             }
 
             if (imageToFade) 
             { 
-                yield return StartCoroutine(ImageFadeCoroutine()); 
+                /*yield return */StartCoroutine(ImageFadeCoroutine()); 
             }
 
             if (canvasGroupToFade && !imageToFade) yield return new WaitUntil(() => canvasGroupFadeCompleted);
