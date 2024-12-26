@@ -30,6 +30,8 @@ namespace TeamMAsTD
 
         private bool hasAnimatorDisabled = false;
 
+        private Saveable fingerSaveable;
+
         private void Awake()
         {
             EnableOnDialogueEndEvent(true);
@@ -39,6 +41,8 @@ namespace TeamMAsTD
             TryGetComponent<Animator>(out fingerAnimator);
 
             fingerStartPos = transform.position;
+
+            fingerSaveable = ISaveable.GetOrGenerateSaveableComponentIfNull(this);
         }
 
         private void Start()
@@ -278,6 +282,11 @@ namespace TeamMAsTD
 
                 if (gameObject.activeInHierarchy) gameObject.SetActive(false);
             }
+        }
+
+        public Saveable GetSaveable()
+        {
+            return fingerSaveable;
         }
     }
 }

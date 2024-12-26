@@ -72,7 +72,7 @@ namespace TeamMAsTD
         {
             Time.timeScale = 1;
 
-            SaveLoadHandler.SaveAllSaveables();
+            if (waveSpawnerInUse) SaveLoadHandler.SaveThisSaveableOnly(waveSpawnerInUse.GetSaveable());
         }
 
         IEnumerator DelayContinueButton(float delayTime)
@@ -111,7 +111,7 @@ namespace TeamMAsTD
         {
             DialogueManager.StopConversation();
 
-            SaveLoadHandler.SaveAllSaveables();
+            if (waveSpawnerInUse) SaveLoadHandler.SaveThisSaveableOnly(waveSpawnerInUse.GetSaveable());
         }
 
         public void StartConversation(string conversation)

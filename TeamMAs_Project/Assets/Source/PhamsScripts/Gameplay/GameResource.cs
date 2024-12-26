@@ -188,5 +188,10 @@ namespace TeamMAsTD
                 }
             }
         }
+
+        public Saveable GetSaveable()
+        {
+            return saveable;
+        }
     }
 }

@@ -104,6 +104,8 @@ namespace TeamMAsTD
             }
         }
 
+        private Saveable gridSaveable;
+
         //UNITY CALLBACKS
 
         private void Awake()
@@ -118,6 +120,8 @@ namespace TeamMAsTD
             SetTileNameToTileDictionary();
 
             GetAllSpritesFromChildrenTiles();
+
+            gridSaveable = ISaveable.GetOrGenerateSaveableComponentIfNull(this);
 
             if (!Application.isEditor) showDebugLog = false;
 
@@ -710,7 +714,7 @@ namespace TeamMAsTD
                 SaveLoadHandler.SaveThisSaveableOnly(gridArray[i].GetTileSaveable());
             }
 
-            SaveLoadHandler.SaveThisSaveableOnly(pathOfGrid.GetPathSaveable());
+            SaveLoadHandler.SaveThisSaveableOnly(pathOfGrid.GetSaveable());
         }
 
         //ISaveable interface implementations for grid saving/loading.............................................................................
@@ -737,6 +741,11 @@ namespace TeamMAsTD
             alreadyHasDandelionOnGrid = gridSavedData.alreadyHasDandyOnGrid;
 
             alreadyHasCloverOnGrid = gridSavedData.alreadyHasCloverOnGrid;
+        }
+
+        public Saveable GetSaveable()
+        {
+            return gridSaveable;
         }
 
         //UNITY EDITOR only class and function for Grid....................................................................

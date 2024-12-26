@@ -1,9 +1,6 @@
 // Script Author: Pham Nguyen. All Rights Reserved. 
 // GitHub: https://github.com/EricNguyen01.
 
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace TeamMAsTD
@@ -14,16 +11,22 @@ namespace TeamMAsTD
 
         public void LoadData(SaveDataSerializeBase savedDataToLoad);
 
-        public static void GenerateSaveableComponentIfNull(MonoBehaviour mono)
+        public static Saveable GetOrGenerateSaveableComponentIfNull(MonoBehaviour mono)
         {
-            if (!mono) return;
+            if (!mono) return null;
 
             Saveable saveable;
 
-            if (!mono.TryGetComponent<Saveable>(out saveable))
+            if (mono.TryGetComponent<Saveable>(out saveable)) return saveable;
+
+            if (!saveable && Application.isEditor && !Application.isPlaying)
             {
                 saveable = mono.gameObject.AddComponent<Saveable>();
             }
+
+            return saveable;
         }
+
+        public Saveable GetSaveable();
     }
 }

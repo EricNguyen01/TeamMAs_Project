@@ -108,13 +108,6 @@ namespace TeamMAsTD
 
                 if (pathGenerator != null) pathGenerator.showDebug = false;
             }
-
-            TryGetComponent<Saveable>(out pathSaveable);
-
-            if(!pathSaveable && Application.isEditor && !Application.isPlaying)
-            {
-                pathSaveable = gameObject.AddComponent<Saveable>();
-            }
         }
 
         private void OnEnable()
@@ -122,6 +115,8 @@ namespace TeamMAsTD
             currentGridPathOn = gridPathOn;
 
             pathGenerator.SetGridPathOn(gridPathOn);
+
+            pathSaveable = ISaveable.GetOrGenerateSaveableComponentIfNull(this);
 
 #if UNITY_EDITOR
 
@@ -521,7 +516,7 @@ namespace TeamMAsTD
             UpdatePath();
         }
 
-        public Saveable GetPathSaveable()
+        public Saveable GetSaveable()
         {
             return pathSaveable;
         }

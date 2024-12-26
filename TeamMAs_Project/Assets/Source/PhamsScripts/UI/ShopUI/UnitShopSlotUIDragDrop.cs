@@ -126,6 +126,8 @@ namespace TeamMAsTD
             }
         }
 
+        private Saveable shopSlotSaveable;
+
         //PRIVATES.........................................................................
 
         private void Awake()
@@ -151,6 +153,8 @@ namespace TeamMAsTD
             SetNameAndCostForUnitShopSlot();
 
             InitShopUnlockedAttentionFX();
+
+            shopSlotSaveable = ISaveable.GetOrGenerateSaveableComponentIfNull(this);
         }
 
         private void OnEnable()
@@ -936,6 +940,11 @@ namespace TeamMAsTD
             if(shopUnlockCheckedByPlayer) EnableNewShopUnlockedAttentionFX(false);
 
             if(shopTooltipCheckedByPlayer) EnableNewPlantTooltipAttentionFX(false);
+        }
+
+        public Saveable GetSaveable()
+        {
+            return shopSlotSaveable;
         }
     }
 }

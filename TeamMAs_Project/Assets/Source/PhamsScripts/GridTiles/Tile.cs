@@ -177,14 +177,7 @@ namespace TeamMAsTD
         {
             if(!spriteRenderer) spriteRenderer = GetComponent<SpriteRenderer>();
 
-            //if(this is ISaveable) ISaveable.GenerateSaveableComponentIfNull(this);
-
-            if (!tileSaveable) TryGetComponent<Saveable>(out tileSaveable);
-
-            if(!tileSaveable && Application.isEditor && !Application.isPlaying)
-            {
-                tileSaveable = gameObject.AddComponent<Saveable>();
-            }
+            tileSaveable = ISaveable.GetOrGenerateSaveableComponentIfNull(this);
         }
 
 #if UNITY_EDITOR
@@ -657,6 +650,11 @@ namespace TeamMAsTD
                     }
                 }
             }
+        }
+
+        public Saveable GetSaveable()
+        {
+            return tileSaveable;
         }
 
         //Tile Custom Editor Private Class................................................................................................................

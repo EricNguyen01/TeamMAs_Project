@@ -1,6 +1,7 @@
 // Script Author: Pham Nguyen. All Rights Reserved. 
 // GitHub: https://github.com/EricNguyen01.
 
+using PixelCrushers.DialogueSystem;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -52,6 +53,8 @@ namespace TeamMAsTD
 
         private float waveTimerEndTime = 0.0f;
 
+        private Saveable waveSpawnerSaveable;
+
         //Wave C# events declarations
         //StartWaveUI.cs receives these events to enable/disable start wave Button UI.
         //PlantAimShootSystem.cs receives these events to enable/disable plant targetting/shooting.
@@ -88,6 +91,8 @@ namespace TeamMAsTD
             SetupVisitorPools();
 
             CreateWaveObjects();//Not actual Unity GameObject. Just Wave C# class object in memory. Check Wave.cs
+
+            waveSpawnerSaveable = ISaveable.GetOrGenerateSaveableComponentIfNull(this);
 
             float endInitTime = Time.realtimeSinceStartup - startInitTime;
 
@@ -225,11 +230,16 @@ namespace TeamMAsTD
             OnWaveStartedEvent?.Invoke();
 
             OnWaveStarted?.Invoke(this, waveNum);
+
+            if (!HasOtherActiveWaves())
+            {
+                SaveLoadHandler.EnableSaveLoad(false);
+            }
         }
 
         //find if there's any other ongoing waves started by other wavespawner apart from this wavespawner
         //has looping -> should only call in 1 frame only -> dont use in Update()
-        private bool FindOtherOnGoingWaves()
+        private bool HasOtherActiveWaves()
         {
             //if WaveSpawnerManager exists ->
             //check for active wave spawners in scene through it instead of running FindObjectsOfType which is expensive
@@ -324,20 +334,19 @@ namespace TeamMAsTD
             //if LAST WAVE -> ALWAYS broadcast event because we need to disable startwave button UI (UI must picked up last wave event)
             if (currentWave < wavesList.Count - 1 && !broadcastWaveFinishedEvent) return;
 
+            bool hasOtherActiveWaves = HasOtherActiveWaves();
+
             //else if broadcast event is true->
             //invoke different wave ended events that depend on whether the last wave has spawned or not
             //if the wave just ended is not the final wave:
             if (currentWave < wavesList.Count - 1)
             {
-                //Debug.Log("OnWaveFinished Invoked!");
-                bool hasOtherOngoingWaves = FindOtherOnGoingWaves();
-
                 //coins drop on wave ended
                 DropCoinsOnWaveEnded(waveSOList[waveNum]);
 
                 if (incrementWaveOnFinished) currentWave++;
 
-                OnWaveFinished?.Invoke(this, waveNum, hasOtherOngoingWaves);
+                OnWaveFinished?.Invoke(this, waveNum, hasOtherActiveWaves);
 
                 OnWaveFinishedEvent?.Invoke();
 
@@ -347,9 +356,16 @@ namespace TeamMAsTD
             else
             {
                 //broadcast all waves of this WaveSpawner just finished running event
-                OnAllWaveSpawned?.Invoke(this, FindOtherOnGoingWaves());
+                OnAllWaveSpawned?.Invoke(this, hasOtherActiveWaves);
 
                 OnAllWaveSpawnedEvent?.Invoke();
+            }
+
+            if (!hasOtherActiveWaves)
+            {
+                SaveLoadHandler.EnableSaveLoad(true);
+
+                SaveLoadHandler.SaveAllSaveables();
             }
         }
 
@@ -366,9 +382,9 @@ namespace TeamMAsTD
 
             currentWave = waveNum;
 
-            bool hasOtherOngoingWaves = FindOtherOnGoingWaves();
+            bool hasOtherActiveWaves = HasOtherActiveWaves();
 
-            OnWaveJumped?.Invoke(this, currentWave, hasOtherOngoingWaves);
+            OnWaveJumped?.Invoke(this, currentWave, hasOtherActiveWaves);
 
             if (startWaveAfterJump) StartWave(waveNum);
         }
@@ -474,6 +490,11 @@ namespace TeamMAsTD
             else lastWaveStarted = currentWave - 1;
 
             OnWaveFinished?.Invoke(this, lastWaveStarted, false);
+        }
+
+        public Saveable GetSaveable()
+        {
+            return waveSpawnerSaveable;
         }
     }
 }
