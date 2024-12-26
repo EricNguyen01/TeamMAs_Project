@@ -231,6 +231,8 @@ namespace TeamMAsTD
                 yield return SceneManager.LoadSceneAsync(sceneNumTo, LoadSceneMode.Single);
             }
 
+            Time.timeScale = 1.0f;
+
             yield return new WaitForSecondsRealtime(0.1f);
 
             if (SaveLoadHandler.saveLoadHandlerInstance && SaveLoadHandler.HasSavedData() && loadSaveAfterScene)

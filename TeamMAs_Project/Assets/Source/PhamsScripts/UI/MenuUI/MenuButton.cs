@@ -134,14 +134,13 @@ namespace TeamMAsTD
 
         public void BackToMainMenuButton()
         {
-            if (PersistentSceneLoadUI.persistentSceneLoadUIInstance)
-            {
-                PersistentSceneLoadUI.persistentSceneLoadUIInstance.LoadScene(0);
+            if (!PersistentSceneLoadUI.persistentSceneLoadUIInstance) return;
 
-                SaveLoadHandler.SaveAllSaveables();
+            SaveLoadHandler.SaveAllSaveables();
 
-                PersistentSceneLoadUI.persistentSceneLoadUIInstance.AllowLoadSaveAfterSceneLoaded(true);
-            }
+            PersistentSceneLoadUI.persistentSceneLoadUIInstance.LoadScene(0);
+
+            PersistentSceneLoadUI.persistentSceneLoadUIInstance.AllowLoadSaveAfterSceneLoaded(true);
         }
 
         public void QuitGameButton()

@@ -71,6 +71,8 @@ namespace TeamMAsTD
         void OnConversationEnd(Transform actor) // THIS SCRIPT MUST BE ON THE DIALOGUE MANAGER CUSTOM OBJECT TO WORK
         {
             Time.timeScale = 1;
+
+            SaveLoadHandler.SaveAllSaveables();
         }
 
         IEnumerator DelayContinueButton(float delayTime)
@@ -98,16 +100,18 @@ namespace TeamMAsTD
             {
                 yield return new WaitWhile(() => PersistentSceneLoadUI.persistentSceneLoadUIInstance.IsPerformingSceneLoad());
 
-                yield return StartCoroutine(StartConversationDelayCoroutine(0.35f));
+                yield return StartCoroutine(StartConversationDelayCoroutine(0.4f));
 
                 yield break;
             }
-            else yield return StartCoroutine(StartConversationDelayCoroutine(0.8f));
+            else yield return StartCoroutine(StartConversationDelayCoroutine(1.0f));
         }
 
         public void SkipDialog()
         {
             DialogueManager.StopConversation();
+
+            SaveLoadHandler.SaveAllSaveables();
         }
 
         public void StartConversation(string conversation)
