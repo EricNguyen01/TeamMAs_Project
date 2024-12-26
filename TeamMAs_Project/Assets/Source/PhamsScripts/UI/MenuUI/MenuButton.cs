@@ -140,7 +140,7 @@ namespace TeamMAsTD
 
             PersistentSceneLoadUI.persistentSceneLoadUIInstance.LoadScene(0);
 
-            PersistentSceneLoadUI.persistentSceneLoadUIInstance.AllowLoadSaveAfterSceneLoaded(true);
+            PersistentSceneLoadUI.persistentSceneLoadUIInstance.AllowLoadSaveAfterSceneLoaded(false);
         }
 
         public void QuitGameButton()
