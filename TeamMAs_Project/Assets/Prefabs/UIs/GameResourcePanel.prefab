@@ -169,8 +169,16 @@ MonoBehaviour:
   easeMode: 30
   tweenDuration: 0.5
   tweenAutoStartDelay: 0
-  isIndependentTimeScale: 0
+  <isLooped>k__BackingField: 0
+  <isIndependentTimeScale>k__BackingField: 0
   disableUIFunctionDuringTween: 0
+  disableUIFunctionAfterTween: 0
+  OnUITweenStarted:
+    m_PersistentCalls:
+      m_Calls: []
+  OnUITweenFinished:
+    m_PersistentCalls:
+      m_Calls: []
   shakeStrength: {x: 4, y: 14, z: 0}
   shakeVibrato: 7
 --- !u!1 &1988533623866361764
@@ -546,7 +554,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0.5803922, g: 0.454902, b: 0.33333334, a: 1}
-  m_RaycastTarget: 0
+  m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:

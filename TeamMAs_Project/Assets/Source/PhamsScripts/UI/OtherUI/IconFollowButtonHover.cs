@@ -1,7 +1,6 @@
 // Script Author: Pham Nguyen. All Rights Reserved. 
 // GitHub: https://github.com/EricNguyen01.
 
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -11,9 +10,6 @@ using DG.Tweening;
 namespace TeamMAsTD
 {
     [DisallowMultipleComponent]
-#if UNITY_EDITOR
-    [ExecuteInEditMode]
-#endif
     public class IconFollowButtonHover : MonoBehaviour
     {
         [SerializeField]
@@ -58,8 +54,6 @@ namespace TeamMAsTD
 
         private void Awake()
         {
-            if (!Application.isPlaying) return;
-
             if (!UIImageAsFollowingIcon)
             {
                 Debug.LogWarning("UI Image As Following Icon is missing. Disabling Script...");
@@ -76,7 +70,7 @@ namespace TeamMAsTD
 
         private void OnEnable()
         {
-            if (!FindObjectOfType<EventSystem>())
+            if (!EventSystem.current)
             {
                 Debug.LogWarning("UI Icon Follow Hovered Buttons Could Not Find An Event System. Disabling Script...");
 
@@ -111,7 +105,7 @@ namespace TeamMAsTD
 
         private void Start()
         {
-            if (!Application.isPlaying || !enabled) return;
+            if (!enabled) return;
 
             if (EventSystem.current)
             {
@@ -125,7 +119,7 @@ namespace TeamMAsTD
 
         private void Update()
         {
-            if (!Application.isPlaying || !enabled) return;
+            if (!enabled) return;
 
             InterpolateToCurrentHoveredButtonInList();
         }

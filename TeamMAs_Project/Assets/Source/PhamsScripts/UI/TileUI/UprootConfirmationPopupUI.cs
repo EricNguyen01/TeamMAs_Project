@@ -72,11 +72,13 @@ namespace TeamMAsTD
         private void OnEnable()
         {
             //check for an existing EventSystem and disble script if null
-            if (FindObjectOfType<EventSystem>() == null)
+            if (EventSystem.current == null)
             {
                 Debug.LogError("Cannot find an EventSystem in the scene. " +
                 "An EventSystem is required for uproot confirmation popup to function. Disabling popup confirmation!");
+
                 enabled = false;
+
                 return;
             }
         }

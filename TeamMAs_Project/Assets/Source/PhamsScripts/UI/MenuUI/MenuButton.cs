@@ -1,12 +1,7 @@
 // Script Author: Pham Nguyen. All Rights Reserved. 
 // GitHub: https://github.com/EricNguyen01.
 
-using System.Collections;
-using System.Collections.Generic;
-using TeamMAsTD;
 using UnityEngine;
-using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 namespace TeamMAsTD
 {

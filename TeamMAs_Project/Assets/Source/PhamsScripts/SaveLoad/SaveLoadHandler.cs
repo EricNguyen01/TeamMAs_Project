@@ -122,7 +122,7 @@ namespace TeamMAsTD
         {
             if (!Application.isPlaying) return false;
 
-            if (!saveLoadHandlerInstance && !saveLoadHandlerInstance.saveLoadManager) return false;
+            if (!saveLoadHandlerInstance || !saveLoadHandlerInstance.saveLoadManager) return false;
 
             if (!saveLoadHandlerInstance.enabled) return false;
 
@@ -181,7 +181,7 @@ namespace TeamMAsTD
         {
             if (!Application.isPlaying) return false;
 
-            if (!saveLoadHandlerInstance && !saveLoadHandlerInstance.saveLoadManager) return false;
+            if (!saveLoadHandlerInstance || !saveLoadHandlerInstance.saveLoadManager) return false;
 
             if (!saveLoadHandlerInstance.enabled) return false;
                  

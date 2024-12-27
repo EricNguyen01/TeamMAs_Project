@@ -1,12 +1,9 @@
 // Script Author: Pham Nguyen. All Rights Reserved. 
 // GitHub: https://github.com/EricNguyen01.
 
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using TMPro;
-using System.Linq;
 
 namespace TeamMAsTD
 {
@@ -200,8 +197,6 @@ namespace TeamMAsTD
                 if(shouldResetTimeSpeed) ResetTimeSpeedToDefault();
 
                 timeSpeedUpCanvasGroup.alpha = 0.5f;
-
-                timeSpeedUpCanvasGroup.blocksRaycasts = false;
 
                 timeSpeedUpCanvasGroup.interactable = false;
 

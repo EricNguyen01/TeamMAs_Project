@@ -30,6 +30,11 @@ namespace TeamMAsTD
         [DisallowNull]
         private Tile tilePrefabToPopulate;//prefab with tile script attached
 
+        [Space(10.0f)]
+
+        [SerializeField]
+        private bool randomizeGridLayoutOnStart = false;
+
         [SerializeField] 
         [HideInInspector] 
         private Tile[] gridArray;//the 2D array representing the grid that has been flattened into a 1D array
@@ -48,6 +53,8 @@ namespace TeamMAsTD
             }
         }
 
+        [Space(10.0f)]
+
         [SerializeField]
         [ReadOnlyInspector]
         private ReadOnlyGridArray readOnlyGridArray;
@@ -64,8 +71,6 @@ namespace TeamMAsTD
         [SerializeField] private UnityEvent OnFirstCloverPlantedOnGrid;
 
         [SerializeField] public UnityEvent<PlantUnit> OnFirstPlantPlantedOnGrid;
-
-        [Space(15.0f)]
 
         [SerializeField] private UnityEvent OnGridRuntimeGenerationStarted;
 
@@ -138,7 +143,7 @@ namespace TeamMAsTD
             //only generate new random grid layout on new game started (no save files)
             //if there's a save exists meaning that a grid layout has already been generated and will be loaded and overriding the current grid 
             //on game scene entered
-            if (Application.isPlaying && !SaveLoadHandler.HasSavedData())
+            if (randomizeGridLayoutOnStart && Application.isPlaying && !SaveLoadHandler.HasSavedData())
             {
                 StartCoroutine(RandomizedGridLayoutAndSaveLayoutOnStart());
             }
@@ -692,6 +697,8 @@ namespace TeamMAsTD
         private WaitForFixedUpdate waitForFixedUpdate = new WaitForFixedUpdate();
         private IEnumerator RandomizedGridLayoutAndSaveLayoutOnStart()
         {
+            if (!randomizeGridLayoutOnStart) yield break;
+
             if (isRandomizingGrid) yield break;
 
             yield return waitForFixedUpdate;

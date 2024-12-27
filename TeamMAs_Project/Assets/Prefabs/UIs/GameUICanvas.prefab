@@ -617,7 +617,7 @@ MonoBehaviour:
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
+  m_MatchWidthOrHeight: 0.5
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
@@ -1287,10 +1287,6 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8186297415258521066, guid: b98c4c09192a916449793da61577e8c8, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: -431.74
-      objectReference: {fileID: 0}
-    - target: {fileID: 8186297415258521066, guid: b98c4c09192a916449793da61577e8c8, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -1317,10 +1313,6 @@ PrefabInstance:
     - target: {fileID: 8186297415258521066, guid: b98c4c09192a916449793da61577e8c8, type: 3}
       propertyPath: m_LocalRotation.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8186297415258521066, guid: b98c4c09192a916449793da61577e8c8, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 39.630005
       objectReference: {fileID: 0}
     - target: {fileID: 8186297415258521066, guid: b98c4c09192a916449793da61577e8c8, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

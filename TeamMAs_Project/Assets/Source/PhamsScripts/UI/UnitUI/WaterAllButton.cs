@@ -103,7 +103,7 @@ namespace TeamMAsTD
         private void OnEnable()
         {
             //check for an existing EventSystem and disble script if null
-            if (FindObjectOfType<EventSystem>() == null)
+            if (EventSystem.current == null)
             {
                 Debug.LogError("Cannot find an EventSystem in the scene. " +
                 "An EventSystem is required for WaterAll button to function. Disabling WaterAllButton!");
