@@ -1,9 +1,6 @@
 // Script Author: Pham Nguyen. All Rights Reserved. 
 // GitHub: https://github.com/EricNguyen01.
 
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace TeamMAsTD
@@ -74,9 +71,7 @@ namespace TeamMAsTD
                 return;
             }
 
-            //plantUnitScriptableObject = Instantiate(plantUnitScriptableObject);
             plantUnitScriptableObject = (PlantUnitSO)plantUnitScriptableObject.CloneThisUnitSO();
-            //Debug.Log("PlantUnitID: " + plantUnitScriptableObject.unitID);
 
             SetPlantSODebugDataView();
 
@@ -127,6 +122,22 @@ namespace TeamMAsTD
             GetAndSetUnitSprite();
 
             SetPlantUnitWorldUIElementsValues();
+        }
+
+        private void OnEnable()
+        {
+            if (UnitGroupSelectionManager.unitGroupSelectionManagerInstance)
+            {
+                UnitGroupSelectionManager.unitGroupSelectionManagerInstance.RegisterNewSelectableUnitOnUnitEnabled(this);
+            }
+        }
+
+        private void OnDisable()
+        {
+            if (UnitGroupSelectionManager.unitGroupSelectionManagerInstance)
+            {
+                UnitGroupSelectionManager.unitGroupSelectionManagerInstance.DeRegisterSelectableUnitOnUnitDisabled(this);
+            }
         }
 
         private void Start()

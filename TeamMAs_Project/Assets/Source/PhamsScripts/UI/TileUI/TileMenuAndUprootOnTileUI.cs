@@ -12,7 +12,7 @@ namespace TeamMAsTD
 {
     [DisallowMultipleComponent]
     [RequireComponent(typeof(Tile))]
-    public class TileMenuAndUprootOnTileUI : MonoBehaviour, IPointerDownHandler, IDeselectHandler
+    public class TileMenuAndUprootOnTileUI : MonoBehaviour/*, IPointerDownHandler, IDeselectHandler*/
     {
         [SerializeField] private Canvas tileWorldCanvas;
 
@@ -27,6 +27,10 @@ namespace TeamMAsTD
         private PointerEventData pEventData;//Unity's EventSystem pointer event data
 
         private bool disableTileMenuOpen = false;
+
+        public bool isOpened { get; private set; } = false;
+
+        public Button[] tileMenuButtons { get; private set; }
 
         //UnityEvent............................................................................................
 
@@ -45,10 +49,14 @@ namespace TeamMAsTD
                 if (tileWorldCanvas == null)
                 {
                     Debug.LogError("Tile World Canvas children component not found on tile: " + name + ". Plant uprooting won't work!");
+
                     enabled = false;
+
                     return;
                 }
             }
+
+            tileMenuButtons = tileWorldCanvas.GetComponentsInChildren<Button>(true);
 
             tileWorldCanvasGroup = tileWorldCanvas.GetComponent<CanvasGroup>();
 
@@ -59,7 +67,9 @@ namespace TeamMAsTD
             if (tileSelectedForUprootConfirmation == null)
             {
                 Debug.LogError("Tile script component not found. Plant uprooting won't work!");
+
                 enabled = false;
+
                 return;
             }
 
@@ -83,6 +93,8 @@ namespace TeamMAsTD
             }
 
             if (tileWorldCanvas.worldCamera == null) tileWorldCanvas.worldCamera = Camera.main;
+
+            if (tileWorldCanvas.gameObject.activeInHierarchy) tileWorldCanvas.gameObject.SetActive(false);
         }
 
         private void OnEnable()
@@ -100,6 +112,7 @@ namespace TeamMAsTD
 
             //Rain.cs C# Events sub
             Rain.OnRainStarted += TemporaryDisableTileMenuInteractionOnRainStarted;
+
             Rain.OnRainEnded += StopDisableTileMenuInteractionOnRainEnded;
         }
 
@@ -107,12 +120,11 @@ namespace TeamMAsTD
         {
             //Rain.cs C# events unsub
             Rain.OnRainStarted -= TemporaryDisableTileMenuInteractionOnRainStarted;
+
             Rain.OnRainEnded -= StopDisableTileMenuInteractionOnRainEnded;
         }
 
-        //PRIVATES..............................................................................
-
-        private void OpenTileInteractionMenu(bool opened)
+        public void OpenTileInteractionMenu(bool opened)
         {
             //if there is no tile script component reference->show error and stop executing
             if (tileSelectedForUprootConfirmation == null)
@@ -136,6 +148,8 @@ namespace TeamMAsTD
                 {
                     tileWorldCanvas.gameObject.SetActive(true);
 
+                    isOpened = true;
+
                     OpenPlantRangeCircle(plantSelected, true);
 
                     OnTileMenuOpened?.Invoke();
@@ -145,6 +159,8 @@ namespace TeamMAsTD
                     OpenPlantRangeCircle(plantSelected, false);
 
                     tileWorldCanvas.gameObject.SetActive(false);
+
+                    isOpened = false;
 
                     OnTileMenuClosed?.Invoke();
                 }
@@ -157,6 +173,8 @@ namespace TeamMAsTD
                 tileWorldCanvas.gameObject.SetActive(false);
 
                 OpenPlantRangeCircle(plantSelected, false);
+
+                isOpened = false;
 
                 OnTileMenuClosed?.Invoke();
             }
@@ -183,14 +201,14 @@ namespace TeamMAsTD
         {
             TemporaryDisableTileMenuContentInteraction(true);
 
-            SetDisableTileMenuOpen(true);
+            //SetDisableTileMenuOpen(true);
         }
 
         private void StopDisableTileMenuInteractionOnRainEnded(Rain rain)
         {
             TemporaryDisableTileMenuContentInteraction(false);
 
-            SetDisableTileMenuOpen(false);
+            //SetDisableTileMenuOpen(false);
         }
 
         //PUBLICS..............................................................................................
@@ -212,7 +230,7 @@ namespace TeamMAsTD
             uprootConfirmationPopupUI.ActivateUprootConfirmationPopupForTile(tileSelectedForUprootConfirmation, true);
         }
 
-        public void SetDisableTileMenuOpen(bool disabled)
+        private void SetDisableTileMenuOpen(bool disabled)
         {
             if(disabled) OpenTileInteractionMenu(false);
 
@@ -225,14 +243,23 @@ namespace TeamMAsTD
 
             if (disabled)
             {
+                SetDisableTileMenuOpen(true);
+
                 tileWorldCanvasGroup.interactable = false;
+
+                tileWorldCanvasGroup.blocksRaycasts = false;
 
                 return;
             }
 
             tileWorldCanvasGroup.interactable = true;
+
+            tileWorldCanvasGroup.blocksRaycasts = true;
+
+            SetDisableTileMenuOpen(false);
         }
 
+        /*
         //Unity EventSystem OnPointerDownHandler interface function.............................................
 
         public void OnPointerDown(PointerEventData eventData)
@@ -263,6 +290,6 @@ namespace TeamMAsTD
             }
 
             //after OnDeselect is called, EventSystem's selected object is set to null again so we don't have to reset it manually.
-        }
+        }*/
     }
 }

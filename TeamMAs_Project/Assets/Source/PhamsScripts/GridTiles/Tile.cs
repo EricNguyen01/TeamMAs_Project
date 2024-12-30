@@ -393,7 +393,8 @@ namespace TeamMAsTD
             StartCoroutine(SaveTileSaveableNextPhysUpdate());
 
             //re-enable tile UI open/close functionality on a plant planted on
-            tileMenuAndUprootOnTileUI.SetDisableTileMenuOpen(false);
+            //tileMenuAndUprootOnTileUI.SetDisableTileMenuOpen(false);
+            tileMenuAndUprootOnTileUI.TemporaryDisableTileMenuContentInteraction(false);
 
             //coin cost on plant unit planted successful
             if (GameResource.gameResourceInstance == null || GameResource.gameResourceInstance.coinResourceSO == null)
@@ -420,7 +421,8 @@ namespace TeamMAsTD
 
             //close tile menu on plant on tile uprooted and
             //disable tile menu open/close functionality after plant uprooted
-            tileMenuAndUprootOnTileUI.SetDisableTileMenuOpen(true);
+            //tileMenuAndUprootOnTileUI.SetDisableTileMenuOpen(true);
+            tileMenuAndUprootOnTileUI.TemporaryDisableTileMenuContentInteraction(true);
 
             //this coroutine function is to avoid multiple instances of tile uproot audio being played 
             //when multiple plants are uprooted at the same time

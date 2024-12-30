@@ -95,6 +95,8 @@ namespace TeamMAsTD
 
         private bool isRandomizingGrid = false;
 
+        private TileMenuInteractionHandler tileMenuInteractionHandler;
+
         [System.Serializable]
         private class GridSave
         {
@@ -128,6 +130,11 @@ namespace TeamMAsTD
 
             gridSaveable = ISaveable.GetOrGenerateSaveableComponentIfNull(this);
 
+            if (!TryGetComponent<TileMenuInteractionHandler>(out tileMenuInteractionHandler))
+            {
+                tileMenuInteractionHandler = gameObject.AddComponent<TileMenuInteractionHandler>();
+            }
+
             if (!Application.isEditor) showDebugLog = false;
 
             if (Application.isPlaying) WaveSpawner.OnWaveStarted += SpawnPlantOnWaveStarted;
@@ -147,6 +154,8 @@ namespace TeamMAsTD
             {
                 StartCoroutine(RandomizedGridLayoutAndSaveLayoutOnStart());
             }
+
+            tileMenuInteractionHandler.SetGridAndGetTilesInGridOnStart(this);
         }
 
         //PUBLICS...........................................................

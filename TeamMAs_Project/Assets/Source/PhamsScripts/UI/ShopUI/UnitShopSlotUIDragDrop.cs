@@ -876,17 +876,46 @@ namespace TeamMAsTD
                 FindAndEnableTilePlantableGlowEffect(false);
 
                 OnDroppedFailed?.Invoke();
+
                 return;
             }
 
             //check if the mouse pointer is on an obj with Tile component attached
-            Tile destinationTile;
+            Tile destinationTile = null;
 
-            if (!eventData.pointerEnter.TryGetComponent<Tile>(out destinationTile))
+            if(eventData.pointerEnter.name.Contains("Tile")) 
+                eventData.pointerEnter.TryGetComponent<Tile>(out destinationTile);
+
+            if(destinationTile == null && EventSystem.current)
+            {
+                List<RaycastResult> results = new List<RaycastResult>();
+
+                PointerEventData pEventData = new PointerEventData(EventSystem.current);
+
+                pEventData.position = Input.mousePosition;
+
+                EventSystem.current.RaycastAll(pEventData, results);
+
+                if(results.Count > 0)
+                {
+                    for(int i = 0; i < results.Count; i++)
+                    {
+                        if (!results[i].isValid) continue;
+
+                        if (results[i].gameObject.TryGetComponent<Tile>(out destinationTile))
+                        {
+                            break;
+                        }
+                    }
+                }
+            }
+
+            if (destinationTile == null)
             {
                 FindAndEnableTilePlantableGlowEffect(false);
 
                 OnDroppedFailed?.Invoke();
+
                 return;
             }
 
