@@ -1,6 +1,7 @@
 // Script Author: Pham Nguyen. All Rights Reserved. 
 // GitHub: https://github.com/EricNguyen01.
 
+using PixelCrushers.DialogueSystem;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -165,7 +166,7 @@ namespace TeamMAsTD
 
             if (dragSelectionCanvasGroup) dragSelectionCanvasGroup.alpha = 0.0f;
 
-            if (EventSystem.current == null)
+            if (!EventSystem.current)
             {
                 enabled = false;
 
@@ -178,6 +179,18 @@ namespace TeamMAsTD
         private void Update()
         {
             if (!enabled) return;
+
+            if (!EventSystem.current)
+            {
+                enabled = false;
+
+                return;
+            }
+
+            if (DialogueManager.Instance)
+            {
+                if (DialogueManager.Instance.isConversationActive) return;
+            }
 
             CheckIf_DragOccursInDragAllowedArea_ToCreateDragSelectionBox();
 

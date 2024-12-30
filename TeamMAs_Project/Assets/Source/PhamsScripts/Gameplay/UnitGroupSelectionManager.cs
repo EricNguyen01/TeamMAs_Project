@@ -27,12 +27,8 @@ namespace TeamMAsTD
 
         private bool isHoldingCtrl = false;
 
-        [SerializeField]
-        [ReadOnlyInspector]
         private List<GameObject> DEBUG_selectableUnitsReadOnly = new List<GameObject>();
 
-        [SerializeField]
-        [ReadOnlyInspector]
         private List<GameObject> DEBUG_unitGroupSelectedReadOnly = new List<GameObject>();    
 
         private void Awake()
