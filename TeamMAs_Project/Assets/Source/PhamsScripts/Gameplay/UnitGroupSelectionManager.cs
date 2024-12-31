@@ -1,17 +1,16 @@
 // Script Author: Pham Nguyen. All Rights Reserved. 
 // GitHub: https://github.com/EricNguyen01.
 
+using PixelCrushers.DialogueSystem;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using static UnityEngine.UI.CanvasScaler;
 
 namespace TeamMAsTD
 {
     [DisallowMultipleComponent]
     [RequireComponent(typeof(DragSelectionBoxUI))]
-    public class UnitGroupSelectionManager : MonoBehaviour, IPointerClickHandler
+    public class UnitGroupSelectionManager : MonoBehaviour
     {
         public HashSet<IUnit> selectableUnits { get; private set; } = new HashSet<IUnit>();
 
@@ -26,6 +25,10 @@ namespace TeamMAsTD
         private bool isHoldingShift = false;
 
         private bool isHoldingCtrl = false;
+
+        private PointerEventData pointerEventData;
+
+        private List<RaycastResult> raycastResults = new List<RaycastResult>();
 
         private List<GameObject> DEBUG_selectableUnitsReadOnly = new List<GameObject>();
 
@@ -54,6 +57,21 @@ namespace TeamMAsTD
             dragSelectionBoxUI.InitDragSelectionBoxUI(this);
         }
 
+        private void OnEnable()
+        {
+            if (!EventSystem.current)
+            {
+                Debug.LogWarning("UnitGroupSelectionManager Instance: " + name + "Could Not Find An EventSystem in The Scene." +
+                "Unit Group Selection won't work! Disabling script...");
+
+                enabled = false;
+
+                return;
+            }
+
+            pointerEventData = new PointerEventData(EventSystem.current);
+        }
+
         private void Update()
         {
             if (!enabled) return;
@@ -78,6 +96,13 @@ namespace TeamMAsTD
             {
                 isHoldingCtrl = false;
             }
+
+            //Process unit single mouse click selection here
+
+            ProcessUnitGroupClickSelection();
+
+            //Unit group drag selection and drag selection box functionalities and logic are processed in the DragSelectionBoxUI.cs script
+            //that connects and is spawned from this script instance
         }
 
         private void RegisterSelectedUnit(IUnit selectedUnit)
@@ -180,64 +205,91 @@ namespace TeamMAsTD
             }
         }
 
-        public void OnPointerClick(PointerEventData eventData)
+        public void ProcessUnitGroupClickSelection()
         {
             if(!enabled) return;
 
-            //if click on nothing -> remove all selected plant units
-            if(eventData == null || !eventData.pointerEnter)
+            if (DialogueManager.Instance)
             {
-                RemoveAllSelectedUnits();
+                if (DialogueManager.Instance.isConversationActive) return;
+            }
+
+            if (!EventSystem.current)
+            {
+                if(enabled) enabled = false;
 
                 return;
             }
 
-            IUnit unit = null;
-
-            eventData.pointerEnter.TryGetComponent<IUnit>(out unit);
-
-            //if click on an element that is not a unit or a plant unit -> remove all selected plant units
-            if (unit == null || unit is not PlantUnit)
+            if (Input.GetButtonDown("Fire1"))
             {
-                RemoveAllSelectedUnits();
+                raycastResults.Clear();
 
-                return;
-            }
+                pointerEventData.position = Input.mousePosition;
 
-            //PlantUnit plantUnit = unit as PlantUnit;
+                EventSystem.current.RaycastAll(pointerEventData, raycastResults);
 
-            //if not holding shift or ctrl when selecting a plant unit AND the selected plant unit is NOT selected before ->
-            //only select that new plant unit and deregister/remove any previously selected ones.
-            //else, execute group functions and return.
-            if (!isHoldingShift && !isHoldingCtrl)
-            {
-                //if already selected -> return
-                if (unitGroupSelected.Contains(unit))
+                //if click on nothing -> remove all selected plant units
+                if (raycastResults.Count == 0)
                 {
-                    //DO selected plant group functions here (e.g open option box to bulk remove the selected plants)
+                    RemoveAllSelectedUnits();
 
                     return;
                 }
 
-                //if not already selected -> select only the clicked plant unit
+                IUnit unit = null;
 
-                RemoveAllSelectedUnits();
+                for (int i = 0; i < raycastResults.Count; i++)
+                {
+                    if (!raycastResults[i].isValid) continue;
 
-                RegisterSelectedUnit(unit);
-            }
+                    raycastResults[i].gameObject.TryGetComponent<IUnit>(out unit);
 
-            //if only holding shift when selecting a plant unit ->
-            //add that plant unit to the set of selected plant units if not already
-            if (isHoldingShift && !isHoldingCtrl)
-            {
-                RegisterSelectedUnit(unit);
-            }
+                    if(unit != null && unit is PlantUnit)
+                    {
+                        break;
+                    }
 
-            //if holding ctrl (even with or without shift being held down) when selecting a plant unit ->
-            //toggle the selection of that plant unit (if alr selected -> remove OR if not alr selected -> add).
-            if (isHoldingCtrl)
-            {
-                ToggleUnitSelection(unit);
+                    //if click on an element that is not a unit or a plant unit -> remove all selected plant units
+
+                    RemoveAllSelectedUnits();
+
+                    return;
+                }
+
+                //if not holding shift or ctrl when selecting a plant unit AND the selected plant unit is NOT selected before ->
+                //only select that new plant unit and deregister/remove any previously selected ones.
+                //else, execute group functions and return.
+                if (!isHoldingShift && !isHoldingCtrl)
+                {
+                    //if already selected -> return
+                    if (unitGroupSelected.Contains(unit))
+                    {
+                        //DO selected plant group functions here (e.g open option box to bulk remove the selected plants)
+
+                        return;
+                    }
+
+                    //if not already selected -> select only the clicked plant unit
+
+                    RemoveAllSelectedUnits();
+
+                    RegisterSelectedUnit(unit);
+                }
+
+                //if only holding shift when selecting a plant unit ->
+                //add that plant unit to the set of selected plant units if not already
+                if (isHoldingShift && !isHoldingCtrl)
+                {
+                    RegisterSelectedUnit(unit);
+                }
+
+                //if holding ctrl (even with or without shift being held down) when selecting a plant unit ->
+                //toggle the selection of that plant unit (if alr selected -> remove OR if not alr selected -> add).
+                if (isHoldingCtrl)
+                {
+                    ToggleUnitSelection(unit);
+                }
             }
         }
 

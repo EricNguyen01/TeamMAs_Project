@@ -18,8 +18,6 @@ namespace TeamMAsTD
 
         private TDGrid gridUsingComponent;
 
-        private Tile[] tilesInGrid;
-
         private Dictionary<GameObject, TileMenuAndUprootOnTileUI> tileObjectAndTileMenuDict = new Dictionary<GameObject, TileMenuAndUprootOnTileUI>();
 
         private PointerEventData pointerEventData;
@@ -65,13 +63,13 @@ namespace TeamMAsTD
         {
             if (!Application.isPlaying) return;
 
-            if (gridUsingComponent && tilesInGrid != null && tilesInGrid.Length > 0)
+            if (gridUsingComponent && tileObjectAndTileMenuDict != null && tileObjectAndTileMenuDict.Count > 0)
             {
-                for (int i = 0; i < tilesInGrid.Length; i++)
+                foreach (GameObject tileGO in tileObjectAndTileMenuDict.Keys)
                 {
-                    if (!tilesInGrid[i] || !tilesInGrid[i].tileMenuAndUprootOnTileUI) continue;
+                    if (!tileGO || !tileObjectAndTileMenuDict[tileGO]) continue;
 
-                    tilesInGrid[i].tileMenuAndUprootOnTileUI.OnTileMenuClosed.AddListener(() => tileMenuClicked = null);
+                    tileObjectAndTileMenuDict[tileGO].OnTileMenuClosed.AddListener(() => tileMenuClicked = null);
                 }
             }
         }
@@ -80,13 +78,13 @@ namespace TeamMAsTD
         {
             if (!Application.isPlaying) return;
 
-            if (gridUsingComponent && tilesInGrid != null && tilesInGrid.Length > 0)
+            if (gridUsingComponent && tileObjectAndTileMenuDict != null && tileObjectAndTileMenuDict.Count > 0)
             {
-                for (int i = 0; i < tilesInGrid.Length; i++)
+                foreach (GameObject tileGO in tileObjectAndTileMenuDict.Keys)
                 {
-                    if (!tilesInGrid[i] || !tilesInGrid[i].tileMenuAndUprootOnTileUI) continue;
+                    if (!tileGO || !tileObjectAndTileMenuDict[tileGO]) continue;
 
-                    tilesInGrid[i].tileMenuAndUprootOnTileUI.OnTileMenuClosed.RemoveListener(() => tileMenuClicked = null);
+                    tileObjectAndTileMenuDict[tileGO].OnTileMenuClosed.RemoveListener(() => tileMenuClicked = null);
                 }
             }
         }
@@ -109,8 +107,7 @@ namespace TeamMAsTD
                 return;
             }
 
-            if (tilesInGrid == null || tilesInGrid.Length == 0 ||
-                tileObjectAndTileMenuDict == null || tileObjectAndTileMenuDict.Count == 0)
+            if (tileObjectAndTileMenuDict == null || tileObjectAndTileMenuDict.Count == 0)
             {
                 enabled = false;
 
@@ -241,7 +238,7 @@ namespace TeamMAsTD
 
             gridUsingComponent = grid;
 
-            tilesInGrid = grid.GetGridFlattened2DArray();
+            Tile[] tilesInGrid = grid.GetGridFlattened2DArray();
 
             if(tilesInGrid == null || tilesInGrid.Length == 0)
             {

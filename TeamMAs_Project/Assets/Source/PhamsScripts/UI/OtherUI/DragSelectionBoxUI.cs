@@ -53,10 +53,6 @@ namespace TeamMAsTD
 
         private float selectionBoxHeight = 0.0f;
 
-        private float dragRegisterTime = 0.1f;
-
-        private float dragRegisterCurrentTime = 0.0f;
-
         private HashSet<IUnit> unitsInDragSelectionBox = new HashSet<IUnit>();
 
         private void Awake()
@@ -194,19 +190,15 @@ namespace TeamMAsTD
 
             CheckIf_DragOccursInDragAllowedArea_ToCreateDragSelectionBox();
 
+            if (!canDrag) return;
+
             if (Input.GetButtonDown("Fire1"))
             {
                 BeginDrag();
-
-                dragRegisterCurrentTime = 0.0f;
             }
             else if (Input.GetButton("Fire1"))
             {
-                if (dragRegisterCurrentTime < dragRegisterTime)
-                {
-                    dragRegisterCurrentTime += Time.deltaTime;
-                }
-                else OnDrag();
+                OnDrag();
             }
             else if (Input.GetButtonUp("Fire1"))
             {
