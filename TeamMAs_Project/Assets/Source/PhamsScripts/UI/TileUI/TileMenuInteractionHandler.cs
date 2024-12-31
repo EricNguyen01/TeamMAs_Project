@@ -38,6 +38,16 @@ namespace TeamMAsTD
 
         private void OnEnable()
         {
+            physRaycaster.eventCamera.clearFlags = CameraClearFlags.Depth;
+
+            if (Camera.main) physRaycaster.eventCamera.orthographic = Camera.main.orthographic;
+
+            UniversalAdditionalCameraData raycastCamData = physRaycaster.eventCamera.GetUniversalAdditionalCameraData();
+
+            if (raycastCamData) raycastCamData.renderType = CameraRenderType.Overlay;
+
+            if (!Application.isPlaying) return;
+
             if (!EventSystem.current)
             {
                 Debug.LogWarning("TileClickToOpenTileMenu: " + name + "Could Not Find An EventSystem in The Scene." +
@@ -49,14 +59,6 @@ namespace TeamMAsTD
             }
 
             pointerEventData = new PointerEventData(EventSystem.current);
-
-            physRaycaster.eventCamera.clearFlags = CameraClearFlags.Depth;
-
-            if(Camera.main) physRaycaster.eventCamera.orthographic = Camera.main.orthographic;
-
-            UniversalAdditionalCameraData raycastCamData = physRaycaster.eventCamera.GetUniversalAdditionalCameraData();
-
-            if (raycastCamData) raycastCamData.renderType = CameraRenderType.Overlay;
         }
 
         private void Start()
