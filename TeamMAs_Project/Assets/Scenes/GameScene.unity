@@ -572,7 +572,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 744872300}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e429731c9bf82ee4a92ddf0491ba8b3b, type: 3}
   m_Name: 
@@ -591,7 +591,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_EventMask:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 576
   m_MaxRayIntersections: 0
 --- !u!20 &777042345
 Camera:
@@ -1370,6 +1370,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1508709269, guid: 622dcd6b80626e042a436ad965e1c19b, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8420070690851516934, guid: 622dcd6b80626e042a436ad965e1c19b, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8420070690855044388, guid: 622dcd6b80626e042a436ad965e1c19b, type: 3}
       propertyPath: m_Camera
       value: 
@@ -1461,6 +1469,14 @@ PrefabInstance:
     - target: {fileID: 8420070690855044393, guid: 622dcd6b80626e042a436ad965e1c19b, type: 3}
       propertyPath: m_Name
       value: UnitsGroupSelection
+      objectReference: {fileID: 0}
+    - target: {fileID: 8420070690855044393, guid: 622dcd6b80626e042a436ad965e1c19b, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8420070690855044394, guid: 622dcd6b80626e042a436ad965e1c19b, type: 3}
+      propertyPath: m_BlockingMask.m_Bits
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 622dcd6b80626e042a436ad965e1c19b, type: 3}
@@ -5584,7 +5600,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6380319184443845737, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -1316.4993
+      value: -1316.4991
       objectReference: {fileID: 0}
     - target: {fileID: 6474088391758042566, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
       propertyPath: m_fontSize

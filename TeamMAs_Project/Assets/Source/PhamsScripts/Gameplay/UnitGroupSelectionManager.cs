@@ -12,6 +12,7 @@ namespace TeamMAsTD
     [RequireComponent(typeof(DragSelectionBoxUI))]
     public class UnitGroupSelectionManager : MonoBehaviour
     {
+        [SerializeField] private Camera unitSelectionRaycastCam;
         public HashSet<IUnit> selectableUnits { get; private set; } = new HashSet<IUnit>();
 
         public HashSet<IUnit> unitGroupSelected { get; private set; } = new HashSet<IUnit>();
@@ -25,10 +26,6 @@ namespace TeamMAsTD
         private bool isHoldingShift = false;
 
         private bool isHoldingCtrl = false;
-
-        private PointerEventData pointerEventData;
-
-        private List<RaycastResult> raycastResults = new List<RaycastResult>();
 
         private List<GameObject> DEBUG_selectableUnitsReadOnly = new List<GameObject>();
 
@@ -59,17 +56,20 @@ namespace TeamMAsTD
 
         private void OnEnable()
         {
-            if (!EventSystem.current)
+            if (!unitSelectionRaycastCam)
             {
-                Debug.LogWarning("UnitGroupSelectionManager Instance: " + name + "Could Not Find An EventSystem in The Scene." +
-                "Unit Group Selection won't work! Disabling script...");
+                if (!Camera.main)
+                {
+                    Debug.LogWarning("UnitGroupSelectionManager Instance: " + name + "Doesnt' Have A Camera To Perform Unit Raycast Selection." +
+                    "Unit Group Selection won't work! Disabling script...");
 
-                enabled = false;
+                    enabled = false;
 
-                return;
+                    return;
+                }
+
+                unitSelectionRaycastCam = Camera.main;
             }
-
-            pointerEventData = new PointerEventData(EventSystem.current);
         }
 
         private void Update()
@@ -108,7 +108,7 @@ namespace TeamMAsTD
         private void RegisterSelectedUnit(IUnit selectedUnit)
         {
             if (selectedUnit == null) return;
-
+            
             if (unitGroupSelected.Add(selectedUnit))
             {
                 if(selectedUnit is PlantUnit)
@@ -118,7 +118,7 @@ namespace TeamMAsTD
                     if(!plantUnit.GetTileUnitIsOn().tileGlowComp.isTileGlowing)
                         plantUnit.GetTileUnitIsOn().tileGlowComp.EnableTileGlowEffect(TileGlow.TileGlowMode.PositiveGlow);
                 }
-
+                
                 DEBUG_unitGroupSelectedReadOnly.Add(selectedUnit.GetUnitTransform().gameObject);
             }
         }
@@ -126,7 +126,7 @@ namespace TeamMAsTD
         private void RemoveUnselectedUnit(IUnit unselectedUnit)
         {
             if(unselectedUnit == null) return;
-
+            
             if (unitGroupSelected.Contains(unselectedUnit))
             {
                 if (unitGroupSelected.Remove(unselectedUnit))
@@ -138,7 +138,7 @@ namespace TeamMAsTD
                         if (plantUnit.GetTileUnitIsOn().tileGlowComp.isTileGlowing)
                             plantUnit.GetTileUnitIsOn().tileGlowComp.DisableTileGlowEffect();
                     }
-
+                    
                     DEBUG_unitGroupSelectedReadOnly.Remove(unselectedUnit.GetUnitTransform().gameObject);
                 }
             }
@@ -174,7 +174,7 @@ namespace TeamMAsTD
                         plantUnit.GetTileUnitIsOn().tileGlowComp.DisableTileGlowEffect();
                 }
             }
-
+            
             unitGroupSelected.Clear();
 
             DEBUG_unitGroupSelectedReadOnly.Clear();
@@ -214,7 +214,7 @@ namespace TeamMAsTD
                 if (DialogueManager.Instance.isConversationActive) return;
             }
 
-            if (!EventSystem.current)
+            if (!unitSelectionRaycastCam)
             {
                 if(enabled) enabled = false;
 
@@ -223,14 +223,22 @@ namespace TeamMAsTD
 
             if (Input.GetButtonDown("Fire1"))
             {
-                raycastResults.Clear();
+                Vector3 mousePosWorld = unitSelectionRaycastCam.ScreenToWorldPoint(Input.mousePosition);
 
-                pointerEventData.position = Input.mousePosition;
+                mousePosWorld = new Vector3(mousePosWorld.x, mousePosWorld.y, 0.0f);
 
-                EventSystem.current.RaycastAll(pointerEventData, raycastResults);
+                Vector3 camToMouseDir = mousePosWorld - unitSelectionRaycastCam.transform.position;
+
+                camToMouseDir.Normalize();
+
+                Debug.DrawRay(unitSelectionRaycastCam.transform.position, camToMouseDir * 100.0f, Color.red, 20.0f);
+
+                Ray ray = new Ray(unitSelectionRaycastCam.transform.position, camToMouseDir);
+
+                RaycastHit2D[] raycastResults = Physics2D.GetRayIntersectionAll(ray, 999.0f, LayerMask.GetMask("Plants", "Unit", "Towers"));
 
                 //if click on nothing -> remove all selected plant units
-                if (raycastResults.Count == 0)
+                if (raycastResults == null || raycastResults.Length == 0)
                 {
                     RemoveAllSelectedUnits();
 
@@ -239,17 +247,18 @@ namespace TeamMAsTD
 
                 IUnit unit = null;
 
-                for (int i = 0; i < raycastResults.Count; i++)
+                for(int i = 0; i < raycastResults.Length; i++)
                 {
-                    if (!raycastResults[i].isValid) continue;
+                    if (!raycastResults[i].collider) continue;
 
-                    raycastResults[i].gameObject.TryGetComponent<IUnit>(out unit);
-
-                    if(unit != null && unit is PlantUnit)
+                    if (raycastResults[i].collider.TryGetComponent<IUnit>(out unit))
                     {
                         break;
                     }
+                }
 
+                if (unit == null || unit is not PlantUnit)
+                {
                     //if click on an element that is not a unit or a plant unit -> remove all selected plant units
 
                     RemoveAllSelectedUnits();
@@ -275,6 +284,8 @@ namespace TeamMAsTD
                     RemoveAllSelectedUnits();
 
                     RegisterSelectedUnit(unit);
+
+                    return;
                 }
 
                 //if only holding shift when selecting a plant unit ->
@@ -282,6 +293,8 @@ namespace TeamMAsTD
                 if (isHoldingShift && !isHoldingCtrl)
                 {
                     RegisterSelectedUnit(unit);
+
+                    return;
                 }
 
                 //if holding ctrl (even with or without shift being held down) when selecting a plant unit ->

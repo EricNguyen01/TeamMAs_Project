@@ -147,7 +147,7 @@ namespace TeamMAsTD
 
             this.unitBeingAffected = unitBeingAffected;
 
-            gameObject.layer = unitBeingAffected.GetUnitLayerMask();
+            //gameObject.layer = unitBeingAffected.GetUnitLayerMask();
 
             float effectDuration = abilityEffectSO.effectDuration;
 

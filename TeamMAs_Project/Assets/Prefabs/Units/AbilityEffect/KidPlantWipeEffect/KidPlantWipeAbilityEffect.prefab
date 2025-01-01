@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6481177012749111410}
   - component: {fileID: 1458058111723624673}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: KidPlantWipeAbilityEffect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -103,6 +103,10 @@ PrefabInstance:
     - target: {fileID: 1696881201740389747, guid: 7b25b95b8a29fd246a8421845dbd9bea, type: 3}
       propertyPath: m_Name
       value: PlantWipeAfflictionEffectFx
+      objectReference: {fileID: 0}
+    - target: {fileID: 1696881201740389747, guid: 7b25b95b8a29fd246a8421845dbd9bea, type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7b25b95b8a29fd246a8421845dbd9bea, type: 3}

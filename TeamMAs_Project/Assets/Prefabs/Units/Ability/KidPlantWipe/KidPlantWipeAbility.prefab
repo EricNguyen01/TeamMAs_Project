@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6399027580289999581}
   - component: {fileID: 8557102819690320487}
   - component: {fileID: -5578364370739417715}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: KidPlantWipeAbility
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -178,6 +178,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlantWipeNukeFx
       objectReference: {fileID: 0}
+    - target: {fileID: 4062067700605955522, guid: 9c852e2b45a2ceb45ad6445b2a40159d, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 6204599917891422571, guid: 9c852e2b45a2ceb45ad6445b2a40159d, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9c852e2b45a2ceb45ad6445b2a40159d, type: 3}
 --- !u!4 &2471274067334144753 stripped
@@ -197,9 +205,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6109842087056502436}
     m_Modifications:
+    - target: {fileID: 536979077915729426, guid: 36556b2ee08c5dc4cb6394bd725cb87a, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
     - target: {fileID: 4421461969737824092, guid: 36556b2ee08c5dc4cb6394bd725cb87a, type: 3}
       propertyPath: m_Name
       value: PlantWipeChargingFx
+      objectReference: {fileID: 0}
+    - target: {fileID: 4421461969737824092, guid: 36556b2ee08c5dc4cb6394bd725cb87a, type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 4421461969737824095, guid: 36556b2ee08c5dc4cb6394bd725cb87a, type: 3}
       propertyPath: m_RootOrder
@@ -256,6 +272,10 @@ PrefabInstance:
     - target: {fileID: 7193002338809077735, guid: 36556b2ee08c5dc4cb6394bd725cb87a, type: 3}
       propertyPath: m_Intensity
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7839946955933630013, guid: 36556b2ee08c5dc4cb6394bd725cb87a, type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 36556b2ee08c5dc4cb6394bd725cb87a, type: 3}

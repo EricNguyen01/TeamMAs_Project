@@ -111,7 +111,7 @@ namespace TeamMAsTD
 
             abilityLocked = abilityScriptableObject.abilityLocked;
 
-            gameObject.layer = unitPossessingAbility.GetUnitLayerMask();
+            //gameObject.layer = unitPossessingAbility.GetUnitLayerMask();
 
             if (unitPossessingAbility != null)
             {

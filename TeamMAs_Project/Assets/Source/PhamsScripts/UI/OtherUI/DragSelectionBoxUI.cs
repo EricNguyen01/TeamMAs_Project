@@ -247,13 +247,6 @@ namespace TeamMAsTD
 
             if (!hasStartedDragging) return;
 
-            if (!isDragSelectionBoxActive)
-            {
-                if (unitGroupSelectionManager) unitGroupSelectionManager.ClearSelectedUnitsGroupOnDragBoxActive();
-            }
-
-            isDragSelectionBoxActive = true;
-
             Vector3 localScale = dragSelectionBoxImage.rectTransform.localScale;
 
             selectionBoxWidth = Input.mousePosition.x - startSelectionMousePos.x;
@@ -288,13 +281,24 @@ namespace TeamMAsTD
                                                                      dragSelectionCanvas.worldCamera ? null : Camera.main,
                                                                      out mouseDragCurrentPosWorld);
 
-            //if drag box just span over the current checking unit or the unit just somehow happened to be inside the box -> add the unit
-            //also add properly in unit group selection manager
-            ProcessUnitsInsideDragSelectionBox(mouseDragCurrentPosWorld);
+            //Only considers drag box as active and processes drag box functionalities if drag box width/height is >= 0.5f
+            if(Mathf.Abs(selectionBoxWidth) >= 0.5f && Mathf.Abs(selectionBoxHeight) >= 0.5f)
+            {
+                if (!isDragSelectionBoxActive)
+                {
+                    if (unitGroupSelectionManager) unitGroupSelectionManager.ClearSelectedUnitsGroupOnDragBoxActive();
+                }
 
-            //if a unit that USED to be Inside the drag box BUT is now Outside of box -> remove it.
-            //ONLY PROCESS units that were PREVIOUSLY INSIDE box and are NOW OUTSIDE to avoid BUGS!
-            ProcessUnits_UsedToBeInside_ButNowOutside_DragSelectionBox(mouseDragCurrentPosWorld);
+                isDragSelectionBoxActive = true;
+
+                //if drag box just span over the current checking unit or the unit just somehow happened to be inside the box -> add the unit
+                //also add properly in unit group selection manager
+                ProcessUnitsInsideDragSelectionBox(mouseDragCurrentPosWorld);
+
+                //if a unit that USED to be Inside the drag box BUT is now Outside of box -> remove it.
+                //ONLY PROCESS units that were PREVIOUSLY INSIDE box and are NOW OUTSIDE to avoid BUGS!
+                ProcessUnits_UsedToBeInside_ButNowOutside_DragSelectionBox(mouseDragCurrentPosWorld);
+            }
         }
 
         private void EndDrag()

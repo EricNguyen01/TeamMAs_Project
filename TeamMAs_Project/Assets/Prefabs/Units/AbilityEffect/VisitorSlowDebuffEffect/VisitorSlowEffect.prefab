@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2215574878035222634}
   - component: {fileID: -1645460918864486559}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: VisitorSlowEffect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -60,6 +60,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2215574878035222634}
     m_Modifications:
+    - target: {fileID: 5048439002136647404, guid: 3235a5b63eaca4d47bef13cfb27c189d, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
     - target: {fileID: 7742640252355488472, guid: 3235a5b63eaca4d47bef13cfb27c189d, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -107,6 +111,10 @@ PrefabInstance:
     - target: {fileID: 7742640252355720952, guid: 3235a5b63eaca4d47bef13cfb27c189d, type: 3}
       propertyPath: m_Name
       value: VisitorSlowEffectFX
+      objectReference: {fileID: 0}
+    - target: {fileID: 7742640252355720952, guid: 3235a5b63eaca4d47bef13cfb27c189d, type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3235a5b63eaca4d47bef13cfb27c189d, type: 3}
@@ -169,6 +177,10 @@ PrefabInstance:
     - target: {fileID: 8835983879471925127, guid: 2f351cd82b0e31b4c81ef479a68d1d94, type: 3}
       propertyPath: m_Name
       value: VisitorDeBuffEffectPopupSpawner
+      objectReference: {fileID: 0}
+    - target: {fileID: 8835983879471925127, guid: 2f351cd82b0e31b4c81ef479a68d1d94, type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2f351cd82b0e31b4c81ef479a68d1d94, type: 3}

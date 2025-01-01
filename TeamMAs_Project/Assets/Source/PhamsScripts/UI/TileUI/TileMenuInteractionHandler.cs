@@ -33,7 +33,7 @@ namespace TeamMAsTD
                 physRaycaster = gameObject.AddComponent<PhysicsRaycaster>();
             }
 
-            physRaycaster.eventMask = LayerMask.GetMask("Tile");
+            physRaycaster.eventMask = LayerMask.GetMask("Tile", "Plants");
         }
 
         private void OnEnable()

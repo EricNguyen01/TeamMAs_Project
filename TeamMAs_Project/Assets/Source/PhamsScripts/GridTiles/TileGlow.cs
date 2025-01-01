@@ -112,7 +112,7 @@ namespace TeamMAsTD
             spriteGlowEffectComp.enabled = true;
 
             isTileGlowing = true;
-
+            
             StartCoroutine(TileGlowProcessCoroutine());
         }
 

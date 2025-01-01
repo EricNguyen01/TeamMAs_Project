@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5210803887474864984}
   - component: {fileID: -8175781739244633489}
   - component: {fileID: 529870242581145112}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: PlantSlowArea
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -97,9 +97,25 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4354423663104761238}
     m_Modifications:
+    - target: {fileID: 1730565301986436983, guid: 865606427db0fbe41a3c1b7564ca0a4b, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 1730565302453389821, guid: 865606427db0fbe41a3c1b7564ca0a4b, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 5041864600863784726, guid: 865606427db0fbe41a3c1b7564ca0a4b, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
     - target: {fileID: 7183240647849940856, guid: 865606427db0fbe41a3c1b7564ca0a4b, type: 3}
       propertyPath: m_Name
       value: VisitorSlowAuraFX
+      objectReference: {fileID: 0}
+    - target: {fileID: 7183240647849940856, guid: 865606427db0fbe41a3c1b7564ca0a4b, type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 7183240647849940863, guid: 865606427db0fbe41a3c1b7564ca0a4b, type: 3}
       propertyPath: m_RootOrder

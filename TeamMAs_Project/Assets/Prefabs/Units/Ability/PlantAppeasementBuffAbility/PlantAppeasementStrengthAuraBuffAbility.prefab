@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3367027101372537960}
   - component: {fileID: 3367027101372537963}
   - component: {fileID: 3367027101372537962}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: PlantAppeasementStrengthAuraBuffAbility
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -50,6 +50,7 @@ MonoBehaviour:
   <abilityScriptableObject>k__BackingField: {fileID: 11400000, guid: 9f73add2da7595d4185835725d1ecd4e, type: 2}
   abilityChargingParticleEffect: {fileID: 0}
   abilityParticleEffect: {fileID: 1385523860677898909}
+  abilityEventEmitterFMOD: {fileID: 0}
   auraCollider: {fileID: 3367027101372537963}
   auraKinematicRb: {fileID: 3367027101372537962}
 --- !u!58 &3367027101372537963
@@ -96,6 +97,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3367027101372537961}
     m_Modifications:
+    - target: {fileID: 736609769030735302, guid: 670a242dac8dd46468bade0263ac5a5a, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 2119889482748659254, guid: 670a242dac8dd46468bade0263ac5a5a, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 4337818297695315977, guid: 670a242dac8dd46468bade0263ac5a5a, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
     - target: {fileID: 9092587920058679370, guid: 670a242dac8dd46468bade0263ac5a5a, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -144,9 +157,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlantBuffAbilityFX
       objectReference: {fileID: 0}
+    - target: {fileID: 9092587920058679413, guid: 670a242dac8dd46468bade0263ac5a5a, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
     - target: {fileID: 9092587920115874993, guid: 670a242dac8dd46468bade0263ac5a5a, type: 3}
       propertyPath: m_Intensity
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9092587920115874994, guid: 670a242dac8dd46468bade0263ac5a5a, type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 670a242dac8dd46468bade0263ac5a5a, type: 3}

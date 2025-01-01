@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6464947373481574015}
   - component: {fileID: 1181894219534169785}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: PlantBuffEffectPopupSpawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -65,7 +65,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2975990922271069057}
   - component: {fileID: 2926865878842500512}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: PlantAppeasementStrenghtBuffEffect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -106,6 +106,8 @@ MonoBehaviour:
   effectStartFx: {fileID: 0}
   effectUpdateFx: {fileID: 0}
   buffConnectingLineRendererPrefab: {fileID: 8299224984019638498, guid: 46c49ca532202b94cb3a8ba9ccc2175f, type: 3}
+  disableLineOnBuffStarted: 0
+  disableLineOnSelect: 0
 --- !u!1001 &35807740287846033
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -113,6 +115,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2975990922271069057}
     m_Modifications:
+    - target: {fileID: 5808580015578841718, guid: a07a002dbe56d1647a249a3bd268a8a4, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 7124695012077739286, guid: a07a002dbe56d1647a249a3bd268a8a4, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 8022962682678274928, guid: a07a002dbe56d1647a249a3bd268a8a4, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
     - target: {fileID: 8022962682983799765, guid: a07a002dbe56d1647a249a3bd268a8a4, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -160,6 +174,14 @@ PrefabInstance:
     - target: {fileID: 8022962682983799786, guid: a07a002dbe56d1647a249a3bd268a8a4, type: 3}
       propertyPath: m_Name
       value: PlantBuffEffectFx
+      objectReference: {fileID: 0}
+    - target: {fileID: 8022962682983799786, guid: a07a002dbe56d1647a249a3bd268a8a4, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 8022962683008411437, guid: a07a002dbe56d1647a249a3bd268a8a4, type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 8022962683008411438, guid: a07a002dbe56d1647a249a3bd268a8a4, type: 3}
       propertyPath: m_Intensity
