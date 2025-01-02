@@ -571,29 +571,27 @@ namespace TeamMAsTD
 
         public Tile GetTileUnitIsOn()
         {
-            Tile tileOn = null;
-
             //cast a 2d ray backward
-            RaycastHit2D hit2DBackward = HelperFunctions.PerformSingleHit2DRaycastInDirection(transform.position, -transform.forward, Mathf.Infinity, "Tile");
+            Ray backRay = new Ray(transform.position, -transform.forward);
 
-            if(hit2DBackward.collider != null)
+            RaycastHit2D hit2DBackward = Physics2D.GetRayIntersection(backRay, Mathf.Infinity, LayerMask.GetMask("Tile"));
+
+            if(hit2DBackward.collider)
             {
-                tileOn = hit2DBackward.collider.GetComponent<Tile>();
-
-                if (tileOn != null) return tileOn;
+                return hit2DBackward.collider.GetComponent<Tile>();
             }
 
             //cast a 2d ray foreward
-            RaycastHit2D hit2DForward = HelperFunctions.PerformSingleHit2DRaycastInDirection(transform.position, transform.forward, Mathf.Infinity, "Tile");
+            Ray forwardRay = new Ray(transform.position, transform.forward);
 
-            if (hit2DForward.collider != null)
+            RaycastHit2D hit2DForward = Physics2D.GetRayIntersection(forwardRay, Mathf.Infinity, LayerMask.GetMask("Tile"));
+
+            if (hit2DForward.collider)
             {
-                tileOn = hit2DForward.collider.GetComponent<Tile>();
-
-                if (tileOn != null) return tileOn;
+                return hit2DForward.collider.GetComponent<Tile>();
             }
 
-            return tileOn;
+            return null;
         }
 
         public Transform GetUnitTransform()

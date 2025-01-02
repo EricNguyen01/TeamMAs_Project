@@ -1,8 +1,6 @@
 // Script Author: Pham Nguyen. All Rights Reserved. 
 // GitHub: https://github.com/EricNguyen01.
 
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
@@ -22,7 +20,7 @@ namespace TeamMAsTD
 
         private CanvasGroup tileWorldCanvasGroup;
 
-        private Tile tileSelectedForUprootConfirmation;
+        public Tile tileHoldingThisMenu { get; private set; }
 
         private PointerEventData pEventData;//Unity's EventSystem pointer event data
 
@@ -62,9 +60,9 @@ namespace TeamMAsTD
 
             if (tileWorldCanvasGroup == null) tileWorldCanvasGroup = tileWorldCanvas.gameObject.AddComponent<CanvasGroup>();
 
-            tileSelectedForUprootConfirmation = GetComponent<Tile>();
+            tileHoldingThisMenu = GetComponent<Tile>();
 
-            if (tileSelectedForUprootConfirmation == null)
+            if (tileHoldingThisMenu == null)
             {
                 Debug.LogError("Tile script component not found. Plant uprooting won't work!");
 
@@ -127,19 +125,19 @@ namespace TeamMAsTD
         public void OpenTileInteractionMenu(bool opened)
         {
             //if there is no tile script component reference->show error and stop executing
-            if (tileSelectedForUprootConfirmation == null)
+            if (tileHoldingThisMenu == null)
             {
                 Debug.LogError("Trying to interact with tile: " + name + " but the Tile script component can't be found!");
                 return;
             }
 
             //do nothing if tile doesnt have plant unit placed on
-            if (tileSelectedForUprootConfirmation.plantUnitOnTile == null)
+            if (tileHoldingThisMenu.plantUnitOnTile == null)
             {
                 return;
             }
 
-            PlantUnit plantSelected = tileSelectedForUprootConfirmation.plantUnitOnTile;
+            PlantUnit plantSelected = tileHoldingThisMenu.plantUnitOnTile;
 
             //if a plant exists on this tile->process open/close tile menu
             if (opened)
@@ -227,7 +225,7 @@ namespace TeamMAsTD
 
             OpenTileInteractionMenu(false);
 
-            uprootConfirmationPopupUI.ActivateUprootConfirmationPopupForTile(tileSelectedForUprootConfirmation, true);
+            uprootConfirmationPopupUI.ActivateUprootConfirmationPopupForTile(tileHoldingThisMenu, true);
         }
 
         private void SetDisableTileMenuOpen(bool disabled)

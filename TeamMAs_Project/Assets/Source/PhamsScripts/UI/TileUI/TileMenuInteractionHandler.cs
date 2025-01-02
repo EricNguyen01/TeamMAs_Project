@@ -5,116 +5,101 @@ using PixelCrushers.DialogueSystem;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.Rendering.Universal;
 
 namespace TeamMAsTD
 {
     [DisallowMultipleComponent]
-    [RequireComponent(typeof(PhysicsRaycaster))]
-    [ExecuteInEditMode]
     public class TileMenuInteractionHandler : MonoBehaviour
     {
+        [SerializeField] private Camera tileMenuInteractionRaycastCam;
+
         private TileMenuAndUprootOnTileUI tileMenuClicked;
 
-        private TDGrid gridUsingComponent;
+        private List<TDGrid> gridsInScene = new List<TDGrid>();
 
-        private Dictionary<GameObject, TileMenuAndUprootOnTileUI> tileObjectAndTileMenuDict = new Dictionary<GameObject, TileMenuAndUprootOnTileUI>();
+        private int DEBUG_tileMenuCount = 0;
 
-        private PointerEventData pointerEventData;
-
-        private PhysicsRaycaster physRaycaster;
+        public Dictionary<GameObject, TileMenuAndUprootOnTileUI> tileObjectAndTileMenuDict { get; private set; } 
+        = new Dictionary<GameObject, TileMenuAndUprootOnTileUI>();
 
         private List<RaycastResult> raycastResults = new List<RaycastResult>();
 
+        public enum TileMenuInteractionOptions { Open = 0, Close = 1, Toggle = 2 }
+
+        private bool isCheckingForTileMenuInteractions = true;
+
+        public static TileMenuInteractionHandler tileMenuInteractionHandlerInstance;
+
         private void Awake()
         {
-            if (!TryGetComponent<PhysicsRaycaster>(out physRaycaster))
+            if(tileMenuInteractionHandlerInstance && tileMenuInteractionHandlerInstance != this)
             {
-                physRaycaster = gameObject.AddComponent<PhysicsRaycaster>();
+                enabled = false;
+
+                Destroy(gameObject);
+
+                return;
             }
 
-            physRaycaster.eventMask = LayerMask.GetMask("Tile", "Plants");
+            tileMenuInteractionHandlerInstance = this;
+
+            DontDestroyOnLoad(gameObject);
         }
 
         private void OnEnable()
         {
-            physRaycaster.eventCamera.clearFlags = CameraClearFlags.Depth;
-
-            if (Camera.main) physRaycaster.eventCamera.orthographic = Camera.main.orthographic;
-
-            UniversalAdditionalCameraData raycastCamData = physRaycaster.eventCamera.GetUniversalAdditionalCameraData();
-
-            if (raycastCamData) raycastCamData.renderType = CameraRenderType.Overlay;
-
-            if (!Application.isPlaying) return;
-
             if (!EventSystem.current)
             {
-                Debug.LogWarning("TileClickToOpenTileMenu: " + name + "Could Not Find An EventSystem in The Scene." +
-                "Tile Menu Interaction won't work! Disabling script...");
+                Debug.LogWarning("Tile Menu Interaction Handler: " + name + "Could not find an EventSystem in the scene." +
+                "Tile Menu Interaction Handler won't work! Disabling script...");
 
                 enabled = false;
 
                 return;
             }
 
-            pointerEventData = new PointerEventData(EventSystem.current);
-        }
-
-        private void Start()
-        {
-            if (!Application.isPlaying) return;
-
-            if (gridUsingComponent && tileObjectAndTileMenuDict != null && tileObjectAndTileMenuDict.Count > 0)
+            if (!tileMenuInteractionRaycastCam)
             {
-                foreach (GameObject tileGO in tileObjectAndTileMenuDict.Keys)
+                if (!Camera.main)
                 {
-                    if (!tileGO || !tileObjectAndTileMenuDict[tileGO]) continue;
+                    Debug.LogWarning("Tile Menu Interaction Handler: " + name + "Doesnt' Have A Camera To Perform Tile Raycast Selection." +
+                    "Tile Menu Interaction Handler won't work! Disabling script...");
 
-                    tileObjectAndTileMenuDict[tileGO].OnTileMenuClosed.AddListener(() => tileMenuClicked = null);
+                    enabled = false;
+
+                    return;
                 }
+
+                tileMenuInteractionRaycastCam = Camera.main;
             }
-        }
 
-        private void OnDisable()
-        {
-            if (!Application.isPlaying) return;
-
-            if (gridUsingComponent && tileObjectAndTileMenuDict != null && tileObjectAndTileMenuDict.Count > 0)
-            {
-                foreach (GameObject tileGO in tileObjectAndTileMenuDict.Keys)
-                {
-                    if (!tileGO || !tileObjectAndTileMenuDict[tileGO]) continue;
-
-                    tileObjectAndTileMenuDict[tileGO].OnTileMenuClosed.RemoveListener(() => tileMenuClicked = null);
-                }
-            }
+            isCheckingForTileMenuInteractions = true;
         }
 
         private void Update()
         {
-            if (!Application.isPlaying) return;
-
             if (!enabled) return;
 
-            if (DialogueManager.Instance)
+            if (!EventSystem.current || !tileMenuInteractionRaycastCam)
             {
-                if (DialogueManager.Instance.isConversationActive) return;
-            }
-
-            if (!EventSystem.current || !gridUsingComponent)
-            {
-                enabled = false;
+                if(enabled) enabled = false;
 
                 return;
             }
 
             if (tileObjectAndTileMenuDict == null || tileObjectAndTileMenuDict.Count == 0)
             {
-                enabled = false;
+                if (enabled) enabled = false;
 
                 return;
             }
+
+            if (DialogueManager.Instance)
+            {
+                if (DialogueManager.Instance.isConversationActive) return;
+            }
+
+            if (!isCheckingForTileMenuInteractions) return;
 
             CheckAndProcessTileMenuInteractionOnMouseClick();
         }
@@ -125,9 +110,11 @@ namespace TeamMAsTD
             {
                 raycastResults.Clear();
 
-                pointerEventData.position = Input.mousePosition;
+                PointerEventData eventData = new PointerEventData(EventSystem.current);
 
-                EventSystem.current.RaycastAll(pointerEventData, raycastResults);
+                eventData.position = Input.mousePosition;
+
+                EventSystem.current.RaycastAll(eventData, raycastResults);
 
                 //if clicking on nothing (click away)
 
@@ -150,14 +137,6 @@ namespace TeamMAsTD
                 for (int i = 0; i < raycastResults.Count; i++)
                 {
                     if (!raycastResults[i].isValid) continue;
-
-                    //if a clicked on element is not a child (part of) the grid that is using this component
-                    //this means that it is definitely not a child Tile or any of a child Tile's children/components
-                    //therefore, skip it and continue...
-                    if (raycastResults[i].gameObject.transform.root.gameObject != gridUsingComponent.gameObject)
-                    {
-                        continue;
-                    }
 
                     if (tileMenuClicked)
                     {
@@ -234,36 +213,101 @@ namespace TeamMAsTD
             }
         }
 
-        public void SetGridAndGetTilesInGridOnStart(TDGrid grid)
+        public void AddGridAndItsTiles(TDGrid grid)
         {
             if (!grid) return;
 
-            gridUsingComponent = grid;
+            if (gridsInScene.Contains(grid)) return;
+
+            gridsInScene.Add(grid);
 
             Tile[] tilesInGrid = grid.GetGridFlattened2DArray();
 
-            if(tilesInGrid == null || tilesInGrid.Length == 0)
-            {
-                if(enabled) enabled = false;
-
-                return;
-            }
+            if (tilesInGrid == null || tilesInGrid.Length == 0) return;
 
             for(int i = 0; i < tilesInGrid.Length; i++)
             {
-                if (!tilesInGrid[i] || !tilesInGrid[i].tileMenuAndUprootOnTileUI) continue;
+                if (!tilesInGrid[i]) continue;
 
-                tileObjectAndTileMenuDict.TryAdd(tilesInGrid[i].gameObject, tilesInGrid[i].tileMenuAndUprootOnTileUI);
+                TileMenuAndUprootOnTileUI tileMenu = tilesInGrid[i].tileMenuAndUprootOnTileUI;
+
+                if (!tileMenu) 
+                {
+                    if (!tilesInGrid[i].TryGetComponent<TileMenuAndUprootOnTileUI>(out tileMenu)) continue;
+                }
+
+                if(tileObjectAndTileMenuDict.TryAdd(tilesInGrid[i].gameObject, tileMenu))
+                {
+                    DEBUG_tileMenuCount++;
+                }
             }
+        }
 
-            if (tileObjectAndTileMenuDict == null || tileObjectAndTileMenuDict.Count == 0)
+        public void RemoveGridAndItsTiles(TDGrid grid)
+        {
+            if (!grid) return;
+
+            if (!gridsInScene.Contains(grid)) return;
+
+            Tile[] tilesInGrid = grid.GetGridFlattened2DArray();
+
+            if(tilesInGrid != null && tilesInGrid.Length > 0)
             {
-                if (enabled) enabled = false;
+                for (int i = 0; i < tilesInGrid.Length; i++)
+                {
+                    if (!tilesInGrid[i]) continue;
 
-                return;
+                    if (tileObjectAndTileMenuDict.Remove(tilesInGrid[i].gameObject))
+                    {
+                        DEBUG_tileMenuCount--;
+                    }
+                }
             }
 
-            if (!enabled) enabled = true;
+            gridsInScene.Remove(grid);
+        }
+
+        public void EnableCheckForTileMenuInteractions(bool enabled)
+        {
+            isCheckingForTileMenuInteractions = enabled;
+
+            tileMenuClicked = null;
+        }
+
+        public void SetTileMenuInteractedManually(TileMenuAndUprootOnTileUI tileMenuClicked, TileMenuInteractionOptions interactionOption)
+        {
+            this.tileMenuClicked = tileMenuClicked;
+
+            if (!tileMenuClicked) return;
+
+            if(interactionOption == TileMenuInteractionOptions.Open)
+            {
+                if(!tileMenuClicked.isOpened) tileMenuClicked.OpenTileInteractionMenu(true);
+            }
+            else if(interactionOption == TileMenuInteractionOptions.Close)
+            {
+                if (tileMenuClicked.isOpened) tileMenuClicked.OpenTileInteractionMenu(false);
+            }
+            else if(interactionOption == TileMenuInteractionOptions.Toggle)
+            {
+                if(tileMenuClicked.isOpened) tileMenuClicked.OpenTileInteractionMenu(false);
+                else tileMenuClicked.OpenTileInteractionMenu(true);
+            }
+        }
+
+        public static void CreateTileMenuInteractionHandlerSingleton()
+        {
+            if(tileMenuInteractionHandlerInstance) return;
+
+            GameObject tileMenuInteractionHandlerGO = new GameObject("TileMenuInteractionHandler(1InstanceOnly)", typeof(TileMenuInteractionHandler));
+
+            TileMenuInteractionHandler tileMenuInteractionHandler;
+
+            tileMenuInteractionHandlerGO.TryGetComponent<TileMenuInteractionHandler>(out  tileMenuInteractionHandler);
+
+            tileMenuInteractionHandlerInstance = tileMenuInteractionHandler;
+
+            //DontDestroyOnLoad(tileMenuInteractionHandlerGO);
         }
     }
 }

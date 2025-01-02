@@ -27,6 +27,8 @@ namespace TeamMAsTD
 
         private bool isHoldingCtrl = false;
 
+        private RaycastHit2D[] raycastResults;
+
         private List<GameObject> DEBUG_selectableUnitsReadOnly = new List<GameObject>();
 
         private List<GameObject> DEBUG_unitGroupSelectedReadOnly = new List<GameObject>();    
@@ -231,11 +233,9 @@ namespace TeamMAsTD
 
                 camToMouseDir.Normalize();
 
-                Debug.DrawRay(unitSelectionRaycastCam.transform.position, camToMouseDir * 100.0f, Color.red, 20.0f);
-
                 Ray ray = new Ray(unitSelectionRaycastCam.transform.position, camToMouseDir);
 
-                RaycastHit2D[] raycastResults = Physics2D.GetRayIntersectionAll(ray, 999.0f, LayerMask.GetMask("Plants", "Unit", "Towers"));
+                raycastResults = Physics2D.GetRayIntersectionAll(ray, 999.0f, LayerMask.GetMask("Plants", "Unit"));
 
                 //if click on nothing -> remove all selected plant units
                 if (raycastResults == null || raycastResults.Length == 0)

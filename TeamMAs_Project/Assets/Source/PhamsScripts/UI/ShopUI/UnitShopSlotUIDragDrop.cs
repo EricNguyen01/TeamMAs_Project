@@ -771,9 +771,54 @@ namespace TeamMAsTD
 
             //if hovering on smth:
             //check if the mouse pointer is on an obj with Tile component attached
-            Tile destinationTile;
+            Tile destinationTile = null;
 
-            eventData.pointerEnter.TryGetComponent<Tile>(out destinationTile);
+            if (eventData.pointerEnter.name.Contains("Tile"))
+            {
+                if (TileMenuInteractionHandler.tileMenuInteractionHandlerInstance)
+                {
+                    if (TileMenuInteractionHandler.tileMenuInteractionHandlerInstance.tileObjectAndTileMenuDict.ContainsKey(eventData.pointerEnter))
+                    {
+                        destinationTile = TileMenuInteractionHandler.tileMenuInteractionHandlerInstance.tileObjectAndTileMenuDict[eventData.pointerEnter].tileHoldingThisMenu;
+                    }
+                }
+
+                if (destinationTile == null) eventData.pointerEnter.TryGetComponent<Tile>(out destinationTile);
+            }
+
+            if (destinationTile == null && EventSystem.current)
+            {
+                List<RaycastResult> results = new List<RaycastResult>();
+
+                PointerEventData pEventData = new PointerEventData(EventSystem.current);
+
+                pEventData.position = Input.mousePosition;
+
+                EventSystem.current.RaycastAll(pEventData, results);
+
+                if (results.Count > 0)
+                {
+                    for (int i = 0; i < results.Count; i++)
+                    {
+                        if (!results[i].isValid) continue;
+
+                        if (TileMenuInteractionHandler.tileMenuInteractionHandlerInstance)
+                        {
+                            if (TileMenuInteractionHandler.tileMenuInteractionHandlerInstance.tileObjectAndTileMenuDict.ContainsKey(results[i].gameObject))
+                            {
+                                destinationTile = TileMenuInteractionHandler.tileMenuInteractionHandlerInstance.tileObjectAndTileMenuDict[results[i].gameObject].tileHoldingThisMenu;
+
+                                if (destinationTile != null) break;
+                            }
+                        }
+
+                        if (results[i].gameObject.TryGetComponent<Tile>(out destinationTile))
+                        {
+                            break;
+                        }
+                    }
+                }
+            }
 
             //if not hovering on a tile or a tile does not accept plant placement:
             if (!destinationTile || !destinationTile.CanPlaceUnit_EXTERNAL(slotUnitScriptableObject))
@@ -883,8 +928,18 @@ namespace TeamMAsTD
             //check if the mouse pointer is on an obj with Tile component attached
             Tile destinationTile = null;
 
-            if(eventData.pointerEnter.name.Contains("Tile")) 
-                eventData.pointerEnter.TryGetComponent<Tile>(out destinationTile);
+            if(eventData.pointerEnter.name.Contains("Tile"))
+            {
+                if (TileMenuInteractionHandler.tileMenuInteractionHandlerInstance)
+                {
+                    if (TileMenuInteractionHandler.tileMenuInteractionHandlerInstance.tileObjectAndTileMenuDict.ContainsKey(eventData.pointerEnter))
+                    {
+                        destinationTile = TileMenuInteractionHandler.tileMenuInteractionHandlerInstance.tileObjectAndTileMenuDict[eventData.pointerEnter].tileHoldingThisMenu;
+                    }
+                }
+
+                if(destinationTile == null) eventData.pointerEnter.TryGetComponent<Tile>(out destinationTile);
+            }
 
             if(destinationTile == null && EventSystem.current)
             {
@@ -901,6 +956,16 @@ namespace TeamMAsTD
                     for(int i = 0; i < results.Count; i++)
                     {
                         if (!results[i].isValid) continue;
+
+                        if (TileMenuInteractionHandler.tileMenuInteractionHandlerInstance)
+                        {
+                            if (TileMenuInteractionHandler.tileMenuInteractionHandlerInstance.tileObjectAndTileMenuDict.ContainsKey(results[i].gameObject))
+                            {
+                                destinationTile = TileMenuInteractionHandler.tileMenuInteractionHandlerInstance.tileObjectAndTileMenuDict[results[i].gameObject].tileHoldingThisMenu;
+
+                                if (destinationTile != null) break;
+                            }
+                        }
 
                         if (results[i].gameObject.TryGetComponent<Tile>(out destinationTile))
                         {

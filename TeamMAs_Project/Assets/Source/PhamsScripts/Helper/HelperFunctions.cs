@@ -1,8 +1,6 @@
 // Script Author: Pham Nguyen. All Rights Reserved. 
 // GitHub: https://github.com/EricNguyen01.
 
-using PixelCrushers.DialogueSystem;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
@@ -83,15 +81,6 @@ namespace TeamMAsTD
             float angle = Mathf.Atan2(dir.x, dir.y) * Mathf.Rad2Deg;
 
             return Quaternion.AngleAxis(-angle, Vector3.forward);
-        }
-
-        //................Cast A 2D Physics Raycast With Specific Params.........................................
-
-        public static RaycastHit2D PerformSingleHit2DRaycastInDirection(Vector2 origin, Vector2 dir, float dist, string layerName)
-        {
-            RaycastHit2D hit2D = Physics2D.Raycast(origin, dir, dist, LayerMask.GetMask(layerName));
-
-            return hit2D;
         }
 
         /// <summary>

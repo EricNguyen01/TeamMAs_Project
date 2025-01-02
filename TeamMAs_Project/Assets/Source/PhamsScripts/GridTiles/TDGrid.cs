@@ -95,8 +95,6 @@ namespace TeamMAsTD
 
         private bool isRandomizingGrid = false;
 
-        private TileMenuInteractionHandler tileMenuInteractionHandler;
-
         [System.Serializable]
         private class GridSave
         {
@@ -130,32 +128,41 @@ namespace TeamMAsTD
 
             gridSaveable = ISaveable.GetOrGenerateSaveableComponentIfNull(this);
 
-            if (!TryGetComponent<TileMenuInteractionHandler>(out tileMenuInteractionHandler))
-            {
-                tileMenuInteractionHandler = gameObject.AddComponent<TileMenuInteractionHandler>();
-            }
-
             if (!Application.isEditor) showDebugLog = false;
 
-            if (Application.isPlaying) WaveSpawner.OnWaveStarted += SpawnPlantOnWaveStarted;
+            if (!Application.isPlaying) return;
+
+            WaveSpawner.OnWaveStarted += SpawnPlantOnWaveStarted;
         }
 
         private void OnDisable()
         {
-            if (Application.isPlaying) WaveSpawner.OnWaveStarted -= SpawnPlantOnWaveStarted;
+            if (!Application.isPlaying) return;
+            
+            WaveSpawner.OnWaveStarted -= SpawnPlantOnWaveStarted;
+
+            if(TileMenuInteractionHandler.tileMenuInteractionHandlerInstance)
+                TileMenuInteractionHandler.tileMenuInteractionHandlerInstance.RemoveGridAndItsTiles(this);
         }
 
         private void Start()
         {
+            if (!Application.isPlaying) return;
+
             //only generate new random grid layout on new game started (no save files)
             //if there's a save exists meaning that a grid layout has already been generated and will be loaded and overriding the current grid 
             //on game scene entered
-            if (randomizeGridLayoutOnStart && Application.isPlaying && !SaveLoadHandler.HasSavedData())
+            if (randomizeGridLayoutOnStart && !SaveLoadHandler.HasSavedData())
             {
                 StartCoroutine(RandomizedGridLayoutAndSaveLayoutOnStart());
             }
 
-            tileMenuInteractionHandler.SetGridAndGetTilesInGridOnStart(this);
+            if (!TileMenuInteractionHandler.tileMenuInteractionHandlerInstance)
+            {
+                TileMenuInteractionHandler.CreateTileMenuInteractionHandlerSingleton();
+            }
+
+            TileMenuInteractionHandler.tileMenuInteractionHandlerInstance.AddGridAndItsTiles(this);
         }
 
         //PUBLICS...........................................................
