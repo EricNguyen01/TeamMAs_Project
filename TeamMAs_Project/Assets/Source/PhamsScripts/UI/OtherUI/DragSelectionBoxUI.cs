@@ -3,9 +3,11 @@
 
 using PixelCrushers.DialogueSystem;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using static UnityEngine.UI.CanvasScaler;
 
 namespace TeamMAsTD
 {
@@ -40,6 +42,8 @@ namespace TeamMAsTD
         private CanvasScaler dragSelectionCanvasScaler;
 
         private GraphicRaycaster graphicRaycaster;
+
+        private List<RaycastResult> graphicRaycastResults;
 
         private PointerEventData pointerEventData;
 
@@ -176,12 +180,14 @@ namespace TeamMAsTD
         {
             if (!enabled) return;
 
-            if (!EventSystem.current)
+            if (!EventSystem.current || !graphicRaycaster ||!dragSelectionCanvas.worldCamera)
             {
                 enabled = false;
 
                 return;
             }
+
+#if ENABLE_LEGACY_INPUT_MANAGER
 
             if (DialogueManager.Instance)
             {
@@ -204,6 +210,8 @@ namespace TeamMAsTD
             {
                 EndDrag();
             }
+
+#endif
         }
 
         private void BeginDrag()
@@ -231,12 +239,12 @@ namespace TeamMAsTD
 
             startSelectionMousePos = Input.mousePosition;
 
-            RectTransformUtility.ScreenPointToWorldPointInRectangle(dragSelectionBoxImage.rectTransform,
-                                                                    startSelectionMousePos,
-                                                                    dragSelectionCanvas.worldCamera ? null : Camera.main,
-                                                                    out mouseDragStartPosWorld);
+            if (dragSelectionCanvas.worldCamera)
+            {
+                mouseDragStartPosWorld = dragSelectionCanvas.worldCamera.ScreenToWorldPoint(startSelectionMousePos);
+            }
 
-            unitsInDragSelectionBox.Clear();
+            ClearAllUnitsInDragSelectionBox();
         }
 
         private void OnDrag()
@@ -272,17 +280,17 @@ namespace TeamMAsTD
 
             //units in/out box process.............
 
-            Vector3 mouseDragCurrentPosWorld;
+            Vector3 mouseDragCurrentPosWorld = Vector3.zero;
 
             //Only calculate "dragCurrentPosWorld" as that is the only mouse pos value of the box that is being changed during drag
             //"dragStartPosWorld" is already calculated in BeginDrag and cached.
-            RectTransformUtility.ScreenPointToWorldPointInRectangle(dragSelectionBoxImage.rectTransform,
-                                                                     Input.mousePosition,
-                                                                     dragSelectionCanvas.worldCamera ? null : Camera.main,
-                                                                     out mouseDragCurrentPosWorld);
+            if (dragSelectionCanvas.worldCamera)
+            {
+                mouseDragCurrentPosWorld = dragSelectionCanvas.worldCamera.ScreenToWorldPoint(Input.mousePosition);
+            }
 
-            //Only considers drag box as active and processes drag box functionalities if drag box width/height is >= 0.5f
-            if(Mathf.Abs(selectionBoxWidth) >= 0.5f && Mathf.Abs(selectionBoxHeight) >= 0.5f)
+            //Only considers drag box as active and processes drag box functionalities if either drag box width or height is >= 20.0f
+            if (Mathf.Abs(selectionBoxWidth) >= 20.0f || Mathf.Abs(selectionBoxHeight) >= 20.0f)
             {
                 if (!isDragSelectionBoxActive)
                 {
@@ -331,12 +339,14 @@ namespace TeamMAsTD
         {
             if (!enabled) return;
 
+            if(mouseDragCurrentPosWorld == Vector3.zero) return;
+
             if (!unitGroupSelectionManager) return;
 
             if (unitGroupSelectionManager.selectableUnits == null ||
                 unitGroupSelectionManager.selectableUnits.Count == 0) return;
 
-            foreach (IUnit unit in UnitGroupSelectionManager.unitGroupSelectionManagerInstance.selectableUnits)
+            foreach (IUnit unit in unitGroupSelectionManager.selectableUnits)
             {
                 if (unit == null) continue;
 
@@ -344,9 +354,12 @@ namespace TeamMAsTD
                 //also add properly in unit group selection manager
                 if (IsUnitInsideBox(unit, mouseDragCurrentPosWorld))
                 {
-                    unitsInDragSelectionBox.Add(unit);
+                    if (!unitsInDragSelectionBox.Contains(unit))
+                    {
+                        unitsInDragSelectionBox.Add(unit);
 
-                    unitGroupSelectionManager.SelectUnitsInDragSelectionBox(unit);
+                        unitGroupSelectionManager.SelectUnitsInDragSelectionBox(unit);
+                    }
                 }
             }
         }
@@ -357,19 +370,23 @@ namespace TeamMAsTD
         {
             if (!enabled) return;
 
+            if (mouseDragCurrentPosWorld == Vector3.zero) return;
+
             if (unitsInDragSelectionBox == null || unitsInDragSelectionBox.Count == 0) return;
 
             if (!unitGroupSelectionManager) return;
 
-            foreach (IUnit unit in unitsInDragSelectionBox)
+            List<IUnit> units = unitsInDragSelectionBox.ToList();
+
+            for(int i = 0; i < units.Count; i++)
             {
-                if (unit == null) continue;
+                if (units[i] == null) continue;
 
-                if (!IsUnitInsideBox(unit, mouseDragCurrentPosWorld))
+                if (!IsUnitInsideBox(units[i], mouseDragCurrentPosWorld))
                 {
-                    unitsInDragSelectionBox.Remove(unit);
+                    RemoveUnitFromDragSelectionBox(units[i]);
 
-                    unitGroupSelectionManager.UnselectUnitsOutsideDragSelectionBox(unit);
+                    unitGroupSelectionManager.UnselectUnitsOutsideDragSelectionBox(units[i]);
                 }
             }
         }
@@ -377,6 +394,8 @@ namespace TeamMAsTD
         private bool IsUnitInsideBox(IUnit unit, Vector3 mouseDragCurrentPosWorld)
         {
             if (unit == null) return false;
+
+            if (mouseDragCurrentPosWorld == Vector3.zero) return false;
 
             Vector3 unitPos = unit.GetUnitTransform().position;
 
@@ -432,7 +451,6 @@ namespace TeamMAsTD
             if (!enabled) enabled = true;
         }
 
-        private List<RaycastResult> graphicRaycastResults;
         private void CheckIf_DragOccursInDragAllowedArea_ToCreateDragSelectionBox()
         {
             if (!enabled) return;
@@ -471,6 +489,30 @@ namespace TeamMAsTD
             }
 
             if (!canDrag && hasStartedDragging) EndDrag();//On pointer enters a UI elements -> end drag selection if already dragging
+        }
+
+        public void ClearAllUnitsInDragSelectionBox()
+        {
+            if(unitsInDragSelectionBox == null || unitsInDragSelectionBox.Count == 0) return;
+
+            unitsInDragSelectionBox.Clear();
+        }
+
+        public void RemoveUnitFromDragSelectionBox(IUnit unselectedUnit)
+        {
+            if (unitsInDragSelectionBox == null || unitsInDragSelectionBox.Count == 0) return;
+
+            if (unitsInDragSelectionBox.Contains(unselectedUnit))
+            {
+                unitsInDragSelectionBox.Remove(unselectedUnit);
+            }
+        }
+
+        public int GetUnitsInDragSelectionBoxCount()
+        {
+            if (unitsInDragSelectionBox == null || unitsInDragSelectionBox.Count == 0) return 0;
+
+            return unitsInDragSelectionBox.Count;
         }
     }
 }

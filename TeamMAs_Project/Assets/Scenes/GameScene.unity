@@ -380,8 +380,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_EventMask:
     serializedVersion: 2
-    m_Bits: 115
-  m_MaxRayIntersections: 3
+    m_Bits: 609
+  m_MaxRayIntersections: 0
 --- !u!114 &519420034
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1261,14 +1261,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1508709269, guid: 622dcd6b80626e042a436ad965e1c19b, type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8420070690851516934, guid: 622dcd6b80626e042a436ad965e1c19b, type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8420070690855044388, guid: 622dcd6b80626e042a436ad965e1c19b, type: 3}
       propertyPath: m_Camera
       value: 
@@ -1360,10 +1352,6 @@ PrefabInstance:
     - target: {fileID: 8420070690855044393, guid: 622dcd6b80626e042a436ad965e1c19b, type: 3}
       propertyPath: m_Name
       value: UnitsGroupSelection(1InstanceOnly)
-      objectReference: {fileID: 0}
-    - target: {fileID: 8420070690855044393, guid: 622dcd6b80626e042a436ad965e1c19b, type: 3}
-      propertyPath: m_Layer
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8420070690855044394, guid: 622dcd6b80626e042a436ad965e1c19b, type: 3}
       propertyPath: m_BlockingMask.m_Bits
@@ -5548,7 +5536,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6380319184443845737, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -1316.4989
+      value: -1316.4985
       objectReference: {fileID: 0}
     - target: {fileID: 6474088391758042566, guid: 97e9ea1cc16f6de48aab0e0901957682, type: 3}
       propertyPath: m_fontSize

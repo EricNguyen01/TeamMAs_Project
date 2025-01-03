@@ -94,6 +94,8 @@ namespace TeamMAsTD
                 return;
             }
 
+#if ENABLE_LEGACY_INPUT_MANAGER
+
             if (DialogueManager.Instance)
             {
                 if (DialogueManager.Instance.isConversationActive) return;
@@ -102,6 +104,7 @@ namespace TeamMAsTD
             if (!isCheckingForTileMenuInteractions) return;
 
             CheckAndProcessTileMenuInteractionOnMouseClick();
+#endif
         }
 
         private void CheckAndProcessTileMenuInteractionOnMouseClick()

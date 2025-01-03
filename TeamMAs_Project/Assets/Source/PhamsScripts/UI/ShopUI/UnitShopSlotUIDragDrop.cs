@@ -1,7 +1,6 @@
 // Script Author: Pham Nguyen. All Rights Reserved. 
 // GitHub: https://github.com/EricNguyen01.
 
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -777,9 +776,13 @@ namespace TeamMAsTD
             {
                 if (TileMenuInteractionHandler.tileMenuInteractionHandlerInstance)
                 {
-                    if (TileMenuInteractionHandler.tileMenuInteractionHandlerInstance.tileObjectAndTileMenuDict.ContainsKey(eventData.pointerEnter))
+                    if(TileMenuInteractionHandler.tileMenuInteractionHandlerInstance.tileObjectAndTileMenuDict != null &&
+                       TileMenuInteractionHandler.tileMenuInteractionHandlerInstance.tileObjectAndTileMenuDict.Count > 0)
                     {
-                        destinationTile = TileMenuInteractionHandler.tileMenuInteractionHandlerInstance.tileObjectAndTileMenuDict[eventData.pointerEnter].tileHoldingThisMenu;
+                        if (TileMenuInteractionHandler.tileMenuInteractionHandlerInstance.tileObjectAndTileMenuDict.ContainsKey(eventData.pointerEnter))
+                        {
+                            destinationTile = TileMenuInteractionHandler.tileMenuInteractionHandlerInstance.tileObjectAndTileMenuDict[eventData.pointerEnter].tileHoldingThisMenu;
+                        }
                     }
                 }
 
@@ -804,13 +807,17 @@ namespace TeamMAsTD
 
                         if (TileMenuInteractionHandler.tileMenuInteractionHandlerInstance)
                         {
-                            if (TileMenuInteractionHandler.tileMenuInteractionHandlerInstance.tileObjectAndTileMenuDict.ContainsKey(results[i].gameObject))
+                            if (TileMenuInteractionHandler.tileMenuInteractionHandlerInstance.tileObjectAndTileMenuDict != null &&
+                               TileMenuInteractionHandler.tileMenuInteractionHandlerInstance.tileObjectAndTileMenuDict.Count > 0)
                             {
-                                destinationTile = TileMenuInteractionHandler.tileMenuInteractionHandlerInstance.tileObjectAndTileMenuDict[results[i].gameObject].tileHoldingThisMenu;
-
-                                if (destinationTile != null) break;
+                                if (TileMenuInteractionHandler.tileMenuInteractionHandlerInstance.tileObjectAndTileMenuDict.ContainsKey(results[i].gameObject))
+                                {
+                                    destinationTile = TileMenuInteractionHandler.tileMenuInteractionHandlerInstance.tileObjectAndTileMenuDict[results[i].gameObject].tileHoldingThisMenu;
+                                }
                             }
                         }
+
+                        if (destinationTile != null) break;
 
                         if (results[i].gameObject.TryGetComponent<Tile>(out destinationTile))
                         {
@@ -932,9 +939,13 @@ namespace TeamMAsTD
             {
                 if (TileMenuInteractionHandler.tileMenuInteractionHandlerInstance)
                 {
-                    if (TileMenuInteractionHandler.tileMenuInteractionHandlerInstance.tileObjectAndTileMenuDict.ContainsKey(eventData.pointerEnter))
+                    if(TileMenuInteractionHandler.tileMenuInteractionHandlerInstance.tileObjectAndTileMenuDict != null &&
+                       TileMenuInteractionHandler.tileMenuInteractionHandlerInstance.tileObjectAndTileMenuDict.Count > 0)
                     {
-                        destinationTile = TileMenuInteractionHandler.tileMenuInteractionHandlerInstance.tileObjectAndTileMenuDict[eventData.pointerEnter].tileHoldingThisMenu;
+                        if (TileMenuInteractionHandler.tileMenuInteractionHandlerInstance.tileObjectAndTileMenuDict.ContainsKey(eventData.pointerEnter))
+                        {
+                            destinationTile = TileMenuInteractionHandler.tileMenuInteractionHandlerInstance.tileObjectAndTileMenuDict[eventData.pointerEnter].tileHoldingThisMenu;
+                        }
                     }
                 }
 
@@ -959,13 +970,17 @@ namespace TeamMAsTD
 
                         if (TileMenuInteractionHandler.tileMenuInteractionHandlerInstance)
                         {
-                            if (TileMenuInteractionHandler.tileMenuInteractionHandlerInstance.tileObjectAndTileMenuDict.ContainsKey(results[i].gameObject))
+                            if(TileMenuInteractionHandler.tileMenuInteractionHandlerInstance.tileObjectAndTileMenuDict != null &&
+                               TileMenuInteractionHandler.tileMenuInteractionHandlerInstance.tileObjectAndTileMenuDict.Count > 0)
                             {
-                                destinationTile = TileMenuInteractionHandler.tileMenuInteractionHandlerInstance.tileObjectAndTileMenuDict[results[i].gameObject].tileHoldingThisMenu;
-
-                                if (destinationTile != null) break;
+                                if (TileMenuInteractionHandler.tileMenuInteractionHandlerInstance.tileObjectAndTileMenuDict.ContainsKey(results[i].gameObject))
+                                {
+                                    destinationTile = TileMenuInteractionHandler.tileMenuInteractionHandlerInstance.tileObjectAndTileMenuDict[results[i].gameObject].tileHoldingThisMenu;
+                                }
                             }
                         }
+
+                        if (destinationTile != null) break;
 
                         if (results[i].gameObject.TryGetComponent<Tile>(out destinationTile))
                         {

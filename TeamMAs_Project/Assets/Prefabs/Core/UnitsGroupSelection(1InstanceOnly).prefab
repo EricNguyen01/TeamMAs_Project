@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1508709270}
   - component: {fileID: 1508709272}
   - component: {fileID: 1508709271}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: DragSelectionAllowedArea
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -87,7 +87,7 @@ GameObject:
   - component: {fileID: 8420070690851516935}
   - component: {fileID: 8420070690851516929}
   - component: {fileID: 8420070690851516928}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: DragSelectionBoxImg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -167,7 +167,7 @@ GameObject:
   - component: {fileID: 295145796130215979}
   - component: {fileID: 8420070690855044384}
   - component: {fileID: 8420070690855044391}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: UnitsGroupSelection(1InstanceOnly)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -281,8 +281,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9afb306ad9e0a6344aad557788eb9c9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DEBUG_selectableUnitsReadOnly: []
-  DEBUG_unitGroupSelectedReadOnly: []
+  unitSelectionRaycastCam: {fileID: 0}
 --- !u!114 &8420070690855044391
 MonoBehaviour:
   m_ObjectHideFlags: 0
