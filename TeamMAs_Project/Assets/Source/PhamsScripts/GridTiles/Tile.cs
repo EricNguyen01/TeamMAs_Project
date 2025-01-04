@@ -201,8 +201,10 @@ namespace TeamMAsTD
         {
             if (!Application.isPlaying) return;
 
-            //This if is alr done in OnEnable but in case TileMenuInteractionHandler has not been initialized at that point,
+            //This if below is alr done in OnEnable but in case TileMenuInteractionHandlerInstance has not been initialized at that point,
             //we run the if again here to make sure that this tile is registered. Else, there will be BUGS!!!
+            //we STILL, however, needs this if in OnEnable (DO NOT DELETE IT IN OnEnable!!!) in case this tile is turned off and then on again
+            //during runtime which on turned on again, needs to be registered with the TileMenuInteractionHandler again.
             if (TileMenuInteractionHandler.tileMenuInteractionHandlerInstance)
             {
                 TileMenuInteractionHandler.tileMenuInteractionHandlerInstance.RegisterTileAndTileMenuOnTileEnabled(this);
