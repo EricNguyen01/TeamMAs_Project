@@ -5,6 +5,7 @@ using PixelCrushers.DialogueSystem;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 
 namespace TeamMAsTD
 {
@@ -15,12 +16,9 @@ namespace TeamMAsTD
 
         private TileMenuAndUprootOnTileUI tileMenuClicked;
 
-        private List<TDGrid> gridsInScene = new List<TDGrid>();
+        public Dictionary<GameObject, TileMenuAndUprootOnTileUI> tileObjectAndTileMenuDict { get; private set; } = new Dictionary<GameObject, TileMenuAndUprootOnTileUI>();
 
         private int DEBUG_tileMenuCount = 0;
-
-        public Dictionary<GameObject, TileMenuAndUprootOnTileUI> tileObjectAndTileMenuDict { get; private set; } 
-        = new Dictionary<GameObject, TileMenuAndUprootOnTileUI>();
 
         private List<RaycastResult> raycastResults = new List<RaycastResult>();
 
@@ -44,6 +42,12 @@ namespace TeamMAsTD
             tileMenuInteractionHandlerInstance = this;
 
             DontDestroyOnLoad(gameObject);
+
+            SceneManager.sceneLoaded += (Scene sc, LoadSceneMode loadMode) =>
+            {
+                if (sc.name.Contains("Menu")) enabled = false;
+                else enabled = true;
+            };
         }
 
         private void OnEnable()
@@ -58,29 +62,27 @@ namespace TeamMAsTD
                 return;
             }
 
-            if (!tileMenuInteractionRaycastCam)
-            {
-                if (!Camera.main)
-                {
-                    Debug.LogWarning("Tile Menu Interaction Handler: " + name + "Doesnt' Have A Camera To Perform Tile Raycast Selection." +
-                    "Tile Menu Interaction Handler won't work! Disabling script...");
-
-                    enabled = false;
-
-                    return;
-                }
-
-                tileMenuInteractionRaycastCam = Camera.main;
-            }
+            CheckAndGetTileRaycastCam();
 
             isCheckingForTileMenuInteractions = true;
+        }
+
+        private void OnDestroy()
+        {
+            SceneManager.sceneLoaded -= (Scene sc, LoadSceneMode loadMode) =>
+            {
+                if (sc.name.Contains("Menu")) enabled = false;
+                else enabled = true;
+            };
         }
 
         private void Update()
         {
             if (!enabled) return;
 
-            if (!EventSystem.current || !tileMenuInteractionRaycastCam)
+            CheckAndGetTileRaycastCam();
+
+            if (!EventSystem.current)
             {
                 if(enabled) enabled = false;
 
@@ -89,8 +91,6 @@ namespace TeamMAsTD
 
             if (tileObjectAndTileMenuDict == null || tileObjectAndTileMenuDict.Count == 0)
             {
-                if (enabled) enabled = false;
-
                 return;
             }
 
@@ -216,58 +216,38 @@ namespace TeamMAsTD
             }
         }
 
-        public void AddGridAndItsTiles(TDGrid grid)
+        public void RegisterTileAndTileMenuOnTileEnabled(Tile tile)
         {
-            if (!grid) return;
+            if (!tile) return;
 
-            if (gridsInScene.Contains(grid)) return;
+            if (tileObjectAndTileMenuDict.ContainsKey(tile.gameObject)) return;
 
-            gridsInScene.Add(grid);
+            TileMenuAndUprootOnTileUI tileMenu = tile.tileMenuAndUprootOnTileUI;
 
-            Tile[] tilesInGrid = grid.GetGridFlattened2DArray();
-
-            if (tilesInGrid == null || tilesInGrid.Length == 0) return;
-
-            for(int i = 0; i < tilesInGrid.Length; i++)
+            if (!tileMenu)
             {
-                if (!tilesInGrid[i]) continue;
+                tile.TryGetComponent<TileMenuAndUprootOnTileUI>(out tileMenu);
+            }
 
-                TileMenuAndUprootOnTileUI tileMenu = tilesInGrid[i].tileMenuAndUprootOnTileUI;
-
-                if (!tileMenu) 
-                {
-                    if (!tilesInGrid[i].TryGetComponent<TileMenuAndUprootOnTileUI>(out tileMenu)) continue;
-                }
-
-                if(tileObjectAndTileMenuDict.TryAdd(tilesInGrid[i].gameObject, tileMenu))
+            if (tileMenu)
+            {
+                if(tileObjectAndTileMenuDict.TryAdd(tile.gameObject, tileMenu))
                 {
                     DEBUG_tileMenuCount++;
                 }
             }
         }
 
-        public void RemoveGridAndItsTiles(TDGrid grid)
+        public void RemoveTileAndTileMenuOnTileDisabled(Tile tile)
         {
-            if (!grid) return;
+            if (!tile) return;
 
-            if (!gridsInScene.Contains(grid)) return;
+            if (!tileObjectAndTileMenuDict.ContainsKey(tile.gameObject)) return;
 
-            Tile[] tilesInGrid = grid.GetGridFlattened2DArray();
-
-            if(tilesInGrid != null && tilesInGrid.Length > 0)
+            if (tileObjectAndTileMenuDict.Remove(tile.gameObject))
             {
-                for (int i = 0; i < tilesInGrid.Length; i++)
-                {
-                    if (!tilesInGrid[i]) continue;
-
-                    if (tileObjectAndTileMenuDict.Remove(tilesInGrid[i].gameObject))
-                    {
-                        DEBUG_tileMenuCount--;
-                    }
-                }
+                DEBUG_tileMenuCount--;
             }
-
-            gridsInScene.Remove(grid);
         }
 
         public void EnableCheckForTileMenuInteractions(bool enabled)
@@ -311,6 +291,21 @@ namespace TeamMAsTD
             tileMenuInteractionHandlerInstance = tileMenuInteractionHandler;
 
             //DontDestroyOnLoad(tileMenuInteractionHandlerGO);
+        }
+
+        private void CheckAndGetTileRaycastCam()
+        {
+            if (!tileMenuInteractionRaycastCam)
+            {
+                if (!Camera.main)
+                {
+                    if(enabled) enabled = false;
+
+                    return;
+                }
+
+                tileMenuInteractionRaycastCam = Camera.main;
+            }
         }
     }
 }

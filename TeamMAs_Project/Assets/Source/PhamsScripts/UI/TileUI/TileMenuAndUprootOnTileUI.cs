@@ -10,7 +10,7 @@ namespace TeamMAsTD
 {
     [DisallowMultipleComponent]
     [RequireComponent(typeof(Tile))]
-    public class TileMenuAndUprootOnTileUI : MonoBehaviour/*, IPointerDownHandler, IDeselectHandler*/
+    public class TileMenuAndUprootOnTileUI : MonoBehaviour
     {
         [SerializeField] private Canvas tileWorldCanvas;
 
@@ -256,38 +256,5 @@ namespace TeamMAsTD
 
             SetDisableTileMenuOpen(false);
         }
-
-        /*
-        //Unity EventSystem OnPointerDownHandler interface function.............................................
-
-        public void OnPointerDown(PointerEventData eventData)
-        {
-            //cache pointer event data to use later in OnDeselect()
-            pEventData = eventData;
-
-            OpenTileInteractionMenu(true);
-
-            //set the selected game object in the current event system so that
-            //when the event system detects a newly selected game obj whether null or not,
-            //it will trigger OnDeselect() on this script which can be used to close the tile menu.
-            EventSystem.current.SetSelectedGameObject(gameObject);
-        }
-
-        //This func is triggere by the EventSystem when user clicks on nothing or another obj, causing this class to be deselected
-        public void OnDeselect(BaseEventData eventData)
-        {
-            //Only close if pointer is not over anything, not over an object, or over an object that is not the same as this obj.
-            //This is done so that when clicking again on the same tile after opening the tile menu of that tile,
-            //we don't want to close the menu in this OnDeselect function (which gets called even on selecting the same obj again)
-            //just so we can open it again in OnPointerDown (OnPointerDown happens after OnDeselect).
-            //We want to close the menu instead of keeping it open after re-clicking on the same tile.
-
-            if (pEventData.pointerEnter == null || pEventData.pointerEnter.gameObject == null || pEventData.pointerEnter.gameObject != gameObject)
-            {
-                OpenTileInteractionMenu(false);
-            }
-
-            //after OnDeselect is called, EventSystem's selected object is set to null again so we don't have to reset it manually.
-        }*/
     }
 }

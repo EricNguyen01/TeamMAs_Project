@@ -178,6 +178,35 @@ namespace TeamMAsTD
             if(!spriteRenderer) spriteRenderer = GetComponent<SpriteRenderer>();
 
             tileSaveable = ISaveable.GetOrGenerateSaveableComponentIfNull(this);
+
+            if (!Application.isPlaying) return;
+
+            if (TileMenuInteractionHandler.tileMenuInteractionHandlerInstance)
+            {
+                TileMenuInteractionHandler.tileMenuInteractionHandlerInstance.RegisterTileAndTileMenuOnTileEnabled(this);
+            }
+        }
+
+        private void OnDisable()
+        {
+            if (!Application.isPlaying) return;
+
+            if (TileMenuInteractionHandler.tileMenuInteractionHandlerInstance)
+            {
+                TileMenuInteractionHandler.tileMenuInteractionHandlerInstance.RemoveTileAndTileMenuOnTileDisabled(this);
+            }
+        }
+
+        private void Start()
+        {
+            if (!Application.isPlaying) return;
+
+            //This if is alr done in OnEnable but in case TileMenuInteractionHandler has not been initialized at that point,
+            //we run the if again here to make sure that this tile is registered. Else, there will be BUGS!!!
+            if (TileMenuInteractionHandler.tileMenuInteractionHandlerInstance)
+            {
+                TileMenuInteractionHandler.tileMenuInteractionHandlerInstance.RegisterTileAndTileMenuOnTileEnabled(this);
+            }
         }
 
 #if UNITY_EDITOR

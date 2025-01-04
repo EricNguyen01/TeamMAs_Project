@@ -118,6 +118,13 @@ namespace TeamMAsTD
             if(readOnlyGridArray == null) readOnlyGridArray = new ReadOnlyGridArray(gridArray);
 
             pathOfGrid = CreatePathObjectIfNone();
+
+            if (!Application.isPlaying) return;
+
+            if (!TileMenuInteractionHandler.tileMenuInteractionHandlerInstance)
+            {
+                TileMenuInteractionHandler.CreateTileMenuInteractionHandlerSingleton();
+            }
         }
 
         private void OnEnable()
@@ -140,9 +147,6 @@ namespace TeamMAsTD
             if (!Application.isPlaying) return;
             
             WaveSpawner.OnWaveStarted -= SpawnPlantOnWaveStarted;
-
-            if(TileMenuInteractionHandler.tileMenuInteractionHandlerInstance)
-                TileMenuInteractionHandler.tileMenuInteractionHandlerInstance.RemoveGridAndItsTiles(this);
         }
 
         private void Start()
@@ -156,13 +160,6 @@ namespace TeamMAsTD
             {
                 StartCoroutine(RandomizedGridLayoutAndSaveLayoutOnStart());
             }
-
-            if (!TileMenuInteractionHandler.tileMenuInteractionHandlerInstance)
-            {
-                TileMenuInteractionHandler.CreateTileMenuInteractionHandlerSingleton();
-            }
-
-            TileMenuInteractionHandler.tileMenuInteractionHandlerInstance.AddGridAndItsTiles(this);
         }
 
         //PUBLICS...........................................................
