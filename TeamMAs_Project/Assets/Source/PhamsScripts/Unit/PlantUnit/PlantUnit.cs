@@ -279,7 +279,7 @@ namespace TeamMAsTD
             {
                 if (ability == null) continue;
 
-                ability.TempDisable_SpawnedAbilityEffects_StatPopupSpawners_Except(this);
+                ability.TempDisable_SpawnedAbilityEffects_StatPopupSpawners_Except(true);
 
                 ability.ForceStopAbilityImmediate();
             }

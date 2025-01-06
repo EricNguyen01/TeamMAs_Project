@@ -38,7 +38,19 @@ namespace TeamMAsTD
 
             Destroy_AbilityEffectStatPopupSpawners_Of_AbilityEffectsOnPlant_ExceptThis();
 
-            plantUnitToWipe.DisablePlantUnitAndItsAbilities();
+            //plantUnitToWipe.DisablePlantUnitAndItsAbilities();
+
+            Ability[] plantAbilities = plantUnitToWipe.GetPlantAbilities();
+
+            if (plantAbilities != null && plantAbilities.Length > 0)
+            {
+                foreach (Ability ability in plantAbilities)
+                {
+                    if (ability == null) continue;
+
+                    ability.TempDisable_SpawnedAbilityEffects_StatPopupSpawners_Except(true, this);
+                }
+            }
 
             //get tile placed on
             tilePlantUnitToWipeOn = plantUnitToWipe.tilePlacedOn;
