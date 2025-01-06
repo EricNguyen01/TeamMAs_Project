@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 namespace TeamMAsTD
 {
@@ -24,7 +25,7 @@ namespace TeamMAsTD
 
         public enum TileMenuInteractionOptions { Open = 0, Close = 1, Toggle = 2 }
 
-        private bool isCheckingForTileMenuInteractions = true;
+        public bool isCheckingForTileMenuInteractions { get; private set; } = true;
 
         public static TileMenuInteractionHandler tileMenuInteractionHandlerInstance;
 
@@ -62,9 +63,20 @@ namespace TeamMAsTD
                 return;
             }
 
+            Rain.OnRainStarted += (Rain r) => EnableCheckForTileMenuInteractions(false);
+
+            Rain.OnRainEnded += (Rain r) => EnableCheckForTileMenuInteractions(true);
+
             CheckAndGetTileRaycastCam();
 
             isCheckingForTileMenuInteractions = true;
+        }
+
+        private void OnDisable()
+        {
+            Rain.OnRainStarted -= (Rain r) => EnableCheckForTileMenuInteractions(false);
+
+            Rain.OnRainEnded -= (Rain r) => EnableCheckForTileMenuInteractions(true);
         }
 
         private void OnDestroy()
@@ -94,14 +106,14 @@ namespace TeamMAsTD
                 return;
             }
 
-#if ENABLE_LEGACY_INPUT_MANAGER
-
             if (DialogueManager.Instance)
             {
                 if (DialogueManager.Instance.isConversationActive) return;
             }
 
             if (!isCheckingForTileMenuInteractions) return;
+
+#if ENABLE_LEGACY_INPUT_MANAGER
 
             CheckAndProcessTileMenuInteractionOnMouseClick();
 #endif
@@ -140,6 +152,12 @@ namespace TeamMAsTD
                 for (int i = 0; i < raycastResults.Count; i++)
                 {
                     if (!raycastResults[i].isValid) continue;
+
+                    if (raycastResults[i].gameObject.layer == LayerMask.GetMask("UI") ||
+                        raycastResults[i].gameObject.layer == LayerMask.NameToLayer("UI"))
+                    {
+                        if (raycastResults[i].gameObject.GetComponent<Button>()) return;
+                    }
 
                     if (tileMenuClicked)
                     {
@@ -250,15 +268,30 @@ namespace TeamMAsTD
             }
         }
 
+        /// <summary>
+        /// Whether to enable or disable checking for mouse-click tile menu interactions in Update(). 
+        /// Disable in case you want to manually interact with tile menus externally. REMEMBER TO RE-ENABLE AFTER!!!
+        /// </summary>
+        /// <param name="enabled"></param>
         public void EnableCheckForTileMenuInteractions(bool enabled)
         {
             isCheckingForTileMenuInteractions = enabled;
 
-            tileMenuClicked = null;
+            if (tileMenuClicked && tileMenuClicked.isOpened)
+            {
+                tileMenuClicked.OpenTileInteractionMenu(false);
+
+                tileMenuClicked = null;
+            }
         }
 
         public void SetTileMenuInteractedManually(TileMenuAndUprootOnTileUI tileMenuClicked, TileMenuInteractionOptions interactionOption)
         {
+            if (this.tileMenuClicked && this.tileMenuClicked != tileMenuClicked)
+            {
+                this.tileMenuClicked.OpenTileInteractionMenu(false);
+            }
+
             this.tileMenuClicked = tileMenuClicked;
 
             if (!tileMenuClicked) return;

@@ -443,6 +443,28 @@ namespace TeamMAsTD
             abilityEffectsReceived.Clear();
         }
 
+        public void ForceDestroyImmediate_AllReceivedEffectsStatPopups_AndPopupSpawners()
+        {
+            if (abilityEffectsReceived.Count == 0) return;
+
+            for (int i = 0; i < abilityEffectsReceived.Count; i++)
+            {
+                if (abilityEffectsReceived[i] == null) continue;
+
+                if (abilityEffectsReceived[i].EffectStackSpawned() == null ||
+                    abilityEffectsReceived[i].EffectStackSpawned().Count == 0) continue;
+
+                for (int j = 0; j < abilityEffectsReceived[i].EffectStackSpawned().Count; j++)
+                {
+                    AbilityEffect aEffect = abilityEffectsReceived[i].EffectStackSpawned()[j];
+
+                    if (aEffect == null) continue;
+
+                    aEffect.DetachAndDestroyAllEffectPopupsIncludingSpawner(true);
+                }
+            }
+        }
+
         public bool HasEffectsFromAbility(Ability sourceAbility)
         {
             if(sourceAbility == null) return false;

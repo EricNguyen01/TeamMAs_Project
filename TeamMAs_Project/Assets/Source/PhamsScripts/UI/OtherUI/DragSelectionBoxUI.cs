@@ -31,7 +31,7 @@ namespace TeamMAsTD
 
         [SerializeField]
         [ReadOnlyInspector]
-        private bool isDragSelectionBoxActive = false;
+        public bool hasHeldToDrag { get; private set; } = false;
 
         //INTERNALS....................................................................
 
@@ -56,6 +56,8 @@ namespace TeamMAsTD
         private float selectionBoxWidth = 0.0f;
 
         private float selectionBoxHeight = 0.0f;
+
+        private bool dragSelectionBoxEnabled = true;
 
         private HashSet<IUnit> unitsInDragSelectionBox = new HashSet<IUnit>();
 
@@ -139,6 +141,8 @@ namespace TeamMAsTD
                 dragSelectionAllowedArea.color = Color.clear;
 
                 dragSelectionAllowedArea.raycastTarget = true;
+
+                dragSelectionAllowedArea.gameObject.layer = LayerMask.GetMask("Default");
             }
         }
 
@@ -178,7 +182,7 @@ namespace TeamMAsTD
 
         private void Update()
         {
-            if (!enabled) return;
+            if (!enabled || !dragSelectionBoxEnabled) return;
 
             if (!EventSystem.current || !graphicRaycaster ||!dragSelectionCanvas.worldCamera)
             {
@@ -187,19 +191,27 @@ namespace TeamMAsTD
                 return;
             }
 
-#if ENABLE_LEGACY_INPUT_MANAGER
-
             if (DialogueManager.Instance)
             {
-                if (DialogueManager.Instance.isConversationActive) return;
+                if (DialogueManager.Instance.isConversationActive)
+                {
+                    if (hasStartedDragging)
+                    {
+                        EndDrag();
+                    }
+
+                    return;
+                }
             }
 
             CheckIf_DragOccursInDragAllowedArea_ToCreateDragSelectionBox();
 
-            if (!canDrag) return;
+#if ENABLE_LEGACY_INPUT_MANAGER
 
             if (Input.GetButtonDown("Fire1"))
             {
+                hasHeldToDrag = false;
+
                 BeginDrag();
             }
             else if (Input.GetButton("Fire1"))
@@ -292,12 +304,12 @@ namespace TeamMAsTD
             //Only considers drag box as active and processes drag box functionalities if either drag box width or height is >= 20.0f
             if (Mathf.Abs(selectionBoxWidth) >= 20.0f || Mathf.Abs(selectionBoxHeight) >= 20.0f)
             {
-                if (!isDragSelectionBoxActive)
+                if (!hasHeldToDrag)
                 {
                     if (unitGroupSelectionManager) unitGroupSelectionManager.ClearSelectedUnitsGroupOnDragBoxActive();
                 }
 
-                isDragSelectionBoxActive = true;
+                hasHeldToDrag = true;
 
                 //if drag box just span over the current checking unit or the unit just somehow happened to be inside the box -> add the unit
                 //also add properly in unit group selection manager
@@ -317,8 +329,6 @@ namespace TeamMAsTD
 
             hasStartedDragging = false;
 
-            isDragSelectionBoxActive = false;
-
             dragSelectionCanvasGroup.alpha = 0.0f;
 
             dragSelectionBoxImage.rectTransform.localScale = Vector3.one;
@@ -329,8 +339,6 @@ namespace TeamMAsTD
             startSelectionMousePos = Vector2.zero;
 
             mouseDragStartPosWorld = Vector3.zero;
-
-            canDrag = true;
         }
 
         //if drag box just span over the current checking unit or the unit just somehow happened to be inside the box -> add the unit
@@ -477,6 +485,14 @@ namespace TeamMAsTD
                 {
                     if (!graphicRaycastResults[i].isValid) continue;
 
+                    if (graphicRaycastResults[i].gameObject.layer == LayerMask.GetMask("UI") ||
+                        graphicRaycastResults[i].gameObject.layer == LayerMask.NameToLayer("UI"))
+                        break;
+
+                    if (graphicRaycastResults[i].sortingLayer == dragSelectionCanvas.sortingLayerID &&
+                        graphicRaycastResults[i].sortingOrder > dragSelectionCanvas.sortingOrder)
+                        break;
+
                     if (graphicRaycastResults[i].gameObject == dragSelectionAllowedArea.gameObject)
                     {
                         dragable = true;
@@ -513,6 +529,11 @@ namespace TeamMAsTD
             if (unitsInDragSelectionBox == null || unitsInDragSelectionBox.Count == 0) return 0;
 
             return unitsInDragSelectionBox.Count;
+        }
+
+        public void EnableDragSelectionBox(bool enabled)
+        {
+            dragSelectionBoxEnabled = enabled;
         }
     }
 }

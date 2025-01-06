@@ -14,7 +14,7 @@ namespace TeamMAsTD
         [field: Header("Plant Unit SO Data")]
 
         [field: ReadOnlyInspectorPlayMode]
-        [field: SerializeField] 
+        [field: SerializeField]
         public PlantUnitSO plantUnitScriptableObject { get; private set; }
 
         public PlantRangeCircle plantRangeCircle { get; private set; }
@@ -30,6 +30,8 @@ namespace TeamMAsTD
         public Tile tilePlacedOn { get; private set; }
 
         private SpriteRenderer unitSpriteRenderer;
+
+        private Ability[] plantAbilities;
 
         private AbilityEffectReceivedInventory abilityEffectReceivedInventory;
 
@@ -50,21 +52,21 @@ namespace TeamMAsTD
 
         private void Awake()
         {
-            if(plantUnitScriptableObject == null)
+            if (plantUnitScriptableObject == null)
             {
                 Debug.LogError("Plant Unit Scriptable Object data is not assigned on Plant Unit: " + name + ". Disabling Unit!");
                 enabled = false;
                 return;
             }
 
-            if(plantUnitScriptableObject.plantProjectileSO == null)
+            if (plantUnitScriptableObject.plantProjectileSO == null)
             {
                 Debug.LogError("Plant Unit Projectile Scriptable Object data is not assigned on Plant Unit: " + name + ". Disabling Unit!");
                 enabled = false;
                 return;
             }
 
-            if(plantUnitScriptableObject.plantProjectileSO.plantProjectilePrefab == null)
+            if (plantUnitScriptableObject.plantProjectileSO.plantProjectilePrefab == null)
             {
                 Debug.LogError("Plant Unit Projectile Prefab data is not assigned on Plant Unit: " + name + ". Disabling Unit!");
                 enabled = false;
@@ -77,7 +79,7 @@ namespace TeamMAsTD
 
             tilePlacedOn = GetComponentInParent<Tile>();
 
-            if(tilePlacedOn != null && tilePlacedOn.gridParent != null)
+            if (tilePlacedOn != null && tilePlacedOn.gridParent != null)
             {
                 //convert tile number to float distance in the grid
                 //max atk range = (tileSize * atk range in tiles) + 1/2 tile (to reach the edge of the last tile at max range)
@@ -92,14 +94,14 @@ namespace TeamMAsTD
 
             abilityEffectReceivedInventory = GetComponent<AbilityEffectReceivedInventory>();
 
-            if(abilityEffectReceivedInventory == null)
+            if (abilityEffectReceivedInventory == null)
             {
                 abilityEffectReceivedInventory = gameObject.AddComponent<AbilityEffectReceivedInventory>();
             }
 
             plantUnitWorldUI = GetComponent<PlantUnitWorldUI>();
 
-            if(plantUnitWorldUI == null) plantUnitWorldUI = GetComponentInChildren<PlantUnitWorldUI>();
+            if (plantUnitWorldUI == null) plantUnitWorldUI = GetComponentInChildren<PlantUnitWorldUI>();
 
             //ALL of the plant unit's sub systems must be set below the get/set of plant unit's references such as tilePlacedOn or WorldUI...
             //to avoid missing references on initializing the systems.
@@ -112,10 +114,12 @@ namespace TeamMAsTD
 
             plantWaterUsageSystem.InitializePlantWaterUsageSystem(this, true);
 
-            if(plantUnitScriptableObject != null)
+            plantAbilities = GetComponentsInChildren<Ability>(true);
+
+            if (plantUnitScriptableObject != null)
             {
                 GameObject spawnedEffectGO = plantUnitScriptableObject.SpawnUnitEffectGameObject(plantUnitScriptableObject.unitSpawnEffectPrefab, transform, false, true);
-                
+
                 StartCoroutine(plantUnitScriptableObject.DestroyOnUnitEffectAnimFinishedCoroutine(spawnedEffectGO));
             }
 
@@ -149,7 +153,7 @@ namespace TeamMAsTD
         {
             unitSpriteRenderer = GetComponent<SpriteRenderer>();
 
-            if(unitSpriteRenderer == null)
+            if (unitSpriteRenderer == null)
             {
                 unitSpriteRenderer = gameObject.AddComponent<SpriteRenderer>();
             }
@@ -205,11 +209,11 @@ namespace TeamMAsTD
             if (plantUnitScriptableObject == null) return;
 
             GameObject spawnedEffectGO = plantUnitScriptableObject.SpawnUnitEffectGameObject(plantUnitScriptableObject.unitDestroyEffectPrefab, transform, false, true);
-            
-            //use other MonoBehavior (e.g Tile this plant on) to call this destroy effect coroutine
+
+            //use other MonoBehavior (e.g Tile this plant on) to call this destroy vfx play coroutine function
             //since if called by this plant obj which will be destroyed before 
-            //this effect got destroyed, the destroy coroutine will stop as soon as this plant is destroyed
-            //which this effect will then never be destroyed!
+            //this vfx got destroyed, the destroy vfx coroutine will stop as soon as this plant is destroyed
+            //which the vfx supposed to be played will then never be!
             caller.StartCoroutine(plantUnitScriptableObject.DestroyOnUnitEffectAnimFinishedCoroutine(spawnedEffectGO));
         }
 
@@ -255,6 +259,30 @@ namespace TeamMAsTD
         public AbilityEffectReceivedInventory GetAbilityEffectReceivedInventory()
         {
             return abilityEffectReceivedInventory;
+        }
+
+        public Ability[] GetPlantAbilities()
+        {
+            return plantAbilities;
+        }
+
+        public void DisablePlantUnitAndItsAbilities()
+        {
+            if (plantAimShootSystem != null)
+            {
+                plantAimShootSystem.EnablePlantAimShoot(false);
+            }
+
+            if (plantAbilities == null || plantAbilities.Length == 0) return;
+
+            foreach (Ability ability in plantAbilities)
+            {
+                if (ability == null) continue;
+
+                ability.TempDisable_SpawnedAbilityEffects_StatPopupSpawners_Except(this);
+
+                ability.ForceStopAbilityImmediate();
+            }
         }
 
         //replace the current plant SO with a new one

@@ -444,11 +444,13 @@ namespace TeamMAsTD
             return true;
         }
 
-        public void UprootUnit(float uprootDelaySec)
+        public void UprootUnit(float uprootDelaySec = 0.0f)
         {
             if (plantUnitOnTile == null) return;
 
             if (disableUprootOnTile) return;
+
+            if (uprootDelaySec < 0.0f) uprootDelaySec = 0.0f;
 
             //close tile menu on plant on tile uprooted and
             //disable tile menu open/close functionality after plant uprooted
@@ -471,7 +473,7 @@ namespace TeamMAsTD
             }*/
 
             plantUnitOnTile.ProcessPlantDestroyEffectFrom(this);
-
+            
             if (uprootDelaySec == 0.0f) Destroy(plantUnitOnTile.gameObject);
             else Destroy(plantUnitOnTile.gameObject, uprootDelaySec);
 

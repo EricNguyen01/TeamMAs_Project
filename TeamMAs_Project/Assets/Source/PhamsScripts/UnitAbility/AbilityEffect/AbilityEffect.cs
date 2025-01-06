@@ -226,6 +226,8 @@ namespace TeamMAsTD
             {
                 OnEffectEnded();
 
+                DetachAndDestroyAllEffectPopupsIncludingSpawner();
+
                 effectEndIsCalled = true;
             }
 
@@ -308,13 +310,13 @@ namespace TeamMAsTD
             }
         }
 
-        protected void DetachAndDestroyAllEffectPopupsIncludingSpawner()
+        public void DetachAndDestroyAllEffectPopupsIncludingSpawner(bool shouldDestroyImmediate = false)
         {
             if (effectStatPopupSpawner == null) return;
 
             if (!gameObject.scene.isLoaded) return;
 
-            effectStatPopupSpawner.DetachAndDestroyAllStatPopupsIncludingSpawner(false);
+            effectStatPopupSpawner.DetachAndDestroyAllStatPopupsIncludingSpawner(shouldDestroyImmediate);
         }
 
         public StatPopupSpawner GetAbilityEffectStatPopupSpawner()

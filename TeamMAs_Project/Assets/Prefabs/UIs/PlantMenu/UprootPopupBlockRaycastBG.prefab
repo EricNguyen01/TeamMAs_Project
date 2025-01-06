@@ -66,7 +66,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Do you want to spend $5 to uproot this unit?
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7c4d598a1b6b80f4b83962e1ae64bc1b, type: 2}
   m_sharedMaterial: {fileID: 434623511835423077, guid: 7c4d598a1b6b80f4b83962e1ae64bc1b, type: 2}
@@ -295,10 +295,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UI_TweenExecuteMode: 1
+  easeMode: 30
   tweenDuration: 0.5
   tweenAutoStartDelay: 0
-  isIndependentTimeScale: 0
+  <isLooped>k__BackingField: 0
+  <isIndependentTimeScale>k__BackingField: 0
   disableUIFunctionDuringTween: 0
+  disableUIFunctionAfterTween: 0
+  OnUITweenStarted:
+    m_PersistentCalls:
+      m_Calls: []
+  OnUITweenFinished:
+    m_PersistentCalls:
+      m_Calls: []
   expandValue: 17
 --- !u!1 &1634471411777915125
 GameObject:
@@ -674,10 +683,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UI_TweenExecuteMode: 1
+  easeMode: 30
   tweenDuration: 0.5
   tweenAutoStartDelay: 0
-  isIndependentTimeScale: 0
+  <isLooped>k__BackingField: 0
+  <isIndependentTimeScale>k__BackingField: 0
   disableUIFunctionDuringTween: 0
+  disableUIFunctionAfterTween: 0
+  OnUITweenStarted:
+    m_PersistentCalls:
+      m_Calls: []
+  OnUITweenFinished:
+    m_PersistentCalls:
+      m_Calls: []
   expandValue: 17
 --- !u!1 &1634471412052341794
 GameObject:
@@ -919,6 +937,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uprootPopupCanvasGroup: {fileID: 1634471412416140723}
   uprootPopupMessageText: {fileID: 1634471410607712327}
-  popupConfirmationMessage: 
+  popupConfirmationMessage: Do you want to spend ${uprootCost} to uproot {unitNum}
+    unit(s)?
   insufficientFundToUprootPopupPrefab: {fileID: 8024300418989073095, guid: f3a373e0118fdc54d85de7d5d9767e8c, type: 3}
   uprootButton: {fileID: 1634471411945778718}

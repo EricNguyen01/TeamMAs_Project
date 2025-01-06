@@ -219,27 +219,24 @@ namespace TeamMAsTD
         {
             if (isDetachedAndDestroyed) return;
 
-            if (this != null && gameObject.activeInHierarchy) transform.SetParent(null);
+            if (this != null && gameObject.activeInHierarchy && transform.parent) transform.SetParent(null);
 
             if (shouldDestroyImmediate)
             {
                 disablePopup = true;
 
                 enabled = false;
-            }
 
-            if(!enabled || disablePopup)
-            {
                 isDetachedAndDestroyed = true;
 
                 StopAllCoroutines();
-
+                
                 DestroyStatPopupPoolAndSpawner();
 
                 return;
             }
-
-            if(this != null && gameObject.activeInHierarchy) StartCoroutine(DestroyOnPopupDelayCoroutineFinished());
+            
+            if (this != null && gameObject.activeInHierarchy) StartCoroutine(DestroyOnPopupDelayCoroutineFinished());
             else DestroyStatPopupPoolAndSpawner();
         }
 
@@ -266,7 +263,11 @@ namespace TeamMAsTD
                 {
                     for (int i = 0; i < statPopupPool.gameObjectsPool.Count; i++)
                     {
-                        if (statPopupPool.gameObjectsPool[i] != null) Destroy(statPopupPool.gameObjectsPool[i]);
+                        if (statPopupPool.gameObjectsPool[i] != null)
+                        {
+                            //Debug.Log("StatPopup: " + statPopupPool.gameObjectsPool[i].name + " About to be destroyed!");
+                            Destroy(statPopupPool.gameObjectsPool[i]);
+                        }
                     }
 
                     statPopupPool.gameObjectsPool.Clear();

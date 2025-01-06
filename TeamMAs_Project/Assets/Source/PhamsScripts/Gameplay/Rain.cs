@@ -27,11 +27,14 @@ namespace TeamMAsTD
 
         private bool hasDisabledRain = false;
 
+        private bool isRaining = false;   
+
         //if there's rain animation -> add here...
 
         //sub by PlantWaterUsageSystem.cs for water refilling after rain
         //sub by TileMenu for temporary disabling menu UI interaction during rain
         public static event System.Action<Rain> OnRainStarted;
+
         public static event System.Action<Rain> OnRainEnded;
 
         private void Awake()
@@ -76,11 +79,15 @@ namespace TeamMAsTD
 
             currentWaveBeforeRain = waveNum;
 
-            StartCoroutine(RainSequenceCoroutine());
+            if(!isRaining) StartCoroutine(RainSequenceCoroutine());
         }
 
         private IEnumerator RainSequenceCoroutine()
         {
+            if (isRaining) yield break;
+
+            isRaining = true;
+
             OnRainStarted?.Invoke(this);
 
             yield return new WaitForSeconds(0.25f);
@@ -105,6 +112,8 @@ namespace TeamMAsTD
             OnRainEnded?.Invoke(this);
 
             OnRainEndedEvent?.Invoke(currentWaveBeforeRain);
+
+            isRaining = false;
 
             yield break;
         }

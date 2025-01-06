@@ -36,9 +36,9 @@ namespace TeamMAsTD
 
             plantAbilityEffectReceivedInventory = plantUnitToWipe.GetAbilityEffectReceivedInventory();
 
-            DestroyEffectStatPopupSpawnersOfEffectsOnPlant();
+            Destroy_AbilityEffectStatPopupSpawners_Of_AbilityEffectsOnPlant_ExceptThis();
 
-            DisablePlantUnitAndItsAbilities(plantUnitToWipe);
+            plantUnitToWipe.DisablePlantUnitAndItsAbilities();
 
             //get tile placed on
             tilePlantUnitToWipeOn = plantUnitToWipe.tilePlacedOn;
@@ -53,7 +53,7 @@ namespace TeamMAsTD
 
         protected override bool EffectUpdate()
         {
-            DestroyEffectStatPopupSpawnersOfEffectsOnPlant();
+            Destroy_AbilityEffectStatPopupSpawners_Of_AbilityEffectsOnPlant_ExceptThis();
 
             return true;
         }
@@ -77,29 +77,10 @@ namespace TeamMAsTD
             return true;
         }
 
-        protected void DisablePlantUnitAndItsAbilities(PlantUnit plantUnit)
-        {
-            if (plantUnit == null) return;
-
-            if (plantUnit.plantAimShootSystem != null)
-            {
-                plantUnit.plantAimShootSystem.EnablePlantAimShoot(false);
-            }
-
-            foreach (Ability ability in plantUnit.GetComponentsInChildren<Ability>())
-            {
-                if (ability == null) continue;
-
-                ability.TempDisable_SpawnedAbilityEffects_StatPopupSpawners_Except(this);
-
-                ability.ForceStopAbilityImmediate();
-            }
-        }
-
-        protected void DestroyEffectStatPopupSpawnersOfEffectsOnPlant()
+        private void Destroy_AbilityEffectStatPopupSpawners_Of_AbilityEffectsOnPlant_ExceptThis()
         {
             if (plantAbilityEffectReceivedInventory.abilityEffectsReceived != null &&
-               plantAbilityEffectReceivedInventory.abilityEffectsReceived.Count > 0)
+                plantAbilityEffectReceivedInventory.abilityEffectsReceived.Count > 0)
             {
                 for (int i = 0; i < plantAbilityEffectReceivedInventory.abilityEffectsReceived.Count; i++)
                 {
@@ -118,12 +99,7 @@ namespace TeamMAsTD
 
                             if (aEffect == this) continue;
 
-                            StatPopupSpawner eStatPopupSpawner = aEffect.GetAbilityEffectStatPopupSpawner();
-
-                            if (eStatPopupSpawner != null)
-                            {
-                                eStatPopupSpawner.DetachAndDestroyAllStatPopupsIncludingSpawner(true);
-                            }
+                            aEffect.DetachAndDestroyAllEffectPopupsIncludingSpawner(true);
                         }
                     }
                 }

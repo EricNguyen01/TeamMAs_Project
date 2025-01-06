@@ -20,6 +20,8 @@ namespace TeamMAsTD
 
         private CanvasGroup tileWorldCanvasGroup;
 
+        private UprootConfirmationPopupUI uprootConfirmationPopupUI;
+
         public Tile tileHoldingThisMenu { get; private set; }
 
         private PointerEventData pEventData;//Unity's EventSystem pointer event data
@@ -30,7 +32,7 @@ namespace TeamMAsTD
 
         public Button[] tileMenuButtons { get; private set; }
 
-        //UnityEvent............................................................................................
+        //UnityEvents..........................................................................................
 
         [SerializeField] public UnityEvent OnTileMenuOpened;
 
@@ -214,17 +216,50 @@ namespace TeamMAsTD
         //UnityEvent function for uproot UI button
         public void OnUprootOptionClicked()
         {
-            //spawn uproot prompt
-            UprootConfirmationPopupUI uprootConfirmationPopupUI = FindObjectOfType<UprootConfirmationPopupUI>();
+            OpenTileInteractionMenu(false);
+
+            if (!uprootConfirmationPopupUI) uprootConfirmationPopupUI = FindObjectOfType<UprootConfirmationPopupUI>();
 
             if(uprootConfirmationPopupUI == null)
             {
                 Debug.LogWarning("Uproot option is selected but no UprootConfirmationPopupUI object is found in scene! Uproot confirmation failed!");
+
                 return;
             }
 
-            OpenTileInteractionMenu(false);
+            //if there are multiple tiles (and their plants) being selected for uproot (processed through UnitGroupSelectionManager.cs)
+            if (UnitGroupSelectionManager.unitGroupSelectionManagerInstance)
+            {
+                if(UnitGroupSelectionManager.unitGroupSelectionManagerInstance.unitGroupSelected != null &&
+                   UnitGroupSelectionManager.unitGroupSelectionManagerInstance.unitGroupSelected.Count > 0)
+                {
+                    Tile[] selectedTiles = new Tile[UnitGroupSelectionManager.unitGroupSelectionManagerInstance.unitGroupSelected.Count];
 
+                    int count = 0;
+
+                    foreach(IUnit unit in UnitGroupSelectionManager.unitGroupSelectionManagerInstance.unitGroupSelected)
+                    {
+                        if(unit == null) continue;
+
+                        if(unit is not PlantUnit) continue;
+
+                        selectedTiles[count] = unit.GetTileUnitIsOn();
+
+                        count++;
+                    }
+
+                    if(selectedTiles.Length > 0)
+                    {
+                        uprootConfirmationPopupUI.ActivateUprootConfirmationPopupForMultipleTiles(selectedTiles, true);
+
+                        return;
+                    }
+                }
+            }
+
+            //else
+
+            //if only this tile and its plant is being selected for uproot
             uprootConfirmationPopupUI.ActivateUprootConfirmationPopupForTile(tileHoldingThisMenu, true);
         }
 

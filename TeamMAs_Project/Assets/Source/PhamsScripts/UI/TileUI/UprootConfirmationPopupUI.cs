@@ -1,8 +1,6 @@
 // Script Author: Pham Nguyen. All Rights Reserved. 
 // GitHub: https://github.com/EricNguyen01.
 
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
@@ -17,7 +15,7 @@ namespace TeamMAsTD
 
         [SerializeField] private TextMeshProUGUI uprootPopupMessageText;
 
-        [SerializeField][TextArea] private string popupConfirmationMessage;
+        [SerializeField] [TextArea] private string popupConfirmationMessage;
 
         [SerializeField] private StatPopupSpawner insufficientFundToUprootPopupPrefab;
 
@@ -26,6 +24,12 @@ namespace TeamMAsTD
         //INTERNALS.....................................................................................
 
         private Tile tileWithUnitToUproot;
+
+        private Tile[] multiTilesToUproot;
+
+        private int uprootCosts = 0;
+
+        private int refunds = 0;
 
         //PRIVATES......................................................................................
 
@@ -40,19 +44,16 @@ namespace TeamMAsTD
             //disable display and interaction of popup on awake
             ShowUprootConfirmationPopup(false);
 
-            if (!string.IsNullOrEmpty(popupConfirmationMessage))
+            if (uprootPopupMessageText == null)
             {
-                if(uprootPopupMessageText == null)
-                {
-                    Debug.LogWarning("Uproot popup confirmation message is set in: " + name + " but no TMPro text UI component is assigned to display this message.");
-                }
-                else
-                {
-                    uprootPopupMessageText.text = popupConfirmationMessage;
-                }
+                Debug.LogWarning("Uproot popup confirmation UI: " + name + " has no TMPro text UI component assigned to display uproot message.");
+            }
+            else
+            {
+                SetUprootCostToUprootMessage(0, 0);
             }
 
-            if(insufficientFundToUprootPopupPrefab != null)
+            if (insufficientFundToUprootPopupPrefab != null)
             {
                 GameObject go = null;
 
@@ -83,25 +84,126 @@ namespace TeamMAsTD
             }
         }
 
+        private void Start()
+        {
+            Rain.OnRainStarted += (Rain r) =>
+            {
+                ShowUprootConfirmationPopup(false);
+
+                if (UnitGroupSelectionManager.unitGroupSelectionManagerInstance)
+                {
+                    UnitGroupSelectionManager.unitGroupSelectionManagerInstance.EnableUnitGroupSelection(false);
+                }
+
+                if (TileMenuInteractionHandler.tileMenuInteractionHandlerInstance)
+                {
+                    if (TileMenuInteractionHandler.tileMenuInteractionHandlerInstance.isCheckingForTileMenuInteractions)
+                        TileMenuInteractionHandler.tileMenuInteractionHandlerInstance.EnableCheckForTileMenuInteractions(false);
+                }
+            };
+        }
+
+        private void OnDestroy()
+        {
+            Rain.OnRainStarted -= (Rain r) =>
+            {
+                ShowUprootConfirmationPopup(false);
+
+                if (UnitGroupSelectionManager.unitGroupSelectionManagerInstance)
+                {
+                    UnitGroupSelectionManager.unitGroupSelectionManagerInstance.EnableUnitGroupSelection(false);
+                }
+
+                if (TileMenuInteractionHandler.tileMenuInteractionHandlerInstance)
+                {
+                    if (TileMenuInteractionHandler.tileMenuInteractionHandlerInstance.isCheckingForTileMenuInteractions)
+                        TileMenuInteractionHandler.tileMenuInteractionHandlerInstance.EnableCheckForTileMenuInteractions(false);
+                }
+            };
+        }
+
         //Get the tile with a unit currently on that tile that the player has just clicked on and chosen the option of uprooting.
         private void SetTileWithUnitToUproot(Tile tileSelected)
         {
             tileWithUnitToUproot = tileSelected;
         }
 
+        private void SetMultiTilesToUproot(Tile[] tiles)
+        {
+            if(tiles == null || tiles.Length == 0)
+            {
+                multiTilesToUproot = null;
+
+                return;
+            }
+
+            multiTilesToUproot = tiles;
+        }
+
+        private void SetUprootCostToUprootMessage(int uprootCost, int unitNum)
+        {
+            if(string.IsNullOrEmpty(popupConfirmationMessage) || string.IsNullOrWhiteSpace(popupConfirmationMessage))
+            {
+                popupConfirmationMessage = "Do you want to spend ${uprootCost} to uproot {unitNum} unit(s)?";
+            }
+
+            if (!popupConfirmationMessage.Contains("uprootCost"))
+            {
+                popupConfirmationMessage = "Do you want to spend ${uprootCost} to uproot {unitNum} unit(s)?";
+            }
+
+            popupConfirmationMessage = popupConfirmationMessage.Replace("{uprootCost}", $"{uprootCost}");
+
+            popupConfirmationMessage = popupConfirmationMessage.Replace("{unitNum}", $"{unitNum}");
+
+            uprootPopupMessageText.text = popupConfirmationMessage;
+        }
+
         private void ShowUprootConfirmationPopup(bool show)
         {
             if (show)//if popup is enabled
             {
-                uprootPopupCanvasGroup.interactable = true;//enable popup interaction
-                uprootPopupCanvasGroup.blocksRaycasts = true;//block interaction with everything else beneath popup
-                uprootPopupCanvasGroup.alpha = 1.0f;//display popup
+                if (uprootPopupCanvasGroup)
+                {
+                    uprootPopupCanvasGroup.interactable = true;//enable popup interaction
+
+                    uprootPopupCanvasGroup.blocksRaycasts = true;//block interaction with everything else beneath popup
+
+                    uprootPopupCanvasGroup.alpha = 1.0f;//display popup
+                }
+                
+                if (UnitGroupSelectionManager.unitGroupSelectionManagerInstance)
+                {
+                    UnitGroupSelectionManager.unitGroupSelectionManagerInstance.EnableUnitGroupSelection(false);
+                }
+
+                if (TileMenuInteractionHandler.tileMenuInteractionHandlerInstance)
+                {
+                    if (TileMenuInteractionHandler.tileMenuInteractionHandlerInstance.isCheckingForTileMenuInteractions)
+                        TileMenuInteractionHandler.tileMenuInteractionHandlerInstance.EnableCheckForTileMenuInteractions(false);
+                }
             }
             else //if popup disabled->do the opposite of the above if
             {
-                uprootPopupCanvasGroup.interactable = false;
-                uprootPopupCanvasGroup.blocksRaycasts = false;
-                uprootPopupCanvasGroup.alpha = 0.0f;
+                if (uprootPopupCanvasGroup)
+                {
+                    uprootPopupCanvasGroup.interactable = false;
+
+                    uprootPopupCanvasGroup.blocksRaycasts = false;
+
+                    uprootPopupCanvasGroup.alpha = 0.0f;
+                }
+
+                if (UnitGroupSelectionManager.unitGroupSelectionManagerInstance)
+                {
+                    UnitGroupSelectionManager.unitGroupSelectionManagerInstance.EnableUnitGroupSelection(true);
+                }
+
+                if (TileMenuInteractionHandler.tileMenuInteractionHandlerInstance)
+                {
+                    if (TileMenuInteractionHandler.tileMenuInteractionHandlerInstance.isCheckingForTileMenuInteractions)
+                        TileMenuInteractionHandler.tileMenuInteractionHandlerInstance.EnableCheckForTileMenuInteractions(true);
+                }
             }
         }
 
@@ -110,50 +212,134 @@ namespace TeamMAsTD
         public void ActivateUprootConfirmationPopupForTile(Tile tileSelected, bool showPopupStatus)
         {
             SetTileWithUnitToUproot(tileSelected);
-            ShowUprootConfirmationPopup(showPopupStatus);
 
-            //set current EventSystem selected object to this obj to use with OnDeselect() later
-            //EventSystem.current.SetSelectedGameObject(gameObject);
+            if (!tileWithUnitToUproot) return;
+
+            uprootCosts = 0;
+
+            refunds = 0;
+
+            if(tileWithUnitToUproot && tileWithUnitToUproot.plantUnitOnTile && tileWithUnitToUproot.plantUnitOnTile.plantUnitScriptableObject)
+            {
+                uprootCosts = tileWithUnitToUproot.plantUnitOnTile.plantUnitScriptableObject.uprootCost;
+
+                refunds = tileWithUnitToUproot.plantUnitOnTile.plantUnitScriptableObject.uprootRefundAmount;
+            }
+
+            SetUprootCostToUprootMessage(uprootCosts, 1);
+            
+            ShowUprootConfirmationPopup(showPopupStatus);
+        }
+
+        public void ActivateUprootConfirmationPopupForMultipleTiles(Tile[] selectedTiles, bool showPopupStatus)
+        {
+            SetMultiTilesToUproot(selectedTiles);
+
+            if (multiTilesToUproot == null || multiTilesToUproot.Length == 0) return;
+
+            uprootCosts = 0;
+
+            refunds = 0;
+
+            int unitNum = 0;
+
+            for(int i = 0; i < selectedTiles.Length; i++)
+            {
+                if (!selectedTiles[i]) continue;
+
+                if(!selectedTiles[i].plantUnitOnTile) continue;
+
+                if (!selectedTiles[i].plantUnitOnTile.plantUnitScriptableObject) continue;
+
+                uprootCosts += selectedTiles[i].plantUnitOnTile.plantUnitScriptableObject.uprootCost;
+
+                refunds += selectedTiles[i].plantUnitOnTile.plantUnitScriptableObject.uprootRefundAmount;
+
+                unitNum++;
+            }
+
+            SetUprootCostToUprootMessage(uprootCosts, unitNum);
+
+            ShowUprootConfirmationPopup(showPopupStatus);
         }
 
         //Select Uproot button - Button UI UnityEvent function set manually in the inspector
         public void OnPlayerConfirmedUproot()
         {
-            if(tileWithUnitToUproot != null)
+            float costAmount = uprootCosts;
+
+            float refundAmount = refunds;
+
+            if (GameResource.gameResourceInstance != null && GameResource.gameResourceInstance.coinResourceSO != null)
             {
-                //process uproot coins cost and refund
-                if (GameResource.gameResourceInstance != null && GameResource.gameResourceInstance.coinResourceSO != null)
+                if (GameResource.gameResourceInstance.coinResourceSO.resourceAmount < costAmount)
                 {
-                    if(tileWithUnitToUproot.plantUnitOnTile != null)
+                    if (multiTilesToUproot != null && multiTilesToUproot.Length > 0)
                     {
-                        float costAmount = tileWithUnitToUproot.plantUnitOnTile.plantUnitScriptableObject.uprootCost;
-
-                        //if there's an uproot cost amount and current coins < uproot cost -> stop uproot
-                        if (GameResource.gameResourceInstance.coinResourceSO.resourceAmount < costAmount) 
+                        for(int i = 0; i < multiTilesToUproot.Length; i++)
                         {
-                            tileWithUnitToUproot.UprootingInsufficientFundsEventInvoke();
+                            if (!multiTilesToUproot[i]) continue;
 
-                            ProcessInsufficientFundToUprootPopup();
+                            multiTilesToUproot[i].UprootingInsufficientFundsEventInvoke();
 
-                            return; 
+                            break;
                         }
-
-                        float refundAmount = tileWithUnitToUproot.plantUnitOnTile.plantUnitScriptableObject.uprootRefundAmount;
-
-                        GameResource.gameResourceInstance.coinResourceSO.RemoveResourceAmount(costAmount);
-
-                        GameResource.gameResourceInstance.coinResourceSO.AddResourceAmount(refundAmount);
                     }
+                    else
+                    {
+                        if(tileWithUnitToUproot) tileWithUnitToUproot.UprootingInsufficientFundsEventInvoke();
+                    }
+
+                    ProcessInsufficientFundToUprootPopup();
+
+                    return;
                 }
 
-                //performs uproot
-                tileWithUnitToUproot.UprootUnit(0.0f);
+                GameResource.gameResourceInstance.coinResourceSO.RemoveResourceAmount(costAmount);
+
+                GameResource.gameResourceInstance.coinResourceSO.AddResourceAmount(refundAmount);
             }
-            else
+
+            if (multiTilesToUproot != null && multiTilesToUproot.Length > 0)
             {
-                Debug.LogWarning("Unit uproot is confirmed but there is no selected tile with unit to uproot reference found for uprooting " +
-                "(tileWithUnitToUproot var is null!).");
+                //handle multi uproots here:
+
+                //first, force destroy immediate all the ability effects popups and popup spawners on all plants that will be uprooted
+                for (int i = 0; i < multiTilesToUproot.Length; i++)
+                {
+                    if (!multiTilesToUproot[i]) continue;
+
+                    if (!multiTilesToUproot[i].plantUnitOnTile) continue;
+
+                    AbilityEffectReceivedInventory plantAbilityEffectsReceivedInventory = multiTilesToUproot[i].plantUnitOnTile.GetAbilityEffectReceivedInventory();
+
+                    if (!plantAbilityEffectsReceivedInventory) continue;
+
+                    plantAbilityEffectsReceivedInventory.ForceDestroyImmediate_AllReceivedEffectsStatPopups_AndPopupSpawners();
+                }
+
+                //then, proceed to uproot the plants
+                for (int i = 0; i < multiTilesToUproot.Length; i++)
+                {
+                    if (!multiTilesToUproot[i]) continue;
+
+                    multiTilesToUproot[i].UprootUnit();
+                }
+
+                multiTilesToUproot = null;
+
+                goto ClosePopup;
             }
+
+            if (tileWithUnitToUproot)
+            {
+                //performs single uproot
+                tileWithUnitToUproot.UprootUnit(0.0f);
+
+                tileWithUnitToUproot = null;
+            }
+
+        ClosePopup:
 
             //stop showing popup after button pressed
             ShowUprootConfirmationPopup(false);
