@@ -104,6 +104,7 @@ Library: D:\UnityProject\TeamMAsProject\TeamMAs_Project\Temp\StagingArea\Data\Pl
 --compilation-defines=ENABLE_TERRAIN
 --compilation-defines=ENABLE_TILEMAP
 --compilation-defines=ENABLE_TIMELINE
+--compilation-defines=ENABLE_INPUT_SYSTEM
 --compilation-defines=ENABLE_LEGACY_INPUT_MANAGER
 --compilation-defines=TEXTCORE_FONT_ENGINE_1_5_OR_NEWER
 --compilation-defines=TMP_PRESENT
@@ -114,8 +115,6 @@ Library: D:\UnityProject\TeamMAsProject\TeamMAs_Project\Temp\StagingArea\Data\Pl
 --compilation-defines=PACKAGE_UITOOLKIT
 --compilation-defines=CSHARP_7_OR_LATER
 --compilation-defines=CSHARP_7_3_OR_NEWER
---compilation-defines=ENABLE_VR_MODULE
---compilation-defines=ENABLE_XR_MODULE
 --compilation-defines=ENABLE_BURST_1_0_0_OR_NEWER
 --compilation-defines=USING_ANIMATION_MODULE
 --compilation-defines=USING_PHYSICS2D_MODULE
@@ -254,6 +253,7 @@ Library: D:\UnityProject\TeamMAsProject\TeamMAs_Project\Temp\StagingArea\Data\Pl
 --compilation-defines=ENABLE_TERRAIN
 --compilation-defines=ENABLE_TILEMAP
 --compilation-defines=ENABLE_TIMELINE
+--compilation-defines=ENABLE_INPUT_SYSTEM
 --compilation-defines=ENABLE_LEGACY_INPUT_MANAGER
 --compilation-defines=TEXTCORE_FONT_ENGINE_1_5_OR_NEWER
 --compilation-defines=TMP_PRESENT
@@ -264,8 +264,6 @@ Library: D:\UnityProject\TeamMAsProject\TeamMAs_Project\Temp\StagingArea\Data\Pl
 --compilation-defines=PACKAGE_UITOOLKIT
 --compilation-defines=CSHARP_7_OR_LATER
 --compilation-defines=CSHARP_7_3_OR_NEWER
---compilation-defines=ENABLE_VR_MODULE
---compilation-defines=ENABLE_XR_MODULE
 --compilation-defines=ENABLE_BURST_1_0_0_OR_NEWER
 --compilation-defines=USING_ANIMATION_MODULE
 --compilation-defines=USING_PHYSICS2D_MODULE

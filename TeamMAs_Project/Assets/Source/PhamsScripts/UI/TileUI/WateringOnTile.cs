@@ -7,6 +7,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 using TMPro;
+using System.Linq;
 
 namespace TeamMAsTD
 {
@@ -88,6 +89,44 @@ namespace TeamMAsTD
         {
             if (!enabled) return;
 
+            //if UnitGroupSelectionManagerInstance exists -> meaning that multi-plant units selection functionality is active
+            //and if multiple plant units are currently being selected (unitGroupSelected's count > 1)
+            //process multi plant units watering instead of single and then return
+
+            if (!UnitGroupSelectionManager.unitGroupSelectionManagerInstance) goto WaterSingleTile;
+
+            if (UnitGroupSelectionManager.unitGroupSelectionManagerInstance.unitGroupSelected == null ||
+                UnitGroupSelectionManager.unitGroupSelectionManagerInstance.unitGroupSelected.Count <= 1) goto WaterSingleTile;
+
+            IUnit[] selectedUnits = UnitGroupSelectionManager.unitGroupSelectionManagerInstance.unitGroupSelected.ToArray();
+
+            Tile[] tilesToWater = new Tile[UnitGroupSelectionManager.unitGroupSelectionManagerInstance.unitGroupSelected.Count];
+
+            int tilesToWaterIterCount = 0;
+
+            for(int i = 0; i < selectedUnits.Length; i++)
+            {
+                if (selectedUnits[i] == null) continue;
+
+                if (selectedUnits[i] is not PlantUnit) continue;
+
+                if (!selectedUnits[i].GetTileUnitIsOn()) continue;
+
+                tilesToWater[tilesToWaterIterCount] = selectedUnits[i].GetTileUnitIsOn();
+
+                tilesToWaterIterCount++;
+            }
+
+            WaterMultiTiles(tilesToWater);
+
+            return;
+
+            //else
+
+            //if only 1 plant unit being selected for watering 
+
+        WaterSingleTile:
+
             if (tileToWater.plantUnitOnTile == null) return;
 
             PlantWaterUsageSystem tilePlantWaterUsageSystem = tileToWater.plantUnitOnTile.plantWaterUsageSystem;
@@ -111,8 +150,53 @@ namespace TeamMAsTD
             SpawnAndDestroy_WateringSoundPlayer_IfNotNull();
 
             tilePlantWaterUsageSystem.RefillWaterBars(waterBarsToRefill, wateringCoinsCost);
+        }
 
-            //SaveLoadHandler.SaveThisSaveableOnly(saveable);
+        public void WaterMultiTiles(Tile[] tilesToWater)
+        {
+            if (tilesToWater == null || tilesToWater.Length == 0) return;
+
+            int totalWateringCosts = 0;
+
+            for(int i = 0; i < tilesToWater.Length; i++)
+            {
+                if (!tilesToWater[i]) continue;
+
+                if (!tilesToWater[i].plantUnitOnTile) continue;
+
+                if (!tilesToWater[i].plantUnitOnTile.plantWaterUsageSystem) continue;
+
+                PlantWaterUsageSystem tilePlantWaterUsageSystem = tilesToWater[i].plantUnitOnTile.plantWaterUsageSystem;
+
+                if (tilePlantWaterUsageSystem.IsWaterFull()) continue;
+
+                totalWateringCosts += tilesToWater[i].plantUnitOnTile.plantUnitScriptableObject.wateringCoinsCost;
+            }
+
+            if (HasInsufficientWateringFund(totalWateringCosts)) return;
+
+            SpawnAndDestroy_WateringSoundPlayer_IfNotNull();
+
+            for(int i = 0; i < tilesToWater.Length; i++)
+            {
+                if (!tilesToWater[i]) continue;
+
+                if (!tilesToWater[i].plantUnitOnTile) continue;
+
+                if (!tilesToWater[i].plantUnitOnTile.plantWaterUsageSystem) continue;
+
+                if (!tilesToWater[i].plantUnitOnTile.plantUnitScriptableObject) continue;
+
+                PlantWaterUsageSystem tilePlantWaterUsageSystem = tilesToWater[i].plantUnitOnTile.plantWaterUsageSystem;
+
+                if (tilePlantWaterUsageSystem.IsWaterFull()) continue;
+
+                int waterBarsToRefill = tilesToWater[i].plantUnitOnTile.plantUnitScriptableObject.waterBarsRefilledPerWatering;
+
+                int wateringCoinsCost = tilesToWater[i].plantUnitOnTile.plantUnitScriptableObject.wateringCoinsCost;
+
+                tilePlantWaterUsageSystem.RefillWaterBars(waterBarsToRefill, wateringCoinsCost);
+            }
         }
 
         private bool HasInsufficientWateringFund(int wateringCoinsCost)

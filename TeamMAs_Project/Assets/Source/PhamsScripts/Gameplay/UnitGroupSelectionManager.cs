@@ -446,9 +446,13 @@ namespace TeamMAsTD
                                 {
                                     TileMenuAndUprootOnTileUI tileMenu = targettedPlantUnit.GetTileUnitIsOn().tileMenuAndUprootOnTileUI;
 
-                                    if (tileMenu)
+                                    if (!tileMenu.isOpened)
                                     {
-                                        TileMenuInteractionHandler.tileMenuInteractionHandlerInstance.SetTileMenuInteractedManually(tileMenu, TileMenuInteractionHandler.TileMenuInteractionOptions.Toggle);
+                                        TileMenuInteractionHandler.tileMenuInteractionHandlerInstance.SetTileMenuInteractedManually(tileMenu, TileMenuInteractionHandler.TileMenuInteractionOptions.Open);
+                                    }
+                                    else
+                                    {
+                                        RemoveUnselectedUnit(targettedUnit, true);
                                     }
                                 }
                             }
