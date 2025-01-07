@@ -41,9 +41,9 @@ namespace TeamMAsTD
 
         private CanvasScaler dragSelectionCanvasScaler;
 
-        private GraphicRaycaster graphicRaycaster;
+        //private GraphicRaycaster graphicRaycaster;
 
-        private List<RaycastResult> graphicRaycastResults;
+        private List<RaycastResult> raycastResults = new List<RaycastResult>();
 
         private PointerEventData pointerEventData;
 
@@ -104,10 +104,10 @@ namespace TeamMAsTD
 
             dragSelectionCanvasScaler.referencePixelsPerUnit = 100.0f;
 
-            if(!TryGetComponent<GraphicRaycaster>(out graphicRaycaster))
+            /*if(!TryGetComponent<GraphicRaycaster>(out graphicRaycaster))
             {
                 graphicRaycaster = dragSelectionCanvas.gameObject.AddComponent<GraphicRaycaster>();
-            }
+            }*/
 
             if (!dragSelectionBoxImage)
             {
@@ -177,14 +177,27 @@ namespace TeamMAsTD
                 return;
             }
 
+            if (dragSelectionAllowedArea && !dragSelectionAllowedArea.enabled)
+            {
+                dragSelectionAllowedArea.enabled = true;
+            }
+
             pointerEventData = new PointerEventData(EventSystem.current);
+        }
+
+        private void OnDisable()
+        {
+            if (dragSelectionAllowedArea && dragSelectionAllowedArea.enabled)
+            {
+                dragSelectionAllowedArea.enabled = false;
+            }
         }
 
         private void Update()
         {
             if (!enabled || !dragSelectionBoxEnabled) return;
 
-            if (!EventSystem.current || !graphicRaycaster ||!dragSelectionCanvas.worldCamera)
+            if (!EventSystem.current || !dragSelectionCanvas.worldCamera /*|| !graphicRaycaster*/ )
             {
                 enabled = false;
 
@@ -465,15 +478,13 @@ namespace TeamMAsTD
 
             if (!dragSelectionAllowedArea) return;
 
-            if(graphicRaycastResults == null) graphicRaycastResults = new List<RaycastResult>();
+            raycastResults.Clear();
 
             pointerEventData.position = Input.mousePosition;
 
-            if(graphicRaycastResults.Count > 0) graphicRaycastResults.Clear();
+            EventSystem.current.RaycastAll(pointerEventData, raycastResults);
 
-            graphicRaycaster.Raycast(pointerEventData, graphicRaycastResults);
-
-            if(graphicRaycastResults.Count == 0)
+            if(raycastResults.Count == 0)
             {
                 canDrag = false;
             }
@@ -481,19 +492,27 @@ namespace TeamMAsTD
             {
                 bool dragable = false;
 
-                for (int i = 0; i < graphicRaycastResults.Count; i++)
+                for (int i = 0; i < raycastResults.Count; i++)
                 {
-                    if (!graphicRaycastResults[i].isValid) continue;
+                    if (!raycastResults[i].isValid) continue;
 
-                    if (graphicRaycastResults[i].gameObject.layer == LayerMask.GetMask("UI") ||
-                        graphicRaycastResults[i].gameObject.layer == LayerMask.NameToLayer("UI"))
+                    if (raycastResults[i].gameObject.layer == LayerMask.GetMask("UI") ||
+                        raycastResults[i].gameObject.layer == LayerMask.NameToLayer("UI"))
+                    {
+                        if(raycastResults[i].gameObject.transform.root.name.Contains("Grid") ||
+                           raycastResults[i].gameObject.transform.root.name.Contains("Tile"))
+                        {
+                            continue;
+                        }
+
+                        break;
+                    }
+
+                    if (raycastResults[i].sortingLayer == dragSelectionCanvas.sortingLayerID &&
+                        raycastResults[i].sortingOrder > dragSelectionCanvas.sortingOrder)
                         break;
 
-                    if (graphicRaycastResults[i].sortingLayer == dragSelectionCanvas.sortingLayerID &&
-                        graphicRaycastResults[i].sortingOrder > dragSelectionCanvas.sortingOrder)
-                        break;
-
-                    if (graphicRaycastResults[i].gameObject == dragSelectionAllowedArea.gameObject)
+                    if (raycastResults[i].gameObject == dragSelectionAllowedArea.gameObject)
                     {
                         dragable = true;
 

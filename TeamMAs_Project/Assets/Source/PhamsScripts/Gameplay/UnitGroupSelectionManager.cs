@@ -6,8 +6,8 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-using static UnityEngine.UI.CanvasScaler;
 
 namespace TeamMAsTD
 {
@@ -52,7 +52,9 @@ namespace TeamMAsTD
                 return;
             }
 
-            unitGroupSelectionManagerInstance = this;   
+            unitGroupSelectionManagerInstance = this;
+
+            DontDestroyOnLoad(gameObject);
 
             dragSelectionBoxUI = GetComponent<DragSelectionBoxUI>();
 
@@ -62,6 +64,12 @@ namespace TeamMAsTD
             }
             
             dragSelectionBoxUI.InitDragSelectionBoxUI(this);
+
+            SceneManager.sceneLoaded += (Scene sc, LoadSceneMode loadMode) =>
+            {
+                if (sc.name.Contains("Menu")) enabled = false;
+                else enabled = true;
+            };
         }
 
         private void OnEnable()
@@ -76,19 +84,21 @@ namespace TeamMAsTD
                 return;
             }
 
+            if(dragSelectionBoxUI && !dragSelectionBoxUI.enabled) dragSelectionBoxUI.enabled = true;
+
+            if (TileMenuInteractionHandler.tileMenuInteractionHandlerInstance)
+            {
+                if (TileMenuInteractionHandler.tileMenuInteractionHandlerInstance.isCheckingForTileMenuInteractions)
+                {
+                    TileMenuInteractionHandler.tileMenuInteractionHandlerInstance.EnableCheckForTileMenuInteractions(false);
+                }
+            }
+
             Rain.OnRainStarted += (Rain r) =>
             {
                 EnableUnitGroupSelection(false);
 
                 RemoveAllSelectedUnits();
-
-                if (TileMenuInteractionHandler.tileMenuInteractionHandlerInstance)
-                {
-                    if (TileMenuInteractionHandler.tileMenuInteractionHandlerInstance.isCheckingForTileMenuInteractions)
-                    {
-                        TileMenuInteractionHandler.tileMenuInteractionHandlerInstance.EnableCheckForTileMenuInteractions(false);
-                    }
-                }
             };
 
             Rain.OnRainEnded += (Rain r) => EnableUnitGroupSelection(true);
@@ -96,6 +106,19 @@ namespace TeamMAsTD
 
         private void OnDisable()
         {
+            if (dragSelectionBoxUI && dragSelectionBoxUI.enabled) dragSelectionBoxUI.enabled = false;
+
+            Rain.OnRainStarted -= (Rain r) => 
+            {
+                EnableUnitGroupSelection(false);
+
+                RemoveAllSelectedUnits();
+            };
+
+            Rain.OnRainEnded -= (Rain r) => EnableUnitGroupSelection(true);
+
+            RemoveAllSelectedUnits();
+
             if (TileMenuInteractionHandler.tileMenuInteractionHandlerInstance)
             {
                 if (!TileMenuInteractionHandler.tileMenuInteractionHandlerInstance.isCheckingForTileMenuInteractions)
@@ -103,23 +126,15 @@ namespace TeamMAsTD
                     TileMenuInteractionHandler.tileMenuInteractionHandlerInstance.EnableCheckForTileMenuInteractions(true);
                 }
             }
+        }
 
-            Rain.OnRainStarted -= (Rain r) => 
+        private void OnDestroy()
+        {
+            SceneManager.sceneLoaded -= (Scene sc, LoadSceneMode loadMode) =>
             {
-                EnableUnitGroupSelection(false);
-
-                RemoveAllSelectedUnits();
-
-                if (TileMenuInteractionHandler.tileMenuInteractionHandlerInstance)
-                {
-                    if (TileMenuInteractionHandler.tileMenuInteractionHandlerInstance.isCheckingForTileMenuInteractions)
-                    {
-                        TileMenuInteractionHandler.tileMenuInteractionHandlerInstance.EnableCheckForTileMenuInteractions(false);
-                    }
-                }
+                if (sc.name.Contains("Menu")) enabled = false;
+                else enabled = true;
             };
-
-            Rain.OnRainEnded -= (Rain r) => EnableUnitGroupSelection(true);
         }
 
 #if ENABLE_LEGACY_INPUT_MANAGER
@@ -182,25 +197,27 @@ namespace TeamMAsTD
                 {
                     PlantUnit plantUnit = selectedUnit as PlantUnit;
 
-                    if(plantUnit.GetTileUnitIsOn() && plantUnit.GetTileUnitIsOn().tileGlowComp)
+                    if (plantUnit.GetTileUnitIsOn())
                     {
-                        if (!plantUnit.GetTileUnitIsOn().tileGlowComp.isTileGlowing)
-                            plantUnit.GetTileUnitIsOn().tileGlowComp.EnableTileGlowEffect(TileGlow.TileGlowMode.PositiveGlow);
-                    }
-
-                    if (TileMenuInteractionHandler.tileMenuInteractionHandlerInstance)
-                    {
-                        if (TileMenuInteractionHandler.tileMenuInteractionHandlerInstance.isCheckingForTileMenuInteractions)
+                        if (plantUnit.GetTileUnitIsOn().tileGlowComp)
                         {
-                            TileMenuInteractionHandler.tileMenuInteractionHandlerInstance.EnableCheckForTileMenuInteractions(false);
+                            if (!plantUnit.GetTileUnitIsOn().tileGlowComp.isTileGlowing)
+                                plantUnit.GetTileUnitIsOn().tileGlowComp.EnableTileGlowEffect(TileGlow.TileGlowMode.PositiveGlow);
                         }
 
-                        if (plantUnit.GetTileUnitIsOn())
-                        {
-                            TileMenuAndUprootOnTileUI tileMenu = plantUnit.GetTileUnitIsOn().tileMenuAndUprootOnTileUI;
+                        TileMenuAndUprootOnTileUI tileMenu = plantUnit.GetTileUnitIsOn().tileMenuAndUprootOnTileUI;
 
-                            if(tileMenu && !tileMenu.isOpened)
+                        if (TileMenuInteractionHandler.tileMenuInteractionHandlerInstance)
+                        {
+                            if (TileMenuInteractionHandler.tileMenuInteractionHandlerInstance.isCheckingForTileMenuInteractions)
+                            {
+                                TileMenuInteractionHandler.tileMenuInteractionHandlerInstance.EnableCheckForTileMenuInteractions(false);
+                            }
+
+                            if (tileMenu && !tileMenu.isOpened)
+                            {
                                 TileMenuInteractionHandler.tileMenuInteractionHandlerInstance.SetTileMenuInteractedManually(tileMenu, TileMenuInteractionHandler.TileMenuInteractionOptions.Open);
+                            }
                         }
                     }
                 }
@@ -214,7 +231,7 @@ namespace TeamMAsTD
             if(unselectedUnit == null) return;
 
             bool shouldOpenNextInLineTileMenu = false;
-            
+
             if (unitGroupSelected.Contains(unselectedUnit))
             {
                 if (unitGroupSelected.Remove(unselectedUnit))
@@ -223,19 +240,19 @@ namespace TeamMAsTD
                     {
                         PlantUnit plantUnit = unselectedUnit as PlantUnit;
 
-                        if (plantUnit.GetTileUnitIsOn() && plantUnit.GetTileUnitIsOn().tileGlowComp)
+                        if (plantUnit.GetTileUnitIsOn())
                         {
-                            if (plantUnit.GetTileUnitIsOn().tileGlowComp.isTileGlowing)
-                                plantUnit.GetTileUnitIsOn().tileGlowComp.DisableTileGlowEffect();
-                        }
-
-                        if (TileMenuInteractionHandler.tileMenuInteractionHandlerInstance)
-                        {
-                            if (plantUnit.GetTileUnitIsOn())
+                            if (plantUnit.GetTileUnitIsOn().tileGlowComp)
                             {
-                                TileMenuAndUprootOnTileUI tileMenu = plantUnit.GetTileUnitIsOn().tileMenuAndUprootOnTileUI;
+                                if (plantUnit.GetTileUnitIsOn().tileGlowComp.isTileGlowing)
+                                    plantUnit.GetTileUnitIsOn().tileGlowComp.DisableTileGlowEffect();
+                            }
 
-                                if(tileMenu && tileMenu.isOpened)
+                            TileMenuAndUprootOnTileUI tileMenu = plantUnit.GetTileUnitIsOn().tileMenuAndUprootOnTileUI;
+
+                            if (TileMenuInteractionHandler.tileMenuInteractionHandlerInstance)
+                            {
+                                if (tileMenu && tileMenu.isOpened)
                                 {
                                     TileMenuInteractionHandler.tileMenuInteractionHandlerInstance.SetTileMenuInteractedManually(tileMenu, TileMenuInteractionHandler.TileMenuInteractionOptions.Close);
 
@@ -250,47 +267,36 @@ namespace TeamMAsTD
                     DEBUG_unitGroupSelectedReadOnly.Remove(unselectedUnit.GetUnitTransform().gameObject);
                 }
 
-                if(unitGroupSelected.Count == 0)
+                if (unitGroupSelected.Count == 0)
                 {
-                    //if all units in unit group selected are removed -> re-enable tile menu interactions if not already
-                    goto ReEnableTileMenuInteractions;
+                    return;
                 }
+
+                if (!shouldOpenNextInLineTileMenu) return;
 
                 IUnit[] selectedUnitGroup = unitGroupSelected.ToArray();
 
-                for(int i = selectedUnitGroup.Length - 1; i >= 0; i--)
+                for (int i = selectedUnitGroup.Length - 1; i >= 0; i--)
                 {
                     if (selectedUnitGroup[i] == null) continue;
 
-                    //if there are still PlantUnits after removed -> do not re-enable tile menu interactions and exit func here
-                    if (selectedUnitGroup[i] is PlantUnit)
+                    if (selectedUnitGroup[i] is not PlantUnit) continue;
+
+                    if (!selectedUnitGroup[i].GetTileUnitIsOn()) continue;
+
+                    if (!selectedUnitGroup[i].GetTileUnitIsOn().tileMenuAndUprootOnTileUI) continue;
+
+                    TileMenuAndUprootOnTileUI tileMenu = selectedUnitGroup[i].GetTileUnitIsOn().tileMenuAndUprootOnTileUI;
+
+                    if (TileMenuInteractionHandler.tileMenuInteractionHandlerInstance)
                     {
-                        //Since we alr removed a selected plant unit (which means its tile menu is closed),
-                        //and we've found another selected plant unit next in line
-                        //open its tile menu instead
-                        if (TileMenuInteractionHandler.tileMenuInteractionHandlerInstance)
+                        if (!tileMenu.isOpened)
                         {
-                            if (selectedUnitGroup[i].GetTileUnitIsOn())
-                            {
-                                TileMenuAndUprootOnTileUI tileMenu = selectedUnitGroup[i].GetTileUnitIsOn().tileMenuAndUprootOnTileUI;
-
-                                if (tileMenu && !tileMenu.isOpened && shouldOpenNextInLineTileMenu)
-                                    TileMenuInteractionHandler.tileMenuInteractionHandlerInstance.SetTileMenuInteractedManually(tileMenu, TileMenuInteractionHandler.TileMenuInteractionOptions.Open);
-                            }
+                            TileMenuInteractionHandler.tileMenuInteractionHandlerInstance.SetTileMenuInteractedManually(tileMenu, TileMenuInteractionHandler.TileMenuInteractionOptions.Open);
                         }
-
-                        return;
                     }
-                }
 
-            ReEnableTileMenuInteractions:
-
-                if (TileMenuInteractionHandler.tileMenuInteractionHandlerInstance)
-                {
-                    if (!TileMenuInteractionHandler.tileMenuInteractionHandlerInstance.isCheckingForTileMenuInteractions)
-                    {
-                        TileMenuInteractionHandler.tileMenuInteractionHandlerInstance.EnableCheckForTileMenuInteractions(true);
-                    }
+                    break;
                 }
             }
         }
@@ -319,37 +325,15 @@ namespace TeamMAsTD
             {
                 if (selectedUnitGroup[i] == null) continue;
 
-                if(selectedUnitGroup[i] is PlantUnit)
-                {
-                    if (TileMenuInteractionHandler.tileMenuInteractionHandlerInstance)
-                    {
-                        if (selectedUnitGroup[i].GetTileUnitIsOn())
-                        {
-                            TileMenuAndUprootOnTileUI tileMenu = selectedUnitGroup[i].GetTileUnitIsOn().tileMenuAndUprootOnTileUI;
-
-                            if (tileMenu && tileMenu.isOpened)
-                                TileMenuInteractionHandler.tileMenuInteractionHandlerInstance.SetTileMenuInteractedManually(tileMenu, TileMenuInteractionHandler.TileMenuInteractionOptions.Close);
-                        }
-                    }
-                }
-
                 RemoveUnselectedUnit(selectedUnitGroup[i], true);
             }
-            
+
             if(unitGroupSelected.Count > 0) unitGroupSelected.Clear();
 
             if(dragSelectionBoxUI && dragSelectionBoxUI.GetUnitsInDragSelectionBoxCount() > 0) 
                 dragSelectionBoxUI.ClearAllUnitsInDragSelectionBox();
 
             if(DEBUG_unitGroupSelectedReadOnly.Count > 0) DEBUG_unitGroupSelectedReadOnly.Clear();
-
-            if (TileMenuInteractionHandler.tileMenuInteractionHandlerInstance)
-            {
-                if (!TileMenuInteractionHandler.tileMenuInteractionHandlerInstance.isCheckingForTileMenuInteractions)
-                {
-                    TileMenuInteractionHandler.tileMenuInteractionHandlerInstance.EnableCheckForTileMenuInteractions(true);
-                }
-            }
         }
 
         public void SelectUnitsInDragSelectionBox(IUnit unitInBox)
@@ -430,21 +414,48 @@ namespace TeamMAsTD
 
                 if (targettedUnit == null || targettedUnit is not PlantUnit) return;
 
+                PlantUnit targettedPlantUnit = targettedUnit as PlantUnit;
+
                 //if not holding shift or ctrl when selecting a plant unit AND the selected plant unit is NOT selected before ->
                 //only select that new plant unit and deregister/remove any previously selected ones.
                 //else, execute group functions and return.
                 if (!isHoldingShift && !isHoldingCtrl)
                 {
-                    //if already selected -> return
-                    if (unitGroupSelected.Contains(targettedUnit))
+                    if(unitGroupSelected.Count > 1)
                     {
+                        RemoveAllSelectedUnits();
+
+                        RegisterSelectedUnit(targettedUnit);
+
                         return;
                     }
+                    
+                    if(unitGroupSelected.Count == 1)
+                    {
+                        if(unitGroupSelected.ElementAt(0) != targettedUnit)
+                        {
+                            RemoveUnselectedUnit(unitGroupSelected.ElementAt(0), true);
 
-                    //if not already selected -> select only the clicked plant unit
-                    //(tile menu processes will be done in RegisterSelectedUnit() func below)
+                            RegisterSelectedUnit(targettedUnit);
+                        }
+                        else
+                        {
+                            if (TileMenuInteractionHandler.tileMenuInteractionHandlerInstance)
+                            {
+                                if (targettedPlantUnit.GetTileUnitIsOn())
+                                {
+                                    TileMenuAndUprootOnTileUI tileMenu = targettedPlantUnit.GetTileUnitIsOn().tileMenuAndUprootOnTileUI;
 
-                    RemoveAllSelectedUnits();
+                                    if (tileMenu)
+                                    {
+                                        TileMenuInteractionHandler.tileMenuInteractionHandlerInstance.SetTileMenuInteractedManually(tileMenu, TileMenuInteractionHandler.TileMenuInteractionOptions.Toggle);
+                                    }
+                                }
+                            }
+                        }
+
+                        return;
+                    }
 
                     RegisterSelectedUnit(targettedUnit);
 
