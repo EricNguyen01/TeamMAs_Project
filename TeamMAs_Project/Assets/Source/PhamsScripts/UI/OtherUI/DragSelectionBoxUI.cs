@@ -79,7 +79,8 @@ namespace TeamMAsTD
 
             if (!dragSelectionCanvas.worldCamera)
             {
-                Debug.LogWarning("Drag Selection UI Canvas doesn't have a camera component ref assigned. Disabling Script!");
+                Debug.LogWarning("Drag Selection UI Canvas doesn't have a camera component ref assigned and could not find one. " +
+                "Disabling Script!");
 
                 enabled = false;
             }
@@ -103,11 +104,6 @@ namespace TeamMAsTD
             dragSelectionCanvasScaler.scaleFactor = 1f;
 
             dragSelectionCanvasScaler.referencePixelsPerUnit = 100.0f;
-
-            /*if(!TryGetComponent<GraphicRaycaster>(out graphicRaycaster))
-            {
-                graphicRaycaster = dragSelectionCanvas.gameObject.AddComponent<GraphicRaycaster>();
-            }*/
 
             if (!dragSelectionBoxImage)
             {
@@ -151,8 +147,6 @@ namespace TeamMAsTD
             if (!unitGroupSelectionManager)
             {
                 enabled = false;
-
-                return;
             }
 
             if (dragSelectionBoxImage)
@@ -173,8 +167,16 @@ namespace TeamMAsTD
             if (!EventSystem.current)
             {
                 enabled = false;
+            }
 
-                return;
+            if (!dragSelectionCanvas.worldCamera) dragSelectionCanvas.worldCamera = Camera.main;
+
+            if (!dragSelectionCanvas.worldCamera)
+            {
+                Debug.LogWarning("Drag Selection UI Canvas doesn't have a camera component ref assigned and could not find one. " +
+                "Disabling Script!");
+
+                enabled = false;
             }
 
             if (dragSelectionAllowedArea && !dragSelectionAllowedArea.enabled)
@@ -197,11 +199,23 @@ namespace TeamMAsTD
         {
             if (!enabled || !dragSelectionBoxEnabled) return;
 
-            if (!EventSystem.current || !dragSelectionCanvas.worldCamera /*|| !graphicRaycaster*/ )
+            if (!EventSystem.current)
             {
                 enabled = false;
 
                 return;
+            }
+
+            if (!dragSelectionCanvas.worldCamera)
+            {
+                if (!Camera.main)
+                {
+                    enabled = false;
+
+                    return;
+                }
+
+                dragSelectionCanvas.worldCamera = Camera.main;
             }
 
             if (DialogueManager.Instance)
