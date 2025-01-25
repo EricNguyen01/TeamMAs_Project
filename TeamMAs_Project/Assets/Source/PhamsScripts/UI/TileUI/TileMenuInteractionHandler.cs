@@ -15,7 +15,7 @@ namespace TeamMAsTD
     {
         [SerializeField] private Camera tileMenuInteractionRaycastCam;
 
-        private TileMenuAndUprootOnTileUI tileMenuClicked;
+        public TileMenuAndUprootOnTileUI tileMenuInUse { get; private set; }
 
         public Dictionary<GameObject, TileMenuAndUprootOnTileUI> tileObjectAndTileMenuDict { get; private set; } = new Dictionary<GameObject, TileMenuAndUprootOnTileUI>();
 
@@ -134,11 +134,11 @@ namespace TeamMAsTD
                 {
                     //if a tile menu was previously clicked and opened -> close it
 
-                    if (tileMenuClicked)
+                    if (tileMenuInUse)
                     {
-                        if (tileMenuClicked.isOpened) tileMenuClicked.OpenTileInteractionMenu(false);
+                        if (tileMenuInUse.isOpened) tileMenuInUse.OpenTileInteractionMenu(false);
 
-                        tileMenuClicked = null;
+                        tileMenuInUse = null;
                     }
 
                     return;
@@ -156,17 +156,17 @@ namespace TeamMAsTD
                         if (raycastResults[i].gameObject.GetComponent<Button>()) return;
                     }
 
-                    if (tileMenuClicked)
+                    if (tileMenuInUse)
                     {
                         //if click on one of the buttons of the currently opened tile menu
                         //(that was previously clicked on as well and hasnt been closed)/
                         //-> use the button instead of processing tile menu interactions (button logic is handled in TileMenu script)
                         //return and does not execute further if reaches here
-                        if (tileMenuClicked.tileMenuButtons != null && tileMenuClicked.tileMenuButtons.Length > 0)
+                        if (tileMenuInUse.tileMenuButtons != null && tileMenuInUse.tileMenuButtons.Length > 0)
                         {
-                            for (int j = 0; j < tileMenuClicked.tileMenuButtons.Length; j++)
+                            for (int j = 0; j < tileMenuInUse.tileMenuButtons.Length; j++)
                             {
-                                if (raycastResults[i].gameObject == tileMenuClicked.tileMenuButtons[j].gameObject)
+                                if (raycastResults[i].gameObject == tileMenuInUse.tileMenuButtons[j].gameObject)
                                     return;
                             }
                         }
@@ -188,11 +188,11 @@ namespace TeamMAsTD
                 if (!tileMenu)
                 {
                     //close previously opened tile menu (if exists) on clicking away
-                    if (tileMenuClicked)
+                    if (tileMenuInUse)
                     {
-                        if (tileMenuClicked.isOpened) tileMenuClicked.OpenTileInteractionMenu(false);
+                        if (tileMenuInUse.isOpened) tileMenuInUse.OpenTileInteractionMenu(false);
 
-                        tileMenuClicked = null;
+                        tileMenuInUse = null;
                     }
 
                     return;
@@ -200,22 +200,22 @@ namespace TeamMAsTD
 
                 //if first time clicking on a new tile menu -> open the clicked tile menu
 
-                if (!tileMenuClicked)
+                if (!tileMenuInUse)
                 {
-                    tileMenuClicked = tileMenu;
+                    tileMenuInUse = tileMenu;
 
-                    if (!tileMenuClicked.isOpened) tileMenuClicked.OpenTileInteractionMenu(true);
+                    if (!tileMenuInUse.isOpened) tileMenuInUse.OpenTileInteractionMenu(true);
 
                     return;
                 }
 
                 //if clicked on the same tile and tile menu again after having been clicking on it previously -> toggle it
 
-                if (tileMenuClicked == tileMenu)
+                if (tileMenuInUse == tileMenu)
                 {
-                    if (tileMenuClicked.isOpened) tileMenuClicked.OpenTileInteractionMenu(false);
+                    if (tileMenuInUse.isOpened) tileMenuInUse.OpenTileInteractionMenu(false);
 
-                    else tileMenuClicked.OpenTileInteractionMenu(true);
+                    else tileMenuInUse.OpenTileInteractionMenu(true);
 
                     return;
                 }
@@ -223,11 +223,11 @@ namespace TeamMAsTD
                 //if clicked on a new tile/tile menu entirely from a previosuly selected tile menu ->
                 //close the previously opened tile menu and then open the newly selected tile menu
 
-                if (tileMenuClicked.isOpened) tileMenuClicked.OpenTileInteractionMenu(false);
+                if (tileMenuInUse.isOpened) tileMenuInUse.OpenTileInteractionMenu(false);
 
-                tileMenuClicked = tileMenu;
+                tileMenuInUse = tileMenu;
 
-                if (!tileMenuClicked.isOpened) tileMenuClicked.OpenTileInteractionMenu(true);
+                if (!tileMenuInUse.isOpened) tileMenuInUse.OpenTileInteractionMenu(true);
             }
         }
 
@@ -274,37 +274,37 @@ namespace TeamMAsTD
         {
             isCheckingForTileMenuInteractions = enabled;
 
-            if (tileMenuClicked && tileMenuClicked.isOpened)
+            if (tileMenuInUse && tileMenuInUse.isOpened)
             {
-                tileMenuClicked.OpenTileInteractionMenu(false);
+                tileMenuInUse.OpenTileInteractionMenu(false);
 
-                tileMenuClicked = null;
+                tileMenuInUse = null;
             }
         }
 
-        public void SetTileMenuInteractedManually(TileMenuAndUprootOnTileUI tileMenuClicked, TileMenuInteractionOptions interactionOption)
+        public void SetTileMenuInteractedManually(TileMenuAndUprootOnTileUI tileMenuInUse, TileMenuInteractionOptions interactionOption)
         {
-            if (this.tileMenuClicked && this.tileMenuClicked != tileMenuClicked)
+            if (this.tileMenuInUse && this.tileMenuInUse != tileMenuInUse)
             {
-                this.tileMenuClicked.OpenTileInteractionMenu(false);
+                this.tileMenuInUse.OpenTileInteractionMenu(false);
             }
 
-            this.tileMenuClicked = tileMenuClicked;
+            this.tileMenuInUse = tileMenuInUse;
 
-            if (!tileMenuClicked) return;
+            if (!tileMenuInUse) return;
 
             if(interactionOption == TileMenuInteractionOptions.Open)
             {
-                if(!tileMenuClicked.isOpened) tileMenuClicked.OpenTileInteractionMenu(true);
+                if(!tileMenuInUse.isOpened) tileMenuInUse.OpenTileInteractionMenu(true);
             }
             else if(interactionOption == TileMenuInteractionOptions.Close)
             {
-                if (tileMenuClicked.isOpened) tileMenuClicked.OpenTileInteractionMenu(false);
+                if (tileMenuInUse.isOpened) tileMenuInUse.OpenTileInteractionMenu(false);
             }
             else if(interactionOption == TileMenuInteractionOptions.Toggle)
             {
-                if(tileMenuClicked.isOpened) tileMenuClicked.OpenTileInteractionMenu(false);
-                else tileMenuClicked.OpenTileInteractionMenu(true);
+                if(tileMenuInUse.isOpened) tileMenuInUse.OpenTileInteractionMenu(false);
+                else tileMenuInUse.OpenTileInteractionMenu(true);
             }
         }
 

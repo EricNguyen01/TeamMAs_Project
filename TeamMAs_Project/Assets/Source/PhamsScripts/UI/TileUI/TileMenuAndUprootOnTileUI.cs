@@ -165,6 +165,11 @@ namespace TeamMAsTD
                     OnTileMenuClosed?.Invoke();
                 }
 
+                if(tileHoldingThisMenu && tileHoldingThisMenu.wateringOnTileScriptComp)
+                {
+                    tileHoldingThisMenu.wateringOnTileScriptComp.UpdateTotalWateringCostText();
+                }
+
                 return;
             }
 

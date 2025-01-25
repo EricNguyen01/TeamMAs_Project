@@ -6,7 +6,6 @@ using UnityEngine.Events;
 using UnityEngine.UI;
 using System.Linq;
 using TMPro;
-using System.Collections;
 
 namespace TeamMAsTD
 {
@@ -32,7 +31,7 @@ namespace TeamMAsTD
 
         private int lastWateringCostTextDisplay = -1;
 
-        private bool hasSetWateringCostTextOnActive = false;
+        private static int totalMultiSelectedPlantsWateringCost = 0;
 
         private Saveable saveable;
 
@@ -92,59 +91,6 @@ namespace TeamMAsTD
             }
         }
 
-        private void Update()
-        {
-            if (!enabled || 
-                !wateringChildButton ||
-                !wateringChildButton.gameObject.activeSelf || 
-                !wateringChildButton.gameObject.activeInHierarchy)
-            {
-                return;
-            }
-
-            if (UnitGroupSelectionManager.unitGroupSelectionManagerInstance)
-            {
-                if (UnitGroupSelectionManager.unitGroupSelectionManagerInstance.unitGroupSelected != null &&
-                    UnitGroupSelectionManager.unitGroupSelectionManagerInstance.unitGroupSelected.Count > 1)
-                {
-                    int totalWateringCost = 0;
-
-                    IUnit[] selectedUnits = UnitGroupSelectionManager.unitGroupSelectionManagerInstance.unitGroupSelected.ToArray();
-
-                    for (int i = 0; i < selectedUnits.Length; i++)
-                    {
-                        if (selectedUnits[i] == null) continue;
-
-                        if (selectedUnits[i] is not PlantUnit) continue;
-
-                        if (!selectedUnits[i].GetTileUnitIsOn()) continue;
-
-                        PlantUnit plantUnit = selectedUnits[i] as PlantUnit;
-
-                        if (!plantUnit.plantWaterUsageSystem) continue;
-
-                        if (plantUnit.plantWaterUsageSystem.IsWaterFull()) continue;
-
-                        totalWateringCost += plantUnit.plantUnitScriptableObject.wateringCoinsCost;
-                    }
-
-                    SetWateringCostText(totalWateringCost);
-
-                    return;
-                }
-            }
-
-            if (!tileToWater) return;
-
-            if (!tileToWater.plantUnitOnTile) return;
-
-            if (!tileToWater.plantUnitOnTile.plantWaterUsageSystem) return;
-
-            if (tileToWater.plantUnitOnTile.plantWaterUsageSystem.IsWaterFull()) return;
-
-            SetWateringCostText(tileToWater.plantUnitOnTile.plantUnitScriptableObject.wateringCoinsCost);
-        }
-
         //Watering button UI event function -> callback from button's OnClicked event 
         //WARNING: IF THIS FUNCTION NAME IS TO BE CHANGED -> HAS TO CHANGE ITS STRING REFERENCE IN THE GET BUTTON IN AWAKE() AS WELL!!!!!
         public void WaterTileIfHasPlantUnit()
@@ -189,55 +135,16 @@ namespace TeamMAsTD
 
         WaterSingleTile:
 
-            if (tileToWater.plantUnitOnTile == null) return;
-
-            PlantWaterUsageSystem tilePlantWaterUsageSystem = tileToWater.plantUnitOnTile.plantWaterUsageSystem;
-
-            if (tilePlantWaterUsageSystem == null) return;
-
-            //if water in plant water usage system is full -> exit function
-            if (tilePlantWaterUsageSystem.IsWaterFull()) return;
-
-            int waterBarsToRefill = tileToWater.plantUnitOnTile.plantUnitScriptableObject.waterBarsRefilledPerWatering;
-
-            int wateringCoinsCost = tileToWater.plantUnitOnTile.plantUnitScriptableObject.wateringCoinsCost;
-
-            //check for insufficient watering fund and if insufficient -> process related popup and event
-            if(HasInsufficientWateringFund(wateringCoinsCost)) return;
-
-            //else if there is sufficient fund to water
-            //play watering sound if plant on tile's water is not full (water full check is above)
-            //watering sound is played by creating a sound player object with SoundPlayer.cs script attached that plays watering sound on awake
-            //upon finished playing watering sounds, watering sound player object is destroyed based on watering sound clip's length
-            SpawnAndDestroy_WateringSoundPlayer_IfNotNull();
-
-            tilePlantWaterUsageSystem.RefillWaterBars(waterBarsToRefill, wateringCoinsCost);
+            WaterThisTile();
         }
 
         public void WaterMultiTiles(Tile[] tilesToWater)
         {
             if (tilesToWater == null || tilesToWater.Length == 0) return;
 
-            int totalWateringCosts = 0;
+            if (HasInsufficientWateringFund(totalMultiSelectedPlantsWateringCost)) return;
 
-            for(int i = 0; i < tilesToWater.Length; i++)
-            {
-                if (!tilesToWater[i]) continue;
-
-                if (!tilesToWater[i].plantUnitOnTile) continue;
-
-                if (!tilesToWater[i].plantUnitOnTile.plantWaterUsageSystem) continue;
-
-                PlantWaterUsageSystem tilePlantWaterUsageSystem = tilesToWater[i].plantUnitOnTile.plantWaterUsageSystem;
-
-                if (tilePlantWaterUsageSystem.IsWaterFull()) continue;
-
-                totalWateringCosts += tilesToWater[i].plantUnitOnTile.plantUnitScriptableObject.wateringCoinsCost;
-            }
-
-            if (HasInsufficientWateringFund(totalWateringCosts)) return;
-
-            if (totalWateringCosts <= 0) return;
+            if (totalMultiSelectedPlantsWateringCost <= 0) return;
 
             SpawnAndDestroy_WateringSoundPlayer_IfNotNull();
 
@@ -260,6 +167,49 @@ namespace TeamMAsTD
                 int wateringCoinsCost = tilesToWater[i].plantUnitOnTile.plantUnitScriptableObject.wateringCoinsCost;
 
                 tilePlantWaterUsageSystem.RefillWaterBars(waterBarsToRefill, wateringCoinsCost);
+
+                //if the tile that just got its water refilled now has full water -> update total multi-selected plants watering cost
+                if (tilePlantWaterUsageSystem.IsWaterFull())
+                {
+                    totalMultiSelectedPlantsWateringCost -= wateringCoinsCost;
+
+                    SetWateringCostText(totalMultiSelectedPlantsWateringCost);
+                }
+            }
+        }
+
+        private void WaterThisTile()
+        {
+            if (tileToWater.plantUnitOnTile == null) return;
+
+            PlantWaterUsageSystem tilePlantWaterUsageSystem = tileToWater.plantUnitOnTile.plantWaterUsageSystem;
+
+            if (tilePlantWaterUsageSystem == null) return;
+
+            //if water in plant water usage system is full -> exit function
+            if (tilePlantWaterUsageSystem.IsWaterFull()) return;
+
+            int waterBarsToRefill = tileToWater.plantUnitOnTile.plantUnitScriptableObject.waterBarsRefilledPerWatering;
+
+            int wateringCoinsCost = tileToWater.plantUnitOnTile.plantUnitScriptableObject.wateringCoinsCost;
+
+            //check for insufficient watering fund and if insufficient -> process related popup and event
+            if (HasInsufficientWateringFund(wateringCoinsCost)) return;
+
+            //else if there is sufficient fund to water
+            //play watering sound if plant on tile's water is not full (water full check is above)
+            //watering sound is played by creating a sound player object with SoundPlayer.cs script attached that plays watering sound on awake
+            //upon finished playing watering sounds, watering sound player object is destroyed based on watering sound clip's length
+            SpawnAndDestroy_WateringSoundPlayer_IfNotNull();
+
+            tilePlantWaterUsageSystem.RefillWaterBars(waterBarsToRefill, wateringCoinsCost);
+
+            //if the tile that just got its water refilled now has full water -> update total multi-selected plants watering cost
+            if (tilePlantWaterUsageSystem.IsWaterFull())
+            {
+                totalMultiSelectedPlantsWateringCost -= wateringCoinsCost;
+
+                SetWateringCostText(totalMultiSelectedPlantsWateringCost);
             }
         }
 
@@ -347,8 +297,8 @@ namespace TeamMAsTD
 
             lastWateringCostTextDisplay = wateringCost;
 
-            if (string.IsNullOrEmpty(wateringButtonText.text) || 
-                string.IsNullOrWhiteSpace(wateringButtonText.text))
+            if (string.IsNullOrEmpty(wateringButtonText.text) ||
+                            string.IsNullOrWhiteSpace(wateringButtonText.text))
             {
                 wateringButtonText.text = "${waterCost}";
             }
@@ -359,6 +309,41 @@ namespace TeamMAsTD
             }
 
             wateringButtonText.text = wateringButtonText.text.Replace("{waterCost}", $"{wateringCost}");
+        }
+
+        public void UpdateTotalWateringCostText()
+        {
+            SetWateringCostText(totalMultiSelectedPlantsWateringCost);
+        }
+
+        public void AddNewSelectedPlantsWateringCost(PlantUnit selectedpPlant)
+        {
+            if (!selectedpPlant) return;
+
+            if (!selectedpPlant.plantUnitScriptableObject) return;
+
+            if (!selectedpPlant.plantWaterUsageSystem) return;
+
+            if (selectedpPlant.plantWaterUsageSystem.IsWaterFull()) return;
+
+            totalMultiSelectedPlantsWateringCost += selectedpPlant.plantUnitScriptableObject.wateringCoinsCost;
+
+            SetWateringCostText(totalMultiSelectedPlantsWateringCost);
+        }
+
+        public void SubtractUnselectedPlantWateringCost(PlantUnit unselectedPlant)
+        {
+            if (!unselectedPlant) return;
+
+            if(!unselectedPlant.plantUnitScriptableObject) return;
+
+            if (!unselectedPlant.plantWaterUsageSystem) return;
+
+            totalMultiSelectedPlantsWateringCost -= unselectedPlant.plantUnitScriptableObject.wateringCoinsCost;
+
+            if(totalMultiSelectedPlantsWateringCost < 0) totalMultiSelectedPlantsWateringCost = 0;
+
+            SetWateringCostText(totalMultiSelectedPlantsWateringCost);
         }
     }
 }

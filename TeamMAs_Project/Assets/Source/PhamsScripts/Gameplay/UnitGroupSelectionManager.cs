@@ -206,6 +206,12 @@ namespace TeamMAsTD
                                 plantUnit.GetTileUnitIsOn().tileGlowComp.EnableTileGlowEffect(TileGlow.TileGlowMode.PositiveGlow);
                         }
 
+                        //update total multi-selected plants watering cost on adding new selected plant
+                        if (plantUnit.tilePlacedOn.wateringOnTileScriptComp)
+                        {
+                            plantUnit.tilePlacedOn.wateringOnTileScriptComp.AddNewSelectedPlantsWateringCost(plantUnit);
+                        }
+
                         TileMenuAndUprootOnTileUI tileMenu = plantUnit.GetTileUnitIsOn().tileMenuAndUprootOnTileUI;
 
                         if (TileMenuInteractionHandler.tileMenuInteractionHandlerInstance)
@@ -252,15 +258,35 @@ namespace TeamMAsTD
                                     plantUnit.GetTileUnitIsOn().tileGlowComp.DisableTileGlowEffect();
                             }
 
+                            //update total multi-selected plants watering cost on removing unselected plant
+                            if (plantUnit.tilePlacedOn.wateringOnTileScriptComp)
+                            {
+                                plantUnit.tilePlacedOn.wateringOnTileScriptComp.SubtractUnselectedPlantWateringCost(plantUnit);
+                            }
+
                             TileMenuAndUprootOnTileUI tileMenu = plantUnit.GetTileUnitIsOn().tileMenuAndUprootOnTileUI;
 
                             if (TileMenuInteractionHandler.tileMenuInteractionHandlerInstance)
                             {
-                                if (tileMenu && tileMenu.isOpened)
+                                if (tileMenu)
                                 {
-                                    TileMenuInteractionHandler.tileMenuInteractionHandlerInstance.SetTileMenuInteractedManually(tileMenu, TileMenuInteractionHandler.TileMenuInteractionOptions.Close);
+                                    if (tileMenu.isOpened)
+                                    {
+                                        TileMenuInteractionHandler.tileMenuInteractionHandlerInstance.SetTileMenuInteractedManually(tileMenu, TileMenuInteractionHandler.TileMenuInteractionOptions.Close);
 
-                                    shouldOpenNextInLineTileMenu = true;
+                                        shouldOpenNextInLineTileMenu = true;
+                                    }
+                                    else
+                                    {
+                                        tileMenu = TileMenuInteractionHandler.tileMenuInteractionHandlerInstance.tileMenuInUse;
+
+                                        if(tileMenu && 
+                                           tileMenu.tileHoldingThisMenu && 
+                                           tileMenu.tileHoldingThisMenu.wateringOnTileScriptComp)
+                                        {
+                                            tileMenu.tileHoldingThisMenu.wateringOnTileScriptComp.UpdateTotalWateringCostText();
+                                        }
+                                    }
                                 }
                             }
                         }
