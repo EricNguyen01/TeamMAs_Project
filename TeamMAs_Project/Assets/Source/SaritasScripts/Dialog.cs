@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using PixelCrushers.DialogueSystem;
+using UnityEngine.UI;
 namespace TeamMAsTD
 {
     public class Dialog : MonoBehaviour

@@ -35,9 +35,13 @@ namespace TeamMAsTD
 
         private List<RaycastResult> raycastResults = new List<RaycastResult>();
 
+#if UNITY_EDITOR
+
         private List<GameObject> DEBUG_selectableUnitsReadOnly = new List<GameObject>();
 
         private List<GameObject> DEBUG_unitGroupSelectedReadOnly = new List<GameObject>();
+
+#endif
 
         private bool unitGroupSelectionEnabled = true;
 
@@ -137,8 +141,6 @@ namespace TeamMAsTD
             };
         }
 
-#if ENABLE_LEGACY_INPUT_MANAGER
-
         private void Update()
         {
             if (!enabled || !unitGroupSelectionEnabled) return;
@@ -185,7 +187,6 @@ namespace TeamMAsTD
             //Unit group drag selection and drag selection box functionalities and logic are processed in the DragSelectionBoxUI.cs script
             //that connects and is spawned from this script instance
         }
-#endif
 
         private void RegisterSelectedUnit(IUnit selectedUnit)
         {
@@ -221,8 +222,11 @@ namespace TeamMAsTD
                         }
                     }
                 }
-                
+
+#if UNITY_EDITOR
+
                 DEBUG_unitGroupSelectedReadOnly.Add(selectedUnit.GetUnitTransform().gameObject);
+#endif
             }
         }
 
@@ -264,7 +268,10 @@ namespace TeamMAsTD
 
                     if (dragSelectionBoxUI && removeFromDragBox) dragSelectionBoxUI.RemoveUnitFromDragSelectionBox(unselectedUnit);
 
+#if UNITY_EDITOR
+
                     DEBUG_unitGroupSelectedReadOnly.Remove(unselectedUnit.GetUnitTransform().gameObject);
+#endif
                 }
 
                 if (unitGroupSelected.Count == 0)
@@ -333,7 +340,10 @@ namespace TeamMAsTD
             if(dragSelectionBoxUI && dragSelectionBoxUI.GetUnitsInDragSelectionBoxCount() > 0) 
                 dragSelectionBoxUI.ClearAllUnitsInDragSelectionBox();
 
+#if UNITY_EDITOR
+
             if(DEBUG_unitGroupSelectedReadOnly.Count > 0) DEBUG_unitGroupSelectedReadOnly.Clear();
+#endif
         }
 
         public void SelectUnitsInDragSelectionBox(IUnit unitInBox)
@@ -513,7 +523,10 @@ namespace TeamMAsTD
 
             selectableUnits.Add(newSelectableUnit);
 
+#if UNITY_EDITOR
+
             DEBUG_selectableUnitsReadOnly.Add(newSelectableUnit.GetUnitTransform().gameObject);
+#endif
         }
 
         public void DeRegisterSelectableUnitOnUnitDisabled(IUnit unselectableUnit)
@@ -524,7 +537,10 @@ namespace TeamMAsTD
 
             selectableUnits.Remove(unselectableUnit);
 
+#if UNITY_EDITOR
+
             DEBUG_selectableUnitsReadOnly.Remove(unselectableUnit.GetUnitTransform().gameObject);
+#endif
         }
 
         public void EnableUnitGroupSelection(bool enabled)

@@ -113,10 +113,7 @@ namespace TeamMAsTD
 
             if (!isCheckingForTileMenuInteractions) return;
 
-#if ENABLE_LEGACY_INPUT_MANAGER
-
             CheckAndProcessTileMenuInteractionOnMouseClick();
-#endif
         }
 
         private void CheckAndProcessTileMenuInteractionOnMouseClick()

@@ -808,6 +808,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d1cdca22ec4708540aa68019e182a7d8, type: 3}
+--- !u!225 &777917021 stripped
+CanvasGroup:
+  m_CorrespondingSourceObject: {fileID: 7176623277195766427, guid: d1cdca22ec4708540aa68019e182a7d8, type: 3}
+  m_PrefabInstance: {fileID: 777917020}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &827087115
 GameObject:
   m_ObjectHideFlags: 0
@@ -837,7 +842,127 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca55201633b97d3408f439eb84ecb249, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueEntrySceneEvents: []
+  dialogueEntrySceneEvents:
+  - guid: 7c0ce48d-ecf2-4c3b-a1e4-8dd52ed103ce
+    onExecute:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 777917021}
+          m_TargetAssemblyTypeName: UnityEngine.CanvasGroup, UnityEngine
+          m_MethodName: set_alpha
+          m_Mode: 4
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 777917021}
+          m_TargetAssemblyTypeName: UnityEngine.CanvasGroup, UnityEngine
+          m_MethodName: set_interactable
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 777917021}
+          m_TargetAssemblyTypeName: UnityEngine.CanvasGroup, UnityEngine
+          m_MethodName: set_blocksRaycasts
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - guid: 2ac4c30a-814b-4c8d-94e7-5078c57af848
+    onExecute:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 777917021}
+          m_TargetAssemblyTypeName: UnityEngine.CanvasGroup, UnityEngine
+          m_MethodName: set_alpha
+          m_Mode: 4
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 1
+            m_StringArgument: 
+            m_BoolArgument: 1
+          m_CallState: 2
+        - m_Target: {fileID: 777917021}
+          m_TargetAssemblyTypeName: UnityEngine.CanvasGroup, UnityEngine
+          m_MethodName: set_interactable
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 1
+          m_CallState: 2
+        - m_Target: {fileID: 777917021}
+          m_TargetAssemblyTypeName: UnityEngine.CanvasGroup, UnityEngine
+          m_MethodName: set_blocksRaycasts
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 1
+          m_CallState: 2
+  - guid: c94d2bd5-808f-4704-9cd8-ade1c989b55e
+    onExecute:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 777917021}
+          m_TargetAssemblyTypeName: UnityEngine.CanvasGroup, UnityEngine
+          m_MethodName: set_alpha
+          m_Mode: 4
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 777917021}
+          m_TargetAssemblyTypeName: UnityEngine.CanvasGroup, UnityEngine
+          m_MethodName: set_interactable
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 777917021}
+          m_TargetAssemblyTypeName: UnityEngine.CanvasGroup, UnityEngine
+          m_MethodName: set_blocksRaycasts
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!4 &827087117
 Transform:
   m_ObjectHideFlags: 0
@@ -2341,6 +2466,18 @@ PrefabInstance:
       propertyPath: disableSaveLoadForThisSaveable
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2553152341447870997, guid: 04f8e434277eae2489122c4f3907320b, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 95c0e20cb290eb74ca5e4473d934b93a, type: 3}
+    - target: {fileID: 2553152341452223747, guid: 04f8e434277eae2489122c4f3907320b, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 95c0e20cb290eb74ca5e4473d934b93a, type: 3}
+    - target: {fileID: 2553152341519775577, guid: 04f8e434277eae2489122c4f3907320b, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 95c0e20cb290eb74ca5e4473d934b93a, type: 3}
     - target: {fileID: 2553152341521601488, guid: 04f8e434277eae2489122c4f3907320b, type: 3}
       propertyPath: OnPlantingFailedOnTile.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
@@ -2373,6 +2510,10 @@ PrefabInstance:
       propertyPath: OnPlantingFailedOnTile.m_PersistentCalls.m_Calls.Array.data[2].m_Target
       value: 
       objectReference: {fileID: 1115374083}
+    - target: {fileID: 2553152341571684801, guid: 04f8e434277eae2489122c4f3907320b, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 95c0e20cb290eb74ca5e4473d934b93a, type: 3}
     - target: {fileID: 2553152341580277221, guid: 04f8e434277eae2489122c4f3907320b, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -2389,6 +2530,14 @@ PrefabInstance:
       propertyPath: OnPlantingFailedOnTile.m_PersistentCalls.m_Calls.Array.data[2].m_Target
       value: 
       objectReference: {fileID: 1115374083}
+    - target: {fileID: 2553152341599349179, guid: 04f8e434277eae2489122c4f3907320b, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 95c0e20cb290eb74ca5e4473d934b93a, type: 3}
+    - target: {fileID: 2553152341623825897, guid: 04f8e434277eae2489122c4f3907320b, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 95c0e20cb290eb74ca5e4473d934b93a, type: 3}
     - target: {fileID: 2553152341645683891, guid: 04f8e434277eae2489122c4f3907320b, type: 3}
       propertyPath: OnPlantingFailedOnTile.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
@@ -2421,6 +2570,14 @@ PrefabInstance:
       propertyPath: OnTileMenuOpened.m_PersistentCalls.m_Calls.Array.size
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2553152341683264492, guid: 04f8e434277eae2489122c4f3907320b, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 95c0e20cb290eb74ca5e4473d934b93a, type: 3}
+    - target: {fileID: 2553152341767882914, guid: 04f8e434277eae2489122c4f3907320b, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 95c0e20cb290eb74ca5e4473d934b93a, type: 3}
     - target: {fileID: 2553152341778091986, guid: 04f8e434277eae2489122c4f3907320b, type: 3}
       propertyPath: OnTileMenuOpened.m_PersistentCalls.m_Calls.Array.size
       value: 0
@@ -2437,6 +2594,14 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 2553152341820656831, guid: 04f8e434277eae2489122c4f3907320b, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 95c0e20cb290eb74ca5e4473d934b93a, type: 3}
+    - target: {fileID: 2553152341861879553, guid: 04f8e434277eae2489122c4f3907320b, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 95c0e20cb290eb74ca5e4473d934b93a, type: 3}
     - target: {fileID: 2553152341864357060, guid: 04f8e434277eae2489122c4f3907320b, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -2453,6 +2618,14 @@ PrefabInstance:
       propertyPath: OnPlantingFailedOnTile.m_PersistentCalls.m_Calls.Array.data[2].m_Target
       value: 
       objectReference: {fileID: 1115374083}
+    - target: {fileID: 2553152341871422889, guid: 04f8e434277eae2489122c4f3907320b, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 95c0e20cb290eb74ca5e4473d934b93a, type: 3}
+    - target: {fileID: 2553152341925956576, guid: 04f8e434277eae2489122c4f3907320b, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 95c0e20cb290eb74ca5e4473d934b93a, type: 3}
     - target: {fileID: 2553152341965145269, guid: 04f8e434277eae2489122c4f3907320b, type: 3}
       propertyPath: m_Name
       value: Grid
@@ -2565,6 +2738,10 @@ PrefabInstance:
       propertyPath: OnPlantingFailedOnTile.m_PersistentCalls.m_Calls.Array.data[2].m_Target
       value: 
       objectReference: {fileID: 1115374083}
+    - target: {fileID: 2553152341984875148, guid: 04f8e434277eae2489122c4f3907320b, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 95c0e20cb290eb74ca5e4473d934b93a, type: 3}
     - target: {fileID: 2553152342034630945, guid: 04f8e434277eae2489122c4f3907320b, type: 3}
       propertyPath: OnPlantingFailedOnTile.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
@@ -2597,6 +2774,10 @@ PrefabInstance:
       propertyPath: OnPlantingFailedOnTile.m_PersistentCalls.m_Calls.Array.data[2].m_Target
       value: 
       objectReference: {fileID: 1115374083}
+    - target: {fileID: 2553152342084767331, guid: 04f8e434277eae2489122c4f3907320b, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 95c0e20cb290eb74ca5e4473d934b93a, type: 3}
     - target: {fileID: 2553152342087916584, guid: 04f8e434277eae2489122c4f3907320b, type: 3}
       propertyPath: OnPlantingFailedOnTile.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
@@ -2613,6 +2794,14 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 2553152342167674279, guid: 04f8e434277eae2489122c4f3907320b, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 95c0e20cb290eb74ca5e4473d934b93a, type: 3}
+    - target: {fileID: 2553152342186654491, guid: 04f8e434277eae2489122c4f3907320b, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 95c0e20cb290eb74ca5e4473d934b93a, type: 3}
     - target: {fileID: 2553152342207198994, guid: 04f8e434277eae2489122c4f3907320b, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -2645,6 +2834,22 @@ PrefabInstance:
       propertyPath: OnPlantingFailedOnTile.m_PersistentCalls.m_Calls.Array.data[2].m_Target
       value: 
       objectReference: {fileID: 1115374083}
+    - target: {fileID: 2553152342212457343, guid: 04f8e434277eae2489122c4f3907320b, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 95c0e20cb290eb74ca5e4473d934b93a, type: 3}
+    - target: {fileID: 2553152342230664535, guid: 04f8e434277eae2489122c4f3907320b, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 95c0e20cb290eb74ca5e4473d934b93a, type: 3}
+    - target: {fileID: 2553152342274498516, guid: 04f8e434277eae2489122c4f3907320b, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 95c0e20cb290eb74ca5e4473d934b93a, type: 3}
+    - target: {fileID: 2553152342298055257, guid: 04f8e434277eae2489122c4f3907320b, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 95c0e20cb290eb74ca5e4473d934b93a, type: 3}
     - target: {fileID: 2553152342303722024, guid: 04f8e434277eae2489122c4f3907320b, type: 3}
       propertyPath: OnPlantingFailedOnTile.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
@@ -2661,6 +2866,14 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 2553152342306769279, guid: 04f8e434277eae2489122c4f3907320b, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 95c0e20cb290eb74ca5e4473d934b93a, type: 3}
+    - target: {fileID: 2553152342316128551, guid: 04f8e434277eae2489122c4f3907320b, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 95c0e20cb290eb74ca5e4473d934b93a, type: 3}
     - target: {fileID: 2553152342327166746, guid: 04f8e434277eae2489122c4f3907320b, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -2693,6 +2906,26 @@ PrefabInstance:
       propertyPath: OnPlantingFailedOnTile.m_PersistentCalls.m_Calls.Array.data[2].m_Target
       value: 
       objectReference: {fileID: 1115374083}
+    - target: {fileID: 2553152342375909064, guid: 04f8e434277eae2489122c4f3907320b, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 95c0e20cb290eb74ca5e4473d934b93a, type: 3}
+    - target: {fileID: 2553152342382051291, guid: 04f8e434277eae2489122c4f3907320b, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 95c0e20cb290eb74ca5e4473d934b93a, type: 3}
+    - target: {fileID: 2553152342409721612, guid: 04f8e434277eae2489122c4f3907320b, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 95c0e20cb290eb74ca5e4473d934b93a, type: 3}
+    - target: {fileID: 2553152342422608328, guid: 04f8e434277eae2489122c4f3907320b, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 95c0e20cb290eb74ca5e4473d934b93a, type: 3}
+    - target: {fileID: 2553152342427275787, guid: 04f8e434277eae2489122c4f3907320b, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 95c0e20cb290eb74ca5e4473d934b93a, type: 3}
     - target: {fileID: 2553152342430279621, guid: 04f8e434277eae2489122c4f3907320b, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -2725,6 +2958,18 @@ PrefabInstance:
       propertyPath: OnPlantingFailedOnTile.m_PersistentCalls.m_Calls.Array.data[2].m_Target
       value: 
       objectReference: {fileID: 1115374083}
+    - target: {fileID: 2553152342484150479, guid: 04f8e434277eae2489122c4f3907320b, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 95c0e20cb290eb74ca5e4473d934b93a, type: 3}
+    - target: {fileID: 2553152342488540604, guid: 04f8e434277eae2489122c4f3907320b, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 95c0e20cb290eb74ca5e4473d934b93a, type: 3}
+    - target: {fileID: 2553152342498768869, guid: 04f8e434277eae2489122c4f3907320b, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 95c0e20cb290eb74ca5e4473d934b93a, type: 3}
     - target: {fileID: 2553152342534871648, guid: 04f8e434277eae2489122c4f3907320b, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -2741,6 +2986,10 @@ PrefabInstance:
       propertyPath: OnPlantingFailedOnTile.m_PersistentCalls.m_Calls.Array.data[2].m_Target
       value: 
       objectReference: {fileID: 1115374083}
+    - target: {fileID: 2553152342538264272, guid: 04f8e434277eae2489122c4f3907320b, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 95c0e20cb290eb74ca5e4473d934b93a, type: 3}
     - target: {fileID: 2553152342621613226, guid: 04f8e434277eae2489122c4f3907320b, type: 3}
       propertyPath: OnTileMenuOpened.m_PersistentCalls.m_Calls.Array.size
       value: 0
@@ -2773,6 +3022,14 @@ PrefabInstance:
       propertyPath: OnTileMenuOpened.m_PersistentCalls.m_Calls.Array.size
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2553152342641186399, guid: 04f8e434277eae2489122c4f3907320b, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 95c0e20cb290eb74ca5e4473d934b93a, type: 3}
+    - target: {fileID: 2553152342663423832, guid: 04f8e434277eae2489122c4f3907320b, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 95c0e20cb290eb74ca5e4473d934b93a, type: 3}
     - target: {fileID: 2553152342681621280, guid: 04f8e434277eae2489122c4f3907320b, type: 3}
       propertyPath: OnTileMenuOpened.m_PersistentCalls.m_Calls.Array.size
       value: 0
@@ -2805,6 +3062,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 2553152342694902769, guid: 04f8e434277eae2489122c4f3907320b, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 95c0e20cb290eb74ca5e4473d934b93a, type: 3}
     - target: {fileID: 2553152342699694849, guid: 04f8e434277eae2489122c4f3907320b, type: 3}
       propertyPath: OnPlantingFailedOnTile.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
@@ -2949,6 +3210,10 @@ PrefabInstance:
       propertyPath: OnPlantingFailedOnTile.m_PersistentCalls.m_Calls.Array.data[2].m_Target
       value: 
       objectReference: {fileID: 1115374083}
+    - target: {fileID: 2553152342924096183, guid: 04f8e434277eae2489122c4f3907320b, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 95c0e20cb290eb74ca5e4473d934b93a, type: 3}
     - target: {fileID: 2553152342959526592, guid: 04f8e434277eae2489122c4f3907320b, type: 3}
       propertyPath: OnPlantingFailedOnTile.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
@@ -2997,6 +3262,26 @@ PrefabInstance:
       propertyPath: OnTileMenuOpened.m_PersistentCalls.m_Calls.Array.size
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2553152343041620131, guid: 04f8e434277eae2489122c4f3907320b, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 95c0e20cb290eb74ca5e4473d934b93a, type: 3}
+    - target: {fileID: 2553152343057470994, guid: 04f8e434277eae2489122c4f3907320b, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 95c0e20cb290eb74ca5e4473d934b93a, type: 3}
+    - target: {fileID: 2553152343077055800, guid: 04f8e434277eae2489122c4f3907320b, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 95c0e20cb290eb74ca5e4473d934b93a, type: 3}
+    - target: {fileID: 2553152343095213802, guid: 04f8e434277eae2489122c4f3907320b, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 95c0e20cb290eb74ca5e4473d934b93a, type: 3}
+    - target: {fileID: 2553152343128099368, guid: 04f8e434277eae2489122c4f3907320b, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 95c0e20cb290eb74ca5e4473d934b93a, type: 3}
     - target: {fileID: 2553152343138303562, guid: 04f8e434277eae2489122c4f3907320b, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -3013,6 +3298,10 @@ PrefabInstance:
       propertyPath: OnTileMenuOpened.m_PersistentCalls.m_Calls.Array.size
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2553152343148706952, guid: 04f8e434277eae2489122c4f3907320b, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 95c0e20cb290eb74ca5e4473d934b93a, type: 3}
     - target: {fileID: 2553152343183432810, guid: 04f8e434277eae2489122c4f3907320b, type: 3}
       propertyPath: OnPlantingFailedOnTile.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
@@ -3029,6 +3318,10 @@ PrefabInstance:
       propertyPath: OnTileMenuOpened.m_PersistentCalls.m_Calls.Array.size
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2553152343203886299, guid: 04f8e434277eae2489122c4f3907320b, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 95c0e20cb290eb74ca5e4473d934b93a, type: 3}
     - target: {fileID: 2553152343230352339, guid: 04f8e434277eae2489122c4f3907320b, type: 3}
       propertyPath: OnPlantingFailedOnTile.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
@@ -3045,6 +3338,10 @@ PrefabInstance:
       propertyPath: OnTileMenuOpened.m_PersistentCalls.m_Calls.Array.size
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2553152343230829310, guid: 04f8e434277eae2489122c4f3907320b, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 95c0e20cb290eb74ca5e4473d934b93a, type: 3}
     - target: {fileID: 2553152343265164900, guid: 04f8e434277eae2489122c4f3907320b, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -3061,6 +3358,10 @@ PrefabInstance:
       propertyPath: OnPlantingFailedOnTile.m_PersistentCalls.m_Calls.Array.data[2].m_Target
       value: 
       objectReference: {fileID: 1115374083}
+    - target: {fileID: 2553152343269165512, guid: 04f8e434277eae2489122c4f3907320b, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 95c0e20cb290eb74ca5e4473d934b93a, type: 3}
     - target: {fileID: 2553152343273401606, guid: 04f8e434277eae2489122c4f3907320b, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -3141,6 +3442,14 @@ PrefabInstance:
       propertyPath: OnPlantingFailedOnTile.m_PersistentCalls.m_Calls.Array.data[2].m_Target
       value: 
       objectReference: {fileID: 1115374083}
+    - target: {fileID: 2553152343373920272, guid: 04f8e434277eae2489122c4f3907320b, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 95c0e20cb290eb74ca5e4473d934b93a, type: 3}
+    - target: {fileID: 2553152343380605707, guid: 04f8e434277eae2489122c4f3907320b, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 95c0e20cb290eb74ca5e4473d934b93a, type: 3}
     - target: {fileID: 2553152343384237826, guid: 04f8e434277eae2489122c4f3907320b, type: 3}
       propertyPath: OnTileMenuOpened.m_PersistentCalls.m_Calls.Array.size
       value: 0
@@ -3157,6 +3466,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 2553152343384302798, guid: 04f8e434277eae2489122c4f3907320b, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 95c0e20cb290eb74ca5e4473d934b93a, type: 3}
     - target: {fileID: 2553152343386460256, guid: 04f8e434277eae2489122c4f3907320b, type: 3}
       propertyPath: OnPlantingFailedOnTile.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
@@ -3189,6 +3502,14 @@ PrefabInstance:
       propertyPath: OnPlantingFailedOnTile.m_PersistentCalls.m_Calls.Array.data[2].m_Target
       value: 
       objectReference: {fileID: 1115374083}
+    - target: {fileID: 2553152343439373562, guid: 04f8e434277eae2489122c4f3907320b, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 95c0e20cb290eb74ca5e4473d934b93a, type: 3}
+    - target: {fileID: 2553152343454533873, guid: 04f8e434277eae2489122c4f3907320b, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 95c0e20cb290eb74ca5e4473d934b93a, type: 3}
     - target: {fileID: 2553152343463500905, guid: 04f8e434277eae2489122c4f3907320b, type: 3}
       propertyPath: OnPlantingFailedOnTile.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
@@ -3205,6 +3526,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 2553152343472091671, guid: 04f8e434277eae2489122c4f3907320b, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 95c0e20cb290eb74ca5e4473d934b93a, type: 3}
     - target: {fileID: 2553152343522702278, guid: 04f8e434277eae2489122c4f3907320b, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 

@@ -2400,6 +2400,7 @@ GameObject:
   - component: {fileID: 8749274688690806767}
   - component: {fileID: 4947571965539220225}
   - component: {fileID: 7367094930279649985}
+  - component: {fileID: 1921043594436191322}
   m_Layer: 5
   m_Name: Skip Button
   m_TagString: Untagged
@@ -2522,6 +2523,18 @@ MonoBehaviour:
           m_StringArgument: SkipDialog
           m_BoolArgument: 0
         m_CallState: 1
+--- !u!225 &1921043594436191322
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3808267848897883837}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &3825637628054077813
 GameObject:
   m_ObjectHideFlags: 0

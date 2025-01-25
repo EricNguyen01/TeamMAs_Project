@@ -147,7 +147,8 @@ namespace TeamMAsTD
                 popupConfirmationMessage = "Do you want to spend ${uprootCost} to uproot {unitNum} unit(s)?";
             }
 
-            if (!popupConfirmationMessage.Contains("uprootCost"))
+            if (!popupConfirmationMessage.Contains("uprootCost") ||
+                !popupConfirmationMessage.Contains("unitNum"))
             {
                 popupConfirmationMessage = "Do you want to spend ${uprootCost} to uproot {unitNum} unit(s)?";
             }

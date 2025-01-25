@@ -10,6 +10,9 @@ scopes = {
 	"last_search.71A69CD8" = ""
 	"OpenInspectorPreview.71A69CD8" = "0"
 	"currentGroup.71A69CD8" = "all"
+	"last_search.E3B6095D" = "TDGrid"
+	"OpenInspectorPreview.E3B6095D" = "0"
+	"currentGroup.E3B6095D" = "all"
 }
 providers = {
 	adb = {
@@ -52,6 +55,11 @@ providers = {
 		priority = 50
 		defaultAction = null
 	}
+	profilermarkers = {
+		active = false
+		priority = 100
+		defaultAction = null
+	}
 }
 objectSelectors = {
 }
@@ -67,3 +75,4 @@ queryBuilder = false
 ignoredProperties = "id;name;classname;imagecontentshash"
 helperWidgetCurrentArea = "all"
 disabledIndexers = ""
+minIndexVariations = 2

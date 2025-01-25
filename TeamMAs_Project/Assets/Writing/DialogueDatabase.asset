@@ -14371,11 +14371,11 @@ MonoBehaviour:
       - title: Title
         value: START
         type: 0
-        typeString: 
+        typeString: CustomFieldType_Text
       - title: Description
         value: 
         type: 0
-        typeString: 
+        typeString: CustomFieldType_Text
       - title: Actor
         value: 2
         type: 5
@@ -14387,19 +14387,23 @@ MonoBehaviour:
       - title: Menu Text
         value: 
         type: 0
-        typeString: 
+        typeString: CustomFieldType_Text
       - title: Dialogue Text
         value: 
         type: 0
-        typeString: 
+        typeString: CustomFieldType_Text
       - title: Sequence
         value: None()
         type: 0
-        typeString: 
+        typeString: CustomFieldType_Text
       - title: Priority
         value: 0
         type: 1
         typeString: CustomFieldType_Number
+      - title: EventGuid
+        value: c94d2bd5-808f-4704-9cd8-ade1c989b55e
+        type: 0
+        typeString: CustomFieldType_Text
       conversationID: 22
       isRoot: 0
       isGroup: 0
@@ -14962,8 +14966,8 @@ MonoBehaviour:
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 0, y: 331.95856}
-    canvasZoom: 0.97
+    canvasScrollPosition: {x: 0, y: 296.87482}
+    canvasZoom: 0.64000034
   - id: 23
     fields:
     - title: Title
@@ -15015,11 +15019,11 @@ MonoBehaviour:
       - title: Title
         value: START
         type: 0
-        typeString: 
+        typeString: CustomFieldType_Text
       - title: Description
         value: 
         type: 0
-        typeString: 
+        typeString: CustomFieldType_Text
       - title: Actor
         value: 2
         type: 5
@@ -15031,19 +15035,23 @@ MonoBehaviour:
       - title: Menu Text
         value: 
         type: 0
-        typeString: 
+        typeString: CustomFieldType_Text
       - title: Dialogue Text
         value: 
         type: 0
-        typeString: 
+        typeString: CustomFieldType_Text
       - title: Sequence
         value: None()
         type: 0
-        typeString: 
+        typeString: CustomFieldType_Text
       - title: Priority
         value: 0
         type: 1
         typeString: CustomFieldType_Number
+      - title: EventGuid
+        value: 7c0ce48d-ecf2-4c3b-a1e4-8dd52ed103ce
+        type: 0
+        typeString: CustomFieldType_Text
       conversationID: 23
       isRoot: 0
       isGroup: 0
@@ -16668,6 +16676,10 @@ MonoBehaviour:
         value: 0
         type: 1
         typeString: CustomFieldType_Number
+      - title: EventGuid
+        value: 2ac4c30a-814b-4c8d-94e7-5078c57af848
+        type: 0
+        typeString: CustomFieldType_Text
       conversationID: 23
       isRoot: 0
       isGroup: 0
@@ -16688,8 +16700,8 @@ MonoBehaviour:
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 0, y: 0}
-    canvasZoom: 0.6100004
+    canvasScrollPosition: {x: 0, y: 1176.5623}
+    canvasZoom: 0.64000034
   syncInfo:
     syncActors: 0
     syncItems: 0

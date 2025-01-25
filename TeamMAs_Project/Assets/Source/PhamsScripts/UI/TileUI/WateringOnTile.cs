@@ -1,13 +1,12 @@
 // Script Author: Pham Nguyen. All Rights Reserved. 
 // GitHub: https://github.com/EricNguyen01.
 
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
-using TMPro;
 using System.Linq;
+using TMPro;
+using System.Collections;
 
 namespace TeamMAsTD
 {
@@ -28,6 +27,12 @@ namespace TeamMAsTD
         private Tile tileToWater;
 
         private Button wateringChildButton;
+
+        private TextMeshProUGUI wateringButtonText;
+
+        private int lastWateringCostTextDisplay = -1;
+
+        private bool hasSetWateringCostTextOnActive = false;
 
         private Saveable saveable;
 
@@ -65,6 +70,10 @@ namespace TeamMAsTD
 
                         wateringChildButton = button;
 
+                        wateringButtonText = wateringChildButton.GetComponentInChildren<TextMeshProUGUI>();
+
+                        SetWateringCostText(0);
+
                         break;
                     }
                 }
@@ -81,6 +90,59 @@ namespace TeamMAsTD
             {
                 thisTileInsufficientWateringFundPopup = tileToWater.thisTileInsufficientFundToPlantStatPopup;
             }
+        }
+
+        private void Update()
+        {
+            if (!enabled || 
+                !wateringChildButton ||
+                !wateringChildButton.gameObject.activeSelf || 
+                !wateringChildButton.gameObject.activeInHierarchy)
+            {
+                return;
+            }
+
+            if (UnitGroupSelectionManager.unitGroupSelectionManagerInstance)
+            {
+                if (UnitGroupSelectionManager.unitGroupSelectionManagerInstance.unitGroupSelected != null &&
+                    UnitGroupSelectionManager.unitGroupSelectionManagerInstance.unitGroupSelected.Count > 1)
+                {
+                    int totalWateringCost = 0;
+
+                    IUnit[] selectedUnits = UnitGroupSelectionManager.unitGroupSelectionManagerInstance.unitGroupSelected.ToArray();
+
+                    for (int i = 0; i < selectedUnits.Length; i++)
+                    {
+                        if (selectedUnits[i] == null) continue;
+
+                        if (selectedUnits[i] is not PlantUnit) continue;
+
+                        if (!selectedUnits[i].GetTileUnitIsOn()) continue;
+
+                        PlantUnit plantUnit = selectedUnits[i] as PlantUnit;
+
+                        if (!plantUnit.plantWaterUsageSystem) continue;
+
+                        if (plantUnit.plantWaterUsageSystem.IsWaterFull()) continue;
+
+                        totalWateringCost += plantUnit.plantUnitScriptableObject.wateringCoinsCost;
+                    }
+
+                    SetWateringCostText(totalWateringCost);
+
+                    return;
+                }
+            }
+
+            if (!tileToWater) return;
+
+            if (!tileToWater.plantUnitOnTile) return;
+
+            if (!tileToWater.plantUnitOnTile.plantWaterUsageSystem) return;
+
+            if (tileToWater.plantUnitOnTile.plantWaterUsageSystem.IsWaterFull()) return;
+
+            SetWateringCostText(tileToWater.plantUnitOnTile.plantUnitScriptableObject.wateringCoinsCost);
         }
 
         //Watering button UI event function -> callback from button's OnClicked event 
@@ -100,7 +162,7 @@ namespace TeamMAsTD
 
             IUnit[] selectedUnits = UnitGroupSelectionManager.unitGroupSelectionManagerInstance.unitGroupSelected.ToArray();
 
-            Tile[] tilesToWater = new Tile[UnitGroupSelectionManager.unitGroupSelectionManagerInstance.unitGroupSelected.Count];
+            Tile[] multiTilesToWater = new Tile[UnitGroupSelectionManager.unitGroupSelectionManagerInstance.unitGroupSelected.Count];
 
             int tilesToWaterIterCount = 0;
 
@@ -112,12 +174,12 @@ namespace TeamMAsTD
 
                 if (!selectedUnits[i].GetTileUnitIsOn()) continue;
 
-                tilesToWater[tilesToWaterIterCount] = selectedUnits[i].GetTileUnitIsOn();
+                multiTilesToWater[tilesToWaterIterCount] = selectedUnits[i].GetTileUnitIsOn();
 
                 tilesToWaterIterCount++;
             }
 
-            WaterMultiTiles(tilesToWater);
+            WaterMultiTiles(multiTilesToWater);
 
             return;
 
@@ -174,6 +236,8 @@ namespace TeamMAsTD
             }
 
             if (HasInsufficientWateringFund(totalWateringCosts)) return;
+
+            if (totalWateringCosts <= 0) return;
 
             SpawnAndDestroy_WateringSoundPlayer_IfNotNull();
 
@@ -271,6 +335,30 @@ namespace TeamMAsTD
 
             //if watering sound player script not found -> destroy after 1.0f;
             Destroy(wateringSoundObj, 1.0f);
+        }
+
+        private void SetWateringCostText(int wateringCost)
+        {
+            if (!wateringButtonText) return;
+
+            if(wateringCost < 0) wateringCost = 0;
+
+            if (lastWateringCostTextDisplay > -1 && lastWateringCostTextDisplay == wateringCost) return;
+
+            lastWateringCostTextDisplay = wateringCost;
+
+            if (string.IsNullOrEmpty(wateringButtonText.text) || 
+                string.IsNullOrWhiteSpace(wateringButtonText.text))
+            {
+                wateringButtonText.text = "${waterCost}";
+            }
+
+            if (!wateringButtonText.text.Contains("waterCost"))
+            {
+                wateringButtonText.text = "${waterCost}";
+            }
+
+            wateringButtonText.text = wateringButtonText.text.Replace("{waterCost}", $"{wateringCost}");
         }
     }
 }

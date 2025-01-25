@@ -7,7 +7,6 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
-using static UnityEngine.UI.CanvasScaler;
 
 namespace TeamMAsTD
 {
@@ -233,8 +232,6 @@ namespace TeamMAsTD
 
             CheckIf_DragOccursInDragAllowedArea_ToCreateDragSelectionBox();
 
-#if ENABLE_LEGACY_INPUT_MANAGER
-
             if (Input.GetButtonDown("Fire1"))
             {
                 hasHeldToDrag = false;
@@ -249,8 +246,6 @@ namespace TeamMAsTD
             {
                 EndDrag();
             }
-
-#endif
         }
 
         private void BeginDrag()

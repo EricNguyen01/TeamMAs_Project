@@ -2,8 +2,6 @@
 // GitHub: https://github.com/EricNguyen01.
 
 using System.Collections;
-using System.Collections.Generic;
-using System.Resources;
 using UnityEngine;
 
 namespace TeamMAsTD
