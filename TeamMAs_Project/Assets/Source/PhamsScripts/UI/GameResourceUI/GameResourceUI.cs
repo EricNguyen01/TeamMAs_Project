@@ -76,14 +76,14 @@ namespace TeamMAsTD
 
         protected virtual void OnEnable()
         {
-            GameResourceSO.OnResourceAmountUpdated += GameResourceUpdateStatPopupOnUI;
-            GameResourceSO.OnResourceAmountUpdated += DisplayResourceAmountText;
+            GameResource.OnResourceAmountUpdated += GameResourceUpdateStatPopupOnUI;
+            GameResource.OnResourceAmountUpdated += DisplayResourceAmountText;
         }
 
         protected virtual void OnDisable()
         {
-            GameResourceSO.OnResourceAmountUpdated -= GameResourceUpdateStatPopupOnUI;
-            GameResourceSO.OnResourceAmountUpdated -= DisplayResourceAmountText;
+            GameResource.OnResourceAmountUpdated -= GameResourceUpdateStatPopupOnUI;
+            GameResource.OnResourceAmountUpdated -= DisplayResourceAmountText;
         }
 
         protected virtual void Start()

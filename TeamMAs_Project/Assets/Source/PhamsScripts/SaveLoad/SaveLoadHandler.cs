@@ -68,7 +68,7 @@ namespace TeamMAsTD
             }
         }
 
-        private List<SavedSaveable> DEBUG_SavedSaveablesList = new List<SavedSaveable>();
+        //private List<SavedSaveable> DEBUG_SavedSaveablesList = new List<SavedSaveable>();
 
         public static event Action OnSavingStarted;
 
@@ -160,12 +160,14 @@ namespace TeamMAsTD
 
         private static StateDictionaryObject UpdateCurrentSavedData(StateDictionaryObject currentSavedData)
         {
+            StateDictionaryObject latestDataToSave = null;
+
             foreach (Saveable saveable in FindObjectsOfType<Saveable>(true))
             {
-                UpdateCurrentSaveDataOfSaveable(currentSavedData, saveable);
+                latestDataToSave = UpdateCurrentSaveDataOfSaveable(currentSavedData, saveable);
             }
 
-            return currentSavedData;
+            return latestDataToSave;
         }
 
         private static void WriteToFile(StateDictionaryObject latestSavedData)
@@ -234,7 +236,7 @@ namespace TeamMAsTD
 
             currentSavedData.stateDict.Add(saveable.GetSaveableID(), saveable.CaptureSaveableState());
 
-            saveLoadHandlerInstance.DEBUG_SavedSaveablesList.Add(new SavedSaveable(saveable.name, saveable.GetSaveableID()));
+            //saveLoadHandlerInstance.DEBUG_SavedSaveablesList.Add(new SavedSaveable(saveable.name, saveable.GetSaveableID()));
 
             return currentSavedData;
         }

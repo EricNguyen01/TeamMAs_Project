@@ -54,14 +54,14 @@ namespace TeamMAsTD
 
         protected override void OnEnable()
         {
-            GameResourceSO.OnResourceAmountUpdated += DisplayResourceSlider;
+            GameResource.OnResourceAmountUpdated += DisplayResourceSlider;
 
             base.OnEnable();
         }
 
         protected override void OnDisable()
         {
-            GameResourceSO.OnResourceAmountUpdated -= DisplayResourceSlider;
+            GameResource.OnResourceAmountUpdated -= DisplayResourceSlider;
 
             base.OnDisable();
         }

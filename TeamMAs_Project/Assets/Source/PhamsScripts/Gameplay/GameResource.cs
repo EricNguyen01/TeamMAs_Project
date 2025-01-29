@@ -4,6 +4,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -26,7 +27,15 @@ namespace TeamMAsTD
 
         //make new fields for new game resources SO here...
 
+        private bool isUpdatingResourceAmount = false;
+
+        private HashSet<GameResourceSO> resourcesToUpdateAmount = new HashSet<GameResourceSO>();
+
+        private GameResourceSO[] tempResourcesToUpdateAmountArr;
+
         public static GameResource gameResourceInstance;
+
+        public static event Action<GameResourceSO> OnResourceAmountUpdated;
 
         private Saveable saveable;
 
@@ -79,15 +88,11 @@ namespace TeamMAsTD
         {
             TryGetComponent<Saveable>(out saveable);
 
-            GameResourceSO.OnResourceAmountUpdated += (resourceSO) => SaveLoadHandler.SaveThisSaveableOnly(saveable);
-
             SceneManager.sceneLoaded += (Scene sc, LoadSceneMode loadSceneMode) => DestroyIfMenuSceneEntered(sc);
         }
 
         private void OnDisable()
         {
-            GameResourceSO.OnResourceAmountUpdated -= (resourceSO) => SaveLoadHandler.SaveThisSaveableOnly(saveable);
-
             SceneManager.sceneLoaded -= (Scene sc, LoadSceneMode loadSceneMode) => DestroyIfMenuSceneEntered(sc);
         }
 
@@ -115,11 +120,72 @@ namespace TeamMAsTD
             if (!gameResourceInstance) gameResourceInstance = gResource;
         }
 
+        public static void UpdateResourceAmountEventForResourceSO(GameResourceSO resourceSO)
+        {
+            if (!resourceSO) return;
+
+            if (!gameResourceInstance)
+            {
+                OnResourceAmountUpdated?.Invoke(resourceSO);
+
+                return;
+            }
+
+            gameResourceInstance.resourcesToUpdateAmount.Add(resourceSO);
+
+            if (gameResourceInstance.isUpdatingResourceAmount) return;
+
+            gameResourceInstance.StartCoroutine(gameResourceInstance.UpdateResourceAmountDelay());
+        }
+
+        WaitForFixedUpdate waitForFixedUpdate = new WaitForFixedUpdate();
+        private IEnumerator UpdateResourceAmountDelay()
+        {
+            if (resourcesToUpdateAmount == null || resourcesToUpdateAmount.Count == 0) yield break;
+
+            if (isUpdatingResourceAmount) yield break;
+
+            isUpdatingResourceAmount = true;
+
+            for (int i = 0; i < 2; i++)
+            {
+                yield return waitForFixedUpdate;
+            }
+
+            tempResourcesToUpdateAmountArr = new GameResourceSO[resourcesToUpdateAmount.Count];
+
+            resourcesToUpdateAmount.CopyTo(tempResourcesToUpdateAmountArr);
+
+            foreach (GameResourceSO resourceSO in tempResourcesToUpdateAmountArr)
+            {
+                if(!resourceSO) continue;
+
+                OnResourceAmountUpdated?.Invoke(resourceSO);
+
+                if(resourcesToUpdateAmount.Contains(resourceSO)) resourcesToUpdateAmount.Remove(resourceSO);
+
+                yield return waitForFixedUpdate;
+            }
+
+            SaveLoadHandler.SaveThisSaveableOnly(saveable);
+
+            isUpdatingResourceAmount = false;
+
+            if(resourcesToUpdateAmount.Count > 0)
+            {
+                StartCoroutine(UpdateResourceAmountDelay());
+            }
+            else
+            {
+                tempResourcesToUpdateAmountArr = null;
+            }
+        }
+
         //ISaveable interface implementations...........................................................................
 
         public SaveDataSerializeBase SaveData(string saveName = "")
         {
-            UnityEngine.SceneManagement.Scene scene = UnityEngine.SceneManagement.SceneManager.GetActiveScene();
+            Scene scene = SceneManager.GetActiveScene();
 
             Dictionary<string, float> emotionalHealthTypesSaveDict = new Dictionary<string, float>();
 

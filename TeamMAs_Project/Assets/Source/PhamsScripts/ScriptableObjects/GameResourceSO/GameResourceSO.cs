@@ -1,14 +1,8 @@
 // Script Author: Pham Nguyen. All Rights Reserved. 
 // GitHub: https://github.com/EricNguyen01.
 
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using System;
-
-#if UNITY_EDITOR
-using UnityEditor;
-#endif
 
 namespace TeamMAsTD
 {
@@ -42,9 +36,6 @@ namespace TeamMAsTD
         [field: NonSerialized]
         public float resourceAmountCap { get; private set; }//runtime non-static data
 
-        //This event is sub by GameResourceUI.cs to update the UI display of resource amount
-        public static event System.Action<GameResourceSO> OnResourceAmountUpdated;
-
 #if UNITY_EDITOR
         protected virtual void OnValidate()
         {
@@ -52,7 +43,10 @@ namespace TeamMAsTD
 
             if(currentResourceAmount != resourceAmount) currentResourceAmount = resourceAmount;
 
-            OnResourceAmountUpdated?.Invoke(this);
+            if (Application.isPlaying)
+            {
+                GameResource.UpdateResourceAmountEventForResourceSO(this);
+            }
         }
 #endif
 
@@ -64,7 +58,7 @@ namespace TeamMAsTD
 
             currentResourceAmount = resourceAmount;
 
-            OnResourceAmountUpdated?.Invoke(this);
+            GameResource.UpdateResourceAmountEventForResourceSO(this);
         }
 
         public virtual void SetSpecificResourceAmount(float setAmount)
@@ -75,7 +69,7 @@ namespace TeamMAsTD
 
             currentResourceAmount = resourceAmount;
 
-            OnResourceAmountUpdated?.Invoke(this);
+            GameResource.UpdateResourceAmountEventForResourceSO(this);
         }
 
         public virtual void RemoveResourceAmount(float removedAmount)
@@ -86,7 +80,7 @@ namespace TeamMAsTD
 
             currentResourceAmount = resourceAmount;
 
-            OnResourceAmountUpdated?.Invoke(this);
+            GameResource.UpdateResourceAmountEventForResourceSO(this);
         }
 
         public virtual void IncreaseResourceAmountCap(float increaseAmount, bool matchResourceAmountToNewCapAmount)
@@ -95,7 +89,7 @@ namespace TeamMAsTD
 
             if (matchResourceAmountToNewCapAmount) resourceAmount = resourceAmountCap;
 
-            OnResourceAmountUpdated?.Invoke(this);
+            GameResource.UpdateResourceAmountEventForResourceSO(this);
         }
 
         public virtual void DecreaseResourceAmountCap(float decreaseAmount)
@@ -104,7 +98,7 @@ namespace TeamMAsTD
 
             CheckResourceAmountMinMaxReached();
 
-            OnResourceAmountUpdated?.Invoke(this);
+            GameResource.UpdateResourceAmountEventForResourceSO(this);
         }
 
         public void ResetAndUpdateResourceValuesToInitial()
