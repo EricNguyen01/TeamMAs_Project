@@ -105,8 +105,6 @@ namespace TeamMAsTD
             {
                 if (!gameObject.activeInHierarchy) gameObject.SetActive(true);
 
-                alreadyDisplayed = true;
-
                 transform.position = fingerStartPos;
 
                 return;
@@ -117,6 +115,8 @@ namespace TeamMAsTD
                 gameObject.SetActive(false);
 
                 transform.position = fingerStartPos;
+
+                alreadyDisplayed = true;
             }
         }
 

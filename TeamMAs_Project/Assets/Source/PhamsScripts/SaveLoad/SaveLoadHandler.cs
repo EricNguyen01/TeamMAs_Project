@@ -49,26 +49,32 @@ namespace TeamMAsTD
 
             public StateDictionaryObject(Dictionary<string, object> stateDict = null)
             {
-                if (stateDict == null) return;
+                if (stateDict == null)
+                {
+                    if(this.stateDict == null) this.stateDict = new Dictionary<string, object>();
+
+                    return;
+                }
 
                 this.stateDict = stateDict;
             }
-        }
 
-        [Serializable]
-        private struct SavedSaveable
-        {
-            public string saveableName; public string saveableID;
-
-            public SavedSaveable(string saveableName, string saveableID)
+            public bool IsValid()
             {
-                this.saveableName = saveableName;
+                if(stateDict == null || stateDict.Count == 0) return false;
 
-                this.saveableID = saveableID;
+                return true;
+            }
+
+            public void Clear()
+            {
+                if (stateDict == null) return;
+
+                stateDict.Clear();
             }
         }
 
-        //private List<SavedSaveable> DEBUG_SavedSaveablesList = new List<SavedSaveable>();
+        private StateDictionaryObject currentSaveData = new StateDictionaryObject();
 
         public static event Action OnSavingStarted;
 
@@ -134,9 +140,14 @@ namespace TeamMAsTD
 
             OnSavingStarted?.Invoke();
 
-            StateDictionaryObject latestDataToSave = UpdateCurrentSavedData(LoadFromFile());
+            if(saveLoadHandlerInstance.currentSaveData != null &&
+               saveLoadHandlerInstance.currentSaveData.IsValid())
+            {
+                saveLoadHandlerInstance.currentSaveData = UpdateCurrentSavedData(saveLoadHandlerInstance.currentSaveData);
+            }
+            else saveLoadHandlerInstance.currentSaveData = UpdateCurrentSavedData(LoadFromFile());
 
-            WriteToFile(latestDataToSave);
+            WriteToFile(saveLoadHandlerInstance.currentSaveData);
 
             OnSavingFinished?.Invoke();
 
@@ -197,9 +208,14 @@ namespace TeamMAsTD
 
             OnSavingStarted?.Invoke();
 
-            StateDictionaryObject latestDataToSave = UpdateCurrentSaveDataOfSaveable(LoadFromFile(), saveable);
+            if(saveLoadHandlerInstance.currentSaveData != null &&
+               saveLoadHandlerInstance.currentSaveData.IsValid())
+            {
+                saveLoadHandlerInstance.currentSaveData = UpdateCurrentSaveDataOfSaveable(saveLoadHandlerInstance.currentSaveData, saveable);
+            }
+            else saveLoadHandlerInstance.currentSaveData = UpdateCurrentSaveDataOfSaveable(LoadFromFile(), saveable);
 
-            WriteToFile(latestDataToSave);
+            WriteToFile(saveLoadHandlerInstance.currentSaveData);
 
             OnSavingFinished?.Invoke();
 
@@ -277,7 +293,12 @@ namespace TeamMAsTD
 
             OnLoadingStarted?.Invoke();
 
-            RestoreSavedDataForAllSaveables(LoadFromFile());
+            if(saveLoadHandlerInstance.currentSaveData != null &&
+               saveLoadHandlerInstance.currentSaveData.IsValid())
+            {
+                RestoreSavedDataForAllSaveables(saveLoadHandlerInstance.currentSaveData);
+            }
+            else RestoreSavedDataForAllSaveables(LoadFromFile());
 
             OnLoadingFinished?.Invoke();
 
@@ -318,7 +339,12 @@ namespace TeamMAsTD
 
             OnLoadingStarted?.Invoke();
 
-            RestoreSaveDataOfSaveable(LoadFromFile(), saveable);
+            if(saveLoadHandlerInstance.currentSaveData != null &&
+               saveLoadHandlerInstance.currentSaveData.IsValid())
+            {
+                RestoreSaveDataOfSaveable(saveLoadHandlerInstance.currentSaveData, saveable);
+            }
+            else RestoreSaveDataOfSaveable(LoadFromFile(), saveable);
 
             OnLoadingFinished?.Invoke();
 
@@ -374,6 +400,8 @@ namespace TeamMAsTD
             if (showDebugLog) Debug.Log("All Save Data Deleted SUCCESSFULLY!");
 
             saveLoadManager.DeleteSave(SAVE_FILE_NAME);
+
+            if(currentSaveData != null) currentSaveData.Clear();
         }
 
         public void DeleteSaveDataOfSaveable(Saveable saveable)
@@ -387,11 +415,13 @@ namespace TeamMAsTD
 
             if (!saveable) return;
 
-            StateDictionaryObject currentSavedData = LoadFromFile();
+            if(currentSaveData == null || !currentSaveData.IsValid()) currentSaveData = LoadFromFile();
 
-            if (!currentSavedData.stateDict.ContainsKey(saveable.GetSaveableID())) return;
+            if (!currentSaveData.stateDict.ContainsKey(saveable.GetSaveableID())) return;
 
-            currentSavedData.stateDict.Remove(saveable.GetSaveableID());
+            currentSaveData.stateDict.Remove(saveable.GetSaveableID());
+
+            WriteToFile(currentSaveData);
         }
 
         #endregion

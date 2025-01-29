@@ -26,9 +26,9 @@ namespace TeamMAsTD
 
         [SerializeField] private Slider loadingScreenSlider;
 
-        [SerializeField] private float transitionStartDelay = 0.0f;
+        //[SerializeField] private float transitionStartDelay = 0.0f;
 
-        [SerializeField] private bool performAdditionalTransitionTime = false;
+        private bool performAdditionalTransitionTime = true;
 
         [SerializeField]
         [DisableIf("performAdditionalTransitionTime", false)]
@@ -196,17 +196,13 @@ namespace TeamMAsTD
                 button.interactable = false;
             }
 
-            if (transitionStartDelay > 0.0f) yield return new WaitForSecondsRealtime(transitionStartDelay);
-
-            float additionalTransitionTime = 1.5f;
+            float additionalTransitionTime = 2.0f;
 
             yield return StartCoroutine(EnableSceneLoadUISequence(true));
 
             if (performAdditionalTransitionTime && loadingScreenSlider)
             {
                 StartCoroutine(LoadingScreenBarSliderCoroutine(UnityEngine.Random.Range(0.23f, 0.35f), additionalTransitionTime));
-
-                //loadingScreenSlider.DOValue(UnityEngine.Random.Range(0.3f, 0.4f), additionalTransitionTime).SetUpdate(true);
             }
 
             if (performAdditionalTransitionTime) yield return new WaitForSecondsRealtime(additionalTransitionTime);

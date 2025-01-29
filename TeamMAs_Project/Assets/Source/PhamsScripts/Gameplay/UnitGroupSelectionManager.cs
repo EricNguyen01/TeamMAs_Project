@@ -425,7 +425,7 @@ namespace TeamMAsTD
                     if (raycastResults[i].gameObject.layer == LayerMask.GetMask("UI") ||
                         raycastResults[i].gameObject.layer == LayerMask.NameToLayer("UI"))
                     {
-                        if (raycastResults[i].gameObject.GetComponent<Button>()) return;
+                        /*if (raycastResults[i].gameObject.GetComponent<Button>())*/ return;
                     }
                     
                     if (TileMenuInteractionHandler.tileMenuInteractionHandlerInstance)

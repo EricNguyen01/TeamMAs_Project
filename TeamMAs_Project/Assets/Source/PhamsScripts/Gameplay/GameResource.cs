@@ -4,7 +4,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -138,7 +137,9 @@ namespace TeamMAsTD
             gameResourceInstance.StartCoroutine(gameResourceInstance.UpdateResourceAmountDelay());
         }
 
-        WaitForFixedUpdate waitForFixedUpdate = new WaitForFixedUpdate();
+        private WaitForFixedUpdate waitForFixedUpdate = new WaitForFixedUpdate();
+
+        private WaitForEndOfFrame waitForEndOfFrame = new WaitForEndOfFrame();
         private IEnumerator UpdateResourceAmountDelay()
         {
             if (resourcesToUpdateAmount == null || resourcesToUpdateAmount.Count == 0) yield break;
@@ -147,10 +148,9 @@ namespace TeamMAsTD
 
             isUpdatingResourceAmount = true;
 
-            for (int i = 0; i < 2; i++)
-            {
-                yield return waitForFixedUpdate;
-            }
+            yield return new WaitForSeconds(0.1f);
+
+            yield return waitForEndOfFrame;
 
             tempResourcesToUpdateAmountArr = new GameResourceSO[resourcesToUpdateAmount.Count];
 

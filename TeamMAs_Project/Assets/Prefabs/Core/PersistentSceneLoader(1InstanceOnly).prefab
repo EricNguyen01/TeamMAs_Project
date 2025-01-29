@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1137227234004794300}
   - component: {fileID: 3179963977212166587}
   - component: {fileID: 8557463956528303243}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Handle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -93,7 +93,8 @@ MonoBehaviour:
   easeMode: 31
   tweenDuration: 0.5
   tweenAutoStartDelay: 0
-  isIndependentTimeScale: 1
+  <isLooped>k__BackingField: 0
+  <isIndependentTimeScale>k__BackingField: 0
   disableUIFunctionDuringTween: 0
   disableUIFunctionAfterTween: 0
   OnUITweenStarted:
@@ -118,7 +119,7 @@ GameObject:
   - component: {fileID: 3633852038815704052}
   - component: {fileID: 4202043153219251451}
   - component: {fileID: 4943732450033704668}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -197,7 +198,7 @@ GameObject:
   - component: {fileID: 4134137608516341355}
   - component: {fileID: 6542785902921229346}
   - component: {fileID: 153832608308000702}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: LoadingScreenCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -314,7 +315,8 @@ MonoBehaviour:
   easeMode: 13
   tweenDuration: 1
   tweenAutoStartDelay: 0
-  isIndependentTimeScale: 1
+  <isLooped>k__BackingField: 0
+  <isIndependentTimeScale>k__BackingField: 1
   disableUIFunctionDuringTween: 0
   disableUIFunctionAfterTween: 0
   OnUITweenStarted:
@@ -330,7 +332,6 @@ MonoBehaviour:
   imageAlphaToFadeInTo: 0
   imageAlphaToFadeOutTo: 255
   fadeMode: 0
-  reverseFadeOnFadeCycleFinished: 0
 --- !u!1 &4673488220717180017
 GameObject:
   m_ObjectHideFlags: 0
@@ -342,7 +343,7 @@ GameObject:
   - component: {fileID: 4935853313485950926}
   - component: {fileID: 7566658773045395245}
   - component: {fileID: 8743842170780313457}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: LoadingSliderBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -490,8 +491,6 @@ MonoBehaviour:
   loadingScreenCanvas: {fileID: 3082328526136417532}
   loadingScreenUIFadeComponent: {fileID: 153832608308000702}
   loadingScreenSlider: {fileID: 7566658773045395245}
-  transitionStartDelay: 0.65
-  performAdditionalTransitionTime: 1
   additionalTransitionTimeToGame: 2
   additionalTransitionTimeToMenu: 1
 --- !u!1 &5958883571991754872
@@ -507,7 +506,7 @@ GameObject:
   - component: {fileID: 7222544027843172735}
   - component: {fileID: 1385000587589633480}
   - component: {fileID: 5973969568961489998}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: LoadingText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -647,7 +646,8 @@ MonoBehaviour:
   easeMode: 7
   tweenDuration: 0.7
   tweenAutoStartDelay: 0
-  isIndependentTimeScale: 1
+  <isLooped>k__BackingField: 0
+  <isIndependentTimeScale>k__BackingField: 0
   disableUIFunctionDuringTween: 0
   disableUIFunctionAfterTween: 0
   OnUITweenStarted:
@@ -663,7 +663,6 @@ MonoBehaviour:
   imageAlphaToFadeInTo: 0
   imageAlphaToFadeOutTo: 255
   fadeMode: 0
-  reverseFadeOnFadeCycleFinished: 1
 --- !u!225 &5973969568961489998
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -687,7 +686,7 @@ GameObject:
   - component: {fileID: 3173195328670792001}
   - component: {fileID: 1537878023472883475}
   - component: {fileID: 8626445657612957400}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: LoadingScreenPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -738,7 +737,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 0.8817644, b: 0.67358494, a: 1}
-  m_RaycastTarget: 0
+  m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -765,7 +764,7 @@ GameObject:
   - component: {fileID: 5016917415985572742}
   - component: {fileID: 5946812256053506500}
   - component: {fileID: 9005839537630439706}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -839,7 +838,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2918928854939618279}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Fill Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -876,7 +875,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3728183472022315464}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Handle Slide Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -916,7 +915,7 @@ GameObject:
   - component: {fileID: 8662517991681158110}
   - component: {fileID: 3788237090909230264}
   - component: {fileID: 8358679082873991404}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: TipsText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
