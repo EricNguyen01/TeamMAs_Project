@@ -5,6 +5,8 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using Gameframe.SaveLoad;
+using System.Linq;
+using UnityEngine.SceneManagement;
 
 #if UNITY_EDITOR
 using UnityEditor;
@@ -22,7 +24,7 @@ namespace TeamMAsTD
 
         [ReadOnlyInspector]
         [SerializeField]
-        private bool disableSaveLoadRuntime = false;
+        public bool disableSaveLoadRuntime { get; private set; } = false;
 
         [SerializeField] [Tooltip("Whether to only keep game progress save file existed during in-editor session or not. Does not affect build.")] 
         private bool deleteSaveOnEditorClosed = true;
@@ -38,6 +40,8 @@ namespace TeamMAsTD
         private const string DEFAULT_FOLDER = "SaveData";
 
         private const SerializationMethodType SERIALIZE_METHOD = SerializationMethodType.Default;
+
+        private HashSet<Saveable> saveablesInScene = new HashSet<Saveable>();   
 
         public static SaveLoadHandler saveLoadHandlerInstance;
 
@@ -106,12 +110,60 @@ namespace TeamMAsTD
 
             SetSaveLoadManagerReferenceIfMissing();
 
-            disableSaveLoadRuntime = false;
+            if(disableSaveLoadAlways) 
+                disableSaveLoadRuntime = true;
+            else 
+                disableSaveLoadRuntime = false;
+
+            SceneManager.sceneLoaded += (Scene sc, LoadSceneMode loadMode) => UpdateSaveablesListOnSceneLoaded();
+        }
+
+        private void OnDestroy()
+        {
+            SceneManager.sceneLoaded -= (Scene sc, LoadSceneMode loadMode) => UpdateSaveablesListOnSceneLoaded();
         }
 
         private void OnApplicationQuit()
         {
             if (Application.isEditor && deleteSaveOnEditorClosed) DeleteAllSaveData();
+        }
+
+        public static void RegisterSaveable(Saveable saveable)
+        {
+            if (!saveLoadHandlerInstance) return;
+
+            if (!saveable) return;
+
+            if (!saveLoadHandlerInstance.saveablesInScene.Contains(saveable))
+                    saveLoadHandlerInstance.saveablesInScene.Add(saveable);
+        }
+
+        public static void DeRegisterSaveable(Saveable saveable)
+        {
+            if (!saveLoadHandlerInstance) return;
+
+            if (!saveable) return;
+
+            if (saveLoadHandlerInstance.saveablesInScene.Contains(saveable))
+                    saveLoadHandlerInstance.saveablesInScene.Remove(saveable);
+        }
+
+        private void UpdateSaveablesListOnSceneLoaded()
+        {
+            if(saveablesInScene.Count > 0)
+            {
+                Saveable[] saveablesArr = saveablesInScene.ToArray();
+
+                for(int i = 0; i < saveablesArr.Length; i++)
+                {
+                    if (!saveablesArr[i]) saveablesInScene.Remove(saveablesArr[i]);
+                }
+            }
+
+            foreach(Saveable saveable in FindObjectsOfType<Saveable>(true))
+            {
+                RegisterSaveable(saveable);
+            }
         }
 
         //SAVE FUNCTIONALITIES....................................................................................................
@@ -173,7 +225,7 @@ namespace TeamMAsTD
         {
             StateDictionaryObject latestDataToSave = null;
 
-            foreach (Saveable saveable in FindObjectsOfType<Saveable>(true))
+            foreach (Saveable saveable in saveLoadHandlerInstance.saveablesInScene)
             {
                 latestDataToSave = UpdateCurrentSaveDataOfSaveable(currentSavedData, saveable);
             }
@@ -453,15 +505,6 @@ namespace TeamMAsTD
 
             if (enabled) saveLoadHandlerInstance.disableSaveLoadRuntime = false;
             else saveLoadHandlerInstance.disableSaveLoadRuntime = true;
-        }
-
-        public static bool IsSaveLoadRuntimeEnabled()
-        {
-            if (!saveLoadHandlerInstance) return false;
-
-            if (saveLoadHandlerInstance.disableSaveLoadRuntime) return false;
-
-            return true;
         }
 
         private SaveLoadManager GetSaveLoadManagerFromResources()

@@ -34,15 +34,18 @@ namespace TeamMAsTD
 
         private void Awake()
         {
-            EnableOnDialogueEndEvent(true);
-
-            DisableOnPlantPlantedOnTileEvent(true);
-
             TryGetComponent<Animator>(out fingerAnimator);
 
             fingerStartPos = transform.position;
 
             fingerSaveable = ISaveable.GetOrGenerateSaveableComponentIfNull(this);
+        }
+
+        private void OnEnable()
+        {
+            EnableOnDialogueEndEvent(true);
+
+            DisableOnPlantPlantedOnTileEvent(true);
         }
 
         private void Start()
@@ -52,7 +55,7 @@ namespace TeamMAsTD
             StartCoroutine(InActiveFingerDelay(0.1f));
         }
 
-        private void OnDestroy()
+        private void OnDisable()
         {
             EnableOnDialogueEndEvent(false);
 
@@ -122,9 +125,9 @@ namespace TeamMAsTD
 
         public void ResetDragDropFingerDisplay()
         {
-            EnableDragDropFinger(true);
-
             alreadyDisplayed = false;
+
+            EnableDragDropFinger(true);
         }
 
         private void DisableOnPlantPlantedOnTileEvent(bool subToEvent)
@@ -157,7 +160,7 @@ namespace TeamMAsTD
 
             if (dialogueSystemEvents == null) return;
 
-            if(subToEvent)
+            if(subToEvent && !alreadyDisplayed)
             {
                 dialogueSystemEvents.conversationEvents.onConversationEnd.AddListener((transform) => EnableDragDropFinger(true));
 
@@ -262,7 +265,7 @@ namespace TeamMAsTD
             tutorialFingerSave = new SaveDataSerializeBase(alreadyDisplayed, 
                                                            transform.position, 
                                                            UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
-
+            
             return tutorialFingerSave;
         }
 
@@ -271,7 +274,7 @@ namespace TeamMAsTD
             if (savedDataToLoad == null) return;
 
             alreadyDisplayed = (bool)savedDataToLoad.LoadSavedObject();
-
+            
             if (alreadyDisplayed)
             {
                 EnableOnDialogueEndEvent(false);

@@ -2,9 +2,7 @@
 // GitHub: https://github.com/EricNguyen01.
 
 using System.Collections.Generic;
-using TeamMAsTD;
 using UnityEngine;
-using System;
 
 #if UNITY_EDITOR
 using UnityEditor;
@@ -35,6 +33,10 @@ namespace TeamMAsTD
         private SerializedProperty UUID_SerializedProperty;
 
 #endif
+        private void Awake()
+        {
+            SaveLoadHandler.RegisterSaveable(this);
+        }
 
         private void OnEnable()
         {
@@ -42,6 +44,11 @@ namespace TeamMAsTD
 
             GenerateID_If_None();
 #endif
+        }
+
+        private void OnDestroy()
+        {
+            SaveLoadHandler.DeRegisterSaveable(this);
         }
 
         private void OnValidate()
