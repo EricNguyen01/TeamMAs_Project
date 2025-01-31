@@ -80,6 +80,8 @@ namespace TeamMAsTD
 
         private StateDictionaryObject currentSaveData = new StateDictionaryObject();
 
+        private SaveLoadProcessDelay saveLoadDelay;
+
         public static event Action OnSavingStarted;
 
         public static event Action OnSavingFinished;
@@ -100,6 +102,8 @@ namespace TeamMAsTD
             saveLoadHandlerInstance = this;
 
             DontDestroyOnLoad(gameObject);
+
+            saveLoadDelay = new SaveLoadProcessDelay(saveLoadHandlerInstance);
 
             if (!Application.isEditor)
             {
@@ -152,12 +156,7 @@ namespace TeamMAsTD
         {
             if(saveablesInScene.Count > 0)
             {
-                Saveable[] saveablesArr = saveablesInScene.ToArray();
-
-                for(int i = 0; i < saveablesArr.Length; i++)
-                {
-                    if (!saveablesArr[i]) saveablesInScene.Remove(saveablesArr[i]);
-                }
+                saveablesInScene.Clear();
             }
 
             foreach(Saveable saveable in FindObjectsOfType<Saveable>(true))
@@ -178,6 +177,11 @@ namespace TeamMAsTD
 
         public static bool SaveAllSaveables()
         {
+            return SaveMultiSaveables(saveLoadHandlerInstance.saveablesInScene.ToArray());
+        }
+
+        public static bool SaveMultiSaveables(Saveable[] saveablesToSave)
+        {
             if (!Application.isPlaying) return false;
 
             if (!saveLoadHandlerInstance || !saveLoadHandlerInstance.saveLoadManager) return false;
@@ -186,13 +190,23 @@ namespace TeamMAsTD
 
             if (saveLoadHandlerInstance.disableSaveLoadAlways || saveLoadHandlerInstance.disableSaveLoadRuntime) return false;
 
+            if(saveablesToSave == null || saveablesToSave.Length == 0) return false;
+
             float saveStartTime = Time.realtimeSinceStartup;
 
-            if (saveLoadHandlerInstance.showDebugLog) Debug.Log("Save All Started!");
+            if (saveLoadHandlerInstance.showDebugLog) Debug.Log("Save Multi-Saveables Started!");
 
             OnSavingStarted?.Invoke();
 
-            if(saveLoadHandlerInstance.currentSaveData != null &&
+            if (saveLoadHandlerInstance.saveLoadDelay != null &&
+                saveLoadHandlerInstance.saveLoadDelay.IsDelayingSave())
+            {
+                saveLoadHandlerInstance.saveLoadDelay.SaveDelayScheduled(saveablesToSave);
+
+                return true;
+            }
+
+            if (saveLoadHandlerInstance.currentSaveData != null &&
                saveLoadHandlerInstance.currentSaveData.IsValid())
             {
                 saveLoadHandlerInstance.currentSaveData = UpdateCurrentSavedData(saveLoadHandlerInstance.currentSaveData);
@@ -202,10 +216,10 @@ namespace TeamMAsTD
             WriteToFile(saveLoadHandlerInstance.currentSaveData);
 
             OnSavingFinished?.Invoke();
-
+            
             float saveTime = Time.realtimeSinceStartup - saveStartTime;
 
-            if (saveLoadHandlerInstance.showDebugLog) Debug.Log("Save All Finished! Time took: " + saveTime);
+            if (saveLoadHandlerInstance.showDebugLog) Debug.Log("Save Multi-Saveables Finished! Time took: " + saveTime);
 
             return true;
         }
@@ -221,12 +235,42 @@ namespace TeamMAsTD
             return loadedData;
         }
 
-        private static StateDictionaryObject UpdateCurrentSavedData(StateDictionaryObject currentSavedData)
+        private static StateDictionaryObject UpdateCurrentSavedData(StateDictionaryObject currentSavedData, Saveable[] saveablesToSave = null)
         {
             StateDictionaryObject latestDataToSave = null;
 
-            foreach (Saveable saveable in saveLoadHandlerInstance.saveablesInScene)
+            if(saveablesToSave == null || saveablesToSave.Length == 0)
             {
+                if(saveLoadHandlerInstance.saveablesInScene == null || saveLoadHandlerInstance.saveablesInScene.Count == 0)
+                {
+                    if (saveLoadHandlerInstance.saveablesInScene == null) saveLoadHandlerInstance.saveablesInScene = new HashSet<Saveable>();
+
+                    foreach (Saveable saveable in FindObjectsOfType<Saveable>(true))
+                    {
+                        if (!saveable) continue;
+
+                        saveLoadHandlerInstance.saveablesInScene.Add(saveable);
+
+                        latestDataToSave = UpdateCurrentSaveDataOfSaveable(currentSavedData, saveable);
+                    }
+
+                    return latestDataToSave;
+                }
+
+                foreach (Saveable saveable in saveLoadHandlerInstance.saveablesInScene)
+                {
+                    if (!saveable) continue;
+
+                    latestDataToSave = UpdateCurrentSaveDataOfSaveable(currentSavedData, saveable);
+                }
+
+                return latestDataToSave;
+            }
+
+            foreach (Saveable saveable in saveablesToSave)
+            {
+                if (!saveable) continue;
+
                 latestDataToSave = UpdateCurrentSaveDataOfSaveable(currentSavedData, saveable);
             }
 
@@ -260,7 +304,15 @@ namespace TeamMAsTD
 
             OnSavingStarted?.Invoke();
 
-            if(saveLoadHandlerInstance.currentSaveData != null &&
+            if (saveLoadHandlerInstance.saveLoadDelay != null &&
+                saveLoadHandlerInstance.saveLoadDelay.IsDelayingSave())
+            {
+                saveLoadHandlerInstance.saveLoadDelay.SaveDelayScheduled(saveable);
+
+                return true;
+            }
+
+            if (saveLoadHandlerInstance.currentSaveData != null &&
                saveLoadHandlerInstance.currentSaveData.IsValid())
             {
                 saveLoadHandlerInstance.currentSaveData = UpdateCurrentSaveDataOfSaveable(saveLoadHandlerInstance.currentSaveData, saveable);
@@ -322,6 +374,11 @@ namespace TeamMAsTD
 
         public static bool LoadToAllSaveables()
         {
+            return LoadMultiSaveables(saveLoadHandlerInstance.saveablesInScene.ToArray());
+        }
+
+        public static bool LoadMultiSaveables(Saveable[] saveablesToLoad)
+        {
             if (!Application.isPlaying) return false;
 
             if (!saveLoadHandlerInstance && !saveLoadHandlerInstance.saveLoadManager) return false;
@@ -329,6 +386,8 @@ namespace TeamMAsTD
             if (!saveLoadHandlerInstance.enabled) return false;
 
             if (saveLoadHandlerInstance.disableSaveLoadAlways || saveLoadHandlerInstance.disableSaveLoadRuntime) return false;
+
+            if(saveablesToLoad == null || saveablesToLoad.Length == 0) return false;
 
             if (!HasSavedData())
             {
@@ -339,18 +398,26 @@ namespace TeamMAsTD
 
             float loadTimeStart = Time.realtimeSinceStartup;
 
-            if (saveLoadHandlerInstance.showDebugLog) Debug.Log("Load Started!");
+            if (saveLoadHandlerInstance.showDebugLog) Debug.Log("Load Multi-Saveables Started!");
 
-            MemoryUsageLogger.LogMemoryUsageAsText("GameProgressSavedDataStartedLoading");
+            MemoryUsageLogger.LogMemoryUsageAsText("GameProgressStartedLoading");
 
             OnLoadingStarted?.Invoke();
 
-            if(saveLoadHandlerInstance.currentSaveData != null &&
+            if(saveLoadHandlerInstance.saveLoadDelay != null &&
+               saveLoadHandlerInstance.saveLoadDelay.IsDelayingLoad())
+            {
+                saveLoadHandlerInstance.saveLoadDelay.LoadDelayScheduled(saveablesToLoad);
+
+                return true;
+            }
+
+            if (saveLoadHandlerInstance.currentSaveData != null &&
                saveLoadHandlerInstance.currentSaveData.IsValid())
             {
-                RestoreSavedDataForAllSaveables(saveLoadHandlerInstance.currentSaveData);
+                RestoreSavedDataForSaveables(saveLoadHandlerInstance.currentSaveData);
             }
-            else RestoreSavedDataForAllSaveables(LoadFromFile());
+            else RestoreSavedDataForSaveables(LoadFromFile());
 
             OnLoadingFinished?.Invoke();
 
@@ -363,10 +430,40 @@ namespace TeamMAsTD
             return true;
         }
 
-        private static void RestoreSavedDataForAllSaveables(StateDictionaryObject savedData)
+        private static void RestoreSavedDataForSaveables(StateDictionaryObject savedData, Saveable[] saveablesToLoad = null)
         {
-            foreach (Saveable saveable in FindObjectsOfType<Saveable>(true))
+            if(saveablesToLoad == null || saveablesToLoad.Length == 0)
             {
+                if(saveLoadHandlerInstance.saveablesInScene == null || saveLoadHandlerInstance.saveablesInScene.Count == 0)
+                {
+                    if (saveLoadHandlerInstance.saveablesInScene == null) saveLoadHandlerInstance.saveablesInScene = new HashSet<Saveable>();
+
+                    foreach (Saveable saveable in FindObjectsOfType<Saveable>(true))
+                    {
+                        if (!saveable) continue;
+
+                        saveLoadHandlerInstance.saveablesInScene.Add(saveable);
+
+                        RestoreSaveDataOfSaveable(savedData, saveable);
+                    }
+
+                    return;
+                }
+
+                foreach (Saveable saveable in saveLoadHandlerInstance.saveablesInScene)
+                {
+                    if (!saveable) continue;
+
+                    RestoreSaveDataOfSaveable(savedData, saveable);
+                }
+
+                return;
+            }
+
+            foreach (Saveable saveable in saveablesToLoad)
+            {
+                if (!saveable) continue;
+
                 RestoreSaveDataOfSaveable(savedData, saveable);
             }
         }
@@ -391,7 +488,15 @@ namespace TeamMAsTD
 
             OnLoadingStarted?.Invoke();
 
-            if(saveLoadHandlerInstance.currentSaveData != null &&
+            if (saveLoadHandlerInstance.saveLoadDelay != null &&
+               saveLoadHandlerInstance.saveLoadDelay.IsDelayingLoad())
+            {
+                saveLoadHandlerInstance.saveLoadDelay.LoadDelayScheduled(saveable);
+
+                return true;
+            }
+
+            if (saveLoadHandlerInstance.currentSaveData != null &&
                saveLoadHandlerInstance.currentSaveData.IsValid())
             {
                 RestoreSaveDataOfSaveable(saveLoadHandlerInstance.currentSaveData, saveable);

@@ -46,9 +46,11 @@ namespace TeamMAsTD
 
         private CanvasGroup sceneLoadCanvasGroup;
 
-        private bool loadSaveAfterScene = false;
+        private bool isSavingData = false;
 
-        private bool isLoadingSavedData = false;
+        private bool isLoadingData = false;
+
+        private bool loadSaveAfterScene = false;
 
         private bool isPerformingSceneLoad = false;
 
@@ -106,16 +108,24 @@ namespace TeamMAsTD
         {
             isLoadingBarTweening = false;
 
-            SaveLoadHandler.OnLoadingStarted += () => isLoadingSavedData = true;
+            SaveLoadHandler.OnSavingStarted += () => isSavingData = true;
 
-            SaveLoadHandler.OnLoadingFinished += () => isLoadingSavedData = false;
+            SaveLoadHandler.OnSavingFinished += () => isSavingData = false;
+
+            SaveLoadHandler.OnLoadingStarted += () => isLoadingData = true;
+
+            SaveLoadHandler.OnLoadingFinished += () => isLoadingData = false;
         }
 
         private void OnDisable()
         {
-            SaveLoadHandler.OnLoadingStarted -= () => isLoadingSavedData = true;
+            SaveLoadHandler.OnSavingStarted -= () => isSavingData = true;
 
-            SaveLoadHandler.OnLoadingFinished -= () => isLoadingSavedData = false;
+            SaveLoadHandler.OnSavingFinished -= () => isSavingData = false;
+
+            SaveLoadHandler.OnLoadingStarted -= () => isLoadingData = true;
+
+            SaveLoadHandler.OnLoadingFinished -= () => isLoadingData = false;
         }
 
         private void Start()
@@ -196,13 +206,18 @@ namespace TeamMAsTD
                 button.interactable = false;
             }
 
-            float additionalTransitionTime = 2.0f;
+            float additionalTransitionTime = 1.4f;
 
             yield return StartCoroutine(EnableSceneLoadUISequence(true));
 
             if (performAdditionalTransitionTime && loadingScreenSlider)
             {
-                StartCoroutine(LoadingScreenBarSliderCoroutine(UnityEngine.Random.Range(0.23f, 0.35f), additionalTransitionTime));
+                StartCoroutine(LoadingScreenBarSliderCoroutine(UnityEngine.Random.Range(0.23f, 0.35f), additionalTransitionTime + 0.4f));
+            }
+
+            if (isSavingData)
+            {
+                yield return new WaitUntil(() => isSavingData == false);
             }
 
             if (performAdditionalTransitionTime) yield return new WaitForSecondsRealtime(additionalTransitionTime);
@@ -239,8 +254,11 @@ namespace TeamMAsTD
                 }
 
                 if (SaveLoadHandler.LoadToAllSaveables()) 
-                { 
-                    yield return StartCoroutine(SceneSavedDataLoadCheckIntervalCoroutine()); 
+                {
+                    if (isLoadingData)
+                        yield return new WaitUntil(() => isLoadingData == false);
+
+                    yield return new WaitForSecondsRealtime(0.45f);
                 }
             }
 
@@ -339,25 +357,6 @@ namespace TeamMAsTD
                 loadingScreenUIFadeComponent.StopAndResetUITweenImmediate();
 
                 sceneLoadCanvas.gameObject.SetActive(false);
-            }
-
-            yield break;
-        }
-
-        private WaitForFixedUpdate waitForFixedUpdate = new WaitForFixedUpdate();//cache wait for fixed update
-        private IEnumerator SceneSavedDataLoadCheckIntervalCoroutine(float intervalDuration = 1.0f)
-        {
-            if (intervalDuration <= 0.0f) yield break;
-
-            float t = 0.0f;
-
-            while(t <= intervalDuration)
-            {
-                t += Time.fixedDeltaTime;
-
-                if (isLoadingSavedData) t = 0.0f;
-
-                yield return waitForFixedUpdate;
             }
 
             yield break;

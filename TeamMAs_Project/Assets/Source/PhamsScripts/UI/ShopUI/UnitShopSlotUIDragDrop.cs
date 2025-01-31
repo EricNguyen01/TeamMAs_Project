@@ -8,6 +8,7 @@ using UnityEngine.Events;
 using UnityEngine.UI;
 using TMPro;
 using System;
+using System.Collections;
 
 namespace TeamMAsTD
 {
@@ -169,14 +170,14 @@ namespace TeamMAsTD
                 return;
             }
 
-            WaveSpawner.OnWaveStarted += GetCurrentWaveToUnlockShopSlotOnWaveStarted;
-
-            WaveSpawner.OnWaveFinished += GetCurrentWaveToUnlockShopSlotOnWaveFinished;
-
             if (!slotUnitScriptableObject.canPurchasePlant)
             {
                 EnableShopSlotCanvasGroup(false, false, 0.5f);
             }
+
+            WaveSpawner.OnWaveStarted += GetCurrentWaveToUnlockShopSlotOnWaveStarted;
+
+            WaveSpawner.OnWaveFinished += GetCurrentWaveToUnlockShopSlotOnWaveFinished;
         }
 
         private void OnDestroy()
@@ -548,7 +549,7 @@ namespace TeamMAsTD
 
             if (shopSlotPlantInfoTooltip)
             {
-                if (shopUnlockCheckedByPlayer || !enabled)
+                if (/*shopUnlockCheckedByPlayer ||*/ !enabled)
                 {
                     if (shopSlotPlantInfoTooltip.UIExpandInternal)
                     {
@@ -559,7 +560,7 @@ namespace TeamMAsTD
                     if (shopSlotPlantInfoTooltip.infoTooltipImage)
                         shopSlotPlantInfoTooltip.infoTooltipImage.color = shopSlotPlantInfoTooltip.infoTooltipImageBaseColor;
                 }
-                else if (!shopUnlockCheckedByPlayer && enabled)
+                else if (/*!shopUnlockCheckedByPlayer &&*/ enabled)
                 {
                     if (shopSlotPlantInfoTooltip.UIExpandInternal) shopSlotPlantInfoTooltip.UIExpandInternal.RunTweenInternal();
 
@@ -1040,15 +1041,23 @@ namespace TeamMAsTD
             shopUnlockCheckedByPlayer = unitShopSlotSaveData.shopUnlockedCheckedByPlayer;
 
             shopTooltipCheckedByPlayer = unitShopSlotSaveData.shopTooltipCheckedByPlayer;
-            
-            if(isShopSlotUnlocked)
+
+            if (isShopSlotUnlocked)
             {
                 if (!gameObject.activeInHierarchy) gameObject.SetActive(true);
+
+                if (shopUnlockCheckedByPlayer) EnableNewShopUnlockedAttentionFX(false);
+                else
+                {
+                    if (gameObject.activeInHierarchy) EnableNewShopUnlockedAttentionFX();
+                }
+
+                if (shopTooltipCheckedByPlayer) EnableNewPlantTooltipAttentionFX(false);
+                else
+                {
+                    if (gameObject.activeInHierarchy) EnableNewPlantTooltipAttentionFX();
+                }
             }
-
-            if(shopUnlockCheckedByPlayer) EnableNewShopUnlockedAttentionFX(false);
-
-            if(shopTooltipCheckedByPlayer) EnableNewPlantTooltipAttentionFX(false);
         }
 
         public Saveable GetSaveable()

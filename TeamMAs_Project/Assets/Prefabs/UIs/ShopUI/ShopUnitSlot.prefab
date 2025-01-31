@@ -816,7 +816,7 @@ MonoBehaviour:
   tweenDuration: 0.6
   tweenAutoStartDelay: 0
   <isLooped>k__BackingField: 0
-  isIndependentTimeScale: 0
+  <isIndependentTimeScale>k__BackingField: 0
   disableUIFunctionDuringTween: 0
   disableUIFunctionAfterTween: 0
   OnUITweenStarted:
@@ -843,7 +843,7 @@ MonoBehaviour:
   tweenDuration: 0.5
   tweenAutoStartDelay: 0
   <isLooped>k__BackingField: 1
-  isIndependentTimeScale: 1
+  <isIndependentTimeScale>k__BackingField: 0
   disableUIFunctionDuringTween: 0
   disableUIFunctionAfterTween: 0
   OnUITweenStarted:
@@ -1155,7 +1155,7 @@ MonoBehaviour:
   tweenDuration: 0.5
   tweenAutoStartDelay: 0
   <isLooped>k__BackingField: 0
-  isIndependentTimeScale: 0
+  <isIndependentTimeScale>k__BackingField: 0
   disableUIFunctionDuringTween: 0
   disableUIFunctionAfterTween: 0
   OnUITweenStarted:
@@ -1196,7 +1196,7 @@ MonoBehaviour:
   tweenDuration: 0.5
   tweenAutoStartDelay: 0
   <isLooped>k__BackingField: 0
-  isIndependentTimeScale: 0
+  <isIndependentTimeScale>k__BackingField: 0
   disableUIFunctionDuringTween: 0
   disableUIFunctionAfterTween: 0
   OnUITweenStarted:
@@ -1295,7 +1295,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1842127032614578303, guid: 151c29f9541a8624db62141f33b2100f, type: 3}
       propertyPath: m_Intensity
-      value: 2.6972742
+      value: 2.8176467
       objectReference: {fileID: 0}
     - target: {fileID: 3229042880529394568, guid: 151c29f9541a8624db62141f33b2100f, type: 3}
       propertyPath: m_SortingLayer
