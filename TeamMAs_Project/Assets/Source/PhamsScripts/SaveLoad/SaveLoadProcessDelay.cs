@@ -22,9 +22,9 @@ namespace TeamMAsTD
 
         private bool wantsToLoadNow = false;
 
-        private bool isSavingSaveables = false;
+        public bool isSavingSaveables { get; private set; } = false;
 
-        private bool isLoadingSaveables = false;
+        public bool isLoadingSaveables { get; private set; } = false;
 
         public SaveLoadProcessDelay(SaveLoadHandler saveLoadHandlerInstance)
         {

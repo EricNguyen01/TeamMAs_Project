@@ -196,14 +196,20 @@ namespace TeamMAsTD
 
             if (saveLoadHandlerInstance.showDebugLog) Debug.Log("Save Multi-Saveables Started!");
 
-            OnSavingStarted?.Invoke();
-
-            if (saveLoadHandlerInstance.saveLoadDelay != null &&
-                saveLoadHandlerInstance.saveLoadDelay.IsDelayingSave())
+            if (saveLoadHandlerInstance.saveLoadDelay == null)
             {
-                saveLoadHandlerInstance.saveLoadDelay.SaveDelayScheduled(saveablesToSave);
+                OnSavingStarted?.Invoke();
+            }
+            else
+            {
+                if (!saveLoadHandlerInstance.saveLoadDelay.isSavingSaveables) OnSavingStarted?.Invoke();
 
-                return true;
+                if (saveLoadHandlerInstance.saveLoadDelay.IsDelayingSave())
+                {
+                    saveLoadHandlerInstance.saveLoadDelay.SaveDelayScheduled(saveablesToSave);
+
+                    return true;
+                }
             }
 
             if (saveLoadHandlerInstance.currentSaveData != null &&
@@ -302,14 +308,20 @@ namespace TeamMAsTD
 
             if (saveLoadHandlerInstance.showDebugLog) Debug.Log("Save " + saveable.name + " Started!");
 
-            OnSavingStarted?.Invoke();
-
-            if (saveLoadHandlerInstance.saveLoadDelay != null &&
-                saveLoadHandlerInstance.saveLoadDelay.IsDelayingSave())
+            if (saveLoadHandlerInstance.saveLoadDelay == null)
             {
-                saveLoadHandlerInstance.saveLoadDelay.SaveDelayScheduled(saveable);
+                OnSavingStarted?.Invoke();
+            }
+            else
+            {
+                if (!saveLoadHandlerInstance.saveLoadDelay.isSavingSaveables) OnSavingStarted?.Invoke();
 
-                return true;
+                if (saveLoadHandlerInstance.saveLoadDelay.IsDelayingSave())
+                {
+                    saveLoadHandlerInstance.saveLoadDelay.SaveDelayScheduled(saveable);
+
+                    return true;
+                }
             }
 
             if (saveLoadHandlerInstance.currentSaveData != null &&
@@ -402,14 +414,20 @@ namespace TeamMAsTD
 
             MemoryUsageLogger.LogMemoryUsageAsText("GameProgressStartedLoading");
 
-            OnLoadingStarted?.Invoke();
-
-            if(saveLoadHandlerInstance.saveLoadDelay != null &&
-               saveLoadHandlerInstance.saveLoadDelay.IsDelayingLoad())
+            if (saveLoadHandlerInstance.saveLoadDelay == null)
             {
-                saveLoadHandlerInstance.saveLoadDelay.LoadDelayScheduled(saveablesToLoad);
+                OnLoadingStarted?.Invoke();
+            }
+            else
+            {
+                if(!saveLoadHandlerInstance.saveLoadDelay.isLoadingSaveables) OnLoadingStarted?.Invoke();
 
-                return true;
+                if (saveLoadHandlerInstance.saveLoadDelay.IsDelayingLoad())
+                {
+                    saveLoadHandlerInstance.saveLoadDelay.LoadDelayScheduled(saveablesToLoad);
+
+                    return true;
+                }
             }
 
             if (saveLoadHandlerInstance.currentSaveData != null &&
@@ -486,14 +504,20 @@ namespace TeamMAsTD
 
             if (saveLoadHandlerInstance.showDebugLog) Debug.Log("Load " + saveable.name + " Started!");
 
-            OnLoadingStarted?.Invoke();
-
-            if (saveLoadHandlerInstance.saveLoadDelay != null &&
-               saveLoadHandlerInstance.saveLoadDelay.IsDelayingLoad())
+            if (saveLoadHandlerInstance.saveLoadDelay == null)
             {
-                saveLoadHandlerInstance.saveLoadDelay.LoadDelayScheduled(saveable);
+                OnLoadingStarted?.Invoke();
+            }
+            else
+            {
+                if (!saveLoadHandlerInstance.saveLoadDelay.isLoadingSaveables) OnLoadingStarted?.Invoke();
 
-                return true;
+                if (saveLoadHandlerInstance.saveLoadDelay.IsDelayingLoad())
+                {
+                    saveLoadHandlerInstance.saveLoadDelay.LoadDelayScheduled(saveable);
+
+                    return true;
+                }
             }
 
             if (saveLoadHandlerInstance.currentSaveData != null &&

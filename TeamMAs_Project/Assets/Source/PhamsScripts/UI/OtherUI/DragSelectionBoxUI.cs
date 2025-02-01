@@ -230,16 +230,18 @@ namespace TeamMAsTD
                 }
             }
 
-            CheckIf_DragOccursInDragAllowedArea_ToCreateDragSelectionBox();
-
             if (Input.GetButtonDown("Fire1"))
             {
+                CheckIf_DragOccursInDragAllowedArea_ToCreateDragSelectionBox();
+
                 hasHeldToDrag = false;
 
                 BeginDrag();
             }
             else if (Input.GetButton("Fire1"))
             {
+                CheckIf_DragOccursInDragAllowedArea_ToCreateDragSelectionBox();
+
                 OnDrag();
             }
             else if (Input.GetButtonUp("Fire1"))

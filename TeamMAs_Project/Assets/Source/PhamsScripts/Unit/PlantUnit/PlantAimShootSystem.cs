@@ -216,18 +216,24 @@ namespace TeamMAsTD
             currentTargetsUpdateWaitTime = baseTargetsUpdateWaitTime;
         }
 
+        private Collider2D[] collidersInRange = new Collider2D[100];//watch this arr's length
         private List<VisitorUnit> GetVisitorsInRange()
         {
-            Collider2D[] collidersInRange = Physics2D.OverlapCircleAll(transform.position, plantUnitLinked.plantMaxAttackRange, LayerMask.GetMask(plantUnitLinked.plantUnitScriptableObject.plantTargetsLayerNames));
+            int colliderHitsCount = Physics2D.OverlapCircleNonAlloc(transform.position, 
+                                                                   plantUnitLinked.plantMaxAttackRange, 
+                                                                   collidersInRange, 
+                                                                   LayerMask.GetMask(plantUnitLinked.plantUnitScriptableObject.plantTargetsLayerNames));
             
             List<VisitorUnit> visitorsInRange = null;
 
-            if (collidersInRange.Length == 0) return visitorsInRange;
+            if (collidersInRange.Length == 0 || colliderHitsCount == 0) return visitorsInRange;
 
             visitorsInRange = new List<VisitorUnit>();
 
-            for (int i = 0; i < collidersInRange.Length; i++)
+            for (int i = 0; i < colliderHitsCount; i++)
             {
+                if (!collidersInRange[i]) continue;
+
                 VisitorUnit visitorUnit = collidersInRange[i].GetComponent<VisitorUnit>();
 
                 if (visitorUnit == null) continue;
