@@ -31,7 +31,7 @@ namespace TeamMAsTD
 
         private void Awake()
         {
-            if(tileMenuInteractionHandlerInstance && tileMenuInteractionHandlerInstance != this)
+            if (tileMenuInteractionHandlerInstance && tileMenuInteractionHandlerInstance != this)
             {
                 enabled = false;
 
@@ -49,6 +49,10 @@ namespace TeamMAsTD
                 if (sc.name.Contains("Menu")) enabled = false;
                 else enabled = true;
             };
+
+            Rain.OnRainStarted += (Rain r) => EnableCheckForTileMenuInteractions(false);
+
+            Rain.OnRainEnded += (Rain r) => EnableCheckForTileMenuInteractions(true);
         }
 
         private void OnEnable()
@@ -63,20 +67,9 @@ namespace TeamMAsTD
                 return;
             }
 
-            Rain.OnRainStarted += (Rain r) => EnableCheckForTileMenuInteractions(false);
-
-            Rain.OnRainEnded += (Rain r) => EnableCheckForTileMenuInteractions(true);
-
             CheckAndGetTileRaycastCam();
 
             isCheckingForTileMenuInteractions = true;
-        }
-
-        private void OnDisable()
-        {
-            Rain.OnRainStarted -= (Rain r) => EnableCheckForTileMenuInteractions(false);
-
-            Rain.OnRainEnded -= (Rain r) => EnableCheckForTileMenuInteractions(true);
         }
 
         private void OnDestroy()
@@ -86,6 +79,10 @@ namespace TeamMAsTD
                 if (sc.name.Contains("Menu")) enabled = false;
                 else enabled = true;
             };
+
+            Rain.OnRainStarted -= (Rain r) => EnableCheckForTileMenuInteractions(false);
+
+            Rain.OnRainEnded -= (Rain r) => EnableCheckForTileMenuInteractions(true);
         }
 
         private void Update()
@@ -282,7 +279,7 @@ namespace TeamMAsTD
             }
         }
 
-        public void SetTileMenuInteractedManually(TileMenuAndUprootOnTileUI tileMenuInUse, TileMenuInteractionOptions interactionOption)
+        public void ForceSetTileMenuInteracted_External(TileMenuAndUprootOnTileUI tileMenuInUse, TileMenuInteractionOptions interactionOption)
         {
             if (this.tileMenuInUse && this.tileMenuInUse != tileMenuInUse)
             {

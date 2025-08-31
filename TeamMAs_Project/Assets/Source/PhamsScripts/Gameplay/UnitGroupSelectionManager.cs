@@ -2,6 +2,7 @@
 // GitHub: https://github.com/EricNguyen01.
 
 using PixelCrushers.DialogueSystem;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -47,7 +48,7 @@ namespace TeamMAsTD
 
         private void Awake()
         {
-            if(unitGroupSelectionManagerInstance && unitGroupSelectionManagerInstance != this)
+            if (unitGroupSelectionManagerInstance && unitGroupSelectionManagerInstance != this)
             {
                 enabled = false;
 
@@ -74,6 +75,10 @@ namespace TeamMAsTD
                 if (sc.name.Contains("Menu")) enabled = false;
                 else enabled = true;
             };
+
+            Rain.OnRainStarted += (Rain r) => EnableUnitGroupSelection(false, true);
+
+            Rain.OnRainEnded += (Rain r) => EnableUnitGroupSelection(true);
         }
 
         private void OnEnable()
@@ -97,29 +102,11 @@ namespace TeamMAsTD
                     TileMenuInteractionHandler.tileMenuInteractionHandlerInstance.EnableCheckForTileMenuInteractions(false);
                 }
             }
-
-            Rain.OnRainStarted += (Rain r) =>
-            {
-                EnableUnitGroupSelection(false);
-
-                RemoveAllSelectedUnits();
-            };
-
-            Rain.OnRainEnded += (Rain r) => EnableUnitGroupSelection(true);
         }
 
         private void OnDisable()
         {
             if (dragSelectionBoxUI && dragSelectionBoxUI.enabled) dragSelectionBoxUI.enabled = false;
-
-            Rain.OnRainStarted -= (Rain r) => 
-            {
-                EnableUnitGroupSelection(false);
-
-                RemoveAllSelectedUnits();
-            };
-
-            Rain.OnRainEnded -= (Rain r) => EnableUnitGroupSelection(true);
 
             RemoveAllSelectedUnits();
 
@@ -139,6 +126,10 @@ namespace TeamMAsTD
                 if (sc.name.Contains("Menu")) enabled = false;
                 else enabled = true;
             };
+
+            Rain.OnRainStarted -= (Rain r) => EnableUnitGroupSelection(false, true);
+
+            Rain.OnRainEnded -= (Rain r) => EnableUnitGroupSelection(true);
         }
 
         private void Update()
@@ -223,7 +214,7 @@ namespace TeamMAsTD
 
                             if (tileMenu && !tileMenu.isOpened)
                             {
-                                TileMenuInteractionHandler.tileMenuInteractionHandlerInstance.SetTileMenuInteractedManually(tileMenu, TileMenuInteractionHandler.TileMenuInteractionOptions.Open);
+                                TileMenuInteractionHandler.tileMenuInteractionHandlerInstance.ForceSetTileMenuInteracted_External(tileMenu, TileMenuInteractionHandler.TileMenuInteractionOptions.Open);
                             }
                         }
                     }
@@ -272,7 +263,7 @@ namespace TeamMAsTD
                                 {
                                     if (tileMenu.isOpened)
                                     {
-                                        TileMenuInteractionHandler.tileMenuInteractionHandlerInstance.SetTileMenuInteractedManually(tileMenu, TileMenuInteractionHandler.TileMenuInteractionOptions.Close);
+                                        TileMenuInteractionHandler.tileMenuInteractionHandlerInstance.ForceSetTileMenuInteracted_External(tileMenu, TileMenuInteractionHandler.TileMenuInteractionOptions.Close);
 
                                         shouldOpenNextInLineTileMenu = true;
                                     }
@@ -325,7 +316,7 @@ namespace TeamMAsTD
                     {
                         if (!tileMenu.isOpened)
                         {
-                            TileMenuInteractionHandler.tileMenuInteractionHandlerInstance.SetTileMenuInteractedManually(tileMenu, TileMenuInteractionHandler.TileMenuInteractionOptions.Open);
+                            TileMenuInteractionHandler.tileMenuInteractionHandlerInstance.ForceSetTileMenuInteracted_External(tileMenu, TileMenuInteractionHandler.TileMenuInteractionOptions.Open);
                         }
                     }
 
@@ -425,7 +416,8 @@ namespace TeamMAsTD
                     if (raycastResults[i].gameObject.layer == LayerMask.GetMask("UI") ||
                         raycastResults[i].gameObject.layer == LayerMask.NameToLayer("UI"))
                     {
-                        /*if (raycastResults[i].gameObject.GetComponent<Button>())*/ return;
+                        /*if (raycastResults[i].gameObject.GetComponent<Button>())*/
+            return;
                     }
                     
                     if (TileMenuInteractionHandler.tileMenuInteractionHandlerInstance)
@@ -484,7 +476,7 @@ namespace TeamMAsTD
 
                                     if (!tileMenu.isOpened)
                                     {
-                                        TileMenuInteractionHandler.tileMenuInteractionHandlerInstance.SetTileMenuInteractedManually(tileMenu, TileMenuInteractionHandler.TileMenuInteractionOptions.Open);
+                                        TileMenuInteractionHandler.tileMenuInteractionHandlerInstance.ForceSetTileMenuInteracted_External(tileMenu, TileMenuInteractionHandler.TileMenuInteractionOptions.Open);
                                     }
                                     else
                                     {
@@ -569,13 +561,18 @@ namespace TeamMAsTD
 #endif
         }
 
-        public void EnableUnitGroupSelection(bool enabled)
+        public void EnableUnitGroupSelection(bool enabled, bool removeAllSelectedUnitsIfDisable = false)
         {
             unitGroupSelectionEnabled = enabled;
-
+            
             if (dragSelectionBoxUI)
             {
                 dragSelectionBoxUI.EnableDragSelectionBox(enabled);
+            }
+
+            if (!enabled)
+            {
+                if (removeAllSelectedUnitsIfDisable) RemoveAllSelectedUnits();
             }
         }
     }

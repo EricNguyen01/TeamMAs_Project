@@ -27,7 +27,7 @@ namespace TeamMAsTD
 
         private bool hasDisabledRain = false;
 
-        private bool isRaining = false;   
+        public static bool isRaining { get; private set; } = false;   
 
         //if there's rain animation -> add here...
 

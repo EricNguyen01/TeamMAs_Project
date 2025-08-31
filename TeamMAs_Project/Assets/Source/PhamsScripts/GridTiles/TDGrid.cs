@@ -651,26 +651,29 @@ namespace TeamMAsTD
 
             if (endTile.isOccupied) endTile.isOccupied = false;
 
-            int tilesSkipped = 0;
-
-            for (int i = 0; i < gridWidth; i++)
+            if(gridWidth >= 4)
             {
-                if (i == 0 || i == gridWidth - 1) continue;
+                int tilesSkipped = 0;
 
-                if (tilesSkipped == tilesBetweenMidpoints)
+                for (int i = 0; i < gridWidth; i++)
                 {
-                    Tile randTileOnRow = GetTileFromTileCoordinate(new Vector2Int(i, Random.Range(0, gridHeight)));
+                    if (i == 0 || i == gridWidth - 1) continue;
 
-                    if (randTileOnRow.isOccupied) randTileOnRow.isOccupied = false;
+                    if (tilesSkipped == tilesBetweenMidpoints)
+                    {
+                        Tile randTileOnRow = GetTileFromTileCoordinate(new Vector2Int(i, Random.Range(0, gridHeight)));
 
-                    if (!middleTiles.Contains(randTileOnRow)) middleTiles.Add(randTileOnRow);
+                        if (randTileOnRow.isOccupied) randTileOnRow.isOccupied = false;
 
-                    tilesSkipped = 0;
+                        if (!middleTiles.Contains(randTileOnRow)) middleTiles.Add(randTileOnRow);
 
-                    continue;
+                        tilesSkipped = 0;
+
+                        continue;
+                    }
+
+                    tilesSkipped++;
                 }
-
-                tilesSkipped++;
             }
 
             pathOfGrid.AutoGeneratePath(startTile, endTile, middleTiles);

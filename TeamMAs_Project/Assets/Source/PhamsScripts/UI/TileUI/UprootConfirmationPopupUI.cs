@@ -89,17 +89,6 @@ namespace TeamMAsTD
             Rain.OnRainStarted += (Rain r) =>
             {
                 ShowUprootConfirmationPopup(false);
-
-                if (UnitGroupSelectionManager.unitGroupSelectionManagerInstance)
-                {
-                    UnitGroupSelectionManager.unitGroupSelectionManagerInstance.EnableUnitGroupSelection(false);
-                }
-
-                if (TileMenuInteractionHandler.tileMenuInteractionHandlerInstance)
-                {
-                    if (TileMenuInteractionHandler.tileMenuInteractionHandlerInstance.isCheckingForTileMenuInteractions)
-                        TileMenuInteractionHandler.tileMenuInteractionHandlerInstance.EnableCheckForTileMenuInteractions(false);
-                }
             };
         }
 
@@ -108,17 +97,6 @@ namespace TeamMAsTD
             Rain.OnRainStarted -= (Rain r) =>
             {
                 ShowUprootConfirmationPopup(false);
-
-                if (UnitGroupSelectionManager.unitGroupSelectionManagerInstance)
-                {
-                    UnitGroupSelectionManager.unitGroupSelectionManagerInstance.EnableUnitGroupSelection(false);
-                }
-
-                if (TileMenuInteractionHandler.tileMenuInteractionHandlerInstance)
-                {
-                    if (TileMenuInteractionHandler.tileMenuInteractionHandlerInstance.isCheckingForTileMenuInteractions)
-                        TileMenuInteractionHandler.tileMenuInteractionHandlerInstance.EnableCheckForTileMenuInteractions(false);
-                }
             };
         }
 
@@ -195,15 +173,18 @@ namespace TeamMAsTD
                     uprootPopupCanvasGroup.alpha = 0.0f;
                 }
 
-                if (UnitGroupSelectionManager.unitGroupSelectionManagerInstance)
+                if (!Rain.isRaining)
                 {
-                    UnitGroupSelectionManager.unitGroupSelectionManagerInstance.EnableUnitGroupSelection(true);
-                }
+                    if (UnitGroupSelectionManager.unitGroupSelectionManagerInstance)
+                    {
+                        UnitGroupSelectionManager.unitGroupSelectionManagerInstance.EnableUnitGroupSelection(true);
+                    }
 
-                if (TileMenuInteractionHandler.tileMenuInteractionHandlerInstance)
-                {
-                    if (TileMenuInteractionHandler.tileMenuInteractionHandlerInstance.isCheckingForTileMenuInteractions)
-                        TileMenuInteractionHandler.tileMenuInteractionHandlerInstance.EnableCheckForTileMenuInteractions(true);
+                    if (TileMenuInteractionHandler.tileMenuInteractionHandlerInstance)
+                    {
+                        if (TileMenuInteractionHandler.tileMenuInteractionHandlerInstance.isCheckingForTileMenuInteractions)
+                            TileMenuInteractionHandler.tileMenuInteractionHandlerInstance.EnableCheckForTileMenuInteractions(true);
+                    }
                 }
             }
         }
