@@ -2,8 +2,6 @@
 // GitHub: https://github.com/EricNguyen01.
 
 using System.Collections;
-using System.Collections.Generic;
-using System.Net.Http.Headers;
 using UnityEngine;
 
 namespace TeamMAsTD
@@ -16,21 +14,35 @@ namespace TeamMAsTD
 
         [SerializeField] private Color glowColorPositive = Color.green;
 
+        private Color glowColorPositiveRuntimeDefault;
+
         [SerializeField] private Color glowColorNegative = Color.red;
+
+        private Color glowColorNegativeRuntimeDefault;
 
         [SerializeField][Min(0.0f)] private float glowAlphaFrom = 50.0f;
 
+        private float glowAlphaFromRuntimeDefault = 0.0f;
+
         [SerializeField][Min(0.0f)] private float glowAlphaTo = 100.0f;
+
+        private float glowAlphaToRuntimeDefault = 0.0f;
 
         [SerializeField][Min(0.0f)] private float colorBrightnessFrom = 0.15f;
 
+        private float colorBrightnessFromRuntimeDefault = 0.0f;
+
         [SerializeField][Min(0.0f)] private float colorBrightnessTo = 0.2f;
+
+        private float colorBrightnessToRuntimeDefault = 0.0f;
 
         [SerializeField][Min(0.0f)] private float glowCycleFrequency = 1.3f;
 
+        private float glowCycleFrequencyRuntimeDefault = 0.0f;
+
         public enum TileGlowMode { PositiveGlow, NegativeGlow }
 
-        private SpriteGlow.SpriteGlowEffect spriteGlowEffectComp;
+        public SpriteGlow.SpriteGlowEffect spriteGlowEffectComp { get; private set; }
 
         public bool isTileGlowing { get; private set; } = false;
 
@@ -54,12 +66,26 @@ namespace TeamMAsTD
         private void Start()
         {
             if (spriteGlowEffectComp.enabled) spriteGlowEffectComp.enabled = false;
+
+            glowColorPositiveRuntimeDefault = glowColorPositive;
+
+            glowColorNegativeRuntimeDefault = glowColorNegative;
+
+            colorBrightnessFromRuntimeDefault = colorBrightnessFrom;
+
+            colorBrightnessToRuntimeDefault = colorBrightnessTo;
+
+            glowAlphaFromRuntimeDefault = glowAlphaFrom;
+
+            glowAlphaToRuntimeDefault = glowAlphaTo;
+
+            glowCycleFrequencyRuntimeDefault = glowCycleFrequency;
         }
 
         public void OverrideAllTileGlowConfig(Color positiveGlowColor, Color negativeGlowColor,
                                               float alphaFrom, float alphaTo,
                                               float brightnessFrom, float brightnessTo,
-                                              float newglowCycleFrequency)
+                                              float newGlowCycleFrequency)
         {
             OverrideTileGlowEffectColor(positiveGlowColor, negativeGlowColor);
 
@@ -67,7 +93,7 @@ namespace TeamMAsTD
 
             OverrideTileGlowEffectBrightnessFromTo(brightnessFrom, brightnessTo);
 
-            OverrideTileGlowEffectGlowTime(newglowCycleFrequency);
+            OverrideTileGlowEffectGlowTime(newGlowCycleFrequency);
         }
 
         public void OverrideTileGlowEffectColor(Color positiveGlowColor, Color negativeGlowColor)
@@ -88,9 +114,20 @@ namespace TeamMAsTD
             colorBrightnessTo = brightnessTo;
         }
 
-        public void OverrideTileGlowEffectGlowTime(float newglowCycleFrequency)
+        public void OverrideTileGlowEffectGlowTime(float newGlowCycleFrequency)
         {
-            glowCycleFrequency = newglowCycleFrequency;
+            glowCycleFrequency = newGlowCycleFrequency;
+        }
+
+        public void SetDefaultRuntimeValues()
+        {
+            OverrideTileGlowEffectColor(glowColorPositiveRuntimeDefault, glowColorNegativeRuntimeDefault);
+
+            OverrideTileGlowEffectAlphaFromTo(glowAlphaFromRuntimeDefault, glowAlphaToRuntimeDefault);
+
+            OverrideTileGlowEffectBrightnessFromTo(colorBrightnessFromRuntimeDefault, colorBrightnessToRuntimeDefault);
+
+            OverrideTileGlowEffectGlowTime(glowCycleFrequencyRuntimeDefault);
         }
 
         private void EnableTileGlowEffect(TileGlowMode tileGlowMode)

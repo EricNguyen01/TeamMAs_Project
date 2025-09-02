@@ -937,7 +937,7 @@ MonoBehaviour:
   glowAlphaFrom: 210
   glowAlphaTo: 255
   colorBrightnessFrom: 0.55
-  colorBrightnessTo: 0.7
+  colorBrightnessTo: 0.86
   glowCycleFrequency: 1.2
 --- !u!114 &-6616952191035258017
 MonoBehaviour:

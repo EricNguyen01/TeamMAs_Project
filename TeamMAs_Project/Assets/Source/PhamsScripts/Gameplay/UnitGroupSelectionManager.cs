@@ -2,13 +2,11 @@
 // GitHub: https://github.com/EricNguyen01.
 
 using PixelCrushers.DialogueSystem;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 namespace TeamMAsTD
 {
@@ -193,6 +191,15 @@ namespace TeamMAsTD
                     {
                         if (plantUnit.GetTileUnitIsOn().tileGlowComp)
                         {
+                            if (plantUnit.GetTileUnitIsOn().tileGlowComp.spriteGlowEffectComp)
+                            {
+                                plantUnit.GetTileUnitIsOn().tileGlowComp.spriteGlowEffectComp.OutlineWidth = 5;
+                            }
+
+                            plantUnit.GetTileUnitIsOn().tileGlowComp.OverrideTileGlowEffectColor(Color.cyan, Color.red);
+
+                            plantUnit.GetTileUnitIsOn().tileGlowComp.OverrideTileGlowEffectBrightnessFromTo(0.55f, 2.0f);
+
                             if (!plantUnit.GetTileUnitIsOn().tileGlowComp.isTileGlowing)
                                 plantUnit.GetTileUnitIsOn().tileGlowComp.EnableTileGlowEffect(TileGlow.TileGlowMode.PositiveGlow);
                         }
@@ -212,7 +219,9 @@ namespace TeamMAsTD
                                 TileMenuInteractionHandler.tileMenuInteractionHandlerInstance.EnableCheckForTileMenuInteractions(false);
                             }
 
-                            if (tileMenu && !tileMenu.isOpened)
+                            if (!GetAndOpenClose_CenterTile_InSelectedTiles_IfPossible(true) && 
+                                tileMenu && 
+                                !tileMenu.isOpened)
                             {
                                 TileMenuInteractionHandler.tileMenuInteractionHandlerInstance.ForceSetTileMenuInteracted_External(tileMenu, TileMenuInteractionHandler.TileMenuInteractionOptions.Open);
                             }
@@ -247,6 +256,13 @@ namespace TeamMAsTD
                             {
                                 if (plantUnit.GetTileUnitIsOn().tileGlowComp.isTileGlowing)
                                     plantUnit.GetTileUnitIsOn().tileGlowComp.DisableTileGlowEffect();
+
+                                if (plantUnit.GetTileUnitIsOn().tileGlowComp.spriteGlowEffectComp)
+                                {
+                                    plantUnit.GetTileUnitIsOn().tileGlowComp.spriteGlowEffectComp.SetDefaultRuntimeValues();
+                                }
+
+                                plantUnit.GetTileUnitIsOn().tileGlowComp.SetDefaultRuntimeValues();
                             }
 
                             //update total multi-selected plants watering cost on removing unselected plant
@@ -254,6 +270,8 @@ namespace TeamMAsTD
                             {
                                 plantUnit.tilePlacedOn.wateringOnTileScriptComp.SubtractUnselectedPlantWateringCost(plantUnit);
                             }
+
+                            GetAndOpenClose_CenterTile_InSelectedTiles_IfPossible(true);
 
                             TileMenuAndUprootOnTileUI tileMenu = plantUnit.GetTileUnitIsOn().tileMenuAndUprootOnTileUI;
 
@@ -531,6 +549,91 @@ namespace TeamMAsTD
                     return;
                 }
             }
+        }
+
+        private Tile GetOrUpdate_CenterUnitTile_InAllSelected()
+        {
+            if(unitGroupSelected == null || unitGroupSelected.Count == 0) return null;
+
+            if(unitGroupSelected.Count <= 2) return null;
+
+            int totalPosX = 0;
+
+            int totalPosY = 0;
+
+            int count = 0;
+
+            List<IUnit> unitGroupSelectedList = unitGroupSelected.ToList();
+
+            for (int i = 0; i < unitGroupSelectedList.Count; i++)
+            {
+                if (unitGroupSelectedList[i] == null) continue;
+
+                totalPosX += unitGroupSelectedList[i].GetTileUnitIsOn().tileNumInRow;
+
+                totalPosY += unitGroupSelectedList[i].GetTileUnitIsOn().tileNumInColumn;
+
+                count++;
+            }
+
+            Vector2Int selectedUnitTilesAveragePos = new Vector2Int(totalPosX / count, totalPosY / count);
+
+            Tile centerTile = null;
+
+            float closestDist = 0;   
+
+            for(int i = 0; i < unitGroupSelectedList.Count; i++)
+            {
+                if (unitGroupSelectedList[i] == null) continue;
+
+                int x = unitGroupSelectedList[i].GetTileUnitIsOn().tileNumInRow;
+
+                int y = unitGroupSelectedList[i].GetTileUnitIsOn().tileNumInColumn;
+
+                Vector2Int tileCoord = new Vector2Int(x, y);
+
+                if(i == 0)
+                {
+                    closestDist = Vector2Int.Distance(selectedUnitTilesAveragePos, tileCoord);
+
+                    centerTile = unitGroupSelectedList[i].GetTileUnitIsOn();
+
+                    continue;
+                }
+
+                float currentTileDistToAvg = Vector2Int.Distance(selectedUnitTilesAveragePos, tileCoord);
+
+                if (currentTileDistToAvg <= closestDist)
+                {
+                    closestDist = currentTileDistToAvg;
+
+                    centerTile = unitGroupSelectedList[i].GetTileUnitIsOn();
+                }
+            }
+            
+            return centerTile;
+        }
+
+        private bool GetAndOpenClose_CenterTile_InSelectedTiles_IfPossible(bool openMenu)
+        {
+            Tile centerTile = GetOrUpdate_CenterUnitTile_InAllSelected();
+
+            if(!centerTile) return false;
+
+            if(!centerTile.tileMenuAndUprootOnTileUI) return false;
+
+            TileMenuAndUprootOnTileUI centerTileMenu = centerTile.tileMenuAndUprootOnTileUI;
+
+            if (openMenu)
+            {
+                TileMenuInteractionHandler.tileMenuInteractionHandlerInstance.ForceSetTileMenuInteracted_External(centerTileMenu, TileMenuInteractionHandler.TileMenuInteractionOptions.Open);
+
+                return true;
+            }
+
+            TileMenuInteractionHandler.tileMenuInteractionHandlerInstance.ForceSetTileMenuInteracted_External(centerTileMenu, TileMenuInteractionHandler.TileMenuInteractionOptions.Close);
+
+            return true;
         }
 
         public void RegisterNewSelectableUnitOnUnitEnabled(IUnit newSelectableUnit)

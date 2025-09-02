@@ -55,6 +55,10 @@ namespace SpriteGlow
         [Tooltip("Whether to enable GPU instancing.")]
         [SerializeField] private bool enableInstancing = false;
 
+        private float glowBrightnessRuntimeDefault = 0.0f;
+
+        private int outlineWidthRuntimeDefault = 0;
+
         private static readonly int isOutlineEnabledId = Shader.PropertyToID("_IsOutlineEnabled");
         private static readonly int outlineColorId = Shader.PropertyToID("_OutlineColor");
         private static readonly int outlineSizeId = Shader.PropertyToID("_OutlineSize");
@@ -85,6 +89,13 @@ namespace SpriteGlow
             SetMaterialProperties();
         }
 
+        private void Start()
+        {
+            glowBrightnessRuntimeDefault = glowBrightness;
+
+            outlineWidthRuntimeDefault = outlineWidth;
+        }
+
         private void OnDidApplyAnimationProperties ()
         {
             // Update material properties when changing serialized fields with Unity animation.
@@ -106,6 +117,17 @@ namespace SpriteGlow
             materialProperties.SetFloat(alphaThresholdId, AlphaThreshold);
 
             Renderer.SetPropertyBlock(materialProperties);
+        }
+
+        public void SetDefaultRuntimeValues()
+        {
+            glowBrightness = glowBrightnessRuntimeDefault;
+
+            GlowBrightness = glowBrightness;
+
+            outlineWidth = outlineWidthRuntimeDefault;
+
+            OutlineWidth = outlineWidth;
         }
     }
 }
