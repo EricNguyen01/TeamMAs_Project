@@ -12,13 +12,13 @@ namespace TeamMAsTD
     [RequireComponent(typeof(Tile))]
     public class TileMenuAndUprootOnTileUI : MonoBehaviour
     {
-        [SerializeField] private Canvas tileWorldCanvas;
+        [SerializeField] private Canvas tileMenuWorldCanvas;
 
         [SerializeField] private Camera worldUICam;
 
         //INTERNALS...........................................................................................
 
-        private CanvasGroup tileWorldCanvasGroup;
+        private CanvasGroup tileMenuWorldCanvasGroup;
 
         private UprootConfirmationPopupUI uprootConfirmationPopupUI;
 
@@ -32,6 +32,10 @@ namespace TeamMAsTD
 
         public Button[] tileMenuButtons { get; private set; }
 
+        private Vector3 tileMenuCanvasLocalPos = Vector3.zero;
+
+        private Transform tileMenuCanvasDefaultParent;
+
         //UnityEvents..........................................................................................
 
         [SerializeField] public UnityEvent OnTileMenuOpened;
@@ -42,11 +46,11 @@ namespace TeamMAsTD
 
         private void Awake()
         {
-            if (tileWorldCanvas == null)
+            if (tileMenuWorldCanvas == null)
             {
-                tileWorldCanvas = GetComponentInChildren<Canvas>(true);
+                tileMenuWorldCanvas = GetComponentInChildren<Canvas>(true);
 
-                if (tileWorldCanvas == null)
+                if (tileMenuWorldCanvas == null)
                 {
                     Debug.LogError("Tile World Canvas children component not found on tile: " + name + ". Plant uprooting won't work!");
 
@@ -56,11 +60,11 @@ namespace TeamMAsTD
                 }
             }
 
-            tileMenuButtons = tileWorldCanvas.GetComponentsInChildren<Button>(true);
+            tileMenuButtons = tileMenuWorldCanvas.GetComponentsInChildren<Button>(true);
 
-            tileWorldCanvasGroup = tileWorldCanvas.GetComponent<CanvasGroup>();
+            tileMenuWorldCanvasGroup = tileMenuWorldCanvas.GetComponent<CanvasGroup>();
 
-            if (tileWorldCanvasGroup == null) tileWorldCanvasGroup = tileWorldCanvas.gameObject.AddComponent<CanvasGroup>();
+            if (tileMenuWorldCanvasGroup == null) tileMenuWorldCanvasGroup = tileMenuWorldCanvas.gameObject.AddComponent<CanvasGroup>();
 
             tileHoldingThisMenu = GetComponent<Tile>();
 
@@ -75,7 +79,7 @@ namespace TeamMAsTD
 
             if(worldUICam != null)
             {
-                tileWorldCanvas.worldCamera = worldUICam;
+                tileMenuWorldCanvas.worldCamera = worldUICam;
             }
             else
             {
@@ -85,16 +89,16 @@ namespace TeamMAsTD
                     {
                         worldUICam = cam;
 
-                        if (tileWorldCanvas.worldCamera == null) tileWorldCanvas.worldCamera = worldUICam;
+                        if (tileMenuWorldCanvas.worldCamera == null) tileMenuWorldCanvas.worldCamera = worldUICam;
 
                         break;
                     }
                 }
             }
 
-            if (tileWorldCanvas.worldCamera == null) tileWorldCanvas.worldCamera = Camera.main;
+            if (tileMenuWorldCanvas.worldCamera == null) tileMenuWorldCanvas.worldCamera = Camera.main;
 
-            if (tileWorldCanvas.gameObject.activeInHierarchy) tileWorldCanvas.gameObject.SetActive(false);
+            if (tileMenuWorldCanvas.gameObject.activeInHierarchy) tileMenuWorldCanvas.gameObject.SetActive(false);
         }
 
         private void OnEnable()
@@ -109,6 +113,10 @@ namespace TeamMAsTD
 
                 return;
             }
+
+            tileMenuCanvasDefaultParent = tileMenuWorldCanvas.transform.parent;
+
+            tileMenuCanvasLocalPos = tileMenuWorldCanvas.transform.localPosition;
 
             //Rain.cs C# Events sub
             Rain.OnRainStarted += TemporaryDisableTileMenuInteractionOnRainStarted;
@@ -144,25 +152,29 @@ namespace TeamMAsTD
             //if a plant exists on this tile->process open/close tile menu
             if (opened)
             {
-                if (!disableTileMenuOpen && !tileWorldCanvas.gameObject.activeInHierarchy)
+                if (!disableTileMenuOpen && !tileMenuWorldCanvas.gameObject.activeInHierarchy)
                 {
-                    tileWorldCanvas.gameObject.SetActive(true);
+                    tileMenuWorldCanvas.gameObject.SetActive(true);
 
                     isOpened = true;
 
                     OpenPlantRangeCircle(plantSelected, true);
 
                     OnTileMenuOpened?.Invoke();
+
+                    SetTileMenuDefaultRuntimeParentAndLocalPos();
                 }
                 else 
                 {
                     OpenPlantRangeCircle(plantSelected, false);
 
-                    tileWorldCanvas.gameObject.SetActive(false);
+                    tileMenuWorldCanvas.gameObject.SetActive(false);
 
                     isOpened = false;
 
                     OnTileMenuClosed?.Invoke();
+
+                    SetTileMenuDefaultRuntimeParentAndLocalPos();
                 }
 
                 if(tileHoldingThisMenu && tileHoldingThisMenu.wateringOnTileScriptComp)
@@ -173,9 +185,9 @@ namespace TeamMAsTD
                 return;
             }
 
-            if (tileWorldCanvas.gameObject.activeInHierarchy) 
+            if (tileMenuWorldCanvas.gameObject.activeInHierarchy) 
             { 
-                tileWorldCanvas.gameObject.SetActive(false);
+                tileMenuWorldCanvas.gameObject.SetActive(false);
 
                 OpenPlantRangeCircle(plantSelected, false);
 
@@ -183,6 +195,8 @@ namespace TeamMAsTD
 
                 OnTileMenuClosed?.Invoke();
             }
+
+            SetTileMenuDefaultRuntimeParentAndLocalPos();
         }
 
         private void OpenPlantRangeCircle(PlantUnit plantUnit, bool shouldOpen)
@@ -277,24 +291,52 @@ namespace TeamMAsTD
 
         public void TemporaryDisableTileMenuContentInteraction(bool disabled)
         {
-            if (tileWorldCanvasGroup == null) return;
+            if (tileMenuWorldCanvasGroup == null) return;
 
             if (disabled)
             {
                 SetDisableTileMenuOpen(true);
 
-                tileWorldCanvasGroup.interactable = false;
+                tileMenuWorldCanvasGroup.interactable = false;
 
-                tileWorldCanvasGroup.blocksRaycasts = false;
+                tileMenuWorldCanvasGroup.blocksRaycasts = false;
 
                 return;
             }
 
-            tileWorldCanvasGroup.interactable = true;
+            tileMenuWorldCanvasGroup.interactable = true;
 
-            tileWorldCanvasGroup.blocksRaycasts = true;
+            tileMenuWorldCanvasGroup.blocksRaycasts = true;
 
             SetDisableTileMenuOpen(false);
+        }
+
+        public void SetTileMenuLocalPos(Vector3 pos, bool providedPosIsWorld, bool keep_Z_AsDefault = true)
+        {
+            Vector3 localPos = pos;
+            
+            if (providedPosIsWorld) localPos = tileMenuWorldCanvas.transform.parent.InverseTransformPoint(pos);
+
+            if (keep_Z_AsDefault) localPos = new Vector3(localPos.x, localPos.y, tileMenuWorldCanvas.transform.localPosition.z);
+
+            tileMenuWorldCanvas.transform.localPosition = localPos;
+        }
+
+        public void SetTileMenuDefaultRuntimeParentAndLocalPos()
+        {
+            if(tileMenuCanvasDefaultParent != null)
+            {
+                if(tileMenuWorldCanvas.transform.parent != tileMenuCanvasDefaultParent) 
+                    tileMenuWorldCanvas.transform.SetParent(tileMenuCanvasDefaultParent);
+            }
+            else
+            {
+                if(tileHoldingThisMenu != null && tileMenuWorldCanvas.transform.parent == null) 
+                    tileMenuWorldCanvas.transform.SetParent(tileHoldingThisMenu.transform);
+            }
+
+            if(tileMenuWorldCanvas.transform.localPosition != tileMenuCanvasLocalPos) 
+                tileMenuWorldCanvas.transform.localPosition = tileMenuCanvasLocalPos;
         }
     }
 }

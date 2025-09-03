@@ -169,6 +169,13 @@ namespace TeamMAsTD
             return gridArray;
         }
 
+        /// <summary>
+        /// If, lets say, given a plant has an atk range of 3 tiles, 
+        /// what are the actual range of the atk radius starting from the plant as center point?
+        /// This function is for finding the actual world distance of the number of tiles provided. 
+        /// </summary>
+        /// <param name="tileNumber"></param>
+        /// <returns></returns>
         public float GetDistanceFromTileNumber(int tileNumber)
         {
             return (tileSize * tileNumber) + (tileSize / 2.0f);
@@ -202,6 +209,15 @@ namespace TeamMAsTD
             int tileGridArrayIndex = GetGridArrayIndexFromTileCoordinate(tileCoordInt);
 
             return gridArray[tileGridArrayIndex];
+        }
+
+        public Vector2 GetTileWorldPos(int tileGridPosX, int tileGridPosY)
+        {
+            float x = transform.position.x + (tileGridPosX * tileSize);
+
+            float y = transform.position.y + (tileGridPosY * tileSize);
+
+            return new Vector2(x, y);
         }
 
         //iterate through the grid to check if any plant has been planted before or not
@@ -311,15 +327,6 @@ namespace TeamMAsTD
             }
 
             return true;
-        }
-
-        private Vector2 GetTileWorldPos(int tileGridPosX, int tileGridPosY)
-        {
-            float x = transform.position.x + (tileGridPosX * tileSize);
-
-            float y = transform.position.y + (tileGridPosY * tileSize);
-
-            return new Vector2(x, y);
         }
 
         private bool CreateGrid(bool generateRandomGridLayout = false)//grid-generation method

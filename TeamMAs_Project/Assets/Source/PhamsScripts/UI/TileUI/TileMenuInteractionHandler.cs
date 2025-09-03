@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 namespace TeamMAsTD
 {
@@ -16,6 +15,8 @@ namespace TeamMAsTD
         [SerializeField] private Camera tileMenuInteractionRaycastCam;
 
         public TileMenuAndUprootOnTileUI tileMenuInUse { get; private set; }
+
+        public TileMenuAndUprootOnTileUI lastTileMenuInUse { get; private set; }
 
         public Dictionary<GameObject, TileMenuAndUprootOnTileUI> tileObjectAndTileMenuDict { get; private set; } = new Dictionary<GameObject, TileMenuAndUprootOnTileUI>();
 
@@ -133,7 +134,14 @@ namespace TeamMAsTD
 
                     if (tileMenuInUse)
                     {
-                        if (tileMenuInUse.isOpened) tileMenuInUse.OpenTileInteractionMenu(false);
+                        if (tileMenuInUse.isOpened)
+                        {
+                            tileMenuInUse.OpenTileInteractionMenu(false);
+
+                            EnableTileGlowOnTileMenuInteracted(tileMenuInUse, false);
+                        }
+
+                        lastTileMenuInUse = tileMenuInUse;
 
                         tileMenuInUse = null;
                     }
@@ -187,7 +195,14 @@ namespace TeamMAsTD
                     //close previously opened tile menu (if exists) on clicking away
                     if (tileMenuInUse)
                     {
-                        if (tileMenuInUse.isOpened) tileMenuInUse.OpenTileInteractionMenu(false);
+                        if (tileMenuInUse.isOpened)
+                        {
+                            tileMenuInUse.OpenTileInteractionMenu(false);
+
+                            EnableTileGlowOnTileMenuInteracted(tileMenuInUse, false);
+                        }
+
+                        lastTileMenuInUse = tileMenuInUse;
 
                         tileMenuInUse = null;
                     }
@@ -201,7 +216,12 @@ namespace TeamMAsTD
                 {
                     tileMenuInUse = tileMenu;
 
-                    if (!tileMenuInUse.isOpened) tileMenuInUse.OpenTileInteractionMenu(true);
+                    if (!tileMenuInUse.isOpened)
+                    {
+                        tileMenuInUse.OpenTileInteractionMenu(true);
+
+                        EnableTileGlowOnTileMenuInteracted(tileMenuInUse, true);
+                    }
 
                     return;
                 }
@@ -210,9 +230,18 @@ namespace TeamMAsTD
 
                 if (tileMenuInUse == tileMenu)
                 {
-                    if (tileMenuInUse.isOpened) tileMenuInUse.OpenTileInteractionMenu(false);
+                    if (tileMenuInUse.isOpened)
+                    {
+                        tileMenuInUse.OpenTileInteractionMenu(false);
 
-                    else tileMenuInUse.OpenTileInteractionMenu(true);
+                        EnableTileGlowOnTileMenuInteracted(tileMenuInUse, false);
+                    }
+                    else
+                    {
+                        tileMenuInUse.OpenTileInteractionMenu(true);
+
+                        EnableTileGlowOnTileMenuInteracted(tileMenuInUse, true);
+                    }
 
                     return;
                 }
@@ -220,11 +249,23 @@ namespace TeamMAsTD
                 //if clicked on a new tile/tile menu entirely from a previosuly selected tile menu ->
                 //close the previously opened tile menu and then open the newly selected tile menu
 
-                if (tileMenuInUse.isOpened) tileMenuInUse.OpenTileInteractionMenu(false);
+                if (tileMenuInUse.isOpened)
+                {
+                    tileMenuInUse.OpenTileInteractionMenu(false);
+
+                    EnableTileGlowOnTileMenuInteracted(tileMenuInUse, false);
+                }
+
+                lastTileMenuInUse = tileMenuInUse;
 
                 tileMenuInUse = tileMenu;
 
-                if (!tileMenuInUse.isOpened) tileMenuInUse.OpenTileInteractionMenu(true);
+                if (!tileMenuInUse.isOpened)
+                {
+                    tileMenuInUse.OpenTileInteractionMenu(true);
+
+                    EnableTileGlowOnTileMenuInteracted(tileMenuInUse, true);
+                }
             }
         }
 
@@ -275,6 +316,8 @@ namespace TeamMAsTD
             {
                 tileMenuInUse.OpenTileInteractionMenu(false);
 
+                lastTileMenuInUse = tileMenuInUse;
+
                 tileMenuInUse = null;
             }
         }
@@ -286,6 +329,8 @@ namespace TeamMAsTD
                 this.tileMenuInUse.OpenTileInteractionMenu(false);
             }
 
+            lastTileMenuInUse = this.tileMenuInUse;
+
             this.tileMenuInUse = tileMenuInUse;
 
             if (!tileMenuInUse) return;
@@ -296,11 +341,17 @@ namespace TeamMAsTD
             }
             else if(interactionOption == TileMenuInteractionOptions.Close)
             {
-                if (tileMenuInUse.isOpened) tileMenuInUse.OpenTileInteractionMenu(false);
+                if (tileMenuInUse.isOpened)
+                {
+                    tileMenuInUse.OpenTileInteractionMenu(false);
+                }
             }
             else if(interactionOption == TileMenuInteractionOptions.Toggle)
             {
-                if(tileMenuInUse.isOpened) tileMenuInUse.OpenTileInteractionMenu(false);
+                if (tileMenuInUse.isOpened)
+                {
+                    tileMenuInUse.OpenTileInteractionMenu(false);
+                }
                 else tileMenuInUse.OpenTileInteractionMenu(true);
             }
         }
@@ -316,8 +367,6 @@ namespace TeamMAsTD
             tileMenuInteractionHandlerGO.TryGetComponent<TileMenuInteractionHandler>(out  tileMenuInteractionHandler);
 
             tileMenuInteractionHandlerInstance = tileMenuInteractionHandler;
-
-            //DontDestroyOnLoad(tileMenuInteractionHandlerGO);
         }
 
         private void CheckAndGetTileRaycastCam()
@@ -333,6 +382,42 @@ namespace TeamMAsTD
 
                 tileMenuInteractionRaycastCam = Camera.main;
             }
+        }
+
+        private void EnableTileGlowOnTileMenuInteracted(TileMenuAndUprootOnTileUI tileMenuInteracted, bool enable)
+        {
+            if (!tileMenuInteracted) return;
+
+            if (!tileMenuInteracted.tileHoldingThisMenu || !tileMenuInteracted.tileHoldingThisMenu.plantUnitOnTile) return;
+
+            if (!tileMenuInteracted.tileHoldingThisMenu.tileGlowComp) return;
+
+            if (enable)
+            {
+                if (tileMenuInteracted.tileHoldingThisMenu.tileGlowComp.spriteGlowEffectComp)
+                {
+                    tileMenuInteracted.tileHoldingThisMenu.tileGlowComp.spriteGlowEffectComp.OutlineWidth = 5;
+                }
+
+                tileMenuInteracted.tileHoldingThisMenu.tileGlowComp.OverrideTileGlowEffectColor(Color.cyan, Color.red);
+
+                tileMenuInteracted.tileHoldingThisMenu.tileGlowComp.OverrideTileGlowEffectBrightnessFromTo(0.55f, 2.2f);
+
+                if (!tileMenuInteracted.tileHoldingThisMenu.tileGlowComp.isTileGlowing)
+                    tileMenuInteracted.tileHoldingThisMenu.tileGlowComp.EnableTileGlowEffect(TileGlow.TileGlowMode.PositiveGlow);
+
+                return;
+            }
+
+            if (tileMenuInteracted.tileHoldingThisMenu.tileGlowComp.isTileGlowing)
+                tileMenuInteracted.tileHoldingThisMenu.tileGlowComp.DisableTileGlowEffect();
+
+            if (tileMenuInteracted.tileHoldingThisMenu.tileGlowComp.spriteGlowEffectComp)
+            {
+                tileMenuInteracted.tileHoldingThisMenu.tileGlowComp.spriteGlowEffectComp.SetDefaultRuntimeValues();
+            }
+
+            tileMenuInteracted.tileHoldingThisMenu.tileGlowComp.SetDefaultRuntimeValues();
         }
     }
 }

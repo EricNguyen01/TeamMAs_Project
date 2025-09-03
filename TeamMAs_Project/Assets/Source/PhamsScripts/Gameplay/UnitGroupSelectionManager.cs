@@ -44,6 +44,9 @@ namespace TeamMAsTD
 
         private bool unitGroupSelectionEnabled = true;
 
+        [HideInInspector]
+        private Vector3 selectedUnitTilesCenterWorldPos;
+
         private void Awake()
         {
             if (unitGroupSelectionManagerInstance && unitGroupSelectionManagerInstance != this)
@@ -187,6 +190,8 @@ namespace TeamMAsTD
                 {
                     PlantUnit plantUnit = selectedUnit as PlantUnit;
 
+                    if (plantUnit.plantRangeCircle) plantUnit.plantRangeCircle.DisplayPlantRangeCircle(true);
+
                     if (plantUnit.GetTileUnitIsOn())
                     {
                         if (plantUnit.GetTileUnitIsOn().tileGlowComp)
@@ -198,7 +203,7 @@ namespace TeamMAsTD
 
                             plantUnit.GetTileUnitIsOn().tileGlowComp.OverrideTileGlowEffectColor(Color.cyan, Color.red);
 
-                            plantUnit.GetTileUnitIsOn().tileGlowComp.OverrideTileGlowEffectBrightnessFromTo(0.55f, 2.0f);
+                            plantUnit.GetTileUnitIsOn().tileGlowComp.OverrideTileGlowEffectBrightnessFromTo(0.55f, 2.2f);
 
                             if (!plantUnit.GetTileUnitIsOn().tileGlowComp.isTileGlowing)
                                 plantUnit.GetTileUnitIsOn().tileGlowComp.EnableTileGlowEffect(TileGlow.TileGlowMode.PositiveGlow);
@@ -225,6 +230,17 @@ namespace TeamMAsTD
                             {
                                 TileMenuInteractionHandler.tileMenuInteractionHandlerInstance.ForceSetTileMenuInteracted_External(tileMenu, TileMenuInteractionHandler.TileMenuInteractionOptions.Open);
                             }
+
+                            if (TileMenuInteractionHandler.tileMenuInteractionHandlerInstance.lastTileMenuInUse &&
+                                unitGroupSelected.Count >= 2)
+                            {
+                                TileMenuInteractionHandler.tileMenuInteractionHandlerInstance.lastTileMenuInUse.tileHoldingThisMenu.plantUnitOnTile.plantRangeCircle.DisplayPlantRangeCircle(true);
+                            }
+
+                            if(selectedUnitTilesCenterWorldPos != Vector3.zero)
+                                TileMenuInteractionHandler.tileMenuInteractionHandlerInstance.tileMenuInUse.SetTileMenuLocalPos(selectedUnitTilesCenterWorldPos, true);
+                            else
+                                TileMenuInteractionHandler.tileMenuInteractionHandlerInstance.tileMenuInUse.SetTileMenuDefaultRuntimeParentAndLocalPos();
                         }
                     }
                 }
@@ -249,6 +265,8 @@ namespace TeamMAsTD
                     if (unselectedUnit is PlantUnit)
                     {
                         PlantUnit plantUnit = unselectedUnit as PlantUnit;
+
+                        if (plantUnit.plantRangeCircle) plantUnit.plantRangeCircle.DisplayPlantRangeCircle(false);
 
                         if (plantUnit.GetTileUnitIsOn())
                         {
@@ -297,6 +315,11 @@ namespace TeamMAsTD
                                         }
                                     }
                                 }
+
+                                if (selectedUnitTilesCenterWorldPos != Vector3.zero)
+                                    TileMenuInteractionHandler.tileMenuInteractionHandlerInstance.tileMenuInUse.SetTileMenuLocalPos(selectedUnitTilesCenterWorldPos, true);
+                                else
+                                    TileMenuInteractionHandler.tileMenuInteractionHandlerInstance.tileMenuInUse.SetTileMenuDefaultRuntimeParentAndLocalPos();
                             }
                         }
                     }
@@ -336,6 +359,11 @@ namespace TeamMAsTD
                         {
                             TileMenuInteractionHandler.tileMenuInteractionHandlerInstance.ForceSetTileMenuInteracted_External(tileMenu, TileMenuInteractionHandler.TileMenuInteractionOptions.Open);
                         }
+
+                        if (selectedUnitTilesCenterWorldPos != Vector3.zero)
+                            TileMenuInteractionHandler.tileMenuInteractionHandlerInstance.tileMenuInUse.SetTileMenuLocalPos(selectedUnitTilesCenterWorldPos, true);
+                        else
+                            TileMenuInteractionHandler.tileMenuInteractionHandlerInstance.tileMenuInUse.SetTileMenuDefaultRuntimeParentAndLocalPos();
                     }
 
                     break;
@@ -551,17 +579,35 @@ namespace TeamMAsTD
             }
         }
 
-        private Tile GetOrUpdate_CenterUnitTile_InAllSelected()
+        private Tile GetOrUpdate_CenterUnitTile_InAllSelected(out Vector3 selectedUnitTilesCenterWorldPos)
         {
-            if(unitGroupSelected == null || unitGroupSelected.Count == 0) return null;
+            selectedUnitTilesCenterWorldPos = Vector3.zero;
 
-            if(unitGroupSelected.Count <= 2) return null;
+            if(unitGroupSelected == null || unitGroupSelected.Count <= 1) return null;
+
+            int minPosX = 0;
+
+            int maxPosX = 0;
+
+            int minPosY = 0;
+
+            int maxPosY = 0;
 
             int totalPosX = 0;
 
             int totalPosY = 0;
 
-            int count = 0;
+            float minPosXWorld = 0.0f;
+
+            float maxPosXWorld = 0.0f;
+
+            float minPosYWorld = 0.0f;
+
+            float maxPosYWorld = 0.0f;
+
+            float totalPosXWorld = 0.0f;
+
+            float totalPosYWorld = 0.0f;
 
             List<IUnit> unitGroupSelectedList = unitGroupSelected.ToList();
 
@@ -569,14 +615,44 @@ namespace TeamMAsTD
             {
                 if (unitGroupSelectedList[i] == null) continue;
 
-                totalPosX += unitGroupSelectedList[i].GetTileUnitIsOn().tileNumInRow;
+                if (unitGroupSelectedList[i].GetTileUnitIsOn().tileNumInRow < minPosX)
+                    minPosX = unitGroupSelectedList[i].GetTileUnitIsOn().tileNumInRow;
 
-                totalPosY += unitGroupSelectedList[i].GetTileUnitIsOn().tileNumInColumn;
+                if (unitGroupSelectedList[i].GetTileUnitIsOn().tileNumInRow > maxPosX)
+                    maxPosX = unitGroupSelectedList[i].GetTileUnitIsOn().tileNumInRow;
 
-                count++;
+                if (unitGroupSelectedList[i].GetTileUnitIsOn().tileNumInColumn < minPosY)
+                    minPosY = unitGroupSelectedList[i].GetTileUnitIsOn().tileNumInColumn;
+
+                if (unitGroupSelectedList[i].GetTileUnitIsOn().tileNumInColumn > maxPosY)
+                    maxPosY = unitGroupSelectedList[i].GetTileUnitIsOn().tileNumInColumn;
+
+                if (unitGroupSelectedList[i].GetTileUnitIsOn().transform.position.x < minPosXWorld)
+                    minPosXWorld = unitGroupSelectedList[i].GetTileUnitIsOn().transform.position.x;
+
+                if (unitGroupSelectedList[i].GetTileUnitIsOn().transform.position.x > maxPosXWorld)
+                    maxPosXWorld = unitGroupSelectedList[i].GetTileUnitIsOn().transform.position.x;
+
+                if (unitGroupSelectedList[i].GetTileUnitIsOn().transform.position.y < minPosYWorld)
+                    minPosYWorld = unitGroupSelectedList[i].GetTileUnitIsOn().transform.position.y;
+
+                if (unitGroupSelectedList[i].GetTileUnitIsOn().transform.position.y > maxPosYWorld)
+                    maxPosYWorld = unitGroupSelectedList[i].GetTileUnitIsOn().transform.position.y;
             }
 
-            Vector2Int selectedUnitTilesAveragePos = new Vector2Int(totalPosX / count, totalPosY / count);
+            totalPosX = minPosX + maxPosX;
+
+            totalPosY = minPosY + maxPosY;
+
+            totalPosXWorld = minPosXWorld + maxPosXWorld;
+
+            totalPosYWorld = minPosYWorld + maxPosYWorld;
+
+            Vector2Int selectedUnitTilesCenterPos = new Vector2Int(totalPosX / 2, totalPosY / 2);
+
+            selectedUnitTilesCenterWorldPos = new Vector3(totalPosXWorld / 2, totalPosYWorld / 2, 0.0f);
+
+            if (unitGroupSelected.Count <= 2) return null;
 
             Tile centerTile = null;
 
@@ -594,29 +670,29 @@ namespace TeamMAsTD
 
                 if(i == 0)
                 {
-                    closestDist = Vector2Int.Distance(selectedUnitTilesAveragePos, tileCoord);
+                    closestDist = Vector2Int.Distance(selectedUnitTilesCenterPos, tileCoord);
 
                     centerTile = unitGroupSelectedList[i].GetTileUnitIsOn();
 
                     continue;
                 }
 
-                float currentTileDistToAvg = Vector2Int.Distance(selectedUnitTilesAveragePos, tileCoord);
+                float currentTileDistToCenter = Vector2Int.Distance(selectedUnitTilesCenterPos, tileCoord);
 
-                if (currentTileDistToAvg <= closestDist)
+                if (currentTileDistToCenter <= closestDist)
                 {
-                    closestDist = currentTileDistToAvg;
+                    closestDist = currentTileDistToCenter;
 
                     centerTile = unitGroupSelectedList[i].GetTileUnitIsOn();
                 }
             }
-            
+
             return centerTile;
         }
 
         private bool GetAndOpenClose_CenterTile_InSelectedTiles_IfPossible(bool openMenu)
         {
-            Tile centerTile = GetOrUpdate_CenterUnitTile_InAllSelected();
+            Tile centerTile = GetOrUpdate_CenterUnitTile_InAllSelected(out selectedUnitTilesCenterWorldPos);
 
             if(!centerTile) return false;
 
