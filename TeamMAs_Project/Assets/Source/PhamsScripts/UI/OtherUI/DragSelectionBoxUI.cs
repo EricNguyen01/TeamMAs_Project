@@ -564,6 +564,8 @@ namespace TeamMAsTD
         public void EnableDragSelectionBox(bool enabled)
         {
             dragSelectionBoxEnabled = enabled;
+
+            if(!enabled) EndDrag();
         }
     }
 }

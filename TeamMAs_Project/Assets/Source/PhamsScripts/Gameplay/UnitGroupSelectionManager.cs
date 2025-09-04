@@ -236,11 +236,6 @@ namespace TeamMAsTD
                             {
                                 TileMenuInteractionHandler.tileMenuInteractionHandlerInstance.lastTileMenuInUse.tileHoldingThisMenu.plantUnitOnTile.plantRangeCircle.DisplayPlantRangeCircle(true);
                             }
-
-                            if(selectedUnitTilesCenterWorldPos != Vector3.zero)
-                                TileMenuInteractionHandler.tileMenuInteractionHandlerInstance.tileMenuInUse.SetTileMenuLocalPos(selectedUnitTilesCenterWorldPos, true);
-                            else
-                                TileMenuInteractionHandler.tileMenuInteractionHandlerInstance.tileMenuInUse.SetTileMenuDefaultRuntimeParentAndLocalPos();
                         }
                     }
                 }
@@ -303,23 +298,7 @@ namespace TeamMAsTD
 
                                         shouldOpenNextInLineTileMenu = true;
                                     }
-                                    else
-                                    {
-                                        tileMenu = TileMenuInteractionHandler.tileMenuInteractionHandlerInstance.tileMenuInUse;
-
-                                        if(tileMenu && 
-                                           tileMenu.tileHoldingThisMenu && 
-                                           tileMenu.tileHoldingThisMenu.wateringOnTileScriptComp)
-                                        {
-                                            tileMenu.tileHoldingThisMenu.wateringOnTileScriptComp.UpdateTotalWateringCostText();
-                                        }
-                                    }
                                 }
-
-                                if (selectedUnitTilesCenterWorldPos != Vector3.zero)
-                                    TileMenuInteractionHandler.tileMenuInteractionHandlerInstance.tileMenuInUse.SetTileMenuLocalPos(selectedUnitTilesCenterWorldPos, true);
-                                else
-                                    TileMenuInteractionHandler.tileMenuInteractionHandlerInstance.tileMenuInUse.SetTileMenuDefaultRuntimeParentAndLocalPos();
                             }
                         }
                     }
@@ -359,11 +338,6 @@ namespace TeamMAsTD
                         {
                             TileMenuInteractionHandler.tileMenuInteractionHandlerInstance.ForceSetTileMenuInteracted_External(tileMenu, TileMenuInteractionHandler.TileMenuInteractionOptions.Open);
                         }
-
-                        if (selectedUnitTilesCenterWorldPos != Vector3.zero)
-                            TileMenuInteractionHandler.tileMenuInteractionHandlerInstance.tileMenuInUse.SetTileMenuLocalPos(selectedUnitTilesCenterWorldPos, true);
-                        else
-                            TileMenuInteractionHandler.tileMenuInteractionHandlerInstance.tileMenuInUse.SetTileMenuDefaultRuntimeParentAndLocalPos();
                     }
 
                     break;
@@ -652,8 +626,6 @@ namespace TeamMAsTD
 
             selectedUnitTilesCenterWorldPos = new Vector3(totalPosXWorld / 2, totalPosYWorld / 2, 0.0f);
 
-            if (unitGroupSelected.Count <= 2) return null;
-
             Tile centerTile = null;
 
             float closestDist = 0;   
@@ -692,6 +664,8 @@ namespace TeamMAsTD
 
         private bool GetAndOpenClose_CenterTile_InSelectedTiles_IfPossible(bool openMenu)
         {
+            if (!TileMenuInteractionHandler.tileMenuInteractionHandlerInstance) return false;
+
             Tile centerTile = GetOrUpdate_CenterUnitTile_InAllSelected(out selectedUnitTilesCenterWorldPos);
 
             if(!centerTile) return false;
@@ -703,6 +677,9 @@ namespace TeamMAsTD
             if (openMenu)
             {
                 TileMenuInteractionHandler.tileMenuInteractionHandlerInstance.ForceSetTileMenuInteracted_External(centerTileMenu, TileMenuInteractionHandler.TileMenuInteractionOptions.Open);
+
+                if (selectedUnitTilesCenterWorldPos != Vector3.zero)
+                    TileMenuInteractionHandler.tileMenuInteractionHandlerInstance.tileMenuInUse.SetTileMenuLocalPos(selectedUnitTilesCenterWorldPos, true);
 
                 return true;
             }

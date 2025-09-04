@@ -132,7 +132,7 @@ namespace TeamMAsTD
             Rain.OnRainEnded -= StopDisableTileMenuInteractionOnRainEnded;
         }
 
-        public void OpenTileInteractionMenu(bool opened)
+        public void OpenTileInteractionMenu(bool opened, bool shouldToggle = false)
         {
             //if there is no tile script component reference->show error and stop executing
             if (tileHoldingThisMenu == null)
@@ -152,8 +152,13 @@ namespace TeamMAsTD
             //if a plant exists on this tile->process open/close tile menu
             if (opened)
             {
-                if (!disableTileMenuOpen && !tileMenuWorldCanvas.gameObject.activeInHierarchy)
+                if (!disableTileMenuOpen)
                 {
+                    SetTileMenuDefaultRuntimeParentAndLocalPos();
+
+                    if(tileHoldingThisMenu && tileHoldingThisMenu.wateringOnTileScriptComp) 
+                        tileHoldingThisMenu.wateringOnTileScriptComp.UpdateTotalWateringCostText();
+
                     tileMenuWorldCanvas.gameObject.SetActive(true);
 
                     isOpened = true;
@@ -161,10 +166,8 @@ namespace TeamMAsTD
                     OpenPlantRangeCircle(plantSelected, true);
 
                     OnTileMenuOpened?.Invoke();
-
-                    SetTileMenuDefaultRuntimeParentAndLocalPos();
                 }
-                else 
+                else if(disableTileMenuOpen || (shouldToggle && tileMenuWorldCanvas.gameObject.activeInHierarchy))
                 {
                     OpenPlantRangeCircle(plantSelected, false);
 
@@ -175,11 +178,6 @@ namespace TeamMAsTD
                     OnTileMenuClosed?.Invoke();
 
                     SetTileMenuDefaultRuntimeParentAndLocalPos();
-                }
-
-                if(tileHoldingThisMenu && tileHoldingThisMenu.wateringOnTileScriptComp)
-                {
-                    tileHoldingThisMenu.wateringOnTileScriptComp.UpdateTotalWateringCostText();
                 }
 
                 return;
