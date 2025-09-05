@@ -316,7 +316,7 @@ namespace TeamMAsTD
             SetWateringCostText(totalMultiSelectedPlantsWateringCost);
         }
 
-        public void AddNewSelectedPlantsWateringCost(PlantUnit selectedpPlant)
+        public void AddNewMultiSelectedPlantWateringCost(PlantUnit selectedpPlant)
         {
             if (!selectedpPlant) return;
 
@@ -331,13 +331,15 @@ namespace TeamMAsTD
             SetWateringCostText(totalMultiSelectedPlantsWateringCost);
         }
 
-        public void SubtractUnselectedPlantWateringCost(PlantUnit unselectedPlant)
+        public void SubtractUnselectedPlantFromMultiSelectWateringCost(PlantUnit unselectedPlant)
         {
             if (!unselectedPlant) return;
 
             if(!unselectedPlant.plantUnitScriptableObject) return;
 
             if (!unselectedPlant.plantWaterUsageSystem) return;
+
+            if (unselectedPlant.plantWaterUsageSystem.IsWaterFull()) return;
 
             totalMultiSelectedPlantsWateringCost -= unselectedPlant.plantUnitScriptableObject.wateringCoinsCost;
 

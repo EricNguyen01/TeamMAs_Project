@@ -337,7 +337,7 @@ namespace TeamMAsTD
 
             if(interactionOption == TileMenuInteractionOptions.Open)
             {
-                /*if(!tileMenuInUse.isOpened)*/ tileMenuInUse.OpenTileInteractionMenu(true);
+                tileMenuInUse.OpenTileInteractionMenu(true);
             }
             else if(interactionOption == TileMenuInteractionOptions.Close)
             {

@@ -212,7 +212,7 @@ namespace TeamMAsTD
                         //update total multi-selected plants watering cost on adding new selected plant
                         if (plantUnit.tilePlacedOn.wateringOnTileScriptComp)
                         {
-                            plantUnit.tilePlacedOn.wateringOnTileScriptComp.AddNewSelectedPlantsWateringCost(plantUnit);
+                            plantUnit.tilePlacedOn.wateringOnTileScriptComp.AddNewMultiSelectedPlantWateringCost(plantUnit);
                         }
 
                         TileMenuAndUprootOnTileUI tileMenu = plantUnit.GetTileUnitIsOn().tileMenuAndUprootOnTileUI;
@@ -281,7 +281,7 @@ namespace TeamMAsTD
                             //update total multi-selected plants watering cost on removing unselected plant
                             if (plantUnit.tilePlacedOn.wateringOnTileScriptComp)
                             {
-                                plantUnit.tilePlacedOn.wateringOnTileScriptComp.SubtractUnselectedPlantWateringCost(plantUnit);
+                                plantUnit.tilePlacedOn.wateringOnTileScriptComp.SubtractUnselectedPlantFromMultiSelectWateringCost(plantUnit);
                             }
 
                             GetAndOpenClose_CenterTile_InSelectedTiles_IfPossible(true);
@@ -557,7 +557,7 @@ namespace TeamMAsTD
         {
             selectedUnitTilesCenterWorldPos = Vector3.zero;
 
-            if(unitGroupSelected == null || unitGroupSelected.Count <= 1) return null;
+            if(unitGroupSelected == null || unitGroupSelected.Count < 1) return null;
 
             int minPosX = 0;
 
@@ -601,16 +601,28 @@ namespace TeamMAsTD
                 if (unitGroupSelectedList[i].GetTileUnitIsOn().tileNumInColumn > maxPosY)
                     maxPosY = unitGroupSelectedList[i].GetTileUnitIsOn().tileNumInColumn;
 
-                if (unitGroupSelectedList[i].GetTileUnitIsOn().transform.position.x < minPosXWorld)
+                if(minPosXWorld == 0.0f)
                     minPosXWorld = unitGroupSelectedList[i].GetTileUnitIsOn().transform.position.x;
 
-                if (unitGroupSelectedList[i].GetTileUnitIsOn().transform.position.x > maxPosXWorld)
+                else if (unitGroupSelectedList[i].GetTileUnitIsOn().transform.position.x < minPosXWorld)
+                    minPosXWorld = unitGroupSelectedList[i].GetTileUnitIsOn().transform.position.x;
+
+                if(maxPosXWorld == 0.0f)
                     maxPosXWorld = unitGroupSelectedList[i].GetTileUnitIsOn().transform.position.x;
 
-                if (unitGroupSelectedList[i].GetTileUnitIsOn().transform.position.y < minPosYWorld)
+                else if (unitGroupSelectedList[i].GetTileUnitIsOn().transform.position.x > maxPosXWorld)
+                    maxPosXWorld = unitGroupSelectedList[i].GetTileUnitIsOn().transform.position.x;
+
+                if(minPosYWorld == 0.0f)
                     minPosYWorld = unitGroupSelectedList[i].GetTileUnitIsOn().transform.position.y;
 
-                if (unitGroupSelectedList[i].GetTileUnitIsOn().transform.position.y > maxPosYWorld)
+                else if (unitGroupSelectedList[i].GetTileUnitIsOn().transform.position.y < minPosYWorld)
+                    minPosYWorld = unitGroupSelectedList[i].GetTileUnitIsOn().transform.position.y;
+
+                if(maxPosYWorld == 0.0f)
+                    maxPosYWorld = unitGroupSelectedList[i].GetTileUnitIsOn().transform.position.y;
+
+                else if (unitGroupSelectedList[i].GetTileUnitIsOn().transform.position.y > maxPosYWorld)
                     maxPosYWorld = unitGroupSelectedList[i].GetTileUnitIsOn().transform.position.y;
             }
 
@@ -624,7 +636,9 @@ namespace TeamMAsTD
 
             Vector2Int selectedUnitTilesCenterPos = new Vector2Int(totalPosX / 2, totalPosY / 2);
 
-            selectedUnitTilesCenterWorldPos = new Vector3(totalPosXWorld / 2, totalPosYWorld / 2, 0.0f);
+            if(unitGroupSelected.Count == 1) selectedUnitTilesCenterWorldPos = new Vector3(totalPosXWorld / 2.0f, (totalPosYWorld / 2.0f) + 0.5f, 0.0f);
+
+            else if(unitGroupSelected.Count > 1) selectedUnitTilesCenterWorldPos = new Vector3(totalPosXWorld / 2.0f, totalPosYWorld / 2.0f, 0.0f);
 
             Tile centerTile = null;
 

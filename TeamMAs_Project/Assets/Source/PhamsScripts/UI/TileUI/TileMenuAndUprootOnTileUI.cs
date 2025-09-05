@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
+using System.Reflection.Emit;
 
 namespace TeamMAsTD
 {
@@ -138,53 +139,49 @@ namespace TeamMAsTD
             if (tileHoldingThisMenu == null)
             {
                 Debug.LogError("Trying to interact with tile: " + name + " but the Tile script component can't be found!");
+
+                if (tileMenuWorldCanvas.gameObject.activeInHierarchy) tileMenuWorldCanvas.gameObject.SetActive(false);
+
                 return;
             }
 
             //do nothing if tile doesnt have plant unit placed on
             if (tileHoldingThisMenu.plantUnitOnTile == null)
             {
+                if (tileMenuWorldCanvas.gameObject.activeInHierarchy) tileMenuWorldCanvas.gameObject.SetActive(false);
+
                 return;
             }
 
             PlantUnit plantSelected = tileHoldingThisMenu.plantUnitOnTile;
 
+            if (disableTileMenuOpen) goto CloseTileMenu;
+
+            if (tileHoldingThisMenu && tileHoldingThisMenu.wateringOnTileScriptComp)
+                tileHoldingThisMenu.wateringOnTileScriptComp.UpdateTotalWateringCostText();
+
             //if a plant exists on this tile->process open/close tile menu
             if (opened)
             {
-                if (!disableTileMenuOpen)
-                {
-                    SetTileMenuDefaultRuntimeParentAndLocalPos();
+                if (shouldToggle && tileMenuWorldCanvas.gameObject.activeInHierarchy) goto CloseTileMenu;
 
-                    if(tileHoldingThisMenu && tileHoldingThisMenu.wateringOnTileScriptComp) 
-                        tileHoldingThisMenu.wateringOnTileScriptComp.UpdateTotalWateringCostText();
+                SetTileMenuDefaultRuntimeParentAndLocalPos();
 
-                    tileMenuWorldCanvas.gameObject.SetActive(true);
+                tileMenuWorldCanvas.gameObject.SetActive(true);
 
-                    isOpened = true;
+                isOpened = true;
 
-                    OpenPlantRangeCircle(plantSelected, true);
+                OpenPlantRangeCircle(plantSelected, true);
 
-                    OnTileMenuOpened?.Invoke();
-                }
-                else if(disableTileMenuOpen || (shouldToggle && tileMenuWorldCanvas.gameObject.activeInHierarchy))
-                {
-                    OpenPlantRangeCircle(plantSelected, false);
-
-                    tileMenuWorldCanvas.gameObject.SetActive(false);
-
-                    isOpened = false;
-
-                    OnTileMenuClosed?.Invoke();
-
-                    SetTileMenuDefaultRuntimeParentAndLocalPos();
-                }
+                OnTileMenuOpened?.Invoke();
 
                 return;
             }
 
-            if (tileMenuWorldCanvas.gameObject.activeInHierarchy) 
-            { 
+        CloseTileMenu:
+
+            if (tileMenuWorldCanvas.gameObject.activeInHierarchy)
+            {
                 tileMenuWorldCanvas.gameObject.SetActive(false);
 
                 OpenPlantRangeCircle(plantSelected, false);
