@@ -636,9 +636,7 @@ namespace TeamMAsTD
 
             Vector2Int selectedUnitTilesCenterPos = new Vector2Int(totalPosX / 2, totalPosY / 2);
 
-            if(unitGroupSelected.Count == 1) selectedUnitTilesCenterWorldPos = new Vector3(totalPosXWorld / 2.0f, (totalPosYWorld / 2.0f) + 0.5f, 0.0f);
-
-            else if(unitGroupSelected.Count > 1) selectedUnitTilesCenterWorldPos = new Vector3(totalPosXWorld / 2.0f, totalPosYWorld / 2.0f, 0.0f);
+            selectedUnitTilesCenterWorldPos = new Vector3(totalPosXWorld / 2.0f, totalPosYWorld / 2.0f, 0.0f);
 
             Tile centerTile = null;
 
@@ -692,7 +690,8 @@ namespace TeamMAsTD
             {
                 TileMenuInteractionHandler.tileMenuInteractionHandlerInstance.ForceSetTileMenuInteracted_External(centerTileMenu, TileMenuInteractionHandler.TileMenuInteractionOptions.Open);
 
-                if (selectedUnitTilesCenterWorldPos != Vector3.zero)
+                if (unitGroupSelected.Count > 1 &&
+                    selectedUnitTilesCenterWorldPos != Vector3.zero)
                     TileMenuInteractionHandler.tileMenuInteractionHandlerInstance.tileMenuInUse.SetTileMenuLocalPos(selectedUnitTilesCenterWorldPos, true);
 
                 return true;
