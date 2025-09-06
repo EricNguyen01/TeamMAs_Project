@@ -364,7 +364,7 @@ namespace PixelCrushers.DialogueSystem
         /// </summary>
         public void Awake()
         {
-            if (allowOnlyOneInstance && (FindObjectsOfType<DialogueSystemController>().Length > 1))
+            if (allowOnlyOneInstance && (FindObjectsByType<DialogueSystemController>(FindObjectsSortMode.None).Length > 1))
             {
                 // Scene already has an instance, so destroy this one:
                 m_isDuplicateBeingDestroyed = true;
@@ -540,7 +540,7 @@ namespace PixelCrushers.DialogueSystem
             {
                 displaySettings.localizationSettings.language = Localization.GetLanguage(Application.systemLanguage);
             }
-            var m_uiLocalizationManager = GetComponent<UILocalizationManager>() ?? FindObjectOfType<UILocalizationManager>();
+            var m_uiLocalizationManager = GetComponent<UILocalizationManager>() ?? FindFirstObjectByType<UILocalizationManager>();
             var needsLocalizationManager = !string.IsNullOrEmpty(displaySettings.localizationSettings.language) || displaySettings.localizationSettings.textTable != null;
             if (needsLocalizationManager && m_uiLocalizationManager == null)
             {
@@ -574,7 +574,7 @@ namespace PixelCrushers.DialogueSystem
         {
             if (m_uiLocalizationManager == null)
             {
-                m_uiLocalizationManager = GetComponent<UILocalizationManager>() ?? FindObjectOfType<UILocalizationManager>();
+                m_uiLocalizationManager = GetComponent<UILocalizationManager>() ?? FindFirstObjectByType<UILocalizationManager>();
                 if (m_uiLocalizationManager == null)
                 {
                     m_uiLocalizationManager = gameObject.AddComponent<UILocalizationManager>();

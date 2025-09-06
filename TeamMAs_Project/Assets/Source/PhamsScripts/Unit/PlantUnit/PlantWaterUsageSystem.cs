@@ -292,7 +292,7 @@ namespace TeamMAsTD
 
             //if above is invalid -> find all tiles
             //if a tile is found to be the one carrying this plant -> process uproot
-            foreach(Tile tile in FindObjectsOfType<Tile>())
+            foreach(Tile tile in FindObjectsByType<Tile>(FindObjectsSortMode.None))
             {
                 if(tile.plantUnitOnTile != null && tile.plantUnitOnTile == plantUnitLinked)
                 {

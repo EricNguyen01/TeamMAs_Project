@@ -352,7 +352,7 @@ namespace TeamMAsTD
             }
             else
             {
-                foreach (WaveSpawner waveSpawner in FindObjectsOfType<WaveSpawner>())
+                foreach (WaveSpawner waveSpawner in FindObjectsByType<WaveSpawner>(FindObjectsSortMode.None))
                 {
                     if (waveSpawner.waveAlreadyStarted)
                     {

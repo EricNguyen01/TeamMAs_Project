@@ -242,14 +242,14 @@ namespace TeamMAsTD
         private bool HasOtherActiveWaves()
         {
             //if WaveSpawnerManager exists ->
-            //check for active wave spawners in scene through it instead of running FindObjectsOfType which is expensive
+            //check for active wave spawners in scene through it instead of running FindObjectsByType which is expensive
             if(WaveSpawnerManager.waveSpawnerManagerInstance != null)
             {
                 return WaveSpawnerManager.waveSpawnerManagerInstance.HasActiveWaveSpawnersExcept(this);
             }
 
-            //else, run FindObjectsOfType instead lol!
-            foreach (WaveSpawner waveSpawner in FindObjectsOfType<WaveSpawner>())
+            //else, run FindObjectsByType instead lol!
+            foreach (WaveSpawner waveSpawner in FindObjectsByType<WaveSpawner>(FindObjectsSortMode.None))
             {
                 if (waveSpawner == this) continue;
 

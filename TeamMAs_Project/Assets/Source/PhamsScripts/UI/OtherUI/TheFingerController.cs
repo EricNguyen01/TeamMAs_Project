@@ -132,7 +132,7 @@ namespace TeamMAsTD
 
         private void DisableOnPlantPlantedOnTileEvent(bool subToEvent)
         {
-            Tile[] tiles = FindObjectsOfType<Tile>();
+            Tile[] tiles = FindObjectsByType<Tile>(FindObjectsSortMode.None);
 
             if (tiles == null || tiles.Length == 0) return;
 

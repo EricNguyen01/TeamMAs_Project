@@ -52,7 +52,7 @@ namespace TeamMAsTD
         {
             //reset data on returning to pool and getting disabled
 
-            projectileRigidbody2D.velocity = Vector2.zero;
+            projectileRigidbody2D.linearVelocity = Vector2.zero;
 
             projectileRigidbody2D.angularVelocity = 0.0f;
 

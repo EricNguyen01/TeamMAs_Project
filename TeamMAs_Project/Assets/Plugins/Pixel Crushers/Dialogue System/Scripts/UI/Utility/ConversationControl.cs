@@ -33,7 +33,7 @@ namespace PixelCrushers.DialogueSystem
 			dialogueUI = 
 				GetComponent<AbstractDialogueUI>() ?? 
 				(DialogueManager.standardDialogueUI as AbstractDialogueUI) ??
-				FindObjectOfType<AbstractDialogueUI>();
+				Object.FindFirstObjectByType<AbstractDialogueUI>();
 		}
 
 		/// <summary>

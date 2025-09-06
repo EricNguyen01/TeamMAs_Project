@@ -130,7 +130,7 @@ namespace TeamMAsTD
 
             if (buttonsToFollowOnHovered == null || buttonsToFollowOnHovered.Count <= 0)
             {
-                foreach(Button button in FindObjectsOfType<Button>())
+                foreach(Button button in FindObjectsByType<Button>(FindObjectsSortMode.None))
                 {
                     if (button)
                     {

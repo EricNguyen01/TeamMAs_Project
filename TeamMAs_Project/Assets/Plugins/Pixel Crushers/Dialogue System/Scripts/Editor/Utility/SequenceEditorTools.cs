@@ -506,7 +506,7 @@ namespace PixelCrushers.DialogueSystem
         {
             menu.AddItem(new GUIContent("Shortcuts/Help..."), false, OpenURL, "https://www.pixelcrushers.com/dialogue_system/manual2x/html/cutscene_sequences.html#shortcuts");
             var list = new List<string>();
-            var allSequencerShortcuts = GameObject.FindObjectsOfType<SequencerShortcuts>();
+            var allSequencerShortcuts = GameObject.FindObjectsByType<SequencerShortcuts>(FindObjectsSortMode.None);
             foreach (var sequencerShortcuts in allSequencerShortcuts)
             {
                 foreach (var shortcut in sequencerShortcuts.shortcuts)

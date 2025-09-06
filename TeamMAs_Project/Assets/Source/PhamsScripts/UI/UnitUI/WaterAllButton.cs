@@ -113,7 +113,7 @@ namespace TeamMAsTD
                 return;
             }
 
-            foreach (Tile tile in FindObjectsOfType<Tile>())
+            foreach (Tile tile in FindObjectsByType<Tile>(FindObjectsSortMode.None))
             {
                 tile.OnPlantUnitPlantedOnTile.AddListener(RegisteringExistingPlantUnit);
 
@@ -137,7 +137,7 @@ namespace TeamMAsTD
 
         private void OnDisable()
         {
-            foreach (Tile tile in FindObjectsOfType<Tile>())
+            foreach (Tile tile in FindObjectsByType<Tile>(FindObjectsSortMode.None))
             {
                 tile.OnPlantUnitPlantedOnTile.RemoveListener(RegisteringExistingPlantUnit);
 

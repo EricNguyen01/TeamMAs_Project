@@ -524,7 +524,7 @@ namespace TeamMAsTD
         {
             Path path = null;
 
-            Path[] paths = FindObjectsOfType<Path>();
+            Path[] paths = FindObjectsByType<Path>(FindObjectsSortMode.None);
 
             for(int i = 0; i < paths.Length; i++)
             {

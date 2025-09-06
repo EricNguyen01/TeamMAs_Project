@@ -440,7 +440,7 @@ namespace PixelCrushers.DialogueSystem
 
         private bool HasMainCamera()
         {
-            foreach (var camera in FindObjectsOfType<UnityEngine.Camera>())
+            foreach (var camera in FindObjectsByType<UnityEngine.Camera>(FindObjectsSortMode.None))
             {
                 if (camera.CompareTag("MainCamera")) return true;
             }

@@ -72,7 +72,7 @@ namespace PixelCrushers.DialogueSystem.SequencerCommands
 
                 if (all)
                 {
-                    var allVcams = FindObjectsOfType<CinemachineVirtualCamera>();
+                    var allVcams = FindObjectsByType<CinemachineVirtualCamera>();
                     foreach (CinemachineVirtualCamera avcam in allVcams)
                     {
                         if (checkExcept && string.Equals(avcam.name, allExcept)) continue;

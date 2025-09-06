@@ -2513,7 +2513,7 @@ MonoBehaviour:
         type: 0
         typeString: 
       - title: Dialogue Text
-        value: No, we're not leaving. Not while the bees have no use for [em1]Grass.[/em1]
+        value: 'No, we''re not leaving. Not while the bees have no use for [em1]Grass.[/em1]'
         type: 0
         typeString: 
       - title: Sequence

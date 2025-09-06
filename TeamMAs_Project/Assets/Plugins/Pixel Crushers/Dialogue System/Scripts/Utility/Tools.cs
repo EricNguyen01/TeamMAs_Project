@@ -36,7 +36,7 @@ namespace PixelCrushers.DialogueSystem
             if (go == null) return false;
             if (go.activeInHierarchy) return false;
             if ((go.transform.parent != null) && go.transform.parent.gameObject.activeSelf) return false;
-            var list = GameObject.FindObjectsOfType<GameObject>();
+            var list = GameObject.FindObjectsByType<GameObject>(FindObjectsSortMode.None);
             for (int i = 0; i < list.Length; i++)
             {
                 if (list[i] == go) return false;
@@ -226,7 +226,7 @@ namespace PixelCrushers.DialogueSystem
         /// <param name="message">Message.</param>
         public static void SendMessageToEveryone(string message)
         {
-            GameObject[] gameObjects = GameObject.FindObjectsOfType(typeof(GameObject)) as GameObject[];
+            GameObject[] gameObjects = GameObject.FindObjectsByType(typeof(GameObject), FindObjectsSortMode.None) as GameObject[];
             for (int i = 0; i < gameObjects.Length; i++)
             {
                 var go = gameObjects[i];
@@ -241,7 +241,7 @@ namespace PixelCrushers.DialogueSystem
         /// <param name="arg">Argument.</param>
         public static void SendMessageToEveryone(string message, string arg)
         {
-            GameObject[] gameObjects = GameObject.FindObjectsOfType(typeof(GameObject)) as GameObject[];
+            GameObject[] gameObjects = GameObject.FindObjectsByType(typeof(GameObject),FindObjectsSortMode.None) as GameObject[];
             for (int i = 0; i < gameObjects.Length; i++)
             {
                 var go = gameObjects[i];
@@ -256,7 +256,7 @@ namespace PixelCrushers.DialogueSystem
         /// <param name="gameObjectsPerFrame">Number of GameObjects to handle each frame.</param>
         public static IEnumerator SendMessageToEveryoneAsync(string message, int gameObjectsPerFrame)
         {
-            GameObject[] gameObjects = GameObject.FindObjectsOfType(typeof(GameObject)) as GameObject[];
+            GameObject[] gameObjects = GameObject.FindObjectsByType(typeof(GameObject), FindObjectsSortMode.None) as GameObject[];
             int count = 0;
             for (int i = 0; i < gameObjects.Length; i++)
             {

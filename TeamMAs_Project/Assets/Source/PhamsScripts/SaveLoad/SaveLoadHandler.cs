@@ -159,7 +159,7 @@ namespace TeamMAsTD
                 saveablesInScene.Clear();
             }
 
-            foreach(Saveable saveable in FindObjectsOfType<Saveable>(true))
+            foreach (Saveable saveable in FindObjectsByType<Saveable>(FindObjectsInactive.Include, FindObjectsSortMode.None))
             {
                 RegisterSaveable(saveable);
             }
@@ -251,7 +251,7 @@ namespace TeamMAsTD
                 {
                     if (saveLoadHandlerInstance.saveablesInScene == null) saveLoadHandlerInstance.saveablesInScene = new HashSet<Saveable>();
 
-                    foreach (Saveable saveable in FindObjectsOfType<Saveable>(true))
+                    foreach (Saveable saveable in FindObjectsByType<Saveable>(FindObjectsInactive.Include, FindObjectsSortMode.None))
                     {
                         if (!saveable) continue;
 
@@ -456,7 +456,7 @@ namespace TeamMAsTD
                 {
                     if (saveLoadHandlerInstance.saveablesInScene == null) saveLoadHandlerInstance.saveablesInScene = new HashSet<Saveable>();
 
-                    foreach (Saveable saveable in FindObjectsOfType<Saveable>(true))
+                    foreach (Saveable saveable in FindObjectsByType<Saveable>(FindObjectsInactive.Include, FindObjectsSortMode.None))
                     {
                         if (!saveable) continue;
 

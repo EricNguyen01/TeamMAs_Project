@@ -78,7 +78,7 @@ namespace TeamMAsTD
 
                 fullScreenModeOptionItems.Add(fsModeItem);
 
-                TMP_Dropdown.OptionData optionItemData = new TMP_Dropdown.OptionData(fsModeItem.GetFullScreenModeString(), null);
+                TMP_Dropdown.OptionData optionItemData = new TMP_Dropdown.OptionData(fsModeItem.GetFullScreenModeString());
 
                 optionItems.Add(optionItemData);
             }

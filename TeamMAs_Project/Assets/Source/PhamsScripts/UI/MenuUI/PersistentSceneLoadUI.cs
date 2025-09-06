@@ -199,7 +199,7 @@ namespace TeamMAsTD
 
             isLoadingBarTweening = false;
 
-            foreach (Button button in FindObjectsOfType<Button>())
+            foreach (Button button in FindObjectsByType<Button>(FindObjectsSortMode.None))
             {
                 if (!button) continue;
 

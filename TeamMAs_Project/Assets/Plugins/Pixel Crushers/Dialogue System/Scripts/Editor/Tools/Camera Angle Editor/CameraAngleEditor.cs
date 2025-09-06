@@ -51,7 +51,7 @@ namespace PixelCrushers.DialogueSystem
 
         private void DisableOtherCameras()
         {
-            Camera[] otherCameras = FindObjectsOfType(typeof(Camera)) as Camera[];
+            Camera[] otherCameras = FindObjectsByType(typeof(Camera), FindObjectsSortMode.None) as Camera[];
             disabledCameras.Clear();
             foreach (var camera in otherCameras)
             {

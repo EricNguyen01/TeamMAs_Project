@@ -26,7 +26,7 @@ namespace TeamMAsTD
 
             DontDestroyOnLoad(gameObject);
 
-            WaveSpawner[] waveSpawners = FindObjectsOfType<WaveSpawner>();
+            WaveSpawner[] waveSpawners = FindObjectsByType<WaveSpawner>(FindObjectsSortMode.None);
 
             for(int i = 0; i < waveSpawners.Length; i++)
             {

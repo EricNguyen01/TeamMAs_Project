@@ -441,7 +441,7 @@ namespace TeamMAsTD
         {
             if (enabled)
             {
-                tilesUseForPlantableGlowEffectOnDragDrop = FindObjectsOfType<Tile>();
+                tilesUseForPlantableGlowEffectOnDragDrop = FindObjectsByType<Tile>(FindObjectsSortMode.None);
 
                 if (tilesUseForPlantableGlowEffectOnDragDrop == null || tilesUseForPlantableGlowEffectOnDragDrop.Length == 0) return;
 

@@ -58,10 +58,10 @@ namespace PixelCrushers
             {
                 if (s_instance == null)
                 {
-                    s_instance = FindObjectOfType<UILocalizationManager>();
+                    s_instance = Object.FindFirstObjectByType<UILocalizationManager>();
                     if (s_instance == null && Application.isPlaying)
                     {
-                        var globalTextTable = FindObjectOfType<GlobalTextTable>();
+                        var globalTextTable = Object.FindFirstObjectByType<GlobalTextTable>();
                         s_instance = (globalTextTable != null) ? globalTextTable.gameObject.AddComponent<UILocalizationManager>()
                             : new GameObject("UILocalizationManager").AddComponent<UILocalizationManager>();
                     }
@@ -235,8 +235,8 @@ namespace PixelCrushers
             }
 
             var localizeUIs = m_alsoUpdateInactiveLocalizeUI
-                ? GameObjectUtility.FindObjectsOfTypeAlsoInactive<LocalizeUI>()
-                : FindObjectsOfType<LocalizeUI>();
+                ? GameObjectUtility.FindObjectsByTypeAlsoInactive<LocalizeUI>()
+                : FindObjectsByType<LocalizeUI>(FindObjectsSortMode.None);
             for (int i = 0; i < localizeUIs.Length; i++)
             {
                 localizeUIs[i].UpdateText();

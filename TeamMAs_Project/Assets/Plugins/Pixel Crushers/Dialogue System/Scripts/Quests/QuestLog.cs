@@ -1359,7 +1359,7 @@ namespace PixelCrushers.DialogueSystem
         /// </summary>
         public static void UpdateQuestIndicators(string questName)
         {
-            var dispatcher = GameObject.FindObjectOfType<QuestStateDispatcher>();
+            var dispatcher = GameObject.FindFirstObjectByType<QuestStateDispatcher>();
             if (dispatcher != null) dispatcher.OnQuestStateChange(questName);
         }
 

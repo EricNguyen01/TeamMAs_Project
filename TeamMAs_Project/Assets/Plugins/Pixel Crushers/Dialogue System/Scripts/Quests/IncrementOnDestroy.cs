@@ -72,7 +72,7 @@ namespace PixelCrushers.DialogueSystem
             var destructibleSaver = GetComponent<DestructibleSaver>();
             if (destructibleSaver != null)
             {
-                var saveSystem = FindObjectOfType<SaveSystem>();
+                var saveSystem = FindFirstObjectByType<SaveSystem>();
                 if (saveSystem != null)
                 {
                     if (SaveSystem.currentSavedGameData != null)

@@ -24,7 +24,7 @@ namespace PixelCrushers
             if (go == null) return false;
             if (go.activeInHierarchy) return false;
             if ((go.transform.parent != null) && go.transform.parent.gameObject.activeSelf) return false;
-            var list = GameObject.FindObjectsOfType<GameObject>();
+            var list = GameObject.FindObjectsByType<GameObject>(FindObjectsSortMode.None);
             for (int i = 0; i < list.Length; i++)
             {
                 if (list[i] == go) return false;
@@ -126,7 +126,7 @@ namespace PixelCrushers
         /// Finds all objects of a type, including on inactive GameObjects.
         /// <param name="checkAllScenes">If true, check all open scenes; otherwise only check active scene.</param>
         /// </summary>
-        public static T[] FindObjectsOfTypeAlsoInactive<T>(bool checkAllScenes = true) where T : Component
+        public static T[] FindObjectsByTypeAlsoInactive<T>(bool checkAllScenes = true) where T : Component
         {
             var list = new System.Collections.Generic.List<T>();
 

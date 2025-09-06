@@ -174,7 +174,7 @@ namespace PixelCrushers
             {
                 if (m_instance == null && !m_isQuitting)
                 {
-                    m_instance = FindObjectOfType<SaveSystem>();
+                    m_instance = Object.FindFirstObjectByType<SaveSystem>();
                     if (m_instance == null)
                     {
                         m_instance = new GameObject("Save System", typeof(SaveSystem)).GetComponent<SaveSystem>();

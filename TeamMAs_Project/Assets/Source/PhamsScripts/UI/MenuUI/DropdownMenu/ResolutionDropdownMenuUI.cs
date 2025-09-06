@@ -77,11 +77,11 @@ namespace TeamMAsTD
             {
                 if (showDebugLog)
                 {
-                    Debug.Log("Current Checking Resolution's Refresh Rate: " + Screen.resolutions[i].refreshRate + "\n" +
+                    Debug.Log("Current Checking Resolution's Refresh Rate: " + Screen.resolutions[i].refreshRateRatio.value + "\n" +
                               "Current Screen's Refresh Rate: " + ((int)Screen.mainWindowDisplayInfo.refreshRate.value).ToString());
                 }
 
-                if (Screen.resolutions[i].refreshRate != (int)Screen.mainWindowDisplayInfo.refreshRate.value) continue;
+                if (Screen.resolutions[i].refreshRateRatio.value != (int)Screen.mainWindowDisplayInfo.refreshRate.value) continue;
 
                 //if (fsMode == FullScreenMode.Windowed && 
                     //Screen.resolutions[i].width == 1920 && Screen.resolutions[i].height == 1080) continue;
@@ -94,7 +94,7 @@ namespace TeamMAsTD
 
                 if(showDebugLog) Debug.Log("Added Available Resolution: " + Screen.resolutions[i].ToString());
 
-                TMP_Dropdown.OptionData optionItemData = new TMP_Dropdown.OptionData(resItem.GetResolutionAsString(), null);
+                TMP_Dropdown.OptionData optionItemData = new TMP_Dropdown.OptionData(resItem.GetResolutionAsString(), null, Color.white);
 
                 optionItems.Add(optionItemData);
             }
